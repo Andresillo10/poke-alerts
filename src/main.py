@@ -45,6 +45,11 @@ def parse_args() -> argparse.Namespace:
         help="Ejecuta scraping, traducción y PNG locales sin enviar a Telegram ni alterar state.json.",
     )
     parser.add_argument(
+        "--preview-sample",
+        action="store_true",
+        help="Envía 1 código vigente y 1 evento de TCG Pocket como vista previa a Telegram sin tocar state.json.",
+    )
+    parser.add_argument(
         "--bootstrap-silent",
         action="store_true",
         help="Marca el histórico inicial como visto sin enviar alertas de arranque.",
@@ -75,6 +80,20 @@ def _prioritize_items(items: list[AlertItem]) -> list[AlertItem]:
     return sorted(items, key=lambda it: priority.get(it.kind, 9))
 
 
+def _select_preview_sample(items: list[AlertItem]) -> list[AlertItem]:
+    """Elige 1 código vigente y 1 evento de TCG Pocket para probar el diseño en vivo."""
+    sample: list[AlertItem] = []
+    first_code = next((it for it in items if it.kind == "code"), None)
+    first_tcgp = next((it for it in items if it.game == "tcgp"), None)
+    if first_code:
+        sample.append(first_code)
+    if first_tcgp:
+        sample.append(first_tcgp)
+    if not sample and items:
+        sample.append(items[0])
+    return sample
+
+
 def run_pipeline(args: argparse.Namespace) -> int:
     """Ejecuta el ciclo completo de detección, renderizado y notificación."""
     state = load_state(STATE_FILE)
@@ -95,17 +114,23 @@ def run_pipeline(args: argparse.Namespace) -> int:
         collected.extend(res.items)
 
     collected = _prioritize_items(collected)
-    to_notify, to_seed_only = select_pending_alerts(
-        state,
-        collected,
-        max_alerts=args.limit,
-        bootstrap_silent=args.bootstrap_silent,
-    )
-    LOGGER.info(
-        "Pendientes por notificar: %d | Backlog a sembrar silenciosamente: %d",
-        len(to_notify),
-        len(to_seed_only),
-    )
+
+    if args.preview_sample:
+        to_notify = _select_preview_sample(collected)
+        to_seed_only: list[AlertItem] = []
+        LOGGER.info("Modo preview-sample activo: enviando %d tarjetas de muestra.", len(to_notify))
+    else:
+        to_notify, to_seed_only = select_pending_alerts(
+            state,
+            collected,
+            max_alerts=args.limit,
+            bootstrap_silent=args.bootstrap_silent,
+        )
+        LOGGER.info(
+            "Pendientes por notificar: %d | Backlog a sembrar silenciosamente: %d",
+            len(to_notify),
+            len(to_seed_only),
+        )
 
     bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
@@ -139,8 +164,8 @@ def run_pipeline(args: argparse.Namespace) -> int:
         if idx < len(to_notify) - 1:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
 
-    if args.dry_run:
-        LOGGER.info("Dry-run completado sin modificar state.json.")
+    if args.dry_run or args.preview_sample:
+        LOGGER.info("Modo prueba completado sin modificar state.json.")
         return 0
 
     processed = sent_items + to_seed_only

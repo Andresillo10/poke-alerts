@@ -26,6 +26,7 @@ OFFICIAL_TERMS_ES: dict[str, str] = {
     "Trade Tokens": "Fichas de Intercambio",
     "Trade Token": "Ficha de Intercambio",
     "Promo Pack": "Sobre Promo",
+    "Promo Cards": "Cartas Promo",
     "Promo Card": "Carta Promo",
     "Community Day": "Día de la Comunidad",
     "Raid Day": "Día de Incursiones",

@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0 * * * *"
   workflow_dispatch:
+    inputs:
+      preview_mode:
+        description: "Enviar 1 codigo y 1 evento TCGP de muestra sin alterar state.json"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -40,7 +46,12 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python -m src.main
+        run: |
+          if [ "${{ inputs.preview_mode }}" = "true" ]; then
+            python -m src.main --preview-sample
+          else
+            python -m src.main
+          fi
 
       - name: Commit updated state.json if changed
         run: |

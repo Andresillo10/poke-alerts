@@ -10,6 +10,7 @@ from pathlib import Path
 from PIL import Image
 
 from src.card_renderer import render_alert_card
+from src.main import _select_preview_sample
 from src.models import AlertItem, build_topic_key
 from src.scrapers import parse_leekduck_promos_html, parse_serebii_end_date
 from src.state import (
@@ -171,11 +172,21 @@ class CorePipelineTests(unittest.TestCase):
         )
         caption = build_telegram_caption(item)
         self.assertLessEqual(len(caption), 1024)
+        self.assertIn("<b>Pokémon GO</b>", caption)
         self.assertIn("<code>CODE&amp;123</code>", caption)
         self.assertIn("Recompensa &lt;Special&gt;", caption)
 
+    def test_tcgp_caption_and_preview_selection(self) -> None:
+        code_item = AlertItem("c1", "pogo", "code", "Zapatos", "Desc", "https://a", "LeekDuck", promo_code="ABC")
+        tcgp_item = AlertItem("t1", "tcgp", "event", "Dual Fusion", "Desc", "https://b", "Serebii TCGP", language="es")
+        caption = build_telegram_caption(tcgp_item)
+        self.assertIn("<b>Pokémon TCG Pocket</b>", caption)
+        self.assertNotIn("Tcg", caption)
+        picked = _select_preview_sample([code_item, tcgp_item])
+        self.assertEqual([x.uid for x in picked], ["c1", "t1"])
+
     def test_render_alert_card_creates_valid_png(self) -> None:
-        item = AlertItem(
+        code_item = AlertItem(
             uid="pogo:card",
             game="pogo",
             kind="code",
@@ -188,12 +199,24 @@ class CorePipelineTests(unittest.TestCase):
             expires_at="15 de enero de 2027",
             language="es",
         )
+        event_item = AlertItem(
+            uid="tcgp:card",
+            game="tcgp",
+            kind="event",
+            title="Combates Limitados: Dual Fusion",
+            summary="¡Evento activo en Pokémon TCG Pocket! Revisa misiones y sobres promo.",
+            url="https://www.serebii.net/tcgpocket/events.shtml",
+            source_name="Serebii TCGP",
+            expires_at="18 de nov - 2 de dic de 2026",
+            language="es",
+        )
         with tempfile.TemporaryDirectory() as tmpdir:
-            out_file = Path(tmpdir) / "card.png"
-            render_alert_card(item, out_file)
-            self.assertTrue(out_file.exists())
-            with Image.open(out_file) as img:
-                self.assertEqual(img.size, (1080, 600))
+            for idx, sample in enumerate((code_item, event_item)):
+                out_file = Path(tmpdir) / f"card_{idx}.png"
+                render_alert_card(sample, out_file)
+                self.assertTrue(out_file.exists())
+                with Image.open(out_file) as img:
+                    self.assertEqual(img.size, (1080, 600))
 
 
 if __name__ == "__main__":

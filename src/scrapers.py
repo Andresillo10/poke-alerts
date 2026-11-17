@@ -175,7 +175,10 @@ def parse_leekduck_promos_html(
         rewards = ", ".join(r for r in rewards_list if r) or None
 
         expiry_el = card.select_one("span.expiry")
-        expires_at = expiry_el.get_text(" ", strip=True) if expiry_el else None
+        expires_at = None
+        if expiry_el:
+            raw_exp_txt = expiry_el.get_text(" ", strip=True)
+            expires_at = re.sub(r"^Expires:\s*", "", raw_exp_txt, flags=re.IGNORECASE).strip() or None
 
         redeem_el = card.select_one("a.link-button[href]")
         redeem_url = (
@@ -232,7 +235,9 @@ def fetch_scrapedduck_events(session: requests.Session, now_utc: datetime | None
                     game="pogo",
                     kind="event",
                     title=name,
-                    summary=f"{heading}: {name}",
+                    summary=(
+                        f"{heading} in Pokémon GO. Check bonuses, spawns, and tasks before it ends!"
+                    ),
                     url=(ev.get("link") or URLS["scrapedduck_events"]).strip(),
                     source_name=source,
                     expires_at=window,
@@ -333,13 +338,18 @@ def fetch_serebii_events(
 
             href = link_el["href"].strip() if link_el else url
             full_url = urljoin(url, href)
+            summary_en = (
+                "Active event in Pokémon TCG Pocket! Open the game to check missions, promo cards, and rewards."
+                if game == "tcgp"
+                else "Featured event in Pokémon GO! Check bonuses, spawns, and rewards in the link."
+            )
             items.append(
                 AlertItem(
                     uid=f"{source_name.lower().replace(' ', '-')}:{full_url}",
                     game=game,
                     kind="event",
                     title=title,
-                    summary=f"{title} ({duration})" if duration else title,
+                    summary=summary_en,
                     url=full_url,
                     source_name=source_name,
                     expires_at=duration or None,

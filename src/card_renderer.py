@@ -1,4 +1,4 @@
-"""Generador determinista de tarjetas gráficas PNG en español con Pillow."""
+"""Generador determinista de tarjetas gráficas PNG temáticas Pokémon con Pillow."""
 
 from __future__ import annotations
 
@@ -15,44 +15,59 @@ PADDING = 52
 
 _THEMES: dict[tuple[str, str], dict[str, str]] = {
     ("pogo", "code"): {
-        "bg": "#0F172A",
-        "panel": "#1E293B",
-        "accent": "#10B981",
-        "highlight": "#F59E0B",
+        "bg": "#0B1324",
+        "panel": "#131F38",
+        "panel_inner": "#0C1527",
+        "watermark": "#1B2C4D",
+        "accent": "#22C55E",
+        "highlight": "#FACC15",
         "text": "#F8FAFC",
         "muted": "#CBD5E1",
+        "badge_text": "#052E16",
     },
     ("pogo", "event"): {
-        "bg": "#0F172A",
-        "panel": "#1E293B",
-        "accent": "#0EA5E9",
-        "highlight": "#38BDF8",
+        "bg": "#0B1324",
+        "panel": "#131F38",
+        "panel_inner": "#0C1527",
+        "watermark": "#1B2C4D",
+        "accent": "#38BDF8",
+        "highlight": "#FACC15",
         "text": "#F8FAFC",
         "muted": "#CBD5E1",
+        "badge_text": "#082F49",
     },
     ("pogo", "news"): {
-        "bg": "#0F172A",
-        "panel": "#1E293B",
-        "accent": "#6366F1",
-        "highlight": "#A5B4FC",
+        "bg": "#0B1324",
+        "panel": "#131F38",
+        "panel_inner": "#0C1527",
+        "watermark": "#1B2C4D",
+        "accent": "#818CF8",
+        "highlight": "#FDE047",
         "text": "#F8FAFC",
         "muted": "#CBD5E1",
+        "badge_text": "#1E1B4B",
     },
     ("tcgp", "code"): {
-        "bg": "#140F2D",
-        "panel": "#211A44",
-        "accent": "#F59E0B",
+        "bg": "#150E2E",
+        "panel": "#201744",
+        "panel_inner": "#160F31",
+        "watermark": "#2D215C",
+        "accent": "#FBBF24",
         "highlight": "#FDE047",
         "text": "#FAF5FF",
         "muted": "#DDD6FE",
+        "badge_text": "#451A03",
     },
     ("tcgp", "event"): {
-        "bg": "#140F2D",
-        "panel": "#211A44",
-        "accent": "#8B5CF6",
+        "bg": "#150E2E",
+        "panel": "#201744",
+        "panel_inner": "#160F31",
+        "watermark": "#2D215C",
+        "accent": "#A78BFA",
         "highlight": "#FBBF24",
         "text": "#FAF5FF",
         "muted": "#DDD6FE",
+        "badge_text": "#2E1065",
     },
 }
 
@@ -140,45 +155,99 @@ def _fit_single_line_font(
     return _load_font(weight, min_size)
 
 
+def _draw_pokeball_watermark(
+    draw: ImageDraw.ImageDraw,
+    cx: int,
+    cy: int,
+    radius: int,
+    ring_color: str,
+    panel_color: str,
+) -> None:
+    """Dibuja una Poké Ball sutil de fondo como sello visual sin restar legibilidad."""
+    draw.ellipse(
+        (cx - radius, cy - radius, cx + radius, cy + radius),
+        outline=ring_color,
+        width=12,
+    )
+    draw.rectangle(
+        (cx - radius + 4, cy - 8, cx + radius - 4, cy + 8),
+        fill=ring_color,
+    )
+    inner_r = int(radius * 0.30)
+    draw.ellipse(
+        (cx - inner_r, cy - inner_r, cx + inner_r, cy + inner_r),
+        fill=panel_color,
+        outline=ring_color,
+        width=10,
+    )
+    dot_r = int(radius * 0.13)
+    draw.ellipse(
+        (cx - dot_r, cy - dot_r, cx + dot_r, cy + dot_r),
+        fill=ring_color,
+    )
+
+
+def _draw_header_emblem(draw: ImageDraw.ImageDraw, game: str, x: int, y: int, accent: str) -> None:
+    """Dibuja un ícono nítido de Poké Ball (GO) o Carta Dorada (TCG Pocket)."""
+    if game == "pogo":
+        r = 22
+        cx, cy = x + r, y + r
+        draw.pieslice((cx - r, cy - r, cx + r, cy + r), 180, 360, fill="#EF4444")
+        draw.pieslice((cx - r, cy - r, cx + r, cy + r), 0, 180, fill="#F8FAFC")
+        draw.rectangle((cx - r, cy - 3, cx + r, cy + 3), fill="#0F172A")
+        draw.ellipse((cx - r, cy - r, cx + r, cy + r), outline="#0F172A", width=3)
+        draw.ellipse((cx - 7, cy - 7, cx + 7, cy + 7), fill="#F8FAFC", outline="#0F172A", width=3)
+        return
+
+    # Carta estilizada TCG Pocket
+    draw.rounded_rectangle((x + 4, y + 2, x + 34, y + 44), radius=5, fill=accent, outline="#FDE047", width=2)
+    draw.rounded_rectangle((x + 9, y + 8, x + 29, y + 25), radius=3, fill="#1E1B4B")
+    draw.line((x + 10, y + 32, x + 28, y + 32), fill="#FEF08A", width=3)
+
+
 def render_alert_card(item: AlertItem, output_path: Path) -> Path:
-    """Renderiza una tarjeta PNG informativa ligera (<100 KB) y la guarda en disco."""
+    """Renderiza una tarjeta PNG temática Pokémon (<100 KB) y la guarda en disco."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     theme = _THEMES.get((item.game, item.kind), _THEMES[("tcgp", "event")])
 
     img = Image.new("RGB", (CARD_WIDTH, CARD_HEIGHT), theme["bg"])
     draw = ImageDraw.Draw(img)
 
-    # Tarjeta interior con barra superior de acento
+    # Marco principal de la tarjeta
     draw.rounded_rectangle(
-        (24, 24, CARD_WIDTH - 24, CARD_HEIGHT - 24),
-        radius=26,
+        (20, 20, CARD_WIDTH - 20, CARD_HEIGHT - 20),
+        radius=28,
         fill=theme["panel"],
         outline=theme["accent"],
         width=3,
     )
-    draw.rounded_rectangle(
-        (24, 24, CARD_WIDTH - 24, 42),
-        radius=12,
-        fill=theme["accent"],
+    _draw_pokeball_watermark(
+        draw,
+        cx=CARD_WIDTH - 145,
+        cy=235,
+        radius=175,
+        ring_color=theme["watermark"],
+        panel_color=theme["panel"],
     )
 
-    badge_font = _load_font("bold", 21)
+    # Barra superior de acento
+    draw.rounded_rectangle((20, 20, CARD_WIDTH - 20, 36), radius=10, fill=theme["accent"])
+
+    badge_font = _load_font("bold", 20)
     title_font = _load_font("bold", 38)
-    body_font = _load_font("regular", 25)
+    body_font = _load_font("regular", 24)
     label_font = _load_font("bold", 20)
     footer_font = _load_font("regular", 20)
 
+    _draw_header_emblem(draw, item.game, PADDING, 58, theme["highlight"])
     badge_text = f"{GAME_LABELS[item.game]}  •  {KIND_LABELS[item.kind]}"
-    badge_w = int(draw.textlength(badge_text, font=badge_font)) + 36
-    draw.rounded_rectangle(
-        (PADDING, 66, PADDING + badge_w, 108),
-        radius=18,
-        fill=theme["accent"],
-    )
-    draw.text((PADDING + 18, 75), badge_text, font=badge_font, fill="#0B1120")
+    badge_x = PADDING + 56
+    badge_w = int(draw.textlength(badge_text, font=badge_font)) + 34
+    draw.rounded_rectangle((badge_x, 60, badge_x + badge_w, 102), radius=18, fill=theme["accent"])
+    draw.text((badge_x + 17, 70), badge_text, font=badge_font, fill=theme["badge_text"])
 
     content_w = CARD_WIDTH - (PADDING * 2)
-    y = 132
+    y = 128
     for line in _wrap_text(draw, item.title, title_font, content_w, max_lines=2):
         draw.text((PADDING, y), line, font=title_font, fill=theme["text"])
         y += 48
@@ -188,40 +257,64 @@ def render_alert_card(item: AlertItem, output_path: Path) -> Path:
         reward_line = f"Recompensa: {item.rewards}"
         for line in _wrap_text(draw, reward_line, label_font, content_w, max_lines=1):
             draw.text((PADDING, y), line, font=label_font, fill=theme["highlight"])
-            y += 30
-
-    max_body_lines = 3 if (item.promo_code and item.rewards) else (4 if item.promo_code else 6)
-    for line in _wrap_text(draw, item.summary, body_font, content_w, max_lines=max_body_lines):
-        draw.text((PADDING, y), line, font=body_font, fill=theme["muted"])
-        y += 34
+            y += 32
 
     if item.promo_code:
-        box_top = 382
-        box_bottom = 480
+        max_body_lines = 3 if item.rewards else 4
+        for line in _wrap_text(draw, item.summary, body_font, content_w, max_lines=max_body_lines):
+            draw.text((PADDING, y), line, font=body_font, fill=theme["muted"])
+            y += 32
+
+        box_top = 374
+        box_bottom = 482
         draw.rounded_rectangle(
             (PADDING, box_top, CARD_WIDTH - PADDING, box_bottom),
             radius=18,
-            fill="#0B1220",
+            fill=theme["panel_inner"],
             outline=theme["highlight"],
             width=3,
         )
         draw.text(
-            (PADDING + 22, box_top + 12),
-            "CÓDIGO EXACTO (TOCA EL TEXTO DEL MENSAJE PARA COPIAR):",
+            (PADDING + 24, box_top + 14),
+            "CÓDIGO DE REGALO (TOCA EL CÓDIGO EN EL MENSAJE PARA COPIAR):",
             font=label_font,
             fill=theme["highlight"],
         )
-        code_font = _fit_single_line_font(draw, item.promo_code, "mono", content_w - 44)
-        draw.text(
-            (PADDING + 22, box_top + 42),
-            item.promo_code,
-            font=code_font,
-            fill="#FFFFFF",
+        code_font = _fit_single_line_font(draw, item.promo_code, "mono", content_w - 48)
+        draw.text((PADDING + 24, box_top + 46), item.promo_code, font=code_font, fill="#FFFFFF")
+    else:
+        # Tarjeta de evento/noticia con caja de detalle equilibrada
+        box_top = max(y + 10, 260)
+        box_bottom = 482
+        draw.rounded_rectangle(
+            (PADDING, box_top, CARD_WIDTH - PADDING, box_bottom),
+            radius=18,
+            fill=theme["panel_inner"],
+            outline=theme["accent"],
+            width=2,
         )
+        draw.text(
+            (PADDING + 24, box_top + 16),
+            "RESUMEN PARA ENTRENADORES:",
+            font=label_font,
+            fill=theme["highlight"],
+        )
+        inner_y = box_top + 52
+        for line in _wrap_text(draw, item.summary, body_font, content_w - 48, max_lines=3):
+            draw.text((PADDING + 24, inner_y), line, font=body_font, fill=theme["text"])
+            inner_y += 34
+
+        tip = (
+            "Consejo: toca 'Ver detalles' abajo para revisar misiones y horarios."
+            if item.game == "tcgp"
+            else "Consejo: toca 'Ver detalles' abajo para revisar Pokémon y bonus."
+        )
+        draw.text((PADDING + 24, box_bottom - 38), tip, font=footer_font, fill=theme["muted"])
 
     # Pie informativo
     draw.line((PADDING, 512, CARD_WIDTH - PADDING, 512), fill="#334155", width=2)
-    left_footer = f"Vigencia / Fecha: {item.expires_at}" if item.expires_at else "Estado: Vigente / Reciente"
+    date_prefix = "Válido hasta:" if item.kind == "code" else "Fechas:"
+    left_footer = f"{date_prefix} {item.expires_at}" if item.expires_at else "Estado: Activo ahora"
     right_footer = f"Fuente: {item.source_name}"
 
     if draw.textlength(left_footer, font=footer_font) > content_w - 260:

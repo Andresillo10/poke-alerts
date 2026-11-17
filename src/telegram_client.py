@@ -1,4 +1,4 @@
-"""Cliente ligero para enviar tarjetas PNG y códigos copiables a Telegram."""
+"""Cliente amigable para enviar tarjetas PNG y códigos copiables a Telegram."""
 
 from __future__ import annotations
 
@@ -10,54 +10,62 @@ from pathlib import Path
 
 import requests
 
-from src.config import GAME_LABELS, KIND_LABELS, REQUEST_TIMEOUT_SEC, TELEGRAM_CAPTION_LIMIT
+from src.config import (
+    REQUEST_TIMEOUT_SEC,
+    TELEGRAM_CAPTION_LIMIT,
+    TELEGRAM_GAME_NAMES,
+    TELEGRAM_KIND_HEADERS,
+)
 from src.models import AlertItem
 
 LOGGER = logging.getLogger(__name__)
 
 
 def build_telegram_caption(item: AlertItem) -> str:
-    """Construye el texto HTML de Telegram con código copiable en 1 toque y límite seguro."""
-    game_label = html.escape(GAME_LABELS[item.game].title())
-    kind_label = html.escape(KIND_LABELS[item.kind].capitalize())
+    """Construye un mensaje HTML cálido, legible y con código copiable en 1 toque."""
+    game_name = html.escape(TELEGRAM_GAME_NAMES[item.game])
+    kind_header = html.escape(
+        TELEGRAM_KIND_HEADERS.get((item.game, item.kind), "✨ ¡Nueva alerta Pokémon!")
+    )
     title = html.escape(item.title)
     summary = html.escape(item.summary)
 
     lines = [
-        f"<b>[{game_label}] {kind_label}</b>",
-        f"<b>{title}</b>",
+        f"<b>{game_name}</b> • {kind_header}",
+        f"✨ <b>{title}</b>",
     ]
-    if item.promo_code:
-        lines.append("")
-        lines.append("📋 <b>Código (toca para copiar):</b>")
-        lines.append(f"<code>{html.escape(item.promo_code)}</code>")
     if item.rewards:
         lines.append(f"🎁 <b>Recompensa:</b> {html.escape(item.rewards)}")
     if item.expires_at:
-        lines.append(f"⏳ <b>Vigencia / Fecha:</b> {html.escape(item.expires_at)}")
+        date_label = "Válido hasta" if item.kind == "code" else "Fechas"
+        lines.append(f"⏳ <b>{date_label}:</b> {html.escape(item.expires_at)}")
+
+    if item.promo_code:
+        lines.append("")
+        lines.append("📋 <b>Toca el código para copiarlo:</b>")
+        lines.append(f"<code>{html.escape(item.promo_code)}</code>")
 
     lines.append("")
-    lines.append(summary)
-    lines.append(f"<i>Fuente: {html.escape(item.source_name)}</i>")
+    lines.append(f"💬 {summary}")
+    lines.append(f"📡 <i>Fuente: {html.escape(item.source_name)}</i>")
 
     caption = "\n".join(lines)
     if len(caption) <= TELEGRAM_CAPTION_LIMIT:
         return caption
 
-    # Recorta el resumen manteniendo intacto el código copiable y cabecera.
     overflow = len(caption) - TELEGRAM_CAPTION_LIMIT + 3
     trimmed_summary = summary[:-overflow].rstrip() + "..." if overflow < len(summary) else ""
-    lines[-2] = trimmed_summary
-    return "\n".join(lines)[:TELEGRAM_CAPTION_LIMIT]
+    lines[-2] = f"💬 {trimmed_summary}" if trimmed_summary else ""
+    return "\n".join(line for line in lines if line is not None)[:TELEGRAM_CAPTION_LIMIT]
 
 
 def build_inline_keyboard(item: AlertItem) -> dict[str, list[list[dict[str, str]]]]:
     """Crea botones URL directos para canjear el código o abrir el detalle oficial."""
     buttons: list[dict[str, str]] = []
     if item.redeem_url:
-        buttons.append({"text": "🎁 Canjear código", "url": item.redeem_url})
+        buttons.append({"text": "🎁 Canjear código ahora", "url": item.redeem_url})
     if item.url:
-        buttons.append({"text": "🔎 Ver detalle", "url": item.url})
+        buttons.append({"text": "🔎 Ver detalles", "url": item.url})
     return {"inline_keyboard": [buttons]} if buttons else {"inline_keyboard": []}
 
 

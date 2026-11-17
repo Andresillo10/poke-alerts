@@ -41,8 +41,22 @@ GAME_LABELS = {
     "tcgp": "POKÉMON TCG POCKET",
 }
 
+TELEGRAM_GAME_NAMES = {
+    "pogo": "Pokémon GO",
+    "tcgp": "Pokémon TCG Pocket",
+}
+
 KIND_LABELS = {
-    "code": "CÓDIGO PROMOCIONAL",
-    "event": "EVENTO",
+    "code": "CÓDIGO DE REGALO",
+    "event": "EVENTO ACTIVO",
     "news": "NOTICIA OFICIAL",
+}
+
+TELEGRAM_KIND_HEADERS = {
+    ("pogo", "code"): "🎁 ¡Nuevo código promocional!",
+    ("pogo", "event"): "⚡ ¡Nuevo evento en camino!",
+    ("pogo", "news"): "📢 Noticia oficial de Entrenador",
+    ("tcgp", "code"): "🎁 ¡Nuevo código de regalo!",
+    ("tcgp", "event"): "🃏 ¡Evento especial en TCG Pocket!",
+    ("tcgp", "news"): "📢 Novedad en TCG Pocket",
 }
