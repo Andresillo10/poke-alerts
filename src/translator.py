@@ -81,9 +81,15 @@ def translate_en_to_es(
 
 
 def localize_alert_item(item: AlertItem, *, enable_remote: bool = True) -> AlertItem:
-    """Localiza título, resumen, recompensas y expiración al español sin alterar códigos."""
+    """Localiza título, resumen, detalles v2.0 y guía de mazos sin alterar códigos."""
     if item.language == "es":
-        return item
+        if not item.deck_guide_title:
+            return item
+        return item.with_spanish_copy(
+            title=item.title,
+            summary=item.summary,
+            deck_guide_title=translate_en_to_es(item.deck_guide_title, enable_remote=enable_remote),
+        )
 
     protected = [item.promo_code] if item.promo_code else []
     title_es = translate_en_to_es(item.title, protected_tokens=protected, enable_remote=enable_remote)
@@ -98,9 +104,20 @@ def localize_alert_item(item: AlertItem, *, enable_remote: bool = True) -> Alert
         if item.expires_at
         else None
     )
+    bullets_es = tuple(
+        translate_en_to_es(b, protected_tokens=protected, enable_remote=enable_remote)
+        for b in item.guide_bullets
+    )
+    deck_title_es = (
+        translate_en_to_es(item.deck_guide_title, enable_remote=enable_remote)
+        if item.deck_guide_title
+        else None
+    )
     return item.with_spanish_copy(
         title=title_es,
         summary=summary_es,
         rewards=rewards_es,
         expires_at=expires_es,
+        guide_bullets=bullets_es,
+        deck_guide_title=deck_title_es,
     )

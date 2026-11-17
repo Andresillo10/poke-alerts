@@ -11,6 +11,7 @@ from pathlib import Path
 
 from src.card_renderer import render_alert_card
 from src.config import DEFAULT_OUTPUT_DIR, MAX_ALERTS_PER_RUN, STATE_FILE, TELEGRAM_SEND_DELAY_SEC
+from src.enricher import enrich_alert_item
 from src.models import AlertItem
 from src.scrapers import create_session, fetch_all_sources
 from src.state import (
@@ -141,8 +142,10 @@ def run_pipeline(args: argparse.Namespace) -> int:
         )
 
     sent_items: list[AlertItem] = []
+    events_cache: dict[str, dict] = {}
     for idx, item in enumerate(to_notify):
-        localized = localize_alert_item(item, enable_remote=not args.no_translate)
+        enriched = enrich_alert_item(session, item, events_cache=events_cache)
+        localized = localize_alert_item(enriched, enable_remote=not args.no_translate)
         png_path = args.out_dir / _safe_filename(localized.uid)
         render_alert_card(localized, png_path)
 

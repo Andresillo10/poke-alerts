@@ -55,13 +55,20 @@ def create_session() -> requests.Session:
     return session
 
 
-def _fetch_text(session: requests.Session, url: str) -> str:
-    """Descarga texto HTTP detectando explícitamente bloqueos Cloudflare/403."""
+def fetch_text_safe(session: requests.Session, url: str) -> str:
+    """Descarga texto HTTP detectando Cloudflare y corrigiendo codificación UTF-8."""
     resp = session.get(url, timeout=REQUEST_TIMEOUT_SEC)
     if resp.status_code == 403 or "Just a moment..." in resp.text[:400]:
         raise PermissionError(f"Bloqueo HTTP {resp.status_code} (posible Cloudflare) en {url}")
     resp.raise_for_status()
+    if not resp.encoding or resp.encoding.lower() == "iso-8859-1":
+        resp.encoding = resp.apparent_encoding or "utf-8"
     return resp.text
+
+
+def _fetch_text(session: requests.Session, url: str) -> str:
+    """Alias interno compatible hacia fetch_text_safe."""
+    return fetch_text_safe(session, url)
 
 
 def parse_serebii_end_date(duration_text: str) -> date | None:

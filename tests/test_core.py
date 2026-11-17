@@ -10,6 +10,11 @@ from pathlib import Path
 from PIL import Image
 
 from src.card_renderer import render_alert_card
+from src.enricher import (
+    parse_ptcgpocket_detail_html,
+    parse_serebii_detail_html,
+    select_best_deck_post,
+)
 from src.main import _select_preview_sample
 from src.models import AlertItem, build_topic_key
 from src.scrapers import parse_leekduck_promos_html, parse_serebii_end_date
@@ -19,7 +24,7 @@ from src.state import (
     select_pending_alerts,
     update_source_health_and_heartbeat,
 )
-from src.telegram_client import build_telegram_caption
+from src.telegram_client import build_inline_keyboard, build_telegram_caption
 from src.translator import localize_alert_item, translate_en_to_es
 
 
@@ -184,6 +189,69 @@ class CorePipelineTests(unittest.TestCase):
         self.assertNotIn("Tcg", caption)
         picked = _select_preview_sample([code_item, tcgp_item])
         self.assertEqual([x.uid for x in picked], ["c1", "t1"])
+
+    def test_v2_enricher_serebii_and_deck_guide_matching(self) -> None:
+        serebii_html = """
+        <main>
+          <p>This event is a special Limited Battle event using Dual Fusion cards only.</p>
+          <table class="dextable">
+            <tr><th>Effect</th><th>Type</th></tr>
+            <tr><td>Catch Candy</td><td>2x</td></tr>
+          </table>
+          <table class="dextable">
+            <tr><th>No.</th><th>Pic</th><th>Name</th><th>Type</th></tr>
+            <tr><td>#0035</td><td></td><td>Clefairy</td><td></td></tr>
+            <tr><td>#0744</td><td></td><td>Rockruff</td><td></td></tr>
+          </table>
+          <table class="dextable">
+            <tr><th>Task</th><th>Reward</th></tr>
+            <tr><td>Catch 3 Grass Pokémon</td><td>Bulbasaur</td></tr>
+          </table>
+        </main>
+        """
+        intro, bullets = parse_serebii_detail_html(serebii_html)
+        self.assertIn("Dual Fusion", intro or "")
+        joined = "\n".join(bullets)
+        self.assertIn("Bonuses:", joined)
+        self.assertIn("Clefairy, Rockruff", joined)
+        self.assertIn("Catch 3 Grass Pokémon", joined)
+
+        ptcg_html = """
+        <div class="entry-content">
+          <p>Players battle to earn special Emblems and Pack Hourglasses in versus mode.</p>
+          <table>
+            <tr><th>Mission</th><th>Rewards</th></tr>
+            <tr><td>Participate in 3 versus battles</td><td>6 Pack Hourglass</td></tr>
+          </table>
+        </div>
+        """
+        p_intro, p_bullets = parse_ptcgpocket_detail_html(ptcg_html)
+        self.assertIn("Emblems", p_intro or "")
+        self.assertIn("Participate in 3 versus battles", "\n".join(p_bullets))
+
+        posts = [
+            {"link": "https://ptcgpocket.gg/guide-1/", "title": {"rendered": "Event Guide"}},
+            {"link": "https://ptcgpocket.gg/best-decks/", "title": {"rendered": "Best Decks: Dual Fusion Tier List"}},
+        ]
+        deck = select_best_deck_post(posts, exclude_url="https://ptcgpocket.gg/guide-1/")
+        self.assertEqual(deck, ("https://ptcgpocket.gg/best-decks/", "Best Decks: Dual Fusion Tier List"))
+
+        item = AlertItem(
+            uid="t1",
+            game="tcgp",
+            kind="event",
+            title="Dual Fusion",
+            summary="Regla especial.",
+            url="https://www.serebii.net/tcgpocket/events/dualfusionlimitedbattles.shtml",
+            source_name="Serebii TCGP",
+            guide_bullets=("Misiones: Jugar 3 partidas",),
+            deck_guide_url="https://ptcgpocket.gg/best-decks/",
+            deck_guide_title="Mejores mazos: Dual Fusion",
+            language="es",
+        )
+        kb = build_inline_keyboard(item)
+        btn_texts = [b["text"] for b in kb["inline_keyboard"][0]]
+        self.assertIn("🃏 Mazos recomendados", btn_texts)
 
     def test_render_alert_card_creates_valid_png(self) -> None:
         code_item = AlertItem(

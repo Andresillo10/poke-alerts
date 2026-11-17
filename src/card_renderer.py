@@ -295,21 +295,30 @@ def render_alert_card(item: AlertItem, output_path: Path) -> Path:
         )
         draw.text(
             (PADDING + 24, box_top + 16),
-            "RESUMEN PARA ENTRENADORES:",
+            "RESUMEN Y CÓMO APROVECHARLO:",
             font=label_font,
             fill=theme["highlight"],
         )
-        inner_y = box_top + 52
-        for line in _wrap_text(draw, item.summary, body_font, content_w - 48, max_lines=3):
+        inner_y = box_top + 50
+        max_summary_lines = 2 if item.guide_bullets else 3
+        for line in _wrap_text(draw, item.summary, body_font, content_w - 48, max_lines=max_summary_lines):
             draw.text((PADDING + 24, inner_y), line, font=body_font, fill=theme["text"])
-            inner_y += 34
+            inner_y += 32
 
-        tip = (
-            "Consejo: toca 'Ver detalles' abajo para revisar misiones y horarios."
-            if item.game == "tcgp"
-            else "Consejo: toca 'Ver detalles' abajo para revisar Pokémon y bonus."
-        )
-        draw.text((PADDING + 24, box_bottom - 38), tip, font=footer_font, fill=theme["muted"])
+        if item.guide_bullets:
+            inner_y += 4
+            for bullet in item.guide_bullets[:2]:
+                for line in _wrap_text(draw, f"• {bullet}", footer_font, content_w - 48, max_lines=1):
+                    if inner_y <= box_bottom - 26:
+                        draw.text((PADDING + 24, inner_y), line, font=footer_font, fill=theme["muted"])
+                        inner_y += 28
+        else:
+            tip = (
+                "Consejo: toca 'Ver detalles' abajo para revisar misiones y horarios."
+                if item.game == "tcgp"
+                else "Consejo: toca 'Ver detalles' abajo para revisar Pokémon y bonus."
+            )
+            draw.text((PADDING + 24, box_bottom - 38), tip, font=footer_font, fill=theme["muted"])
 
     # Pie informativo
     draw.line((PADDING, 512, CARD_WIDTH - PADDING, 512), fill="#334155", width=2)

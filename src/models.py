@@ -18,7 +18,7 @@ _NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 
 @dataclass(frozen=True)
 class AlertItem:
-    """Representa una alerta normalizada lista para traducir, renderizar y enviar."""
+    """Representa una alerta normalizada lista para enriquecer, traducir, renderizar y enviar."""
 
     uid: str
     game: GameType
@@ -32,6 +32,9 @@ class AlertItem:
     rewards: str | None = None
     expires_at: str | None = None
     language: str = "en"
+    guide_bullets: tuple[str, ...] = ()
+    deck_guide_url: str | None = None
+    deck_guide_title: str | None = None
 
     def with_spanish_copy(
         self,
@@ -40,6 +43,8 @@ class AlertItem:
         summary: str,
         rewards: str | None = None,
         expires_at: str | None = None,
+        guide_bullets: tuple[str, ...] | None = None,
+        deck_guide_title: str | None = None,
     ) -> "AlertItem":
         """Devuelve una copia del item conservando intactos código y URLs."""
         return replace(
@@ -48,6 +53,10 @@ class AlertItem:
             summary=summary,
             rewards=rewards if rewards is not None else self.rewards,
             expires_at=expires_at if expires_at is not None else self.expires_at,
+            guide_bullets=guide_bullets if guide_bullets is not None else self.guide_bullets,
+            deck_guide_title=(
+                deck_guide_title if deck_guide_title is not None else self.deck_guide_title
+            ),
             language="es",
         )
 
