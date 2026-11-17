@@ -13,6 +13,7 @@ from src.config import (
     MAX_BOOTSTRAP_EVENTS_PER_GAME,
     MAX_SEEN_ITEMS,
     STATE_FILE,
+    TOPIC_DEDUP_TTL_DAYS,
 )
 from src.models import AlertItem, build_topic_key
 
@@ -54,9 +55,26 @@ def _prune_dict(mapping: dict[str, str], limit: int) -> dict[str, str]:
     return dict(items)
 
 
-def _is_seen(state: dict[str, Any], item: AlertItem, topic_key: str) -> bool:
-    """Verifica si el item ya fue visto por UID o por tema canónico."""
-    return item.uid in state["seen_uids"] or topic_key in state["seen_topics"]
+def _is_seen(
+    state: dict[str, Any],
+    item: AlertItem,
+    topic_key: str,
+    now_utc: datetime,
+) -> bool:
+    """Verifica si el UID ya se envió o si el mismo tema salió dentro de la ventana TTL."""
+    if item.uid in state["seen_uids"]:
+        return True
+
+    topic_ts_raw = state["seen_topics"].get(topic_key)
+    if not topic_ts_raw:
+        return False
+    try:
+        topic_ts = datetime.fromisoformat(topic_ts_raw.replace("Z", "+00:00"))
+        if topic_ts.tzinfo is None:
+            topic_ts = topic_ts.replace(tzinfo=timezone.utc)
+        return (now_utc - topic_ts) < timedelta(days=TOPIC_DEDUP_TTL_DAYS)
+    except ValueError:
+        return True
 
 
 def _mark_seen(state: dict[str, Any], item: AlertItem, topic_key: str, timestamp: str) -> None:
@@ -77,13 +95,14 @@ def select_pending_alerts(
 
     Devuelve `(to_notify, to_mark_seen_without_notify)`.
     """
+    ref_now = now_utc or datetime.now(timezone.utc)
     is_bootstrap = not state.get("initialized", False)
 
     unseen: list[tuple[AlertItem, str]] = []
     seen_batch_topics: set[str] = set()
     for item in items:
         topic_key = build_topic_key(item)
-        if _is_seen(state, item, topic_key) or topic_key in seen_batch_topics:
+        if _is_seen(state, item, topic_key, ref_now) or topic_key in seen_batch_topics:
             continue
         seen_batch_topics.add(topic_key)
         unseen.append((item, topic_key))

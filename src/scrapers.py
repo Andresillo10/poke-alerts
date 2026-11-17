@@ -72,19 +72,19 @@ def _fetch_text(session: requests.Session, url: str) -> str:
 
 
 def parse_serebii_end_date(duration_text: str) -> date | None:
-    """Extrae la fecha de fin de un rango Serebii si el formato es estándar."""
+    """Extrae la fecha de fin de un rango Serebii (incluyendo eventos de 1 día con hora)."""
     clean = _ORDINAL_RE.sub(r"\1", duration_text).replace(",", " ")
-    parts = [part.strip() for part in clean.split("-")]
-    tail = parts[-1]
-    full_match = _FULL_DATE_RE.search(tail)
-    if full_match:
-        month = _MONTHS.get(full_match.group(1).lower())
+    all_full = _FULL_DATE_RE.findall(clean)
+    if all_full:
+        month_name, day_s, year_s = all_full[-1]
+        month = _MONTHS.get(month_name.lower())
         if month:
-            return _safe_date(int(full_match.group(3)), month, int(full_match.group(2)))
+            return _safe_date(int(year_s), month, int(day_s))
 
+    parts = [part.strip() for part in clean.split("-")]
     if len(parts) >= 2:
         head_match = _MONTH_DAY_RE.search(parts[0])
-        tail_day_year = _DAY_YEAR_RE.search(tail)
+        tail_day_year = _DAY_YEAR_RE.search(parts[-1])
         if head_match and tail_day_year:
             month = _MONTHS.get(head_match.group(1).lower())
             if month:
@@ -251,7 +251,7 @@ def fetch_scrapedduck_events(session: requests.Session, now_utc: datetime | None
                     language="en",
                 )
             )
-        return FetchResult(source, items[:15], ok=True)
+        return FetchResult(source, items, ok=True)
     except Exception as exc:
         LOGGER.warning("[%s] Fallo: %s", source, exc)
         return FetchResult(source, [], ok=False, error=str(exc))
@@ -364,7 +364,7 @@ def fetch_serebii_events(
                 )
             )
 
-        return FetchResult(source_name, items[:12], ok=True)
+        return FetchResult(source_name, items, ok=True)
     except Exception as exc:
         LOGGER.warning("[%s] Fallo: %s", source_name, exc)
         return FetchResult(source_name, [], ok=False, error=str(exc))

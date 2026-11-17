@@ -129,6 +129,14 @@ class CorePipelineTests(unittest.TestCase):
             parse_serebii_end_date("November 24th - 30th 2026"),
             date(2026, 11, 30),
         )
+        self.assertEqual(
+            parse_serebii_end_date("September 5th 2021 11:00 - 17:00"),
+            date(2021, 9, 5),
+        )
+        self.assertEqual(
+            parse_serebii_end_date("December 28th 2019 11:00-19:00 local time"),
+            date(2019, 12, 28),
+        )
         self.assertIsNone(parse_serebii_end_date("Ongoing"))
 
     def test_bootstrap_limits_event_flood_and_keeps_codes(self) -> None:
@@ -148,6 +156,50 @@ class CorePipelineTests(unittest.TestCase):
         mark_items_processed(state, to_notify + to_seed)
         next_notify, _ = select_pending_alerts(state, items)
         self.assertEqual(next_notify, [])
+
+    def test_recurring_monthly_topic_not_blocked_after_ttl(self) -> None:
+        state = default_state()
+        first = AlertItem(
+            "ptcgpocket-gg:community-week-7",
+            "tcgp",
+            "event",
+            "Community Week Missions",
+            "Missions",
+            "https://ptcgpocket.gg/community-week-missions-7/",
+            "PTCGPocket.gg",
+        )
+        t_nov = datetime(2026, 11, 1, 12, 0, tzinfo=timezone.utc)
+        mark_items_processed(state, [first], now_utc=t_nov)
+
+        # Mismo tema 2 días después desde otra fuente -> se deduplica (no spam)
+        dup_other = AlertItem(
+            "serebii-tcgp:community-week",
+            "tcgp",
+            "event",
+            "Community Week Missions",
+            "Missions",
+            "https://www.serebii.net/tcgpocket/events/cw.shtml",
+            "Serebii TCGP",
+        )
+        pending_dup, _ = select_pending_alerts(
+            state, [dup_other], now_utc=datetime(2026, 11, 3, 12, 0, tzinfo=timezone.utc)
+        )
+        self.assertEqual(pending_dup, [])
+
+        # Mismo título genérico 30 días después con URL nueva -> sí debe notificar
+        next_month = AlertItem(
+            "ptcgpocket-gg:community-week-8",
+            "tcgp",
+            "event",
+            "Community Week Missions",
+            "Missions",
+            "https://ptcgpocket.gg/community-week-missions-8/",
+            "PTCGPocket.gg",
+        )
+        pending_next, _ = select_pending_alerts(
+            state, [next_month], now_utc=datetime(2026, 12, 1, 12, 0, tzinfo=timezone.utc)
+        )
+        self.assertEqual([x.uid for x in pending_next], ["ptcgpocket-gg:community-week-8"])
 
     def test_heartbeat_only_triggers_after_interval(self) -> None:
         state = default_state()
