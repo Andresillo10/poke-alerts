@@ -20,9 +20,16 @@ _TAG_RE = re.compile(r"<[^>]+>")
 _STOPWORDS = {"the", "and", "with", "for", "event", "events", "pokemon", "tcg", "pocket", "2025", "2026", "2027"}
 
 
+def _unescape_clean(text: str) -> str:
+    """Decodifica entidades HTML simples o dobles frecuentes en portales de eventos."""
+    return " ".join(
+        html.unescape(html.unescape(text)).replace("Pok&émon", "Pokémon").split()
+    )
+
+
 def _clean_text(text: str, limit: int = 210) -> str:
     """Normaliza espacios y acorta texto de detalle manteniendo frases enteras cuando cabe."""
-    clean = " ".join(text.split())
+    clean = _unescape_clean(text)
     if len(clean) <= limit:
         return clean
     return clean[: limit - 3].rsplit(" ", 1)[0].rstrip(" ,;:") + "..."
@@ -70,19 +77,22 @@ def parse_serebii_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
         header = [c.get_text(" ", strip=True).lower() for c in trs[0].find_all(["th", "td"], recursive=False)]
         if header == ["effect", "type"]:
             for tr in trs[1:]:
-                cols = [c.get_text(" ", strip=True) for c in tr.find_all(["th", "td"], recursive=False)]
+                cols = [_unescape_clean(c.get_text(" ", strip=True)) for c in tr.find_all(["th", "td"], recursive=False)]
                 if len(cols) >= 2 and cols[0]:
                     bonuses.append(f"{cols[0]} ({cols[1]})" if cols[1] else cols[0])
 
-        elif header[:4] == ["no.", "pic", "name", "type"] and len(header) <= 5:
+        elif header[:3] == ["no.", "pic", "name"] and len(header) <= 7:
             for tr in trs[1:]:
-                cols = [c.get_text(" ", strip=True) for c in tr.find_all(["th", "td"], recursive=False)]
-                if len(cols) >= 3 and cols[2]:
-                    spawns.append(cols[2])
+                cells = tr.find_all(["th", "td"], recursive=False)
+                if len(cells) >= 3:
+                    a_tag = cells[2].find("a")
+                    name_txt = _unescape_clean(a_tag.get_text(" ", strip=True) if a_tag else cells[2].get_text(" ", strip=True))
+                    if name_txt:
+                        spawns.append(name_txt)
 
         elif header and header[0] == "task":
             for tr in trs[1:]:
-                cols = [c.get_text(" ", strip=True) for c in tr.find_all(["th", "td"], recursive=False)]
+                cols = [_unescape_clean(c.get_text(" ", strip=True)) for c in tr.find_all(["th", "td"], recursive=False)]
                 if not cols or not cols[0]:
                     continue
                 reward = next((c for c in cols[1:] if c and not c.isdigit()), "")
@@ -91,7 +101,7 @@ def parse_serebii_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
         elif "card name" in header or "booster packs" in header:
             idx = header.index("card name") if "card name" in header else header.index("booster packs")
             for tr in trs[1:]:
-                cols = [c.get_text(" ", strip=True) for c in tr.find_all(["th", "td"], recursive=False)]
+                cols = [_unescape_clean(c.get_text(" ", strip=True)) for c in tr.find_all(["th", "td"], recursive=False)]
                 if len(cols) > idx and cols[idx]:
                     cards_or_packs.append(cols[idx])
 
@@ -307,6 +317,19 @@ def _enrich_scrapedduck(
             desc = soup.select_one(".event-description")
             if desc:
                 intro = _clean_text(desc.get_text(" ", strip=True), limit=230)
+
+            dom_bonuses = _dedupe_keep_order(
+                [_unescape_clean(el.get_text(" ", strip=True)) for el in soup.select(".bonus-list .bonus-text")],
+                4,
+            )
+            dom_spawns = _dedupe_keep_order(
+                [_unescape_clean(el.get_text(" ", strip=True)) for el in soup.select(".pkmn-list .pkmn-name")],
+                8,
+            )
+            if dom_bonuses and not any(b.startswith("Bonuses:") for b in bullets):
+                bullets.append("Bonuses: " + "; ".join(dom_bonuses))
+            if dom_spawns and not any(b.startswith("Featured Pokémon:") for b in bullets):
+                bullets.append("Featured Pokémon: " + ", ".join(dom_spawns))
         except Exception as exc:
             LOGGER.warning("[Enricher LeekDuck] Sin detalle extra (%s).", exc)
 

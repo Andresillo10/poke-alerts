@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import html
 import re
 
 # Términos técnicos donde la traducción automática suele errar la jerga oficial.
@@ -71,6 +72,14 @@ OFFICIAL_TERMS_ES: dict[str, str] = {
     "Special Research": "Investigación Especial",
     "Lucky Trade": "Intercambio con Suerte",
     "Lucky Friend": "Amistad con Suerte",
+    "Lucky Friends": "Amistad con Suerte",
+    "Lucky Pokémon": "Pokémon con Suerte",
+    "Max Particles": "Partículas Max",
+    "Power Spots": "Nodos Energéticos",
+    "Catch Experience": "PX por captura",
+    "Max Battles": "Combates Max",
+    "Mega Evolution": "Megaevolución",
+    "Mega Energy": "Megaenergía",
     "Catch Candy": "Caramelos por captura",
     "Wild spawns": "Pokémon salvajes",
     "Featured Pokémon": "Pokémon destacados",
@@ -153,4 +162,5 @@ def lookup_spanish_term(matched_text: str) -> str:
 
 def apply_post_translation_fixes(text: str) -> str:
     """Corrige nombres oficiales de objetos/bayas tras la traducción automática."""
-    return POST_FIX_PATTERN.sub(lambda m: _POST_LOOKUP.get(m.group(0).lower(), m.group(0)), text)
+    clean = html.unescape(text).replace("Pok&émon", "Pokémon").replace("Pok&eacute;mon", "Pokémon")
+    return POST_FIX_PATTERN.sub(lambda m: _POST_LOOKUP.get(m.group(0).lower(), m.group(0)), clean)

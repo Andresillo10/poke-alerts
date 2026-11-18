@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import html
 import json
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -174,6 +175,11 @@ def sync_events_catalog(
     for row in existing_doc.get("events") or []:
         if isinstance(row, dict) and row.get("id"):
             copied = dict(row)
+            for k in ("title", "summary", "rewards", "tactical_summary"):
+                if isinstance(copied.get(k), str):
+                    copied[k] = html.unescape(copied[k]).replace("Pok&émon", "Pokémon")
+            if isinstance(copied.get("highlights"), list):
+                copied["highlights"] = [html.unescape(str(h)).replace("Pok&émon", "Pokémon") for h in copied["highlights"]]
             copied["status"] = _compute_status(
                 kind=str(copied.get("kind") or "event"),
                 start_date=copied.get("start_date"),

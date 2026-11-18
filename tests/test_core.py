@@ -36,6 +36,7 @@ from src.enricher import (
     parse_serebii_detail_html,
     select_best_deck_post,
 )
+from src.glossary import apply_post_translation_fixes
 from src.main import _select_preview_sample
 from src.models import AlertItem, build_topic_key
 from src.pogo_intel import (
@@ -1003,6 +1004,29 @@ class CorePipelineTests(unittest.TestCase):
         go_ev = AlertItem("scrapedduck:darkrai-hr", "pogo", "event", "Darkrai Raid Hour", "Desc", "https://ld", "ScrapedDuck")
         built_ev_cards = build_pogo_event_cards(go_ev, None, pogo_cat, context_title="Hora Legendaria Darkrai")
         self.assertEqual(len(built_ev_cards), 1)
+
+        # Eventos genéricos sin jefe específico y noticias GO obtienen playbook accionable cuando include_playbook=True
+        cd_future = AlertItem("scrapedduck:cd-dec", "pogo", "event", "December Community Day", "Desc", "https://ld", "ScrapedDuck")
+        self.assertEqual(build_pogo_event_cards(cd_future, None, pogo_cat, context_title="Día de la Comunidad diciembre"), [])
+        cd_playbook = build_pogo_event_cards(cd_future, None, pogo_cat, context_title="Día de la Comunidad diciembre", include_playbook=True)
+        self.assertEqual(len(cd_playbook), 1)
+        self.assertEqual(cd_playbook[0].title, "Plan Día de la Comunidad")
+
+        # Eventos con especie en viñetas estructuradas pero resumen mencionando Community Day NO se clasifican como CD
+        kecleon_ev = AlertItem(
+            "serebii-go:kecleon",
+            "pogo",
+            "event",
+            "Kecleon Appears",
+            "Occurs during Community Day.",
+            "https://sb",
+            "Serebii GO",
+            guide_bullets=("Featured Pokémon: Pawniard",),
+        )
+        kecleon_cards = build_pogo_event_cards(kecleon_ev, None, pogo_cat, context_title="Kecleon Appears", include_playbook=True)
+        self.assertTrue(any("Pawniard" in c.title for c in kecleon_cards))
+        self.assertFalse(any(c.title == "Plan Día de la Comunidad" for c in kecleon_cards))
+        self.assertEqual(apply_post_translation_fixes("Max Particles from Pok&émon"), "Max Particles from Pokémon")
 
         with tempfile.TemporaryDirectory() as tmp:
             png = render_pogo_tactical_card(raid_card, Path(tmp) / "pogo_raid.png")

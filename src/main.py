@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import replace
 import logging
 import os
 import re
@@ -182,6 +183,8 @@ def _resolve_pogo_cards(
     localized_item: AlertItem,
     pogo_catalog_holder: list[PogoCatalog],
     events_cache: dict[str, dict],
+    include_playbook: bool = False,
+    allow_news: bool = False,
 ) -> list[PogoTacticalCard]:
     """Calcula en memoria hasta 3 tarjetas tácticas para eventos accionables de Pokémon GO."""
     if raw_item.game != "pogo" or raw_item.kind == "code":
@@ -197,6 +200,8 @@ def _resolve_pogo_cards(
             extra_ev,
             pogo_cat,
             context_title=localized_item.title,
+            include_playbook=include_playbook,
+            allow_news=allow_news,
         )
     except Exception as exc:
         LOGGER.warning("[PogoCards] Sin tarjetas tácticas para %s: %s", raw_item.uid, exc)
@@ -594,7 +599,7 @@ def _sync_unified_catalog(
             and (already_has_source or (prev.get("rewards") and "Consultar detalle" not in prev["rewards"]))
         )
         needs_decks = item.game == "tcgp" and item.kind == "event" and (not prev or "recommended_decks" not in prev)
-        needs_pogo = item.game == "pogo" and item.kind == "event" and (not prev or "tactical_cards" not in prev)
+        needs_pogo = item.game == "pogo" and item.kind != "code" and (not prev or not prev.get("tactical_cards"))
 
         if has_basic_cache and not needs_decks and not needs_pogo:
             loc = AlertItem(
@@ -621,19 +626,28 @@ def _sync_unified_catalog(
             tact_cards = list(prev.get("tactical_cards") or [])
         else:
             enriched = enrich_alert_item(session, item, events_cache=events_cache)
-            loc = localize_alert_item(enriched, enable_remote=enable_remote)
+            loc = localize_alert_item(enriched, enable_remote=enable_remote and not has_basic_cache)
+            if has_basic_cache and prev:
+                loc = replace(
+                    loc,
+                    title=str(prev["title"]),
+                    summary=str(prev.get("summary") or loc.summary),
+                    deck_guide_url=prev.get("guide_url") or loc.deck_guide_url,
+                )
             tactical_summary = str(prev.get("tactical_summary") or "") if prev else ""
             search_filter = str(prev.get("search_filter") or "") if prev else ""
             rec_decks = list(prev.get("recommended_decks") or []) if prev else []
             tact_cards = list(prev.get("tactical_cards") or []) if prev else []
 
-            if item.game == "pogo" and item.kind == "event" and (not prev or needs_pogo or not tact_cards):
+            if item.game == "pogo" and item.kind != "code" and (not prev or needs_pogo or not tact_cards):
                 pcards = _resolve_pogo_cards(
                     session=session,
                     raw_item=enriched,
                     localized_item=loc,
                     pogo_catalog_holder=pogo_catalog_holder,
                     events_cache=events_cache,
+                    include_playbook=True,
+                    allow_news=True,
                 )
                 if pcards:
                     tact_cards = _serialize_pogo_cards(pcards)
@@ -795,7 +809,21 @@ def run_pipeline(args: argparse.Namespace) -> int:
         default_label = "🃏 Guía de mazos" if localized.deck_guide_url else "🔎 Ver evento"
         default_url = localized.deck_guide_url or localized.url
         rec_decks = _serialize_tcgp_decks([(d, cu) for d, _, cu in deck_cards], fallback_url=default_url) if deck_cards else []
-        tact_cards = _serialize_pogo_cards([c for c, _ in pogo_cards]) if pogo_cards else []
+        dash_pogo_cards = [c for c, _ in pogo_cards]
+        if item.game == "pogo" and item.kind != "code" and not dash_pogo_cards:
+            dash_pogo_cards = _resolve_pogo_cards(
+                session=session,
+                raw_item=enriched,
+                localized_item=localized,
+                pogo_catalog_holder=pogo_catalog_holder,
+                events_cache=events_cache,
+                include_playbook=True,
+                allow_news=True,
+            )
+            if dash_pogo_cards and not tact_sum:
+                tact_sum = _format_pogo_tactical_summary(dash_pogo_cards)
+                srch_flt = dash_pogo_cards[0].search_string
+        tact_cards = _serialize_pogo_cards(dash_pogo_cards) if dash_pogo_cards else []
         processed_records[item.uid] = {
             "raw": enriched,
             "localized": localized,

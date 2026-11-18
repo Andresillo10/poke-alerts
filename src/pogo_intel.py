@@ -950,16 +950,26 @@ def build_pogo_weekly_meta_report(catalog: PogoCatalog) -> list[PogoTacticalCard
     return cards[:3]
 
 
+_NOISE_TITLE_WORDS = {
+    "hora", "para", "tras", "como", "solo", "este", "esta", "sobre", "entre",
+    "todo", "todos", "tour", "luna", "moon", "city", "pass", "star", "wish",
+    "wishes", "gold", "blue", "alola", "wild", "area", "noir", "mega", "raid",
+    "raids", "days", "live", "with", "from", "into", "news", "cup", "game",
+    "los", "las", "con", "del", "san", "via", "new", "november", "december",
+    "january", "february", "noviembre", "diciembre", "enero", "febrero",
+}
+
+
 def _extract_names_from_title(title: str, catalog: PogoCatalog) -> list[str]:
-    """Identifica especies reales mencionadas en un título de evento Pokémon GO."""
+    """Identifica especies reales mencionadas en un título de evento o noticia Pokémon GO."""
     clean = re.sub(
-        r"\b(raid hour|raid day|community day|classic|spotlight hour|max monday|returns|super mega|mega raids|in 5-star raid battles|in shadow raids|during|and|timed research)\b",
+        r"\b(raid hour|raid day|community day|classic|spotlight hour|max monday|returns|super mega|mega raids|in 5-star raid battles|in shadow raids|during|and|timed research|supermegaincursiones|megaincursiones|gigamax|dinamax)\b",
         " ",
         title,
         flags=re.IGNORECASE,
     )
     found: list[str] = []
-    # Primero formas especiales (ej. "Mega Metagross", "Shadow Tornadus", "Eternamax Eternatus", "Gigantamax Machamp")
+    # Primero formas especiales en inglés o español (ej. "Mega Metagross", "Machamp Gigamax")
     for prefix in ("Mega ", "Shadow ", "Eternamax ", "Gigantamax ", "Dynamax "):
         for m in re.finditer(rf"\b{prefix}[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?", title):
             raw_phrase = m.group(0)
@@ -969,20 +979,295 @@ def _extract_names_from_title(title: str, catalog: PogoCatalog) -> list[str]:
             if cand and cand.species_name not in found:
                 found.append(cand.species_name)
 
+    for m in re.finditer(r"\b([A-Z][a-z]+)\s+(Gigamax|Dinamax)\b", title):
+        cand = catalog.resolve_pokemon(m.group(1))
+        if cand and cand.species_name not in found:
+            found.append(cand.species_name)
+
     if "mega" in title.lower() and not found:
-        # Caso "Clefable Super Mega Raid Day"
+        # Caso "Clefable Super Mega Raid Day" o "Día de supermegaincursiones: Clefable"
         for tok in re.findall(r"[A-Za-z][a-z'-]+", clean):
+            if tok.lower() in _NOISE_TITLE_WORDS or len(tok) < 4:
+                continue
             cand = catalog.resolve_pokemon(f"Mega {tok}")
-            if cand:
-                found.append(f"Mega {tok}")
+            if cand and cand.species_name not in found:
+                found.append(cand.species_name)
 
     for tok in re.findall(r"[A-Za-z][a-z'-]+", clean):
-        if len(tok) < 4:
+        if len(tok) < 4 or tok.lower() in _NOISE_TITLE_WORDS:
             continue
         cand = catalog.resolve_pokemon(tok)
         if cand and not any(tok.lower() in f.lower() for f in found):
             found.append(cand.species_name)
     return found
+
+
+def _extract_structured_species(item: AlertItem, catalog: PogoCatalog) -> list[str]:
+    """Extrae especies limpias desde viñetas estructuradas (spawns/destacados) y prefijos especiales."""
+    found: list[str] = []
+
+    def _add(raw_name: str) -> None:
+        cleaned = re.sub(r"\s+(wearing|with|in|from|con)\b.*$", "", raw_name, flags=re.IGNORECASE).strip(" .,:;")
+        if not cleaned or cleaned.lower() in _NOISE_TITLE_WORDS or len(cleaned) < 4:
+            return
+        mon = catalog.resolve_pokemon(cleaned)
+        if mon and mon.species_name not in found:
+            found.append(mon.species_name)
+
+    prefixes = (
+        "Featured Pokémon:",
+        "Pokémon destacados:",
+        "Wild spawns:",
+        "Pokémon salvajes:",
+        "Shinies available:",
+        "Variocolor disponibles:",
+    )
+    for b in item.guide_bullets:
+        for pfx in prefixes:
+            if b.startswith(pfx):
+                body = b[len(pfx) :]
+                for part in body.split(","):
+                    _add(part)
+
+    # También captura formas especiales explícitas en el resumen ("return of Eternatus", "Gigantamax Machamp")
+    summary_text = item.summary or ""
+    for m in re.finditer(r"\b(?:Mega|Shadow|Eternamax|Gigantamax|Dynamax)\s+[A-Z][a-z]+", summary_text):
+        _add(m.group(0))
+        if not catalog.resolve_pokemon(m.group(0)):
+            _add(m.group(0).split(None, 1)[-1])
+    for m in re.finditer(r"\b(?:return of|featuring|debut of)\s+([A-Z][a-z]+)\b", summary_text, flags=re.IGNORECASE):
+        _add(m.group(1))
+    return found
+
+
+def _wrap_bullet_lines(text: str, *, limit: int = 58) -> list[str]:
+    """Divide textos largos en líneas limpias legibles sin cortar palabras."""
+    words = " ".join(text.split()).split()
+    out: list[str] = []
+    cur = ""
+    for w in words:
+        cand = w if not cur else f"{cur} {w}"
+        if len(cand) <= limit:
+            cur = cand
+        else:
+            if cur:
+                out.append(cur)
+            cur = w
+            if len(out) >= 3:
+                break
+    if cur and len(out) < 3:
+        out.append(cur)
+    return out
+
+
+def build_event_playbook_card(
+    item: AlertItem,
+    extra_ev: dict[str, Any] | None,
+    catalog: PogoCatalog,
+    *,
+    context_title: str,
+    featured_species: list[str] | None = None,
+) -> PogoTacticalCard | None:
+    """Construye tarjeta táctica accionable para eventos de calendario, pases, bonos o noticias GO."""
+    ev_data = extra_ev or {}
+    ev_type = str(ev_data.get("eventType") or "").lower()
+    lower_title = item.title.lower()
+    lower_all = " ".join([item.title, item.summary, item.rewards or "", *item.guide_bullets]).lower()
+    species_list = list(featured_species or [])
+    tokens = [search_token_for_species(s) for s in species_list if search_token_for_species(s)]
+    search_tokens_str = ",".join(dict.fromkeys(tokens))[:90]
+
+    # 1. Raids / Día de Incursiones sin jefe aún confirmado -> muestra rotación 5*/Mega actual + preparación
+    if ev_type in ("raid-day", "raid-hour", "raid-battles") or any(
+        k in lower_title for k in ("día de incursiones", "raid day", "megaincursiones", "super mega")
+    ):
+        high_raids = [r for r in catalog.raids if any(t in r.tier.lower() for t in ("5-star", "mega", "6-star"))]
+        left_rows = [
+            f"{format_species_es(r.name)}: PC 100% {r.cp_normal_max or '?'} / {r.cp_boosted_max or '?'}"
+            for r in high_raids[:4]
+        ] or [*(item.guide_bullets[:3] or _wrap_bullet_lines(item.summary or item.title))]
+        right_rows = [
+            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
+            "Arma equipo predefinido antes de entrar al lobby",
+            "Combina Huevo Suerte si encadenas varias incursiones",
+        ]
+        return PogoTacticalCard(
+            title="Plan Táctico de Incursiones",
+            subtitle="Jefes actuales en rotación y checklist previo",
+            primary_type="fire",
+            badge_label="GUÍA RAIDS GO",
+            left_heading="ROTACIÓN ACTUAL Y OBJETIVOS",
+            left_rows=tuple(left_rows[:5]),
+            right_heading="PREPARACIÓN RECOMENDADA",
+            right_rows=tuple(right_rows),
+            explanation=(
+                "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe "
+                "para maximizar Caramelos XL tras cada captura."
+            ),
+            search_label="Filtro rápido de atacantes / megas:",
+            search_string=search_tokens_str or "megaevolucion1-3,4*,3*",
+            info_label="🔎 Ver jefes en LeekDuck",
+            info_url=item.url or "https://leekduck.com/boss/",
+            context_label=f"Evento GO: {context_title}",
+        )
+
+    # 2. Combates Max (Día Max / Dynamax Trails / Lunes Max sin especie única)
+    if ev_type in ("max-battles", "max-mondays") or any(
+        k in lower_title for k in ("combates max", "max battle", "dynamax", "gigamax", "gigantamax", "lunes max", "max monday")
+    ):
+        left_rows: list[str] = []
+        for b in item.guide_bullets[:3]:
+            left_rows.extend(_wrap_bullet_lines(b, limit=62)[:2])
+        if not left_rows:
+            left_rows = _wrap_bullet_lines(item.summary or "Evento especial centrado en Nodos Energéticos y Combates Max.")
+        right_rows = [
+            "Recarga límite diario de Partículas Max en Nodos",
+            "Prioriza subir Ataque Max antes que Espíritu/Barrera",
+            "Usa equipo con ventaja directa frente al jefe del Nodo",
+        ]
+        return PogoTacticalCard(
+            title="Estrategia Combates Max",
+            subtitle="Gestión de Partículas Max y Nodos Energéticos",
+            primary_type="dragon",
+            badge_label="GUÍA MAX GO",
+            left_heading="BONUS Y OBJETIVOS DEL EVENTO",
+            left_rows=tuple(left_rows[:5]),
+            right_heading="RUTA ÓPTIMA EN NODOS",
+            right_rows=tuple(right_rows),
+            explanation=(
+                "Llega con reserva completa de Partículas Max, cobra las de Nodos Energéticos en cada fase "
+                "y filtra tus Dinamax/Gigamax antes de entrar."
+            ),
+            search_label="Filtro Dinamax / Gigamax en caja:",
+            search_string=f"{search_tokens_str}&3*,4*" if search_tokens_str else "dinamax,gigamax",
+            info_label="📘 Ver detalle oficial",
+            info_url=item.url,
+            context_label=f"Evento GO: {context_title}",
+        )
+
+    # 3. Día de la Comunidad futuro aún sin especie anunciada
+    if ev_type == "community-day" or "día de la comunidad" in lower_title or "días de la comunidad" in lower_title or "community day" in lower_title:
+        left_rows = [
+            "Ventana principal de capturas (3 horas locales)",
+            "Evoluciona hasta 5 h después para Ataque Legacy",
+            "Mayor probabilidad de Shiny y Módulos Cebo extendidos",
+        ]
+        right_rows = [
+            "Activa Mega Evolución Nv.3 del tipo del protagonista",
+            "Conserva 4* (Hundo) + IV bajos en ataque para PvP",
+            "Limpia caja al instante con el filtro inferior",
+        ]
+        return PogoTacticalCard(
+            title="Plan Día de la Comunidad",
+            subtitle="Ventana Legacy, Mega Caramelos XL y limpieza rápida",
+            primary_type="grass",
+            badge_label="PLAN CD GO",
+            left_heading="REGLAS CLAVE DEL EVENTO",
+            left_rows=tuple(left_rows),
+            right_heading="CHECKLIST EN CAJA Y CAPTURA",
+            right_rows=tuple(right_rows),
+            explanation=(
+                "Ten espacio libre en caja, Ultra Balls listas y una Mega Nv.3 activa durante todo el horario "
+                "para multiplicar Caramelos XL y no perder el ataque exclusivo al evolucionar."
+            ),
+            search_label="Filtro de limpieza rápida (no shiny / no 100%):",
+            search_string="0*,1*,2*&!shiny&!4*",
+            info_label="📘 Ver calendario oficial",
+            info_url=item.url,
+            context_label=f"Evento GO: {context_title}",
+        )
+
+    # 4. Día de Eclosiones
+    if "eclosion" in lower_title or "hatch day" in lower_title:
+        left_rows = [
+            "Huevos de evento (generalmente 2 km) con bonus shiny",
+            "Posible 1/2 o 1/4 distancia al incubar en la ventana",
+            *(item.guide_bullets[:2]),
+        ]
+        right_rows = [
+            "Vacía huevos antiguos justo antes de la hora de inicio",
+            "Usa Superincubadoras solo con el bonus ya activo",
+            "Enciende Trozo Estrella antes de abrir lote de 9 huevos",
+        ]
+        return PogoTacticalCard(
+            title="Plan Día de Eclosiones",
+            subtitle="Optimización de incubadoras, huevos 2km y Polvo",
+            primary_type="fairy",
+            badge_label="ECLOSIONES GO",
+            left_heading="MECÁNICA DEL EVENTO",
+            left_rows=tuple(left_rows[:4]),
+            right_heading="ESTRATEGIA DE INCUBACIÓN",
+            right_rows=tuple(right_rows),
+            explanation=(
+                "No pongas huevos en incubadora infinita antes de que comience el horario oficial; "
+                "aprovecha los tramos reducidos para rotar el máximo de tandas."
+            ),
+            search_label="Filtro para revisar recién eclosionados:",
+            search_string="eclosionado&3*,4*,shiny",
+            info_label="📘 Ver detalle del evento",
+            info_url=item.url,
+            context_label=f"Evento GO: {context_title}",
+        )
+
+    # 5. Eventos generales, Bonificaciones, Pases, Temporadas y Noticias Accionables
+    left_rows = []
+    if item.rewards and "Consultar detalle" not in item.rewards:
+        left_rows.extend(_wrap_bullet_lines(item.rewards, limit=62)[:2])
+    for b in item.guide_bullets:
+        if len(left_rows) >= 4:
+            break
+        left_rows.extend(_wrap_bullet_lines(b, limit=62)[:2])
+    if not left_rows and item.summary:
+        left_rows = _wrap_bullet_lines(item.summary, limit=62)[:3]
+    if not left_rows:
+        left_rows = [f"Evento activo: {context_title}"]
+
+    right_rows = []
+    if "lucky" in lower_all or "suerte" in lower_all or "intercambio" in lower_all:
+        right_rows.append("Aprovecha probabilidad aumentada de Intercambio con Suerte")
+    if "stardust" in lower_all or "polvo" in lower_all:
+        right_rows.append("Activa Trozo Estrella en sesiones de captura/recompensas")
+    if "xp" in lower_all or "experiencia" in lower_all or "px" in lower_all:
+        right_rows.append("Combina Huevo Suerte al subir amistad o completar misiones")
+    if "gift" in lower_all or "regalo" in lower_all:
+        right_rows.append("Abre y envía regalos hasta el tope diario del Pase")
+    if "incense" in lower_all or "incienso" in lower_all:
+        right_rows.append("Usa Incienso Aventura Diaria en movimiento para doble duración")
+    if not right_rows:
+        right_rows = [
+            "Revisa Investigaciones Temporales antes del cierre",
+            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
+            "Marca el evento en el panel al completar sus premios",
+        ]
+
+    if search_tokens_str:
+        f_str = f"{search_tokens_str}&3*,4*,shiny"
+        f_lbl = "Filtro de especies del evento en tu caja:"
+    elif "lucky" in lower_all or "suerte" in lower_all or "intercambio" in lower_all:
+        f_str = "intercambiar&!favorito"
+        f_lbl = "Filtro rápido de candidatos para intercambio:"
+    else:
+        f_str = "4*,3*,shiny"
+        f_lbl = "Filtro general para valorar capturas del evento:"
+
+    return PogoTacticalCard(
+        title="Guía y Bonificaciones del Evento",
+        subtitle="Resumen accionable, prioridades y filtro rápido de caja",
+        primary_type="electric" if item.kind == "news" else "water",
+        badge_label="NOTICIA GO" if item.kind == "news" else "GUÍA EVENTO GO",
+        left_heading="CLAVES Y RECOMPENSAS",
+        left_rows=tuple(left_rows[:4]),
+        right_heading="ACCIÓN RECOMENDADA",
+        right_rows=tuple(right_rows[:4]),
+        explanation=(
+            f"{context_title}: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador."
+        ),
+        search_label=f_lbl,
+        search_string=f_str,
+        info_label="📘 Abrir fuente oficial",
+        info_url=item.url,
+        context_label=f"{'Noticia' if item.kind == 'news' else 'Evento'} GO: {context_title}",
+    )
 
 
 def build_pogo_event_cards(
@@ -991,9 +1276,13 @@ def build_pogo_event_cards(
     catalog: PogoCatalog,
     *,
     context_title: str,
+    include_playbook: bool = False,
+    allow_news: bool = False,
 ) -> list[PogoTacticalCard]:
-    """Genera hasta 3 tarjetas tácticas para cualquier evento accionable de Pokémon GO."""
+    """Genera hasta 3 tarjetas tácticas para eventos (y noticias accionables en Dashboard) de Pokémon GO."""
     if item.game != "pogo" or item.kind == "code":
+        return []
+    if item.kind == "news" and not allow_news:
         return []
 
     ev_data = extra_ev or {}
@@ -1003,10 +1292,12 @@ def build_pogo_event_cards(
 
     cards: list[PogoTacticalCard] = []
 
-    # 1. Eventos de Liga Combates GO (GBL)
-    if ev_type == "go-battle-league" or any(k in lower_title for k in ("great league", "ultra league", "master league", "battle league")):
+    # 1. Eventos de Liga Combates GO (GBL) o noticias de campeonatos PvP
+    if ev_type == "go-battle-league" or any(
+        k in lower_title for k in ("great league", "ultra league", "master league", "battle league", "laic", "campeonato internacional")
+    ):
         leagues: list[str] = []
-        if "great league" in lower_title:
+        if "great league" in lower_title or "laic" in lower_title or "campeonato internacional" in lower_title:
             leagues.append("great")
         if "ultra league" in lower_title:
             leagues.append("ultra_mega" if "mega" in lower_title and catalog.rankings.get("ultra_mega") else "ultra")
@@ -1025,18 +1316,37 @@ def build_pogo_event_cards(
         b["name"] for b in ((extra.get("raidbattles") or {}).get("bosses") or []) if b.get("name")
     ]
     is_raid_event = bool(boss_names) or ev_type in ("raid-hour", "raid-day", "raid-battles", "max-battles", "max-mondays") or any(
-        k in lower_title for k in ("raid hour", "raid day", "raid battles", "max battle", "max monday", "eternamax", "dynamax", "gigantamax")
+        k in lower_title
+        for k in (
+            "raid hour", "raid day", "raid battles", "max battle", "max monday",
+            "eternamax", "dynamax", "gigantamax", "gigamax", "super mega", "megaincursiones",
+        )
     )
     if is_raid_event:
         if not boss_names:
             boss_names = _extract_names_from_title(item.title, catalog)
+        if not boss_names:
+            struct_names = _extract_structured_species(item, catalog)
+            mega_or_legend = [s for s in struct_names if "(mega)" in s.lower() or "eternatus" in s.lower()]
+            boss_names = mega_or_legend or ([] if ev_type == "event" else struct_names[:2])
         for bname in boss_names[:3]:
             c = build_raid_card(bname, catalog, context_title=context_title)
             if c:
                 cards.append(c)
-        return cards[:3]
+        if cards:
+            if include_playbook and len(cards) < 3 and (item.guide_bullets or (item.rewards and "Consultar" not in item.rewards)):
+                pb = build_event_playbook_card(
+                    item,
+                    extra_ev,
+                    catalog,
+                    context_title=context_title,
+                    featured_species=_extract_structured_species(item, catalog),
+                )
+                if pb:
+                    cards.append(pb)
+            return cards[:3]
 
-    # 3. Día de la Comunidad, Hora Destacada o Pokémon protagonista claro
+    # 3. Día de la Comunidad, Hora Destacada o eventos/noticias con Pokémon protagonistas claros
     feat_names: list[str] = []
     cday = extra.get("communityday") or {}
     if cday:
@@ -1047,23 +1357,40 @@ def build_pogo_event_cards(
         if not feat_names and spotlight.get("name"):
             feat_names.append(str(spotlight["name"]))
 
-    is_feature_event = bool(feat_names) or ev_type in ("community-day", "pokemon-spotlight-hour") or any(
-        k in lower_title for k in ("community day", "spotlight hour", "hatch day")
-    )
-    if is_feature_event:
-        if not feat_names:
-            feat_names = _extract_names_from_title(item.title, catalog)
-        seen_ids: set[str] = set()
-        for fname in feat_names:
-            mon = catalog.resolve_pokemon(fname)
-            if not mon or mon.species_id in seen_ids:
-                continue
-            seen_ids.add(mon.species_id)
-            c = build_feature_pogo_card(mon.species_name, catalog, context_title=context_title)
-            if c:
-                cards.append(c)
-            if len(cards) >= 3:
-                break
-        return cards[:3]
+    if not feat_names:
+        feat_names.extend(_extract_names_from_title(item.title, catalog))
+    for s in _extract_structured_species(item, catalog):
+        if s not in feat_names:
+            feat_names.append(s)
 
-    return []
+    seen_ids: set[str] = set()
+    for fname in feat_names:
+        mon = catalog.resolve_pokemon(fname)
+        if not mon or mon.species_id in seen_ids:
+            continue
+        seen_ids.add(mon.species_id)
+        if mon.is_mega:
+            c = build_raid_card(mon.species_name, catalog, context_title=context_title)
+        else:
+            c = build_feature_pogo_card(mon.species_name, catalog, context_title=context_title)
+        if c:
+            cards.append(c)
+        if len(cards) >= (2 if include_playbook else 3):
+            break
+
+    # 4. Para el Dashboard (include_playbook=True): garantiza guía/checklist accionable en cualquier evento restante
+    if include_playbook and (
+        not cards
+        or (len(cards) < 3 and (item.guide_bullets or (item.rewards and "Consultar" not in item.rewards)))
+    ):
+        pb = build_event_playbook_card(
+            item,
+            extra_ev,
+            catalog,
+            context_title=context_title,
+            featured_species=feat_names,
+        )
+        if pb:
+            cards.append(pb)
+
+    return cards[:3]
