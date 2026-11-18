@@ -40,6 +40,7 @@ from src.state import (
     default_state,
     mark_items_processed,
     select_pending_alerts,
+    should_send_one_time_ping,
     should_send_weekly_meta,
     update_source_health_and_heartbeat,
 )
@@ -737,6 +738,21 @@ class CorePipelineTests(unittest.TestCase):
         self.assertIn("Mazo Ranked Semanal", wcap)
         self.assertLessEqual(len(wcap), 1024)
         self.assertEqual(len(wkb["inline_keyboard"][0]), 2)
+
+        # Ping único de prueba hoy 18/11 09:00-09:59 COT (nunca fuera ni repetido)
+        st_ping = default_state()
+        t_0838 = datetime(2026, 11, 18, 13, 38, tzinfo=timezone.utc)  # 08:38 COT
+        t_0923 = datetime(2026, 11, 18, 14, 23, tzinfo=timezone.utc)  # 09:23 COT
+        t_1023 = datetime(2026, 11, 18, 15, 23, tzinfo=timezone.utc)  # 10:23 COT
+        t_next = datetime(2026, 11, 19, 14, 23, tzinfo=timezone.utc)  # 19/11 09:23 COT
+        self.assertFalse(should_send_one_time_ping(st_ping, now_utc=t_0838)[0])
+        ok_ping, ptag = should_send_one_time_ping(st_ping, now_utc=t_0923)
+        self.assertTrue(ok_ping)
+        self.assertEqual(ptag, "2026-11-18-09")
+        st_ping["one_time_ping_sent"] = ptag
+        self.assertFalse(should_send_one_time_ping(st_ping, now_utc=t_0923)[0])
+        self.assertFalse(should_send_one_time_ping(default_state(), now_utc=t_1023)[0])
+        self.assertFalse(should_send_one_time_ping(default_state(), now_utc=t_next)[0])
 
 
 if __name__ == "__main__":

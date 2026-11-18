@@ -141,32 +141,26 @@ def build_inline_keyboard(item: AlertItem) -> dict[str, list[list[dict[str, str]
     return {"inline_keyboard": [buttons]} if buttons else {"inline_keyboard": []}
 
 
-def _post_photo_to_telegram(
+def _post_telegram_api(
     *,
     bot_token: str,
-    chat_id: str,
-    caption: str,
-    image_path: Path,
-    keyboard_json: str | None = None,
+    method: str,
+    data: dict[str, str],
+    image_path: Path | None = None,
 ) -> None:
-    """Envía una imagen PNG con reintento automático ante límites 429 de Telegram."""
-    api_url = f"https://api.telegram.org/bot{bot_token}/sendPhoto"
-    data: dict[str, str] = {
-        "chat_id": chat_id,
-        "caption": caption,
-        "parse_mode": "HTML",
-    }
-    if keyboard_json:
-        data["reply_markup"] = keyboard_json
-
+    """Ejecuta una llamada Telegram Bot API con reintento automático ante 429."""
+    api_url = f"https://api.telegram.org/bot{bot_token}/{method}"
     for attempt in range(2):
-        with image_path.open("rb") as photo_file:
-            resp = requests.post(
-                api_url,
-                data=data,
-                files={"photo": (image_path.name, photo_file, "image/png")},
-                timeout=REQUEST_TIMEOUT_SEC,
-            )
+        if image_path is not None:
+            with image_path.open("rb") as photo_file:
+                resp = requests.post(
+                    api_url,
+                    data=data,
+                    files={"photo": (image_path.name, photo_file, "image/png")},
+                    timeout=REQUEST_TIMEOUT_SEC,
+                )
+        else:
+            resp = requests.post(api_url, data=data, timeout=REQUEST_TIMEOUT_SEC)
 
         if resp.status_code == 429 and attempt == 0:
             retry_after = int(resp.json().get("parameters", {}).get("retry_after", 3))
@@ -177,6 +171,39 @@ def _post_photo_to_telegram(
         if not resp.ok:
             raise RuntimeError(f"Telegram HTTP {resp.status_code}: {resp.text[:300]}")
         return
+
+
+def _post_photo_to_telegram(
+    *,
+    bot_token: str,
+    chat_id: str,
+    caption: str,
+    image_path: Path,
+    keyboard_json: str | None = None,
+) -> None:
+    """Envía una imagen PNG con reintento automático ante límites 429 de Telegram."""
+    data: dict[str, str] = {
+        "chat_id": chat_id,
+        "caption": caption,
+        "parse_mode": "HTML",
+    }
+    if keyboard_json:
+        data["reply_markup"] = keyboard_json
+    _post_telegram_api(
+        bot_token=bot_token,
+        method="sendPhoto",
+        data=data,
+        image_path=image_path,
+    )
+
+
+def send_telegram_text(*, bot_token: str, chat_id: str, text: str) -> None:
+    """Envía un mensaje HTML corto de estado a Telegram."""
+    _post_telegram_api(
+        bot_token=bot_token,
+        method="sendMessage",
+        data={"chat_id": chat_id, "text": text, "parse_mode": "HTML"},
+    )
 
 
 def send_telegram_photo(

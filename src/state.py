@@ -26,6 +26,7 @@ def default_state() -> dict[str, Any]:
         "last_run_utc": None,
         "last_commit_heartbeat_utc": None,
         "last_weekly_meta_week": None,
+        "one_time_ping_sent": None,
         "seen_uids": {},
         "seen_topics": {},
         "started_notified": {},
@@ -257,3 +258,18 @@ def should_send_weekly_meta(
     is_monday_morning = col_dt.weekday() == 0 and col_dt.hour >= 1
     already_sent = state.get("last_weekly_meta_week") == week_key
     return (is_monday_morning and not already_sent), week_key
+
+
+def should_send_one_time_ping(
+    state: dict[str, Any],
+    *,
+    now_utc: datetime | None = None,
+    target_date: date = date(2026, 11, 18),
+    target_hour: int = 9,
+) -> tuple[bool, str]:
+    """Emite una única confirmación hoy 18/11 entre 09:00 y 09:59 COT."""
+    ref = now_utc or datetime.now(timezone.utc)
+    col_dt = ref.astimezone(timezone(timedelta(hours=-5)))
+    tag = f"{target_date.isoformat()}-{target_hour:02d}"
+    in_window = col_dt.date() == target_date and col_dt.hour == target_hour
+    return (in_window and state.get("one_time_ping_sent") != tag), tag

@@ -27,6 +27,7 @@ from src.state import (
     mark_items_processed,
     save_state,
     select_pending_alerts,
+    should_send_one_time_ping,
     should_send_weekly_meta,
     update_source_health_and_heartbeat,
 )
@@ -35,6 +36,7 @@ from src.telegram_client import (
     build_telegram_caption,
     send_telegram_photo,
     send_telegram_single_deck,
+    send_telegram_text,
 )
 from src.translator import localize_alert_item
 from src.weekly_meta import build_weekly_ranked_report
@@ -279,12 +281,14 @@ def run_pipeline(args: argparse.Namespace) -> int:
         state,
         force=args.weekly_meta,
     )
+    need_ping, ping_tag = should_send_one_time_ping(state)
     if args.preview_sample or args.bootstrap_silent:
         need_weekly = args.weekly_meta
+        need_ping = False
 
     bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
-    if not args.dry_run and (to_notify or need_weekly) and (not bot_token or not chat_id):
+    if not args.dry_run and (to_notify or need_weekly or need_ping) and (not bot_token or not chat_id):
         raise SystemExit(
             "Faltan variables TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID. "
             "Usa --dry-run para probar localmente o configúralas en GitHub Secrets."
@@ -364,6 +368,24 @@ def run_pipeline(args: argparse.Namespace) -> int:
             chat_id=chat_id,
         )
 
+    ping_sent = False
+    if need_ping:
+        ok_src = sum(1 for _, ok in source_statuses if ok)
+        total_src = len(source_statuses)
+        ping_text = (
+            "🤖 <b>Disparo automático 09:23 AM OK</b>\n"
+            f"✅ Reloj cron-job.org y GitHub Actions operando.\n"
+            f"📡 Fuentes activas: <b>{ok_src}/{total_src}</b> sanas.\n"
+            "🔕 <i>Mensaje único de comprobación (mañana seguirá en silencio salvo novedades reales).</i>"
+        )
+        if args.dry_run:
+            LOGGER.info("[DRY-RUN] ONE-TIME PING:\n%s", ping_text)
+        else:
+            if to_notify or weekly_sent:
+                time.sleep(TELEGRAM_SEND_DELAY_SEC)
+            send_telegram_text(bot_token=bot_token, chat_id=chat_id, text=ping_text)
+            ping_sent = True
+
     if args.dry_run or args.preview_sample:
         LOGGER.info("Modo prueba completado sin modificar state.json.")
         return 0
@@ -373,11 +395,13 @@ def run_pipeline(args: argparse.Namespace) -> int:
         mark_items_processed(state, processed)
     if weekly_sent:
         state["last_weekly_meta_week"] = week_key
+    if ping_sent:
+        state["one_time_ping_sent"] = ping_tag
 
     changed = update_source_health_and_heartbeat(
         state,
         source_statuses,
-        had_state_change=bool(processed or weekly_sent),
+        had_state_change=bool(processed or weekly_sent or ping_sent),
     )
     if changed or processed:
         save_state(state, STATE_FILE)
