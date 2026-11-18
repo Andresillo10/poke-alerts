@@ -31,6 +31,16 @@ from src.enricher import (
 )
 from src.main import _select_preview_sample
 from src.models import AlertItem, build_topic_key
+from src.pogo_intel import (
+    PogoCatalog,
+    build_feature_pogo_card,
+    build_pogo_event_cards,
+    build_pogo_weekly_meta_report,
+    build_raid_card,
+    calc_cp,
+    compute_weaknesses,
+)
+from src.pogo_sheet_renderer import render_pogo_tactical_card
 from src.scrapers import (
     parse_leekduck_promos_html,
     parse_ptcgpocket_wp_posts,
@@ -47,6 +57,8 @@ from src.state import (
 )
 from src.telegram_client import (
     build_inline_keyboard,
+    build_pogo_tactical_caption,
+    build_pogo_tactical_keyboard,
     build_single_deck_caption,
     build_single_deck_keyboard,
     build_telegram_caption,
@@ -906,6 +918,89 @@ class CorePipelineTests(unittest.TestCase):
         self.assertEqual(len(decks), 3)
         for deck in decks:
             self.assertNotIn("Rare Candy", [c.name for c in deck.cards])
+
+    def test_v5_pogo_intel_raid_hundo_gbl_and_render(self) -> None:
+        # Fórmulas oficiales exactas de PC 100% IV (verificadas contra ScrapedDuck raids)
+        self.assertEqual(calc_cp(285, 198, 172, 15, 15, 15, 20), 2136)
+        self.assertEqual(calc_cp(285, 198, 172, 15, 15, 15, 25), 2671)
+        self.assertEqual(calc_cp(152, 258, 260, 15, 15, 15, 20), 1633)
+        self.assertEqual(calc_cp(152, 258, 260, 15, 15, 15, 25), 2041)
+
+        weaks = dict(compute_weaknesses(("rock", "ground")))
+        self.assertEqual(weaks["water"], 2.56)
+        self.assertEqual(weaks["grass"], 2.56)
+        self.assertEqual(weaks["fighting"], 1.6)
+
+        raw_pokemon = [
+            {"dex": 491, "speciesId": "darkrai", "speciesName": "Darkrai", "types": ["dark"], "baseStats": {"atk": 285, "def": 198, "hp": 172}, "fastMoves": ["SNARL"], "chargedMoves": ["DARK_PULSE"], "tags": ["mythical"], "defaultIVs": {"cp2500": [24, 10, 11, 13]}, "released": True, "family": {}},
+            {"dex": 448, "speciesId": "lucario_mega", "speciesName": "Lucario (Mega)", "types": ["fighting", "steel"], "baseStats": {"atk": 310, "def": 175, "hp": 172}, "fastMoves": ["FORCE_PALM"], "chargedMoves": ["AURA_SPHERE"], "tags": ["mega"], "defaultIVs": {}, "released": True, "family": {}},
+            {"dex": 448, "speciesId": "lucario", "speciesName": "Lucario", "types": ["fighting", "steel"], "baseStats": {"atk": 236, "def": 144, "hp": 172}, "fastMoves": ["COUNTER"], "chargedMoves": ["AURA_SPHERE"], "tags": [], "defaultIVs": {"cp1500": [19.5, 4, 15, 15]}, "released": True, "family": {}},
+            {"dex": 639, "speciesId": "terrakion", "speciesName": "Terrakion", "types": ["rock", "fighting"], "baseStats": {"atk": 260, "def": 192, "hp": 209}, "fastMoves": ["DOUBLE_KICK"], "chargedMoves": ["SACRED_SWORD"], "tags": ["legendary"], "defaultIVs": {}, "released": True, "family": {}},
+            {"dex": 68, "speciesId": "machamp_shadow", "speciesName": "Machamp (Shadow)", "types": ["fighting"], "baseStats": {"atk": 234, "def": 159, "hp": 207}, "fastMoves": ["COUNTER"], "chargedMoves": ["DYNAMIC_PUNCH"], "tags": ["shadow"], "defaultIVs": {"cp1500": [18, 4, 15, 15]}, "released": True, "family": {}},
+            {"dex": 624, "speciesId": "pawniard", "speciesName": "Pawniard", "types": ["dark", "steel"], "baseStats": {"atk": 154, "def": 114, "hp": 128}, "fastMoves": ["FURY_CUTTER"], "chargedMoves": ["IRON_HEAD"], "tags": [], "defaultIVs": {"cp1500": [49, 4, 15, 15]}, "released": True, "family": {"evolutions": ["bisharp"]}},
+            {"dex": 625, "speciesId": "bisharp", "speciesName": "Bisharp", "types": ["dark", "steel"], "baseStats": {"atk": 232, "def": 176, "hp": 163}, "fastMoves": ["SNARL"], "chargedMoves": ["DARK_PULSE"], "tags": [], "defaultIVs": {"cp2500": [38, 4, 15, 15]}, "released": True, "family": {"parent": "pawniard", "evolutions": ["kingambit"]}},
+            {"dex": 983, "speciesId": "kingambit", "speciesName": "Kingambit", "types": ["dark", "steel"], "baseStats": {"atk": 238, "def": 203, "hp": 225}, "fastMoves": ["SNARL"], "chargedMoves": ["FOUL_PLAY", "IRON_HEAD"], "tags": [], "defaultIVs": {"cp2500": [25, 7, 15, 15]}, "released": True, "family": {"parent": "bisharp"}},
+            {"dex": 809, "speciesId": "melmetal", "speciesName": "Melmetal", "types": ["steel"], "baseStats": {"atk": 226, "def": 190, "hp": 264}, "fastMoves": ["THUNDER_SHOCK"], "chargedMoves": ["DOUBLE_IRON_BASH", "SUPER_POWER"], "tags": ["mythical"], "defaultIVs": {"cp1500": [15, 4, 14, 15]}, "released": True, "family": {}},
+        ]
+        raw_moves = [
+            {"moveId": "SNARL", "name": "Snarl", "type": "dark", "power": 5, "energy": 0, "energyGain": 13, "turns": 3},
+            {"moveId": "DARK_PULSE", "name": "Dark Pulse", "type": "dark", "power": 80, "energy": 50, "energyGain": 0, "turns": 1},
+            {"moveId": "FOUL_PLAY", "name": "Foul Play", "type": "dark", "power": 60, "energy": 40, "energyGain": 0, "turns": 1},
+            {"moveId": "COUNTER", "name": "Counter", "type": "fighting", "power": 8, "energy": 0, "energyGain": 6, "turns": 2},
+            {"moveId": "FORCE_PALM", "name": "Force Palm", "type": "fighting", "power": 13, "energy": 0, "energyGain": 10, "turns": 3},
+            {"moveId": "DOUBLE_KICK", "name": "Double Kick", "type": "fighting", "power": 8, "energy": 0, "energyGain": 12, "turns": 3},
+            {"moveId": "AURA_SPHERE", "name": "Aura Sphere", "type": "fighting", "power": 100, "energy": 55, "energyGain": 0, "turns": 1},
+            {"moveId": "SACRED_SWORD", "name": "Sacred Sword", "type": "fighting", "power": 60, "energy": 35, "energyGain": 0, "turns": 1},
+            {"moveId": "DYNAMIC_PUNCH", "name": "Dynamic Punch", "type": "fighting", "power": 90, "energy": 50, "energyGain": 0, "turns": 1},
+            {"moveId": "FURY_CUTTER", "name": "Fury Cutter", "type": "bug", "power": 3, "energy": 0, "energyGain": 4, "turns": 1},
+            {"moveId": "IRON_HEAD", "name": "Iron Head", "type": "steel", "power": 70, "energy": 50, "energyGain": 0, "turns": 1},
+            {"moveId": "THUNDER_SHOCK", "name": "Thunder Shock", "type": "electric", "power": 3, "energy": 0, "energyGain": 9, "turns": 2},
+            {"moveId": "DOUBLE_IRON_BASH", "name": "Double Iron Bash", "type": "steel", "power": 55, "energy": 35, "energyGain": 0, "turns": 1},
+            {"moveId": "SUPER_POWER", "name": "Super Power", "type": "fighting", "power": 85, "energy": 40, "energyGain": 0, "turns": 1},
+        ]
+        rankings = {
+            "great": [{"speciesId": "melmetal", "speciesName": "Melmetal", "score": 93.9, "moveset": ["THUNDER_SHOCK", "DOUBLE_IRON_BASH", "SUPER_POWER"], "counters": [{"opponent": "machamp_shadow"}]}],
+            "ultra": [{"speciesId": "kingambit", "speciesName": "Kingambit", "score": 88.2, "moveset": ["SNARL", "FOUL_PLAY", "IRON_HEAD"], "counters": [{"opponent": "lucario"}]}],
+            "master": [{"speciesId": "kingambit", "speciesName": "Kingambit", "score": 86.0, "moveset": ["SNARL", "FOUL_PLAY", "IRON_HEAD"], "counters": []}],
+        }
+        raids = [
+            {"name": "Darkrai", "tier": "5-Star Raids", "canBeShiny": True, "types": [{"name": "dark"}], "boostedWeather": [{"name": "fog"}], "combatPower": {"normal": {"max": 2136}, "boosted": {"max": 2671}}},
+        ]
+        pogo_cat = PogoCatalog(raw_pokemon, raw_moves, rankings, raids)
+
+        raid_card = build_raid_card("Darkrai", pogo_cat, context_title="Hora de Incursiones Darkrai")
+        self.assertIsNotNone(raid_card)
+        assert raid_card is not None
+        self.assertIn("2136", raid_card.subtitle)
+        self.assertIn("2671", raid_card.subtitle)
+        # No duplica Lucario Mega + Lucario normal en la misma lista Top
+        self.assertEqual(sum(1 for r in raid_card.right_rows if "Lucario" in r), 1)
+        self.assertIn("Lucario", raid_card.search_string)
+
+        cday_card = build_feature_pogo_card("Pawniard", pogo_cat, context_title="Día de la Comunidad Pawniard")
+        self.assertIsNotNone(cday_card)
+        assert cday_card is not None
+        self.assertIn("Kingambit", cday_card.title)
+        self.assertEqual(cday_card.search_string, "+Pawniard&4*,3*")
+
+        weekly_cards = build_pogo_weekly_meta_report(pogo_cat)
+        self.assertEqual(len(weekly_cards), 3)
+
+        go_ev = AlertItem("scrapedduck:darkrai-hr", "pogo", "event", "Darkrai Raid Hour", "Desc", "https://ld", "ScrapedDuck")
+        built_ev_cards = build_pogo_event_cards(go_ev, None, pogo_cat, context_title="Hora Legendaria Darkrai")
+        self.assertEqual(len(built_ev_cards), 1)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            png = render_pogo_tactical_card(raid_card, Path(tmp) / "pogo_raid.png")
+            self.assertTrue(png.exists())
+            with Image.open(png) as im:
+                self.assertEqual(im.size, (1080, 720))
+
+        cap = build_pogo_tactical_caption(raid_card)
+        self.assertIn("<code>", cap)
+        self.assertLessEqual(len(cap), 1024)
+        kb = build_pogo_tactical_keyboard(raid_card, fallback_url="https://leekduck.com/boss/")
+        self.assertEqual(kb["inline_keyboard"][0][0]["url"], "https://leekduck.com/boss/")
 
 
 if __name__ == "__main__":

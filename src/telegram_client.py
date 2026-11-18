@@ -23,6 +23,7 @@ from src.deck_qr import (
     describe_deck_strategy,
 )
 from src.models import AlertItem
+from src.pogo_intel import PogoTacticalCard
 
 LOGGER = logging.getLogger(__name__)
 
@@ -245,6 +246,57 @@ def send_telegram_single_deck(
         extra_note=extra_note,
     )
     keyboard = build_single_deck_keyboard(deck, info_label=info_label, info_url=info_url)
+    _post_photo_to_telegram(
+        bot_token=bot_token,
+        chat_id=chat_id,
+        caption=caption,
+        image_path=card_path,
+        keyboard_json=json.dumps(keyboard, ensure_ascii=False),
+    )
+
+
+def build_pogo_tactical_caption(
+    card: PogoTacticalCard,
+    *,
+    header_tag: str = "⚡ <b>Guía táctica Pokémon GO</b>",
+) -> str:
+    """Construye el pie de foto de una tarjeta GO con filtro de búsqueda copiable."""
+    lines = [
+        f"{header_tag} • <b>{html.escape(card.title)}</b>",
+        f"🎯 {html.escape(card.subtitle)}",
+        "",
+        f"💡 <b>Estrategia:</b> {html.escape(card.explanation)}",
+        "",
+        f"📋 <b>{html.escape(card.search_label)}</b>",
+        f"<code>{html.escape(card.search_string)}</code>",
+    ]
+    return "\n".join(lines)[:TELEGRAM_CAPTION_LIMIT]
+
+
+def build_pogo_tactical_keyboard(
+    card: PogoTacticalCard,
+    *,
+    fallback_url: str = "",
+) -> dict[str, list[list[dict[str, str]]]]:
+    """Construye botón contextual URL para tarjetas tácticas de Pokémon GO."""
+    target = card.info_url or fallback_url
+    if not target:
+        return {"inline_keyboard": []}
+    return {"inline_keyboard": [[{"text": card.info_label, "url": target}]]}
+
+
+def send_telegram_pogo_card(
+    *,
+    bot_token: str,
+    chat_id: str,
+    card: PogoTacticalCard,
+    card_path: Path,
+    header_tag: str = "⚡ <b>Guía táctica Pokémon GO</b>",
+    fallback_url: str = "",
+) -> None:
+    """Envía una tarjeta táctica PNG (1080×720) de Pokémon GO a Telegram."""
+    caption = build_pogo_tactical_caption(card, header_tag=header_tag)
+    keyboard = build_pogo_tactical_keyboard(card, fallback_url=fallback_url)
     _post_photo_to_telegram(
         bot_token=bot_token,
         chat_id=chat_id,

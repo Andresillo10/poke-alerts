@@ -21,6 +21,14 @@ from src.deck_qr import (
 from src.deck_sheet_renderer import render_single_deck_card
 from src.enricher import enrich_alert_item
 from src.models import AlertItem
+from src.pogo_intel import (
+    PogoCatalog,
+    PogoTacticalCard,
+    build_pogo_event_cards,
+    build_pogo_weekly_meta_report,
+    load_pogo_catalog,
+)
+from src.pogo_sheet_renderer import render_pogo_tactical_card
 from src.scrapers import create_session, fetch_all_sources, fetch_text_safe
 from src.state import (
     load_state,
@@ -32,9 +40,11 @@ from src.state import (
     update_source_health_and_heartbeat,
 )
 from src.telegram_client import (
+    build_pogo_tactical_caption,
     build_single_deck_caption,
     build_telegram_caption,
     send_telegram_photo,
+    send_telegram_pogo_card,
     send_telegram_single_deck,
     send_telegram_text,
 )
@@ -108,17 +118,67 @@ def _prioritize_items(items: list[AlertItem]) -> list[AlertItem]:
 
 
 def _select_preview_sample(items: list[AlertItem]) -> list[AlertItem]:
-    """Elige 1 código vigente y 1 evento de TCG Pocket para probar el diseño en vivo."""
+    """Elige 1 código, 1 evento TCG Pocket y 1 evento Pokémon GO para muestra integral."""
     sample: list[AlertItem] = []
     first_code = next((it for it in items if it.kind == "code"), None)
-    first_tcgp = next((it for it in items if it.game == "tcgp"), None)
-    if first_code:
-        sample.append(first_code)
-    if first_tcgp:
-        sample.append(first_tcgp)
+    first_tcgp = next((it for it in items if it.game == "tcgp" and it.kind == "event"), None) or next(
+        (it for it in items if it.game == "tcgp"), None
+    )
+    first_pogo = next(
+        (
+            it
+            for it in items
+            if it.game == "pogo"
+            and it.kind == "event"
+            and any(k in it.title.lower() for k in ("raid hour", "raid day", "community day", "spotlight hour", "great league", "ultra league", "raid battles"))
+        ),
+        None,
+    ) or next((it for it in items if it.game == "pogo" and it.kind == "event"), None)
+    for pick in (first_code, first_tcgp, first_pogo):
+        if pick:
+            sample.append(pick)
     if not sample and items:
         sample.append(items[0])
     return sample
+
+
+def _maybe_build_pogo_cards(
+    *,
+    session,
+    raw_item: AlertItem,
+    localized_item: AlertItem,
+    out_dir: Path,
+    pogo_catalog_holder: list[PogoCatalog],
+    events_cache: dict[str, dict],
+) -> list[tuple[PogoTacticalCard, Path]]:
+    """Genera hasta 3 tarjetas tácticas PNG (1080×720) para eventos accionables de Pokémon GO."""
+    if raw_item.game != "pogo" or raw_item.kind == "code":
+        return []
+    try:
+        if not pogo_catalog_holder:
+            pogo_catalog_holder.append(load_pogo_catalog(session))
+        pogo_cat = pogo_catalog_holder[0]
+        ev_id = raw_item.uid.removeprefix("scrapedduck:")
+        extra_ev = events_cache.get(ev_id)
+        tactical_cards = build_pogo_event_cards(
+            raw_item,
+            extra_ev,
+            pogo_cat,
+            context_title=localized_item.title,
+        )
+        if not tactical_cards:
+            return []
+
+        base_name = _safe_filename(localized_item.uid).removesuffix(".png")
+        rendered: list[tuple[PogoTacticalCard, Path]] = []
+        for idx, card in enumerate(tactical_cards, 1):
+            card_path = out_dir / f"pogo_{base_name}_{idx}.png"
+            render_pogo_tactical_card(card, card_path)
+            rendered.append((card, card_path))
+        return rendered
+    except Exception as exc:
+        LOGGER.warning("[PogoCards] Sin tarjetas tácticas para %s: %s", raw_item.uid, exc)
+        return []
 
 
 def _maybe_build_tcgp_decks(
@@ -218,64 +278,95 @@ def _maybe_run_weekly_meta(
     args: argparse.Namespace,
     session,
     catalog_holder: list[CardCatalog],
+    pogo_catalog_holder: list[PogoCatalog],
     week_key: str,
     bot_token: str,
     chat_id: str,
 ) -> bool:
-    """Genera y envía 3 tarjetas individuales (1 QR cada una) del Top 3 Ranked."""
+    """Genera y envía el Top 3 Ranked semanal de TCG Pocket y las 3 guías semanales GO."""
+    tcgp_sent = False
+    pogo_sent = False
+
     try:
         if not catalog_holder:
             catalog_holder.append(load_catalog(session))
         report = build_weekly_ranked_report(session, catalog_holder[0])
-        if not report or not report.archetypes:
-            LOGGER.warning("[WeeklyMeta] Sin datos suficientes de torneos esta semana.")
-            return False
-
-        for idx, arch in enumerate(report.archetypes, 1):
-            card_path = args.out_dir / f"weekly_meta_{week_key}_{idx}.png"
-            render_single_deck_card(
-                arch.deck,
-                card_path,
-                context_label=f"Torneos: {report.window_label} • {report.analyzed_entries} listas",
-                badge_label="TOP RANKED SEMANAL",
-            )
-            info_url = arch.best_url or "https://play.limitlesstcg.com/tournaments/completed?game=POCKET"
-            extra_note = f"{report.window_label} | {arch.best_note}"
-            if args.dry_run:
-                LOGGER.info("[DRY-RUN] WEEKLY META CARD %d: %s", idx, card_path)
-                print(f"--- CAPTION WEEKLY META #{idx} ---")
-                print(
-                    build_single_deck_caption(
-                        arch.deck,
-                        context_title="Top 3 Semanal Ranked",
-                        header_tag="🏆 <b>Mazo Ranked Semanal</b>",
-                        extra_note=extra_note,
-                    )
+        if report and report.archetypes:
+            for idx, arch in enumerate(report.archetypes, 1):
+                card_path = args.out_dir / f"weekly_meta_{week_key}_{idx}.png"
+                render_single_deck_card(
+                    arch.deck,
+                    card_path,
+                    context_label=f"Torneos: {report.window_label} • {report.analyzed_entries} listas",
+                    badge_label="TOP RANKED SEMANAL",
                 )
-                print("----------------------------------")
+                info_url = arch.best_url or "https://play.limitlesstcg.com/tournaments/completed?game=POCKET"
+                extra_note = f"{report.window_label} | {arch.best_note}"
+                if args.dry_run:
+                    LOGGER.info("[DRY-RUN] WEEKLY META TCGP %d: %s", idx, card_path)
+                    print(f"--- CAPTION WEEKLY META TCGP #{idx} ---")
+                    print(
+                        build_single_deck_caption(
+                            arch.deck,
+                            context_title="Top 3 Semanal Ranked",
+                            header_tag="🏆 <b>Mazo Ranked Semanal</b>",
+                            extra_note=extra_note,
+                        )
+                    )
+                    print("----------------------------------")
+                    continue
+
+                if idx > 1:
+                    time.sleep(TELEGRAM_SEND_DELAY_SEC)
+                send_telegram_single_deck(
+                    bot_token=bot_token,
+                    chat_id=chat_id,
+                    deck=arch.deck,
+                    card_path=card_path,
+                    context_title="Top 3 Semanal Ranked",
+                    header_tag="🏆 <b>Mazo Ranked Semanal</b>",
+                    info_label="🏆 Ver lista campeón",
+                    info_url=info_url,
+                    extra_note=extra_note,
+                )
+                tcgp_sent = True
+        else:
+            LOGGER.warning("[WeeklyMeta] Sin datos suficientes de torneos TCGP esta semana.")
+    except Exception as exc:
+        LOGGER.warning("[WeeklyMeta TCGP] Fallo no bloqueante: %s", exc)
+
+    try:
+        if not pogo_catalog_holder:
+            pogo_catalog_holder.append(load_pogo_catalog(session))
+        pogo_cards = build_pogo_weekly_meta_report(pogo_catalog_holder[0])
+        for idx, p_card in enumerate(pogo_cards, 1):
+            card_path = args.out_dir / f"pogo_weekly_meta_{week_key}_{idx}.png"
+            render_pogo_tactical_card(p_card, card_path)
+            if args.dry_run:
+                LOGGER.info("[DRY-RUN] WEEKLY META POGO %d: %s", idx, card_path)
+                print(f"--- CAPTION WEEKLY META POGO #{idx} ---")
+                print(build_pogo_tactical_caption(p_card, header_tag="🏆 <b>Meta Semanal Pokémon GO</b>"))
+                print("---------------------------------------")
                 continue
 
-            if idx > 1:
+            if tcgp_sent or idx > 1:
                 time.sleep(TELEGRAM_SEND_DELAY_SEC)
-            send_telegram_single_deck(
+            send_telegram_pogo_card(
                 bot_token=bot_token,
                 chat_id=chat_id,
-                deck=arch.deck,
+                card=p_card,
                 card_path=card_path,
-                context_title="Top 3 Semanal Ranked",
-                header_tag="🏆 <b>Mazo Ranked Semanal</b>",
-                info_label="🏆 Ver lista campeón",
-                info_url=info_url,
-                extra_note=extra_note,
+                header_tag="🏆 <b>Meta Semanal Pokémon GO</b>",
             )
-
-        if args.dry_run:
-            return False
-        LOGGER.info("[WeeklyMeta] Enviado reporte semanal %s (%d tarjetas).", week_key, len(report.archetypes))
-        return True
+            pogo_sent = True
     except Exception as exc:
-        LOGGER.warning("[WeeklyMeta] Fallo no bloqueante al generar reporte semanal: %s", exc)
+        LOGGER.warning("[WeeklyMeta POGO] Fallo no bloqueante: %s", exc)
+
+    if args.dry_run:
         return False
+    if tcgp_sent or pogo_sent:
+        LOGGER.info("[WeeklyMeta] Enviado reporte semanal integral %s (TCGP=%s, POGO=%s).", week_key, tcgp_sent, pogo_sent)
+    return tcgp_sent or pogo_sent
 
 
 def run_pipeline(args: argparse.Namespace) -> int:
@@ -336,6 +427,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
     sent_items: list[AlertItem] = []
     events_cache: dict[str, dict] = {}
     catalog_holder: list[CardCatalog] = []
+    pogo_catalog_holder: list[PogoCatalog] = []
     weekly_cache: list[WeeklyMetaReport | None] = []
 
     for idx, item in enumerate(to_notify):
@@ -351,6 +443,14 @@ def run_pipeline(args: argparse.Namespace) -> int:
             out_dir=args.out_dir,
             catalog_holder=catalog_holder,
             weekly_cache=weekly_cache,
+        )
+        pogo_cards = _maybe_build_pogo_cards(
+            session=session,
+            raw_item=enriched,
+            localized_item=localized,
+            out_dir=args.out_dir,
+            pogo_catalog_holder=pogo_catalog_holder,
+            events_cache=events_cache,
         )
         default_label = "🃏 Guía de mazos" if localized.deck_guide_url else "🔎 Ver evento"
         default_url = localized.deck_guide_url or localized.url
@@ -370,6 +470,11 @@ def run_pipeline(args: argparse.Namespace) -> int:
                         header_tag="🃏 <b>Mazo recomendado</b>",
                     )
                 )
+                print("-----------------------")
+            for idx_p, (p_card, p_path) in enumerate(pogo_cards, 1):
+                LOGGER.info("[DRY-RUN] POGO CARD %d: %s", idx_p, p_path)
+                print(f"--- CAPTION POGO #{idx_p} ---")
+                print(build_pogo_tactical_caption(p_card))
                 print("-----------------------")
             sent_items.append(item)
             continue
@@ -392,6 +497,15 @@ def run_pipeline(args: argparse.Namespace) -> int:
                 info_label="🏆 Ver lista campeón" if champ_url else default_label,
                 info_url=champ_url or default_url,
             )
+        for p_card, p_path in pogo_cards:
+            time.sleep(TELEGRAM_SEND_DELAY_SEC)
+            send_telegram_pogo_card(
+                bot_token=bot_token,
+                chat_id=chat_id,
+                card=p_card,
+                card_path=p_path,
+                fallback_url=localized.url,
+            )
         sent_items.append(item)
         if idx < len(to_notify) - 1:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
@@ -404,6 +518,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
             args=args,
             session=session,
             catalog_holder=catalog_holder,
+            pogo_catalog_holder=pogo_catalog_holder,
             week_key=week_key,
             bot_token=bot_token,
             chat_id=chat_id,
