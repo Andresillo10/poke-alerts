@@ -12,15 +12,23 @@ OFFICIAL_TERMS_ES: dict[str, str] = {
     "Mass Outbreak Event": "Evento de Aparición Masiva",
     "Mass Outbreak": "Aparición Masiva",
     "Ranked Match Season": "Temporada de Combates Clasificatorios",
+    "Ranked Match": "Encuentro clasificatorio",
     "Community Week Missions": "Misiones de Semana de la Comunidad",
     "Bonus Week Missions": "Misiones de Semana de Bonificación",
     "Elite Deck Gift Missions": "Misiones de Regalo de Mazo Élite",
     "Daily Missions": "Misiones diarias",
+    "Event Missions": "Misiones del evento",
     "Emblem Event": "Evento de Emblemas",
     "Drop Event": "Evento de Botín",
-    "Limitado": "Limitado",
-    "Limited Battles": "Combates Limitados",
-    "Limited Battle": "Combate Limitado",
+    "Dual Fusion": "Fusión Dual",
+    "Mega Rising": "Ascenso Mega",
+    "Crimson Blaze": "Fulgor Carmesí",
+    "Second Anniversary Celebration Campaign": "Campaña de Celebración 2.º Aniversario",
+    "Second Anniversary": "2.º Aniversario",
+    "Winter Holidays Themed": "Temática Fiestas de Invierno",
+    "Promo Card Event": "Evento de Carta Promo",
+    "Limited Battles": "Partidas limitadas",
+    "Limited Battle": "Partida limitada",
     "Step-Up Battle": "Combate Progresivo",
     "Versus Battles": "Combates Versus",
     "Solo Battle Events": "Eventos de Combate Individual",
@@ -38,7 +46,9 @@ OFFICIAL_TERMS_ES: dict[str, str] = {
     "Trade Tokens": "Fichas de Intercambio",
     "Trade Token": "Ficha de Intercambio",
     "Wonder Stamina": "Energía Mágica",
-    "Shop Ticket": "Cupón de Tienda",
+    "Shop Tickets": "Cupones de evento",
+    "Shop Ticket": "Cupón de evento",
+    "Booster Packs": "Sobres de cartas",
     "Card Sleeve": "Funda para Cartas",
     "Playmat": "Tapete",
     "Promo Card Exchange Ticket": "Cupón de Canje de Carta Promo",
@@ -138,7 +148,47 @@ POST_TRANSLATION_FIXES: dict[str, str] = {
     "Polvo brillante": "Polvo Iris",
     "Use energía de sobres to open": "Abre",
     "to open": "para abrir",
+    "Cupón de Tienda": "Cupón de evento",
+    "Combates Limitados": "Partidas limitadas",
+    "Combate Limitado": "Partida limitada",
+    "Dual Fusion": "Fusión Dual",
+    "Increased Polvo Estelar": "Más Polvo Estelar",
+    "event-themed Pokémon": "Pokémon del evento",
+    "in the wild or after": "en estado salvaje o tras",
+    "in trades": "al intercambiar",
+    "local time each day": "hora local cada día",
+    "local time": "hora local",
+    "Missions": "Misiones",
+    "Battles": "Partidas",
 }
+
+_REGEX_ES_CLEANUPS: tuple[tuple[re.Pattern[str], str], ...] = (
+    (re.compile(r"\bWin (\d+) battles?\b", re.I), r"Gana \1 partida(s)"),
+    (re.compile(r"\bComplete (\d+) battles?\b", re.I), r"Completa \1 partida(s)"),
+    (re.compile(r"\bParticipate in (\d+) battles?\b", re.I), r"Juega \1 partida(s)"),
+    (re.compile(r"\bGet (\d+) points? in\b", re.I), r"Consigue \1 puntos en"),
+    (re.compile(r"\bOpen (\d+) booster packs?\b", re.I), r"Abre \1 sobre(s)"),
+    (re.compile(r"\bDay (\d+)\b", re.I), r"Día \1"),
+    (re.compile(r"\bOpen up to (\d+) Gifts per day\b", re.I), r"Abre hasta \1 regalos al día"),
+    (re.compile(r"\bReceive up to (\d+) Gifts per day(?: from spinning PokéStop and Gym Photo Discs)?\b", re.I), r"Recibe hasta \1 regalos al día en Poképaradas y Gimnasios"),
+    (re.compile(r"\bHold (\d+) more Gifts in your Item Bag\b", re.I), r"Guarda \1 regalos extra en tu Bolsa"),
+    (re.compile(r"\bChance to receive\b", re.I), "Probabilidad de recibir"),
+    (re.compile(r"\bIncreased chance to encounter\b", re.I), "Mayor probabilidad de encontrar"),
+    (re.compile(r"\bIncreased chance to get\b", re.I), "Mayor probabilidad de conseguir"),
+    (re.compile(r"\bIncreased chance to become\b", re.I), "Mayor probabilidad de lograr"),
+    (re.compile(r"\bOne additional Candy for trading Pokémon\b", re.I), "+1 Caramelo extra al intercambiar"),
+    (re.compile(r"\bTrainers level (\d+) and above will receive one guaranteed Candy XL when trading Pokémon\b", re.I), r"Entrenadores Nv.\1+ reciben 1 Caramelo XL garantizado al intercambiar"),
+    (re.compile(r"\bComplete your outfit with a pair of\b", re.I), "Completa tu atuendo con"),
+    (re.compile(r"\bRedeem this promo code in the\b", re.I), "Canjea este código en"),
+    (re.compile(r"\bWeb Store by\b", re.I), "antes del"),
+    (re.compile(r"\bfor your avatar\b", re.I), "para tu avatar"),
+    (re.compile(r"\bfrom (\d{1,2}:\d{2}\s*(?:a\.m\.|p\.m\.)) to (\d{1,2}:\d{2}\s*(?:a\.m\.|p\.m\.))\b", re.I), r"de \1 a \2"),
+    (re.compile(r"\bShiny ([A-Z][a-z'-]+)\s+and\s+Shiny ([A-Z][a-z'-]+)\b"), r"\1 Variocolor y \2 Variocolor"),
+    (re.compile(r"\bShiny ([A-Z][a-z'-]+)\b"), r"\1 Variocolor"),
+    (re.compile(r"\bfor catching\b", re.I), "al capturar"),
+    (re.compile(r"\bto conseguir hasta$", re.I), "para reclamar recompensas"),
+    (re.compile(r"\bpara conseguir hasta$", re.I), "para reclamar recompensas"),
+)
 
 _SORTED_TERMS = sorted(OFFICIAL_TERMS_ES.keys(), key=len, reverse=True)
 GLOSSARY_PATTERN = re.compile(
@@ -161,6 +211,9 @@ def lookup_spanish_term(matched_text: str) -> str:
 
 
 def apply_post_translation_fixes(text: str) -> str:
-    """Corrige nombres oficiales de objetos/bayas tras la traducción automática."""
+    """Corrige nombres oficiales de objetos/bayas y frases residuales en inglés tras traducir."""
     clean = html.unescape(text).replace("Pok&émon", "Pokémon").replace("Pok&eacute;mon", "Pokémon")
-    return POST_FIX_PATTERN.sub(lambda m: _POST_LOOKUP.get(m.group(0).lower(), m.group(0)), clean)
+    for pat, repl in _REGEX_ES_CLEANUPS:
+        clean = pat.sub(repl, clean)
+    clean = POST_FIX_PATTERN.sub(lambda m: _POST_LOOKUP.get(m.group(0).lower(), m.group(0)), clean)
+    return " ".join(clean.split())

@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-18 13:02 COT",
+  "generated_at": "2026-11-18 13:39 COT",
   "stats": {
     "total": 70,
     "pogo": 57,
@@ -21,7 +21,9 @@ window.POKE_ALERTS_DB = {
       "category": "Código Promo",
       "title": "Zapatos adidas Artículo de avatar",
       "title_original": "adidas Shoes Avatar Item",
-      "summary": "Complete your outfit with a pair of Zapatos adidas for your avatar! Redeem this promo code in the Pokémon GO Web Store by Friday, January 15, 2027.",
+      "summary": "Completa tu atuendo con Zapatos adidas para tu avatar! Canjea este código en Pokémon GO antes del Friday, January 15, 2027.",
+      "action_guide": "📍 Cómo canjearlo: copia el código de regalo, abre store.pokemongo.com con tu cuenta del juego vinculada, pégalo y reclama la recompensa directo en tu buzón del juego.",
+      "search_aliases": "",
       "rewards": "Zapatos adidas",
       "highlights": [],
       "promo_code": "ADIDASxPOKEMON",
@@ -42,7 +44,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/promo-codes/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:code:POKEMONGOXCROCSXENCHANTING",
@@ -53,7 +55,9 @@ window.POKE_ALERTS_DB = {
       "category": "Código Promo",
       "title": "Pokémon Gengar Zueco clásico Artículo de avatar",
       "title_original": "Pokémon Gengar Classic Clog Avatar Item",
-      "summary": "Add a little mischief to your step with the Pokémon Gengar Zueco clásico (Artículo de avatar), inspired by the Pokémon Gengar Crocs Zueco clásico! Redeem this promo code in the Pokémon GO Web Store by Friday, December 31, 2027. Learn more here .",
+      "summary": "Add a little mischief to your step with the Pokémon Gengar Zueco clásico (Artículo de avatar), inspired by the Pokémon Gengar Crocs Zueco clásico! Canjea este código en Pokémon GO antes del Friday, December 31, 2027. Learn more here .",
+      "action_guide": "📍 Cómo canjearlo: copia el código de regalo, abre store.pokemongo.com con tu cuenta del juego vinculada, pégalo y reclama la recompensa directo en tu buzón del juego.",
+      "search_aliases": "",
       "rewards": "Pokémon Gengar Zueco clásico",
       "highlights": [],
       "promo_code": "POKEMONGOxCROCSxENCHANTING",
@@ -74,7 +78,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/promo-codes/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:code:POKEMONGOXCROCSXMELODY",
@@ -85,7 +89,9 @@ window.POKE_ALERTS_DB = {
       "category": "Código Promo",
       "title": "Pokémon Jigglypuff Zueco con plataforma clásico Artículo de avatar",
       "title_original": "Pokémon Jigglypuff Classic Platform Clog Avatar Item",
-      "summary": "Step out in style with the Pokémon Jigglypuff Zueco con plataforma clásico (Artículo de avatar), inspired by the Pokémon Jigglypuff Crocs Zueco con plataforma clásico! Redeem this promo code in the Pokémon GO Web Store by Friday, December 31, 2027. Learn more here .",
+      "summary": "Step out in style with the Pokémon Jigglypuff Zueco con plataforma clásico (Artículo de avatar), inspired by the Pokémon Jigglypuff Crocs Zueco con plataforma clásico! Canjea este código en Pokémon GO antes del Friday, December 31, 2027. Learn more here .",
+      "action_guide": "📍 Cómo canjearlo: copia el código de regalo, abre store.pokemongo.com con tu cuenta del juego vinculada, pégalo y reclama la recompensa directo en tu buzón del juego.",
+      "search_aliases": "",
       "rewards": "Pokémon Jigglypuff Zueco con plataforma clásico",
       "highlights": [],
       "promo_code": "POKEMONGOxCROCSxMELODY",
@@ -106,7 +112,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/promo-codes/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:code:POKEMONGOXCROCSXELECTRIFYING",
@@ -117,7 +123,9 @@ window.POKE_ALERTS_DB = {
       "category": "Código Promo",
       "title": "Pokémon Pikachu Zueco clásico Artículo de avatar",
       "title_original": "Pokémon Pikachu Classic Clog Avatar Item",
-      "summary": "Put a little spark in your step with the Pokémon Pikachu Zueco clásico (Artículo de avatar), inspired by the Pokémon Pikachu Crocs Zueco clásico! Redeem this promo code in the Pokémon GO Web Store by Friday, December 31, 2027. Learn more here .",
+      "summary": "Put a little spark in your step with the Pokémon Pikachu Zueco clásico (Artículo de avatar), inspired by the Pokémon Pikachu Crocs Zueco clásico! Canjea este código en Pokémon GO antes del Friday, December 31, 2027. Learn more here .",
+      "action_guide": "📍 Cómo canjearlo: copia el código de regalo, abre store.pokemongo.com con tu cuenta del juego vinculada, pégalo y reclama la recompensa directo en tu buzón del juego.",
+      "search_aliases": "",
       "rewards": "Pokémon Pikachu Zueco clásico",
       "highlights": [],
       "promo_code": "POKEMONGOxCROCSxELECTRIFYING",
@@ -138,7 +146,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/promo-codes/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:and-cresselia-darkrai-hour-raid",
@@ -149,7 +157,9 @@ window.POKE_ALERTS_DB = {
       "category": "Incursiones GO",
       "title": "Cresselia and Darkrai Hora de Incursiones",
       "title_original": "Cresselia and Darkrai Raid Hour",
-      "summary": "A Hora de Incursiones featuring Cresselia and Darkrai is scheduled from 6:00 p.m. to 7:00 p.m. local time. During this hour there will be an increased number of five-star raids.",
+      "summary": "La Hora de Incursiones con Cresselia y Darkrai está programada de 18:00 a 19:00, hora local. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -235,7 +245,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/raidhour20261118/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:leonids-minior-showers",
@@ -246,7 +256,9 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Minior Showers - Leonids",
       "title_original": "Minior Showers - Leonids",
-      "summary": "This event is the second of 6 Meteor Shower tie-in events which introduces Minior into the game. It runs from 17:00 local time through 23:59 local time with boosted spawns from 17:00 to 21:00 each day",
+      "summary": "Este evento es el segundo de los 6 eventos relacionados con la lluvia de meteoritos que introducen a Minior en el juego. Se celebrará desde las 17:00, hora local, hasta las 23:59, hora local, con apariciones reforzadas de 17:00 a 21:00 cada día.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [
         "Pokémon salvajes: Minior"
@@ -317,7 +329,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/pokemongo/events/miniorshowers-leonids.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2026-leonids-minior-showers",
@@ -328,10 +340,12 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Minior Showers: Leonids 2026",
       "title_original": "Minior Showers: Leonids 2026",
-      "summary": "Explore by starlight during the Leonids meteor shower for a chance to encounter Minior in Pokémon GO! This Minior Shower runs from November 14, 2026 at 5:00 p.m. to November 19, 2026 at 11:59 p.m. local time .",
-      "rewards": "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day",
+      "summary": "¡Explora bajo la luz de las estrellas durante la lluvia de meteoros de las Leónidas para tener la oportunidad de encontrarte con Minior en Pokémon GO! Esta Lluvia de Minior se celebrará del 14 de noviembre de 2026 a las 17:00 al 19 de noviembre de 2026 a las 23:59, hora local.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día",
       "highlights": [
-        "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day"
+        "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -399,7 +413,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/minior-showers-leonids-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:2026-bonus-november-week",
@@ -410,10 +424,12 @@ window.POKE_ALERTS_DB = {
       "category": "Misiones TCG Pocket",
       "title": "Misiones de Semana de Bonificación noviembre de 2026",
       "title_original": "Bonus Week Missions November 2026",
-      "summary": "This event is a collection of Special Misiones to obtain a variety of items throughout the game by completing Misiones",
-      "rewards": "Misiones: Inicia sesión 1 Day → Pulsing Aura Booster | Inicia sesión 2 Day → Pulsing Aura Booster | Inicia sesión 3 Day → Pulsing Aura Booster",
+      "summary": "Este evento es una colección de Misiones Especiales para obtener diversos objetos a lo largo del juego completando Misiones.",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
+      "rewards": "Misiones: Inicia sesión 1 día → Potenciador de Aura Pulsante | Inicia sesión 2 días → Potenciador de Aura Pulsante | Inicia sesión 3 días → Potenciador de Aura Pulsante",
       "highlights": [
-        "Misiones: Inicia sesión 1 Day → Pulsing Aura Booster | Inicia sesión 2 Day → Pulsing Aura Booster | Inicia sesión 3 Day → Pulsing Aura Booster"
+        "Misiones: Inicia sesión 1 día → Potenciador de Aura Pulsante | Inicia sesión 2 días → Potenciador de Aura Pulsante | Inicia sesión 3 días → Potenciador de Aura Pulsante"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -514,7 +530,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/tcgpocket/events/bonusweekmissionsnovember2026.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:dynamax-trails",
@@ -525,10 +541,12 @@ window.POKE_ALERTS_DB = {
       "category": "Combates Max",
       "title": "Dynamax Trails",
       "title_original": "Dynamax Trails",
-      "summary": "Get ready for a week of Combates Max! Dynamax Pokémon return, Partículas Max are surging in the wild, and Eternamax Eternatus returns to Nodos Energéticos during Dynamax Trails. The Dynamax Trails event will take place from November 16, 2026 at 10 am to November 23, 2026 at 8 pm local time.",
-      "rewards": "Bonificaciones: Chance to receive Partículas Max when catching event-themed Pokémon in the wild or after Combates Max; More Nodos Energéticos than usual will be active; 2× Polvo Estelar por captura; 1/2 Candy and Polvo Estelar cost to activate the Dynamax Cannon Adventure Effect",
+      "summary": "¡Prepárate para una semana de Combates Max! Los Pokémon Dynamax vuelven, las Partículas Max están apareciendo en estado salvaje y Eternamax Eternatus regresa a los Nodos Energéticos durante las Rutas Dynamax. El evento Rutas Dynamax tendrá lugar del 16 de noviembre de 2026 a las 10:00 al 23 de noviembre de 2026 a las 20:00, hora local.",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Bonificaciones: Probabilidad de recibir Partículas Max al capturar Pokémon del evento en estado salvaje o tras Combates Max; Habrá más Nodos Energéticos activos de lo habitual; 2× Polvo Estelar por captura; 1/2 del coste de Caramelos y Polvo Estelar para activar el Efecto de Aventura Cañón Dynamax.",
       "highlights": [
-        "Bonificaciones: Chance to receive Partículas Max when catching event-themed Pokémon in the wild or after Combates Max; More Nodos Energéticos than usual will be active; 2× Polvo Estelar por captura; 1/2 Candy and Polvo Estelar cost to activate the Dynamax Cannon Adventure Effect",
+        "Bonificaciones: Probabilidad de recibir Partículas Max al capturar Pokémon del evento en estado salvaje o tras Combates Max; Habrá más Nodos Energéticos activos de lo habitual; 2× Polvo Estelar por captura; 1/2 del coste de Caramelos y Polvo Estelar para activar el Efecto de Aventura Cañón Dynamax.",
         "Bonificaciones: Partículas Max from Event Pokémon (Small chance); Catch Polvo Estelar (*2 (GO Pass Tier 1)); Dynamax Cannon costs (50% (GO Pass Tier 2))",
         "Pokémon salvajes: Bulbasaur, Charmander, Squirtle, Caterpie, Pikachu, Growlithe"
       ],
@@ -611,7 +629,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/pokemongo/events/dynamaxtrails.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:5-and-battles-cresselia-darkrai-in-raid-star",
@@ -620,9 +638,11 @@ window.POKE_ALERTS_DB = {
       "kind": "event",
       "kind_label": "Evento",
       "category": "Incursiones GO",
-      "title": "Cresselia and Darkrai in 5-star Raid Battles",
+      "title": "Cresselia and Darkrai in 5-star Raid Partidas",
       "title_original": "Cresselia and Darkrai in 5-star Raid Battles",
-      "summary": "Cresselia and Darkrai will be in five-star raid battles from November 16, 2026 to November 24, 2026. Raid bosses change at 6:00 a.m. local time. Raid Hours There will also be a Hora de Incursiones featuring Cresselia and Darkrai from 6:00 p.m. to 7:00 p.m. local time on November 18.",
+      "summary": "Cresselia y Darkrai estarán en incursiones de cinco estrellas del 16 de noviembre de 2026 al 24 de noviembre de 2026. Los jefes de incursión cambian a las 6:00 h, hora local. Horas de incursiones También habrá una Hora de Incursiones con Cresselia y Darkrai de 18:00 a 19:00, hora local, el 18 de noviembre.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Variocolor disponibles: Cresselia, Darkrai",
       "highlights": [
         "Variocolor disponibles: Cresselia, Darkrai"
@@ -735,7 +755,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:banette-in-mega-raids",
@@ -746,7 +766,9 @@ window.POKE_ALERTS_DB = {
       "category": "Incursiones GO",
       "title": "Mega Banette in Mega Raids",
       "title_original": "Mega Banette in Mega Raids",
-      "summary": "Mega Banette will be en Megaincursiones from November 16, 2026 at 6 am to November 24, 2026 at 10 pm local time. Raid bosses change at 6:00 a.m. local time.",
+      "summary": "Mega Banette estará en Megaincursiones desde el 16 de noviembre de 2026 a las 6:00 hasta el 24 de noviembre de 2026 a las 22:00, hora local. Los jefes de incursión cambian a las 6:00 h, hora local.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette",
       "highlights": [
         "Pokémon destacados: Mega Banette",
@@ -828,7 +850,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:02:03Z"
+      "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
       "id": "pogo:2026-and-edition-league-master-mega-ultra",
@@ -840,6 +862,8 @@ window.POKE_ALERTS_DB = {
       "title": "Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails",
       "title_original": "Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails",
       "summary": "The Liga Ultra, Liga Master: Edición Mega, and 2026 GO LAIC Cup will run from November 18, 2026, at 1:00 p.m. to November 25, 2026, at 1:00 p.m. PT. Trainers will also receive 4× Polvo Estelar from win rewards (this does not include end-of-set rewards). Liga Ultra Pokémon must be at or below 2,500 CP to enter. Liga Master: Edición Mega No CP limit. Mega-Evolved Pokémon are allowed.",
+      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -951,7 +975,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:go-november-pass",
@@ -962,10 +986,12 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "GO Pass: November",
       "title_original": "GO Pass: November",
-      "summary": "Earn PokéCoins and encounter Groudon in GO Pass: November! The GO Pass and GO Pass Deluxe for November will be available from November 3, 2026 at 10:00 am to December 1, 2026 at 10:00 am local time.",
-      "rewards": "Bonificaciones: One additional Candy for trading Pokémon; Trainers level 31 and above will receive one guaranteed Candy XL when trading Pokémon; Open up to 40 Gifts per day; Receive up to 125 Gifts per day from spinning PokéStop and Gym Photo Discs",
+      "summary": "¡Consigue Pokémonedas y enfréntate a Groudon en el Pase de GO: noviembre! El Pase de GO y el Pase de GO Deluxe de noviembre estarán disponibles desde el 3 de noviembre de 2026 a las 10:00 hasta el 1 de diciembre de 2026 a las 10:00, hora local.",
+      "action_guide": "📍 Cómo completarlo: abre la pestaña Eventos / Hoy dentro de Pokémon GO para ver el progreso de misiones o del Pase, aprovecha las bonificaciones activas (suerte, Polvo, regalos o capturas) y usa el filtro de caja abajo antes del fin del evento.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: +1 Caramelo extra al intercambiar; Entrenadores Nv.31+ reciben 1 Caramelo XL garantizado al intercambiar; Abre hasta 40 regalos al día; Recibe hasta 125 regalos al día en Poképaradas y Gimnasios",
       "highlights": [
-        "Bonificaciones: One additional Candy for trading Pokémon; Trainers level 31 and above will receive one guaranteed Candy XL when trading Pokémon; Open up to 40 Gifts per day; Receive up to 125 Gifts per day from spinning PokéStop and Gym Photo Discs"
+        "Bonificaciones: +1 Caramelo extra al intercambiar; Entrenadores Nv.31+ reciben 1 Caramelo XL garantizado al intercambiar; Abre hasta 40 regalos al día; Recibe hasta 125 regalos al día en Poképaradas y Gimnasios"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -1007,7 +1033,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/go-pass-november-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:forme-in-incarnate-raids-shadow-tornadus",
@@ -1019,6 +1045,8 @@ window.POKE_ALERTS_DB = {
       "title": "Shadow Tornadus (Incarnate Forme) in Shadow Raids",
       "title_original": "Shadow Tornadus (Incarnate Forme) in Shadow Raids",
       "summary": "Shadow Tornadus (Forma Avatar) will appear in five-star Incursiones Oscuras every weekend from November 16, 2026 to December 1, 2026.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Tornadus (Incarnate)",
       "highlights": [
         "Pokémon destacados: Tornadus (Incarnate)",
@@ -1100,7 +1128,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/shadow-tornadus-incarnate-forme-in-shadow-raids-november-16-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
       "id": "pogo:trails-twilight",
@@ -1111,10 +1139,12 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Twilight Trails",
       "title_original": "Twilight Trails",
-      "summary": "Welcome to Pokémon GO: Twilight Trails! In Pokémon GO, Seasons are periods of time that feature new events, Pokémon debuts, and surprises that all follow a certain theme. As the Seasons change, you may find different Pokémon appearing in your area and hatching from Eggs. Make sure to explore during each in-game Season to collect and train as many different Pokémon as you can!",
-      "rewards": "Bonificaciones: One guaranteed Candy XL when trading Pokémon for Trainers level 31 and above; One additional Candy for trading Pokémon; Increased limits on opening Gifts, receiving Gifts from PokéStop and Gym Photo Discs, and storing Gifts; 2× Daily Adventure Incense duration",
+      "summary": "¡Te damos la bienvenida a Pokémon GO: Senderos Crepusculares! En Pokémon GO, las Temporadas son periodos de tiempo que incluyen nuevos eventos, Pokémon debutantes y sorpresas, todos ellos relacionados con una temática determinada. A medida que cambian las Temporadas, es posible que veas diferentes Pokémon aparecer en tu zona y eclosionar de Huevos. ¡Asegúrate de explorar durante cada Temporada del juego para capturar y entrenar tantos Pokémon diferentes como puedas!",
+      "action_guide": "📍 Cómo completarlo: abre la pestaña Eventos / Hoy dentro de Pokémon GO para ver el progreso de misiones o del Pase, aprovecha las bonificaciones activas (suerte, Polvo, regalos o capturas) y usa el filtro de caja abajo antes del fin del evento.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Un Caramelo XL garantizado al intercambiar Pokémon para Entrenadores de nivel 31 o superior; +1 Caramelo extra al intercambiar; Aumento de los límites para abrir Regalos, recibir Regalos de Poképaradas y Discos Fotográficos de Gimnasios, y almacenar Regalos; El doble de duración del Incienso de Aventura Diario",
       "highlights": [
-        "Bonificaciones: One guaranteed Candy XL when trading Pokémon for Trainers level 31 and above; One additional Candy for trading Pokémon; Increased limits on opening Gifts, receiving Gifts from PokéStop and Gym Photo Discs, and storing Gifts; 2× Daily Adventure Incense duration"
+        "Bonificaciones: Un Caramelo XL garantizado al intercambiar Pokémon para Entrenadores de nivel 31 o superior; +1 Caramelo extra al intercambiar; Aumento de los límites para abrir Regalos, recibir Regalos de Poképaradas y Discos Fotográficos de Gimnasios, y almacenar Regalos; El doble de duración del Incienso de Aventura Diario"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -1157,7 +1187,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/season-24-twilight-trails/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
       "id": "tcgp:battles-dual-fusion-limited",
@@ -1166,14 +1196,16 @@ window.POKE_ALERTS_DB = {
       "kind": "event",
       "kind_label": "Evento",
       "category": "Combate TCG Pocket",
-      "title": "Dual Fusion Combates Limitados",
+      "title": "Fusión Dual Partidas limitadas",
       "title_original": "Dual Fusion Limited Battles",
-      "summary": "This event is the first Combate Limitado event. It provides Misiones diarias to get sobres de cartas promo, as well as a variety of cosmetic items. It is themed around Mega Mewtwo Y ex. You can only use cards from Dual Fusion, and a handful of Cartas Promo, in this event",
-      "rewards": "Misiones: Log in | Use energía de sobres to open 1 sobre de cartas → Sobre Promo C Series Vol. 1 | Use energía de sobres to open 2 sobre de cartas | Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo C Series Vol. 1, Deoxys, Inkay",
+      "summary": "Este evento es el primer evento de Partida limitada. Ofrece Misiones diarias para conseguir sobres de cartas promo, así como una gran variedad de elementos estéticos. Su temática gira en torno a MegaMewtwo Y ex. En este evento solo puedes usar cartas de Fusión Dual y un puñado de Cartas Promo.",
+      "action_guide": "📍 Dónde jugar: Partidas ➔ Versus ➔ Encuentro de evento. 🎯 Cómo completarlo: arma tu mazo usando solo cartas permitidas por la regla (expansión Fusión Dual C1 y Promo-C Vol. 1; si tu baraja marca «No disponible», importa cualquiera de los 3 QR de abajo), debes ganar 9 partidas en Versus y completa las misiones diarias de abrir sobres e iniciar sesión.",
+      "search_aliases": "Fusión Dual Dual Fusion C1 Partidas limitadas Partidas ilimitadas Combates limitados Versus Encuentro de evento",
+      "rewards": "Misiones: Inicia sesión | Abre 1 sobre de cartas → Sobre Promo C Series Vol. 1 | Abre 2 sobres de cartas | Cartas y sobres destacados: Mega-Mewtwo ex, Sobre Promo C Series Vol. 1, Deoxys, Inkay",
       "highlights": [
         "Misiones: Inicia sesión | Abre sobres con energía: 1 sobre de cartas → Sobre Promo C Series Vol. 1 | Abre sobres con energía: 2 sobre de cartas",
         "Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo C Series Vol. 1, Deoxys, Inkay",
-        "Misiones: Win 1 battle → 1 | Win 3 battles → 1× Sobre Promo | Win 5 battles → 1 | Win 9 battles → 1"
+        "Misiones: Gana 1 partida(s) → 1 | Gana 3 partida(s) → 1× Sobre Promo | Gana 5 partida(s) → 1 | Gana 9 partida(s) → 1"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -1265,7 +1297,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/dual-fusion-c1-limited-battles/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:anniversary-campaign-celebration-second",
@@ -1276,10 +1308,12 @@ window.POKE_ALERTS_DB = {
       "category": "Misiones TCG Pocket",
       "title": "Second Anniversary Celebration Campaign Misiones",
       "title_original": "Second Anniversary Celebration Campaign Missions",
-      "summary": "This event is a special event that offers chances to get sobres de cartas for completing Misiones",
-      "rewards": "Misiones: Inicia sesión (Day 1) → Deluxe Pack Mega Booster | Inicia sesión (Day 2) → Deluxe Pack ex Booster | Inicia sesión (Day 3) → Deluxe Pack Mega Booster",
+      "summary": "Este evento es un evento especial que ofrece la oportunidad de conseguir sobres de cartas por completar misiones.",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
+      "rewards": "Misiones: Inicia sesión (Día 1) → Paquete Deluxe Megabooster | Inicia sesión (Día 2) → Paquete Deluxe Booster ex | Inicia sesión (Día 3) → Paquete Deluxe Megabooster",
       "highlights": [
-        "Misiones: Inicia sesión (Day 1) → Deluxe Pack Mega Booster | Inicia sesión (Day 2) → Deluxe Pack ex Booster | Inicia sesión (Day 3) → Deluxe Pack Mega Booster"
+        "Misiones: Inicia sesión (Día 1) → Paquete Deluxe Megabooster | Inicia sesión (Día 2) → Paquete Deluxe Booster ex | Inicia sesión (Día 3) → Paquete Deluxe Megabooster"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -1380,7 +1414,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/tcgpocket/events/secondanniversarycelebrationcampaignmissions.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:and-duolingo-go-pokemon-research-timed",
@@ -1391,7 +1425,9 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Pokémon GO and Duolingo Investigación Temporal",
       "title_original": "Pokémon GO and Duolingo Timed Research",
-      "summary": "Pokémon GO and Duolingo are teaming up! Do at least one Duolingo lesson a day for seven days to earn an offer code for Investigación Temporal in Pokémon GO. Complete the research to earn XP, Polvo Estelar, and encounters with Pikachu, Meowth, Chatot, and Lucario that have a Special Background. Duo’s Pokémon Party, the limited-time Duolingo quest, starts on Tuesday, November 17, 2026, at 10:00 a.m.",
+      "summary": "¡Pokémon GO y Duolingo se unen! Completa al menos una lección de Duolingo al día durante siete días para conseguir un código de oferta para la Investigación Temporal en Pokémon GO. Completa la investigación para ganar XP, Polvo Estelar y encuentros con Pikachu, Meowth, Chatot y Lucario que tienen un Fondo Especial. El Equipo Pokémon de Duo, la misión de Duolingo por tiempo limitado, comienza el martes 17 de noviembre de 2026 a las 10:00.",
+      "action_guide": "📍 Cómo completarlo: abre la pestaña Eventos / Hoy dentro de Pokémon GO para ver el progreso de misiones o del Pase, aprovecha las bonificaciones activas (suerte, Polvo, regalos o capturas) y usa el filtro de caja abajo antes del fin del evento.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -1436,7 +1472,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/duolingo-timed-research-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:adidas-pokemon-research-timed",
@@ -1447,7 +1483,9 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "adidas × Pokémon Investigación Temporal",
       "title_original": "adidas × Pokémon Timed Research",
-      "summary": "Celebrate the adidas × Pokémon collection with Investigación Temporal at participating adidas and retail stores worldwide! Research is available starting September 25, 2026, at 10:00 a.m. local time , through January 15, 2027, at 8:00 p.m. local time .",
+      "summary": "¡Celebra la colección adidas × Pokémon con la Investigación Temporal en las tiendas adidas y los establecimientos minoristas participantes de todo el mundo! La investigación estará disponible desde el 25 de septiembre de 2026 a las 10:00 h, hora local, hasta el 15 de enero de 2027 a las 20:00 h, hora local.",
+      "action_guide": "📍 Cómo completarlo: abre la pestaña Eventos / Hoy dentro de Pokémon GO para ver el progreso de misiones o del Pase, aprovecha las bonificaciones activas (suerte, Polvo, regalos o capturas) y usa el filtro de caja abajo antes del fin del evento.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -1493,7 +1531,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/pokemon-x-adidas-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:pika-pikachu",
@@ -1504,10 +1542,12 @@ window.POKE_ALERTS_DB = {
       "category": "Misiones TCG Pocket",
       "title": "Pika Pika Pikachu Misiones",
       "title_original": "Pika Pika Pikachu Missions",
-      "summary": "This event is a special year long log-in event focused around Pikachu to celebrate the main Pokémon Trading Card Game's 30th anniversary. It adds numerous cosmetic items as well as two special sobres de cartas which contain only Pikachu cards",
-      "rewards": "Misiones: Inicia sesión (Day 1) → Pika Pika! Pikachu Pack | Inicia sesión (Day 2) → Pika Pika! Pikachu Pack | Inicia sesión (Day 3) → Pikachu Psyduck and Pichu (Tapete) | Cartas y sobres destacados: Pikachu ex, Pika Pika! Pikachu Pack, Pika Pika! Pikachu Pack ex",
+      "summary": "Este evento es un evento especial de inicio de sesión que dura todo el año y está centrado en Pikachu para celebrar el 30.º aniversario del Juego de Cartas Coleccionables Pokémon principal. Añade numerosos objetos estéticos, así como dos sobres de cartas especiales que solo contienen cartas de Pikachu.",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
+      "rewards": "Misiones: Inicia sesión (Día 1) → Pika Pika! Pikachu Pack | Inicia sesión (Día 2) → Pika Pika! Pikachu Pack | Inicia sesión (Día 3) → Pikachu Psyduck and Pichu (Tapete) | Cartas y sobres destacados: Pikachu ex, Pika Pika! Pikachu Pack, Pika Pika! Pikachu Pack ex",
       "highlights": [
-        "Misiones: Inicia sesión (Day 1) → Pika Pika! Pikachu Pack | Inicia sesión (Day 2) → Pika Pika! Pikachu Pack | Inicia sesión (Day 3) → Pikachu Psyduck and Pichu (Tapete)",
+        "Misiones: Inicia sesión (Día 1) → Pika Pika! Pikachu Pack | Inicia sesión (Día 2) → Pika Pika! Pikachu Pack | Inicia sesión (Día 3) → Pikachu Psyduck and Pichu (Tapete)",
         "Cartas y sobres destacados: Pikachu ex, Pika Pika! Pikachu Pack, Pika Pika! Pikachu Pack ex"
       ],
       "promo_code": null,
@@ -1609,7 +1649,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/tcgpocket/events/pikapikapikachumissions.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2026-dancing-in-moonlight-the",
@@ -1620,7 +1660,9 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Dancing in the Moonlight 2026",
       "title_original": "Dancing in the Moonlight 2026",
-      "summary": "This event is a special event only available in many Asia markets including Japan, Taiwan, Hong Kong, Korea, Indonesia, and Singapore",
+      "summary": "Este evento es especial y solo está disponible en muchos mercados asiáticos, como Japón, Taiwán, Hong Kong, Corea, Indonesia y Singapur.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
       "rewards": "Bonificaciones: Catch Experience (*2)",
       "highlights": [
         "Bonificaciones: PX por captura (*2)",
@@ -1721,7 +1763,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/pokemongo/events/dancinginthemoonlight2026.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:dual-emblem-fusion",
@@ -1730,10 +1772,12 @@ window.POKE_ALERTS_DB = {
       "kind": "event",
       "kind_label": "Evento",
       "category": "Combate TCG Pocket",
-      "title": "Dual Fusion Evento de Emblemas",
+      "title": "Fusión Dual Evento de Emblemas",
       "title_original": "Dual Fusion Emblem Event",
-      "summary": "Players can head to the Battle > Versus > Event Match section of the game to select a deck and start. You gain Emblems based on the amount of wins you gain during the event period.",
-      "rewards": "Misiones: Participate in 1 versus battle → 3 Reloj de Arena de Sobres | Participate in 3 Combates Versus → 3 Reloj de Arena de Sobres | Participate in 5 Combates Versus → 6 Reloj de Arena de Sobres | Participate in 10 Combates Versus → 12 Reloj de Arena de Sobres",
+      "summary": "Los jugadores pueden ir a la sección Batalla > Versus > Partida de evento del juego para seleccionar un mazo y empezar. Obtendrás Emblemas en función de la cantidad de victorias que consigas durante el periodo del evento.",
+      "action_guide": "📍 Dónde jugar: Partidas ➔ Versus ➔ Encuentro de evento. 🎯 Cómo completarlo: entra con un mazo meta recomendado, juega partidas contra otros entrenadores hasta reunir las victorias de cada emblema para desbloquear los emblemas del perfil y Relojes de Arena.",
+      "search_aliases": "Fusión Dual Dual Fusion C1 Evento de Emblemas Emblem Event Versus",
+      "rewards": "Misiones: Participa en 1 combate Versus → 3 Relojes de Arena de Sobres | Participa en 3 Combates Versus → 3 Relojes de Arena de Sobres | Participa en 5 Combates Versus → 6 Relojes de Arena de Sobres | Participa en 10 Combates Versus → 12 Relojes de Arena de Sobres",
       "highlights": [
         "Misiones: 1 win | 3 wins | 5 wins | 9 wins"
       ],
@@ -1836,7 +1880,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/dual-fusion-emblem-event/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:area-gigantamax-go-machamp-power-timed-up-wild",
@@ -1847,7 +1891,9 @@ window.POKE_ALERTS_DB = {
       "category": "Combates Max",
       "title": "GO Wild Area: Gigantamax Machamp Power Up! Investigación Temporal",
       "title_original": "GO Wild Area: Gigantamax Machamp Power Up! Timed Research",
-      "summary": "There will be Investigación Temporal available to Trainers starting Friday, November 6, at 10:00 a.m. to Sunday, November 15, 2026, at 11:59 p.m. local time. Complete the Investigación Temporal to encounter Gigantamax Machamp and earn Machop Candy, Machop Candy XL, and Partículas Max to help power it up. Investigación Temporal tasks will also award Polvo Estelar, Ultra Balls, and more!",
+      "summary": "Habrá una Investigación Temporal disponible para los Entrenadores desde el viernes 6 de noviembre a las 10:00 hasta el domingo 15 de noviembre de 2026 a las 23:59, hora local. Completa la Investigación Temporal para encontrarte con Machamp Gigantamax y conseguir Caramelos Machop, Caramelos Machop XL y Partículas Max para ayudar a fortalecerlo. ¡Las tareas de la Investigación Temporal también otorgarán Polvo Estelar, Ultra Balls y mucho más!",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -1901,7 +1947,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/go-wild-area-gigantamax-machamp-power-up-timed-research/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:hidden-surprise",
@@ -1912,7 +1958,9 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Hidden Surprise",
       "title_original": "Hidden Surprise",
-      "summary": "On the 352nd day of the year, a special unannounced event happened where Kecleon spawned in increased numbers",
+      "summary": "El día 352 del año, tuvo lugar un evento especial sin previo aviso en el que aparecieron más Kecleons de lo normal.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [
         "Pokémon salvajes: Kecleon"
@@ -1983,7 +2031,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/pokemongo/events/hiddensurprise.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:appears-kecleon",
@@ -1994,7 +2042,9 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Kecleon Appears",
       "title_original": "Kecleon Appears",
-      "summary": "This event was a surprise event that followed the Día de la Comunidad event. During this event, when you went to some Poké Stops, they would be unable to be spun. Instead, Kecleon will appear on the PokéStop. Tap it enough times and it will jump off and be able to be captured",
+      "summary": "Este evento fue una sorpresa que siguió al evento del Día de la Comunidad. Durante este evento, cuando ibas a algunas Poképaradas, no se podían girar. En su lugar, aparecerá Kecleon en la Poképarada. Si lo tocas suficientes veces, saltará y podrás capturarlo.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [
         "Pokémon salvajes: Kecleon"
@@ -2065,7 +2115,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/pokemongo/events/kecleonappears.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
       "id": "tcgp:4-card-collection-deck-elite-gift-handy",
@@ -2077,9 +2127,11 @@ window.POKE_ALERTS_DB = {
       "title": "Misiones de Regalo de Mazo Élite 4 & Handy Card Collection Misiones",
       "title_original": "Elite Deck Gift Missions 4 & Handy Card Collection Missions",
       "summary": "Mega Rayquaza and Dragonair Misiones - Until October 28:",
-      "rewards": "Misiones: Get 10 points in Combates Individuales → 1 | Get 12 points in Combates Individuales → 1 | Get 15 points in Combates Individuales → 1 | Get 18 points in Combates Individuales → 2",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
+      "rewards": "Misiones: Consigue 10 puntos en Combates Individuales → 1 | Consigue 12 puntos en Combates Individuales → 1 | Consigue 15 puntos en Combates Individuales → 1 | Consigue 18 puntos en Combates Individuales → 2",
       "highlights": [
-        "Misiones: Get 10 points in Combates Individuales → 1 | Get 12 points in Combates Individuales → 1 | Get 15 points in Combates Individuales → 1 | Get 18 points in Combates Individuales → 2"
+        "Misiones: Consigue 10 puntos en Combates Individuales → 1 | Consigue 12 puntos en Combates Individuales → 1 | Consigue 15 puntos en Combates Individuales → 1 | Consigue 18 puntos en Combates Individuales → 2"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -2180,7 +2232,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/elite-deck-gift-missions-4-handy-card-collection-missions/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:community-week",
@@ -2191,7 +2243,9 @@ window.POKE_ALERTS_DB = {
       "category": "Misiones TCG Pocket",
       "title": "Misiones de Semana de la Comunidad",
       "title_original": "Community Week Missions",
-      "summary": "Weekly Misiones — A new set of 12 Misiones refreshes every week. Complete them to earn exclusive rewards:",
+      "summary": "Misiones semanales: cada semana se renueva un nuevo conjunto de 12 misiones. Complétalas para conseguir recompensas exclusivas:",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
       "rewards": "Misiones: Set wishlisted cards on your profile | Share a card that’s on your share partner’s wishlist or not in their card dex 1 time → 12× Sobre Promo | Share a card that’s on your share partner’s wishlist or not in their card dex 3 times → 12× Sobre Promo | Share 5 times → 12",
       "highlights": [
         "Misiones: Set wishlisted cards on your profile | Share a card that’s on your share partner’s wishlist or not in their card dex 1 time → 12× Sobre Promo | Share a card that’s on your share partner’s wishlist or not in their card dex 3 times → 12× Sobre Promo | Share 5 times → 12"
@@ -2295,7 +2349,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/community-week-missions-7/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:2026-drop-promo-reissue",
@@ -2306,10 +2360,12 @@ window.POKE_ALERTS_DB = {
       "category": "Combate TCG Pocket",
       "title": "Promo Reissue Evento de Botín 2026",
       "title_original": "Promo Reissue Drop Event 2026",
-      "summary": "Which Cartas Promo to pick here [ Which Cartas Promo Should You Pick? ]",
-      "rewards": "Misiones: Participa en 1 battle → 1× Cupón de evento | Participa en 3 battles | Participa en 5 battles → 1× Cupón de evento",
+      "summary": "Qué Cartas Promo elegir aquí [¿Qué Cartas Promo deberías elegir?]",
+      "action_guide": "📍 Dónde jugar: Partidas ➔ Individual ➔ Evento de Botín. 🎯 Cómo completarlo: combate contra la CPU subiendo de dificultad hasta Experto. Si pierdes o te rindes no gastas energía de evento (recarga 1 cada 12 h); repite Experto para asegurar Sobres Promo y misiones.",
+      "search_aliases": "Evento de Botín Drop Event Combate Individual Sobres Promo",
+      "rewards": "Misiones: Participa en 1 batalla → 1 cupón de evento | Participa en 3 partidas | Participa en 5 partidas → 1 cupón de evento",
       "highlights": [
-        "Misiones: Participa en 1 battle → 1× Cupón de evento | Participa en 3 battles | Participa en 5 battles → 1× Cupón de evento"
+        "Misiones: Participa en 1 batalla → 1 cupón de evento | Participa en 3 partidas | Participa en 5 partidas → 1 cupón de evento"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -2410,7 +2466,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/promo-reissue-drop-event-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:1-pack-promo-series-vol",
@@ -2422,6 +2478,8 @@ window.POKE_ALERTS_DB = {
       "title": "Sobre Promo C Series Vol. 1",
       "title_original": "Promo Pack C Series Vol. 1",
       "summary": "The Sobre Promo C Series Vol. 1 event gives the Misiones diarias an upgrade, adding Sobre Promo C Series Vol. 1 sobres de cartas to the rewards, along with a Cupón de Canje de Carta Promo (Sobre Promo C Series Vol. 1).",
+      "action_guide": "📍 Dónde entrar: menú Elección Mágica. 🎯 Cómo completarlo: las elecciones extra gratuitas y especiales (Chansey Pick) aparecen y cambian cada ~30 min a 1 hora; entra varias veces al día para sacar las cartas promo sin desperdiciar relojes y canjea cupones en la Tienda.",
+      "search_aliases": "",
       "rewards": "Misiones: Inicia sesión | Abre sobres con energía: 1 sobre de cartas → 1× Sobre Promo | Abre sobres con energía: 2 sobre de cartas | Elección Mágica 1 time → 1× Sobre Promo",
       "highlights": [
         "Misiones: Inicia sesión | Abre sobres con energía: 1 sobre de cartas → 1× Sobre Promo | Abre sobres con energía: 2 sobre de cartas | Elección Mágica 1 time → 1× Sobre Promo"
@@ -2525,7 +2583,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/promo-pack-c-series-vol-1/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:match-ranked-season",
@@ -2536,7 +2594,9 @@ window.POKE_ALERTS_DB = {
       "category": "Evento TCG Pocket",
       "title": "Temporada de Combates Clasificatorios C1 – Guía de Rango y Recompensas",
       "title_original": "Ranked Match Season C1 – Ranking Guide & All Rewards",
-      "summary": "In the Temporada de Combates Clasificatorios of Pokémon TCG Pocket, trainers can battle against players of similar skill levels from around the world, and receive an emblem based on their end-of-season rank for display on their player profile.",
+      "summary": "En la Temporada de Combates Clasificatorios de Pokémon TCG Pocket, los entrenadores pueden enfrentarse a jugadores de niveles de habilidad similares de todo el mundo y recibir un emblema basado en su clasificación al final de la temporada para mostrarlo en su perfil de jugador.",
+      "action_guide": "📍 Dónde jugar: Partidas ➔ Versus ➔ Encuentro de evento. 🎯 Cómo completarlo: entra con un mazo meta recomendado, juega partidas contra otros entrenadores hasta reunir las victorias de cada emblema para desbloquear los emblemas del perfil y Relojes de Arena.",
+      "search_aliases": "",
       "rewards": "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0",
       "highlights": [
         "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0"
@@ -2640,7 +2700,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/ranked-match-season-c1-ranking-guide-all-rewards/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:eevee-vee",
@@ -2651,10 +2711,12 @@ window.POKE_ALERTS_DB = {
       "category": "Misiones TCG Pocket",
       "title": "Vee Vee! Eevee Misiones",
       "title_original": "Vee Vee! Eevee Missions",
-      "summary": "Log-in for 7 days between November 21 and December 15 to collect up to",
-      "rewards": "Misiones: Day 1 → Inicia sesión 1× Sobre Promo | Day 2 → Inicia sesión 1× Sobre Promo | Day 3 → Inicia sesión 1× Sobre Promo | Day 4 → Inicia sesión 2× Sobre Promo",
+      "summary": "Inicia sesión durante 7 días entre el 21 de noviembre y el 15 de diciembre para reclamar recompensas",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
+      "rewards": "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo",
       "highlights": [
-        "Misiones: Day 1 → Inicia sesión 1× Sobre Promo | Day 2 → Inicia sesión 1× Sobre Promo | Day 3 → Inicia sesión 1× Sobre Promo | Day 4 → Inicia sesión 2× Sobre Promo"
+        "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -2755,7 +2817,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/vee-vee-eevee-missions/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:card-holidays-promo-themed-winter",
@@ -2767,9 +2829,11 @@ window.POKE_ALERTS_DB = {
       "title": "Winter Holidays Themed Carta Promo Event",
       "title_original": "Winter Holidays Themed Promo Card Event",
       "summary": "Ring in the Winter Holidays 2026 with this set of special Misiones! Complete them to earn:",
-      "rewards": "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Day 1) → 1 | Inicia sesión (Day 2) → 2× Sobre Promo | Inicia sesión (Day 3) → 12× Relojes de Arena",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
+      "rewards": "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena",
       "highlights": [
-        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Day 1) → 1 | Inicia sesión (Day 2) → 2× Sobre Promo | Inicia sesión (Day 3) → 12× Relojes de Arena"
+        "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -2870,7 +2934,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/winter-holidays-themed-promo-card-event/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:actividades-actualizacion-area-del-en-las-sobre-viernes",
@@ -2882,6 +2946,8 @@ window.POKE_ALERTS_DB = {
       "title": "Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México",
       "title_original": "Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México",
       "summary": "Como parte de nuestra colaboración con las autoridades locales y debido a la coincidencia con otros eventos en la zona, las experiencias del Área Silvestre de Pokémon GO programadas en el Monumento a la Revolución finalizarán antes de lo previsto el viernes 6 de noviembre de 2026. Estas experiencias estarán disponibles en el Monumento a la Revolución el sábado y el domingo, según lo planeado.",
+      "action_guide": "📍 Qué hacer: revisa las fechas y enlaces del anuncio oficial en Pokémon GO; si incluye recompensas por stream o investigaciones temporales, reclámalas en la pestaña Eventos/Hoy antes del cierre.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -2925,7 +2991,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/gowildarea-mexicocity-friday-update"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "tcgp:card-details-expansion-list-set",
@@ -2937,6 +3003,8 @@ window.POKE_ALERTS_DB = {
       "title": "C2 Expansion Card List & Set Details",
       "title_original": "C2 Expansion Card List & Set Details",
       "summary": "Official update in Pokémon TCG Pocket: C2 Expansion Lista de Cartas y Detalles del Set",
+      "action_guide": "📍 Qué implica: novedad o próxima actualización oficial de Pokémon TCG Pocket. Revisa las cartas y fechas clave para planificar tus Relojes de Arena de Sobres.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -2957,7 +3025,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/c2/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2027-campeonato-celebremos-de-el-internacional-latinoamerica-pokemon",
@@ -2969,6 +3037,8 @@ window.POKE_ALERTS_DB = {
       "title": "Celebremos el Campeonato Internacional Pokémon de Latinoamérica 2027!",
       "title_original": "Celebremos el Campeonato Internacional Pokémon de Latinoamérica 2027!",
       "summary": "¿Han oído hablar del Campeonato Internacional Pokémon de Latinoamérica (LAIC)? ¡Es la competencia internacional Pokémon más grande de Latinoamérica y reunirá a Entrenadores de toda Latinoamérica y de otros países alrededor del mundo en el Distrito Anhembi de São Paulo, para competir por un lugar en el Campeonato Mundial Pokémon 2027 en Singapur!",
+      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3020,7 +3090,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/pokemon-go-at-laic2027"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:bonificacion-con-consigan-de-doble-el-pokemonedas",
@@ -3032,6 +3102,8 @@ window.POKE_ALERTS_DB = {
       "title": "Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!",
       "title_original": "Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!",
       "summary": "¡Las ofertas de Black Friday llegan temprano a la Tienda en línea de Pokémon GO !",
+      "action_guide": "📍 Qué hacer: revisa las fechas y enlaces del anuncio oficial en Pokémon GO; si incluye recompensas por stream o investigaciones temporales, reclámalas en la pestaña Eventos/Hoy antes del cierre.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3076,7 +3148,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/black-friday-2026"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:campeonato-consigue-de-del-internacional-pokemon-recompensas-siguelo",
@@ -3088,6 +3160,8 @@ window.POKE_ALERTS_DB = {
       "title": "Síguelo y consigue recompensas del Campeonato Internacional Pokémon de Latinoamérica 2027",
       "title_original": "Síguelo y consigue recompensas del Campeonato Internacional Pokémon de Latinoamérica 2027",
       "summary": "Del viernes 20 de noviembre de 2026 a las 4:00 a. m. PST al domingo 22 de noviembre de 2026 a las 3:00 p. m. PST.",
+      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3139,7 +3213,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/latin-america-international-championships-2026"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:area-durante-experiencia-go-inmersiva-pokemon-una-vive",
@@ -3151,6 +3225,8 @@ window.POKE_ALERTS_DB = {
       "title": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
       "title_original": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
       "summary": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12 p.m. a 8 p.m. La entrada es gratuita, pero se dará prioridad a quienes se hayan registrado. Más información a continuación:",
+      "action_guide": "📍 Qué hacer: revisa las fechas y enlaces del anuncio oficial en Pokémon GO; si incluye recompensas por stream o investigaciones temporales, reclámalas en la pestaña Eventos/Hoy antes del cierre.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3194,7 +3270,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:apunten-calendario-de-dias-el-en-la-los",
@@ -3206,6 +3282,8 @@ window.POKE_ALERTS_DB = {
       "title": "¡Apunten en el calendario los Días de la Comunidad de la próxima temporada!",
       "title_original": "¡Apunten en el calendario los Días de la Comunidad de la próxima temporada!",
       "summary": "¡Nos complace compartir con ustedes las fechas de los Días de la Comunidad de la próxima temporada!",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3251,7 +3329,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/save-the-date-s25"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:bailen-de-durante-el-la-luna-luz",
@@ -3263,6 +3341,8 @@ window.POKE_ALERTS_DB = {
       "title": "¡Bailen a la luz de la Luna durante el Día de supermegaincursiones: Clefable!",
       "title_original": "¡Bailen a la luz de la Luna durante el Día de supermegaincursiones: Clefable!",
       "summary": "¡El Pokémon siguiente hará su debut en las supermegaincursiones de Pokémon GO!",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3315,7 +3395,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/clefable-super-mega-raid-day-2026"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:capturen-con-duolingo-go-idioma-nuevo-pokemon-un",
@@ -3327,6 +3407,8 @@ window.POKE_ALERTS_DB = {
       "title": "¡Capturen un nuevo idioma con Pokémon GO y Duolingo!",
       "title_original": "¡Capturen un nuevo idioma con Pokémon GO y Duolingo!",
       "summary": "¡Pokémon GO y Duolingo unen fuerzas para reunir a Entrenadores de todo el mundo a través de la diversión de descubrir Pokémon y aprender idiomas! Para conmemorar esta colaboración, tanto los Entrenadores de Pokémon GO como los usuarios de Duolingo están invitados a participar actividades especiales en ambas aplicaciones.",
+      "action_guide": "📍 Qué hacer: revisa las fechas y enlaces del anuncio oficial en Pokémon GO; si incluye recompensas por stream o investigaciones temporales, reclámalas en la pestaña Eventos/Hoy antes del cierre.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3372,7 +3454,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/duolingo-2026"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:articulos-avatar-de-el-go-llegan-para-pokemon",
@@ -3384,6 +3466,8 @@ window.POKE_ALERTS_DB = {
       "title": "¡Llegan a Pokémon GO artículos para el avatar de la colección de Crocs inspiradas en Pokémon!",
       "title_original": "¡Llegan a Pokémon GO artículos para el avatar de la colección de Crocs inspiradas en Pokémon!",
       "summary": "¡Prepárense para lucir su estilo! Los artículos para el avatar basados ​​en la colección Crocs inspiradas en Pokémon estarán disponibles para Entrenadores de todo el mundo. A partir de hoy, los Entrenadores pueden canjear códigos de oferta para agregar estos estilos a su avatar dentro del juego.*",
+      "action_guide": "📍 Qué hacer: revisa las fechas y enlaces del anuncio oficial en Pokémon GO; si incluye recompensas por stream o investigaciones temporales, reclámalas en la pestaña Eventos/Hoy antes del cierre.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3429,7 +3513,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/pokemon-crocs-2026"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:de-del-este-fin-inicien-semana-sesion-solo",
@@ -3441,6 +3525,8 @@ window.POKE_ALERTS_DB = {
       "title": "¡Solo este fin de semana! Inicien sesión del 6 al 8 de noviembre para disfrutar de una Investigación Temporal gratuita que incluye a Machamp Gigamax.",
       "title_original": "¡Solo este fin de semana! Inicien sesión del 6 al 8 de noviembre para disfrutar de una Investigación Temporal gratuita que incluye a Machamp Gigamax.",
       "summary": "Desde el viernes 6 de noviembre, a las 10:00, hasta el domingo 8 de noviembre de 2026, a las 23:59 (hora local)",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3494,7 +3580,7 @@ window.POKE_ALERTS_DB = {
         "https://pokemongolive.com/es_MX/news/gowildarea-2026-timed-research"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:and-grookey-hour-scorbunny-sobble-spotlight",
@@ -3505,7 +3591,9 @@ window.POKE_ALERTS_DB = {
       "category": "Hora Destacada",
       "title": "Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado",
       "title_original": "Grookey, Scorbunny, and Sobble Spotlight Hour",
-      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. local time. November 19 : The Pokémon destacados are Grookey, Scorbunny, and Sobble and the special bonus is 2× Caramelos por captura .",
+      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. hora local. November 19 : The Pokémon destacados are Grookey, Scorbunny, and Sobble and the special bonus is 2× Caramelos por captura .",
+      "action_guide": "📍 Cuándo jugar: únicamente de 6:00 p. m. a 7:00 p. m. hora local. 🎯 Cómo aprovecharlo: camina con Incienso (y Trozo Estrella o Huevo Suerte si el bonus es Polvo o PX); al terminar copia el filtro de caja de abajo para detectar rápido Pokémon 100% IV o buenos en PvP.",
+      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
       "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Grookey, Scorbunny, Sobble | Variocolor disponibles: Grookey",
       "highlights": [
         "Bonificaciones: 2× Caramelos por captura",
@@ -3609,7 +3697,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/pokemonspotlighthour2026-11-19/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:eternamax-eternatus-returns",
@@ -3620,10 +3708,12 @@ window.POKE_ALERTS_DB = {
       "category": "Combates Max",
       "title": "Eternamax Eternatus Returns",
       "title_original": "Eternamax Eternatus Returns",
-      "summary": "Eternamax Eternatus returns during Dynamax Trails , taking over the majority of Nodos Energéticos on November 21, 2026, from 11 am to 2 pm local time.",
-      "rewards": "Bonificaciones: Nodos Energéticos will refresh more frequently; Max Particle collection limit increased to 2,400; 8× Partículas Max from Nodos Energéticos",
+      "summary": "Eternamax Eternatus regresa durante las Pruebas Dynamax y se apodera de la mayoría de los Nodos Energéticos el 21 de noviembre de 2026, de 11:00 a 14:00, hora local.",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos",
       "highlights": [
-        "Bonificaciones: Nodos Energéticos will refresh more frequently; Max Particle collection limit increased to 2,400; 8× Partículas Max from Nodos Energéticos"
+        "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -3700,7 +3790,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/eternamax-eternatus-max-battles-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:community-day-pawniard",
@@ -3711,7 +3801,9 @@ window.POKE_ALERTS_DB = {
       "category": "Día de la Comunidad",
       "title": "Pawniard Día de la Comunidad",
       "title_original": "Pawniard Community Day",
-      "summary": "Pawniard, the Sharp Blade Pokémon, will be featured during November Día de la Comunidad! The event takes place on Saturday, November 21, 2026, from 2:00 p.m. to 5:00 p.m. local time .",
+      "summary": "¡Pawniard, el Pokémon Espada Afilada, será el protagonista del Día de la Comunidad de noviembre! El evento tendrá lugar el sábado 21 de noviembre de 2026, de 14:00 a 17:00, hora local.",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
       "rewards": "Bonificaciones: Mayor aparición salvaje; 1/4 distancia para eclosionar Huevos; Incienso de 3 horas | Pokémon destacados: Pawniard | Variocolor disponibles: Pawniard, Bisharp, Kingambit",
       "highlights": [
         "Bonificaciones: Mayor aparición salvaje; 1/4 distancia para eclosionar Huevos; Incienso de 3 horas",
@@ -3815,7 +3907,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/november-communityday2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
       "id": "pogo:during-dynamax-espurr-max-monday",
@@ -3824,9 +3916,11 @@ window.POKE_ALERTS_DB = {
       "kind": "event",
       "kind_label": "Evento",
       "category": "Combates Max",
-      "title": "Dynamax Espurr during Lunes Max",
+      "title": "Espurr Dynamax durante Lunes Max",
       "title_original": "Dynamax Espurr during Max Monday",
-      "summary": "Dynamax Espurr may appear in Combates Max from November 23, 2026 through November 29, 2026 . These Dynamax Pokémon may appear in Combates Max throughout this season. Combates Max will be available from 6:00 a.m. to 9:00 p.m. local time on Mondays. Nodos Energéticos will refresh more frequently. Additional Nodos Energéticos will be active on Mondays compared to the rest of the week.",
+      "summary": "El Espurr Dynamax puede aparecer en los Combates Max desde el 23 de noviembre de 2026 hasta el 29 de noviembre de 2026. Estos Pokémon Dynamax pueden aparecer en los Combates Max durante toda esta temporada. Los Combates Max estarán disponibles de 6:00 a 21:00 hora local los lunes. Los Nodos Energéticos se actualizarán con más frecuencia. Los lunes habrá más Nodos Energéticos activos que el resto de la semana.",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3880,7 +3974,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/max-mondays-2026-11-23/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:and-attack-defense-deoxys-formes-normal-raid-speed",
@@ -3891,7 +3985,9 @@ window.POKE_ALERTS_DB = {
       "category": "Incursiones GO",
       "title": "Deoxys (Normal, Defense, Attack, and Speed Formes) Hora de Incursiones",
       "title_original": "Deoxys (Normal, Defense, Attack, and Speed Formes) Raid Hour",
-      "summary": "A Hora de Incursiones featuring Deoxys (Normal, Defense, Attack, and Speed Formes) is scheduled from 6:00 p.m. to 7:00 p.m. local time. During this hour there will be an increased number of five-star raids.",
+      "summary": "La Hora de Incursiones protagonizada por Deoxys (en sus formas Normal, Defensa, Ataque y Velocidad) está programada de 18:00 a 19:00, hora local. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3945,7 +4041,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/raidhour20261125/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:hour-noibat-spotlight",
@@ -3956,7 +4052,9 @@ window.POKE_ALERTS_DB = {
       "category": "Hora Destacada",
       "title": "Noibat Hora del Pokémon Destacado",
       "title_original": "Noibat Spotlight Hour",
-      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. local time. November 26 : The Pokémon destacados is Noibat and the special bonus is 2× Caramelos por captura .",
+      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. hora local. November 26 : The Pokémon destacados is Noibat and the special bonus is 2× Caramelos por captura .",
+      "action_guide": "📍 Cuándo jugar: únicamente de 6:00 p. m. a 7:00 p. m. hora local. 🎯 Cómo aprovecharlo: camina con Incienso (y Trozo Estrella o Huevo Suerte si el bonus es Polvo o PX); al terminar copia el filtro de caja de abajo para detectar rápido Pokémon 100% IV o buenos en PvP.",
+      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
       "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat",
       "highlights": [
         "Bonificaciones: 2× Caramelos por captura",
@@ -4031,7 +4129,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/pokemonspotlighthour2026-11-26/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:clefable-day-mega-raid-super",
@@ -4042,10 +4140,12 @@ window.POKE_ALERTS_DB = {
       "category": "Incursiones GO",
       "title": "Clefable Super Mega Día de Incursiones",
       "title_original": "Clefable Super Mega Raid Day",
-      "summary": "Mega Clefable makes its Pokémon GO debut during Clefable Super Mega Día de Incursiones on Saturday, November 28, 2026, from 2:00 p.m. to 5:00 p.m. local time!",
-      "rewards": "Bonificaciones: Remote Raid limit increased to 20 from Friday, November 27, at 5:00 p.m. to Saturday, November 28, 2026, at 8:00 p.m. PST; Receive up to six free Raid Passes from spinning Gym Photo Discs; Clefable caught from Super Megaincursiones will have Mega Level 1 unlocked; Increased chance of encountering Shiny Clefable from Super Megaincursiones",
+      "summary": "¡Mega Clefable hace su debut en Pokémon GO durante el Super Mega Día de Incursiones de Clefable el sábado 28 de noviembre de 2026, de 14:00 a 17:00, hora local!",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Bonificaciones: El límite de incursiones remotas se amplía a 20 desde el viernes 27 de noviembre a las 17:00 hasta el sábado 28 de noviembre de 2026 a las 20:00 PST; se pueden conseguir hasta seis pases de incursión gratis al girar los fotodiscos de los gimnasios; los Clefables capturados en las Supermegaincursiones tendrán desbloqueado el nivel de megaevolución 1; aumenta la probabilidad de encontrarse con un Clefable variocolor en las Supermegaincursiones.",
       "highlights": [
-        "Bonificaciones: Remote Raid limit increased to 20 from Friday, November 27, at 5:00 p.m. to Saturday, November 28, 2026, at 8:00 p.m. PST; Receive up to six free Raid Passes from spinning Gym Photo Discs; Clefable caught from Super Megaincursiones will have Mega Level 1 unlocked; Increased chance of encountering Shiny Clefable from Super Megaincursiones"
+        "Bonificaciones: El límite de incursiones remotas se amplía a 20 desde el viernes 27 de noviembre a las 17:00 hasta el sábado 28 de noviembre de 2026 a las 20:00 PST; se pueden conseguir hasta seis pases de incursión gratis al girar los fotodiscos de los gimnasios; los Clefables capturados en las Supermegaincursiones tendrán desbloqueado el nivel de megaevolución 1; aumenta la probabilidad de encontrarse con un Clefable variocolor en las Supermegaincursiones."
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -4122,7 +4222,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/clefable-super-mega-raid-day-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:cryogonal-during-dynamax-max-monday",
@@ -4131,9 +4231,11 @@ window.POKE_ALERTS_DB = {
       "kind": "event",
       "kind_label": "Evento",
       "category": "Combates Max",
-      "title": "Dynamax Cryogonal during Lunes Max",
+      "title": "Cryogonal Dynamax durante Lunes Max",
       "title_original": "Dynamax Cryogonal during Max Monday",
-      "summary": "Dynamax Cryogonal may appear in Combates Max from November 30, 2026 through December 6, 2026 . These Dynamax Pokémon may appear in Combates Max throughout this season. Combates Max will be available from 6:00 a.m. to 9:00 p.m. local time on Mondays. Nodos Energéticos will refresh more frequently. Additional Nodos Energéticos will be active on Mondays compared to the rest of the week.",
+      "summary": "Cryogonal Dynamax puede aparecer en los Combates Max desde el 30 de noviembre de 2026 hasta el 6 de diciembre de 2026. Estos Pokémon Dynamax pueden aparecer en los Combates Max durante toda esta temporada. Los Combates Max estarán disponibles los lunes de 6:00 a 21:00, hora local. Los Nodos Energéticos se actualizarán con más frecuencia. Los lunes habrá más Nodos Energéticos activos que el resto de la semana.",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -4188,7 +4290,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/max-mondays-2026-11-30/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:twilight-wishes",
@@ -4199,11 +4301,13 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Twilight Wishes",
       "title_original": "Twilight Wishes",
-      "summary": "Celebrate Twilight Wishes with Espeon wearing a sun scarf, Umbreon wearing a moon scarf, and Rockruff! Enjoy increased chances to encounter Shiny Staryu and Shiny Elgyem, event-themed raids and Investigación de Campo, and rewards and Bonificaciones from the event GO Pass. Twilight Wishes runs from Tuesday, November 24, at 10:00 a.m. to Monday, November 30, 2026, at 8:00 p.m. local time .",
-      "rewards": "Bonificaciones: Increased chance to encounter Shiny Staryu and Shiny Elgyem; Increased chance to get Pokémon con Suerte in trades; Increased chance to become Amistad con Suerte; 2× Polvo Estelar for catching Pokémon",
+      "summary": "¡Celebra Deseos del Crepúsculo con Espeon llevando una bufanda del sol, Umbreon llevando una bufanda de la luna y Rockruff! Disfruta de mayores probabilidades de encontrarte con Staryu Variocolor y Elgyem Variocolor, incursiones e Investigación de Campo temáticas del evento, así como recompensas y Bonificaciones del Pase GO del evento. Deseos del Crepúsculo se celebrará desde el martes 24 de noviembre a las 10:00 hasta el lunes 30 de noviembre de 2026 a las 20:00, hora local.",
+      "action_guide": "📍 Cómo aprovecharlo: busca los Pokémon destacados / Variocolor en estado salvaje e incursiones, y coordina intercambios diarios con amigos para aprovechar el aumento en Amistad con Suerte e Intercambios con Suerte.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Mayor probabilidad de encontrar Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de conseguir Pokémon con Suerte al intercambiar; Mayor probabilidad de lograr Amistad con Suerte; 2× Polvo Estelar al capturar Pokémon",
       "highlights": [
-        "Bonificaciones: Increased chance to encounter Shiny Staryu and Shiny Elgyem; Increased chance to get Pokémon con Suerte in trades; Increased chance to become Amistad con Suerte; 2× Polvo Estelar for catching Pokémon",
-        "Bonificaciones: Intercambio con Suerte chance (Increased); Amistad con Suerte chance (Increased)",
+        "Bonificaciones: Mayor probabilidad de encontrar Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de conseguir Pokémon con Suerte al intercambiar; Mayor probabilidad de lograr Amistad con Suerte; 2× Polvo Estelar al capturar Pokémon",
+        "Bonificaciones: probabilidad de Intercambio con Suerte (aumentada); probabilidad de Amistad con Suerte (aumentada)",
         "Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon"
       ],
       "promo_code": null,
@@ -4304,7 +4408,7 @@ window.POKE_ALERTS_DB = {
         "https://www.serebii.net/pokemongo/events/twilightwishes.shtml"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
       "id": "pogo:and-attack-defense-deoxys-formes-in-normal-speed",
@@ -4313,9 +4417,11 @@ window.POKE_ALERTS_DB = {
       "kind": "event",
       "kind_label": "Evento",
       "category": "Incursiones GO",
-      "title": "Deoxys (Normal, Defense, Attack, and Speed Formes) in 5-star Raid Battles",
+      "title": "Deoxys (Normal, Defense, Attack, and Speed Formes) in 5-star Raid Partidas",
       "title_original": "Deoxys (Normal, Defense, Attack, and Speed Formes) in 5-star Raid Battles",
-      "summary": "Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), and Deoxys (Speed) will be in five-star raid battles from November 25, 2026 to December 1, 2026. Raid bosses change at 6:00 a.m. local time. Raid Hours There will also be a Hora de Incursiones featuring Deoxys (Normal, Defense, Attack, and Speed Formes) from 6:00 p.m. to 7:00 p.m. local time on November 25.",
+      "summary": "Deoxys (Forma Normal), Deoxys (Forma Defensa), Deoxys (Forma Ataque) y Deoxys (Forma Velocidad) estarán en incursiones de cinco estrellas del 25 de noviembre de 2026 al 1 de diciembre de 2026. Los jefes de incursión cambian a las 6:00 h, hora local. Horas de incursiones También habrá una Hora de Incursiones con Deoxys (formas Normal, Defensa, Ataque y Velocidad) de 18:00 a 19:00, hora local, el 25 de noviembre.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
       "highlights": [
         "Pokémon destacados: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
@@ -4430,7 +4536,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:02:03Z"
+      "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
       "id": "pogo:and-catch-cup-great-league-master-mega",
@@ -4442,6 +4548,8 @@ window.POKE_ALERTS_DB = {
       "title": "Master League and Mega Catch Cup: Great League Edition | Twilight Trails",
       "title_original": "Master League and Mega Catch Cup: Great League Edition | Twilight Trails",
       "summary": "The Liga Master and Mega Copa Captura: Liga Súper Edition will run from November 24, 2026, at 1:00 p.m. to December 1, 2026, at 1:00 p.m. PT. Trainers will also receive 4× Polvo Estelar from win rewards (this does not include end-of-set rewards). Liga Master All Pokémon are eligible. Mega Copa Captura: Liga Súper Edition Pokémon must be at or below 1,500 CP to enter. Mega-Evolved Pokémon are allowed.",
+      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -4523,7 +4631,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/gbl-twilight-trails_master-league_mega-catch-cup-great-league-edition/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:in-mega-metagross-raids",
@@ -4534,7 +4642,9 @@ window.POKE_ALERTS_DB = {
       "category": "Incursiones GO",
       "title": "Mega Metagross in Mega Raids",
       "title_original": "Mega Metagross in Mega Raids",
-      "summary": "Mega Metagross will be en Megaincursiones from November 25, 2026 at 6 am to December 1, 2026 at 10 pm local time. Raid bosses change at 6:00 a.m. local time.",
+      "summary": "MegaMetagross estará en Megaincursiones desde el 25 de noviembre de 2026 a las 6:00 hasta el 1 de diciembre de 2026 a las 22:00, hora local. Los jefes de incursión cambian a las 6:00 h, hora local.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross",
       "highlights": [
         "Pokémon destacados: Mega Metagross",
@@ -4618,7 +4728,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/mega-metagross-in-mega-raids-november-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:02:03Z"
+      "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
       "id": "pogo:battle-day-max",
@@ -4630,6 +4740,8 @@ window.POKE_ALERTS_DB = {
       "title": "Día de Combates Max",
       "title_original": "Max Battle Day",
       "summary": "The Día de Combates Max event will take place on December 5, 2026 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -4675,7 +4787,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/max-battle-day-january-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:community-day-december",
@@ -4687,6 +4799,8 @@ window.POKE_ALERTS_DB = {
       "title": "December Día de la Comunidad",
       "title_original": "December Community Day",
       "summary": "The December Día de la Comunidad event will take place on December 12 and December 13, 2026 from 2 pm to 5 pm each day. Stay tuned for more details.",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -4732,7 +4846,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/december-communityday2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2026-geminids-minior-showers",
@@ -4743,10 +4857,12 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Minior Showers: Geminids 2026",
       "title_original": "Minior Showers: Geminids 2026",
-      "summary": "Explore by starlight during the Geminids meteor shower for a chance to encounter Minior in Pokémon GO! This Minior Shower runs from December 11, 2026 at 5:00 p.m. to December 16, 2026 at 11:59 p.m. local time .",
-      "rewards": "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day",
+      "summary": "¡Explora bajo la luz de las estrellas durante la lluvia de meteoros de las Gemínidas para tener la oportunidad de encontrarte con Minior en Pokémon GO! Esta Lluvia de Minior se celebrará del 11 de diciembre de 2026 a las 17:00 al 16 de diciembre de 2026 a las 23:59, hora local.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día",
       "highlights": [
-        "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day"
+        "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -4814,7 +4930,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/minior-showers-geminids-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:day-raid",
@@ -4826,6 +4942,8 @@ window.POKE_ALERTS_DB = {
       "title": "Día de Incursiones",
       "title_original": "Raid Day",
       "summary": "The Día de Incursiones event will take place on December 19, 2026 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -4873,7 +4991,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/raid-day-february-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:day-hatch",
@@ -4885,6 +5003,8 @@ window.POKE_ALERTS_DB = {
       "title": "Día de Eclosiones",
       "title_original": "Hatch Day",
       "summary": "The Día de Eclosiones event will take place on December 26, 2026 from 11 am to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Cómo completarlo: vacía tus huevos antiguos antes de la hora de inicio, coloca huevos del evento cuando comience la reducción de distancia y usa Trozo Estrella justo antes de abrir una tanda de 9 huevos.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -4929,7 +5049,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/hatch-day-december-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:classic-community-day-january",
@@ -4941,6 +5061,8 @@ window.POKE_ALERTS_DB = {
       "title": "January Día de la Comunidad Classic",
       "title_original": "January Community Day Classic",
       "summary": "The January Día de la Comunidad Classic event will take place on January 2, 2027 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -4986,7 +5108,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/january-communitydayclassic2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4998,6 +5120,8 @@ window.POKE_ALERTS_DB = {
       "title": "Super Mega Día de Incursiones",
       "title_original": "Super Mega Raid Day",
       "summary": "The Super Mega Día de Incursiones event will take place on January 9, 2027 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -5045,7 +5169,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/super-mega-raid-day-january-30-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:community-day-january",
@@ -5057,6 +5181,8 @@ window.POKE_ALERTS_DB = {
       "title": "January Día de la Comunidad",
       "title_original": "January Community Day",
       "summary": "The January Día de la Comunidad event will take place on January 16, 2027 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -5102,7 +5228,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/january-communityday2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -5114,6 +5240,8 @@ window.POKE_ALERTS_DB = {
       "title": "February Día de la Comunidad",
       "title_original": "February Community Day",
       "summary": "The February Día de la Comunidad event will take place on February 6, 2027 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -5159,7 +5287,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/february-communityday2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
@@ -5171,6 +5299,8 @@ window.POKE_ALERTS_DB = {
       "title": "Pokémon GO Tour: Alola - Kaohsiung 2027",
       "title_original": "Pokémon GO Tour: Alola - Kaohsiung 2027",
       "summary": "Pokémon GO Tour returns in febrero de 2027 to celebrate the Alola region from Pokémon Sun, Pokémon Moon, Pokémon Ultra Sun, and Pokémon Ultra Moon. Dates: February 19–21, 2027 Location: Kaohsiung, Taiwan Event hours: To be announced Join fellow Trainers for a real-world Pokémon GO Tour event with special in-person gameplay.",
+      "action_guide": "📍 Cómo completarlo: abre la pestaña Eventos / Hoy dentro de Pokémon GO para ver el progreso de misiones o del Pase, aprovecha las bonificaciones activas (suerte, Polvo, regalos o capturas) y usa el filtro de caja abajo antes del fin del evento.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -5216,7 +5346,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/pokemon-go-tour-alola-kaohsiung-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2027-alola-angeles-go-los-pokemon-tour",
@@ -5228,6 +5358,8 @@ window.POKE_ALERTS_DB = {
       "title": "Pokémon GO Tour: Alola - Los Angeles 2027",
       "title_original": "Pokémon GO Tour: Alola - Los Angeles 2027",
       "summary": "Pokémon GO Tour returns in febrero de 2027 to celebrate the Alola region from Pokémon Sun, Pokémon Moon, Pokémon Ultra Sun, and Pokémon Ultra Moon. Dates: February 19–21, 2027 Location: Los Angeles, California Event hours: To be announced Join fellow Trainers for a real-world Pokémon GO Tour event with special in-person gameplay.",
+      "action_guide": "📍 Cómo completarlo: abre la pestaña Eventos / Hoy dentro de Pokémon GO para ver el progreso de misiones o del Pase, aprovecha las bonificaciones activas (suerte, Polvo, regalos o capturas) y usa el filtro de caja abajo antes del fin del evento.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -5273,7 +5405,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/pokemon-go-tour-alola-los-angeles-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2027-alola-global-go-pokemon-tour",
@@ -5285,6 +5417,8 @@ window.POKE_ALERTS_DB = {
       "title": "Pokémon GO Tour: Alola - Global 2027",
       "title_original": "Pokémon GO Tour: Alola - Global 2027",
       "summary": "Pokémon GO Tour returns in febrero de 2027 to celebrate the Alola region from Pokémon Sun, Pokémon Moon, Pokémon Ultra Sun, and Pokémon Ultra Moon. Dates: February 27–28, 2027 Location: Worldwide Event hours: To be announced Trainers around the world can join the global finale of Pokémon GO Tour 2027.",
+      "action_guide": "📍 Cómo completarlo: abre la pestaña Eventos / Hoy dentro de Pokémon GO para ver el progreso de misiones o del Pase, aprovecha las bonificaciones activas (suerte, Polvo, regalos o capturas) y usa el filtro de caja abajo antes del fin del evento.",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -5330,7 +5464,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/pokemon-go-tour-alola-global-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
@@ -5341,10 +5475,12 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Minior Showers: Eta Aquariids 2027",
       "title_original": "Minior Showers: Eta Aquariids 2027",
-      "summary": "Explore by starlight during the Eta Aquariids meteor shower for a chance to encounter Minior in Pokémon GO! This Minior Shower runs from May 3, 2027 at 5:00 p.m. to May 8, 2027 at 11:59 p.m. local time .",
-      "rewards": "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day",
+      "summary": "¡Explora bajo la luz de las estrellas durante la lluvia de meteoros de las Eta Acuáridas para tener la oportunidad de encontrarte con Minior en Pokémon GO! Esta Lluvia de Minior se celebrará del 3 de mayo de 2027 a las 17:00 al 8 de mayo de 2027 a las 23:59, hora local.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día",
       "highlights": [
-        "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day"
+        "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -5412,7 +5548,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/minior-showers-eta-aquariids-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2027-aquariids-delta-minior-showers-southern",
@@ -5423,10 +5559,12 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Minior Showers: Southern Delta Aquariids 2027",
       "title_original": "Minior Showers: Southern Delta Aquariids 2027",
-      "summary": "Explore by starlight during the Southern Delta Aquariids meteor shower for a chance to encounter Minior in Pokémon GO! This Minior Shower runs from July 28, 2027 at 5:00 p.m. to August 2, 2027 at 11:59 p.m. local time .",
-      "rewards": "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day",
+      "summary": "¡Explora bajo la luz de las estrellas durante la lluvia de meteoros Delta Acuáridas del Sur para tener la oportunidad de encontrarte con Minior en Pokémon GO! Esta lluvia de Minior se celebrará desde el 28 de julio de 2027 a las 17:00 hasta el 2 de agosto de 2027 a las 23:59, hora local.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día",
       "highlights": [
-        "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day"
+        "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -5494,7 +5632,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/minior-showers-southern-delta-aquariids-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
       "id": "pogo:2027-minior-perseids-showers",
@@ -5505,10 +5643,12 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Minior Showers: Perseids 2027",
       "title_original": "Minior Showers: Perseids 2027",
-      "summary": "Explore by starlight during the Perseids meteor shower for a chance to encounter Minior in Pokémon GO! This Minior Shower runs from August 10, 2027 at 5:00 p.m. to August 15, 2027 at 11:59 p.m. local time .",
-      "rewards": "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day",
+      "summary": "¡Explora a la luz de las estrellas durante la lluvia de meteoros de las Perseidas para tener la oportunidad de encontrarte con Minior en Pokémon GO! Esta Lluvia de Minior se celebrará del 10 de agosto de 2027 a las 17:00 al 15 de agosto de 2027 a las 23:59, hora local.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día",
       "highlights": [
-        "Bonificaciones: Increased Polvo Estelar for catching Minior; Increased chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local time each day"
+        "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -5576,7 +5716,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/minior-showers-perseids-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:01:06Z"
+      "last_updated_at": "2026-11-18T18:38:13Z"
     }
   ]
 };

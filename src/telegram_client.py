@@ -27,6 +27,7 @@ from src.deck_qr import (
     build_qr_download_url,
     describe_deck_strategy,
 )
+from src.event_guide import build_event_action_guide
 from src.models import AlertItem
 from src.pogo_intel import PogoTacticalCard
 
@@ -75,13 +76,17 @@ def build_telegram_caption(item: AlertItem) -> str:
         lines.append("")
         lines.append("📋 <b>Toca para copiar:</b>")
         lines.append(f"<code>{html.escape(item.promo_code)}</code>")
+    else:
+        action_txt = build_event_action_guide(item, compact=True)
+        if action_txt:
+            lines.append("")
+            lines.append(f"🧭 <b>Qué hacer:</b> {html.escape(action_txt)}")
 
     if item.guide_bullets:
         lines.append("")
         for bullet in item.guide_bullets[:4]:
             lines.append(_format_bullet(bullet))
-    elif not (item.kind == "code" and item.rewards):
-        # Solo muestra resumen breve cuando no hay viñetas ni premio explícito
+    elif not (item.kind == "code" and item.rewards) and item.kind == "code":
         short_sum = summary if len(summary) <= 140 else summary[:137].rsplit(" ", 1)[0] + "..."
         if short_sum:
             lines.append("")

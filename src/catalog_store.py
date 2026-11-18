@@ -9,6 +9,8 @@ from pathlib import Path
 from typing import Any
 
 from src.code_digest import format_validity_window, parse_date_flex
+from src.event_guide import build_event_action_guide, build_search_aliases
+from src.glossary import apply_post_translation_fixes
 from src.models import AlertItem, build_topic_key, canonical_topic_signature
 from src.scrapers import parse_serebii_end_date, parse_serebii_start_date
 
@@ -236,11 +238,13 @@ def sync_events_catalog(
         new_is_rich = "Consultar detalle" not in rewards_str and (
             not prev_rewards or "Consultar detalle" in prev_rewards or len(rewards_str) > len(prev_rewards)
         )
-        final_rewards = rewards_str if new_is_rich or not prev_rewards else prev_rewards
+        final_rewards = apply_post_translation_fixes(rewards_str if new_is_rich or not prev_rewards else prev_rewards)
         keep_prev_text = bool(prev.get("title")) and not new_is_rich
-        final_title = str(prev["title"]) if keep_prev_text else loc_item.title
+        final_title = apply_post_translation_fixes(str(prev["title"]) if keep_prev_text else loc_item.title)
         final_orig = str(prev.get("title_original") or raw_item.title)
-        final_summary = str(prev.get("summary") or loc_item.summary) if keep_prev_text else (loc_item.summary or str(prev.get("summary") or ""))
+        raw_sum = str(prev.get("summary") or loc_item.summary) if keep_prev_text else (loc_item.summary or str(prev.get("summary") or ""))
+        final_summary = apply_post_translation_fixes(raw_sum)
+        merged_highlights = [apply_post_translation_fixes(h) for h in merged_highlights]
 
         prev_tactical = str(prev.get("tactical_summary") or "")
         if tactical_summary and (
@@ -265,6 +269,20 @@ def sync_events_catalog(
             if raw_tactical_cards is not None and (len(raw_tactical_cards) > 0 or not prev.get("tactical_cards"))
             else list(prev.get("tactical_cards") or [])
         )
+        enriched_loc = loc_item.with_spanish_copy(
+            title=final_title,
+            summary=final_summary,
+            rewards=final_rewards,
+            guide_bullets=tuple(merged_highlights),
+        )
+        action_guide = build_event_action_guide(
+            enriched_loc,
+            extra_ev=extra_ev,
+            decks_count=len(final_rec_decks),
+            pogo_cards_count=len(final_tactical_cards),
+            compact=False,
+        )
+        search_aliases = build_search_aliases(raw_item, title_es=final_title)
 
         new_entry = {
             "id": cid,
@@ -276,6 +294,8 @@ def sync_events_catalog(
             "title": final_title,
             "title_original": final_orig,
             "summary": final_summary,
+            "action_guide": action_guide,
+            "search_aliases": search_aliases,
             "rewards": final_rewards,
             "highlights": merged_highlights,
             "promo_code": raw_item.promo_code,

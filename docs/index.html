@@ -1196,8 +1196,65 @@
       `).join("");
     }
 
+    function normSearch(s) {
+      return String(s ?? "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    }
+
+    function editDistanceMax(a, b, maxDist) {
+      const m = a.length, n = b.length;
+      if (Math.abs(m - n) > maxDist) return maxDist + 1;
+      let prev = Array.from({ length: n + 1 }, (_, j) => j);
+      for (let i = 1; i <= m; i++) {
+        const cur = [i];
+        let rowMin = i;
+        for (let j = 1; j <= n; j++) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          const v = Math.min(cur[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost);
+          cur.push(v);
+          if (v < rowMin) rowMin = v;
+        }
+        if (rowMin > maxDist) return maxDist + 1;
+        prev = cur;
+      }
+      return prev[n];
+    }
+
+    const SEARCH_SYNONYMS = {
+      ilimitadas: ["limitadas", "limitado"],
+      ilimitado: ["limitado", "limitadas"],
+      limitadas: ["ilimitadas", "combates"],
+      combates: ["partidas", "duelos"],
+      partidas: ["combates", "duelos"],
+      baraja: ["mazo", "deck"],
+      mazo: ["baraja", "deck"],
+      incursion: ["raid", "raids", "incursiones"],
+      incursiones: ["raid", "raids"],
+      raid: ["incursion", "incursiones"],
+      magica: ["wonder", "eleccion"],
+      botin: ["drop"],
+      fusion: ["dual", "c1"],
+    };
+
+    function matchesEventSearch(hayNorm, words, queryNorm) {
+      if (hayNorm.includes(queryNorm)) return true;
+      const qTokens = queryNorm.split(/[^a-z0-9]+/).filter(Boolean);
+      if (!qTokens.length) return true;
+      return qTokens.every(qt => {
+        if (hayNorm.includes(qt)) return true;
+        const syns = SEARCH_SYNONYMS[qt] || [];
+        if (syns.some(s => hayNorm.includes(s))) return true;
+        if (qt.length < 4) return false;
+        const maxD = qt.length >= 7 ? 2 : 1;
+        return words.some(w => Math.abs(w.length - qt.length) <= maxD && editDistanceMax(qt, w, maxD) <= maxD);
+      });
+    }
+
     function getFiltered(gameEvents) {
-      const q = document.getElementById("q").value.trim().toLowerCase();
+      const qRaw = document.getElementById("q").value.trim();
+      const qNorm = normSearch(qRaw);
       const fs = document.getElementById("fStatus").value;
       const fch = document.getElementById("fCheck").value;
       const todayCol = getTodayCol();
@@ -1211,15 +1268,16 @@
         if (fch === "pending" && mk.done) return false;
         if (fch === "done" && !mk.done) return false;
         if (fch === "star" && !mk.star) return false;
-        if (q) {
+        if (qNorm) {
           const deckHay = (ev.recommended_decks || []).map(d => `${d.title} ${d.strategy} ${(d.cards || []).join(" ")}`).join(" ");
           const pogoHay = (ev.tactical_cards || []).map(c => `${c.title} ${c.subtitle} ${c.explanation} ${(c.left_rows || []).join(" ")} ${(c.right_rows || []).join(" ")}`).join(" ");
-          const hay = [
-            ev.title, ev.title_original, ev.summary, ev.rewards, ev.category,
-            ev.promo_code, ev.tactical_summary, ev.search_filter,
+          const hayNorm = normSearch([
+            ev.title, ev.title_original, ev.summary, ev.action_guide, ev.search_aliases,
+            ev.rewards, ev.category, ev.promo_code, ev.tactical_summary, ev.search_filter,
             ...(ev.highlights || []), ...(ev.sources || []), deckHay, pogoHay
-          ].join(" ").toLowerCase();
-          if (!hay.includes(q)) return false;
+          ].join(" "));
+          const words = hayNorm.split(/[^a-z0-9]+/).filter(w => w.length >= 3);
+          if (!matchesEventSearch(hayNorm, words, qNorm)) return false;
         }
         return true;
       });
@@ -1408,8 +1466,17 @@
             ${primaryUrl && primaryUrl !== ev.guide_url ? `<a class="btn btn-secondary btn-sm" href="${esc(primaryUrl)}" target="_blank" rel="noopener">🌐 Fuente del evento</a>` : ""}
           </div>
 
+          ${ev.action_guide ? `
+            <section>
+              <h3 class="modal-sec-title" style="color:var(--success);">🧭 ¿Cómo jugar y completar este evento?</h3>
+              <div class="inner-box" style="border-color:var(--success);background:var(--dark);">
+                ${esc(ev.action_guide)}
+              </div>
+            </section>
+          ` : ""}
+
           <section>
-            <h3 class="modal-sec-title">📖 Explicación del evento, premios y misiones</h3>
+            <h3 class="modal-sec-title">📖 Detalles oficiales, premios y misiones</h3>
             <div class="inner-box">
               <div style="margin-bottom:8px;">${esc(explainText)}</div>
               <div><strong>🎁 Premios / Recompensas:</strong> ${esc(ev.rewards)}</div>

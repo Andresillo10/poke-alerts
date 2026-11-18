@@ -1192,7 +1192,21 @@ class CorePipelineTests(unittest.TestCase):
             self.assertIn("selectWeekBand", dash_html)
             self.assertIn("getThisWeekRange", dash_html)
             self.assertIn("matchesCalendarWindow", dash_html)
+            self.assertIn("matchesEventSearch", dash_html)
+            self.assertIn("editDistanceMax", dash_html)
             self.assertIn("renderDecksDrawer", dash_html)
+
+            # Verifica guía accionable y limpieza EN->ES offline para Telegram y Modal
+            from src.event_guide import build_event_action_guide
+            from src.telegram_client import build_telegram_caption
+            g_df = build_event_action_guide(serebii_ev, decks_count=3)
+            self.assertIn("Versus", g_df)
+            self.assertIn("Encuentro de evento", g_df)
+            wp_ev = AlertItem("serebii-tcgp:wp", "tcgp", "event", "Wonder Pick Event", "Bonus picks", "https://sb", "Serebii", language="es")
+            self.assertIn("30 min", build_event_action_guide(wp_ev))
+            cap_df = build_telegram_caption(serebii_ev)
+            self.assertIn("Qué hacer:", cap_df)
+            self.assertEqual(apply_post_translation_fixes("Win 9 battles & Open 2 booster packs"), "Gana 9 partida(s) & Abre 2 sobre(s)")
             self.assertIn("renderPogoDrawer", dash_html)
             self.assertIn("Diseñado y Desarrollado por Andres Camelo 3165364723 — Estado CK10", dash_html)
 
