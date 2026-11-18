@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-18T01:32:59Z",
-  "last_commit_heartbeat_utc": "2026-11-18T01:32:59Z",
+  "last_run_utc": "2026-11-18T09:54:04Z",
+  "last_commit_heartbeat_utc": "2026-11-18T09:54:04Z",
   "seen_uids": {
     "leekduck-promo:ADIDASxPOKEMON": "2026-11-17T18:05:14Z",
     "leekduck-promo:POKEMONGOxCROCSxELECTRIFYING": "2026-11-17T18:05:14Z",
@@ -65,7 +65,15 @@
     "scrapedduck:shadow-tornadus-incarnate-forme-in-shadow-raids-november-16-2026": "2026-11-18T01:32:59Z",
     "scrapedduck:deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026": "2026-11-18T01:32:59Z",
     "scrapedduck:mega-metagross-in-mega-raids-november-2026": "2026-11-18T01:32:59Z",
-    "scrapedduck:max-battle-day-december-2026": "2026-11-18T01:32:59Z"
+    "scrapedduck:max-battle-day-december-2026": "2026-11-18T01:32:59Z",
+    "scrapedduck:december-communityday2026": "2026-11-18T09:54:04Z",
+    "scrapedduck:minior-showers-geminids-2026": "2026-11-18T09:54:04Z",
+    "scrapedduck:raid-day-december-2026": "2026-11-18T09:54:04Z",
+    "scrapedduck:hatch-day-december-2026": "2026-11-18T09:54:04Z",
+    "scrapedduck:duolingo-timed-research-2026": "2026-11-18T09:54:04Z",
+    "scrapedduck:january-communitydayclassic2027": "2026-11-18T09:54:04Z",
+    "scrapedduck:super-mega-raid-day-january-2027": "2026-11-18T09:54:04Z",
+    "scrapedduck:pokemon-x-adidas-2026": "2026-11-18T09:54:04Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -130,7 +138,15 @@
     "pogo:shadow-tornadus-incarnate-forme-in-shadow-raids": "2026-11-18T01:32:59Z",
     "pogo:deoxys-normal-defense-attack-and-speed-formes-in": "2026-11-18T01:32:59Z",
     "pogo:mega-metagross-in-mega-raids": "2026-11-18T01:32:59Z",
-    "pogo:max-battle-day": "2026-11-18T01:32:59Z"
+    "pogo:max-battle-day": "2026-11-18T01:32:59Z",
+    "pogo:december-community-day": "2026-11-18T09:54:04Z",
+    "pogo:minior-showers-geminids-2026": "2026-11-18T09:54:04Z",
+    "pogo:raid-day": "2026-11-18T09:54:04Z",
+    "pogo:hatch-day": "2026-11-18T09:54:04Z",
+    "pogo:pokemon-go-and-duolingo-timed-research": "2026-11-18T09:54:04Z",
+    "pogo:january-community-day-classic": "2026-11-18T09:54:04Z",
+    "pogo:super-mega-raid-day": "2026-11-18T09:54:04Z",
+    "pogo:adidas-pokemon-timed-research": "2026-11-18T09:54:04Z"
   },
   "source_failures": {
     "LeekDuck Promo": 0,
