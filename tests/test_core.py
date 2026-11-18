@@ -386,14 +386,19 @@ class CorePipelineTests(unittest.TestCase):
         <div class="entry-content">
           <p>Players battle to earn special Emblems and Pack Hourglasses in versus mode.</p>
           <table>
+            <tr><td>Mission Type</td><td>Reward</td></tr>
             <tr><th>Mission</th><th>Rewards</th></tr>
             <tr><td>Participate in 3 versus battles</td><td>6 Pack Hourglass</td></tr>
+            <tr><td>Day 1</td><td>Log in</td><td>12 Pack Hourglass</td></tr>
           </table>
         </div>
         """
         p_intro, p_bullets = parse_ptcgpocket_detail_html(ptcg_html)
         self.assertIn("Emblems", p_intro or "")
-        self.assertIn("Participate in 3 versus battles", "\n".join(p_bullets))
+        joined_p = "\n".join(p_bullets)
+        self.assertIn("Participate in 3 versus battles", joined_p)
+        self.assertIn("Day 1 (Log in) → 12 Pack Hourglass", joined_p)
+        self.assertNotIn("Mission Type → Reward", joined_p)
 
         posts = [
             {"link": "https://ptcgpocket.gg/guide-1/", "title": {"rendered": "Event Guide"}},

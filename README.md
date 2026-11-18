@@ -1,57 +1,48 @@
 # `poke-alerts`
 
-Monitor automatizado en GitHub Actions que revisa cada hora fuentes curadas de **Pokémon GO** y **Pokémon TCG Pocket**, traduce novedades al español protegiendo códigos alfanuméricos con glosario oficial, genera una tarjeta PNG ligera (`1080x600`) con Pillow y la envía a **Telegram** con el código copiable en 1 toque y botón de canje directo.
+Monitor autónomo e integral **$0 forever** para **Pokémon GO** y **Pokémon TCG Pocket** en GitHub Actions + `cron-job.org`. Notifica en español directo al grano por **Telegram**, genera tarjetas PNG (`1080×600` y `1080×720`) con mazos QR, counters de Raid, tablas PC 100% IV y ligas GBL, consolida códigos semanales y alimenta automáticamente un **Dashboard web interactivo** desde un JSON histórico unificado.
 
 ---
 
-## Arquitectura del proyecto
+## Arquitectura integral (v6.1)
 
-- **Fuentes activas verificadas (`src/scrapers.py`):**
-  - **Pokémon GO:** `LeekDuck Promo` (códigos vigentes + enlace de canje prellenado), `ScrapedDuck JSON` (eventos curados sin HTML frágil), `Pokémon GO Live es-MX` (noticias oficiales ya en español) y `Serebii GO` (respaldo sin Cloudflare).
-  - **Pokémon TCG Pocket:** `Serebii TCGP` (tabla oficial de eventos sin Cloudflare) y `PTCGPocket.gg` (eventos recientes, con tolerancia a bloqueos Cloudflare). Canje de códigos fijado a `https://gift.pokemontcgpocket.com/`.
-- **Deduplicación y anti-spam (`src/state.py`):**
-  - Deduplica por `uid` y por tema normalizado entre portales (`build_topic_key`) para no enviar la misma noticia/evento desde múltiples sitios.
-  - En la primera ejecución (`initialized: false`), notifica los códigos promocionales vigentes + máximo 1 evento reciente por juego y siembra el histórico antiguo silenciosamente.
-  - Mantiene un *heartbeat* en `state.json` cada 14 días si no hay novedades para evitar que GitHub pause el `cron` tras 60 días sin commits.
-- **Traducción protegida (`src/translator.py`, `src/glossary.py`):**
-  - Protege códigos exactos, URLs y términos oficiales (p. ej. *Wonder Pick* → *Elección Mágica*, *Drop Event* → *Evento de Botín*) antes de traducir al español.
-- **Tarjeta PNG determinista (`src/card_renderer.py`):**
-  - Genera tarjetas PNG de `1080x600` con fuentes multiplataforma (Windows + Ubuntu Linux).
+- **7 fuentes verificadas y aisladas (`src/scrapers.py`, `src/enricher.py`):**
+  - **Pokémon GO:** `LeekDuck Promo` (códigos vigentes + canje), `ScrapedDuck JSON` (`events.json` + `raids.json`), `Pokémon GO Live es-MX` y `Serebii GO`.
+  - **Pokémon TCG Pocket:** `Serebii TCGP`, `PTCGPocket.gg` (eventos/guías) y `PTCGPocket Codes` (descartando tablas expiradas).
+- **Motor Pokémon TCG Pocket (`src/deck_qr.py`, `src/weekly_meta.py`, `src/deck_sheet_renderer.py`):**
+  - Detecta restricciones de evento (*Limited Battles*, *No ex*, *1-3♦*, tipo) o eventos abiertos.
+  - En eventos abiertos inyecta listas campeonas reales de torneos **Limitless**; en eventos restringidos construye 3 barajas mono-energía sin `Rare Candy` inútil y genera **1 tarjeta `1080×720` con 1 QR por mazo** + botón `📥 Descargar QR`.
+- **Motor Pokémon GO (`src/pogo_intel.py`, `src/pogo_sheet_renderer.py`):**
+  - Consume `PvPoke GameMaster` + `Rankings` (`Súper 1500`, `Ultra 2500`, `Ultra Mega`, `Master`) + `ScrapedDuck raids.json` + `pogoapi.net`.
+  - Calcula al entero **PC 100% IV** (Nv.15/20/25/30/35/40/50), debilidades `2.56× / 1.6×`, **Top 6 Counters Raid** (máx. 1 Mega y sin duplicar especie), veredictos **Hundo & PvP** de cadena evolutiva completa y **filtros GO copiables** con 1 toque (`<code>`).
+- **Deduplicación canónica y resúmenes automáticos (`src/models.py`, `src/state.py`, `src/code_digest.py`):**
+  - Deduplica entre portales incluso con variantes como `(C1)` o `Missions` sin repetir avisos existentes.
+  - **Lunes `01:23 AM` COT:** Top 3 Semanal Ranked TCG Pocket (Limitless) + Top 3 Meta Semanal GO (Súper, Ultra+Master, Raids 5*/Mega).
+  - **Lunes `02:23 AM` COT (`>= 02:00`):** Consolidado semanal de códigos activos con vigencia exacta y botones `🎁 Canjear`.
+- **JSON Histórico Unificado y Dashboard (`src/catalog_store.py`, `data/events_history.json`, `docs/index.html`):**
+  - GitHub Actions actualiza automáticamente `data/events_history.json` y `docs/events_data.js` en cada novedad o cambio de vigencia.
+  - Dashboard interactivo con KPIs, filtros por juego/estado/categoría/seguimiento, checklist persistente en `localStorage`, copia en 1 clic y exportación a CSV (Excel) y JSON.
 
 ---
 
-## Prueba local rápida (sin Telegram)
+## Pruebas locales (sin tocar Telegram ni `state.json`)
 
-```bash
+```powershell
 cd "G:\Mi unidad\1.TGC Poket\poke-alerts"
-python -m unittest discover -s tests -v
-python -m src.main --dry-run
+python -B -m unittest discover -s tests -v
+python -B -m src.main --dry-run --preview-sample --weekly-meta
+python -B -m src.main --dry-run --weekly-codes --limit 0
+python -B -m src.main --sync-catalog-only
 ```
 
-Las tarjetas generadas aparecerán en `out/` para inspección visual y no se modificará `state.json`.
-
 ---
 
-## Puesta en marcha (Telegram + GitHub personal)
+## Operación y despliegue (`GitHub Actions` + `cron-job.org`)
 
-### Paso 1 — Crear el Bot y el Canal informativo en Telegram
-> **Recomendación clave:** Usa un **Canal** de Telegram (no un Grupo abierto) si quieres que sea solo informativo para que las personas lean, copien el código en 1 toque y no envíen mensajes que tapen las alertas.
-
-1. En Telegram busca a **`@BotFather`**, envía `/newbot`, elige un nombre y un usuario terminado en `bot` (ej. `poke_alerts_cr_bot`). Guarda el **Token** (`TELEGRAM_BOT_TOKEN`).
-2. Crea un **Canal** nuevo en Telegram (ej. *"Alertas Pokémon GO & TCG Pocket"*).
-3. Entra a *Administradores del canal* → **Añadir administrador** → busca tu bot y dale permiso de **Publicar mensajes**.
-4. Obtén el **`TELEGRAM_CHAT_ID`**:
-   - Si el canal es **público**, su ID es `@tu_canal`.
-   - Si el canal es **privado**, publica un mensaje de prueba, reenvíalo a `@userinfobot` o consulta `https://api.telegram.org/bot<TU_TOKEN>/getUpdates` tras escribir en el canal para copiar el ID numérico (`-100...`).
-
-### Paso 2 — Crear el repositorio personal en GitHub y subir el código
-1. Inicia sesión en GitHub con tu cuenta personal (`cristhian.camelo@gmail.com`) y crea un repositorio vacío llamado `poke-alerts` (**recomendado: Privado**, siempre que mantengas < 2,000 min/mes; 720 corridas de ~40s consumen ~480 min/mes).
-2. En el repositorio en GitHub ve a **Settings → Secrets and variables → Actions → New repository secret** y crea:
-   - `TELEGRAM_BOT_TOKEN`
-   - `TELEGRAM_CHAT_ID`
-3. Desde PowerShell en este equipo, sube el código usando el script aislado (que mantiene `.git` **fuera de Google Drive** y no altera la identidad laboral `analistabi-tech`):
-   ```powershell
-   cd "G:\Mi unidad\1.TGC Poket\poke-alerts"
-   .\scripts\sync_and_push_github.ps1 -RepoUrl "https://github.com/TU_USUARIO/poke-alerts.git"
-   ```
-4. En GitHub ve a **Actions → Poke Alerts Hourly Monitor → Run workflow** para disparar la primera ejecución real.
+- **Workflow:** [.github/workflows/poke_alerts.yml](.github/workflows/poke_alerts.yml) (`cron: "23 * * * *"`, con ejecución manual `workflow_dispatch`: `preview_mode`, `weekly_meta`, `weekly_codes`).
+- **Disparador horario puntual:** `cron-job.org` llama `workflow_dispatch` cada hora en el minuto `:23` COT con Token Clásico permanente (`scope: repo`, `$0`).
+- **Sync seguro desde Google Drive (mantiene `.git` fuera de Drive):**
+  ```powershell
+  .\scripts\sync_and_push_github.ps1 -RepoUrl "https://github.com/Andresillo10/poke-alerts.git"
+  ```
+- **Publicar Dashboard web en GitHub Pages (2 clics, opcional):** en GitHub → **Settings → Pages → Source: Deploy from a branch → `main` / `/docs` → Save**. También funciona abriendo `docs/index.html` directo en cualquier navegador.

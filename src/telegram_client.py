@@ -73,21 +73,24 @@ def build_telegram_caption(item: AlertItem) -> str:
 
     if item.promo_code:
         lines.append("")
-        lines.append("📋 <b>Toca el código para copiarlo:</b>")
+        lines.append("📋 <b>Toca para copiar:</b>")
         lines.append(f"<code>{html.escape(item.promo_code)}</code>")
-
-    lines.append("")
-    lines.append(f"💬 {summary}")
 
     if item.guide_bullets:
         lines.append("")
         for bullet in item.guide_bullets[:4]:
             lines.append(_format_bullet(bullet))
+    elif not (item.kind == "code" and item.rewards):
+        # Solo muestra resumen breve cuando no hay viñetas ni premio explícito
+        short_sum = summary if len(summary) <= 140 else summary[:137].rsplit(" ", 1)[0] + "..."
+        if short_sum:
+            lines.append("")
+            lines.append(f"💬 {short_sum}")
 
     if item.deck_guide_title:
         lines.append(f"📘 <b>Guía / Mazos:</b> {html.escape(item.deck_guide_title)}")
 
-    lines.append(f"📡 <i>Fuente: {html.escape(item.source_name)}</i>")
+    lines.append(f"📡 <i>{html.escape(item.source_name)}</i>")
 
     caption = "\n".join(lines)
     if len(caption) <= TELEGRAM_CAPTION_LIMIT:
@@ -112,15 +115,12 @@ def build_single_deck_caption(
     strategy = describe_deck_strategy(deck)
     lines = [
         f"{header_tag} • <b>{html.escape(deck.title)}</b>",
-        f"📌 <b>Contexto:</b> {html.escape(context_title)}",
-        f"🎯 <b>Ventaja:</b> {html.escape(deck.mission_tag)} | ⚡ <b>Energía:</b> {html.escape(energy)}",
-        "",
+        f"⚡ <b>{html.escape(energy)}</b> • {html.escape(deck.mission_tag)}",
         f"💡 <b>Explicación:</b> {html.escape(strategy)}",
     ]
     if extra_note:
         lines.append(f"📊 <i>{html.escape(extra_note)}</i>")
-    lines.append("")
-    lines.append("📲 <i>Guarda la foto en tu galería o toca «Descargar QR» para importarla directo.</i>")
+    lines.append("📲 <i>Toca «Descargar QR» para importarla directo en Barajas.</i>")
     return "\n".join(lines)[:TELEGRAM_CAPTION_LIMIT]
 
 
@@ -298,11 +298,8 @@ def build_pogo_tactical_caption(
     lines = [
         f"{header_tag} • <b>{html.escape(card.title)}</b>",
         f"🎯 {html.escape(card.subtitle)}",
-        "",
-        f"💡 <b>Estrategia:</b> {html.escape(card.explanation)}",
-        "",
-        f"📋 <b>{html.escape(card.search_label)}</b>",
-        f"<code>{html.escape(card.search_string)}</code>",
+        f"💡 {html.escape(card.explanation)}",
+        f"📋 <b>Filtro GO (toca para copiar):</b> <code>{html.escape(card.search_string)}</code>",
     ]
     return "\n".join(lines)[:TELEGRAM_CAPTION_LIMIT]
 

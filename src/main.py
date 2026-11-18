@@ -456,6 +456,19 @@ def _maybe_run_weekly_codes(
         return False
 
 
+def _format_pogo_tactical_summary(cards: list[PogoTacticalCard]) -> str:
+    """Resume tarjetas tácticas GO sin truncar palabras en mitad de frase."""
+    parts = [f"{c.title} ({c.subtitle})" for c in cards[:2]]
+    out = ""
+    for p in parts:
+        cand = p if not out else f"{out} • {p}"
+        if len(cand) <= 240:
+            out = cand
+        else:
+            break
+    return out or (parts[0][:240].rsplit(" ", 1)[0] if parts else "")
+
+
 def _sync_unified_catalog(
     *,
     session,
@@ -517,10 +530,12 @@ def _sync_unified_catalog(
 
                     pcards = build_pogo_event_cards(enriched, extra_ev, pogo_catalog_holder[0], context_title=loc.title)
                     if pcards:
-                        tactical_summary = " | ".join(f"{c.title}: {c.subtitle}" for c in pcards[:2])[:260]
+                        tactical_summary = _format_pogo_tactical_summary(pcards)
                         search_filter = pcards[0].search_string
                 except Exception:
                     pass
+            elif item.game == "tcgp" and loc.deck_guide_title:
+                tactical_summary = f"Guía / Mazos: {loc.deck_guide_title}"
 
         records_input.append(
             {
@@ -648,9 +663,11 @@ def run_pipeline(args: argparse.Namespace) -> int:
         tact_sum = ""
         srch_flt = ""
         if deck_cards:
-            tact_sum = f"{len(deck_cards)} mazos con QR: " + ", ".join(d.title.split(": ", 1)[-1] for d, _, _ in deck_cards)
+            tact_sum = f"{len(deck_cards)} mazos QR: " + ", ".join(d.title.split(": ", 1)[-1] for d, _, _ in deck_cards)
+        elif localized.deck_guide_title:
+            tact_sum = f"Guía / Mazos: {localized.deck_guide_title}"
         elif pogo_cards:
-            tact_sum = " | ".join(f"{c.title}: {c.subtitle}" for c, _ in pogo_cards[:2])[:260]
+            tact_sum = _format_pogo_tactical_summary([c for c, _ in pogo_cards])
             srch_flt = pogo_cards[0][0].search_string
         processed_records[item.uid] = {
             "raw": enriched,

@@ -174,6 +174,8 @@
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <button class="btn active-tab" id="viewCards">🗂️ Tarjetas</button>
         <button class="btn" id="viewTable">📊 Tabla detallada</button>
+        <button class="btn" id="btnOnlyActive">⚡ Activos hoy</button>
+        <button class="btn" id="btnResetFilters">🔄 Ver todo</button>
         <span id="countLabel" class="pill">—</span>
       </div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -430,6 +432,20 @@
     }
 
     document.getElementById("btnRefresh").onclick = fetchLiveCatalog;
+    document.getElementById("btnOnlyActive").onclick = () => {
+      document.getElementById("q").value = "";
+      document.getElementById("fGame").value = "";
+      document.getElementById("fStatus").value = "activo";
+      document.getElementById("fCategory").value = "";
+      document.getElementById("fCheck").value = "";
+      render();
+    };
+    document.getElementById("btnResetFilters").onclick = () => {
+      for (const id of ["q", "fGame", "fStatus", "fCategory", "fCheck"]) {
+        document.getElementById(id).value = "";
+      }
+      render();
+    };
     for (const id of ["q", "fGame", "fStatus", "fCategory", "fCheck"]) {
       document.getElementById(id).addEventListener("input", render);
       document.getElementById(id).addEventListener("change", render);

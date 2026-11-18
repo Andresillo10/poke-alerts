@@ -108,8 +108,30 @@ def parse_serebii_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
     return intro, bullets
 
 
+def _infer_reward_from_cell(cell) -> str:
+    """Extrae recompensa textual o desde nombre de icono en tablas de PTCGPocket.gg."""
+    txt = cell.get_text(" ", strip=True)
+    if txt:
+        return txt
+    img = cell.find("img")
+    if not img:
+        return ""
+    hint = f"{img.get('alt', '')} {img.get('src', '')}".lower()
+    if "shopticket" in hint:
+        return "Cupón de evento"
+    if "hourglass" in hint:
+        return "Relojes de Arena"
+    if "shinedust" in hint or "stardust" in hint:
+        return "Polvo Iris"
+    if "promo" in hint or "pack" in hint:
+        return "Sobre Promo"
+    if "wonder" in hint:
+        return "Reloj Mágico"
+    return ""
+
+
 def parse_ptcgpocket_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
-    """Extrae descripción y misiones clave de un artículo de PTCGPocket.gg."""
+    """Extrae descripción y misiones clave reales de un artículo de PTCGPocket.gg."""
     soup = BeautifulSoup(detail_html, "html.parser")
     content = soup.select_one(".entry-content") or soup
 
@@ -120,11 +142,43 @@ def parse_ptcgpocket_detail_html(detail_html: str) -> tuple[str | None, list[str
             intro = _clean_text(txt, limit=230)
             break
 
+    skip_heads = {"mission", "missions", "mission type", "wins", "task", "day", "rank", "type", "tier", "card", "event"}
+    skip_tails = {"reward", "rewards", "mission type", "win points", "quantity", "amount", "progress"}
     missions: list[str] = []
-    for tr in content.select("table tr"):
-        cols = [c.get_text(" ", strip=True) for c in tr.find_all(["th", "td"], recursive=False)]
-        if len(cols) >= 2 and cols[0].lower() not in {"mission", "wins", "task"} and cols[0] and cols[1]:
-            missions.append(f"{cols[0]} → {cols[1]}")
+    for tbl in content.select("table"):
+        trs = tbl.find_all("tr")
+        if not trs:
+            continue
+        hdr_cells = [c.get_text(" ", strip=True).lower() for c in trs[0].find_all(["th", "td"], recursive=False)]
+        prog_idx = hdr_cells.index("progress") if "progress" in hdr_cells else -1
+        amt_idx = hdr_cells.index("amount") if "amount" in hdr_cells else -1
+        for tr in trs:
+            raw_cells = tr.find_all(["th", "td"], recursive=False)
+            if len(raw_cells) < 2:
+                continue
+            texts = [c.get_text(" ", strip=True) for c in raw_cells]
+            if not texts[0] or texts[0].lower() in skip_heads or texts[-1].lower() in skip_tails:
+                continue
+            reward_parts: list[str] = []
+            task_txt = texts[0]
+            # Tablas estilo Day | Mission Type | Reward (donde la última columna no es Progress)
+            if len(raw_cells) == 3 and prog_idx == -1 and texts[1] and texts[2] and not texts[2].isdigit():
+                task_txt = f"{texts[0]} ({texts[1]})"
+                reward_txt = _infer_reward_from_cell(raw_cells[2])
+                if reward_txt:
+                    reward_parts.append(reward_txt)
+            else:
+                for idx_c, cell in enumerate(raw_cells[1:], 1):
+                    if idx_c == prog_idx or re.fullmatch(r"\d+/\d+", cell.get_text(strip=True)):
+                        continue
+                    val = _infer_reward_from_cell(cell)
+                    if val:
+                        if idx_c == amt_idx and val.isdigit() and reward_parts:
+                            reward_parts[-1] = f"{val}× {reward_parts[-1]}"
+                        else:
+                            reward_parts.append(val)
+            reward_str = " ".join(reward_parts).strip()
+            missions.append(f"{task_txt} → {reward_str}" if reward_str else task_txt)
 
     bullets: list[str] = []
     if missions:
