@@ -247,13 +247,13 @@ def should_send_weekly_meta(
     now_utc: datetime | None = None,
     force: bool = False,
 ) -> tuple[bool, str]:
-    """Determina si corresponde enviar el Top 3 semanal de torneos (lunes >=08:00 COT)."""
+    """Determina si corresponde enviar el Top 3 semanal de torneos (lunes >=01:00 COT)."""
     ref = now_utc or datetime.now(timezone.utc)
     col_dt = ref.astimezone(timezone(timedelta(hours=-5)))
     iso_year, iso_week, _ = col_dt.isocalendar()
     week_key = f"{iso_year}-W{iso_week:02d}"
     if force:
         return True, week_key
-    is_monday_morning = col_dt.weekday() == 0 and col_dt.hour >= 8
+    is_monday_morning = col_dt.weekday() == 0 and col_dt.hour >= 1
     already_sent = state.get("last_weekly_meta_week") == week_key
     return (is_monday_morning and not already_sent), week_key

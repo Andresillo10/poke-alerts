@@ -674,11 +674,11 @@ class CorePipelineTests(unittest.TestCase):
         self.assertEqual(len(picked_cards), 20)
         self.assertTrue(any(c.name == "Pikachu" for c in picked_cards))
 
-        # Ventana de envío solo los lunes >=08:00 COT y máximo 1 vez por semana ISO
+        # Ventana de envío solo los lunes >=01:00 COT y máximo 1 vez por semana ISO
         st = default_state()
         wed_dt = datetime(2026, 11, 18, 13, 23, tzinfo=timezone.utc)
-        mon_early = datetime(2026, 11, 23, 12, 23, tzinfo=timezone.utc)  # 07:23 COT
-        mon_ok = datetime(2026, 11, 23, 13, 23, tzinfo=timezone.utc)     # 08:23 COT
+        mon_early = datetime(2026, 11, 23, 5, 23, tzinfo=timezone.utc)   # 00:23 COT
+        mon_ok = datetime(2026, 11, 23, 6, 23, tzinfo=timezone.utc)      # 01:23 COT
         self.assertFalse(should_send_weekly_meta(st, now_utc=wed_dt)[0])
         self.assertFalse(should_send_weekly_meta(st, now_utc=mon_early)[0])
         fire_mon, wkey = should_send_weekly_meta(st, now_utc=mon_ok)
