@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import re
+import time
 
 import requests
 
@@ -13,6 +14,16 @@ from src.models import AlertItem
 
 LOGGER = logging.getLogger(__name__)
 _URL_RE = re.compile(r"https?://\S+")
+_TOKEN_OR_DATE_RE = re.compile(r"\bXPK\d+X\b|\d{4}-\d{2}-\d{2}|\bal\b|[0-9:×★*/.,;:|→\-+]+")
+_TRANSLATE_CACHE: dict[str, str] = {}
+_REMOTE_COOLDOWN = False
+
+
+def _needs_remote_translation(masked: str) -> bool:
+    """Evita llamadas remotas innecesarias cuando solo hay fechas, números o tokens ya traducidos."""
+    leftover = _TOKEN_OR_DATE_RE.sub(" ", masked)
+    alpha_words = re.findall(r"[A-Za-z]{3,}", leftover)
+    return len(alpha_words) >= 2
 
 
 def _call_translate_api(text: str) -> str:
@@ -67,11 +78,20 @@ def translate_en_to_es(
         working,
     )
 
-    if enable_remote:
-        try:
-            working = _call_translate_api(working)
-        except Exception as exc:
-            LOGGER.warning("No se pudo traducir remotamente (%s); usando glosario local.", exc)
+    if enable_remote and not _REMOTE_COOLDOWN and _needs_remote_translation(working):
+        cached = _TRANSLATE_CACHE.get(working)
+        if cached is not None:
+            working = cached
+        else:
+            try:
+                translated = _call_translate_api(working)
+                _TRANSLATE_CACHE[working] = translated
+                working = translated
+                time.sleep(0.15)
+            except Exception as exc:
+                if "429" in str(exc):
+                    globals()["_REMOTE_COOLDOWN"] = True
+                LOGGER.warning("No se pudo traducir remotamente (%s); usando glosario local.", exc)
 
     for token, value in replacements.items():
         working = working.replace(token, value)

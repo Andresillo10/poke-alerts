@@ -206,7 +206,11 @@ def sync_events_catalog(
         first_seen = prev.get("first_seen_at") or now_iso
         merged_sources = list(dict.fromkeys([*(prev.get("sources") or []), raw_item.source_name]))
         merged_urls = list(dict.fromkeys([*(prev.get("urls") or []), raw_item.url]))
-        merged_highlights = list(dict.fromkeys([*(prev.get("highlights") or []), *(highlights or [])]))[:6]
+        raw_hl = list(dict.fromkeys([*(prev.get("highlights") or []), *(highlights or [])]))
+        merged_highlights = [
+            h for h in raw_hl
+            if not any(bad in h.lower() for bad in ("mission type → reward", "day → mission type", "wins → reward"))
+        ][:6]
 
         final_start = prev.get("start_date") or start_iso
         final_end = prev.get("end_date") or end_iso

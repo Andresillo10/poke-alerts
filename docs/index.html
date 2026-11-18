@@ -496,6 +496,82 @@
       font-style: italic;
       color: var(--subtle);
     }
+
+    /* Tarjetas clicables + Ventana Modal Detalle CK10 */
+    .ev-card.clickable-card { cursor: pointer; transition: transform 0.14s ease, box-shadow 0.14s ease; }
+    .ev-card.clickable-card:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35); }
+    .clickable-row { cursor: pointer; }
+    .clickable-row:hover td { background: rgba(137, 180, 250, 0.08); }
+    .ev-teaser {
+      background: var(--dark);
+      border: 1px dashed var(--blue);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    body.modal-open { overflow: hidden; }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(17, 17, 27, 0.86);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-card {
+      width: 100%;
+      max-width: 880px;
+      max-height: 92vh;
+      background: var(--surface);
+      border: 2px solid var(--blue);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.6);
+    }
+    .modal-head {
+      background: var(--card);
+      border-bottom: 1px solid var(--blue);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .modal-body {
+      padding: 16px 18px 20px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .modal-sec-title {
+      margin: 0 0 8px 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--warning);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 600px) {
+      .modal-backdrop { padding: 6px; }
+      .modal-card { max-height: 95vh; border-radius: 12px; }
+      .modal-head, .modal-body { padding: 12px 13px; }
+    }
   </style>
 </head>
 <body>
@@ -617,6 +693,11 @@
     </footer>
   </div>
 
+  <!-- Ventana Modal Detalle del Evento (Explicación + Posibles Mazos / Táctica GO) -->
+  <div id="evModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if (event.target === this) closeEventModal()">
+    <div class="modal-card" id="evModalContent"></div>
+  </div>
+
   <!-- Respaldo local automático + recarga viva desde GitHub -->
   <script src="./events_data.js"></script>
   <script>
@@ -630,6 +711,7 @@
     let selectedGame = "all"; // Inicia mostrando todo (GO + TCG Pocket)
     let selectedSlice = "all"; // "all" | "kind:event" | "kind:code" | "kind:news" | "cat:<Nombre>"
     let viewMode = "cards";
+    let activeModalId = null;
 
     function loadMarks() {
       try {
@@ -647,6 +729,7 @@
       if (!marks[id].done && !marks[id].star) delete marks[id];
       saveMarks();
       render();
+      if (activeModalId === id) renderModalContent(id);
     }
 
     function esc(s) {
@@ -927,87 +1010,191 @@
       document.body.removeChild(ta);
     }
 
-    function renderDecksDrawer(ev) {
+    function renderDecksDrawer(ev, inlineOpen = false) {
       const decks = ev.recommended_decks || [];
       if (!decks.length) return "";
+      const inner = `
+        <div class="deck-stack">
+          ${decks.map(d => {
+            const copyIdx = registerCopy(`${d.title} (${d.energy_label || "Mixta"})\n` + (d.cards || []).join("\n"));
+            return `
+              <div class="deck-item">
+                <div class="deck-head">
+                  <div class="deck-name">${esc(d.title)}</div>
+                  <div style="display:flex;gap:5px;flex-wrap:wrap;">
+                    <span class="pill warn">⚡ ${esc(d.energy_label || "Mixta")}</span>
+                    ${d.champion_url ? `<span class="pill live">🏆 Campeón</span>` : ""}
+                  </div>
+                </div>
+                ${d.mission_tag ? `<div class="ev-orig" style="color:var(--info);">🎯 ${esc(d.mission_tag)}</div>` : ""}
+                <div class="deck-strategy">${esc(d.strategy)}</div>
+                <div class="deck-cards">${(d.cards || []).map(c => `<span>• ${esc(c)}</span>`).join("")}</div>
+                <div class="deck-actions">
+                  ${d.qr_url ? `<a class="btn btn-primary btn-sm" href="${esc(d.qr_url)}" target="_blank" rel="noopener">📥 Descargar QR</a>` : ""}
+                  <button class="btn btn-sm" onclick="copyTxt(this, ${copyIdx})">📋 Copiar 20 cartas</button>
+                  ${d.champion_url ? `<a class="btn btn-secondary btn-sm" href="${esc(d.champion_url)}" target="_blank" rel="noopener">🏆 Ver torneo</a>` : ""}
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+      if (inlineOpen) {
+        return `
+          <section>
+            <h3 class="modal-sec-title">🃏 Estos son los ${decks.length} posibles mazos recomendados para este evento</h3>
+            ${inner}
+          </section>
+        `;
+      }
       return `
         <details class="tactical-drawer">
           <summary>
             <span>🃏 Ver ${decks.length} mazos recomendados + QR</span>
             <span class="pill blue">Abrir ▾</span>
           </summary>
-          <div class="deck-stack">
-            ${decks.map(d => {
-              const copyIdx = registerCopy(`${d.title} (${d.energy_label || "Mixta"})\n` + (d.cards || []).join("\n"));
-              return `
-                <div class="deck-item">
-                  <div class="deck-head">
-                    <div class="deck-name">${esc(d.title)}</div>
-                    <div style="display:flex;gap:5px;flex-wrap:wrap;">
-                      <span class="pill warn">⚡ ${esc(d.energy_label || "Mixta")}</span>
-                      ${d.champion_url ? `<span class="pill live">🏆 Campeón</span>` : ""}
-                    </div>
-                  </div>
-                  ${d.mission_tag ? `<div class="ev-orig" style="color:var(--info);">🎯 ${esc(d.mission_tag)}</div>` : ""}
-                  <div class="deck-strategy">${esc(d.strategy)}</div>
-                  <div class="deck-cards">${(d.cards || []).map(c => `<span>• ${esc(c)}</span>`).join("")}</div>
-                  <div class="deck-actions">
-                    ${d.qr_url ? `<a class="btn btn-primary btn-sm" href="${esc(d.qr_url)}" target="_blank" rel="noopener">📥 Descargar QR</a>` : ""}
-                    <button class="btn btn-sm" onclick="copyTxt(this, ${copyIdx})">📋 Copiar 20 cartas</button>
-                    ${d.champion_url ? `<a class="btn btn-secondary btn-sm" href="${esc(d.champion_url)}" target="_blank" rel="noopener">🏆 Ver torneo</a>` : ""}
-                  </div>
-                </div>
-              `;
-            }).join("")}
-          </div>
+          ${inner}
         </details>
       `;
     }
 
-    function renderPogoDrawer(ev) {
+    function renderPogoDrawer(ev, inlineOpen = false) {
       const cards = ev.tactical_cards || [];
       if (!cards.length) return "";
       const summaryNames = cards.map(c => c.title).slice(0, 2).join(" • ");
+      const inner = `
+        <div class="deck-stack">
+          ${cards.map(c => {
+            const filterIdx = c.search_string ? registerCopy(c.search_string) : -1;
+            return `
+              <div class="deck-item">
+                <div class="deck-head">
+                  <div>
+                    <div class="deck-name">${esc(c.title)}</div>
+                    <div class="ev-orig">${esc(c.subtitle)}</div>
+                  </div>
+                  <span class="pill warn">${esc(c.badge_label || "GO")}</span>
+                </div>
+                <div class="pogo-cols">
+                  <div class="pogo-col">
+                    <h4>${esc(c.left_heading)}</h4>
+                    <ul>${(c.left_rows || []).map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+                  </div>
+                  <div class="pogo-col">
+                    <h4>${esc(c.right_heading)}</h4>
+                    <ul>${(c.right_rows || []).map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+                  </div>
+                </div>
+                ${c.explanation ? `<div class="deck-strategy">${esc(c.explanation)}</div>` : ""}
+                <div class="deck-actions">
+                  ${filterIdx >= 0 ? `<button class="btn btn-sm" onclick="copyTxt(this, ${filterIdx})">📋 Copiar filtro: ${esc(c.search_string)}</button>` : ""}
+                  ${c.info_url ? `<a class="btn btn-secondary btn-sm" href="${esc(c.info_url)}" target="_blank" rel="noopener">${esc(c.info_label || "Ver detalles ↗")}</a>` : ""}
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+      if (inlineOpen) {
+        return `
+          <section>
+            <h3 class="modal-sec-title">⚔️ Guía táctica Pokémon GO: PC 100%, Counters y Estrategia</h3>
+            ${inner}
+          </section>
+        `;
+      }
       return `
         <details class="tactical-drawer">
           <summary>
             <span>⚔️ Ver guía táctica GO, PC 100% y estrategia (${esc(summaryNames)})</span>
             <span class="pill blue">Abrir ▾</span>
           </summary>
-          <div class="deck-stack">
-            ${cards.map(c => {
-              const filterIdx = c.search_string ? registerCopy(c.search_string) : -1;
-              return `
-                <div class="deck-item">
-                  <div class="deck-head">
-                    <div>
-                      <div class="deck-name">${esc(c.title)}</div>
-                      <div class="ev-orig">${esc(c.subtitle)}</div>
-                    </div>
-                    <span class="pill warn">${esc(c.badge_label || "GO")}</span>
-                  </div>
-                  <div class="pogo-cols">
-                    <div class="pogo-col">
-                      <h4>${esc(c.left_heading)}</h4>
-                      <ul>${(c.left_rows || []).map(r => `<li>${esc(r)}</li>`).join("")}</ul>
-                    </div>
-                    <div class="pogo-col">
-                      <h4>${esc(c.right_heading)}</h4>
-                      <ul>${(c.right_rows || []).map(r => `<li>${esc(r)}</li>`).join("")}</ul>
-                    </div>
-                  </div>
-                  ${c.explanation ? `<div class="deck-strategy">${esc(c.explanation)}</div>` : ""}
-                  <div class="deck-actions">
-                    ${filterIdx >= 0 ? `<button class="btn btn-sm" onclick="copyTxt(this, ${filterIdx})">📋 Copiar filtro: ${esc(c.search_string)}</button>` : ""}
-                    ${c.info_url ? `<a class="btn btn-secondary btn-sm" href="${esc(c.info_url)}" target="_blank" rel="noopener">${esc(c.info_label || "Ver detalles ↗")}</a>` : ""}
-                  </div>
-                </div>
-              `;
-            }).join("")}
-          </div>
+          ${inner}
         </details>
       `;
     }
+
+    function openEventModal(id, evt) {
+      if (evt && evt.target && evt.target.closest("button, a, input, label, details, summary")) return;
+      renderModalContent(id);
+    }
+
+    function renderModalContent(id) {
+      const ev = getEventsWithStatus().find(x => x.id === id);
+      if (!ev) return;
+      activeModalId = id;
+      const safeEid = encodeURIComponent(id);
+      const mk = getMark(ev.id);
+      const primaryUrl = ev.redeem_url || (ev.urls || [])[0] || "";
+      const copyValue = ev.promo_code || ev.search_filter || "";
+      const copyValIdx = copyValue ? registerCopy(copyValue) : -1;
+      const origHtml = (ev.title_original && ev.title_original.toLowerCase() !== (ev.title || "").toLowerCase())
+        ? `<div class="ev-orig">Original: ${esc(ev.title_original)}</div>` : "";
+      const hlHtml = (ev.highlights && ev.highlights.length)
+        ? `<ul class="hl-list">${ev.highlights.map(h => `<li>${esc(h)}</li>`).join("")}</ul>` : "";
+      const explainText = ev.summary && ev.summary.toLowerCase() !== (ev.title || "").toLowerCase()
+        ? ev.summary
+        : (ev.rewards || "Consulta el resumen y las fuentes oficiales del evento.");
+
+      document.getElementById("evModalContent").innerHTML = `
+        <div class="modal-head">
+          <div style="min-width:0;">
+            <div class="badges" style="margin-bottom:8px;">
+              <span class="pill blue">${esc(ev.game_label)}</span>
+              ${statusPill(ev._status)}
+              <span class="pill info">${esc(categoryIcon(ev.category))} ${esc(ev.category)}</span>
+            </div>
+            <h2 id="modalTitle" style="margin:0;font-size:clamp(17px,2.4vw,22px);color:var(--text);line-height:1.25;">${esc(ev.title)}</h2>
+            ${origHtml}
+            <div class="ev-dates" style="margin-top:6px;">⏱️ ${esc(ev.date_range_label)}</div>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="closeEventModal()" aria-label="Cerrar ventana">✕ Cerrar</button>
+        </div>
+        <div class="modal-body">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark(decodeURIComponent('${safeEid}'),'done')">${mk.done ? "✅ Completado" : "☐ Marcar completado"}</button>
+            <button class="mark-btn ${mk.star ? "star-on" : ""}" onclick="toggleMark(decodeURIComponent('${safeEid}'),'star')">${mk.star ? "★ Prioritario" : "☆ Marcar prioritario"}</button>
+            ${ev.redeem_url ? `<a class="btn btn-primary btn-sm" href="${esc(ev.redeem_url)}" target="_blank" rel="noopener">🎁 Canjear código</a>` : ""}
+            ${ev.guide_url && ev.guide_url !== ev.redeem_url ? `<a class="btn btn-secondary btn-sm" href="${esc(ev.guide_url)}" target="_blank" rel="noopener">📘 Ver guía oficial</a>` : ""}
+            ${primaryUrl && primaryUrl !== ev.guide_url ? `<a class="btn btn-secondary btn-sm" href="${esc(primaryUrl)}" target="_blank" rel="noopener">🌐 Fuente del evento</a>` : ""}
+          </div>
+
+          <section>
+            <h3 class="modal-sec-title">📖 Explicación del evento, premios y misiones</h3>
+            <div class="inner-box">
+              <div style="margin-bottom:8px;">${esc(explainText)}</div>
+              <div><strong>🎁 Premios / Recompensas:</strong> ${esc(ev.rewards)}</div>
+              ${hlHtml}
+            </div>
+          </section>
+
+          ${copyValIdx >= 0 ? `
+            <div class="console-code">
+              <span>${ev.promo_code ? "🎁 Código de regalo:" : "🔍 Filtro Pokémon GO:"} ${esc(copyValue)}</span>
+              <button class="mark-btn" onclick="copyTxt(this, ${copyValIdx})">📋 Copiar</button>
+            </div>
+          ` : ""}
+
+          ${renderDecksDrawer(ev, true)}
+          ${renderPogoDrawer(ev, true)}
+
+          <div class="ev-sources" style="border-top:1px solid var(--selection);padding-top:10px;">
+            🌐 Fuentes detectadas: ${esc((ev.sources || []).join(" + "))}
+          </div>
+        </div>
+      `;
+      document.getElementById("evModal").classList.add("open");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeEventModal() {
+      activeModalId = null;
+      document.getElementById("evModal").classList.remove("open");
+      document.body.classList.remove("modal-open");
+    }
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && activeModalId) closeEventModal();
+    });
 
     function render() {
       copyRegistry = [];
@@ -1059,11 +1246,12 @@
                 ${list.map(ev => {
                   const mk = getMark(ev.id);
                   const link = ev.redeem_url || ev.guide_url || (ev.urls || [])[0] || "";
+                  const safeEid = encodeURIComponent(ev.id);
                   return `
-                    <tr>
+                    <tr class="clickable-row" onclick="openEventModal(decodeURIComponent('${safeEid}'), event)">
                       <td style="white-space:nowrap;">
-                        <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark('${esc(ev.id)}','done')">${mk.done ? "✅" : "☐"}</button>
-                        <button class="mark-btn ${mk.star ? "star-on" : ""}" onclick="toggleMark('${esc(ev.id)}','star')">${mk.star ? "★" : "☆"}</button>
+                        <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark(decodeURIComponent('${safeEid}'),'done')">${mk.done ? "✅" : "☐"}</button>
+                        <button class="mark-btn ${mk.star ? "star-on" : ""}" onclick="toggleMark(decodeURIComponent('${safeEid}'),'star')">${mk.star ? "★" : "☆"}</button>
                       </td>
                       ${selectedGame === "all" ? `<td><span class="pill blue">${esc(ev.game_label)}</span></td>` : ""}
                       <td>${statusPill(ev._status)}</td>
@@ -1077,7 +1265,8 @@
                         ${ev.tactical_summary ? `<div class="ev-orig" style="color:var(--blue);margin-top:4px;">⚡ ${esc(ev.tactical_summary)}</div>` : ""}
                       </td>
                       <td style="white-space:nowrap;">
-                        ${link ? `<a class="btn btn-secondary btn-sm" href="${esc(link)}" target="_blank" rel="noopener">Abrir ↗</a>` : ""}
+                        <button class="btn btn-secondary btn-sm" onclick="openEventModal(decodeURIComponent('${safeEid}'))">📖 Detalle</button>
+                        ${link ? `<a class="btn btn-sm" href="${esc(link)}" target="_blank" rel="noopener">↗</a>` : ""}
                       </td>
                     </tr>
                   `;
@@ -1091,16 +1280,19 @@
 
       root.innerHTML = `<div class="cards-grid">${list.map(ev => {
         const mk = getMark(ev.id);
-        const primaryUrl = ev.redeem_url || (ev.urls || [])[0] || "";
+        const safeEid = encodeURIComponent(ev.id);
         const copyValue = ev.promo_code || ev.search_filter || "";
         const copyValIdx = copyValue ? registerCopy(copyValue) : -1;
         const origHtml = (ev.title_original && ev.title_original.toLowerCase() !== (ev.title || "").toLowerCase())
           ? `<div class="ev-orig">Original: ${esc(ev.title_original)}</div>` : "";
-        const hlHtml = (ev.highlights && ev.highlights.length)
-          ? `<ul class="hl-list">${ev.highlights.slice(0, 4).map(h => `<li>${esc(h)}</li>`).join("")}</ul>` : "";
+        const deckCnt = (ev.recommended_decks || []).length;
+        const pogoCnt = (ev.tactical_cards || []).length;
+        const teaserTxt = deckCnt
+          ? `🃏 ${deckCnt} posibles mazos + QR listos`
+          : (pogoCnt ? `⚔️ ${pogoCnt} guía(s) GO, PC 100% y estrategia` : "📖 Ver explicación completa");
 
         return `
-          <article class="ev-card ${mk.done ? "done" : ""} ${mk.star ? "starred" : ""}">
+          <article class="ev-card clickable-card ${mk.done ? "done" : ""} ${mk.star ? "starred" : ""}" onclick="openEventModal(decodeURIComponent('${safeEid}'), event)">
             <div class="ev-top">
               <div class="badges">
                 ${selectedGame === "all" ? `<span class="pill blue">${esc(ev.game_label)}</span>` : ""}
@@ -1108,8 +1300,8 @@
                 <span class="pill info">${esc(categoryIcon(ev.category))} ${esc(ev.category)}</span>
               </div>
               <div class="marks">
-                <button class="mark-btn ${mk.star ? "star-on" : ""}" onclick="toggleMark('${esc(ev.id)}','star')">${mk.star ? "★" : "☆"}</button>
-                <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark('${esc(ev.id)}','done')">${mk.done ? "✅ Hecho" : "☐ Marcar"}</button>
+                <button class="mark-btn ${mk.star ? "star-on" : ""}" onclick="toggleMark(decodeURIComponent('${safeEid}'),'star')">${mk.star ? "★" : "☆"}</button>
+                <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark(decodeURIComponent('${safeEid}'),'done')">${mk.done ? "✅ Hecho" : "☐ Marcar"}</button>
               </div>
             </div>
             <div>
@@ -1119,11 +1311,12 @@
             <div class="ev-dates">⏱️ ${esc(ev.date_range_label)}</div>
             <div class="inner-box">
               <strong>🎁 Premios / Detalles:</strong> ${esc(ev.rewards)}
-              ${hlHtml}
               ${ev.tactical_summary ? `<div style="margin-top:6px;color:var(--blue);">⚡ <b>Resumen:</b> ${esc(ev.tactical_summary)}</div>` : ""}
             </div>
-            ${renderDecksDrawer(ev)}
-            ${renderPogoDrawer(ev)}
+            <div class="ev-teaser">
+              <span>${esc(teaserTxt)}</span>
+              <span class="pill blue">Clic para abrir ▸</span>
+            </div>
             ${copyValIdx >= 0 ? `
               <div class="console-code">
                 <span>${ev.promo_code ? "🎁 Código:" : "🔍 Filtro GO:"} ${esc(copyValue)}</span>
@@ -1134,7 +1327,7 @@
               <span class="ev-sources">🌐 ${esc((ev.sources || []).join(" + "))}</span>
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
                 ${ev.redeem_url ? `<a class="btn btn-primary btn-sm" href="${esc(ev.redeem_url)}" target="_blank" rel="noopener">🎁 Canjear</a>` : ""}
-                ${ev.guide_url && ev.guide_url !== ev.redeem_url ? `<a class="btn btn-secondary btn-sm" href="${esc(ev.guide_url)}" target="_blank" rel="noopener">📘 Ver guía</a>` : (primaryUrl ? `<a class="btn btn-secondary btn-sm" href="${esc(primaryUrl)}" target="_blank" rel="noopener">🔍 Ver más</a>` : "")}
+                <button class="btn btn-secondary btn-sm" onclick="openEventModal(decodeURIComponent('${safeEid}'))">📖 Ver detalle</button>
               </div>
             </div>
           </article>

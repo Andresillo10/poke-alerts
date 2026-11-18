@@ -1186,6 +1186,8 @@ class CorePipelineTests(unittest.TestCase):
             # Verifica que el dashboard CK10 inicia en "all", es adaptable y renderiza mazos/counters
             dash_html = Path(__file__).resolve().parents[1].joinpath("docs", "index.html").read_text(encoding="utf-8")
             self.assertIn('let selectedGame = "all"', dash_html)
+            self.assertIn("openEventModal", dash_html)
+            self.assertIn("evModal", dash_html)
             self.assertIn("renderDecksDrawer", dash_html)
             self.assertIn("renderPogoDrawer", dash_html)
             self.assertIn("Diseñado y Desarrollado por Andres Camelo 3165364723 — Estado CK10", dash_html)

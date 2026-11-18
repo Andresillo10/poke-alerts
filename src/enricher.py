@@ -27,12 +27,16 @@ def _unescape_clean(text: str) -> str:
     )
 
 
-def _clean_text(text: str, limit: int = 210) -> str:
-    """Normaliza espacios y acorta texto de detalle manteniendo frases enteras cuando cabe."""
+def _clean_text(text: str, limit: int = 420) -> str:
+    """Normaliza espacios y conserva la explicación completa sin cortar frases en mitad."""
     clean = _unescape_clean(text)
     if len(clean) <= limit:
         return clean
-    return clean[: limit - 3].rsplit(" ", 1)[0].rstrip(" ,;:") + "..."
+    clipped = clean[: limit - 3]
+    last_dot = max(clipped.rfind(". "), clipped.rfind("! "), clipped.rfind("? "))
+    if last_dot >= limit // 2:
+        return clean[: last_dot + 1].strip()
+    return clipped.rsplit(" ", 1)[0].rstrip(" ,;:") + "..."
 
 
 def _dedupe_keep_order(values: list[str], limit: int) -> list[str]:
@@ -58,7 +62,7 @@ def parse_serebii_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
     for p in root.find_all("p"):
         txt = " ".join(p.get_text(" ", strip=True).split())
         if len(txt) >= 35 and "serebii.net" not in txt.lower():
-            intro = _clean_text(txt, limit=230)
+            intro = _clean_text(txt, limit=420)
             break
 
     bonuses: list[str] = []
@@ -149,7 +153,7 @@ def parse_ptcgpocket_detail_html(detail_html: str) -> tuple[str | None, list[str
     for p in content.find_all("p"):
         txt = " ".join(p.get_text(" ", strip=True).split())
         if len(txt) >= 40 and "everything you need to know" not in txt.lower():
-            intro = _clean_text(txt, limit=230)
+            intro = _clean_text(txt, limit=420)
             break
 
     skip_heads = {"mission", "missions", "mission type", "wins", "task", "day", "rank", "type", "tier", "card", "event"}
@@ -316,7 +320,7 @@ def _enrich_scrapedduck(
             soup = BeautifulSoup(raw_html, "html.parser")
             desc = soup.select_one(".event-description")
             if desc:
-                intro = _clean_text(desc.get_text(" ", strip=True), limit=230)
+                intro = _clean_text(desc.get_text(" ", strip=True), limit=420)
 
             dom_bonuses = _dedupe_keep_order(
                 [_unescape_clean(el.get_text(" ", strip=True)) for el in soup.select(".bonus-list .bonus-text")],
@@ -347,7 +351,7 @@ def _enrich_pogolive_es(session: requests.Session, item: AlertItem) -> str | Non
             if any(bad in lower for bad in ("cookie", "privacidad", "niantic", "©")):
                 continue
             if (len(txt) >= 45 and "entrenadores" in lower) or len(txt) >= 65:
-                return _clean_text(txt, limit=230)
+                return _clean_text(txt, limit=420)
     except Exception as exc:
         LOGGER.warning("[Enricher POGO Live] Sin detalle extra (%s).", exc)
     return None
