@@ -265,8 +265,9 @@ def build_weekly_ranked_report(
     now_utc: datetime | None = None,
     days: int = 7,
     max_tournaments: int = 12,
+    top_n: int = 3,
 ) -> WeeklyMetaReport | None:
-    """Agrega los torneos Estándar semanales y genera el Top 3 con códigos QR."""
+    """Agrega los torneos Estándar semanales y genera el Top N con códigos QR."""
     ref_utc = now_utc or datetime.now(timezone.utc)
     tournaments = fetch_weekly_standard_tournaments(session, now_utc=ref_utc, days=days, min_players=24)
     if len(tournaments) < 3:
@@ -314,7 +315,7 @@ def build_weekly_ranked_report(
     unrestricted = EventDeckConstraints(is_combat_event=True)
 
     for rank_idx, (slug, st) in enumerate(ordered_pool):
-        if len(top_items) == 3:
+        if len(top_items) == top_n:
             break
         candidates = sorted(st["candidates"], key=lambda x: x[0])[:4]
         chosen_deck: BuiltDeck | None = None
@@ -384,3 +385,42 @@ def build_weekly_ranked_report(
         analyzed_entries=total_entries,
         archetypes=tuple(top_items),
     )
+
+
+def pick_champion_deck_for_slot(
+    report: WeeklyMetaReport | None,
+    constraints: EventDeckConstraints,
+    *,
+    slot_prefix: str,
+    require_no_ex: bool = False,
+    require_mega: bool = False,
+    min_set: tuple[str, int] | None = None,
+    exclude_names: set[str] | None = None,
+) -> tuple[BuiltDeck, str] | None:
+    """Busca un mazo campeón real de Limitless compatible con las reglas del evento."""
+    if not report:
+        return None
+    excluded = exclude_names or set()
+    for arch in report.archetypes:
+        if arch.name in excluded:
+            continue
+        ok, _ = validate_deck(
+            list(arch.deck.cards),
+            list(arch.deck.energy_types),
+            constraints,
+            require_no_ex=require_no_ex,
+            require_diamond=constraints.diamond_only,
+            require_mega=require_mega,
+            min_set=min_set,
+        )
+        if not ok:
+            continue
+        deck = BuiltDeck(
+            title=f"{slot_prefix}: {arch.name}",
+            mission_tag=f"Campeón torneo ({arch.win_rate:.1f}% WR • {arch.best_note.split(' en ')[0]})",
+            cards=arch.deck.cards,
+            energy_types=arch.deck.energy_types,
+            qr_payload=arch.deck.qr_payload,
+        )
+        return deck, arch.best_url
+    return None

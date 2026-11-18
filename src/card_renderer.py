@@ -300,19 +300,19 @@ def render_alert_card(item: AlertItem, output_path: Path) -> Path:
             font=label_font,
             fill=theme["highlight"],
         )
-        inner_y = box_top + 50
+        inner_y = box_top + 48
         max_summary_lines = 2 if item.guide_bullets else 3
         for line in _wrap_text(draw, item.summary, body_font, content_w - 48, max_lines=max_summary_lines):
             draw.text((PADDING + 24, inner_y), line, font=body_font, fill=theme["text"])
-            inner_y += 32
+            inner_y += 30
 
         if item.guide_bullets:
             inner_y += 4
-            for bullet in item.guide_bullets[:2]:
+            for bullet in item.guide_bullets[:3]:
                 for line in _wrap_text(draw, f"• {bullet}", footer_font, content_w - 48, max_lines=1):
-                    if inner_y <= box_bottom - 26:
+                    if inner_y <= box_bottom - 22:
                         draw.text((PADDING + 24, inner_y), line, font=footer_font, fill=theme["muted"])
-                        inner_y += 28
+                        inner_y += 26
         else:
             tip = (
                 "Consejo: toca 'Ver detalles' abajo para revisar misiones y horarios."

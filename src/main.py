@@ -39,7 +39,11 @@ from src.telegram_client import (
     send_telegram_text,
 )
 from src.translator import localize_alert_item
-from src.weekly_meta import build_weekly_ranked_report
+from src.weekly_meta import (
+    WeeklyMetaReport,
+    build_weekly_ranked_report,
+    pick_champion_deck_for_slot,
+)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -124,8 +128,9 @@ def _maybe_build_tcgp_decks(
     localized_item: AlertItem,
     out_dir: Path,
     catalog_holder: list[CardCatalog],
-) -> list[tuple[BuiltDeck, Path]]:
-    """Genera 3 tarjetas individuales (1 QR cada una) para eventos de combate TCGP."""
+    weekly_cache: list[WeeklyMetaReport | None],
+) -> list[tuple[BuiltDeck, Path, str | None]]:
+    """Genera 3 tarjetas individuales (1 QR cada una), usando campeones reales si aplica."""
     if raw_item.game != "tcgp" or raw_item.kind != "event":
         return []
     try:
@@ -157,17 +162,51 @@ def _maybe_build_tcgp_decks(
         if not decks:
             return []
 
+        champ_urls: list[str | None] = [None] * len(decks)
+        # En eventos abiertos (sin set único), mejora las opciones libres con campeones reales
+        if constraints.allowed_sets is None:
+            if not weekly_cache:
+                try:
+                    weekly_cache.append(build_weekly_ranked_report(session, catalog, max_tournaments=6, top_n=6))
+                except Exception as exc:
+                    LOGGER.warning("[DeckCards] Sin datos Limitless para evento abierto: %s", exc)
+                    weekly_cache.append(None)
+            report = weekly_cache[0]
+            used_champs: set[str] = set()
+            slot_rules = [
+                (0, "Opción 1", constraints.no_ex, False, None, not (constraints.no_ex or constraints.diamond_only or constraints.required_types)),
+                (1, "Opción 2", False, constraints.require_mega_ex, None, True),
+                (2, "Opción 3", False, False, constraints.min_set_cards, not constraints.min_set_cards),
+            ]
+            for idx_s, prefix, req_no_ex, req_mega, req_min_set, allow_champ in slot_rules:
+                if not allow_champ or idx_s >= len(decks):
+                    continue
+                picked = pick_champion_deck_for_slot(
+                    report,
+                    constraints,
+                    slot_prefix=prefix,
+                    require_no_ex=req_no_ex,
+                    require_mega=req_mega,
+                    min_set=req_min_set,
+                    exclude_names=used_champs,
+                )
+                if picked:
+                    champ_deck, champ_url = picked
+                    decks[idx_s] = champ_deck
+                    champ_urls[idx_s] = champ_url
+                    used_champs.add(champ_deck.title.split(": ", 1)[-1])
+
         base_name = _safe_filename(localized_item.uid).removesuffix(".png")
-        built: list[tuple[BuiltDeck, Path]] = []
-        for idx, deck in enumerate(decks, 1):
+        built: list[tuple[BuiltDeck, Path, str | None]] = []
+        for idx, (deck, c_url) in enumerate(zip(decks, champ_urls), 1):
             card_path = out_dir / f"deck_{base_name}_{idx}.png"
             render_single_deck_card(
                 deck,
                 card_path,
                 context_label=f"Evento: {localized_item.title}",
-                badge_label="EVENTO TCG POCKET",
+                badge_label="CAMPEÓN TORNEO + EVENTO" if c_url else "EVENTO TCG POCKET",
             )
-            built.append((deck, card_path))
+            built.append((deck, card_path, c_url))
         return built
     except Exception as exc:
         LOGGER.warning("[DeckCards] No se pudieron generar QR individuales para %s: %s", raw_item.uid, exc)
@@ -297,6 +336,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
     sent_items: list[AlertItem] = []
     events_cache: dict[str, dict] = {}
     catalog_holder: list[CardCatalog] = []
+    weekly_cache: list[WeeklyMetaReport | None] = []
 
     for idx, item in enumerate(to_notify):
         enriched = enrich_alert_item(session, item, events_cache=events_cache)
@@ -310,16 +350,17 @@ def run_pipeline(args: argparse.Namespace) -> int:
             localized_item=localized,
             out_dir=args.out_dir,
             catalog_holder=catalog_holder,
+            weekly_cache=weekly_cache,
         )
-        info_label = "🃏 Guía de mazos" if localized.deck_guide_url else "🔎 Ver evento"
-        info_url = localized.deck_guide_url or localized.url
+        default_label = "🃏 Guía de mazos" if localized.deck_guide_url else "🔎 Ver evento"
+        default_url = localized.deck_guide_url or localized.url
 
         if args.dry_run:
             LOGGER.info("[DRY-RUN] PNG: %s", png_path)
             print("--- CAPTION TELEGRAM ---")
             print(build_telegram_caption(localized))
             print("------------------------")
-            for idx_d, (deck, card_path) in enumerate(deck_cards, 1):
+            for idx_d, (deck, card_path, _) in enumerate(deck_cards, 1):
                 LOGGER.info("[DRY-RUN] DECK CARD %d QR: %s", idx_d, card_path)
                 print(f"--- CAPTION DECK #{idx_d} ---")
                 print(
@@ -339,7 +380,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
             item=localized,
             image_path=png_path,
         )
-        for deck, card_path in deck_cards:
+        for deck, card_path, champ_url in deck_cards:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
             send_telegram_single_deck(
                 bot_token=bot_token,
@@ -348,8 +389,8 @@ def run_pipeline(args: argparse.Namespace) -> int:
                 card_path=card_path,
                 context_title=localized.title,
                 header_tag="🃏 <b>Mazo recomendado</b>",
-                info_label=info_label,
-                info_url=info_url,
+                info_label="🏆 Ver lista campeón" if champ_url else default_label,
+                info_url=champ_url or default_url,
             )
         sent_items.append(item)
         if idx < len(to_notify) - 1:

@@ -25,6 +25,7 @@ from src.deck_qr import (
 from src.deck_sheet_renderer import render_single_deck_card
 from src.enricher import (
     parse_ptcgpocket_detail_html,
+    parse_scrapedduck_extra,
     parse_serebii_detail_html,
     select_best_deck_post,
 )
@@ -57,6 +58,7 @@ from src.weekly_meta import (
     parse_completed_tournaments_html,
     parse_limitless_decklist_cards,
     parse_tournament_standings_rows,
+    pick_champion_deck_for_slot,
 )
 
 
@@ -600,7 +602,9 @@ class CorePipelineTests(unittest.TestCase):
         dl_url = build_qr_download_url(decks[0].qr_payload)
         self.assertIn("download=1", dl_url)
         self.assertIn("api.qrserver.com", dl_url)
-        self.assertIn("Pokémon /", describe_deck_strategy(decks[0]))
+        strat = describe_deck_strategy(decks[0])
+        self.assertIn("Atacante clave", strat)
+        self.assertIn("Motor:", strat)
 
         caption = build_single_deck_caption(
             decks[0],
@@ -786,6 +790,122 @@ class CorePipelineTests(unittest.TestCase):
             st_dup, [ev_reordered], now_utc=datetime(2026, 11, 18, 16, 0, tzinfo=timezone.utc)
         )
         self.assertEqual(pending_dup, [])
+
+    def test_v4_pro_enrichment_glossary_and_tournament_matching(self) -> None:
+        ev_cday = {
+            "extraData": {
+                "communityday": {
+                    "spawns": [{"name": "Pawniard"}],
+                    "bonuses": [{"text": "1/4 Egg Hatch Distance"}, {"text": "2× Catch Candy"}],
+                    "shinies": [{"name": "Pawniard"}, {"name": "Bisharp"}],
+                },
+                "raidbattles": {
+                    "bosses": [{"name": "Darkrai"}],
+                    "shinies": [{"name": "Darkrai"}],
+                },
+            }
+        }
+        bullets = parse_scrapedduck_extra(ev_cday)
+        joined = "\n".join(bullets)
+        self.assertIn("Pawniard", joined)
+        self.assertIn("Shinies available: Pawniard, Bisharp, Darkrai", joined)
+
+        es_title = translate_en_to_es("Best Decks & Meta Tier List", enable_remote=False)
+        self.assertIn("Mejores Mazos", es_title)
+        self.assertIn("Tier List del Meta", es_title)
+
+        catalog = self._sample_catalog()
+        constraints = EventDeckConstraints(is_combat_event=True, require_mega_ex=True, no_ex=False)
+        noex_deck = build_three_decks_for_event(
+            event_title="Drop Event No Ex",
+            event_summary="",
+            constraints=EventDeckConstraints(is_combat_event=True, no_ex=True),
+            catalog=catalog,
+        )[0]
+        mega_deck = build_three_decks_for_event(
+            event_title="Drop Event Mega",
+            event_summary="",
+            constraints=constraints,
+            catalog=catalog,
+        )[1]
+        report = WeeklyMetaReport(
+            window_label="11/11 – 18/11/2026",
+            analyzed_tournaments=5,
+            analyzed_entries=200,
+            archetypes=(
+                WeeklyArchetypeSummary("noex", "NoEx Fast", 20, 40, 20, 66.0, "#1/64p en Cup", noex_deck, "https://l/1"),
+                WeeklyArchetypeSummary("mega", "Mega Boss", 30, 80, 30, 72.7, "#1/128p en Open", mega_deck, "https://l/2"),
+            ),
+        )
+        picked_mega = pick_champion_deck_for_slot(
+            report,
+            constraints,
+            slot_prefix="Opción 2",
+            require_mega=True,
+        )
+        self.assertIsNotNone(picked_mega)
+        self.assertIn("Mega Boss", picked_mega[0].title)
+        self.assertEqual(picked_mega[1], "https://l/2")
+
+        picked_no_ex = pick_champion_deck_for_slot(
+            report,
+            EventDeckConstraints(is_combat_event=True, no_ex=True),
+            slot_prefix="Opción 1",
+            require_no_ex=True,
+        )
+        self.assertIsNotNone(picked_no_ex)
+        self.assertIn("NoEx Fast", picked_no_ex[0].title)
+
+    def test_v4_open_drop_event_constraints_and_no_useless_rare_candy(self) -> None:
+        expansions = [
+            {"id": "a1", "name": "Genetic Apex"},
+            {"id": "pa", "name": "Promo-A"},
+            {"id": "c1", "name": "Dual Fusion"},
+        ]
+        raw_cards = [
+            {"id": "c1-001", "name": "Eevee", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "C", "damage": "20"}}, "deckBuilderNr": 2001},
+            {"id": "c1-010", "name": "Pikachu", "set_code": "c1", "type": "Pokémon", "subtype": "Lightning", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "L", "damage": "30"}}, "deckBuilderNr": 2002},
+            {"id": "c1-011", "name": "Raichu", "set_code": "c1", "type": "Pokémon", "subtype": "Lightning", "stage": "Stage 1", "evolves_from": "Pikachu", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 110, "retreat": 1, "attacks": {"1": {"cost": "LL", "damage": "120"}}, "deckBuilderNr": 2003},
+            {"id": "c1-030", "name": "Inkay", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "P", "damage": "20"}}, "deckBuilderNr": 2004},
+            {"id": "c1-031", "name": "Malamar", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Stage 1", "evolves_from": "Inkay", "rarity": "◊◊", "ex": False, "mega": False, "health": 100, "retreat": 1, "attacks": {"1": {"cost": "PP", "damage": "90"}}, "deckBuilderNr": 2005},
+            {"id": "c1-040", "name": "Froakie", "set_code": "c1", "type": "Pokémon", "subtype": "Water", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "W", "damage": "20"}}, "deckBuilderNr": 2006},
+            {"id": "c1-041", "name": "Starmie", "set_code": "c1", "type": "Pokémon", "subtype": "Water", "stage": "Stage 1", "evolves_from": "Froakie", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 100, "retreat": 1, "attacks": {"1": {"cost": "WW", "damage": "90"}}, "deckBuilderNr": 2007},
+            {"id": "a1-200", "name": "Rare Candy", "set_code": "a1", "type": "Trainer", "subtype": "Item", "rarity": "◊◊", "card_text": "Choose 1 Basic Pokémon to evolve into Stage 2.", "deckBuilderNr": 1_000_200},
+            {"id": "pa-005", "name": "Poké Ball", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "deckBuilderNr": 1_000_005},
+            {"id": "pa-007", "name": "Professor's Research", "set_code": "pa", "type": "Trainer", "subtype": "Supporter", "rarity": "Promo", "deckBuilderNr": 1_000_007},
+            {"id": "c1-090", "name": "Cyrus", "set_code": "c1", "type": "Trainer", "subtype": "Supporter", "rarity": "◊◊", "deckBuilderNr": 1_000_090},
+            {"id": "c1-091", "name": "Sabrina", "set_code": "c1", "type": "Trainer", "subtype": "Supporter", "rarity": "◊◊", "deckBuilderNr": 1_000_091},
+            {"id": "c1-092", "name": "Potion", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "deckBuilderNr": 1_000_092},
+            {"id": "c1-093", "name": "X Speed", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "deckBuilderNr": 1_000_093},
+            {"id": "c1-094", "name": "Giant Cape", "set_code": "c1", "type": "Trainer", "subtype": "Pokemon Tool", "rarity": "◊◊", "deckBuilderNr": 1_000_094},
+            {"id": "c1-095", "name": "Rocky Helmet", "set_code": "c1", "type": "Trainer", "subtype": "Pokemon Tool", "rarity": "◊◊", "deckBuilderNr": 1_000_095},
+        ]
+        cat = CardCatalog(raw_cards, expansions)
+
+        serebii_open_html = """
+        <main>
+          <h1>Mega Garchomp ex Drop Event</h1>
+          <p>Win solo Step-Up Battles to earn Promo-B packs. Previous cards like Genetic Apex Mewtwo were featured. Archive: Limited Battle.</p>
+        </main>
+        """
+        c_open = extract_event_constraints(
+            title="Mega Garchomp ex Drop Event",
+            detail_html=serebii_open_html,
+            catalog=cat,
+        )
+        self.assertTrue(c_open.is_combat_event)
+        self.assertIsNone(c_open.allowed_sets)
+        self.assertEqual(c_open.target_expansion, "c1")
+
+        decks = build_three_decks_for_event(
+            event_title="Mega Garchomp ex Drop Event",
+            event_summary="Evento abierto",
+            constraints=c_open,
+            catalog=cat,
+        )
+        self.assertEqual(len(decks), 3)
+        for deck in decks:
+            self.assertNotIn("Rare Candy", [c.name for c in deck.cards])
 
 
 if __name__ == "__main__":

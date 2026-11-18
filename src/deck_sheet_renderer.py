@@ -79,7 +79,7 @@ def render_single_deck_card(
     if tag_lines:
         draw.text((44, 108), tag_lines[0], font=sub_font, fill="#FDE047")
 
-    # Columna izquierda: listado completo de las 20 cartas
+    # Columna izquierda: listado completo separado por Pokémon y Entrenadores
     draw.rounded_rectangle(
         (24, 156, 610, 668),
         radius=20,
@@ -87,19 +87,32 @@ def render_single_deck_card(
         outline="#4C1D95",
         width=2,
     )
-    draw.text((44, 174), "LISTA COMPLETA DEL MAZO (20 CARTAS)", font=section_font, fill="#A5B4FC")
-
     entries = _ordered_card_entries(deck)
-    step = 25 if len(entries) <= 17 else 21
-    ly = 208
-    for is_pk, line in entries:
-        if ly > 642:
-            break
-        trimmed = _wrap_text(draw, line, card_font, 536, 1)
-        if trimmed:
-            color = "#F8FAFC" if is_pk else "#BAE6FD"
-            draw.text((44, ly), trimmed[0], font=card_font, fill=color)
-            ly += step
+    pk_entries = [line for is_pk, line in entries if is_pk]
+    tr_entries = [line for is_pk, line in entries if not is_pk]
+    pk_total = sum(1 for c in deck.cards if c.is_pokemon)
+    tr_total = sum(1 for c in deck.cards if not c.is_pokemon)
+
+    step = 24 if len(entries) <= 15 else 20
+    ly = 172
+
+    def _draw_section(heading: str, rows: list[str], heading_color: str, row_color: str) -> None:
+        nonlocal ly
+        if not rows or ly > 635:
+            return
+        draw.text((44, ly), heading, font=section_font, fill=heading_color)
+        ly += 24
+        for line in rows:
+            if ly > 646:
+                break
+            trimmed = _wrap_text(draw, line, card_font, 536, 1)
+            if trimmed:
+                draw.text((44, ly), trimmed[0], font=card_font, fill=row_color)
+                ly += step
+        ly += 8
+
+    _draw_section(f"POKÉMON ({pk_total})", pk_entries, "#FACC15", "#F8FAFC")
+    _draw_section(f"ENTRENADORES ({tr_total})", tr_entries, "#38BDF8", "#BAE6FD")
 
     # Columna derecha: un único QR grande y escaneable desde galería
     draw.rounded_rectangle(

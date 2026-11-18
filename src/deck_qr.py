@@ -43,8 +43,12 @@ CORE_TRAINER_PRIORITY = [
     "Professor's Research",
     "Poké Ball",
     "Serena's Choice",
+    "Copycat",
     "Cyrus",
     "Sabrina",
+    "Mars",
+    "Red",
+    "Leaf",
     "Giant Cape",
     "Rocky Helmet",
     "Rare Candy",
@@ -147,7 +151,15 @@ class CardRecord:
         bonus = 18.0 if self.ability_name else 0.0
         if self.stage == "Basic" and self.is_ex:
             bonus += 22.0
-        return (self.hp * 0.35) + (best_dmg * 0.85) + (efficiency * 0.6) + bonus
+        elif self.stage in {"Basic", "Stage 1"}:
+            bonus += 12.0
+        attack_types = {ch for cost, _ in self.attacks for ch in cost if ch in ENERGY_CHAR_TO_ID}
+        if len(attack_types) <= 1:
+            bonus += 18.0
+        elif self.subtype != "Dragon":
+            bonus -= 22.0
+        retreat_penalty = self.retreat * 5.0
+        return (self.hp * 0.35) + (best_dmg * 0.85) + (efficiency * 0.6) + bonus - retreat_penalty
 
 
 @dataclass(frozen=True)
@@ -207,7 +219,7 @@ def build_qr_download_url(qr_payload: str) -> str:
 
 
 def describe_deck_strategy(deck: BuiltDeck) -> str:
-    """Genera una explicación táctica breve en español basada en las cartas del mazo."""
+    """Genera una explicación táctica clara en español basada en cartas y entrenadores reales."""
     pks = [c for c in deck.cards if c.is_pokemon]
     trs = [c for c in deck.cards if not c.is_pokemon]
     if not pks:
@@ -223,15 +235,31 @@ def describe_deck_strategy(deck: BuiltDeck) -> str:
     )
     lead = ordered_pks[0]
     best_dmg = max((dmg for _, dmg in lead.attacks), default=0)
-    supporters = [c.name for c in ordered_pks[1:3]]
+    supporters = [c for c in ordered_pks[1:3]]
     energy_txt = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in deck.energy_types)
 
     lead_stats = f"{lead.hp} HP" + (f", hasta {best_dmg} daño" if best_dmg > 0 else "")
-    extra = f" junto a {', '.join(supporters)}" if supporters else ""
-    return (
-        f"Mazo {energy_txt} ({len(pks)} Pokémon / {len(trs)} Entrenadores) centrado en "
-        f"{lead.name} ({lead_stats}){extra}."
-    )
+    if lead.ability_name:
+        lead_stats += f", hab. {lead.ability_name}"
+
+    support_notes = []
+    for sup in supporters:
+        note = f"{sup.name} ({sup.ability_name})" if sup.ability_name else sup.name
+        support_notes.append(note)
+    extra = f" con apoyo de {', '.join(support_notes)}" if support_notes else ""
+
+    tr_names = {c.name for c in trs}
+    roles: list[str] = []
+    if tr_names & {"Professor's Research", "Poké Ball", "Copycat", "Serena's Choice"}:
+        roles.append("robo/búsqueda")
+    if tr_names & {"Rare Candy", "Flame Patch", "Misty", "Irida"}:
+        roles.append("aceleración")
+    if tr_names & {"Sabrina", "Cyrus", "Mars"}:
+        roles.append("presión al rival")
+    if tr_names & {"Giant Cape", "Eviolite", "Potion", "Super Potion", "Rocky Helmet"}:
+        roles.append("aguante")
+    plan = f" Motor: {', '.join(roles)}." if roles else ""
+    return f"Atacante clave {lead.name} ({lead_stats}) en energía {energy_txt}{extra}.{plan}"
 
 
 def decode_deck_payload(payload: str) -> tuple[list[int], list[int], list[int]]:
@@ -398,11 +426,11 @@ def extract_event_constraints(
     target_exp = detected_sets[0] if detected_sets else (min_set_cards[0] if min_set_cards else None)
     if not target_exp:
         for exp_name, code in catalog.expansion_by_name.items():
-            if exp_name in lower_title or exp_name in lower_body:
+            if exp_name in lower_title:
                 target_exp = code
                 break
 
-    if not detected_sets and target_exp and "limited battle" in (lower_title + " " + lower_body):
+    if not detected_sets and target_exp and ("limited battle" in lower_title or "limited battle event" in lower_body):
         detected_sets = [target_exp]
 
     promo_names: list[str] = []
@@ -411,6 +439,12 @@ def extract_event_constraints(
             txt = _norm_name(a.get_text(" ", strip=True))
             if txt and txt.lower() in catalog.by_name:
                 promo_names.append(txt)
+    if not promo_names:
+        for img in main.select("img[alt]"):
+            alt = str(img.get("alt") or "")
+            for tok in re.findall(r"[A-Za-z]{4,}", alt):
+                if tok.lower() in catalog.by_name:
+                    promo_names.append(catalog.by_name[tok.lower()][0].name)
 
     no_ex = "without any pokémon ex" in lower_body or "no pokémon ex" in lower_body
     diamond_only = "◊, ◊◊, or ◊◊◊" in body_text or "1, 2, or 3 diamond" in lower_body
@@ -556,12 +590,15 @@ def _fill_trainers(
 
     pk_names = {c.name.lower() for c in pokemon_cards}
     has_basic = any(c.stage == "Basic" for c in pokemon_cards)
+    has_stage2 = any(c.stage == "Stage 2" for c in pokemon_cards)
 
     def trainer_rank(tr: CardRecord) -> tuple[int, int]:
         txt = tr.card_text.lower()
         score = 0
         if tr.name in CORE_TRAINER_PRIORITY:
             score += 100 - CORE_TRAINER_PRIORITY.index(tr.name) * 4
+        if tr.name == "Rare Candy":
+            score += 140 if has_stage2 else -500
         if "pikachu ex" in txt and "pikachu ex" in pk_names:
             score += 95
         if "mega mewtwo y ex" in txt and "mega mewtwo y ex" in pk_names:
@@ -578,6 +615,8 @@ def _fill_trainers(
     chosen: list[CardRecord] = []
     used_names: set[str] = set()
     for tr in ranked:
+        if tr.name == "Rare Candy" and not has_stage2:
+            continue
         if tr.name.lower() in used_names:
             continue
         if len(chosen) + 2 <= needed:
@@ -612,6 +651,7 @@ def _build_single_archetype_deck(
     constraints: EventDeckConstraints,
     prefer_subtype: str | None = None,
     prefer_set: str | None = None,
+    prefer_fast: bool = False,
     require_no_ex: bool = False,
     require_diamond: bool = False,
     require_mega: bool = False,
@@ -630,8 +670,15 @@ def _build_single_archetype_deck(
         and (not require_mega or c.is_mega)
     ]
     effective_set = min_set[0] if min_set else prefer_set
+
+    def _is_fast_attacker(card: CardRecord) -> bool:
+        min_cost = min((len(cost) for cost, _ in card.attacks if cost), default=4)
+        e_types = {ch for cost, _ in card.attacks for ch in cost if ch in ENERGY_CHAR_TO_ID}
+        return card.stage in {"Basic", "Stage 1"} and min_cost <= 3 and len(e_types) <= 1
+
     candidates.sort(
         key=lambda c: (
+            (1 if prefer_fast and _is_fast_attacker(c) else 0),
             (1 if min_set and effective_set and c.set_code == effective_set else 0),
             c.score() + (12.0 if not min_set and effective_set and c.set_code == effective_set else 0.0),
         ),
@@ -643,9 +690,10 @@ def _build_single_archetype_deck(
         if not core or len(core) > 10:
             continue
 
-        # Añade un segundo atacante Básico compatible sin desbordar las 3 energías
+        # Añade un segundo atacante Básico ágil (retreat <= 2) sin romper mono-energía
         pokemon = list(core)
         compatible_subtypes = (anchor.subtype, "Colorless") if anchor.subtype == "Dragon" else (anchor.subtype,)
+        max_energies = 2 if anchor.subtype == "Dragon" else 1
         support_pool = [
             c
             for c in pokemon_pool
@@ -653,6 +701,7 @@ def _build_single_archetype_deck(
             and c.name != anchor.name
             and c.name not in {p.name for p in pokemon}
             and c.subtype in compatible_subtypes
+            and c.retreat <= 2
             and (not require_no_ex or (not c.is_ex and not c.is_mega))
             and (not require_diamond or c.is_diamond_pokemon)
         ]
@@ -661,7 +710,7 @@ def _build_single_archetype_deck(
             reverse=True,
         )
         for sup in support_pool:
-            if len(pokemon) + 2 <= 10 and _distinct_energy_count(pokemon + [sup]) <= 3:
+            if len(pokemon) + 2 <= 10 and _distinct_energy_count(pokemon + [sup]) <= max_energies:
                 pokemon.extend([sup, sup])
                 break
 
@@ -791,7 +840,7 @@ def build_three_decks_for_event(
     used_types: set[str] = set()
     target_set = constraints.target_expansion or catalog.latest_set
 
-    # Baraja 1: cubre misión restrictiva (Sin ex / 1-3◊ / Tipo pedido) o mejor Aggro
+    # Baraja 1: cubre misión restrictiva (Sin ex / 1-3◊ / Tipo pedido) o mejor Aggro rápido
     pref_t1 = constraints.required_types[0] if constraints.required_types else None
     d1 = _build_single_archetype_deck(
         title="Opción 1: Sin Pokémon ex / Rápida" if constraints.no_ex or constraints.diamond_only else "Opción 1: Meta Rápida",
@@ -801,6 +850,7 @@ def build_three_decks_for_event(
         constraints=constraints,
         prefer_subtype=pref_t1,
         prefer_set=target_set,
+        prefer_fast=not constraints.required_types,
         require_no_ex=constraints.no_ex,
         require_diamond=constraints.diamond_only,
     )

@@ -184,7 +184,44 @@ def find_tcgp_deck_guide(session: requests.Session, item: AlertItem) -> tuple[st
     except Exception as exc:
         LOGGER.warning("[Enricher Deck] No se pudo consultar guías para '%s': %s", item.title, exc)
 
-    return URLS["ptcgpocket_gg_tier_list"], "Best Decks & Meta Tier List (PTCGPocket.gg)"
+    return URLS["ptcgpocket_gg_tier_list"], "Mejores Mazos y Tier List (PTCGPocket.gg)"
+
+
+def parse_scrapedduck_extra(ev_data: dict[str, Any]) -> list[str]:
+    """Extrae bonificaciones, Pokémon, incursiones y variocolor desde events.json."""
+    extra = ev_data.get("extraData") or {}
+    bullets: list[str] = []
+    bonuses: list[str] = []
+    featured: list[str] = []
+    shinies: list[str] = []
+
+    spotlight = extra.get("spotlight") or {}
+    if spotlight:
+        if spotlight.get("bonus"):
+            bonuses.append(str(spotlight["bonus"]))
+        names = [p["name"] for p in (spotlight.get("list") or []) if p.get("name")]
+        featured.extend(names)
+        if spotlight.get("canBeShiny") and spotlight.get("name"):
+            shinies.append(str(spotlight["name"]))
+
+    cday = extra.get("communityday") or {}
+    if cday:
+        featured.extend(p["name"] for p in (cday.get("spawns") or []) if p.get("name"))
+        bonuses.extend(b["text"] for b in (cday.get("bonuses") or []) if b.get("text"))
+        shinies.extend(s["name"] for s in (cday.get("shinies") or []) if s.get("name"))
+
+    raids = extra.get("raidbattles") or {}
+    if raids:
+        featured.extend(b["name"] for b in (raids.get("bosses") or []) if b.get("name"))
+        shinies.extend(s["name"] for s in (raids.get("shinies") or []) if s.get("name"))
+
+    if bonuses:
+        bullets.append("Bonuses: " + "; ".join(_dedupe_keep_order(bonuses, 3)))
+    if featured:
+        bullets.append("Featured Pokémon: " + ", ".join(_dedupe_keep_order(featured, 6)))
+    if shinies:
+        bullets.append("Shinies available: " + ", ".join(_dedupe_keep_order(shinies, 4)))
+    return bullets
 
 
 def _enrich_scrapedduck(
@@ -193,7 +230,6 @@ def _enrich_scrapedduck(
     events_cache: dict[str, dict[str, Any]],
 ) -> tuple[str | None, list[str]]:
     """Enriquece eventos de ScrapedDuck usando events.json y descripción LeekDuck."""
-    bullets: list[str] = []
     intro: str | None = None
 
     if not events_cache:
@@ -208,13 +244,7 @@ def _enrich_scrapedduck(
 
     ev_id = item.uid.removeprefix("scrapedduck:")
     ev_data = events_cache.get(ev_id, {})
-    spotlight = (ev_data.get("extraData") or {}).get("spotlight") or {}
-    if spotlight:
-        if spotlight.get("bonus"):
-            bullets.append(f"Bonus: {spotlight['bonus']}")
-        names = [p["name"] for p in (spotlight.get("list") or []) if p.get("name")]
-        if names:
-            bullets.append("Featured Pokémon: " + ", ".join(names[:6]))
+    bullets = parse_scrapedduck_extra(ev_data)
 
     if "leekduck.com" in item.url:
         try:
@@ -236,7 +266,10 @@ def _enrich_pogolive_es(session: requests.Session, item: AlertItem) -> str | Non
         soup = BeautifulSoup(raw_html, "html.parser")
         for p in soup.select("main p, article p"):
             txt = " ".join(p.get_text(" ", strip=True).split())
-            if len(txt) >= 45 and "entrenadores" in txt.lower() or len(txt) >= 60:
+            lower = txt.lower()
+            if any(bad in lower for bad in ("cookie", "privacidad", "niantic", "©")):
+                continue
+            if (len(txt) >= 45 and "entrenadores" in lower) or len(txt) >= 65:
                 return _clean_text(txt, limit=230)
     except Exception as exc:
         LOGGER.warning("[Enricher POGO Live] Sin detalle extra (%s).", exc)

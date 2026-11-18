@@ -38,6 +38,8 @@ def _format_bullet(bullet: str) -> str:
         return f"🔥 {html.escape(bullet)}"
     if lower.startswith(("cartas", "featured cards")):
         return f"🃏 {html.escape(bullet)}"
+    if lower.startswith(("variocolor", "shinies")):
+        return f"✨ {html.escape(bullet)}"
     return f"• {html.escape(bullet)}"
 
 
