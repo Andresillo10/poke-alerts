@@ -16,6 +16,11 @@ from src.config import (
     TELEGRAM_GAME_NAMES,
     TELEGRAM_KIND_HEADERS,
 )
+from src.code_digest import (
+    ActiveCodeEntry,
+    build_weekly_codes_caption,
+    build_weekly_codes_keyboard,
+)
 from src.deck_qr import (
     ENERGY_ID_LABELS_ES,
     BuiltDeck,
@@ -255,6 +260,35 @@ def send_telegram_single_deck(
     )
 
 
+def send_telegram_weekly_codes(
+    *,
+    bot_token: str,
+    chat_id: str,
+    entries: list[ActiveCodeEntry],
+    card_path: Path,
+    week_label: str,
+) -> None:
+    """Envía la tarjeta consolidada de códigos semanales de los lunes a las 02:00 AM."""
+    caption = build_weekly_codes_caption(entries, week_label=week_label)
+    keyboard = build_weekly_codes_keyboard(entries)
+    _post_photo_to_telegram(
+        bot_token=bot_token,
+        chat_id=chat_id,
+        caption=caption,
+        image_path=card_path,
+        keyboard_json=json.dumps(keyboard, ensure_ascii=False) if keyboard.get("inline_keyboard") else None,
+    )
+    if len(entries) > 4:
+        extra_lines = [
+            "📋 <b>Listado completo de códigos activos esta semana:</b>",
+            *[
+                f"• <b>{html.escape(e.game_label)}</b>: <code>{html.escape(e.code)}</code> — {html.escape(e.rewards_es)} ({html.escape(e.window_label)})"
+                for e in entries[4:]
+            ],
+        ]
+        send_telegram_text(bot_token=bot_token, chat_id=chat_id, text="\n".join(extra_lines)[:4000])
+
+
 def build_pogo_tactical_caption(
     card: PogoTacticalCard,
     *,
@@ -304,3 +338,32 @@ def send_telegram_pogo_card(
         image_path=card_path,
         keyboard_json=json.dumps(keyboard, ensure_ascii=False),
     )
+
+
+def send_telegram_weekly_codes(
+    *,
+    bot_token: str,
+    chat_id: str,
+    entries: list[ActiveCodeEntry],
+    card_path: Path,
+    week_label: str,
+) -> None:
+    """Envía la tarjeta consolidada de códigos semanales de los lunes a las 02:00 AM."""
+    caption = build_weekly_codes_caption(entries, week_label=week_label)
+    keyboard = build_weekly_codes_keyboard(entries)
+    _post_photo_to_telegram(
+        bot_token=bot_token,
+        chat_id=chat_id,
+        caption=caption,
+        image_path=card_path,
+        keyboard_json=json.dumps(keyboard, ensure_ascii=False) if keyboard.get("inline_keyboard") else None,
+    )
+    if len(entries) > 4:
+        extra_lines = [
+            "📋 <b>Listado completo de códigos activos esta semana:</b>",
+            *[
+                f"• <b>{html.escape(e.game_label)}</b>: <code>{html.escape(e.code)}</code> — {html.escape(e.rewards_es)} ({html.escape(e.window_label)})"
+                for e in entries[4:]
+            ],
+        ]
+        send_telegram_text(bot_token=bot_token, chat_id=chat_id, text="\n".join(extra_lines)[:4000])

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poke Alerts • Dashboard Integral (Pokémon GO + TCG Pocket)</title>
+  <style>
+    :root {
+      --bg: #0c081c;
+      --card: #171132;
+      --card-2: #1f1742;
+      --border: #392978;
+      --text: #f8fafc;
+      --muted: #a5b4fc;
+      --subtle: #94a3b8;
+      --pogo: #38bdf8;
+      --tcgp: #c084fc;
+      --gold: #facc15;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --red: #f87171;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top right, #1e1646 0%, var(--bg) 55%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 24px 18px 56px; }
+    header {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 14px; padding: 20px 24px; background: var(--card);
+      border: 1px solid var(--border); border-radius: 18px; margin-bottom: 18px;
+    }
+    h1 { margin: 0; font-size: 1.45rem; letter-spacing: -0.02em; }
+    .sub { color: var(--subtle); font-size: 0.88rem; margin-top: 4px; }
+    .sync-box { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px;
+      border-radius: 999px; font-size: 0.78rem; font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.12); background: var(--card-2);
+    }
+    .pill.live { color: #86efac; border-color: rgba(34,197,94,0.45); background: rgba(20,83,45,0.45); }
+    .pill.pogo { color: #bae6fd; border-color: rgba(56,189,248,0.45); background: rgba(8,47,73,0.55); }
+    .pill.tcgp { color: #e9d5ff; border-color: rgba(192,132,252,0.45); background: rgba(59,7,100,0.55); }
+    .pill.activo { color: #86efac; border-color: rgba(34,197,94,0.5); background: rgba(20,83,45,0.55); }
+    .pill.proximo { color: #fde68a; border-color: rgba(245,158,11,0.5); background: rgba(120,53,15,0.55); }
+    .pill.finalizado { color: #cbd5e1; border-color: rgba(148,163,184,0.35); background: rgba(30,41,59,0.7); }
+    .btn {
+      cursor: pointer; border: 1px solid var(--border); background: var(--card-2);
+      color: var(--text); padding: 8px 13px; border-radius: 10px; font-size: 0.84rem;
+      font-weight: 600; transition: 0.15s ease; text-decoration: none; display: inline-flex;
+      align-items: center; gap: 6px;
+    }
+    .btn:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+    .btn.primary { background: #312e81; border-color: #6366f1; }
+    .btn.active-tab { background: #4338ca; border-color: var(--gold); color: #fef08a; }
+    .kpis {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 12px; margin-bottom: 18px;
+    }
+    .kpi {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .kpi .lbl { color: var(--subtle); font-size: 0.78rem; text-transform: uppercase; font-weight: 700; }
+    .kpi .val { font-size: 1.7rem; font-weight: 800; margin-top: 4px; color: var(--text); }
+    .kpi .hint { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .filters {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 14px 16px; margin-bottom: 18px;
+      display: grid; grid-template-columns: 2fr repeat(4, minmax(140px, 1fr)); gap: 10px;
+    }
+    @media (max-width: 980px) { .filters { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .filters { grid-template-columns: 1fr; } }
+    input, select {
+      width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--border);
+      border-radius: 10px; padding: 9px 12px; font-size: 0.88rem; outline: none;
+    }
+    input:focus, select:focus { border-color: var(--pogo); }
+    .toolbar {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 10px; margin-bottom: 14px;
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px;
+    }
+    @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+    .ev-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 16px; display: flex; flex-direction: column; gap: 10px; transition: 0.15s ease;
+      position: relative;
+    }
+    .ev-card.done { opacity: 0.68; border-color: rgba(34,197,94,0.45); }
+    .ev-card.starred { box-shadow: 0 0 0 1px rgba(250,204,21,0.55); }
+    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .marks { display: flex; align-items: center; gap: 6px; }
+    .mark-btn {
+      cursor: pointer; border: 1px solid var(--border); background: var(--bg); color: var(--subtle);
+      border-radius: 8px; padding: 5px 9px; font-size: 0.8rem; font-weight: 700;
+    }
+    .mark-btn.on { background: rgba(34,197,94,0.22); border-color: var(--green); color: #86efac; }
+    .mark-btn.star-on { background: rgba(250,204,21,0.2); border-color: var(--gold); color: var(--gold); }
+    .ev-title { font-size: 1.06rem; font-weight: 700; line-height: 1.3; margin: 0; }
+    .ev-orig { font-size: 0.77rem; color: var(--subtle); margin-top: 2px; }
+    .meta-row { font-size: 0.83rem; color: #fde047; font-weight: 600; }
+    .box {
+      background: var(--bg); border: 1px solid rgba(99,102,241,0.28); border-radius: 10px;
+      padding: 9px 11px; font-size: 0.84rem; line-height: 1.42; color: #e2e8f0;
+    }
+    .box strong { color: var(--gold); }
+    .copy-bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: #0f172a; border: 1px dashed rgba(56,189,248,0.45); border-radius: 9px;
+      padding: 6px 10px; font-family: ui-monospace, Consolas, monospace; font-size: 0.82rem; color: #7dd3fc;
+    }
+    .copy-bar span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .card-foot {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 8px; margin-top: auto; padding-top: 4px;
+    }
+    .sources { font-size: 0.75rem; color: var(--subtle); }
+    table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+    th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid rgba(57,41,120,0.6); font-size: 0.84rem; vertical-align: top; }
+    th { background: var(--card-2); color: var(--gold); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .table-wrap { overflow-x: auto; border-radius: 14px; }
+    .empty { text-align: center; padding: 48px 20px; color: var(--subtle); background: var(--card); border-radius: 16px; border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>🎮 Poke Alerts • Dashboard Integral</h1>
+        <div class="sub">Historial y agenda viva de <b>Pokémon GO</b> + <b>Pokémon TCG Pocket</b>: premios, vigencias, códigos y seguimiento personal.</div>
+      </div>
+      <div class="sync-box">
+        <span id="syncStatus" class="pill live">⏳ Cargando datos...</span>
+        <span id="updatedAt" class="pill">Actualizado: —</span>
+        <button class="btn primary" id="btnRefresh">↻ Actualizar</button>
+      </div>
+    </header>
+
+    <section class="kpis" id="kpis"></section>
+
+    <section class="filters">
+      <input id="q" type="search" placeholder="🔎 Buscar evento, premio, código, Pokémon, carta o fuente..." />
+      <select id="fGame">
+        <option value="">Todos los juegos</option>
+        <option value="pogo">Pokémon GO</option>
+        <option value="tcgp">Pokémon TCG Pocket</option>
+      </select>
+      <select id="fStatus">
+        <option value="">Todos los estados</option>
+        <option value="activo">Activos ahora</option>
+        <option value="proximo">Próximos</option>
+        <option value="finalizado">Finalizados</option>
+      </select>
+      <select id="fCategory">
+        <option value="">Todas las categorías</option>
+      </select>
+      <select id="fCheck">
+        <option value="">Todo mi seguimiento</option>
+        <option value="pending">Pendientes (sin marcar)</option>
+        <option value="done">Completados / Reclamados ✓</option>
+        <option value="star">Prioritarios ⭐</option>
+      </select>
+    </section>
+
+    <div class="toolbar">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn active-tab" id="viewCards">🗂️ Tarjetas</button>
+        <button class="btn" id="viewTable">📊 Tabla detallada</button>
+        <span id="countLabel" class="pill">—</span>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn" id="btnCsv">📥 Exportar CSV (Excel)</button>
+        <button class="btn" id="btnJson">📄 Descargar JSON</button>
+        <button class="btn" id="btnExportMarks">💾 Exportar marcas</button>
+        <label class="btn" style="margin:0;">
+          📂 Importar marcas
+          <input type="file" id="importMarks" accept=".json" style="display:none;" />
+        </label>
+      </div>
+    </div>
+
+    <main id="content"></main>
+  </div>
+
+  <!-- Semilla local/offline generada automáticamente junto con data/events_history.json -->
+  <script src="./events_data.js"></script>
+  <script>
+    const RAW_GITHUB_JSON = "https://raw.githubusercontent.com/Andresillo10/poke-alerts/main/data/events_history.json";
+    const LOCAL_JSON = "../data/events_history.json";
+    const MARKS_KEY = "poke_alerts_user_marks_v1";
+
+    let db = window.POKE_ALERTS_DB || { generated_at: "", stats: {}, events: [] };
+    let marks = loadMarks();
+    let viewMode = "cards";
+
+    function loadMarks() {
+      try { return JSON.parse(localStorage.getItem(MARKS_KEY) || "{}"); }
+      catch { return {}; }
+    }
+    function saveMarks() { localStorage.setItem(MARKS_KEY, JSON.stringify(marks)); }
+    function getMark(id) { return marks[id] || { done: false, star: false }; }
+    function toggleMark(id, key) {
+      const cur = getMark(id);
+      marks[id] = { ...cur, [key]: !cur[key] };
+      if (!marks[id].done && !marks[id].star) delete marks[id];
+      saveMarks();
+      render();
+    }
+
+    function esc(s) {
+      return String(s ?? "").replace(/[&<>"']/g, c => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+      }[c]));
+    }
+
+    function computeDynamicStatus(ev) {
+      const now = new Date();
+      const todayCol = new Date(now.getTime() - 5 * 3600 * 1000).toISOString().slice(0, 10);
+      if (ev.end_date && ev.end_date < todayCol) return "finalizado";
+      if (ev.start_date && ev.start_date > todayCol) return "proximo";
+      return ev.status || "activo";
+    }
+
+    async function fetchLiveCatalog() {
+      const statusEl = document.getElementById("syncStatus");
+      statusEl.textContent = "🔄 Sincronizando...";
+      for (const base of [LOCAL_JSON, RAW_GITHUB_JSON]) {
+        try {
+          const r = await fetch(`${base}?t=${Date.now()}`, { cache: "no-store" });
+          if (!r.ok) continue;
+          const live = await r.json();
+          if (live && Array.isArray(live.events)) {
+            db = live;
+            statusEl.textContent = base === RAW_GITHUB_JSON ? "🟢 En vivo desde GitHub" : "🟢 Conectado al JSON local";
+            populateCategories();
+            render();
+            return;
+          }
+        } catch {}
+      }
+      statusEl.textContent = db.events.length ? "📦 Datos locales listos" : "⚠️ Sin conexión al JSON";
+      populateCategories();
+      render();
+    }
+
+    function populateCategories() {
+      const sel = document.getElementById("fCategory");
+      const current = sel.value;
+      const cats = [...new Set((db.events || []).map(e => e.category).filter(Boolean))].sort();
+      sel.innerHTML = `<option value="">Todas las categorías</option>` +
+        cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
+      if (cats.includes(current)) sel.value = current;
+    }
+
+    function getFiltered() {
+      const q = document.getElementById("q").value.trim().toLowerCase();
+      const fg = document.getElementById("fGame").value;
+      const fs = document.getElementById("fStatus").value;
+      const fc = document.getElementById("fCategory").value;
+      const fch = document.getElementById("fCheck").value;
+
+      return (db.events || []).map(ev => ({ ...ev, _status: computeDynamicStatus(ev) })).filter(ev => {
+        if (fg && ev.game !== fg) return false;
+        if (fs && ev._status !== fs) return false;
+        if (fc && ev.category !== fc) return false;
+        const mk = getMark(ev.id);
+        if (fch === "pending" && mk.done) return false;
+        if (fch === "done" && !mk.done) return false;
+        if (fch === "star" && !mk.star) return false;
+        if (q) {
+          const hay = [
+            ev.title, ev.title_original, ev.summary, ev.rewards, ev.category,
+            ev.promo_code, ev.tactical_summary, ev.search_filter,
+            ...(ev.highlights || []), ...(ev.sources || [])
+          ].join(" ").toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+    }
+
+    function renderKpis(allEvents) {
+      const list = allEvents.map(ev => ({ ...ev, _status: computeDynamicStatus(ev) }));
+      const total = list.length;
+      const active = list.filter(e => e._status === "activo").length;
+      const codes = list.filter(e => e.kind === "code" && e._status === "activo").length;
+      const pogo = list.filter(e => e.game === "pogo").length;
+      const tcgp = list.filter(e => e.game === "tcgp").length;
+      const done = list.filter(e => getMark(e.id).done).length;
+
+      document.getElementById("updatedAt").textContent = `Actualizado: ${db.generated_at || "hoy"}`;
+      document.getElementById("kpis").innerHTML = `
+        <div class="kpi"><div class="lbl">Eventos en JSON</div><div class="val">${total}</div><div class="hint">${pogo} GO • ${tcgp} TCGP</div></div>
+        <div class="kpi"><div class="lbl">Activos hoy</div><div class="val" style="color:var(--green)">${active}</div><div class="hint">Vigentes en curso</div></div>
+        <div class="kpi"><div class="lbl">Códigos activos</div><div class="val" style="color:var(--gold)">${codes}</div><div class="hint">Listos para canjear</div></div>
+        <div class="kpi"><div class="lbl">Próximos / Fin</div><div class="val">${list.filter(e => e._status === "proximo").length} / ${list.filter(e => e._status === "finalizado").length}</div><div class="hint">Agenda e histórico</div></div>
+        <div class="kpi"><div class="lbl">Tu progreso</div><div class="val" style="color:var(--pogo)">${done} / ${total}</div><div class="hint">Marcados completados</div></div>
+      `;
+    }
+
+    function copyTxt(btn, txt) {
+      navigator.clipboard?.writeText(txt).then(() => {
+        const old = btn.textContent;
+        btn.textContent = "✓ Copiado";
+        setTimeout(() => btn.textContent = old, 1200);
+      });
+    }
+
+    function render() {
+      const all = db.events || [];
+      renderKpis(all);
+      const list = getFiltered();
+      document.getElementById("countLabel").textContent = `Mostrando ${list.length} de ${all.length}`;
+      const root = document.getElementById("content");
+
+      if (!list.length) {
+        root.innerHTML = `<div class="empty">No hay eventos que coincidan con los filtros actuales.</div>`;
+        return;
+      }
+
+      if (viewMode === "table") {
+        root.innerHTML = `
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Marca</th>
+                  <th>Juego</th>
+                  <th>Estado</th>
+                  <th>Evento / Categoría</th>
+                  <th>Vigencia (De → A)</th>
+                  <th>Premios y Táctica</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${list.map(ev => {
+                  const mk = getMark(ev.id);
+                  const link = ev.redeem_url || ev.guide_url || (ev.urls || [])[0] || "";
+                  return `
+                    <tr>
+                      <td style="white-space:nowrap;">
+                        <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark('${esc(ev.id)}','done')">${mk.done ? "✓" : "☐"}</button>
+                        <button class="mark-btn ${mk.star ? "star-on" : ""}" onclick="toggleMark('${esc(ev.id)}','star')">${mk.star ? "★" : "☆"}</button>
+                      </td>
+                      <td><span class="pill ${esc(ev.game)}">${esc(ev.game_label)}</span></td>
+                      <td><span class="pill ${esc(ev._status)}">${esc(ev._status.toUpperCase())}</span></td>
+                      <td>
+                        <strong>${esc(ev.title)}</strong>
+                        <div class="ev-orig">${esc(ev.category)} • ${esc((ev.sources || []).join(", "))}</div>
+                      </td>
+                      <td style="white-space:nowrap;color:#fde047;">${esc(ev.date_range_label)}</td>
+                      <td>
+                        <div>${esc(ev.rewards)}</div>
+                        ${ev.tactical_summary ? `<div class="ev-orig" style="color:#7dd3fc;margin-top:4px;">⚡ ${esc(ev.tactical_summary)}</div>` : ""}
+                      </td>
+                      <td style="white-space:nowrap;">
+                        ${link ? `<a class="btn" href="${esc(link)}" target="_blank" rel="noopener">Abrir ↗</a>` : ""}
+                      </td>
+                    </tr>
+                  `;
+                }).join("")}
+              </tbody>
+            </table>
+          </div>
+        `;
+        return;
+      }
+
+      root.innerHTML = `<div class="grid">${list.map(ev => {
+        const mk = getMark(ev.id);
+        const primaryUrl = ev.redeem_url || (ev.urls || [])[0] || "";
+        const copyValue = ev.promo_code || ev.search_filter || "";
+        const origHtml = (ev.title_original && ev.title_original.toLowerCase() !== (ev.title || "").toLowerCase())
+          ? `<div class="ev-orig">Original: ${esc(ev.title_original)}</div>` : "";
+        return `
+          <article class="ev-card ${mk.done ? "done" : ""} ${mk.star ? "starred" : ""}">
+            <div class="card-top">
+              <div class="badges">
+                <span class="pill ${esc(ev.game)}">${esc(ev.game_label)}</span>
+                <span class="pill ${esc(ev._status)}">${esc(ev._status.toUpperCase())}</span>
+                <span class="pill">${esc(ev.category)}</span>
+              </div>
+              <div class="marks">
+                <button class="mark-btn ${mk.star ? "star-on" : ""}" title="Marcar prioritario" onclick="toggleMark('${esc(ev.id)}','star')">${mk.star ? "★" : "☆"}</button>
+                <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark('${esc(ev.id)}','done')">${mk.done ? "✓ Hecho" : "☐ Marcar"}</button>
+              </div>
+            </div>
+            <div>
+              <h3 class="ev-title">${esc(ev.title)}</h3>
+              ${origHtml}
+            </div>
+            <div class="meta-row">⏳ ${esc(ev.date_range_label)}</div>
+            <div class="box">
+              <strong>🎁 Premios / Destacado:</strong> ${esc(ev.rewards)}
+              ${ev.summary ? `<div style="margin-top:6px;color:#cbd5e1;">${esc(ev.summary)}</div>` : ""}
+              ${ev.tactical_summary ? `<div style="margin-top:6px;color:#7dd3fc;">⚡ <b>Táctica:</b> ${esc(ev.tactical_summary)}</div>` : ""}
+            </div>
+            ${copyValue ? `
+              <div class="copy-bar">
+                <span>${ev.promo_code ? "🔑 Código:" : "🔎 Filtro GO:"} ${esc(copyValue)}</span>
+                <button class="mark-btn" onclick="copyTxt(this, '${esc(copyValue)}')">Copiar</button>
+              </div>
+            ` : ""}
+            <div class="card-foot">
+              <span class="sources">📡 ${esc((ev.sources || []).join(" + "))}</span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                ${ev.redeem_url ? `<a class="btn primary" href="${esc(ev.redeem_url)}" target="_blank" rel="noopener">🎁 Canjear</a>` : ""}
+                ${ev.guide_url && ev.guide_url !== ev.redeem_url ? `<a class="btn" href="${esc(ev.guide_url)}" target="_blank" rel="noopener">📘 Guía / Fuente</a>` : (primaryUrl ? `<a class="btn" href="${esc(primaryUrl)}" target="_blank" rel="noopener">🔎 Fuente</a>` : "")}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("")}</div>`;
+    }
+
+    function downloadBlob(filename, text, mime) {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text], { type: mime }));
+      a.download = filename;
+      a.click();
+    }
+
+    document.getElementById("btnRefresh").onclick = fetchLiveCatalog;
+    for (const id of ["q", "fGame", "fStatus", "fCategory", "fCheck"]) {
+      document.getElementById(id).addEventListener("input", render);
+      document.getElementById(id).addEventListener("change", render);
+    }
+    document.getElementById("viewCards").onclick = () => {
+      viewMode = "cards";
+      document.getElementById("viewCards").classList.add("active-tab");
+      document.getElementById("viewTable").classList.remove("active-tab");
+      render();
+    };
+    document.getElementById("viewTable").onclick = () => {
+      viewMode = "table";
+      document.getElementById("viewTable").classList.add("active-tab");
+      document.getElementById("viewCards").classList.remove("active-tab");
+      render();
+    };
+    document.getElementById("btnJson").onclick = () => {
+      downloadBlob("events_history.json", JSON.stringify(db, null, 2), "application/json");
+    };
+    document.getElementById("btnCsv").onclick = () => {
+      const rows = getFiltered();
+      const cols = ["Juego", "Estado", "Categoría", "Título", "Desde", "Hasta", "Vigencia", "Premios", "Código", "Filtro GO", "Táctica", "Completado", "Favorito", "Fuentes"];
+      const escCsv = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+      const body = rows.map(e => {
+        const mk = getMark(e.id);
+        return [
+          e.game_label, e._status, e.category, e.title, e.start_date || "", e.end_date || "",
+          e.date_range_label, e.rewards, e.promo_code || "", e.search_filter || "", e.tactical_summary || "",
+          mk.done ? "SI" : "NO", mk.star ? "SI" : "NO", (e.sources || []).join("; ")
+        ].map(escCsv).join(",");
+      });
+      downloadBlob("poke_alerts_dashboard.csv", "\uFEFF" + [cols.join(","), ...body].join("\r\n"), "text/csv;charset=utf-8");
+    };
+    document.getElementById("btnExportMarks").onclick = () => {
+      downloadBlob("poke_alerts_checklist.json", JSON.stringify(marks, null, 2), "application/json");
+    };
+    document.getElementById("importMarks").onchange = ev => {
+      const f = ev.target.files?.[0];
+      if (!f) return;
+      f.text().then(txt => {
+        try {
+          marks = { ...marks, ...JSON.parse(txt) };
+          saveMarks();
+          render();
+        } catch { alert("Archivo de marcas inválido."); }
+      });
+    };
+
+    populateCategories();
+    render();
+    fetchLiveCatalog();
+  </script>
+</body>
+</html>

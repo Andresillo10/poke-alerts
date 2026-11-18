@@ -257,6 +257,26 @@ def update_source_health_and_heartbeat(
     return needs_heartbeat
 
 
+def _should_send_weekly_job(
+    state: dict[str, Any],
+    *,
+    state_key: str,
+    min_hour_cot: int,
+    now_utc: datetime | None = None,
+    force: bool = False,
+) -> tuple[bool, str]:
+    """Evalúa ventanas semanales de lunes en hora Colombia (COT) sin repeticiones."""
+    ref = now_utc or datetime.now(timezone.utc)
+    col_dt = ref.astimezone(timezone(timedelta(hours=-5)))
+    iso_year, iso_week, _ = col_dt.isocalendar()
+    week_key = f"{iso_year}-W{iso_week:02d}"
+    if force:
+        return True, week_key
+    is_monday_slot = col_dt.weekday() == 0 and col_dt.hour >= min_hour_cot
+    already_sent = state.get(state_key) == week_key
+    return (is_monday_slot and not already_sent), week_key
+
+
 def should_send_weekly_meta(
     state: dict[str, Any],
     *,
@@ -264,15 +284,29 @@ def should_send_weekly_meta(
     force: bool = False,
 ) -> tuple[bool, str]:
     """Determina si corresponde enviar el Top 3 semanal de torneos (lunes >=01:00 COT)."""
-    ref = now_utc or datetime.now(timezone.utc)
-    col_dt = ref.astimezone(timezone(timedelta(hours=-5)))
-    iso_year, iso_week, _ = col_dt.isocalendar()
-    week_key = f"{iso_year}-W{iso_week:02d}"
-    if force:
-        return True, week_key
-    is_monday_morning = col_dt.weekday() == 0 and col_dt.hour >= 1
-    already_sent = state.get("last_weekly_meta_week") == week_key
-    return (is_monday_morning and not already_sent), week_key
+    return _should_send_weekly_job(
+        state,
+        state_key="last_weekly_meta_week",
+        min_hour_cot=1,
+        now_utc=now_utc,
+        force=force,
+    )
+
+
+def should_send_weekly_codes(
+    state: dict[str, Any],
+    *,
+    now_utc: datetime | None = None,
+    force: bool = False,
+) -> tuple[bool, str]:
+    """Determina si corresponde enviar el consolidado semanal de códigos (lunes >=02:00 COT)."""
+    return _should_send_weekly_job(
+        state,
+        state_key="last_weekly_codes_week",
+        min_hour_cot=2,
+        now_utc=now_utc,
+        force=force,
+    )
 
 
 def should_send_one_time_ping(

@@ -10,6 +10,13 @@ from pathlib import Path
 from PIL import Image
 
 from src.card_renderer import render_alert_card
+from src.catalog_store import load_events_history, sync_events_catalog
+from src.code_digest import (
+    build_active_code_entries,
+    build_weekly_codes_caption,
+    build_weekly_codes_keyboard,
+    render_weekly_codes_card,
+)
 from src.deck_qr import (
     TRAINER_ID_OFFSET,
     CardCatalog,
@@ -43,6 +50,7 @@ from src.pogo_intel import (
 from src.pogo_sheet_renderer import render_pogo_tactical_card
 from src.scrapers import (
     parse_leekduck_promos_html,
+    parse_ptcgpocket_codes_html,
     parse_ptcgpocket_wp_posts,
     parse_serebii_end_date,
     parse_serebii_start_date,
@@ -52,6 +60,7 @@ from src.state import (
     mark_items_processed,
     select_pending_alerts,
     should_send_one_time_ping,
+    should_send_weekly_codes,
     should_send_weekly_meta,
     update_source_health_and_heartbeat,
 )
@@ -1001,6 +1010,120 @@ class CorePipelineTests(unittest.TestCase):
         self.assertLessEqual(len(cap), 1024)
         kb = build_pogo_tactical_keyboard(raid_card, fallback_url="https://leekduck.com/boss/")
         self.assertEqual(kb["inline_keyboard"][0][0]["url"], "https://leekduck.com/boss/")
+
+    def test_v6_weekly_codes_digest_and_unified_catalog(self) -> None:
+        # 1. Ventana horaria de consolidado de códigos: Lunes >= 02:00 AM COT
+        st = default_state()
+        mon_0123_cot = datetime(2026, 11, 23, 6, 23, tzinfo=timezone.utc)  # Lunes 01:23 AM COT
+        mon_0223_cot = datetime(2026, 11, 23, 7, 23, tzinfo=timezone.utc)  # Lunes 02:23 AM COT
+        self.assertFalse(should_send_weekly_codes(st, now_utc=mon_0123_cot)[0])
+        due, wkey = should_send_weekly_codes(st, now_utc=mon_0223_cot)
+        self.assertTrue(due)
+        st["last_weekly_codes_week"] = wkey
+        self.assertFalse(should_send_weekly_codes(st, now_utc=mon_0223_cot)[0])
+
+        # 2. Parser de códigos TCG Pocket descarta expirados y conserva vigentes
+        tcgp_codes_html = """
+        <table>
+          <tr><th>Code</th><th>Release Date</th><th>Rewards</th><th>Expiry Date</th></tr>
+          <tr><td>NEWGIFT2027</td><td>Nov 18, 2026</td><td>24 Pack Hourglass</td><td>Jan 31, 2027</td></tr>
+          <tr><td>33V33S5MM3R</td><td>Jul 5, 2025</td><td>24 Pack Hourglass</td><td>Aug 31, 2025</td></tr>
+        </table>
+        """
+        res_codes = parse_ptcgpocket_codes_html(tcgp_codes_html, now_utc=datetime(2026, 11, 18, 16, 0, tzinfo=timezone.utc))
+        self.assertEqual([x.promo_code for x in res_codes.items], ["NEWGIFT2027"])
+
+        # 3. Consolidado cruza fechas desde ScrapedDuck + LeekDuck + TCGP y renderiza tarjeta
+        go_code = AlertItem(
+            "leekduck-promo:ADIDASxPOKEMON",
+            "pogo",
+            "code",
+            "adidas Shoes",
+            "Canje",
+            "https://ld",
+            "LeekDuck Promo",
+            promo_code="ADIDASxPOKEMON",
+            redeem_url="https://store.pokemongo.com/offer-redemption?passcode=ADIDASxPOKEMON",
+            rewards="adidas shoes",
+            expires_at="January 15, 2027 at 11:59 PM",
+            language="en",
+        )
+        events_cache = {
+            "adidas-ev": {
+                "eventID": "adidas-ev",
+                "start": "2026-09-25T00:00:00Z",
+                "end": "2027-01-15T23:59:00Z",
+                "extraData": {"promocodes": ["ADIDASxPOKEMON"]},
+            }
+        }
+        entries = build_active_code_entries(
+            [go_code, res_codes.items[0]],
+            events_cache,
+            st,
+            now_utc=datetime(2026, 11, 18, 16, 0, tzinfo=timezone.utc),
+            enable_remote=False,
+        )
+        self.assertEqual(len(entries), 2)
+        adidas = next(e for e in entries if e.code == "ADIDASxPOKEMON")
+        self.assertEqual(adidas.start_date, "2026-09-25")
+        self.assertEqual(adidas.end_date, "2027-01-15")
+        self.assertIn("25 sep 2026", adidas.window_label)
+        cap = build_weekly_codes_caption(entries, week_label=wkey)
+        self.assertIn("<code>ADIDASxPOKEMON</code>", cap)
+        self.assertIn("<code>NEWGIFT2027</code>", cap)
+        kb = build_weekly_codes_keyboard(entries)
+        self.assertEqual(len(kb["inline_keyboard"][0]), 2)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_dir = Path(tmp)
+            png_codes = render_weekly_codes_card(entries, tmp_dir / "codes.png", week_label=wkey)
+            self.assertTrue(png_codes.exists())
+            with Image.open(png_codes) as im:
+                self.assertEqual(im.size, (1080, 720))
+
+            # 4. Catálogo JSON unificado fusiona portales repetidos y es idempotente sin falsos cambios
+            serebii_ev = AlertItem(
+                "serebii-tcgp:df",
+                "tcgp",
+                "event",
+                "Doble fusión Combates Limitados",
+                "Desc",
+                "https://serebii",
+                "Serebii TCGP",
+                language="es",
+                guide_bullets=("Misiones: Abrir 1 sobre -> Sobre Promo C",),
+                starts_on="2026-11-18",
+                expires_at="2026-12-02",
+            )
+            ptcg_ev = AlertItem(
+                "ptcgpocket-gg:df",
+                "tcgp",
+                "event",
+                "Doble fusión (C1) Combates Limitados",
+                "Desc 2",
+                "https://ptcg",
+                "PTCGPocket.gg",
+                language="es",
+                starts_on="2026-11-18",
+            )
+            hist_path = tmp_dir / "data" / "events_history.json"
+            js_path = tmp_dir / "docs" / "events_data.js"
+            records = [
+                {"raw": AlertItem("leekduck-promo:ADIDASxPOKEMON", "pogo", "code", "Zapatos adidas", "Desc", "https://ld", "LeekDuck", promo_code="ADIDASxPOKEMON", rewards="Zapatos adidas", language="es"), "localized": AlertItem("leekduck-promo:ADIDASxPOKEMON", "pogo", "code", "Zapatos adidas", "Desc", "https://ld", "LeekDuck", promo_code="ADIDASxPOKEMON", rewards="Zapatos adidas", language="es"), "extra_ev": None, "events_cache": events_cache},
+                {"raw": serebii_ev, "localized": serebii_ev, "extra_ev": None, "events_cache": events_cache, "tactical_summary": "3 mazos QR"},
+                {"raw": ptcg_ev, "localized": ptcg_ev, "extra_ev": None, "events_cache": events_cache},
+            ]
+            doc1, ch1 = sync_events_catalog(history_path=hist_path, dashboard_js_path=js_path, records_input=records, now_utc=datetime(2026, 11, 18, 16, 0, tzinfo=timezone.utc))
+            self.assertTrue(ch1)
+            self.assertEqual(doc1["stats"]["total"], 2)  # Dual Fusion se fusionó en 1 evento único
+            self.assertTrue(js_path.exists())
+            self.assertIn("window.POKE_ALERTS_DB", js_path.read_text(encoding="utf-8"))
+            loaded = load_events_history(hist_path)
+            self.assertEqual(loaded["stats"]["codes_active"], 1)
+
+            # Segunda ejecución idéntica NO marca cambio falso (evita commits vacíos cada hora)
+            _, ch2 = sync_events_catalog(history_path=hist_path, dashboard_js_path=js_path, records_input=records, now_utc=datetime(2026, 11, 18, 17, 0, tzinfo=timezone.utc))
+            self.assertFalse(ch2)
 
 
 if __name__ == "__main__":

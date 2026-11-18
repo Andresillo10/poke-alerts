@@ -54,9 +54,14 @@ finally {
 
 $stagingStateExists = Test-Path (Join-Path $StagingDir ".git")
 $excludeFiles = @(".env", "*.pyc")
+$protectedRels = @("state.json", "data\events_history.json", "docs\events_data.js")
 if ($stagingStateExists) {
-    # Protege el state.json ya actualizado en GitHub Actions
-    $excludeFiles += "state.json"
+    # Solo protege archivos que ya existan vivos en GitHub/staging (el primer despliegue sí los sube desde Drive)
+    foreach ($rel in $protectedRels) {
+        if (Test-Path (Join-Path $StagingDir $rel)) {
+            $excludeFiles += (Split-Path $rel -Leaf)
+        }
+    }
 }
 
 $robocopyArgs = @(
@@ -72,10 +77,16 @@ if ($LASTEXITCODE -ge 8) {
     throw "Robocopy falló con código $LASTEXITCODE"
 }
 
-# Refleja state.json vivo de vuelta en Google Drive sin alterar el código fuente
-$stagingStateFile = Join-Path $StagingDir "state.json"
-if ($stagingStateExists -and (Test-Path $stagingStateFile)) {
-    Copy-Item $stagingStateFile (Join-Path $SourceDir "state.json") -Force
+# Refleja state.json y catálogo auto-actualizado desde GitHub de vuelta en Drive
+if ($stagingStateExists) {
+    foreach ($rel in @("state.json", "data\events_history.json", "docs\events_data.js")) {
+        $srcLive = Join-Path $StagingDir $rel
+        $dstDrive = Join-Path $SourceDir $rel
+        if (Test-Path $srcLive) {
+            New-Item -ItemType Directory -Force -Path (Split-Path $dstDrive) | Out-Null
+            Copy-Item $srcLive $dstDrive -Force
+        }
+    }
 }
 
 Push-Location $StagingDir

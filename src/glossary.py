@@ -85,6 +85,10 @@ OFFICIAL_TERMS_ES: dict[str, str] = {
     "Razz Berry": "Baya Frambu",
     "Pinap Berry": "Baya Pinia",
     "Nanab Berry": "Baya Latano",
+    "Classic Platform Clog": "Zueco con plataforma clásico",
+    "Classic Clog": "Zueco clásico",
+    "adidas shoes": "Zapatos adidas",
+    "Avatar Item": "Artículo de avatar",
 }
 
 POST_TRANSLATION_FIXES: dict[str, str] = {

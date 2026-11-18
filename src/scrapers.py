@@ -500,6 +500,78 @@ def fetch_ptcgpocket_gg_events(session: requests.Session) -> FetchResult:
         return FetchResult(source, [], ok=False, error=str(exc))
 
 
+def _parse_short_english_date(raw: str) -> date | None:
+    """Parsea fechas cortas estilo 'Jul 5, 2025' o 'December 31, 2027'."""
+    clean = _ORDINAL_RE.sub(r"\1", (raw or "").replace(",", " "))
+    m = _FULL_DATE_RE.search(clean)
+    if not m:
+        return None
+    month_txt, day_s, year_s = m.group(1).lower(), int(m.group(2)), int(m.group(3))
+    short_map = {k[:3]: v for k, v in _MONTHS.items()}
+    month = _MONTHS.get(month_txt) or short_map.get(month_txt[:3])
+    return _safe_date(year_s, month, day_s) if month else None
+
+
+def parse_ptcgpocket_codes_html(
+    html: str,
+    *,
+    now_utc: datetime | None = None,
+    source: str = "PTCGPocket Codes",
+) -> FetchResult:
+    """Extrae códigos activos de Pokémon TCG Pocket descartando expirados."""
+    ref_today = (now_utc or datetime.now(timezone.utc)).date()
+    soup = BeautifulSoup(html, "html.parser")
+    items: list[AlertItem] = []
+
+    for tbl in soup.select("table"):
+        headers = [th.get_text(" ", strip=True).lower() for th in tbl.select("tr th")]
+        if not headers or "code" not in headers[0]:
+            continue
+        for tr in tbl.select("tr"):
+            tds = [td.get_text(" ", strip=True) for td in tr.select("td")]
+            if len(tds) < 4:
+                continue
+            code, rel_txt, reward_txt, exp_txt = tds[0], tds[1], tds[2], tds[3]
+            if not code or " " in code or len(code) < 5:
+                continue
+            exp_dt = _parse_short_english_date(exp_txt)
+            if exp_dt and exp_dt < ref_today:
+                continue
+            start_dt = _parse_short_english_date(rel_txt)
+            items.append(
+                AlertItem(
+                    uid=f"ptcgpocket-code:{code}",
+                    game="tcgp",
+                    kind="code",
+                    title=f"Pokémon TCG Pocket Gift Code: {code}",
+                    summary=f"Canjea este código en el portal oficial de TCG Pocket: {reward_txt}.",
+                    url=URLS["ptcgpocket_gg_codes"],
+                    source_name=source,
+                    promo_code=code,
+                    redeem_url=URLS["tcgp_redeem_url"],
+                    rewards=reward_txt or None,
+                    expires_at=exp_dt.isoformat() if exp_dt else (exp_txt or None),
+                    starts_on=start_dt.isoformat() if start_dt else None,
+                    language="en",
+                )
+            )
+    return FetchResult(source, items, ok=True)
+
+
+def fetch_ptcgpocket_codes(
+    session: requests.Session,
+    now_utc: datetime | None = None,
+) -> FetchResult:
+    """Descarga códigos promocionales activos de Pokémon TCG Pocket desde PTCGPocket.gg."""
+    source = "PTCGPocket Codes"
+    try:
+        html = _fetch_text(session, URLS["ptcgpocket_gg_codes"])
+        return parse_ptcgpocket_codes_html(html, now_utc=now_utc, source=source)
+    except Exception as exc:
+        LOGGER.warning("[%s] Fallo: %s", source, exc)
+        return FetchResult(source, [], ok=False, error=str(exc))
+
+
 def fetch_all_sources(session: requests.Session) -> list[FetchResult]:
     """Ejecuta todos los conectores verificados aislando fallos por fuente."""
     return [
@@ -519,4 +591,5 @@ def fetch_all_sources(session: requests.Session) -> list[FetchResult]:
             source_name="Serebii TCGP",
         ),
         fetch_ptcgpocket_gg_events(session),
+        fetch_ptcgpocket_codes(session),
     ]

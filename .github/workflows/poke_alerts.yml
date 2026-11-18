@@ -11,7 +11,12 @@ on:
         type: boolean
         default: false
       weekly_meta:
-        description: "Generar y enviar manualmente el Top 3 semanal de torneos Ranked"
+        description: "Generar y enviar manualmente el Top 3 semanal (TCGP + Pokémon GO)"
+        required: false
+        type: boolean
+        default: false
+      weekly_codes:
+        description: "Enviar manualmente el consolidado semanal de códigos activos"
         required: false
         type: boolean
         default: false
@@ -60,15 +65,20 @@ jobs:
           if [ "${{ inputs.weekly_meta }}" = "true" ]; then
             EXTRA_ARGS="$EXTRA_ARGS --weekly-meta"
           fi
+          if [ "${{ inputs.weekly_codes }}" = "true" ]; then
+            EXTRA_ARGS="$EXTRA_ARGS --weekly-codes"
+          fi
           python -m src.main $EXTRA_ARGS
 
-      - name: Commit updated state.json if changed
+      - name: Commit updated state and dashboard catalog if changed
         run: |
-          if ! git diff --quiet state.json; then
+          if ! git diff --quiet state.json data/events_history.json docs/events_data.js 2>/dev/null || [ -n "$(git status --porcelain state.json data/events_history.json docs/events_data.js)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add state.json
-            git commit -m "chore(state): update poke-alerts seen state"
-            git pull --rebase --autostash origin "${{ github.ref_name }}"
-            git push origin HEAD:"${{ github.ref_name }}"
+            git add state.json data/events_history.json docs/events_data.js
+            if ! git diff --cached --quiet; then
+              git commit -m "chore(state): update poke-alerts state and events catalog"
+              git pull --rebase --autostash origin "${{ github.ref_name }}"
+              git push origin HEAD:"${{ github.ref_name }}"
+            fi
           fi

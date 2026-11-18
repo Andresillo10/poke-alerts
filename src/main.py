@@ -10,7 +10,25 @@ import time
 from pathlib import Path
 
 from src.card_renderer import render_alert_card
-from src.config import DEFAULT_OUTPUT_DIR, MAX_ALERTS_PER_RUN, STATE_FILE, TELEGRAM_SEND_DELAY_SEC
+from src.catalog_store import (
+    _canon_event_id,
+    load_events_history,
+    sync_events_catalog,
+)
+from src.code_digest import (
+    build_active_code_entries,
+    build_weekly_codes_caption,
+    render_weekly_codes_card,
+)
+from src.config import (
+    DASHBOARD_DATA_JS,
+    DEFAULT_OUTPUT_DIR,
+    EVENTS_HISTORY_FILE,
+    MAX_ALERTS_PER_RUN,
+    STATE_FILE,
+    TELEGRAM_SEND_DELAY_SEC,
+    URLS,
+)
 from src.deck_qr import (
     BuiltDeck,
     CardCatalog,
@@ -36,6 +54,7 @@ from src.state import (
     save_state,
     select_pending_alerts,
     should_send_one_time_ping,
+    should_send_weekly_codes,
     should_send_weekly_meta,
     update_source_health_and_heartbeat,
 )
@@ -47,6 +66,7 @@ from src.telegram_client import (
     send_telegram_pogo_card,
     send_telegram_single_deck,
     send_telegram_text,
+    send_telegram_weekly_codes,
 )
 from src.translator import localize_alert_item
 from src.weekly_meta import (
@@ -106,7 +126,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--weekly-meta",
         action="store_true",
-        help="Fuerza la generación del Top 3 semanal de torneos Ranked para TCG Pocket.",
+        help="Fuerza el Top 3 semanal de TCG Pocket y Pokémon GO.",
+    )
+    parser.add_argument(
+        "--weekly-codes",
+        action="store_true",
+        help="Fuerza el consolidado semanal de códigos promocionales activos.",
+    )
+    parser.add_argument(
+        "--sync-catalog-only",
+        action="store_true",
+        help="Actualiza data/events_history.json y docs/events_data.js sin enviar mensajes ni alterar state.json.",
     )
     return parser.parse_args()
 
@@ -369,6 +399,155 @@ def _maybe_run_weekly_meta(
     return tcgp_sent or pogo_sent
 
 
+def _ensure_events_cache(session, events_cache: dict[str, dict]) -> None:
+    """Garantiza que events.json completo esté cargado en caché cuando hace falta."""
+    if events_cache:
+        return
+    try:
+        resp = session.get(URLS["scrapedduck_events_full"], timeout=15)
+        if resp.ok:
+            for ev in resp.json():
+                if ev.get("eventID"):
+                    events_cache[ev["eventID"]] = ev
+    except Exception as exc:
+        LOGGER.warning("[Catalog] No se pudo cargar events.json completo: %s", exc)
+
+
+def _maybe_run_weekly_codes(
+    *,
+    args: argparse.Namespace,
+    session,
+    collected: list[AlertItem],
+    events_cache: dict[str, dict],
+    state: dict,
+    week_key: str,
+    bot_token: str,
+    chat_id: str,
+) -> bool:
+    """Genera y envía el consolidado semanal de códigos activos (lunes >=02:00 AM COT)."""
+    try:
+        _ensure_events_cache(session, events_cache)
+        entries = build_active_code_entries(
+            collected,
+            events_cache,
+            state,
+            enable_remote=not args.no_translate,
+        )
+        card_path = args.out_dir / f"weekly_codes_{week_key}.png"
+        render_weekly_codes_card(entries, card_path, week_label=week_key)
+        if args.dry_run:
+            LOGGER.info("[DRY-RUN] WEEKLY CODES PNG (%d): %s", len(entries), card_path)
+            print("--- CAPTION WEEKLY CODES ---")
+            print(build_weekly_codes_caption(entries, week_label=week_key))
+            print("----------------------------")
+            return False
+
+        send_telegram_weekly_codes(
+            bot_token=bot_token,
+            chat_id=chat_id,
+            entries=entries,
+            card_path=card_path,
+            week_label=week_key,
+        )
+        LOGGER.info("[WeeklyCodes] Consolidado enviado %s (%d códigos activos).", week_key, len(entries))
+        return True
+    except Exception as exc:
+        LOGGER.warning("[WeeklyCodes] Fallo no bloqueante al enviar consolidado: %s", exc)
+        return False
+
+
+def _sync_unified_catalog(
+    *,
+    session,
+    collected: list[AlertItem],
+    already_processed: dict[str, dict],
+    events_cache: dict[str, dict],
+    pogo_catalog_holder: list[PogoCatalog],
+    enable_remote: bool,
+) -> bool:
+    """Actualiza data/events_history.json y docs/events_data.js con todos los eventos."""
+    _ensure_events_cache(session, events_cache)
+    existing = load_events_history(EVENTS_HISTORY_FILE)
+    existing_by_id = {str(e.get("id")): e for e in (existing.get("events") or []) if e.get("id")}
+
+    records_input: list[dict] = list(already_processed.values())
+    processed_uids = {rec["raw"].uid for rec in records_input}
+
+    for item in collected:
+        if item.uid in processed_uids:
+            continue
+        cid = _canon_event_id(item)
+        prev = existing_by_id.get(cid)
+        ev_id = item.uid.removeprefix("scrapedduck:")
+        extra_ev = events_cache.get(ev_id)
+
+        # Evita re-descargar HTML cada hora para portales ya guardados en el catálogo
+        already_has_source = bool(prev) and item.source_name in (prev.get("sources") or [])
+        if prev and prev.get("title") and (already_has_source or (prev.get("rewards") and "Consultar detalle" not in prev["rewards"])):
+            loc = AlertItem(
+                uid=item.uid,
+                game=item.game,
+                kind=item.kind,
+                title=str(prev["title"]),
+                summary=str(prev.get("summary") or item.summary),
+                url=item.url,
+                source_name=item.source_name,
+                promo_code=item.promo_code,
+                redeem_url=item.redeem_url,
+                rewards=item.rewards,
+                expires_at=item.expires_at,
+                language="es",
+                guide_bullets=(),
+                deck_guide_url=prev.get("guide_url"),
+                starts_on=item.starts_on,
+            )
+            enriched = item
+            tactical_summary = str(prev.get("tactical_summary") or "")
+            search_filter = str(prev.get("search_filter") or "")
+        else:
+            enriched = enrich_alert_item(session, item, events_cache=events_cache)
+            loc = localize_alert_item(enriched, enable_remote=enable_remote)
+            tactical_summary = ""
+            search_filter = ""
+            if item.game == "pogo" and item.kind == "event":
+                try:
+                    if not pogo_catalog_holder:
+                        pogo_catalog_holder.append(load_pogo_catalog(session))
+                    from src.pogo_intel import build_pogo_event_cards
+
+                    pcards = build_pogo_event_cards(enriched, extra_ev, pogo_catalog_holder[0], context_title=loc.title)
+                    if pcards:
+                        tactical_summary = " | ".join(f"{c.title}: {c.subtitle}" for c in pcards[:2])[:260]
+                        search_filter = pcards[0].search_string
+                except Exception:
+                    pass
+
+        records_input.append(
+            {
+                "raw": enriched,
+                "localized": loc,
+                "extra_ev": extra_ev,
+                "events_cache": events_cache,
+                "tactical_summary": tactical_summary,
+                "search_filter": search_filter,
+            }
+        )
+
+    doc, changed = sync_events_catalog(
+        history_path=EVENTS_HISTORY_FILE,
+        dashboard_js_path=DASHBOARD_DATA_JS,
+        records_input=records_input,
+    )
+    LOGGER.info(
+        "[Catalog] JSON unificado (%s) | total=%d | activos=%d | códigos=%d",
+        "actualizado" if changed else "sin cambios",
+        doc["stats"].get("total", 0),
+        doc["stats"].get("active", 0),
+        doc["stats"].get("codes_active", 0),
+    )
+    return changed
+
+
 def run_pipeline(args: argparse.Namespace) -> int:
     """Ejecuta el ciclo completo de detección, renderizado y notificación."""
     state = load_state(STATE_FILE)
@@ -390,10 +569,19 @@ def run_pipeline(args: argparse.Namespace) -> int:
 
     collected = _prioritize_items(collected)
 
-    if args.preview_sample:
+    if args.sync_catalog_only:
+        to_notify = []
+        to_seed_only = []
+        need_weekly, week_key = False, ""
+        need_codes, codes_week_key = False, ""
+        need_ping, ping_tag = False, ""
+    elif args.preview_sample:
         to_notify = _select_preview_sample(collected)
         to_seed_only: list[AlertItem] = []
         LOGGER.info("Modo preview-sample activo: enviando %d tarjetas de muestra.", len(to_notify))
+        need_weekly, week_key = should_send_weekly_meta(state, force=args.weekly_meta)
+        need_codes, codes_week_key = should_send_weekly_codes(state, force=args.weekly_codes)
+        need_ping, ping_tag = False, ""
     else:
         to_notify, to_seed_only = select_pending_alerts(
             state,
@@ -406,19 +594,22 @@ def run_pipeline(args: argparse.Namespace) -> int:
             len(to_notify),
             len(to_seed_only),
         )
-
-    need_weekly, week_key = should_send_weekly_meta(
-        state,
-        force=args.weekly_meta,
-    )
-    need_ping, ping_tag = should_send_one_time_ping(state)
-    if args.preview_sample or args.bootstrap_silent:
-        need_weekly = args.weekly_meta
-        need_ping = False
+        need_weekly, week_key = should_send_weekly_meta(state, force=args.weekly_meta)
+        need_codes, codes_week_key = should_send_weekly_codes(state, force=args.weekly_codes)
+        need_ping, ping_tag = should_send_one_time_ping(state)
+        if args.bootstrap_silent:
+            need_weekly = args.weekly_meta
+            need_codes = args.weekly_codes
+            need_ping = False
 
     bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
-    if not args.dry_run and (to_notify or need_weekly or need_ping) and (not bot_token or not chat_id):
+    if (
+        not args.dry_run
+        and not args.sync_catalog_only
+        and (to_notify or need_weekly or need_codes or need_ping)
+        and (not bot_token or not chat_id)
+    ):
         raise SystemExit(
             "Faltan variables TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID. "
             "Usa --dry-run para probar localmente o configúralas en GitHub Secrets."
@@ -429,6 +620,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
     catalog_holder: list[CardCatalog] = []
     pogo_catalog_holder: list[PogoCatalog] = []
     weekly_cache: list[WeeklyMetaReport | None] = []
+    processed_records: dict[str, dict] = {}
 
     for idx, item in enumerate(to_notify):
         enriched = enrich_alert_item(session, item, events_cache=events_cache)
@@ -452,6 +644,22 @@ def run_pipeline(args: argparse.Namespace) -> int:
             pogo_catalog_holder=pogo_catalog_holder,
             events_cache=events_cache,
         )
+        ev_id = item.uid.removeprefix("scrapedduck:")
+        tact_sum = ""
+        srch_flt = ""
+        if deck_cards:
+            tact_sum = f"{len(deck_cards)} mazos con QR: " + ", ".join(d.title.split(": ", 1)[-1] for d, _, _ in deck_cards)
+        elif pogo_cards:
+            tact_sum = " | ".join(f"{c.title}: {c.subtitle}" for c, _ in pogo_cards[:2])[:260]
+            srch_flt = pogo_cards[0][0].search_string
+        processed_records[item.uid] = {
+            "raw": enriched,
+            "localized": localized,
+            "extra_ev": events_cache.get(ev_id),
+            "events_cache": events_cache,
+            "tactical_summary": tact_sum,
+            "search_filter": srch_flt,
+        }
         default_label = "🃏 Guía de mazos" if localized.deck_guide_url else "🔎 Ver evento"
         default_url = localized.deck_guide_url or localized.url
 
@@ -524,6 +732,21 @@ def run_pipeline(args: argparse.Namespace) -> int:
             chat_id=chat_id,
         )
 
+    codes_sent = False
+    if need_codes:
+        if (to_notify or weekly_sent) and not args.dry_run:
+            time.sleep(TELEGRAM_SEND_DELAY_SEC)
+        codes_sent = _maybe_run_weekly_codes(
+            args=args,
+            session=session,
+            collected=collected,
+            events_cache=events_cache,
+            state=state,
+            week_key=codes_week_key,
+            bot_token=bot_token,
+            chat_id=chat_id,
+        )
+
     ping_sent = False
     if need_ping:
         ok_src = sum(1 for _, ok in source_statuses if ok)
@@ -537,27 +760,49 @@ def run_pipeline(args: argparse.Namespace) -> int:
         if args.dry_run:
             LOGGER.info("[DRY-RUN] ONE-TIME PING:\n%s", ping_text)
         else:
-            if to_notify or weekly_sent:
+            if to_notify or weekly_sent or codes_sent:
                 time.sleep(TELEGRAM_SEND_DELAY_SEC)
             send_telegram_text(bot_token=bot_token, chat_id=chat_id, text=ping_text)
             ping_sent = True
 
+    if args.sync_catalog_only:
+        _sync_unified_catalog(
+            session=session,
+            collected=collected,
+            already_processed=processed_records,
+            events_cache=events_cache,
+            pogo_catalog_holder=pogo_catalog_holder,
+            enable_remote=not args.no_translate,
+        )
+        return 0
+
     if args.dry_run or args.preview_sample:
         LOGGER.info("Modo prueba completado sin modificar state.json.")
         return 0
+
+    _sync_unified_catalog(
+        session=session,
+        collected=collected,
+        already_processed=processed_records,
+        events_cache=events_cache,
+        pogo_catalog_holder=pogo_catalog_holder,
+        enable_remote=not args.no_translate,
+    )
 
     processed = sent_items + to_seed_only
     if processed:
         mark_items_processed(state, processed)
     if weekly_sent:
         state["last_weekly_meta_week"] = week_key
+    if codes_sent:
+        state["last_weekly_codes_week"] = codes_week_key
     if ping_sent:
         state["one_time_ping_sent"] = ping_tag
 
     changed = update_source_health_and_heartbeat(
         state,
         source_statuses,
-        had_state_change=bool(processed or weekly_sent or ping_sent),
+        had_state_change=bool(processed or weekly_sent or codes_sent or ping_sent),
     )
     if changed or processed:
         save_state(state, STATE_FILE)

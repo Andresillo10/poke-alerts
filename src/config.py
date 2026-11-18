@@ -6,6 +6,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATE_FILE = BASE_DIR / "state.json"
+EVENTS_HISTORY_FILE = BASE_DIR / "data" / "events_history.json"
+DASHBOARD_DATA_JS = BASE_DIR / "docs" / "events_data.js"
 DEFAULT_OUTPUT_DIR = BASE_DIR / "out"
 
 REQUEST_TIMEOUT_SEC = 15
@@ -33,6 +35,7 @@ URLS = {
     "serebii_pogo_events": "https://www.serebii.net/pokemongo/events.shtml",
     "serebii_tcgp_events": "https://www.serebii.net/tcgpocket/events.shtml",
     "ptcgpocket_gg_events": "https://ptcgpocket.gg/events/",
+    "ptcgpocket_gg_codes": "https://ptcgpocket.gg/codes/",
     "ptcgpocket_gg_wp_search": "https://ptcgpocket.gg/wp-json/wp/v2/posts",
     "ptcgpocket_gg_wp_categories": "7,1,8,11",
     "ptcgpocket_gg_tier_list": "https://ptcgpocket.gg/tier-list/",
