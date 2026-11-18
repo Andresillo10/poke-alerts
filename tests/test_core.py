@@ -14,13 +14,15 @@ from src.deck_qr import (
     TRAINER_ID_OFFSET,
     CardCatalog,
     EventDeckConstraints,
+    build_qr_download_url,
     build_three_decks_for_event,
     decode_deck_payload,
+    describe_deck_strategy,
     encode_deck_payload,
     extract_event_constraints,
     validate_deck,
 )
-from src.deck_sheet_renderer import render_deck_sheet
+from src.deck_sheet_renderer import render_single_deck_card
 from src.enricher import (
     parse_ptcgpocket_detail_html,
     parse_serebii_detail_html,
@@ -42,10 +44,10 @@ from src.state import (
     update_source_health_and_heartbeat,
 )
 from src.telegram_client import (
-    build_deck_sheet_caption,
     build_inline_keyboard,
+    build_single_deck_caption,
+    build_single_deck_keyboard,
     build_telegram_caption,
-    build_weekly_meta_caption,
 )
 from src.translator import localize_alert_item, translate_en_to_es
 from src.weekly_meta import (
@@ -583,26 +585,37 @@ class CorePipelineTests(unittest.TestCase):
         self.assertGreaterEqual(sum(1 for c in decks[2].cards if c.set_code == "c1"), 12)
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            sheet_path = Path(tmpdir) / "decks_sheet.png"
-            render_deck_sheet("Mega Garchomp ex Drop Event", decks, sheet_path)
-            self.assertTrue(sheet_path.exists())
-            with Image.open(sheet_path) as img:
-                self.assertEqual(img.size, (1440, 760))
+            card_path = Path(tmpdir) / "deck_single.png"
+            render_single_deck_card(
+                decks[0],
+                card_path,
+                context_label="Evento: Mega Garchomp ex Drop Event",
+                badge_label="EVENTO TCG POCKET",
+            )
+            self.assertTrue(card_path.exists())
+            with Image.open(card_path) as img:
+                self.assertEqual(img.size, (1080, 720))
 
-        item = AlertItem(
-            uid="serebii-tcgp:mega-garchomp",
-            game="tcgp",
-            kind="event",
-            title="Mega Garchomp ex Drop Event",
-            summary="Completa todas las misiones.",
-            url="https://www.serebii.net/tcgpocket/events/megagarchompexdropevent.shtml",
-            source_name="Serebii TCGP",
-            language="es",
+        dl_url = build_qr_download_url(decks[0].qr_payload)
+        self.assertIn("download=1", dl_url)
+        self.assertIn("api.qrserver.com", dl_url)
+        self.assertIn("Pokémon /", describe_deck_strategy(decks[0]))
+
+        caption = build_single_deck_caption(
+            decks[0],
+            context_title="Mega Garchomp ex Drop Event",
+            header_tag="🃏 <b>Mazo recomendado</b>",
         )
-        caption = build_deck_sheet_caption(item, decks)
         self.assertLessEqual(len(caption), 1024)
         self.assertIn("Opción 1", caption)
-        self.assertIn("QR", caption)
+        self.assertIn("Explicación", caption)
+        kb = build_single_deck_keyboard(
+            decks[0],
+            info_label="🔎 Ver evento",
+            info_url="https://www.serebii.net/tcgpocket/events/megagarchompexdropevent.shtml",
+        )
+        self.assertEqual(len(kb["inline_keyboard"][0]), 2)
+        self.assertEqual(kb["inline_keyboard"][0][0]["text"], "📥 Descargar QR")
 
     def test_weekly_meta_parsers_schedule_and_caption(self) -> None:
         cutoff = datetime(2026, 11, 16, 0, 0, tzinfo=timezone.utc)
@@ -697,12 +710,33 @@ class CorePipelineTests(unittest.TestCase):
             analyzed_tournaments=10,
             analyzed_entries=420,
             archetypes=(
-                WeeklyArchetypeSummary("pika", "Pikachu ex", 40, 120, 80, 60.0, "#1/160p en Clash", decks[0]),
+                WeeklyArchetypeSummary(
+                    "pika",
+                    "Pikachu ex",
+                    40,
+                    120,
+                    80,
+                    60.0,
+                    "#1/160p en Clash",
+                    decks[0],
+                    "https://play.limitlesstcg.com/tournament/t1/player/campeon/decklist",
+                ),
             ),
         )
-        wcap = build_weekly_meta_caption(report)
-        self.assertIn("Top 3 Mazos Semanales", wcap)
+        wcap = build_single_deck_caption(
+            report.archetypes[0].deck,
+            context_title="Top 3 Semanal Ranked",
+            header_tag="🏆 <b>Mazo Ranked Semanal</b>",
+            extra_note=report.archetypes[0].best_note,
+        )
+        wkb = build_single_deck_keyboard(
+            report.archetypes[0].deck,
+            info_label="🏆 Ver lista campeón",
+            info_url=report.archetypes[0].best_url,
+        )
+        self.assertIn("Mazo Ranked Semanal", wcap)
         self.assertLessEqual(len(wcap), 1024)
+        self.assertEqual(len(wkb["inline_keyboard"][0]), 2)
 
 
 if __name__ == "__main__":

@@ -56,6 +56,7 @@ class WeeklyArchetypeSummary:
     win_rate: float
     best_note: str
     deck: BuiltDeck
+    best_url: str = ""
 
 
 @dataclass(frozen=True)
@@ -318,6 +319,7 @@ def build_weekly_ranked_report(
         candidates = sorted(st["candidates"], key=lambda x: x[0])[:4]
         chosen_deck: BuiltDeck | None = None
         chosen_note = ""
+        chosen_url = ""
         wr = st["wins"] / max(st["wins"] + st["losses"], 1) * 100.0
 
         for _, dl_url, note in candidates:
@@ -351,6 +353,7 @@ def build_weekly_ranked_report(
                     ),
                 )
                 chosen_note = note
+                chosen_url = dl_url
                 break
             except Exception as exc:
                 LOGGER.warning("[WeeklyMeta] Error descargando decklist %s: %s", dl_url, exc)
@@ -366,6 +369,7 @@ def build_weekly_ranked_report(
                     win_rate=wr,
                     best_note=chosen_note,
                     deck=chosen_deck,
+                    best_url=chosen_url,
                 )
             )
 

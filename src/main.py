@@ -12,12 +12,13 @@ from pathlib import Path
 from src.card_renderer import render_alert_card
 from src.config import DEFAULT_OUTPUT_DIR, MAX_ALERTS_PER_RUN, STATE_FILE, TELEGRAM_SEND_DELAY_SEC
 from src.deck_qr import (
+    BuiltDeck,
     CardCatalog,
     build_three_decks_for_event,
     extract_event_constraints,
     load_catalog,
 )
-from src.deck_sheet_renderer import render_deck_sheet
+from src.deck_sheet_renderer import render_single_deck_card
 from src.enricher import enrich_alert_item
 from src.models import AlertItem
 from src.scrapers import create_session, fetch_all_sources, fetch_text_safe
@@ -30,12 +31,10 @@ from src.state import (
     update_source_health_and_heartbeat,
 )
 from src.telegram_client import (
-    build_deck_sheet_caption,
+    build_single_deck_caption,
     build_telegram_caption,
-    build_weekly_meta_caption,
-    send_telegram_deck_sheet,
     send_telegram_photo,
-    send_telegram_weekly_meta,
+    send_telegram_single_deck,
 )
 from src.translator import localize_alert_item
 from src.weekly_meta import build_weekly_ranked_report
@@ -116,17 +115,17 @@ def _select_preview_sample(items: list[AlertItem]) -> list[AlertItem]:
     return sample
 
 
-def _maybe_build_tcgp_deck_sheet(
+def _maybe_build_tcgp_decks(
     *,
     session,
     raw_item: AlertItem,
     localized_item: AlertItem,
     out_dir: Path,
     catalog_holder: list[CardCatalog],
-) -> tuple[list, Path] | None:
-    """Genera lámina con 3 QR si el evento de TCG Pocket requiere combates."""
+) -> list[tuple[BuiltDeck, Path]]:
+    """Genera 3 tarjetas individuales (1 QR cada una) para eventos de combate TCGP."""
     if raw_item.game != "tcgp" or raw_item.kind != "event":
-        return None
+        return []
     try:
         if not catalog_holder:
             catalog_holder.append(load_catalog(session))
@@ -136,7 +135,7 @@ def _maybe_build_tcgp_deck_sheet(
         try:
             detail_html = fetch_text_safe(session, raw_item.url)
         except Exception as exc:
-            LOGGER.warning("[DeckSheet] Sin HTML detalle para %s (%s).", raw_item.url, exc)
+            LOGGER.warning("[DeckCards] Sin HTML detalle para %s (%s).", raw_item.url, exc)
 
         constraints = extract_event_constraints(
             title=raw_item.title,
@@ -145,7 +144,7 @@ def _maybe_build_tcgp_deck_sheet(
             extra_text=" ".join(raw_item.guide_bullets),
         )
         if not constraints.is_combat_event:
-            return None
+            return []
 
         decks = build_three_decks_for_event(
             event_title=localized_item.title,
@@ -154,14 +153,23 @@ def _maybe_build_tcgp_deck_sheet(
             catalog=catalog,
         )
         if not decks:
-            return None
+            return []
 
-        sheet_path = out_dir / f"decks_{_safe_filename(localized_item.uid)}"
-        render_deck_sheet(localized_item.title, decks, sheet_path)
-        return decks, sheet_path
+        base_name = _safe_filename(localized_item.uid).removesuffix(".png")
+        built: list[tuple[BuiltDeck, Path]] = []
+        for idx, deck in enumerate(decks, 1):
+            card_path = out_dir / f"deck_{base_name}_{idx}.png"
+            render_single_deck_card(
+                deck,
+                card_path,
+                context_label=f"Evento: {localized_item.title}",
+                badge_label="EVENTO TCG POCKET",
+            )
+            built.append((deck, card_path))
+        return built
     except Exception as exc:
-        LOGGER.warning("[DeckSheet] No se pudo generar lámina QR para %s: %s", raw_item.uid, exc)
-        return None
+        LOGGER.warning("[DeckCards] No se pudieron generar QR individuales para %s: %s", raw_item.uid, exc)
+        return []
 
 
 def _maybe_run_weekly_meta(
@@ -173,37 +181,56 @@ def _maybe_run_weekly_meta(
     bot_token: str,
     chat_id: str,
 ) -> bool:
-    """Genera y envía la lámina QR semanal con los 3 mejores mazos de torneos."""
+    """Genera y envía 3 tarjetas individuales (1 QR cada una) del Top 3 Ranked."""
     try:
         if not catalog_holder:
             catalog_holder.append(load_catalog(session))
         report = build_weekly_ranked_report(session, catalog_holder[0])
-        if not report or not report.decks:
+        if not report or not report.archetypes:
             LOGGER.warning("[WeeklyMeta] Sin datos suficientes de torneos esta semana.")
             return False
 
-        sheet_path = args.out_dir / f"weekly_meta_{week_key}.png"
-        render_deck_sheet(
-            report.window_label,
-            report.decks,
-            sheet_path,
-            header_text="TOP 3 MAZOS RANKED SEMANAL  •  ESCANEA EL QR EN TCG POCKET",
-            subtitle_prefix="Torneos",
-        )
-        if args.dry_run:
-            LOGGER.info("[DRY-RUN] WEEKLY META SHEET: %s", sheet_path)
-            print("--- CAPTION WEEKLY META ---")
-            print(build_weekly_meta_caption(report))
-            print("---------------------------")
-            return False
+        for idx, arch in enumerate(report.archetypes, 1):
+            card_path = args.out_dir / f"weekly_meta_{week_key}_{idx}.png"
+            render_single_deck_card(
+                arch.deck,
+                card_path,
+                context_label=f"Torneos: {report.window_label} • {report.analyzed_entries} listas",
+                badge_label="TOP RANKED SEMANAL",
+            )
+            info_url = arch.best_url or "https://play.limitlesstcg.com/tournaments/completed?game=POCKET"
+            extra_note = f"{report.window_label} | {arch.best_note}"
+            if args.dry_run:
+                LOGGER.info("[DRY-RUN] WEEKLY META CARD %d: %s", idx, card_path)
+                print(f"--- CAPTION WEEKLY META #{idx} ---")
+                print(
+                    build_single_deck_caption(
+                        arch.deck,
+                        context_title="Top 3 Semanal Ranked",
+                        header_tag="🏆 <b>Mazo Ranked Semanal</b>",
+                        extra_note=extra_note,
+                    )
+                )
+                print("----------------------------------")
+                continue
 
-        send_telegram_weekly_meta(
-            bot_token=bot_token,
-            chat_id=chat_id,
-            report=report,
-            sheet_path=sheet_path,
-        )
-        LOGGER.info("[WeeklyMeta] Enviado reporte semanal %s (%d torneos).", week_key, report.analyzed_tournaments)
+            if idx > 1:
+                time.sleep(TELEGRAM_SEND_DELAY_SEC)
+            send_telegram_single_deck(
+                bot_token=bot_token,
+                chat_id=chat_id,
+                deck=arch.deck,
+                card_path=card_path,
+                context_title="Top 3 Semanal Ranked",
+                header_tag="🏆 <b>Mazo Ranked Semanal</b>",
+                info_label="🏆 Ver lista campeón",
+                info_url=info_url,
+                extra_note=extra_note,
+            )
+
+        if args.dry_run:
+            return False
+        LOGGER.info("[WeeklyMeta] Enviado reporte semanal %s (%d tarjetas).", week_key, len(report.archetypes))
         return True
     except Exception as exc:
         LOGGER.warning("[WeeklyMeta] Fallo no bloqueante al generar reporte semanal: %s", exc)
@@ -273,24 +300,31 @@ def run_pipeline(args: argparse.Namespace) -> int:
         png_path = args.out_dir / _safe_filename(localized.uid)
         render_alert_card(localized, png_path)
 
-        deck_result = _maybe_build_tcgp_deck_sheet(
+        deck_cards = _maybe_build_tcgp_decks(
             session=session,
             raw_item=enriched,
             localized_item=localized,
             out_dir=args.out_dir,
             catalog_holder=catalog_holder,
         )
+        info_label = "🃏 Guía de mazos" if localized.deck_guide_url else "🔎 Ver evento"
+        info_url = localized.deck_guide_url or localized.url
 
         if args.dry_run:
             LOGGER.info("[DRY-RUN] PNG: %s", png_path)
             print("--- CAPTION TELEGRAM ---")
             print(build_telegram_caption(localized))
             print("------------------------")
-            if deck_result:
-                decks, sheet_path = deck_result
-                LOGGER.info("[DRY-RUN] DECK SHEET QR: %s", sheet_path)
-                print("--- CAPTION DECK QR ---")
-                print(build_deck_sheet_caption(localized, decks))
+            for idx_d, (deck, card_path) in enumerate(deck_cards, 1):
+                LOGGER.info("[DRY-RUN] DECK CARD %d QR: %s", idx_d, card_path)
+                print(f"--- CAPTION DECK #{idx_d} ---")
+                print(
+                    build_single_deck_caption(
+                        deck,
+                        context_title=localized.title,
+                        header_tag="🃏 <b>Mazo recomendado</b>",
+                    )
+                )
                 print("-----------------------")
             sent_items.append(item)
             continue
@@ -301,15 +335,17 @@ def run_pipeline(args: argparse.Namespace) -> int:
             item=localized,
             image_path=png_path,
         )
-        if deck_result:
-            decks, sheet_path = deck_result
+        for deck, card_path in deck_cards:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
-            send_telegram_deck_sheet(
+            send_telegram_single_deck(
                 bot_token=bot_token,
                 chat_id=chat_id,
-                item=localized,
-                decks=decks,
-                sheet_path=sheet_path,
+                deck=deck,
+                card_path=card_path,
+                context_title=localized.title,
+                header_tag="🃏 <b>Mazo recomendado</b>",
+                info_label=info_label,
+                info_url=info_url,
             )
         sent_items.append(item)
         if idx < len(to_notify) - 1:

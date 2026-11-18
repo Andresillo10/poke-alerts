@@ -7,7 +7,6 @@ import json
 import logging
 import time
 from pathlib import Path
-from typing import TYPE_CHECKING
 
 import requests
 
@@ -17,11 +16,13 @@ from src.config import (
     TELEGRAM_GAME_NAMES,
     TELEGRAM_KIND_HEADERS,
 )
-from src.deck_qr import ENERGY_ID_LABELS_ES, BuiltDeck
+from src.deck_qr import (
+    ENERGY_ID_LABELS_ES,
+    BuiltDeck,
+    build_qr_download_url,
+    describe_deck_strategy,
+)
 from src.models import AlertItem
-
-if TYPE_CHECKING:
-    from src.weekly_meta import WeeklyMetaReport
 
 LOGGER = logging.getLogger(__name__)
 
@@ -91,19 +92,41 @@ def build_telegram_caption(item: AlertItem) -> str:
     return caption[:TELEGRAM_CAPTION_LIMIT]
 
 
-def build_deck_sheet_caption(item: AlertItem, decks: list[BuiltDeck]) -> str:
-    """Construye la descripción corta para la lámina PNG con los 3 QR de barajas."""
+def build_single_deck_caption(
+    deck: BuiltDeck,
+    *,
+    context_title: str,
+    header_tag: str = "🃏 <b>Baraja recomendada</b>",
+    extra_note: str | None = None,
+) -> str:
+    """Construye la explicación individual en HTML para una sola baraja con QR."""
+    energy = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in deck.energy_types)
+    strategy = describe_deck_strategy(deck)
     lines = [
-        f"🃏 <b>3 mejores barajas para: {html.escape(item.title)}</b>",
-        "📲 <i>En TCG Pocket: Barajas → + Crear nueva → Leer código QR</i>",
+        f"{header_tag} • <b>{html.escape(deck.title)}</b>",
+        f"📌 <b>Contexto:</b> {html.escape(context_title)}",
+        f"🎯 <b>Ventaja:</b> {html.escape(deck.mission_tag)} | ⚡ <b>Energía:</b> {html.escape(energy)}",
         "",
+        f"💡 <b>Explicación:</b> {html.escape(strategy)}",
     ]
-    for deck in decks:
-        energy = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in deck.energy_types)
-        lines.append(
-            f"• <b>{html.escape(deck.title)}</b> ({energy}) — <i>{html.escape(deck.mission_tag)}</i>"
-        )
+    if extra_note:
+        lines.append(f"📊 <i>{html.escape(extra_note)}</i>")
+    lines.append("")
+    lines.append("📲 <i>Guarda la foto en tu galería o toca «Descargar QR» para importarla directo.</i>")
     return "\n".join(lines)[:TELEGRAM_CAPTION_LIMIT]
+
+
+def build_single_deck_keyboard(
+    deck: BuiltDeck,
+    *,
+    info_label: str,
+    info_url: str,
+) -> dict[str, list[list[dict[str, str]]]]:
+    """Crea exactamente 2 botones por baraja: descarga del QR y enlace de contexto."""
+    buttons = [{"text": "📥 Descargar QR", "url": build_qr_download_url(deck.qr_payload)}]
+    if info_url:
+        buttons.append({"text": info_label, "url": info_url})
+    return {"inline_keyboard": [buttons]}
 
 
 def build_inline_keyboard(item: AlertItem) -> dict[str, list[list[dict[str, str]]]]:
@@ -173,53 +196,30 @@ def send_telegram_photo(
     )
 
 
-def send_telegram_deck_sheet(
+def send_telegram_single_deck(
     *,
     bot_token: str,
     chat_id: str,
-    item: AlertItem,
-    decks: list[BuiltDeck],
-    sheet_path: Path,
+    deck: BuiltDeck,
+    card_path: Path,
+    context_title: str,
+    header_tag: str,
+    info_label: str,
+    info_url: str,
+    extra_note: str | None = None,
 ) -> None:
-    """Envía la lámina PNG con las 3 barajas recomendadas y sus códigos QR."""
-    _post_photo_to_telegram(
-        bot_token=bot_token,
-        chat_id=chat_id,
-        caption=build_deck_sheet_caption(item, decks),
-        image_path=sheet_path,
+    """Envía una tarjeta PNG individual con explicación y 2 botones (QR + contexto)."""
+    caption = build_single_deck_caption(
+        deck,
+        context_title=context_title,
+        header_tag=header_tag,
+        extra_note=extra_note,
     )
-
-
-def build_weekly_meta_caption(report: WeeklyMetaReport) -> str:
-    """Construye la descripción HTML del Top 3 semanal para rankear en TCG Pocket."""
-    lines = [
-        "🏆 <b>Top 3 Mazos Semanales para Rankear — TCG Pocket</b>",
-        f"📊 <i>{html.escape(report.window_label)} • {report.analyzed_entries} listas</i>",
-        "📲 <i>En TCG Pocket: Barajas → + Crear nueva → Leer código QR</i>",
-        "",
-    ]
-    for arch in report.archetypes:
-        energy = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in arch.deck.energy_types)
-        lines.append(
-            f"• <b>{html.escape(arch.deck.title)}</b> ({energy}) — "
-            f"{arch.win_rate:.1f}% WR ({arch.entries} jug.) | <i>{html.escape(arch.best_note)}</i>"
-        )
-    lines.append("")
-    lines.append("📡 <i>Fuente: Limitless TCG Pocket (Torneos Estándar últimos 7 días)</i>")
-    return "\n".join(lines)[:TELEGRAM_CAPTION_LIMIT]
-
-
-def send_telegram_weekly_meta(
-    *,
-    bot_token: str,
-    chat_id: str,
-    report: WeeklyMetaReport,
-    sheet_path: Path,
-) -> None:
-    """Envía la lámina PNG con los 3 mejores mazos semanales de torneos y sus QR."""
+    keyboard = build_single_deck_keyboard(deck, info_label=info_label, info_url=info_url)
     _post_photo_to_telegram(
         bot_token=bot_token,
         chat_id=chat_id,
-        caption=build_weekly_meta_caption(report),
-        image_path=sheet_path,
+        caption=caption,
+        image_path=card_path,
+        keyboard_json=json.dumps(keyboard, ensure_ascii=False),
     )

@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import re
+import urllib.parse
 from collections import Counter
 from dataclasses import dataclass
 from typing import Any
@@ -197,6 +198,40 @@ def encode_deck_payload(
     buf.append(len(energy_types))
     buf.extend(energy_types)
     return base64.b64encode(bytes(buf)).decode("ascii")
+
+
+def build_qr_download_url(qr_payload: str) -> str:
+    """Genera un enlace HTTPS directo para descargar la imagen PNG de un solo QR."""
+    encoded = urllib.parse.quote(qr_payload, safe="")
+    return f"https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data={encoded}"
+
+
+def describe_deck_strategy(deck: BuiltDeck) -> str:
+    """Genera una explicación táctica breve en español basada en las cartas del mazo."""
+    pks = [c for c in deck.cards if c.is_pokemon]
+    trs = [c for c in deck.cards if not c.is_pokemon]
+    if not pks:
+        return f"Baraja equilibrada de 20 cartas ({len(trs)} Entrenadores)."
+
+    unique_pks: dict[str, CardRecord] = {}
+    for card in pks:
+        unique_pks.setdefault(card.name, card)
+    ordered_pks = sorted(
+        unique_pks.values(),
+        key=lambda c: (c.is_mega, c.is_ex, c.stage == "Stage 2", c.score()),
+        reverse=True,
+    )
+    lead = ordered_pks[0]
+    best_dmg = max((dmg for _, dmg in lead.attacks), default=0)
+    supporters = [c.name for c in ordered_pks[1:3]]
+    energy_txt = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in deck.energy_types)
+
+    lead_stats = f"{lead.hp} HP" + (f", hasta {best_dmg} daño" if best_dmg > 0 else "")
+    extra = f" junto a {', '.join(supporters)}" if supporters else ""
+    return (
+        f"Mazo {energy_txt} ({len(pks)} Pokémon / {len(trs)} Entrenadores) centrado en "
+        f"{lead.name} ({lead_stats}){extra}."
+    )
 
 
 def decode_deck_payload(payload: str) -> tuple[list[int], list[int], list[int]]:
