@@ -754,6 +754,15 @@ class CorePipelineTests(unittest.TestCase):
         self.assertFalse(should_send_one_time_ping(default_state(), now_utc=t_1023)[0])
         self.assertFalse(should_send_one_time_ping(default_state(), now_utc=t_next)[0])
 
+        # Regresión 10:23 AM: "(C1)" en título PTCGPocket.gg deduplica con Serebii y bloquea Cyrus B2
+        ev_serebii = AlertItem("s1", "tcgp", "event", "Dual Fusion Limited Battles", "Desc", "https://s", "Serebii")
+        ev_ptcg = AlertItem("p1", "tcgp", "event", "Dual Fusion (C1) Limited Battles", "Desc", "https://p", "PTCGPocket.gg")
+        self.assertEqual(build_topic_key(ev_serebii), build_topic_key(ev_ptcg))
+
+        ptcg_only_html = "<div class='entry-content'><p>Only cards from Dual Fusion can be used.</p></div>"
+        c_ptcg = extract_event_constraints(title="Dual Fusion (C1) Limited Battles", detail_html=ptcg_only_html, catalog=catalog)
+        self.assertEqual(c_ptcg.allowed_sets, ("c1",))
+
 
 if __name__ == "__main__":
     unittest.main()

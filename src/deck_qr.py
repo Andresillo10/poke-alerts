@@ -374,7 +374,10 @@ def extract_event_constraints(
 
     detected_sets: list[str] = []
     for exp_name, code in catalog.expansion_by_name.items():
-        if re.search(rf"\bonly use cards from\b[^.]*\b{re.escape(exp_name)}\b", lower_body):
+        if re.search(
+            rf"\b(?:only use cards from|only cards from|usable expansions?\s*:?)\b[^.]*\b{re.escape(exp_name)}\b",
+            lower_body,
+        ):
             detected_sets.append(code)
 
     min_set_cards: tuple[str, int] | None = None
@@ -395,9 +398,12 @@ def extract_event_constraints(
     target_exp = detected_sets[0] if detected_sets else (min_set_cards[0] if min_set_cards else None)
     if not target_exp:
         for exp_name, code in catalog.expansion_by_name.items():
-            if exp_name in lower_title:
+            if exp_name in lower_title or exp_name in lower_body:
                 target_exp = code
                 break
+
+    if not detected_sets and target_exp and "limited battle" in (lower_title + " " + lower_body):
+        detected_sets = [target_exp]
 
     promo_names: list[str] = []
     for tbl in main.select("table.dextab, table.dextable"):

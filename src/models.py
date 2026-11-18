@@ -13,6 +13,7 @@ AlertKind = Literal["code", "event", "news"]
 _BOILERPLATE_RE = re.compile(
     r"\b(ranking guide|all rewards|guide|event|events|evento|eventos|leek duck|ptcgpocket)\b"
 )
+_PAREN_SET_RE = re.compile(r"\([a-c]\d+[a-z]?\)")
 _NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 
 
@@ -75,6 +76,7 @@ def build_topic_key(item: AlertItem) -> str:
         return f"{item.game}:code:{item.promo_code.strip().upper()}"
 
     clean = _strip_accents(item.title.lower())
+    clean = _PAREN_SET_RE.sub(" ", clean)
     clean = _BOILERPLATE_RE.sub(" ", clean)
     clean = _NON_ALNUM_RE.sub(" ", clean).strip()
     tokens = [tok for tok in clean.split() if len(tok) > 1 or tok.isdigit()]
