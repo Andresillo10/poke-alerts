@@ -17,7 +17,12 @@ from src.enricher import (
 )
 from src.main import _select_preview_sample
 from src.models import AlertItem, build_topic_key
-from src.scrapers import parse_leekduck_promos_html, parse_serebii_end_date
+from src.scrapers import (
+    parse_leekduck_promos_html,
+    parse_ptcgpocket_wp_posts,
+    parse_serebii_end_date,
+    parse_serebii_start_date,
+)
 from src.state import (
     default_state,
     mark_items_processed,
@@ -138,6 +143,65 @@ class CorePipelineTests(unittest.TestCase):
             date(2019, 12, 28),
         )
         self.assertIsNone(parse_serebii_end_date("Ongoing"))
+        self.assertEqual(
+            parse_serebii_start_date("November 18th - December 2nd 2026", date(2026, 12, 2)),
+            date(2026, 11, 18),
+        )
+        self.assertEqual(
+            parse_serebii_start_date("December 28th - January 4th 2027", date(2027, 1, 4)),
+            date(2026, 12, 28),
+        )
+
+    def test_launch_day_reminder_fires_once_for_preannounced_event(self) -> None:
+        state = default_state()
+        ev = AlertItem(
+            uid="serebii-tcgp:dual-fusion",
+            game="tcgp",
+            kind="event",
+            title="Dual Fusion Limited Battles",
+            summary="Desc",
+            url="https://www.serebii.net/tcgpocket/events/dualfusionlimitedbattles.shtml",
+            source_name="Serebii TCGP",
+            starts_on="2026-11-18",
+        )
+        # Anunciado el 17 de nov -> inicia el 18 de nov
+        mark_items_processed(state, [ev], now_utc=datetime(2026, 11, 17, 18, 5, tzinfo=timezone.utc))
+
+        pending_day_of, _ = select_pending_alerts(
+            state, [ev], now_utc=datetime(2026, 11, 18, 10, 30, tzinfo=timezone.utc)
+        )
+        self.assertEqual(len(pending_day_of), 1)
+        self.assertTrue(pending_day_of[0].is_launch_reminder)
+        self.assertIn("¡YA DISPONIBLE HOY!", build_telegram_caption(pending_day_of[0]))
+
+        mark_items_processed(
+            state, pending_day_of, now_utc=datetime(2026, 11, 18, 10, 30, tzinfo=timezone.utc)
+        )
+        pending_again, _ = select_pending_alerts(
+            state, [ev], now_utc=datetime(2026, 11, 18, 11, 30, tzinfo=timezone.utc)
+        )
+        self.assertEqual(pending_again, [])
+
+    def test_ptcgpocket_wp_posts_maps_events_and_news(self) -> None:
+        posts = [
+            {
+                "date": "2026-11-18T01:00:00",
+                "link": "https://ptcgpocket.gg/new-promo/",
+                "title": {"rendered": "Promo Pack C &amp; Missions"},
+                "categories": [7],
+            },
+            {
+                "date": "2026-11-18T02:00:00",
+                "link": "https://ptcgpocket.gg/new-expansion/",
+                "title": {"rendered": "Dual Fusion Expansion"},
+                "categories": [1, 8],
+            },
+        ]
+        items = parse_ptcgpocket_wp_posts(posts)
+        self.assertEqual([(it.kind, it.title) for it in items], [
+            ("event", "Promo Pack C & Missions"),
+            ("news", "Dual Fusion Expansion"),
+        ])
 
     def test_bootstrap_limits_event_flood_and_keeps_codes(self) -> None:
         state = default_state()

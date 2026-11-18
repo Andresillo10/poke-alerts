@@ -38,9 +38,12 @@ def _format_bullet(bullet: str) -> str:
 def build_telegram_caption(item: AlertItem) -> str:
     """Construye un mensaje HTML cálido con misiones/spawns/mazos dentro de 1024 chars."""
     game_name = html.escape(TELEGRAM_GAME_NAMES[item.game])
-    kind_header = html.escape(
-        TELEGRAM_KIND_HEADERS.get((item.game, item.kind), "✨ ¡Nueva alerta Pokémon!")
+    raw_header = (
+        "🚀 ¡YA DISPONIBLE HOY!"
+        if item.is_launch_reminder
+        else TELEGRAM_KIND_HEADERS.get((item.game, item.kind), "✨ ¡Nueva alerta Pokémon!")
     )
+    kind_header = html.escape(raw_header)
     title = html.escape(item.title)
     summary = html.escape(item.summary)
 

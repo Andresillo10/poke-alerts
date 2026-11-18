@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import html as html_lib
 import logging
 import re
 from dataclasses import dataclass
@@ -92,12 +93,50 @@ def parse_serebii_end_date(duration_text: str) -> date | None:
     return None
 
 
+def parse_serebii_start_date(duration_text: str, end_dt: date | None = None) -> date | None:
+    """Extrae la fecha de inicio de un rango Serebii."""
+    clean = _ORDINAL_RE.sub(r"\1", duration_text).replace(",", " ")
+    head_part = clean.split("-")[0].strip()
+    full_head = _FULL_DATE_RE.search(head_part)
+    if full_head:
+        month = _MONTHS.get(full_head.group(1).lower())
+        if month:
+            return _safe_date(int(full_head.group(3)), month, int(full_head.group(2)))
+
+    head_match = _MONTH_DAY_RE.search(head_part)
+    if head_match and end_dt:
+        month = _MONTHS.get(head_match.group(1).lower())
+        if month:
+            year = end_dt.year - 1 if month > end_dt.month else end_dt.year
+            return _safe_date(year, month, int(head_match.group(2)))
+    return None
+
+
 def _safe_date(year: int, month: int, day: int) -> date | None:
     """Construye una fecha validando rango calendario sin lanzar excepciones."""
     try:
         return date(year, month, day)
     except ValueError:
         return None
+
+
+def parse_serebii_start_date(duration_text: str, end_dt: date | None = None) -> date | None:
+    """Extrae la fecha de inicio de un rango Serebii."""
+    clean = _ORDINAL_RE.sub(r"\1", duration_text).replace(",", " ")
+    head_part = clean.split("-")[0].strip()
+    full_head = _FULL_DATE_RE.search(head_part)
+    if full_head:
+        month = _MONTHS.get(full_head.group(1).lower())
+        if month:
+            return _safe_date(int(full_head.group(3)), month, int(full_head.group(2)))
+
+    head_match = _MONTH_DAY_RE.search(head_part)
+    if head_match and end_dt:
+        month = _MONTHS.get(head_match.group(1).lower())
+        if month:
+            year = end_dt.year - 1 if month > end_dt.month else end_dt.year
+            return _safe_date(year, month, int(head_match.group(2)))
+    return None
 
 
 def _is_iso_expired(iso_str: str | None, now_utc: datetime) -> bool:
@@ -235,6 +274,7 @@ def fetch_scrapedduck_events(session: requests.Session, now_utc: datetime | None
             start = (ev.get("start") or "")[:10]
             end = (ev.get("end") or "")[:10]
             window = f"{start} al {end}".strip(" al") if (start or end) else None
+            starts_on = start if len(start) == 10 and start[4] == "-" else None
 
             items.append(
                 AlertItem(
@@ -249,6 +289,7 @@ def fetch_scrapedduck_events(session: requests.Session, now_utc: datetime | None
                     source_name=source,
                     expires_at=window,
                     language="en",
+                    starts_on=starts_on,
                 )
             )
         return FetchResult(source, items, ok=True)
@@ -342,6 +383,7 @@ def fetch_serebii_events(
             end_dt = parse_serebii_end_date(duration)
             if end_dt and end_dt < ref_today:
                 continue
+            start_dt = parse_serebii_start_date(duration, end_dt=end_dt)
 
             href = link_el["href"].strip() if link_el else url
             full_url = urljoin(url, href)
@@ -361,6 +403,7 @@ def fetch_serebii_events(
                     source_name=source_name,
                     expires_at=duration or None,
                     language="en",
+                    starts_on=start_dt.isoformat() if start_dt else None,
                 )
             )
 
@@ -370,9 +413,58 @@ def fetch_serebii_events(
         return FetchResult(source_name, [], ok=False, error=str(exc))
 
 
+_WP_TAG_RE = re.compile(r"<[^>]+>")
+
+
+def parse_ptcgpocket_wp_posts(posts: list[dict], source: str = "PTCGPocket.gg") -> list[AlertItem]:
+    """Convierte posts WP JSON (eventos, noticias, expansiones, pase) a AlertItem."""
+    items: list[AlertItem] = []
+    for post in posts:
+        href = (post.get("link") or "").strip()
+        raw_title = (post.get("title") or {}).get("rendered") or ""
+        title = html_lib.unescape(_WP_TAG_RE.sub("", raw_title)).strip()
+        if not href or not title:
+            continue
+
+        cats = set(post.get("categories") or [])
+        kind = "event" if 7 in cats else "news"
+        date_text = (post.get("date") or "")[:10] or None
+        items.append(
+            AlertItem(
+                uid=f"ptcgpocket-gg:{href}",
+                game="tcgp",
+                kind=kind,
+                title=title,
+                summary=f"Official update in Pokémon TCG Pocket: {title}",
+                url=href,
+                source_name=source,
+                expires_at=date_text,
+                language="en",
+            )
+        )
+    return items
+
+
 def fetch_ptcgpocket_gg_events(session: requests.Session) -> FetchResult:
-    """Extrae artículos recientes de eventos desde PTCGPocket.gg (tolerante a Cloudflare)."""
+    """Extrae eventos y noticias recientes de TCG Pocket vía WP API con fallback HTML."""
     source = "PTCGPocket.gg"
+    try:
+        wp_resp = session.get(
+            URLS["ptcgpocket_gg_wp_search"],
+            params={
+                "per_page": 10,
+                "categories": URLS["ptcgpocket_gg_wp_categories"],
+                "_fields": "date,link,title,categories",
+            },
+            timeout=REQUEST_TIMEOUT_SEC,
+        )
+        if wp_resp.ok:
+            wp_items = parse_ptcgpocket_wp_posts(wp_resp.json(), source=source)
+            if wp_items:
+                return FetchResult(source, wp_items, ok=True)
+    except Exception as exc:
+        LOGGER.warning("[%s WP API] Probando fallback HTML (%s).", source, exc)
+
     try:
         html = _fetch_text(session, URLS["ptcgpocket_gg_events"])
         soup = BeautifulSoup(html, "html.parser")

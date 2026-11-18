@@ -240,7 +240,8 @@ def render_alert_card(item: AlertItem, output_path: Path) -> Path:
     footer_font = _load_font("regular", 20)
 
     _draw_header_emblem(draw, item.game, PADDING, 58, theme["highlight"])
-    badge_text = f"{GAME_LABELS[item.game]}  •  {KIND_LABELS[item.kind]}"
+    kind_badge = "¡YA ACTIVO HOY!" if item.is_launch_reminder else KIND_LABELS[item.kind]
+    badge_text = f"{GAME_LABELS[item.game]}  •  {kind_badge}"
     badge_x = PADDING + 56
     badge_w = int(draw.textlength(badge_text, font=badge_font)) + 34
     draw.rounded_rectangle((badge_x, 60, badge_x + badge_w, 102), radius=18, fill=theme["accent"])

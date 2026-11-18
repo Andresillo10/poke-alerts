@@ -35,6 +35,8 @@ class AlertItem:
     guide_bullets: tuple[str, ...] = ()
     deck_guide_url: str | None = None
     deck_guide_title: str | None = None
+    starts_on: str | None = None
+    is_launch_reminder: bool = False
 
     def with_spanish_copy(
         self,

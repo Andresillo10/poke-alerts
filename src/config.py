@@ -34,6 +34,7 @@ URLS = {
     "serebii_tcgp_events": "https://www.serebii.net/tcgpocket/events.shtml",
     "ptcgpocket_gg_events": "https://ptcgpocket.gg/events/",
     "ptcgpocket_gg_wp_search": "https://ptcgpocket.gg/wp-json/wp/v2/posts",
+    "ptcgpocket_gg_wp_categories": "7,1,8,11",
     "ptcgpocket_gg_tier_list": "https://ptcgpocket.gg/tier-list/",
     "scrapedduck_events_full": "https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.json",
     "pogo_redeem_base": "https://store.pokemongo.com/offer-redemption",
