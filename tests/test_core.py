@@ -10,6 +10,17 @@ from pathlib import Path
 from PIL import Image
 
 from src.card_renderer import render_alert_card
+from src.deck_qr import (
+    TRAINER_ID_OFFSET,
+    CardCatalog,
+    EventDeckConstraints,
+    build_three_decks_for_event,
+    decode_deck_payload,
+    encode_deck_payload,
+    extract_event_constraints,
+    validate_deck,
+)
+from src.deck_sheet_renderer import render_deck_sheet
 from src.enricher import (
     parse_ptcgpocket_detail_html,
     parse_serebii_detail_html,
@@ -29,7 +40,11 @@ from src.state import (
     select_pending_alerts,
     update_source_health_and_heartbeat,
 )
-from src.telegram_client import build_inline_keyboard, build_telegram_caption
+from src.telegram_client import (
+    build_deck_sheet_caption,
+    build_inline_keyboard,
+    build_telegram_caption,
+)
 from src.translator import localize_alert_item, translate_en_to_es
 
 
@@ -401,6 +416,184 @@ class CorePipelineTests(unittest.TestCase):
                 self.assertTrue(out_file.exists())
                 with Image.open(out_file) as img:
                     self.assertEqual(img.size, (1080, 600))
+
+    @staticmethod
+    def _sample_catalog() -> CardCatalog:
+        expansions = [
+            {"id": "pa", "name": "Promo-A"},
+            {"id": "b2", "name": "Space-Time Smackdown"},
+            {"id": "c1", "name": "Dual Fusion"},
+        ]
+        raw_cards = [
+            # Dragon non-ex Stage 1 line in C1 + Dragon Mega ex line in C1
+            {"id": "c1-050", "name": "Dratini", "set_code": "c1", "type": "Pokémon", "subtype": "Dragon", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 70, "retreat": 1, "attacks": {"1": {"cost": "W", "damage": "20"}}, "deckBuilderNr": 1001},
+            {"id": "c1-051", "name": "Dragonair", "set_code": "c1", "type": "Pokémon", "subtype": "Dragon", "stage": "Stage 1", "evolves_from": "Dratini", "rarity": "◊◊", "ex": False, "mega": False, "health": 100, "retreat": 1, "attacks": {"1": {"cost": "WL", "damage": "70"}}, "deckBuilderNr": 1002},
+            {"id": "c1-052", "name": "Mega Garchomp ex", "set_code": "c1", "type": "Pokémon", "subtype": "Dragon", "stage": "Basic", "rarity": "◊◊◊◊", "ex": True, "mega": True, "health": 210, "retreat": 2, "attacks": {"1": {"cost": "FF", "damage": "160"}}, "deckBuilderNr": 1003},
+            # Psychics / Lightning / Water lines in C1 for variety
+            {"id": "c1-020", "name": "Inkay", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "P", "damage": "20"}}, "deckBuilderNr": 1004},
+            {"id": "c1-021", "name": "Malamar", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Stage 1", "evolves_from": "Inkay", "rarity": "◊◊", "ex": False, "mega": False, "health": 100, "retreat": 1, "attacks": {"1": {"cost": "PP", "damage": "90"}}, "deckBuilderNr": 1005},
+            {"id": "c1-030", "name": "Mega Mewtwo Y ex", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Basic", "rarity": "◊◊◊◊", "ex": True, "mega": True, "health": 170, "retreat": 2, "attacks": {"1": {"cost": "PP", "damage": "150"}}, "deckBuilderNr": 1006},
+            {"id": "c1-010", "name": "Pikachu", "set_code": "c1", "type": "Pokémon", "subtype": "Lightning", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "L", "damage": "30"}}, "deckBuilderNr": 1007},
+            {"id": "c1-011", "name": "Raichu", "set_code": "c1", "type": "Pokémon", "subtype": "Lightning", "stage": "Stage 1", "evolves_from": "Pikachu", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 110, "retreat": 1, "attacks": {"1": {"cost": "LL", "damage": "120"}}, "deckBuilderNr": 1008},
+            {"id": "c1-040", "name": "Froakie", "set_code": "c1", "type": "Pokémon", "subtype": "Water", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "W", "damage": "20"}}, "deckBuilderNr": 1009},
+            {"id": "c1-041", "name": "Greninja", "set_code": "c1", "type": "Pokémon", "subtype": "Water", "stage": "Stage 1", "evolves_from": "Froakie", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 120, "retreat": 1, "attacks": {"1": {"cost": "WW", "damage": "100"}}, "deckBuilderNr": 1010},
+            {"id": "c1-060", "name": "Eevee", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "C", "damage": "20"}}, "deckBuilderNr": 1011},
+            # Trainers (Promo-A staples + B2 + C1)
+            {"id": "pa-001", "name": "Potion", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "deckBuilderNr": 1_000_001},
+            {"id": "pa-002", "name": "X Speed", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "deckBuilderNr": 1_000_002},
+            {"id": "pa-005", "name": "Poké Ball", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "deckBuilderNr": 1_000_005},
+            {"id": "pa-007", "name": "Professor's Research", "set_code": "pa", "type": "Trainer", "subtype": "Supporter", "rarity": "Promo", "deckBuilderNr": 1_000_007},
+            {"id": "b2-090", "name": "Cyrus", "set_code": "b2", "type": "Trainer", "subtype": "Supporter", "rarity": "◊◊", "deckBuilderNr": 1_000_090},
+            {"id": "c1-090", "name": "Serena's Choice", "set_code": "c1", "type": "Trainer", "subtype": "Supporter", "rarity": "◊◊", "deckBuilderNr": 1_000_101},
+            {"id": "c1-091", "name": "Genome Converter Y", "set_code": "c1", "type": "Trainer", "subtype": "Item", "rarity": "◊◊", "card_text": "Move Psychic Energy to Mega Mewtwo Y ex.", "deckBuilderNr": 1_000_102},
+            {"id": "c1-092", "name": "Eviolite", "set_code": "c1", "type": "Trainer", "subtype": "Pokemon Tool", "rarity": "◊◊", "deckBuilderNr": 1_000_103},
+            {"id": "c1-093", "name": "Giant Cape", "set_code": "c1", "type": "Trainer", "subtype": "Pokemon Tool", "rarity": "◊◊", "deckBuilderNr": 1_000_104},
+            {"id": "c1-094", "name": "Sabrina", "set_code": "c1", "type": "Trainer", "subtype": "Supporter", "rarity": "◊◊", "deckBuilderNr": 1_000_105},
+            {"id": "c1-095", "name": "Rocky Helmet", "set_code": "c1", "type": "Trainer", "subtype": "Pokemon Tool", "rarity": "◊◊", "deckBuilderNr": 1_000_106},
+            {"id": "c1-096", "name": "Super Potion", "set_code": "c1", "type": "Trainer", "subtype": "Item", "rarity": "◊", "deckBuilderNr": 1_000_107},
+        ]
+        return CardCatalog(raw_cards, expansions)
+
+    def test_v3_qr_payload_encode_decode_roundtrip(self) -> None:
+        import base64
+
+        tr_ids = [70, 70, 50, 50]
+        pk_ids = [10010, 10010, 10020, 10020]
+        energies = [3, 4]
+        payload = encode_deck_payload(tr_ids, pk_ids, energies)
+        raw = base64.b64decode(payload)
+        self.assertEqual(raw[0], 4)
+        self.assertEqual(int.from_bytes(raw[1:4], "big"), 70 + TRAINER_ID_OFFSET)
+        dec_tr, dec_pk, dec_en = decode_deck_payload(payload)
+        self.assertEqual(dec_tr, tr_ids)
+        self.assertEqual(dec_pk, pk_ids)
+        self.assertEqual(dec_en, energies)
+
+    def test_v3_extract_constraints_and_validate_deck(self) -> None:
+        catalog = self._sample_catalog()
+        limited_html = """
+        <main>
+          <p>Limited Battle event: You can only use cards from Dual Fusion in this event.</p>
+          <table class="dextable">
+            <tr><th>Card</th></tr>
+            <tr><td><a>Deoxys</a></td><td><a>Mega Mewtwo Y ex</a></td></tr>
+          </table>
+        </main>
+        """
+        c_lim = extract_event_constraints(
+            title="Dual Fusion Limited Battles",
+            detail_html=limited_html,
+            catalog=catalog,
+        )
+        self.assertTrue(c_lim.is_combat_event)
+        self.assertEqual(c_lim.allowed_sets, ("c1",))
+        self.assertIn("Mega Mewtwo Y ex", c_lim.allowed_promo_names)
+
+        drop_html = """
+        <main>
+          <p>Mega Garchomp ex Drop Event Solo Battles.</p>
+          <ul>
+            <li>Win this battle without any Pokémon ex in your deck.</li>
+            <li>Put 1 or more Mega Evolution Pokémon ex into play.</li>
+            <li>Knock Out an opponent's Pokémon with damage from a Dragon-type Pokémon.</li>
+            <li>Win this battle using a deck with 12 or more Dual Fusion cards.</li>
+          </ul>
+        </main>
+        """
+        c_drop = extract_event_constraints(
+            title="Mega Garchomp ex Drop Event",
+            detail_html=drop_html,
+            catalog=catalog,
+        )
+        self.assertTrue(c_drop.is_combat_event)
+        self.assertTrue(c_drop.no_ex)
+        self.assertTrue(c_drop.require_mega_ex)
+        self.assertIn("Dragon", c_drop.required_types)
+        self.assertEqual(c_drop.min_set_cards, ("c1", 12))
+
+        by_name = {c.name: c for c in catalog.cards}
+        eighteen_trainers = [
+            by_name[n]
+            for n in (
+                "Potion", "X Speed", "Poké Ball", "Professor's Research",
+                "Cyrus", "Serena's Choice", "Sabrina", "Giant Cape", "Rocky Helmet",
+            )
+            for _ in range(2)
+        ]
+
+        # Baraja inválida: Stage 1 sin Básico (2 copias x 9 entrenadores = 18 + 2 Dragonair)
+        bad_evo = [by_name["Dragonair"]] * 2 + eighteen_trainers
+        ok_evo, msg_evo = validate_deck(bad_evo, [3], c_drop)
+        self.assertFalse(ok_evo)
+        self.assertIn("Básico", msg_evo)
+
+        # Baraja con básico + 3 copias de Potion (>2) -> inválida
+        bad_dup = [by_name["Dratini"]] * 2 + [by_name["Potion"]] * 3 + eighteen_trainers[:15]
+        ok_dup, msg_dup = validate_deck(bad_dup, [3], c_drop)
+        self.assertFalse(ok_dup)
+        self.assertIn("2 copias", msg_dup)
+
+        # Baraja con ex prohibido cuando require_no_ex=True -> inválida
+        bad_ex = [by_name["Mega Garchomp ex"]] * 2 + eighteen_trainers
+        ok_ex, msg_ex = validate_deck(bad_ex, [2], c_drop, require_no_ex=True)
+        self.assertFalse(ok_ex)
+        self.assertIn("ex", msg_ex)
+
+        # Baraja con < 12 cartas C1 cuando min_set=("c1", 12) -> inválida
+        not_enough_c1 = [by_name["Inkay"]] * 2 + eighteen_trainers
+        ok_set, msg_set = validate_deck(not_enough_c1, [5], c_drop, min_set=("c1", 12))
+        self.assertFalse(ok_set)
+        self.assertIn("12", msg_set)
+
+    def test_v3_build_three_decks_render_sheet_and_caption(self) -> None:
+        catalog = self._sample_catalog()
+        constraints = EventDeckConstraints(
+            is_combat_event=True,
+            no_ex=True,
+            require_mega_ex=True,
+            required_types=("Dragon",),
+            min_set_cards=("c1", 12),
+            target_expansion="c1",
+        )
+        decks = build_three_decks_for_event(
+            event_title="Mega Garchomp ex Drop Event",
+            event_summary="Evento de combate con restricciones.",
+            constraints=constraints,
+            catalog=catalog,
+        )
+        self.assertEqual(len(decks), 3)
+        for deck in decks:
+            self.assertEqual(len(deck.cards), 20)
+            dec_tr, dec_pk, dec_en = decode_deck_payload(deck.qr_payload)
+            self.assertEqual(len(dec_tr) + len(dec_pk), 20)
+            self.assertTrue(1 <= len(dec_en) <= 3)
+
+        # Opción 1 cumple Sin ex, Opción 2 incluye Mega ex, Opción 3 alcanza >=12 cartas C1
+        self.assertFalse(any(c.is_ex or c.is_mega for c in decks[0].cards))
+        self.assertTrue(any(c.is_mega for c in decks[1].cards))
+        self.assertGreaterEqual(sum(1 for c in decks[2].cards if c.set_code == "c1"), 12)
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            sheet_path = Path(tmpdir) / "decks_sheet.png"
+            render_deck_sheet("Mega Garchomp ex Drop Event", decks, sheet_path)
+            self.assertTrue(sheet_path.exists())
+            with Image.open(sheet_path) as img:
+                self.assertEqual(img.size, (1440, 760))
+
+        item = AlertItem(
+            uid="serebii-tcgp:mega-garchomp",
+            game="tcgp",
+            kind="event",
+            title="Mega Garchomp ex Drop Event",
+            summary="Completa todas las misiones.",
+            url="https://www.serebii.net/tcgpocket/events/megagarchompexdropevent.shtml",
+            source_name="Serebii TCGP",
+            language="es",
+        )
+        caption = build_deck_sheet_caption(item, decks)
+        self.assertLessEqual(len(caption), 1024)
+        self.assertIn("Opción 1", caption)
+        self.assertIn("QR", caption)
 
 
 if __name__ == "__main__":

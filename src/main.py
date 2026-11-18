@@ -1,4 +1,4 @@
-"""Orquestador principal de poke-alerts (scraping, traducción, tarjeta PNG y Telegram)."""
+"""Orquestador principal de poke-alerts (scraping, traducción, tarjeta PNG, QR mazos y Telegram)."""
 
 from __future__ import annotations
 
@@ -11,9 +11,16 @@ from pathlib import Path
 
 from src.card_renderer import render_alert_card
 from src.config import DEFAULT_OUTPUT_DIR, MAX_ALERTS_PER_RUN, STATE_FILE, TELEGRAM_SEND_DELAY_SEC
+from src.deck_qr import (
+    CardCatalog,
+    build_three_decks_for_event,
+    extract_event_constraints,
+    load_catalog,
+)
+from src.deck_sheet_renderer import render_deck_sheet
 from src.enricher import enrich_alert_item
 from src.models import AlertItem
-from src.scrapers import create_session, fetch_all_sources
+from src.scrapers import create_session, fetch_all_sources, fetch_text_safe
 from src.state import (
     load_state,
     mark_items_processed,
@@ -21,7 +28,12 @@ from src.state import (
     select_pending_alerts,
     update_source_health_and_heartbeat,
 )
-from src.telegram_client import build_telegram_caption, send_telegram_photo
+from src.telegram_client import (
+    build_deck_sheet_caption,
+    build_telegram_caption,
+    send_telegram_deck_sheet,
+    send_telegram_photo,
+)
 from src.translator import localize_alert_item
 
 logging.basicConfig(
@@ -95,6 +107,54 @@ def _select_preview_sample(items: list[AlertItem]) -> list[AlertItem]:
     return sample
 
 
+def _maybe_build_tcgp_deck_sheet(
+    *,
+    session,
+    raw_item: AlertItem,
+    localized_item: AlertItem,
+    out_dir: Path,
+    catalog_holder: list[CardCatalog],
+) -> tuple[list, Path] | None:
+    """Genera lámina con 3 QR si el evento de TCG Pocket requiere combates."""
+    if raw_item.game != "tcgp" or raw_item.kind != "event":
+        return None
+    try:
+        if not catalog_holder:
+            catalog_holder.append(load_catalog(session))
+        catalog = catalog_holder[0]
+
+        detail_html = ""
+        try:
+            detail_html = fetch_text_safe(session, raw_item.url)
+        except Exception as exc:
+            LOGGER.warning("[DeckSheet] Sin HTML detalle para %s (%s).", raw_item.url, exc)
+
+        constraints = extract_event_constraints(
+            title=raw_item.title,
+            detail_html=detail_html,
+            catalog=catalog,
+            extra_text=" ".join(raw_item.guide_bullets),
+        )
+        if not constraints.is_combat_event:
+            return None
+
+        decks = build_three_decks_for_event(
+            event_title=localized_item.title,
+            event_summary=raw_item.summary + " " + " ".join(raw_item.guide_bullets),
+            constraints=constraints,
+            catalog=catalog,
+        )
+        if not decks:
+            return None
+
+        sheet_path = out_dir / f"decks_{_safe_filename(localized_item.uid)}"
+        render_deck_sheet(localized_item.title, decks, sheet_path)
+        return decks, sheet_path
+    except Exception as exc:
+        LOGGER.warning("[DeckSheet] No se pudo generar lámina QR para %s: %s", raw_item.uid, exc)
+        return None
+
+
 def run_pipeline(args: argparse.Namespace) -> int:
     """Ejecuta el ciclo completo de detección, renderizado y notificación."""
     state = load_state(STATE_FILE)
@@ -143,17 +203,33 @@ def run_pipeline(args: argparse.Namespace) -> int:
 
     sent_items: list[AlertItem] = []
     events_cache: dict[str, dict] = {}
+    catalog_holder: list[CardCatalog] = []
+
     for idx, item in enumerate(to_notify):
         enriched = enrich_alert_item(session, item, events_cache=events_cache)
         localized = localize_alert_item(enriched, enable_remote=not args.no_translate)
         png_path = args.out_dir / _safe_filename(localized.uid)
         render_alert_card(localized, png_path)
 
+        deck_result = _maybe_build_tcgp_deck_sheet(
+            session=session,
+            raw_item=enriched,
+            localized_item=localized,
+            out_dir=args.out_dir,
+            catalog_holder=catalog_holder,
+        )
+
         if args.dry_run:
             LOGGER.info("[DRY-RUN] PNG: %s", png_path)
             print("--- CAPTION TELEGRAM ---")
             print(build_telegram_caption(localized))
             print("------------------------")
+            if deck_result:
+                decks, sheet_path = deck_result
+                LOGGER.info("[DRY-RUN] DECK SHEET QR: %s", sheet_path)
+                print("--- CAPTION DECK QR ---")
+                print(build_deck_sheet_caption(localized, decks))
+                print("-----------------------")
             sent_items.append(item)
             continue
 
@@ -163,6 +239,16 @@ def run_pipeline(args: argparse.Namespace) -> int:
             item=localized,
             image_path=png_path,
         )
+        if deck_result:
+            decks, sheet_path = deck_result
+            time.sleep(TELEGRAM_SEND_DELAY_SEC)
+            send_telegram_deck_sheet(
+                bot_token=bot_token,
+                chat_id=chat_id,
+                item=localized,
+                decks=decks,
+                sheet_path=sheet_path,
+            )
         sent_items.append(item)
         if idx < len(to_notify) - 1:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)

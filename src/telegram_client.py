@@ -1,4 +1,4 @@
-"""Cliente amigable para enviar tarjetas PNG, guías y botones a Telegram."""
+"""Cliente amigable para enviar tarjetas PNG, láminas QR de barajas y botones a Telegram."""
 
 from __future__ import annotations
 
@@ -16,6 +16,7 @@ from src.config import (
     TELEGRAM_GAME_NAMES,
     TELEGRAM_KIND_HEADERS,
 )
+from src.deck_qr import ENERGY_ID_LABELS_ES, BuiltDeck
 from src.models import AlertItem
 
 LOGGER = logging.getLogger(__name__)
@@ -79,13 +80,26 @@ def build_telegram_caption(item: AlertItem) -> str:
     if len(caption) <= TELEGRAM_CAPTION_LIMIT:
         return caption
 
-    # Recorta progresivamente las viñetas menos prioritarias hasta ajustar a 1024 chars.
     while len(caption) > TELEGRAM_CAPTION_LIMIT and len(lines) > 6:
-        drop_idx = len(lines) - 2
-        lines.pop(drop_idx)
+        lines.pop(len(lines) - 2)
         caption = "\n".join(lines)
 
     return caption[:TELEGRAM_CAPTION_LIMIT]
+
+
+def build_deck_sheet_caption(item: AlertItem, decks: list[BuiltDeck]) -> str:
+    """Construye la descripción corta para la lámina PNG con los 3 QR de barajas."""
+    lines = [
+        f"🃏 <b>3 mejores barajas para: {html.escape(item.title)}</b>",
+        "📲 <i>En TCG Pocket: Barajas → + Crear nueva → Leer código QR</i>",
+        "",
+    ]
+    for deck in decks:
+        energy = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in deck.energy_types)
+        lines.append(
+            f"• <b>{html.escape(deck.title)}</b> ({energy}) — <i>{html.escape(deck.mission_tag)}</i>"
+        )
+    return "\n".join(lines)[:TELEGRAM_CAPTION_LIMIT]
 
 
 def build_inline_keyboard(item: AlertItem) -> dict[str, list[list[dict[str, str]]]]:
@@ -100,28 +114,29 @@ def build_inline_keyboard(item: AlertItem) -> dict[str, list[list[dict[str, str]
     return {"inline_keyboard": [buttons]} if buttons else {"inline_keyboard": []}
 
 
-def send_telegram_photo(
+def _post_photo_to_telegram(
     *,
     bot_token: str,
     chat_id: str,
-    item: AlertItem,
+    caption: str,
     image_path: Path,
+    keyboard_json: str | None = None,
 ) -> None:
-    """Envía la tarjeta PNG con caption HTML y maneja límites 429 de Telegram."""
+    """Envía una imagen PNG con reintento automático ante límites 429 de Telegram."""
     api_url = f"https://api.telegram.org/bot{bot_token}/sendPhoto"
-    caption = build_telegram_caption(item)
-    keyboard = json.dumps(build_inline_keyboard(item), ensure_ascii=False)
+    data: dict[str, str] = {
+        "chat_id": chat_id,
+        "caption": caption,
+        "parse_mode": "HTML",
+    }
+    if keyboard_json:
+        data["reply_markup"] = keyboard_json
 
     for attempt in range(2):
         with image_path.open("rb") as photo_file:
             resp = requests.post(
                 api_url,
-                data={
-                    "chat_id": chat_id,
-                    "caption": caption,
-                    "parse_mode": "HTML",
-                    "reply_markup": keyboard,
-                },
+                data=data,
                 files={"photo": (image_path.name, photo_file, "image/png")},
                 timeout=REQUEST_TIMEOUT_SEC,
             )
@@ -135,3 +150,37 @@ def send_telegram_photo(
         if not resp.ok:
             raise RuntimeError(f"Telegram HTTP {resp.status_code}: {resp.text[:300]}")
         return
+
+
+def send_telegram_photo(
+    *,
+    bot_token: str,
+    chat_id: str,
+    item: AlertItem,
+    image_path: Path,
+) -> None:
+    """Envía la tarjeta PNG principal del evento o código promocional."""
+    _post_photo_to_telegram(
+        bot_token=bot_token,
+        chat_id=chat_id,
+        caption=build_telegram_caption(item),
+        image_path=image_path,
+        keyboard_json=json.dumps(build_inline_keyboard(item), ensure_ascii=False),
+    )
+
+
+def send_telegram_deck_sheet(
+    *,
+    bot_token: str,
+    chat_id: str,
+    item: AlertItem,
+    decks: list[BuiltDeck],
+    sheet_path: Path,
+) -> None:
+    """Envía la lámina PNG con las 3 barajas recomendadas y sus códigos QR."""
+    _post_photo_to_telegram(
+        bot_token=bot_token,
+        chat_id=chat_id,
+        caption=build_deck_sheet_caption(item, decks),
+        image_path=sheet_path,
+    )
