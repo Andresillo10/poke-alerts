@@ -3,209 +3,471 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poke Alerts • Dashboard Integral (Pokémon GO + TCG Pocket)</title>
+  <title>Estado CK10 • Monitor Pokémon GO &amp; TCG Pocket</title>
   <style>
+    /* ============================================================
+       PALETA OFICIAL ESTADO CK10 — Andres Camelo
+       ============================================================ */
     :root {
-      --bg: #0c081c;
-      --card: #171132;
-      --card-2: #1f1742;
-      --border: #392978;
-      --text: #f8fafc;
-      --muted: #a5b4fc;
-      --subtle: #94a3b8;
-      --pogo: #38bdf8;
-      --tcgp: #c084fc;
-      --gold: #facc15;
-      --green: #22c55e;
-      --amber: #f59e0b;
-      --red: #f87171;
+      --base:      #1E1E2E;
+      --surface:   #181825;
+      --dark:      #11111B;
+      --card:      #1E3A5F;
+      --selection: #313244;
+      --overlay:   #45475A;
+
+      --blue:      #89B4FA;
+      --text:      #CDD6F4;
+      --muted:     #A6ADC8;
+      --subtle:    #6C7086;
+
+      --success:   #A6E3A1;
+      --warning:   #F9E2AF;
+      --error:     #F38BA8;
+      --info:      #CBA6F7;
+      --pink:      #F5C2E7;
+
+      --btn-ok:        #2ECC71;
+      --btn-ok-hover:  #27AE60;
+      --btn-sec:       #3B82F6;
+      --btn-sec-hover: #2563EB;
+      --btn-err:       #E74C3C;
+      --btn-err-hover: #C0392B;
     }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at top right, #1e1646 0%, var(--bg) 55%);
+      background: var(--base);
       color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
       min-height: 100vh;
     }
-    .wrap { max-width: 1320px; margin: 0 auto; padding: 24px 18px 56px; }
-    header {
+
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 20px 18px 42px; }
+
+    /* 4.1 Tarjeta de Panel (Card CK10) */
+    .ck-panel {
+      background: var(--card);
+      border: 2px solid var(--blue);
+      border-radius: 12px;
+      padding: 15px 20px;
+    }
+
+    header.ck-panel {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
-      gap: 14px; padding: 20px 24px; background: var(--card);
-      border: 1px solid var(--border); border-radius: 18px; margin-bottom: 18px;
+      gap: 14px; margin-bottom: 16px;
     }
-    h1 { margin: 0; font-size: 1.45rem; letter-spacing: -0.02em; }
-    .sub { color: var(--subtle); font-size: 0.88rem; margin-top: 4px; }
-    .sync-box { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+    .brand-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .brand-sub {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .sync-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
     .pill {
-      display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px;
-      border-radius: 999px; font-size: 0.78rem; font-weight: 700;
-      border: 1px solid rgba(255,255,255,0.12); background: var(--card-2);
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 600;
+      background: var(--surface); border: 1px solid var(--selection); color: var(--muted);
     }
-    .pill.live { color: #86efac; border-color: rgba(34,197,94,0.45); background: rgba(20,83,45,0.45); }
-    .pill.pogo { color: #bae6fd; border-color: rgba(56,189,248,0.45); background: rgba(8,47,73,0.55); }
-    .pill.tcgp { color: #e9d5ff; border-color: rgba(192,132,252,0.45); background: rgba(59,7,100,0.55); }
-    .pill.activo { color: #86efac; border-color: rgba(34,197,94,0.5); background: rgba(20,83,45,0.55); }
-    .pill.proximo { color: #fde68a; border-color: rgba(245,158,11,0.5); background: rgba(120,53,15,0.55); }
-    .pill.finalizado { color: #cbd5e1; border-color: rgba(148,163,184,0.35); background: rgba(30,41,59,0.7); }
+    .pill.live   { color: var(--success); border-color: var(--success); background: var(--dark); }
+    .pill.warn   { color: var(--warning); border-color: var(--warning); background: var(--dark); }
+    .pill.err    { color: var(--error);   border-color: var(--error);   background: var(--dark); }
+    .pill.info   { color: var(--info);    border-color: var(--info);    background: var(--dark); }
+    .pill.blue   { color: var(--blue);    border-color: var(--blue);    background: var(--dark); }
+
+    /* Botones Oficiales CK10 */
     .btn {
-      cursor: pointer; border: 1px solid var(--border); background: var(--card-2);
-      color: var(--text); padding: 8px 13px; border-radius: 10px; font-size: 0.84rem;
-      font-weight: 600; transition: 0.15s ease; text-decoration: none; display: inline-flex;
-      align-items: center; gap: 6px;
+      cursor: pointer; border: none; border-radius: 8px; padding: 9px 14px;
+      font-family: "Segoe UI", sans-serif; font-size: 13px; font-weight: 700;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      transition: background 0.15s ease, transform 0.12s ease;
+      background: var(--selection); color: var(--text);
     }
-    .btn:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
-    .btn.primary { background: #312e81; border-color: #6366f1; }
-    .btn.active-tab { background: #4338ca; border-color: var(--gold); color: #fef08a; }
-    .kpis {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-      gap: 12px; margin-bottom: 18px;
+    .btn:hover { background: var(--overlay); transform: translateY(-1px); }
+    .btn-primary { background: var(--btn-ok); color: #ffffff; }
+    .btn-primary:hover { background: var(--btn-ok-hover); }
+    .btn-secondary { background: var(--btn-sec); color: #ffffff; }
+    .btn-secondary:hover { background: var(--btn-sec-hover); }
+    .btn-danger { background: var(--btn-err); color: #ffffff; }
+    .btn-danger:hover { background: var(--btn-err-hover); }
+
+    /* Selector Principal de Juego */
+    .game-switcher {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
     }
-    .kpi {
-      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 14px 16px;
+    @media (max-width: 720px) { .game-switcher { grid-template-columns: 1fr; } }
+
+    .game-btn {
+      cursor: pointer;
+      background: var(--surface);
+      border: 2px solid var(--selection);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: var(--text);
+      text-align: left;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      transition: all 0.16s ease;
     }
-    .kpi .lbl { color: var(--subtle); font-size: 0.78rem; text-transform: uppercase; font-weight: 700; }
-    .kpi .val { font-size: 1.7rem; font-weight: 800; margin-top: 4px; color: var(--text); }
-    .kpi .hint { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
-    .filters {
-      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-      padding: 14px 16px; margin-bottom: 18px;
-      display: grid; grid-template-columns: 2fr repeat(4, minmax(140px, 1fr)); gap: 10px;
+    .game-btn:hover { border-color: var(--blue); background: var(--card); }
+    .game-btn.active {
+      background: var(--card);
+      border: 2px solid var(--blue);
+      box-shadow: 0 0 0 1px rgba(137, 180, 250, 0.35);
     }
-    @media (max-width: 980px) { .filters { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .filters { grid-template-columns: 1fr; } }
+    .game-btn .g-name { font-size: 18px; font-weight: 700; color: var(--text); display: block; }
+    .game-btn.active .g-name { color: var(--blue); }
+    .game-btn .g-desc { font-size: 12px; color: var(--muted); display: block; margin-top: 2px; }
+    .game-btn .g-count {
+      font-size: 20px; font-weight: 800; color: var(--blue);
+      background: var(--dark); border: 1px solid var(--blue); border-radius: 8px;
+      padding: 4px 12px; min-width: 52px; text-align: center;
+    }
+
+    /* 4.2 Tarjetas de Estadística + 4.4 Barra de Progreso */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .stat-card {
+      background: var(--dark);
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .stat-card.s-ok   { border-color: var(--success); }
+    .stat-card.s-warn { border-color: var(--warning); }
+    .stat-card.s-info { border-color: var(--info); }
+    .stat-card.s-pink { border-color: var(--pink); }
+
+    .stat-val { font-size: 22px; font-weight: 800; line-height: 1.15; }
+    .stat-lbl { font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--muted); margin-top: 4px; letter-spacing: 0.04em; }
+    .stat-hint { font-size: 11px; color: var(--subtle); margin-top: 3px; }
+
+    .progress-track {
+      background: var(--selection);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .progress-fill {
+      background: var(--blue);
+      height: 100%;
+      width: 0%;
+      border-radius: 5px;
+      transition: width 0.25s ease;
+    }
+
+    /* Desglose por Categorías del Juego Activo */
+    .cat-panel { margin-bottom: 16px; }
+    .sec-title {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--blue);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+    .cat-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cat-btn {
+      cursor: pointer;
+      background: var(--dark);
+      border: 1px solid var(--selection);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-family: "Segoe UI", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.14s ease;
+    }
+    .cat-btn:hover { border-color: var(--blue); background: var(--surface); }
+    .cat-btn.active { background: var(--btn-sec); border-color: var(--blue); color: #ffffff; }
+    .cat-btn .cnt {
+      background: var(--selection); color: var(--warning);
+      border-radius: 6px; padding: 1px 7px; font-size: 12px; font-weight: 700;
+    }
+    .cat-btn.active .cnt { background: rgba(17, 17, 27, 0.45); color: #ffffff; }
+
+    /* 4.3 Inputs y Barra de Control */
+    .controls-bar {
+      background: var(--surface);
+      border: 1px solid var(--selection);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .controls-bar { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .controls-bar { grid-template-columns: 1fr; } }
+
     input, select {
-      width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--border);
-      border-radius: 10px; padding: 9px 12px; font-size: 0.88rem; outline: none;
+      width: 100%;
+      height: 40px;
+      background: var(--dark);
+      color: var(--text);
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      padding: 0 12px;
+      font-family: "Segoe UI", sans-serif;
+      font-size: 13px;
+      outline: none;
     }
-    input:focus, select:focus { border-color: var(--pogo); }
+    input::placeholder { color: var(--subtle); }
+    input:focus, select:focus { box-shadow: 0 0 0 2px rgba(137, 180, 250, 0.25); }
+
     .toolbar {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
       gap: 10px; margin-bottom: 14px;
     }
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px;
+
+    /* Tarjetas de Eventos */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(385px, 1fr));
+      gap: 14px;
     }
-    @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { .cards-grid { grid-template-columns: 1fr; } }
+
     .ev-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-      padding: 16px; display: flex; flex-direction: column; gap: 10px; transition: 0.15s ease;
-      position: relative;
+      background: var(--card);
+      border: 2px solid var(--blue);
+      border-radius: 12px;
+      padding: 15px 18px;
+      display: flex; flex-direction: column; gap: 10px;
     }
-    .ev-card.done { opacity: 0.68; border-color: rgba(34,197,94,0.45); }
-    .ev-card.starred { box-shadow: 0 0 0 1px rgba(250,204,21,0.55); }
-    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .ev-card.done { opacity: 0.72; border-color: var(--success); }
+    .ev-card.starred { border-color: var(--warning); }
+
+    .ev-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
     .badges { display: flex; gap: 6px; flex-wrap: wrap; }
-    .marks { display: flex; align-items: center; gap: 6px; }
+    .marks { display: flex; gap: 6px; }
     .mark-btn {
-      cursor: pointer; border: 1px solid var(--border); background: var(--bg); color: var(--subtle);
-      border-radius: 8px; padding: 5px 9px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; background: var(--dark); color: var(--muted);
+      border: 1px solid var(--selection); border-radius: 8px; padding: 5px 10px;
+      font-family: "Segoe UI", sans-serif; font-size: 12px; font-weight: 700;
     }
-    .mark-btn.on { background: rgba(34,197,94,0.22); border-color: var(--green); color: #86efac; }
-    .mark-btn.star-on { background: rgba(250,204,21,0.2); border-color: var(--gold); color: var(--gold); }
-    .ev-title { font-size: 1.06rem; font-weight: 700; line-height: 1.3; margin: 0; }
-    .ev-orig { font-size: 0.77rem; color: var(--subtle); margin-top: 2px; }
-    .meta-row { font-size: 0.83rem; color: #fde047; font-weight: 600; }
-    .box {
-      background: var(--bg); border: 1px solid rgba(99,102,241,0.28); border-radius: 10px;
-      padding: 9px 11px; font-size: 0.84rem; line-height: 1.42; color: #e2e8f0;
+    .mark-btn:hover { border-color: var(--blue); }
+    .mark-btn.on { background: var(--btn-ok); border-color: var(--btn-ok); color: #ffffff; }
+    .mark-btn.star-on { background: var(--dark); border-color: var(--warning); color: var(--warning); }
+
+    .ev-title { margin: 0; font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .ev-orig  { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .ev-dates { font-size: 12px; font-weight: 700; color: var(--warning); }
+
+    .inner-box {
+      background: var(--surface);
+      border: 1px solid var(--selection);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--text);
     }
-    .box strong { color: var(--gold); }
-    .copy-bar {
+    .inner-box strong { color: var(--blue); }
+
+    .console-code {
       display: flex; align-items: center; justify-content: space-between; gap: 8px;
-      background: #0f172a; border: 1px dashed rgba(56,189,248,0.45); border-radius: 9px;
-      padding: 6px 10px; font-family: ui-monospace, Consolas, monospace; font-size: 0.82rem; color: #7dd3fc;
+      background: var(--dark);
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      color: var(--pink);
     }
-    .copy-bar span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .card-foot {
+    .console-code span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .ev-foot {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
       gap: 8px; margin-top: auto; padding-top: 4px;
     }
-    .sources { font-size: 0.75rem; color: var(--subtle); }
-    table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
-    th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid rgba(57,41,120,0.6); font-size: 0.84rem; vertical-align: top; }
-    th { background: var(--card-2); color: var(--gold); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
-    .table-wrap { overflow-x: auto; border-radius: 14px; }
-    .empty { text-align: center; padding: 48px 20px; color: var(--subtle); background: var(--card); border-radius: 16px; border: 1px solid var(--border); }
+    .ev-sources { font-size: 11px; color: var(--muted); }
+
+    /* Tabla estilo CK10 (Sección 8/9: Selección #313244 / Azul #89B4FA / Fondo #181825) */
+    .table-wrap {
+      overflow-x: auto;
+      border: 2px solid var(--blue);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      background: var(--selection);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 11px 12px;
+    }
+    td {
+      padding: 10px 12px;
+      border-top: 1px solid var(--selection);
+      font-size: 13px;
+      vertical-align: top;
+      color: var(--text);
+    }
+
+    .empty-state {
+      background: var(--card);
+      border: 2px solid var(--blue);
+      border-radius: 12px;
+      padding: 36px 22px;
+      text-align: center;
+    }
+    .empty-state h3 { margin: 0 0 8px 0; color: var(--warning); font-size: 18px; }
+    .empty-state p { margin: 0 0 16px 0; color: var(--muted); font-size: 13px; }
+
+    /* 4.5 Footer de Firma Oficial CK10 */
+    footer.ck-footer {
+      margin-top: 28px;
+      padding-top: 14px;
+      border-top: 1px solid var(--selection);
+      text-align: center;
+      font-family: "Segoe UI", sans-serif;
+      font-size: 10px;
+      font-style: italic;
+      color: var(--subtle);
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
+    <!-- Cabecera principal CK10 -->
+    <header class="ck-panel">
       <div>
-        <h1>🎮 Poke Alerts • Dashboard Integral</h1>
-        <div class="sub">Historial y agenda viva de <b>Pokémon GO</b> + <b>Pokémon TCG Pocket</b>: premios, vigencias, códigos y seguimiento personal.</div>
+        <h1 class="brand-title">🚀 Estado CK10 • Centro Pokémon</h1>
+        <div class="brand-sub">Monitor automático de eventos, códigos de regalo, incursiones y mazos (Pokémon GO &amp; TCG Pocket).</div>
       </div>
-      <div class="sync-box">
-        <span id="syncStatus" class="pill live">⏳ Cargando datos...</span>
-        <span id="updatedAt" class="pill">Actualizado: —</span>
-        <button class="btn primary" id="btnRefresh">↻ Actualizar</button>
+      <div class="sync-row">
+        <span id="syncStatus" class="pill live">🟢 Cargando...</span>
+        <span id="updatedAt" class="pill">⏱️ —</span>
+        <button class="btn btn-secondary" id="btnRefresh">🔄 Actualizar</button>
       </div>
     </header>
 
-    <section class="kpis" id="kpis"></section>
+    <!-- Selector principal de Juego -->
+    <section class="game-switcher" aria-label="Selector de juego">
+      <button class="game-btn active" id="gBtn-pogo" onclick="selectGame('pogo')">
+        <div>
+          <span class="g-name">⚡ Pokémon GO</span>
+          <span class="g-desc">Eventos, códigos regalo, raids, ligas y días</span>
+        </div>
+        <span class="g-count" id="gCount-pogo">0</span>
+      </button>
+      <button class="game-btn" id="gBtn-tcgp" onclick="selectGame('tcgp')">
+        <div>
+          <span class="g-name">🃏 Pokémon TCG Pocket</span>
+          <span class="g-desc">Combates, misiones, códigos regalo y guías QR</span>
+        </div>
+        <span class="g-count" id="gCount-tcgp">0</span>
+      </button>
+      <button class="game-btn" id="gBtn-all" onclick="selectGame('all')">
+        <div>
+          <span class="g-name">🌐 Vista Unificada</span>
+          <span class="g-desc">Todos los registros de ambos juegos</span>
+        </div>
+        <span class="g-count" id="gCount-all">0</span>
+      </button>
+    </section>
 
-    <section class="filters">
-      <input id="q" type="search" placeholder="🔎 Buscar evento, premio, código, Pokémon, carta o fuente..." />
-      <select id="fGame">
-        <option value="">Todos los juegos</option>
-        <option value="pogo">Pokémon GO</option>
-        <option value="tcgp">Pokémon TCG Pocket</option>
-      </select>
+    <!-- Stat Cards CK10 + Barra de Progreso -->
+    <section class="stats-grid" id="statsGrid"></section>
+
+    <!-- Desglose de Categorías (Eventos, Códigos Regalo y Subcategorías del Juego) -->
+    <section class="ck-panel cat-panel">
+      <h2 class="sec-title">
+        <span id="catPanelTitle">🔬 Categorías disponibles</span>
+        <span class="pill blue" id="catSelectedHint">Mostrando todo</span>
+      </h2>
+      <div class="cat-pills" id="catPills"></div>
+    </section>
+
+    <!-- Buscador y Filtros -->
+    <section class="controls-bar">
+      <input id="q" type="search" placeholder="🔍 Buscar evento, premio, código, Pokémon o carta..." />
       <select id="fStatus">
         <option value="">Todos los estados</option>
-        <option value="activo">Activos ahora</option>
-        <option value="proximo">Próximos</option>
+        <option value="activo">🟢 Activos ahora</option>
+        <option value="proximo">⚠️ Próximos</option>
         <option value="finalizado">Finalizados</option>
-      </select>
-      <select id="fCategory">
-        <option value="">Todas las categorías</option>
       </select>
       <select id="fCheck">
         <option value="">Todo mi seguimiento</option>
-        <option value="pending">Pendientes (sin marcar)</option>
-        <option value="done">Completados / Reclamados ✓</option>
-        <option value="star">Prioritarios ⭐</option>
+        <option value="pending">Sin completar</option>
+        <option value="done">✅ Completados</option>
+        <option value="star">⭐ Prioritarios</option>
       </select>
+      <button class="btn" id="btnClear">🧹 Limpiar</button>
     </section>
 
+    <!-- Barra de Vistas y Reportes -->
     <div class="toolbar">
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button class="btn active-tab" id="viewCards">🗂️ Tarjetas</button>
-        <button class="btn" id="viewTable">📊 Tabla detallada</button>
-        <button class="btn" id="btnOnlyActive">⚡ Activos hoy</button>
-        <button class="btn" id="btnResetFilters">🔄 Ver todo</button>
-        <span id="countLabel" class="pill">—</span>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+        <button class="btn btn-secondary" id="viewCards">🗂️ Tarjetas</button>
+        <button class="btn" id="viewTable">📊 Tabla</button>
+        <button class="btn btn-primary" id="btnOnlyActive">✅ Solo activos</button>
+        <span class="pill" id="countLabel">—</span>
       </div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button class="btn" id="btnCsv">📥 Exportar CSV (Excel)</button>
+        <button class="btn" id="btnCsv">📊 Exportar Excel (CSV)</button>
         <button class="btn" id="btnJson">📄 Descargar JSON</button>
-        <button class="btn" id="btnExportMarks">💾 Exportar marcas</button>
+        <button class="btn" id="btnExportMarks">💾 Respaldar marcas</button>
         <label class="btn" style="margin:0;">
-          📂 Importar marcas
+          📂 Cargar marcas
           <input type="file" id="importMarks" accept=".json" style="display:none;" />
         </label>
       </div>
     </div>
 
     <main id="content"></main>
+
+    <!-- 4.5 Footer de Firma Obligatoria Estado CK10 -->
+    <footer class="ck-footer">
+      Diseñado y Desarrollado por Andres Camelo 3165364723 — Estado CK10
+    </footer>
   </div>
 
-  <!-- Semilla local/offline generada automáticamente junto con data/events_history.json -->
+  <!-- Respaldo local automático + recarga viva desde GitHub -->
   <script src="./events_data.js"></script>
   <script>
     const RAW_GITHUB_JSON = "https://raw.githubusercontent.com/Andresillo10/poke-alerts/main/data/events_history.json";
     const LOCAL_JSON = "../data/events_history.json";
-    const MARKS_KEY = "poke_alerts_user_marks_v1";
+    const MARKS_KEY = "poke_alerts_ck10_marks_v1";
+    const OLD_MARKS_KEY = "poke_alerts_user_marks_v1";
 
     let db = window.POKE_ALERTS_DB || { generated_at: "", stats: {}, events: [] };
     let marks = loadMarks();
+    let selectedGame = "pogo"; // Inicia enfocado en un juego claro; cambia con 1 clic
+    let selectedSlice = "all"; // "all" | "kind:event" | "kind:code" | "kind:news" | "cat:<Nombre>"
     let viewMode = "cards";
 
     function loadMarks() {
-      try { return JSON.parse(localStorage.getItem(MARKS_KEY) || "{}"); }
-      catch { return {}; }
+      try {
+        const cur = localStorage.getItem(MARKS_KEY);
+        if (cur) return JSON.parse(cur);
+        const prev = localStorage.getItem(OLD_MARKS_KEY);
+        return prev ? JSON.parse(prev) : {};
+      } catch { return {}; }
     }
     function saveMarks() { localStorage.setItem(MARKS_KEY, JSON.stringify(marks)); }
     function getMark(id) { return marks[id] || { done: false, star: false }; }
@@ -231,48 +493,166 @@
       return ev.status || "activo";
     }
 
+    function selectGame(game) {
+      selectedGame = game;
+      selectedSlice = "all";
+      render();
+    }
+
+    function selectSlice(slice) {
+      selectedSlice = slice;
+      render();
+    }
+
     async function fetchLiveCatalog() {
-      const statusEl = document.getElementById("syncStatus");
-      statusEl.textContent = "🔄 Sincronizando...";
-      for (const base of [LOCAL_JSON, RAW_GITHUB_JSON]) {
+      const st = document.getElementById("syncStatus");
+      st.className = "pill warn";
+      st.textContent = "🔄 Sincronizando...";
+      const sources = location.hostname.endsWith("github.io")
+        ? [RAW_GITHUB_JSON]
+        : [LOCAL_JSON, RAW_GITHUB_JSON];
+      for (const base of sources) {
         try {
           const r = await fetch(`${base}?t=${Date.now()}`, { cache: "no-store" });
           if (!r.ok) continue;
           const live = await r.json();
           if (live && Array.isArray(live.events)) {
             db = live;
-            statusEl.textContent = base === RAW_GITHUB_JSON ? "🟢 En vivo desde GitHub" : "🟢 Conectado al JSON local";
-            populateCategories();
+            st.className = "pill live";
+            st.textContent = base === RAW_GITHUB_JSON ? "🟢 En vivo (GitHub)" : "🟢 Conectado local";
             render();
             return;
           }
         } catch {}
       }
-      statusEl.textContent = db.events.length ? "📦 Datos locales listos" : "⚠️ Sin conexión al JSON";
-      populateCategories();
+      st.className = db.events.length ? "pill info" : "pill err";
+      st.textContent = db.events.length ? "📦 Respaldo local" : "❌ Sin datos";
       render();
     }
 
-    function populateCategories() {
-      const sel = document.getElementById("fCategory");
-      const current = sel.value;
-      const cats = [...new Set((db.events || []).map(e => e.category).filter(Boolean))].sort();
-      sel.innerHTML = `<option value="">Todas las categorías</option>` +
-        cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
-      if (cats.includes(current)) sel.value = current;
+    function getEventsWithStatus() {
+      return (db.events || []).map(ev => ({ ...ev, _status: computeDynamicStatus(ev) }));
     }
 
-    function getFiltered() {
+    function applySlice(ev, slice) {
+      if (slice === "all") return true;
+      if (slice === "kind:event") return ev.kind === "event";
+      if (slice === "kind:code") return ev.kind === "code";
+      if (slice === "kind:news") return ev.kind === "news";
+      if (slice.startsWith("cat:")) return ev.category === slice.slice(4);
+      return true;
+    }
+
+    function categoryIcon(cat) {
+      const m = {
+        "Código Promo": "🎁",
+        "Incursiones GO": "⚔️",
+        "Día de la Comunidad": "✨",
+        "Combates Max": "🌀",
+        "Hora Destacada": "🔦",
+        "Liga Combates GO": "🏆",
+        "Evento Pokémon GO": "⚡",
+        "Combate TCG Pocket": "⚔️",
+        "Misiones TCG Pocket": "🎯",
+        "Evento TCG Pocket": "🃏",
+        "Elección / Aparición": "✨",
+        "Noticia Oficial": "📢"
+      };
+      return m[cat] || "🔹";
+    }
+
+    function renderGameHeader(all) {
+      const pogoCnt = all.filter(e => e.game === "pogo").length;
+      const tcgpCnt = all.filter(e => e.game === "tcgp").length;
+      document.getElementById("gCount-pogo").textContent = pogoCnt;
+      document.getElementById("gCount-tcgp").textContent = tcgpCnt;
+      document.getElementById("gCount-all").textContent = all.length;
+      for (const g of ["pogo", "tcgp", "all"]) {
+        document.getElementById(`gBtn-${g}`).classList.toggle("active", selectedGame === g);
+      }
+    }
+
+    function renderStats(gameEvents) {
+      const active = gameEvents.filter(e => e._status === "activo").length;
+      const codes = gameEvents.filter(e => e.kind === "code" && e._status === "activo").length;
+      const upcoming = gameEvents.filter(e => e._status === "proximo").length;
+      const eventsTotal = gameEvents.filter(e => e.kind === "event").length;
+      const done = gameEvents.filter(e => getMark(e.id).done).length;
+      const pct = gameEvents.length ? Math.round((done / gameEvents.length) * 100) : 0;
+
+      document.getElementById("updatedAt").textContent = `⏱️ ${db.generated_at || "Al día"}`;
+      document.getElementById("statsGrid").innerHTML = `
+        <div class="stat-card s-ok">
+          <div class="stat-val" style="color:var(--success)">${active}</div>
+          <div class="stat-lbl">🟢 Activos hoy</div>
+          <div class="stat-hint">Disponibles ahora</div>
+        </div>
+        <div class="stat-card s-warn" style="cursor:pointer" onclick="selectSlice('kind:code')">
+          <div class="stat-val" style="color:var(--warning)">${codes}</div>
+          <div class="stat-lbl">🎁 Códigos regalo</div>
+          <div class="stat-hint">Clic para filtrar códigos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:var(--blue)">${upcoming}</div>
+          <div class="stat-lbl">🚀 Próximos</div>
+          <div class="stat-hint">En calendario próximo</div>
+        </div>
+        <div class="stat-card s-info" style="cursor:pointer" onclick="selectSlice('kind:event')">
+          <div class="stat-val" style="color:var(--info)">${eventsTotal}</div>
+          <div class="stat-lbl">⚡ Eventos del juego</div>
+          <div class="stat-hint">Clic para ver solo eventos</div>
+        </div>
+        <div class="stat-card s-pink">
+          <div class="stat-val" style="color:var(--pink)">${done} / ${gameEvents.length}</div>
+          <div class="stat-lbl">📊 Mi progreso (${pct}%)</div>
+          <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>
+      `;
+    }
+
+    function renderCategories(gameEvents) {
+      const gLabel = selectedGame === "pogo" ? "Pokémon GO" : (selectedGame === "tcgp" ? "Pokémon TCG Pocket" : "Ambos Juegos");
+      document.getElementById("catPanelTitle").textContent = `🔬 Desglose y categorías — ${gLabel}`;
+
+      const eventsCount = gameEvents.filter(e => e.kind === "event").length;
+      const codesCount = gameEvents.filter(e => e.kind === "code").length;
+      const newsCount = gameEvents.filter(e => e.kind === "news").length;
+
+      const catCounts = new Map();
+      for (const ev of gameEvents) {
+        if (ev.category && ev.category !== "Código Promo" && ev.category !== "Noticia Oficial") {
+          catCounts.set(ev.category, (catCounts.get(ev.category) || 0) + 1);
+        }
+      }
+      const sortedCats = [...catCounts.entries()].sort((a, b) => b[1] - a[1]);
+
+      const pills = [
+        { id: "all", label: "📋 Todo", count: gameEvents.length },
+        { id: "kind:event", label: "🗓️ Todos los Eventos", count: eventsCount },
+        { id: "kind:code", label: "🎁 Códigos Regalo", count: codesCount },
+        ...sortedCats.map(([cat, cnt]) => ({ id: `cat:${cat}`, label: `${categoryIcon(cat)} ${cat}`, count: cnt })),
+        { id: "kind:news", label: "📢 Noticias Oficiales", count: newsCount },
+      ];
+
+      const activePill = pills.find(p => p.id === selectedSlice) || pills[0];
+      document.getElementById("catSelectedHint").textContent = `${activePill.label} (${activePill.count})`;
+
+      document.getElementById("catPills").innerHTML = pills.map(p => `
+        <button class="cat-btn ${selectedSlice === p.id ? "active" : ""}" onclick="selectSlice('${esc(p.id)}')">
+          <span>${esc(p.label)}</span>
+          <span class="cnt">${p.count}</span>
+        </button>
+      `).join("");
+    }
+
+    function getFiltered(gameEvents) {
       const q = document.getElementById("q").value.trim().toLowerCase();
-      const fg = document.getElementById("fGame").value;
       const fs = document.getElementById("fStatus").value;
-      const fc = document.getElementById("fCategory").value;
       const fch = document.getElementById("fCheck").value;
 
-      return (db.events || []).map(ev => ({ ...ev, _status: computeDynamicStatus(ev) })).filter(ev => {
-        if (fg && ev.game !== fg) return false;
+      return gameEvents.filter(ev => {
+        if (!applySlice(ev, selectedSlice)) return false;
         if (fs && ev._status !== fs) return false;
-        if (fc && ev.category !== fc) return false;
         const mk = getMark(ev.id);
         if (fch === "pending" && mk.done) return false;
         if (fch === "done" && !mk.done) return false;
@@ -289,42 +669,46 @@
       });
     }
 
-    function renderKpis(allEvents) {
-      const list = allEvents.map(ev => ({ ...ev, _status: computeDynamicStatus(ev) }));
-      const total = list.length;
-      const active = list.filter(e => e._status === "activo").length;
-      const codes = list.filter(e => e.kind === "code" && e._status === "activo").length;
-      const pogo = list.filter(e => e.game === "pogo").length;
-      const tcgp = list.filter(e => e.game === "tcgp").length;
-      const done = list.filter(e => getMark(e.id).done).length;
-
-      document.getElementById("updatedAt").textContent = `Actualizado: ${db.generated_at || "hoy"}`;
-      document.getElementById("kpis").innerHTML = `
-        <div class="kpi"><div class="lbl">Eventos en JSON</div><div class="val">${total}</div><div class="hint">${pogo} GO • ${tcgp} TCGP</div></div>
-        <div class="kpi"><div class="lbl">Activos hoy</div><div class="val" style="color:var(--green)">${active}</div><div class="hint">Vigentes en curso</div></div>
-        <div class="kpi"><div class="lbl">Códigos activos</div><div class="val" style="color:var(--gold)">${codes}</div><div class="hint">Listos para canjear</div></div>
-        <div class="kpi"><div class="lbl">Próximos / Fin</div><div class="val">${list.filter(e => e._status === "proximo").length} / ${list.filter(e => e._status === "finalizado").length}</div><div class="hint">Agenda e histórico</div></div>
-        <div class="kpi"><div class="lbl">Tu progreso</div><div class="val" style="color:var(--pogo)">${done} / ${total}</div><div class="hint">Marcados completados</div></div>
-      `;
+    function statusPill(st) {
+      if (st === "activo") return `<span class="pill live">🟢 ACTIVO</span>`;
+      if (st === "proximo") return `<span class="pill warn">⚠️ PRÓXIMO</span>`;
+      return `<span class="pill">FINALIZADO</span>`;
     }
 
     function copyTxt(btn, txt) {
       navigator.clipboard?.writeText(txt).then(() => {
         const old = btn.textContent;
-        btn.textContent = "✓ Copiado";
+        btn.textContent = "✅ Copiado";
         setTimeout(() => btn.textContent = old, 1200);
       });
     }
 
     function render() {
-      const all = db.events || [];
-      renderKpis(all);
-      const list = getFiltered();
-      document.getElementById("countLabel").textContent = `Mostrando ${list.length} de ${all.length}`;
+      const all = getEventsWithStatus();
+      renderGameHeader(all);
+      const gameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
+      renderStats(gameEvents);
+      renderCategories(gameEvents);
+
+      const list = getFiltered(gameEvents);
+      document.getElementById("countLabel").textContent = `Mostrando ${list.length} de ${gameEvents.length}`;
       const root = document.getElementById("content");
 
       if (!list.length) {
-        root.innerHTML = `<div class="empty">No hay eventos que coincidan con los filtros actuales.</div>`;
+        const isTcgpCodes = selectedGame === "tcgp" && selectedSlice === "kind:code";
+        root.innerHTML = isTcgpCodes ? `
+          <div class="empty-state">
+            <h3>🎁 Sin códigos promocionales activos en Pokémon TCG Pocket hoy</h3>
+            <p>Cuando PTCGPocket publique un código vigente aparecerá aquí y llegará en el consolidado de Telegram automáticamente.</p>
+            <a class="btn btn-secondary" href="https://gift.pokemontcgpocket.com/" target="_blank" rel="noopener">🌐 Abrir portal de canje TCG Pocket</a>
+          </div>
+        ` : `
+          <div class="empty-state">
+            <h3>⚠️ Sin registros para este filtro</h3>
+            <p>Prueba limpiando la búsqueda o eligiendo otra categoría.</p>
+            <button class="btn btn-secondary" onclick="document.getElementById('btnClear').click()">🧹 Ver todo del juego</button>
+          </div>
+        `;
         return;
       }
 
@@ -334,13 +718,13 @@
             <table>
               <thead>
                 <tr>
-                  <th>Marca</th>
-                  <th>Juego</th>
+                  <th>Control</th>
+                  ${selectedGame === "all" ? "<th>Juego</th>" : ""}
                   <th>Estado</th>
-                  <th>Evento / Categoría</th>
-                  <th>Vigencia (De → A)</th>
+                  <th>Categoría y Evento</th>
+                  <th>Vigencia</th>
                   <th>Premios y Táctica</th>
-                  <th>Acciones</th>
+                  <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -350,22 +734,22 @@
                   return `
                     <tr>
                       <td style="white-space:nowrap;">
-                        <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark('${esc(ev.id)}','done')">${mk.done ? "✓" : "☐"}</button>
+                        <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark('${esc(ev.id)}','done')">${mk.done ? "✅" : "☐"}</button>
                         <button class="mark-btn ${mk.star ? "star-on" : ""}" onclick="toggleMark('${esc(ev.id)}','star')">${mk.star ? "★" : "☆"}</button>
                       </td>
-                      <td><span class="pill ${esc(ev.game)}">${esc(ev.game_label)}</span></td>
-                      <td><span class="pill ${esc(ev._status)}">${esc(ev._status.toUpperCase())}</span></td>
+                      ${selectedGame === "all" ? `<td><span class="pill blue">${esc(ev.game_label)}</span></td>` : ""}
+                      <td>${statusPill(ev._status)}</td>
                       <td>
-                        <strong>${esc(ev.title)}</strong>
-                        <div class="ev-orig">${esc(ev.category)} • ${esc((ev.sources || []).join(", "))}</div>
+                        <div style="font-weight:700;color:var(--text)">${esc(ev.title)}</div>
+                        <div class="ev-orig">${esc(categoryIcon(ev.category))} ${esc(ev.category)} • ${esc((ev.sources || []).join(", "))}</div>
                       </td>
-                      <td style="white-space:nowrap;color:#fde047;">${esc(ev.date_range_label)}</td>
+                      <td style="white-space:nowrap;color:var(--warning);font-weight:600">${esc(ev.date_range_label)}</td>
                       <td>
                         <div>${esc(ev.rewards)}</div>
-                        ${ev.tactical_summary ? `<div class="ev-orig" style="color:#7dd3fc;margin-top:4px;">⚡ ${esc(ev.tactical_summary)}</div>` : ""}
+                        ${ev.tactical_summary ? `<div class="ev-orig" style="color:var(--blue);margin-top:4px;">⚡ ${esc(ev.tactical_summary)}</div>` : ""}
                       </td>
                       <td style="white-space:nowrap;">
-                        ${link ? `<a class="btn" href="${esc(link)}" target="_blank" rel="noopener">Abrir ↗</a>` : ""}
+                        ${link ? `<a class="btn btn-secondary" href="${esc(link)}" target="_blank" rel="noopener">Abrir ↗</a>` : ""}
                       </td>
                     </tr>
                   `;
@@ -377,46 +761,46 @@
         return;
       }
 
-      root.innerHTML = `<div class="grid">${list.map(ev => {
+      root.innerHTML = `<div class="cards-grid">${list.map(ev => {
         const mk = getMark(ev.id);
         const primaryUrl = ev.redeem_url || (ev.urls || [])[0] || "";
         const copyValue = ev.promo_code || ev.search_filter || "";
         const origHtml = (ev.title_original && ev.title_original.toLowerCase() !== (ev.title || "").toLowerCase())
           ? `<div class="ev-orig">Original: ${esc(ev.title_original)}</div>` : "";
+
         return `
           <article class="ev-card ${mk.done ? "done" : ""} ${mk.star ? "starred" : ""}">
-            <div class="card-top">
+            <div class="ev-top">
               <div class="badges">
-                <span class="pill ${esc(ev.game)}">${esc(ev.game_label)}</span>
-                <span class="pill ${esc(ev._status)}">${esc(ev._status.toUpperCase())}</span>
-                <span class="pill">${esc(ev.category)}</span>
+                ${selectedGame === "all" ? `<span class="pill blue">${esc(ev.game_label)}</span>` : ""}
+                ${statusPill(ev._status)}
+                <span class="pill info">${esc(categoryIcon(ev.category))} ${esc(ev.category)}</span>
               </div>
               <div class="marks">
-                <button class="mark-btn ${mk.star ? "star-on" : ""}" title="Marcar prioritario" onclick="toggleMark('${esc(ev.id)}','star')">${mk.star ? "★" : "☆"}</button>
-                <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark('${esc(ev.id)}','done')">${mk.done ? "✓ Hecho" : "☐ Marcar"}</button>
+                <button class="mark-btn ${mk.star ? "star-on" : ""}" onclick="toggleMark('${esc(ev.id)}','star')">${mk.star ? "★" : "☆"}</button>
+                <button class="mark-btn ${mk.done ? "on" : ""}" onclick="toggleMark('${esc(ev.id)}','done')">${mk.done ? "✅ Hecho" : "☐ Marcar"}</button>
               </div>
             </div>
             <div>
               <h3 class="ev-title">${esc(ev.title)}</h3>
               ${origHtml}
             </div>
-            <div class="meta-row">⏳ ${esc(ev.date_range_label)}</div>
-            <div class="box">
-              <strong>🎁 Premios / Destacado:</strong> ${esc(ev.rewards)}
-              ${ev.summary ? `<div style="margin-top:6px;color:#cbd5e1;">${esc(ev.summary)}</div>` : ""}
-              ${ev.tactical_summary ? `<div style="margin-top:6px;color:#7dd3fc;">⚡ <b>Táctica:</b> ${esc(ev.tactical_summary)}</div>` : ""}
+            <div class="ev-dates">⏱️ ${esc(ev.date_range_label)}</div>
+            <div class="inner-box">
+              <strong>🎁 Premios / Detalles:</strong> ${esc(ev.rewards)}
+              ${ev.tactical_summary ? `<div style="margin-top:6px;color:var(--blue);">⚡ <b>Guía:</b> ${esc(ev.tactical_summary)}</div>` : ""}
             </div>
             ${copyValue ? `
-              <div class="copy-bar">
-                <span>${ev.promo_code ? "🔑 Código:" : "🔎 Filtro GO:"} ${esc(copyValue)}</span>
-                <button class="mark-btn" onclick="copyTxt(this, '${esc(copyValue)}')">Copiar</button>
+              <div class="console-code">
+                <span>${ev.promo_code ? "🎁 Código:" : "🔍 Filtro GO:"} ${esc(copyValue)}</span>
+                <button class="mark-btn" onclick="copyTxt(this, '${esc(copyValue)}')">📋 Copiar</button>
               </div>
             ` : ""}
-            <div class="card-foot">
-              <span class="sources">📡 ${esc((ev.sources || []).join(" + "))}</span>
+            <div class="ev-foot">
+              <span class="ev-sources">🌐 ${esc((ev.sources || []).join(" + "))}</span>
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                ${ev.redeem_url ? `<a class="btn primary" href="${esc(ev.redeem_url)}" target="_blank" rel="noopener">🎁 Canjear</a>` : ""}
-                ${ev.guide_url && ev.guide_url !== ev.redeem_url ? `<a class="btn" href="${esc(ev.guide_url)}" target="_blank" rel="noopener">📘 Guía / Fuente</a>` : (primaryUrl ? `<a class="btn" href="${esc(primaryUrl)}" target="_blank" rel="noopener">🔎 Fuente</a>` : "")}
+                ${ev.redeem_url ? `<a class="btn btn-primary" href="${esc(ev.redeem_url)}" target="_blank" rel="noopener">🎁 Canjear</a>` : ""}
+                ${ev.guide_url && ev.guide_url !== ev.redeem_url ? `<a class="btn btn-secondary" href="${esc(ev.guide_url)}" target="_blank" rel="noopener">📘 Ver guía</a>` : (primaryUrl ? `<a class="btn btn-secondary" href="${esc(primaryUrl)}" target="_blank" rel="noopener">🔍 Ver más</a>` : "")}
               </div>
             </div>
           </article>
@@ -432,41 +816,40 @@
     }
 
     document.getElementById("btnRefresh").onclick = fetchLiveCatalog;
-    document.getElementById("btnOnlyActive").onclick = () => {
-      document.getElementById("q").value = "";
-      document.getElementById("fGame").value = "";
-      document.getElementById("fStatus").value = "activo";
-      document.getElementById("fCategory").value = "";
-      document.getElementById("fCheck").value = "";
-      render();
-    };
-    document.getElementById("btnResetFilters").onclick = () => {
-      for (const id of ["q", "fGame", "fStatus", "fCategory", "fCheck"]) {
-        document.getElementById(id).value = "";
-      }
-      render();
-    };
-    for (const id of ["q", "fGame", "fStatus", "fCategory", "fCheck"]) {
+    for (const id of ["q", "fStatus", "fCheck"]) {
       document.getElementById(id).addEventListener("input", render);
       document.getElementById(id).addEventListener("change", render);
     }
+    document.getElementById("btnClear").onclick = () => {
+      document.getElementById("q").value = "";
+      document.getElementById("fStatus").value = "";
+      document.getElementById("fCheck").value = "";
+      selectedSlice = "all";
+      render();
+    };
+    document.getElementById("btnOnlyActive").onclick = () => {
+      document.getElementById("fStatus").value = "activo";
+      render();
+    };
     document.getElementById("viewCards").onclick = () => {
       viewMode = "cards";
-      document.getElementById("viewCards").classList.add("active-tab");
-      document.getElementById("viewTable").classList.remove("active-tab");
+      document.getElementById("viewCards").className = "btn btn-secondary";
+      document.getElementById("viewTable").className = "btn";
       render();
     };
     document.getElementById("viewTable").onclick = () => {
       viewMode = "table";
-      document.getElementById("viewTable").classList.add("active-tab");
-      document.getElementById("viewCards").classList.remove("active-tab");
+      document.getElementById("viewTable").className = "btn btn-secondary";
+      document.getElementById("viewCards").className = "btn";
       render();
     };
     document.getElementById("btnJson").onclick = () => {
       downloadBlob("events_history.json", JSON.stringify(db, null, 2), "application/json");
     };
     document.getElementById("btnCsv").onclick = () => {
-      const rows = getFiltered();
+      const all = getEventsWithStatus();
+      const gameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
+      const rows = getFiltered(gameEvents);
       const cols = ["Juego", "Estado", "Categoría", "Título", "Desde", "Hasta", "Vigencia", "Premios", "Código", "Filtro GO", "Táctica", "Completado", "Favorito", "Fuentes"];
       const escCsv = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
       const body = rows.map(e => {
@@ -477,10 +860,10 @@
           mk.done ? "SI" : "NO", mk.star ? "SI" : "NO", (e.sources || []).join("; ")
         ].map(escCsv).join(",");
       });
-      downloadBlob("poke_alerts_dashboard.csv", "\uFEFF" + [cols.join(","), ...body].join("\r\n"), "text/csv;charset=utf-8");
+      downloadBlob(`estado_ck10_${selectedGame}.csv`, "\uFEFF" + [cols.join(","), ...body].join("\r\n"), "text/csv;charset=utf-8");
     };
     document.getElementById("btnExportMarks").onclick = () => {
-      downloadBlob("poke_alerts_checklist.json", JSON.stringify(marks, null, 2), "application/json");
+      downloadBlob("estado_ck10_marcas.json", JSON.stringify(marks, null, 2), "application/json");
     };
     document.getElementById("importMarks").onchange = ev => {
       const f = ev.target.files?.[0];
@@ -494,7 +877,6 @@
       });
     };
 
-    populateCategories();
     render();
     fetchLiveCatalog();
   </script>
