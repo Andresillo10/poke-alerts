@@ -186,15 +186,40 @@ class CardRecord:
         return None
 
     def score(self) -> float:
-        """Puntaje táctico determinista por eficiencia de HP, daño, sinergia y energía."""
+        """Puntaje táctico determinista por eficiencia de HP, daño efectivo, sinergia y energía."""
         if not self.is_pokemon:
             return 10.0
-        best_dmg = max((dmg for _, dmg in self.attacks), default=0)
-        best_cost = min(
-            (len(cost) for cost, dmg in self.attacks if dmg == best_dmg and cost),
-            default=2,
-        )
-        efficiency = best_dmg / max(best_cost, 1)
+        best_eff_dmg = 0.0
+        best_cost = 2
+        atk_txts = self.attack_texts or ("",) * len(self.attacks)
+        for (cost, dmg), atk_txt in zip(self.attacks, atk_txts):
+            eff_d = float(dmg)
+            eff_c = max(len(cost), 1)
+            low_t = atk_txt.lower()
+            m_extra = re.search(r"at\s+least\s+(\d+)\s+extra", low_t)
+            if m_extra:
+                eff_c += int(m_extra.group(1))
+            m_more = re.search(r"does\s+(\d+)\s+more\s+damage", low_t)
+            if m_more:
+                bonus_d = int(m_more.group(1))
+                if "both of them are heads" in low_t:
+                    eff_d += bonus_d * 0.25
+                elif "until you get tails" in low_t:
+                    eff_d += bonus_d * 1.0
+                elif any(sc in low_t for sc in ("confused", "asleep", "paralyzed")):
+                    eff_d += bonus_d * 0.35
+                else:
+                    eff_d += bonus_d * 0.70
+            m_flip = re.search(r"flip\s+(\d+)\s+coins?", low_t)
+            if m_flip and "for each heads" in low_t and not m_more and dmg > 0:
+                eff_d = max(eff_d, int(m_flip.group(1)) * 0.5 * dmg)
+            if (eff_d / eff_c) > (best_eff_dmg / max(best_cost, 1)) or (
+                eff_d > best_eff_dmg and eff_c <= best_cost
+            ):
+                best_eff_dmg = eff_d
+                best_cost = eff_c
+
+        efficiency = best_eff_dmg / max(best_cost, 1)
         bonus = 18.0 if self.ability_name else 0.0
         if self.energy_ramp_subtype():
             bonus += 24.0
@@ -202,6 +227,10 @@ class CardRecord:
             bonus += 22.0
         elif self.stage in {"Basic", "Stage 1"}:
             bonus += 14.0
+        if self.is_mega and self.stage == "Stage 2":
+            bonus -= 22.0
+        if best_cost >= 4:
+            bonus -= 28.0
         attack_types = {ch for cost, _ in self.attacks for ch in cost if ch in ENERGY_CHAR_TO_ID}
         if len(attack_types) <= 1:
             bonus += 18.0
@@ -211,8 +240,8 @@ class CardRecord:
         discard_penalty = self.energy_discard_severity() * 26.0
         return (
             (self.hp * 0.35)
-            + (best_dmg * 0.85)
-            + (efficiency * 0.6)
+            + (best_eff_dmg * 0.68)
+            + (efficiency * 1.12)
             + bonus
             - retreat_penalty
             - discard_penalty
@@ -791,12 +820,16 @@ def _fill_trainers(
         and (not _trainer_named_targets(t, pk_vocab)[1] or bool(_trainer_named_targets(t, pk_vocab)[0] & pk_names))
         for t in trainer_pool
     )
+    has_bench_coach = any("as long as this pokémon is in play" in c.ability_text.lower() for c in pokemon_cards)
+    multi_line_evo = len(pokemon_cards) >= 10
 
     def trainer_rank(tr: CardRecord) -> tuple[int, int]:
         txt = tr.card_text.lower()
         score = 0
         if tr.name in CORE_TRAINER_PRIORITY:
             score += 105 - CORE_TRAINER_PRIORITY.index(tr.name) * 4
+        if tr.name in {"Professor's Research", "Poké Ball"}:
+            score += 35
 
         targets, strict_clause = _trainer_named_targets(tr, pk_vocab)
         if strict_clause:
@@ -823,16 +856,23 @@ def _fill_trainers(
         if tr.subtype == "Stadium":
             if mentions_stadium:
                 score += 125
-            elif "draw a card" in txt:
+            elif "draw a card" in txt and not multi_line_evo:
                 score += 78
             else:
-                score += 35
+                score += 30
 
         if "tool" in tr.subtype.lower() and mentions_tool and tr.name != "Eviolite":
             score += 55
 
+        if "retreat cost" in txt or tr.name == "X Speed":
+            if has_bench_coach or multi_line_evo:
+                score += 65
+
         if "max repel" in tr.name.lower():
-            score += 82 if not has_other_gust else 45
+            if has_other_gust or has_bench_coach:
+                score += 20
+            else:
+                score += 82
 
         if tr.name == "Poké Mart Guy" or ("super potion" in txt and "max repel" in txt):
             score -= 180
@@ -883,18 +923,99 @@ def _find_tribal_attack_partners(
     anchor: CardRecord,
     pokemon_pool: list[CardRecord],
 ) -> list[CardRecord]:
-    """Detecta Pokémon del mismo arquetipo cuya habilidad referencia el ataque del otro."""
-    results: list[CardRecord] = []
-    ab_low = anchor.ability_text.lower()
-    anchor_atks = [n.lower() for n in anchor.attack_names if len(n) >= 4]
-    for cand in pokemon_pool:
+    """Resuelve la clausura transitiva de una tribu por ataque amplificado (Coach + Strikers)."""
+    all_attack_names = {
+        an.lower()
+        for c in pokemon_pool
+        for an in c.attack_names
+        if len(an) >= 4
+    }
+
+    # Identifica ataques que algún Pokémon del pool amplifica desde su habilidad
+    coached_attacks: dict[str, list[CardRecord]] = {}
+    for c in pokemon_pool:
+        ab_low = c.ability_text.lower()
+        if not ab_low:
+            continue
+        for atk_name in all_attack_names:
+            if atk_name in ab_low:
+                coached_attacks.setdefault(atk_name, []).append(c)
+
+    if not coached_attacks:
+        return []
+
+    anchor_atks = {n.lower() for n in anchor.attack_names if len(n) >= 4}
+    anchor_ab = anchor.ability_text.lower()
+    matched_attacks = {
+        atk_name
+        for atk_name in coached_attacks
+        if atk_name in anchor_atks or atk_name in anchor_ab
+    }
+    if not matched_attacks:
+        return []
+
+    raw_members = [
+        c for c in pokemon_pool
+        if any(a in c.ability_text.lower() for a in matched_attacks)
+        or ({n.lower() for n in c.attack_names if len(n) >= 4} & matched_attacks)
+    ]
+    # Solo descarta pre-evoluciones cuyo siguiente eslabón también pertenece a la misma tribu
+    tribal_evolved_from = {c.evolves_from.lower() for c in raw_members if c.evolves_from}
+
+    coaches: list[CardRecord] = []
+    strikers: list[CardRecord] = []
+    for cand in raw_members:
         if cand.name == anchor.name:
             continue
-        cand_atks = [n.lower() for n in cand.attack_names if len(n) >= 4]
-        cand_ab = cand.ability_text.lower()
-        if any(an in cand_ab for an in anchor_atks) or any(cn in ab_low for cn in cand_atks):
-            results.append(cand)
-    return results
+        if cand.name.lower() in tribal_evolved_from:
+            continue
+        c_ab = cand.ability_text.lower()
+        if any(a in c_ab for a in matched_attacks):
+            coaches.append(cand)
+        else:
+            strikers.append(cand)
+
+    strikers.sort(key=lambda c: (c.subtype == "Colorless", c.score()), reverse=True)
+    return coaches + strikers
+
+
+def _tribal_combo_ev_bonus(
+    card: CardRecord,
+    pokemon_pool: list[CardRecord],
+) -> float:
+    """Calcula el bono matemático de valor esperado (EV) cuando existe un Coach de monedas/daño."""
+    partners = _find_tribal_attack_partners(card, pokemon_pool)
+    if not partners:
+        return 0.0
+
+    members = [card, *partners]
+    tribal_evolved_from = {c.evolves_from.lower() for c in members if c.evolves_from}
+    if card.name.lower() in tribal_evolved_from:
+        return 0.0
+
+    extra_coins_per_coach = 0
+    for m in members:
+        m_c = re.search(r"flip\s+(\d+)\s+more\s+coins", m.ability_text, re.I)
+        if m_c:
+            extra_coins_per_coach = max(extra_coins_per_coach, int(m_c.group(1)))
+
+    if extra_coins_per_coach <= 0:
+        return 45.0
+
+    # Con 2 copias del Coach en el mazo (~1.5 activas en mesa), evalúa EV/energía de los atacantes
+    best_ev_per_energy = 0.0
+    striker_lines = 0
+    for m in members:
+        for (cost, dmg), atk_txt in zip(m.attacks, m.attack_texts):
+            m_flip = re.search(r"flip\s+(\d+)\s+coins?", atk_txt, re.I)
+            if m_flip and dmg > 0:
+                striker_lines += 1
+                total_coins = int(m_flip.group(1)) + (1.5 * extra_coins_per_coach)
+                ev_dmg = total_coins * 0.5 * dmg
+                ev_eff = ev_dmg / max(len(cost), 1)
+                best_ev_per_energy = max(best_ev_per_energy, ev_eff)
+
+    return min(145.0, (best_ev_per_energy * 0.78) + (striker_lines * 16.0))
 
 
 def _candidate_synergy_score(
@@ -905,10 +1026,29 @@ def _candidate_synergy_score(
     pk_vocab: set[str],
     has_rare_candy: bool,
 ) -> float:
-    """Evalúa valor competitivo real combinando ataques, rampa de energía y entrenadores."""
+    """Evalúa valor competitivo real combinando EV, rampa de energía, tempo y entrenadores."""
     base = card.score()
+    min_cost = min((len(cost) for cost, _ in card.attacks if cost), default=3)
     if card.stage == "Stage 2" and not has_rare_candy:
         base -= 26.0
+        if min_cost >= 4:
+            base -= 42.0
+
+    # Daño condicional ("does X more damage") y presión temprana de 1 energía
+    best_eff_dmg = max((dmg for _, dmg in card.attacks), default=0)
+    for (cost, dmg), atk_txt in zip(card.attacks, card.attack_texts):
+        low_eff = atk_txt.lower()
+        m_more = re.search(r"does\s+(\d+)\s+more\s+damage", low_eff)
+        if m_more and "at least" not in low_eff and "both of them" not in low_eff:
+            cond_dmg = int(m_more.group(1))
+            best_eff_dmg = max(best_eff_dmg, dmg + int(cond_dmg * 0.70))
+        if "damage to each of your benched pokémon" in low_eff:
+            base -= 18.0
+        if "discard the top" in low_eff and "of your deck" in low_eff:
+            base -= 12.0
+
+    if card.stage in {"Basic", "Stage 1"} and min_cost == 1 and best_eff_dmg >= 60:
+        base += 26.0
 
     ramp_types = {
         r for c in pokemon_pool if c.stage in {"Basic", "Stage 1"} or has_rare_candy
@@ -929,8 +1069,7 @@ def _candidate_synergy_score(
     if card.energy_discard_severity() > 0 and card.subtype not in ramp_types and not trainer_ramps:
         base -= 58.0
 
-    if _find_tribal_attack_partners(card, pokemon_pool):
-        base += 42.0
+    base += _tribal_combo_ev_bonus(card, pokemon_pool)
 
     all_txt = " ".join(card.attack_texts).lower()
     if "stadium" in all_txt and any(t.subtype == "Stadium" for t in trainer_pool):
@@ -948,9 +1087,11 @@ def _assemble_synergy_pokemon(
     require_diamond: bool,
     only_type: str | None,
     effective_set: str | None,
+    exclude_names: set[str] | None = None,
 ) -> list[CardRecord]:
     """Acopla compañeros de sinergia (tribales, rampa o soporte ágil) preservando energía."""
     pokemon = list(core)
+    excluded = exclude_names or set()
     max_energies = 2 if anchor.subtype == "Dragon" else 1
     pk_vocab = {c.name.lower() for c in pokemon_pool}
 
@@ -970,11 +1111,7 @@ def _assemble_synergy_pokemon(
         return name.lower() in {p.name.lower() for p in pokemon}
 
     # 1. Sinergia tribal por nombre de ataque compartido (ej. Raboot + Azumarill + Lopunny)
-    tribals = sorted(
-        _find_tribal_attack_partners(anchor, pokemon_pool),
-        key=lambda c: c.score(),
-        reverse=True,
-    )
+    tribals = _find_tribal_attack_partners(anchor, pokemon_pool)
     for mate in tribals:
         if already_in(mate.name):
             continue
@@ -1016,14 +1153,23 @@ def _assemble_synergy_pokemon(
                 pokemon.extend(ramp_core)
                 break
 
-    # 4. Soporte ágil (Básico o Stage 1 complementario mono-energía/Incoloro)
+    # 4. Soporte ágil (Básico, Stage 1 o Stage 2 Incoloro que habilite Entrenador exclusivo)
     if len(pokemon) <= 6:
         compatible_subtypes = {anchor.subtype, "Colorless"}
         support_pool = [
             c
             for c in pokemon_pool
-            if c.stage in {"Basic", "Stage 1"}
+            if (
+                c.stage in {"Basic", "Stage 1"}
+                or (
+                    c.stage == "Stage 2"
+                    and c.subtype == "Colorless"
+                    and len(pokemon) <= 4
+                    and bool(_find_synergy_trainers_for_pokemon(c, trainer_pool, pk_vocab))
+                )
+            )
             and not already_in(c.name)
+            and c.name not in excluded
             and c.subtype in compatible_subtypes
             and c.retreat <= 2
             and c.energy_discard_severity() == 0
@@ -1126,6 +1272,7 @@ def _build_single_archetype_deck(
             require_diamond=require_diamond,
             only_type=only_type,
             effective_set=effective_set,
+            exclude_names=excluded,
         )
 
         trainers = _fill_trainers(

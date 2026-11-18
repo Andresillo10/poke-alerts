@@ -1225,20 +1225,20 @@ class CorePipelineTests(unittest.TestCase):
             {"id": "c1-022", "name": "Scorbunny", "set_code": "c1", "type": "Pokémon", "subtype": "Fire", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 50, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Rabbit Jumping", "damage": "20", "effect": "Flip 2 coins."}}, "deckBuilderNr": 2002},
             {"id": "c1-023", "name": "Raboot", "set_code": "c1", "type": "Pokémon", "subtype": "Fire", "stage": "Stage 1", "evolves_from": "Scorbunny", "rarity": "◊◊", "ex": False, "mega": False, "health": 70, "retreat": 1, "ability": {"exists": True, "name": "Jumping Coach", "effect": "As long as this Pokémon is in play, flip 3 more coins for the Rabbit Jumping attack used by your Pokémon."}, "attacks": {"1": {"cost": "C", "name": "Headbutt", "damage": "30"}}, "deckBuilderNr": 2003},
             {"id": "c1-058", "name": "Marill", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "P", "name": "Rollout", "damage": "20"}}, "deckBuilderNr": 2004},
-            {"id": "c1-059", "name": "Azumarill", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Stage 1", "evolves_from": "Marill", "rarity": "◊◊", "ex": False, "mega": False, "health": 120, "retreat": 3, "attacks": {"1": {"cost": "PC", "name": "Rabbit Jumping", "damage": "60", "effect": "Flip 2 coins."}}, "deckBuilderNr": 2005},
-            {"id": "c1-115", "name": "Buneary", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 50, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Rabbit Jumping", "damage": "20"}}, "deckBuilderNr": 2006},
-            {"id": "c1-116", "name": "Lopunny", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Stage 1", "evolves_from": "Buneary", "rarity": "◊◊", "ex": False, "mega": False, "health": 100, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Rabbit Jumping", "damage": "40"}}, "deckBuilderNr": 2007},
+            {"id": "c1-059", "name": "Azumarill", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Stage 1", "evolves_from": "Marill", "rarity": "◊◊", "ex": False, "mega": False, "health": 120, "retreat": 3, "attacks": {"1": {"cost": "PC", "name": "Rabbit Jumping", "damage": "60", "effect": "Flip 2 coins. This attack does 60 damage for each heads."}}, "deckBuilderNr": 2005},
+            {"id": "c1-115", "name": "Buneary", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 50, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Rabbit Jumping", "damage": "20", "effect": "Flip 2 coins. This attack does 20 damage for each heads."}}, "deckBuilderNr": 2006},
+            {"id": "c1-116", "name": "Lopunny", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Stage 1", "evolves_from": "Buneary", "rarity": "◊◊", "ex": False, "mega": False, "health": 100, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Rabbit Jumping", "damage": "40", "effect": "Flip 2 coins. This attack does 40 damage for each heads."}}, "deckBuilderNr": 2007},
             # Paldean Clodsire + Whiscash + Rika
             {"id": "c1-073", "name": "Paldean Wooper", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "F", "name": "Mud-Slap", "damage": "20"}}, "deckBuilderNr": 2008},
-            {"id": "c1-074", "name": "Paldean Clodsire", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Stage 1", "evolves_from": "Paldean Wooper", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 130, "retreat": 3, "attacks": {"1": {"cost": "FFF", "name": "Earthquake", "damage": "130"}}, "deckBuilderNr": 2009},
+            {"id": "c1-074", "name": "Paldean Clodsire", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Stage 1", "evolves_from": "Paldean Wooper", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 130, "retreat": 3, "attacks": {"1": {"cost": "FFF", "name": "Earthquake", "damage": "130", "effect": "This attack also does 20 damage to each of your Benched Pokémon."}}, "deckBuilderNr": 2009},
             {"id": "c1-077", "name": "Barboach", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "F", "name": "Vibration", "damage": "20"}}, "deckBuilderNr": 2010},
-            {"id": "c1-078", "name": "Whiscash", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Stage 1", "evolves_from": "Barboach", "rarity": "◊◊", "ex": False, "mega": False, "health": 120, "retreat": 3, "attacks": {"1": {"cost": "F", "name": "Power Press", "damage": "40"}}, "deckBuilderNr": 2011},
+            {"id": "c1-078", "name": "Whiscash", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Stage 1", "evolves_from": "Barboach", "rarity": "◊◊", "ex": False, "mega": False, "health": 120, "retreat": 3, "attacks": {"1": {"cost": "F", "name": "Power Press", "damage": "40", "effect": "If this Pokémon has at least 3 extra [F] Energy attached, this attack does 60 more damage."}}, "deckBuilderNr": 2011},
             # Umbreon + Pidgeot + Blue's Provocation
             {"id": "c1-107", "name": "Eevee", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Find a Friend", "damage": "0"}}, "deckBuilderNr": 2012},
-            {"id": "c1-084", "name": "Umbreon", "set_code": "c1", "type": "Pokémon", "subtype": "Darkness", "stage": "Stage 1", "evolves_from": "Eevee", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 90, "retreat": 1, "attacks": {"1": {"cost": "D", "name": "Moonlit Raid", "damage": "30"}}, "deckBuilderNr": 2013},
+            {"id": "c1-084", "name": "Umbreon", "set_code": "c1", "type": "Pokémon", "subtype": "Darkness", "stage": "Stage 1", "evolves_from": "Eevee", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 90, "retreat": 1, "attacks": {"1": {"cost": "D", "name": "Moonlit Raid", "damage": "30", "effect": "If your opponent's Active Pokémon is a Basic Pokémon, this attack does 50 more damage."}}, "deckBuilderNr": 2013},
             {"id": "c1-102", "name": "Pidgey", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Gust", "damage": "20"}}, "deckBuilderNr": 2014},
             {"id": "c1-103", "name": "Pidgeotto", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Stage 1", "evolves_from": "Pidgey", "rarity": "◊◊", "ex": False, "mega": False, "health": 80, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Gust", "damage": "30"}}, "deckBuilderNr": 2015},
-            {"id": "c1-104", "name": "Pidgeot", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Stage 2", "evolves_from": "Pidgeotto", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 130, "retreat": 1, "attacks": {"1": {"cost": "CC", "name": "Wing Attack", "damage": "80"}}, "deckBuilderNr": 2016},
+            {"id": "c1-104", "name": "Pidgeot", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Stage 2", "evolves_from": "Pidgeotto", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 130, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Wing Attack", "damage": "40", "effect": "If your opponent's Active Pokémon is an Evolution Pokémon, this attack does 80 more damage."}}, "deckBuilderNr": 2016},
             # Future unreleased Promo-C that must NOT leak into C1 Limited Battles
             {"id": "pc-013", "name": "Mega Dragonite ex", "set_code": "pc", "type": "Pokémon", "subtype": "Dragon", "stage": "Stage 2", "rarity": "◊◊◊◊", "ex": True, "mega": True, "health": 240, "retreat": 4, "attacks": {"1": {"cost": "WLCCC", "damage": "250"}}, "deckBuilderNr": 2099},
             # Trainers C1 & Promo-A
@@ -1270,7 +1270,18 @@ class CorePipelineTests(unittest.TestCase):
             constraints=c_lim,
             catalog=cat,
         )
-        self.assertGreaterEqual(len(decks), 2)
+        self.assertEqual(len(decks), 3)
+        # El generador autónomo por sí solo deduce Raboot + Lopunny + Azumarill como Opción 1
+        d1_pks = {c.name for c in decks[0].cards if c.is_pokemon}
+        d1_trs = {c.name for c in decks[0].cards if not c.is_pokemon}
+        self.assertEqual(d1_pks, {"Scorbunny", "Raboot", "Buneary", "Lopunny", "Marill", "Azumarill"})
+        self.assertEqual(d1_trs, {"Poké Ball", "Professor's Research", "Serena's Choice", "X Speed"})
+        self.assertEqual(decks[0].energy_types, (5,))
+        # Opción 3 autónoma deduce Umbreon + Pidgeot + Blue's Provocation
+        d3_pks = {c.name for c in decks[2].cards if c.is_pokemon}
+        d3_trs = {c.name for c in decks[2].cards if not c.is_pokemon}
+        self.assertEqual(d3_pks, {"Eevee", "Umbreon", "Pidgey", "Pidgeotto", "Pidgeot"})
+        self.assertIn("Blue's Provocation", d3_trs)
         for d in decks:
             tr_names = {c.name for c in d.cards if not c.is_pokemon}
             pk_names = {c.name for c in d.cards if c.is_pokemon}
