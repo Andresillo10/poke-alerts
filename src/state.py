@@ -27,6 +27,7 @@ def default_state() -> dict[str, Any]:
         "last_commit_heartbeat_utc": None,
         "last_weekly_meta_week": None,
         "one_time_ping_sent": None,
+        "deck_update_sent": None,
         "seen_uids": {},
         "seen_topics": {},
         "started_notified": {},
@@ -322,3 +323,18 @@ def should_send_one_time_ping(
     tag = f"{target_date.isoformat()}-{target_hour:02d}"
     in_window = col_dt.date() == target_date and col_dt.hour == target_hour
     return (in_window and state.get("one_time_ping_sent") != tag), tag
+
+
+def should_send_scheduled_deck_update(
+    state: dict[str, Any],
+    *,
+    now_utc: datetime | None = None,
+    target_date: date = date(2026, 11, 18),
+    target_hour: int = 20,
+) -> tuple[bool, str]:
+    """Autoriza enviar una única vez la actualización de mazos en el corte de hoy >=20:00 COT."""
+    ref = now_utc or datetime.now(timezone.utc)
+    col_dt = ref.astimezone(timezone(timedelta(hours=-5)))
+    tag = f"{target_date.isoformat()}-{target_hour:02d}"
+    in_window = col_dt.date() == target_date and col_dt.hour >= target_hour
+    return (in_window and state.get("deck_update_sent") != tag), tag

@@ -59,6 +59,7 @@ from src.state import (
     save_state,
     select_pending_alerts,
     should_send_one_time_ping,
+    should_send_scheduled_deck_update,
     should_send_weekly_codes,
     should_send_weekly_meta,
     update_source_health_and_heartbeat,
@@ -805,6 +806,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
         need_weekly, week_key = False, ""
         need_codes, codes_week_key = False, ""
         need_ping, ping_tag = False, ""
+        need_deck_update, deck_update_tag = False, ""
     elif args.preview_sample:
         to_notify = _select_preview_sample(collected)
         to_seed_only: list[AlertItem] = []
@@ -812,6 +814,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
         need_weekly, week_key = should_send_weekly_meta(state, force=args.weekly_meta)
         need_codes, codes_week_key = should_send_weekly_codes(state, force=args.weekly_codes)
         need_ping, ping_tag = False, ""
+        need_deck_update, deck_update_tag = False, ""
     else:
         to_notify, to_seed_only = select_pending_alerts(
             state,
@@ -819,18 +822,33 @@ def run_pipeline(args: argparse.Namespace) -> int:
             max_alerts=args.limit,
             bootstrap_silent=args.bootstrap_silent,
         )
+        need_weekly, week_key = should_send_weekly_meta(state, force=args.weekly_meta)
+        need_codes, codes_week_key = should_send_weekly_codes(state, force=args.weekly_codes)
+        need_ping, ping_tag = should_send_one_time_ping(state)
+        need_deck_update, deck_update_tag = should_send_scheduled_deck_update(state)
+        if args.bootstrap_silent:
+            need_weekly = args.weekly_meta
+            need_codes = args.weekly_codes
+            need_ping = False
+            need_deck_update = False
+        if need_deck_update:
+            df_item = next(
+                (
+                    it for it in collected
+                    if it.game == "tcgp"
+                    and it.kind == "event"
+                    and _canon_event_id(it) == "tcgp:battles-dual-fusion-limited"
+                ),
+                None,
+            )
+            if df_item and all(_canon_event_id(x) != "tcgp:battles-dual-fusion-limited" for x in to_notify):
+                to_notify.insert(0, df_item)
+                LOGGER.info("[DeckUpdate 20:00 COT] Encolada actualización de mazos para %s.", df_item.title)
         LOGGER.info(
             "Pendientes por notificar: %d | Backlog a sembrar silenciosamente: %d",
             len(to_notify),
             len(to_seed_only),
         )
-        need_weekly, week_key = should_send_weekly_meta(state, force=args.weekly_meta)
-        need_codes, codes_week_key = should_send_weekly_codes(state, force=args.weekly_codes)
-        need_ping, ping_tag = should_send_one_time_ping(state)
-        if args.bootstrap_silent:
-            need_weekly = args.weekly_meta
-            need_codes = args.weekly_codes
-            need_ping = False
 
     bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
@@ -1055,10 +1073,15 @@ def run_pipeline(args: argparse.Namespace) -> int:
     if ping_sent:
         state["one_time_ping_sent"] = ping_tag
 
+    deck_update_done = False
+    if need_deck_update and any(_canon_event_id(x) == "tcgp:battles-dual-fusion-limited" for x in sent_items):
+        state["deck_update_sent"] = deck_update_tag
+        deck_update_done = True
+
     changed = update_source_health_and_heartbeat(
         state,
         source_statuses,
-        had_state_change=bool(processed or weekly_sent or codes_sent or ping_sent),
+        had_state_change=bool(processed or weekly_sent or codes_sent or ping_sent or deck_update_done),
     )
     if changed or processed:
         save_state(state, STATE_FILE)

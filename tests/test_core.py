@@ -785,6 +785,21 @@ class CorePipelineTests(unittest.TestCase):
         self.assertFalse(should_send_one_time_ping(default_state(), now_utc=t_1023)[0])
         self.assertFalse(should_send_one_time_ping(default_state(), now_utc=t_next)[0])
 
+        # Envío programado de actualización de mazos en el corte de hoy 18/11 >=20:00 COT
+        from src.state import should_send_scheduled_deck_update
+        st_upd = default_state()
+        t_1923_cot = datetime(2026, 11, 19, 0, 23, tzinfo=timezone.utc)   # 18/11 19:23 COT
+        t_2000_cot = datetime(2026, 11, 19, 1, 0, tzinfo=timezone.utc)    # 18/11 20:00 COT
+        t_2023_cot = datetime(2026, 11, 19, 1, 23, tzinfo=timezone.utc)   # 18/11 20:23 COT
+        t_next_20 = datetime(2026, 11, 20, 1, 0, tzinfo=timezone.utc)     # 19/11 20:00 COT
+        self.assertFalse(should_send_scheduled_deck_update(st_upd, now_utc=t_1923_cot)[0])
+        ok_upd, utag = should_send_scheduled_deck_update(st_upd, now_utc=t_2000_cot)
+        self.assertTrue(ok_upd)
+        self.assertEqual(utag, "2026-11-18-20")
+        st_upd["deck_update_sent"] = utag
+        self.assertFalse(should_send_scheduled_deck_update(st_upd, now_utc=t_2023_cot)[0])
+        self.assertFalse(should_send_scheduled_deck_update(default_state(), now_utc=t_next_20)[0])
+
         # Regresión 10:23 AM: "(C1)" en título PTCGPocket.gg deduplica con Serebii y bloquea Cyrus B2
         ev_serebii = AlertItem("s1", "tcgp", "event", "Dual Fusion Limited Battles", "Desc", "https://s", "Serebii")
         ev_ptcg = AlertItem("p1", "tcgp", "event", "Dual Fusion (C1) Limited Battles", "Desc", "https://p", "PTCGPocket.gg")
