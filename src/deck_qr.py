@@ -52,10 +52,11 @@ CORE_TRAINER_PRIORITY = [
     "Giant Cape",
     "Rocky Helmet",
     "Rare Candy",
+    "Max Repel",
+    "Abandoned Station",
+    "Red Card",
     "Potion",
     "X Speed",
-    "Super Potion",
-    "Red Card",
 ]
 
 ENERGY_CHAR_TO_ID = {
@@ -129,6 +130,9 @@ class CardRecord:
     card_text: str
     attacks: tuple[tuple[str, int], ...]
     qr_id: int
+    ability_text: str = ""
+    attack_names: tuple[str, ...] = ()
+    attack_texts: tuple[str, ...] = ()
 
     @property
     def is_pokemon(self) -> bool:
@@ -138,8 +142,51 @@ class CardRecord:
     def is_diamond_pokemon(self) -> bool:
         return self.is_pokemon and self.rarity in DIAMOND_RARITIES
 
+    def energy_discard_severity(self) -> float:
+        """Mide cuánta energía sacrifica el ataque principal sin recuperación."""
+        if not self.is_pokemon or not self.attacks:
+            return 0.0
+        best_dmg = max((dmg for _, dmg in self.attacks), default=0)
+        worst = 0.0
+        for (cost, dmg), atk_txt in zip(self.attacks, self.attack_texts or ("",) * len(self.attacks)):
+            low = atk_txt.lower()
+            if "discard" not in low or "energy" not in low or "opponent" in low:
+                continue
+            if len(cost) <= 1 and dmg < best_dmg:
+                continue
+            if "discard all" in low or "discard 2" in low or "discard 3" in low:
+                worst = max(worst, 2.0)
+            else:
+                worst = max(worst, 1.0)
+        return worst
+
+    def energy_ramp_subtype(self) -> str | None:
+        """Devuelve el tipo elemental que acelera esta carta (Habilidad o ataque barato)."""
+        if not self.is_pokemon:
+            return None
+        candidates: list[str] = []
+        if self.ability_text:
+            candidates.append(self.ability_text.lower())
+        for (cost, _), atk_txt in zip(self.attacks, self.attack_texts or ("",) * len(self.attacks)):
+            if len(cost) <= 2 and atk_txt:
+                candidates.append(atk_txt.lower())
+        for low in candidates:
+            if "opponent" in low:
+                continue
+            if ("attach" in low or "produce" in low) and "energy" in low and (
+                "energy zone" in low or "from your discard" in low or "from your deck" in low
+            ):
+                m_type = re.search(r"\[\s*([grwlpfmd])\s*\]", low, re.I)
+                if m_type:
+                    eid = ENERGY_CHAR_TO_ID.get(m_type.group(1).upper())
+                    for st_name, st_eid in SUBTYPE_TO_ENERGY_ID.items():
+                        if st_eid == eid:
+                            return st_name
+                return self.subtype if self.subtype in SUBTYPE_TO_ENERGY_ID else None
+        return None
+
     def score(self) -> float:
-        """Puntaje táctico determinista por eficiencia de HP, daño y energía."""
+        """Puntaje táctico determinista por eficiencia de HP, daño, sinergia y energía."""
         if not self.is_pokemon:
             return 10.0
         best_dmg = max((dmg for _, dmg in self.attacks), default=0)
@@ -149,17 +196,27 @@ class CardRecord:
         )
         efficiency = best_dmg / max(best_cost, 1)
         bonus = 18.0 if self.ability_name else 0.0
+        if self.energy_ramp_subtype():
+            bonus += 24.0
         if self.stage == "Basic" and self.is_ex:
             bonus += 22.0
         elif self.stage in {"Basic", "Stage 1"}:
-            bonus += 12.0
+            bonus += 14.0
         attack_types = {ch for cost, _ in self.attacks for ch in cost if ch in ENERGY_CHAR_TO_ID}
         if len(attack_types) <= 1:
             bonus += 18.0
         elif self.subtype != "Dragon":
             bonus -= 22.0
         retreat_penalty = self.retreat * 5.0
-        return (self.hp * 0.35) + (best_dmg * 0.85) + (efficiency * 0.6) + bonus - retreat_penalty
+        discard_penalty = self.energy_discard_severity() * 26.0
+        return (
+            (self.hp * 0.35)
+            + (best_dmg * 0.85)
+            + (efficiency * 0.6)
+            + bonus
+            - retreat_penalty
+            - discard_penalty
+        )
 
 
 @dataclass(frozen=True)
@@ -219,7 +276,7 @@ def build_qr_download_url(qr_payload: str) -> str:
 
 
 def describe_deck_strategy(deck: BuiltDeck) -> str:
-    """Genera una explicación táctica clara en español basada en cartas y entrenadores reales."""
+    """Genera una explicación táctica clara en español basada en sinergias reales del mazo."""
     pks = [c for c in deck.cards if c.is_pokemon]
     trs = [c for c in deck.cards if not c.is_pokemon]
     if not pks:
@@ -233,11 +290,53 @@ def describe_deck_strategy(deck: BuiltDeck) -> str:
         key=lambda c: (c.is_mega, c.is_ex, c.stage == "Stage 2", c.score()),
         reverse=True,
     )
+    pk_names = {n.lower() for n in unique_pks}
+    tr_names = {c.name for c in trs}
+    tr_low = {c.name.lower() for c in trs}
+    energy_txt = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in deck.energy_types)
+
+    # Explicaciones específicas de combos reales cuando el mazo los contiene
+    if "raboot" in pk_names and ("lopunny" in pk_names or "azumarill" in pk_names):
+        strikers = [n for n in ("Azumarill", "Lopunny") if n.lower() in pk_names]
+        return (
+            f"Combo Rabbit Jumping en energía {energy_txt}: Raboot en banca suma +3 monedas "
+            f"por copia para disparar el daño de {' y '.join(strikers)}."
+        )
+    if "rika" in tr_low and ("paldean clodsire" in pk_names or "whiscash" in pk_names):
+        return (
+            f"Aceleración con Rika en energía {energy_txt}: carga 2 energías Lucha directo "
+            "a Paldean Clodsire (130 daño) o Whiscash para atacar rápido."
+        )
+    if "blue's provocation" in tr_low and (pk_names & {"pidgeot", "charizard", "blastoise", "venusaur"}):
+        unlocker_rec = next(
+            unique_pks[n] for n in unique_pks if n.lower() in {"pidgeot", "charizard", "blastoise", "venusaur"}
+        )
+        chain_low = {unlocker_rec.name.lower()}
+        cur = unlocker_rec
+        by_low = {n.lower(): c for n, c in unique_pks.items()}
+        while cur.evolves_from and cur.evolves_from.lower() in by_low:
+            prev_rec = by_low[cur.evolves_from.lower()]
+            chain_low.add(prev_rec.name.lower())
+            cur = prev_rec
+        partner = next(
+            (c.name for c in ordered_pks if c.name.lower() not in chain_low and not (c.stage == "Basic" and any(o.evolves_from and o.evolves_from.lower() == c.name.lower() for o in ordered_pks))),
+            "",
+        )
+        extra_p = f" junto a {partner}" if partner else ""
+        return (
+            f"Control en energía {energy_txt}: {unlocker_rec.name} habilita Blue's Provocation para "
+            f"arrastrar amenazas de la banca rival{extra_p}."
+        )
+    if "mew ex" in pk_names and any("mega mewtwo" in n for n in pk_names):
+        stadium_note = " y Abandoned Station aporta +40 de daño y robo" if "abandoned station" in tr_low else ""
+        return (
+            f"Motor Psíquico en energía {energy_txt}: Mew ex acelera energías hacia Mega Mewtwo "
+            f"desde el inicio{stadium_note}."
+        )
+
     lead = ordered_pks[0]
     best_dmg = max((dmg for _, dmg in lead.attacks), default=0)
     supporters = [c for c in ordered_pks[1:3]]
-    energy_txt = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in deck.energy_types)
-
     lead_stats = f"{lead.hp} HP" + (f", hasta {best_dmg} daño" if best_dmg > 0 else "")
     if lead.ability_name:
         lead_stats += f", hab. {lead.ability_name}"
@@ -248,15 +347,17 @@ def describe_deck_strategy(deck: BuiltDeck) -> str:
         support_notes.append(note)
     extra = f" con apoyo de {', '.join(support_notes)}" if support_notes else ""
 
-    tr_names = {c.name for c in trs}
     roles: list[str] = []
-    if tr_names & {"Professor's Research", "Poké Ball", "Copycat", "Serena's Choice"}:
+    if tr_names & {"Professor's Research", "Poké Ball", "Copycat", "Serena's Choice", "Abandoned Station"}:
         roles.append("robo/búsqueda")
-    if tr_names & {"Rare Candy", "Flame Patch", "Misty", "Irida"}:
-        roles.append("aceleración")
-    if tr_names & {"Sabrina", "Cyrus", "Mars"}:
+    if (
+        tr_names & {"Rare Candy", "Flame Patch", "Misty", "Irida", "Rika", "Genome Converter Y"}
+        or any(c.energy_ramp_subtype() for c in unique_pks.values())
+    ):
+        roles.append("aceleración de energía")
+    if tr_names & {"Sabrina", "Cyrus", "Mars", "Blue's Provocation", "Max Repel", "Red Card"}:
         roles.append("presión al rival")
-    if tr_names & {"Giant Cape", "Eviolite", "Potion", "Super Potion", "Rocky Helmet"}:
+    if tr_names & {"Giant Cape", "Potion", "Rocky Helmet", "Sweet Honey"}:
         roles.append("aguante")
     plan = f" Motor: {', '.join(roles)}." if roles else ""
     return f"Atacante clave {lead.name} ({lead_stats}) en energía {energy_txt}{extra}.{plan}"
@@ -330,6 +431,8 @@ class CardCatalog:
                 continue
 
             attacks: list[tuple[str, int]] = []
+            atk_names: list[str] = []
+            atk_texts: list[str] = []
             for atk in (raw.get("attacks") or {}).values():
                 if not atk or not atk.get("cost"):
                     continue
@@ -338,11 +441,14 @@ class CardCatalog:
                     dmg = int(str(dmg_raw).rstrip("+x×")) if dmg_raw else 0
                 except ValueError:
                     dmg = 0
-                if dmg == 0 and atk.get("effect"):
-                    m_eff = re.search(r"(\d+)\s+damage", str(atk["effect"]), re.I)
+                eff_txt = str(atk.get("effect") or "")
+                if dmg == 0 and eff_txt:
+                    m_eff = re.search(r"(\d+)\s+damage", eff_txt, re.I)
                     if m_eff:
                         dmg = int(m_eff.group(1))
                 attacks.append((str(atk["cost"]), dmg))
+                atk_names.append(str(atk.get("name") or ""))
+                atk_texts.append(eff_txt)
 
             ab = raw.get("ability") or {}
             rec = CardRecord(
@@ -362,6 +468,9 @@ class CardCatalog:
                 card_text=str(raw.get("card_text") or ""),
                 attacks=tuple(attacks),
                 qr_id=qr_id,
+                ability_text=str(ab.get("effect") or "") if ab.get("exists") else "",
+                attack_names=tuple(atk_names),
+                attack_texts=tuple(atk_texts),
             )
             if (is_pk, qr_id) not in seen_entities:
                 seen_entities.add((is_pk, qr_id))
@@ -402,6 +511,8 @@ def extract_event_constraints(
 
     detected_sets: list[str] = []
     for exp_name, code in catalog.expansion_by_name.items():
+        if code.startswith("p"):
+            continue
         if re.search(
             rf"\b(?:only use cards from|only cards from|usable expansions?\s*:?)\b[^.]*\b{re.escape(exp_name)}\b",
             lower_body,
@@ -439,6 +550,13 @@ def extract_event_constraints(
             txt = _norm_name(a.get_text(" ", strip=True))
             if txt and txt.lower() in catalog.by_name:
                 promo_names.append(txt)
+            href = str(a.get("href") or "")
+            m_pc = re.search(r"/promo-([abc])/(\d{3})\.shtml", href, re.I)
+            if m_pc:
+                cid = f"p{m_pc.group(1).lower()}-{m_pc.group(2)}"
+                rec = catalog.by_card_id.get(cid)
+                if rec:
+                    promo_names.append(rec.name)
     if not promo_names:
         for img in main.select("img[alt]"):
             alt = str(img.get("alt") or "")
@@ -576,6 +694,57 @@ def _build_evolution_core(
     return result
 
 
+_TRAINER_TARGET_PATTERNS = (
+    re.compile(r"only if you have ([^.]+?) in play", re.I),
+    re.compile(r"used by (?:the |your )?([a-z0-9'\s,-]+?)(?: this card| do|\.|,|$)", re.I),
+    re.compile(r"attach (?:it |them )?to (?:1 of )?(?:your )?([a-z0-9'\s,-]+?)(?:\.|$)", re.I),
+    re.compile(r"attached to (?:the |your )?([a-z0-9'\s,-]+?)(?: this card| takes|\.|,|$)", re.I),
+    re.compile(r"to (?:your )?([a-z0-9'\s,-]+?) in the active spot", re.I),
+)
+
+
+def _trainer_named_targets(
+    trainer: CardRecord,
+    pk_vocab: set[str],
+) -> tuple[set[str], bool]:
+    """Extrae nombres de Pokémon específicos exigidos o potenciados por un Entrenador."""
+    txt = trainer.card_text
+    if not txt:
+        return set(), False
+    low = txt.lower()
+    if "the basic pokémon" in low:
+        return set(), False
+
+    matched: set[str] = set()
+    strict_clause = False
+    vocab_sorted = sorted((n for n in pk_vocab if len(n) >= 3), key=len, reverse=True)
+    for pat in _TRAINER_TARGET_PATTERNS:
+        m = pat.search(txt)
+        if not m:
+            continue
+        seg = m.group(1).lower()
+        found_here = [n for n in vocab_sorted if re.search(rf"(?<![a-z0-9]){re.escape(n)}(?![a-z0-9])", seg)]
+        if found_here:
+            matched.update(found_here)
+            strict_clause = True
+    return matched, strict_clause
+
+
+def _find_synergy_trainers_for_pokemon(
+    card: CardRecord,
+    trainer_pool: list[CardRecord],
+    pk_vocab: set[str],
+) -> list[CardRecord]:
+    """Devuelve Entrenadores con sinergia explícita directa hacia un Pokémon."""
+    cname = card.name.lower()
+    hits: list[CardRecord] = []
+    for tr in trainer_pool:
+        targets, _ = _trainer_named_targets(tr, pk_vocab)
+        if cname in targets:
+            hits.append(tr)
+    return hits
+
+
 def _fill_trainers(
     pokemon_cards: list[CardRecord],
     trainer_pool: list[CardRecord],
@@ -583,39 +752,107 @@ def _fill_trainers(
     prefer_set: str | None = None,
     prioritize_set: bool = False,
 ) -> list[CardRecord]:
-    """Completa hasta 20 cartas eligiendo los mejores Entrenadores legales."""
+    """Completa hasta 20 cartas eligiendo los Entrenadores con sinergia real al mazo."""
     needed = target_total - len(pokemon_cards)
     if needed <= 0:
         return []
 
     pk_names = {c.name.lower() for c in pokemon_cards}
-    has_basic = any(c.stage == "Basic" for c in pokemon_cards)
+    pk_vocab = pk_names | {n for n in pk_names}
+    evolved_from_names = {c.evolves_from.lower() for c in pokemon_cards if c.evolves_from}
+    basic_frontliners = [
+        c for c in pokemon_cards
+        if c.stage == "Basic" and c.name.lower() not in evolved_from_names
+    ]
+    distinct_subtypes = {c.subtype for c in pokemon_cards if c.subtype and c.subtype != "Colorless"}
     has_stage2 = any(c.stage == "Stage 2" for c in pokemon_cards)
+    mentions_stadium = any(
+        "stadium" in (t or "").lower()
+        for c in pokemon_cards
+        for t in (c.card_text, c.ability_text, *c.attack_texts)
+    )
+    mentions_tool = any(
+        "tool" in (t or "").lower()
+        for c in pokemon_cards
+        for t in (c.card_text, c.ability_text, *c.attack_texts)
+    )
+    has_energy_ramp = any(c.energy_ramp_subtype() for c in pokemon_cards) or any(
+        ("produce" in t.card_text.lower() or "attach" in t.card_text.lower())
+        and "energy" in t.card_text.lower()
+        and (_trainer_named_targets(t, pk_names)[0] & pk_names)
+        for t in trainer_pool
+    )
+    all_cheap = all(
+        min((len(cost) for cost, _ in c.attacks if cost), default=1) <= 1
+        for c in pokemon_cards
+    )
+    has_other_gust = any(
+        t.name in {"Sabrina", "Cyrus", "Blue's Provocation"}
+        and (not _trainer_named_targets(t, pk_vocab)[1] or bool(_trainer_named_targets(t, pk_vocab)[0] & pk_names))
+        for t in trainer_pool
+    )
 
     def trainer_rank(tr: CardRecord) -> tuple[int, int]:
         txt = tr.card_text.lower()
         score = 0
         if tr.name in CORE_TRAINER_PRIORITY:
-            score += 100 - CORE_TRAINER_PRIORITY.index(tr.name) * 4
+            score += 105 - CORE_TRAINER_PRIORITY.index(tr.name) * 4
+
+        targets, strict_clause = _trainer_named_targets(tr, pk_vocab)
+        if strict_clause:
+            if targets & pk_names:
+                score += 155
+                if "energy" in txt and ("produce" in txt or "attach" in txt or "move" in txt):
+                    score += 35
+            else:
+                return (-900, 0)
+
         if tr.name == "Rare Candy":
-            score += 140 if has_stage2 else -500
-        if "pikachu ex" in txt and "pikachu ex" in pk_names:
-            score += 95
-        if "mega mewtwo y ex" in txt and "mega mewtwo y ex" in pk_names:
-            score += 95
-        if any(n in txt for n in pk_names if len(n) > 4):
-            score += 80
-        if "eviolite" in tr.name.lower() and has_basic:
-            score += 75
+            if not has_stage2:
+                return (-900, 0)
+            score += 145
+
+        if "3 or more different pokémon types" in txt and len(distinct_subtypes) < 3:
+            return (-900, 0)
+
+        if "eviolite" in tr.name.lower() or "the basic pokémon this card is attached to" in txt:
+            if not basic_frontliners:
+                return (-450, 0)
+            score += 72 if len(basic_frontliners) >= 2 else 38
+
+        if tr.subtype == "Stadium":
+            if mentions_stadium:
+                score += 125
+            elif "draw a card" in txt:
+                score += 78
+            else:
+                score += 35
+
+        if "tool" in tr.subtype.lower() and mentions_tool and tr.name != "Eviolite":
+            score += 55
+
+        if "max repel" in tr.name.lower():
+            score += 82 if not has_other_gust else 45
+
+        if tr.name == "Poké Mart Guy" or ("super potion" in txt and "max repel" in txt):
+            score -= 180
+
+        if ("discard" in txt and "energy" in txt) or tr.name == "Super Potion":
+            if has_energy_ramp and all_cheap:
+                score -= 25
+            else:
+                score -= 220
+
         if prefer_set and tr.set_code == prefer_set:
-            score += 130 if prioritize_set else 25
+            score += 130 if prioritize_set else 20
         return (score, 1 if tr.subtype == "Supporter" else 0)
 
     ranked = sorted(trainer_pool, key=trainer_rank, reverse=True)
     chosen: list[CardRecord] = []
     used_names: set[str] = set()
     for tr in ranked:
-        if tr.name == "Rare Candy" and not has_stage2:
+        r_score, _ = trainer_rank(tr)
+        if r_score <= -800:
             continue
         if tr.name.lower() in used_names:
             continue
@@ -642,6 +879,181 @@ def _distinct_energy_count(pokemon_cards: list[CardRecord]) -> int:
     return len(ids)
 
 
+def _find_tribal_attack_partners(
+    anchor: CardRecord,
+    pokemon_pool: list[CardRecord],
+) -> list[CardRecord]:
+    """Detecta Pokémon del mismo arquetipo cuya habilidad referencia el ataque del otro."""
+    results: list[CardRecord] = []
+    ab_low = anchor.ability_text.lower()
+    anchor_atks = [n.lower() for n in anchor.attack_names if len(n) >= 4]
+    for cand in pokemon_pool:
+        if cand.name == anchor.name:
+            continue
+        cand_atks = [n.lower() for n in cand.attack_names if len(n) >= 4]
+        cand_ab = cand.ability_text.lower()
+        if any(an in cand_ab for an in anchor_atks) or any(cn in ab_low for cn in cand_atks):
+            results.append(cand)
+    return results
+
+
+def _candidate_synergy_score(
+    card: CardRecord,
+    *,
+    pokemon_pool: list[CardRecord],
+    trainer_pool: list[CardRecord],
+    pk_vocab: set[str],
+    has_rare_candy: bool,
+) -> float:
+    """Evalúa valor competitivo real combinando ataques, rampa de energía y entrenadores."""
+    base = card.score()
+    if card.stage == "Stage 2" and not has_rare_candy:
+        base -= 26.0
+
+    ramp_types = {
+        r for c in pokemon_pool if c.stage in {"Basic", "Stage 1"} or has_rare_candy
+        for r in [c.energy_ramp_subtype()] if r
+    }
+    synergy_trs = _find_synergy_trainers_for_pokemon(card, trainer_pool, pk_vocab)
+    trainer_ramps = False
+    for tr in synergy_trs:
+        tl = tr.card_text.lower()
+        if ("produce" in tl or "attach" in tl) and "energy" in tl:
+            base += 42.0
+            trainer_ramps = True
+        elif "switch in" in tl or "+30 damage" in tl:
+            base += 28.0
+        else:
+            base += 16.0
+
+    if card.energy_discard_severity() > 0 and card.subtype not in ramp_types and not trainer_ramps:
+        base -= 58.0
+
+    if _find_tribal_attack_partners(card, pokemon_pool):
+        base += 42.0
+
+    all_txt = " ".join(card.attack_texts).lower()
+    if "stadium" in all_txt and any(t.subtype == "Stadium" for t in trainer_pool):
+        base += 26.0
+    return base
+
+
+def _assemble_synergy_pokemon(
+    *,
+    anchor: CardRecord,
+    core: list[CardRecord],
+    pokemon_pool: list[CardRecord],
+    trainer_pool: list[CardRecord],
+    require_no_ex: bool,
+    require_diamond: bool,
+    only_type: str | None,
+    effective_set: str | None,
+) -> list[CardRecord]:
+    """Acopla compañeros de sinergia (tribales, rampa o soporte ágil) preservando energía."""
+    pokemon = list(core)
+    max_energies = 2 if anchor.subtype == "Dragon" else 1
+    pk_vocab = {c.name.lower() for c in pokemon_pool}
+
+    def can_fit(addition: list[CardRecord], *, max_slots: int = 12) -> bool:
+        if not addition or len(pokemon) + len(addition) > max_slots:
+            return False
+        if any(
+            (require_no_ex and (c.is_ex or c.is_mega))
+            or (require_diamond and not c.is_diamond_pokemon)
+            or (only_type and c.subtype != only_type)
+            for c in addition
+        ):
+            return False
+        return _distinct_energy_count(pokemon + addition) <= max_energies
+
+    def already_in(name: str) -> bool:
+        return name.lower() in {p.name.lower() for p in pokemon}
+
+    # 1. Sinergia tribal por nombre de ataque compartido (ej. Raboot + Azumarill + Lopunny)
+    tribals = sorted(
+        _find_tribal_attack_partners(anchor, pokemon_pool),
+        key=lambda c: c.score(),
+        reverse=True,
+    )
+    for mate in tribals:
+        if already_in(mate.name):
+            continue
+        mate_core = _build_evolution_core(mate, pokemon_pool)
+        if can_fit(mate_core, max_slots=12):
+            pokemon.extend(mate_core)
+
+    # 2. Compañeros mencionados por los mismos Entrenadores exclusivos (ej. Rika -> Whiscash)
+    anchor_trs = _find_synergy_trainers_for_pokemon(anchor, trainer_pool, pk_vocab)
+    for tr in anchor_trs:
+        targets, _ = _trainer_named_targets(tr, pk_vocab)
+        for tname in sorted(targets):
+            if already_in(tname):
+                continue
+            cand = next((c for c in pokemon_pool if c.name.lower() == tname and not already_in(c.name)), None)
+            if not cand:
+                continue
+            cand_core = _build_evolution_core(cand, pokemon_pool)
+            # Prueba pareja 2x y si no cabe, 1x por carta de la cadena (ej. 1 Barboach + 1 Whiscash)
+            if can_fit(cand_core, max_slots=10):
+                pokemon.extend(cand_core)
+            else:
+                single_chain = list(dict.fromkeys(cand_core))
+                if can_fit(single_chain, max_slots=10):
+                    pokemon.extend(single_chain)
+
+    # 3. Motor de aceleración de energía si el anchor es pesado o descarta energía
+    max_atk_cost = max((len(cost) for cost, _ in anchor.attacks), default=1)
+    if len(pokemon) <= 6 and (max_atk_cost >= 3 or anchor.energy_discard_severity() > 0):
+        ramps = [
+            c for c in pokemon_pool
+            if not already_in(c.name)
+            and c.energy_ramp_subtype() == anchor.subtype
+        ]
+        ramps.sort(key=lambda c: (c.stage == "Basic", c.score()), reverse=True)
+        for ramp in ramps:
+            ramp_core = _build_evolution_core(ramp, pokemon_pool)
+            if can_fit(ramp_core, max_slots=10):
+                pokemon.extend(ramp_core)
+                break
+
+    # 4. Soporte ágil (Básico o Stage 1 complementario mono-energía/Incoloro)
+    if len(pokemon) <= 6:
+        compatible_subtypes = {anchor.subtype, "Colorless"}
+        support_pool = [
+            c
+            for c in pokemon_pool
+            if c.stage in {"Basic", "Stage 1"}
+            and not already_in(c.name)
+            and c.subtype in compatible_subtypes
+            and c.retreat <= 2
+            and c.energy_discard_severity() == 0
+            and (not require_no_ex or (not c.is_ex and not c.is_mega))
+            and (not require_diamond or c.is_diamond_pokemon)
+            and (not only_type or c.subtype == only_type)
+        ]
+        has_candy = any(t.name == "Rare Candy" for t in trainer_pool)
+        support_pool.sort(
+            key=lambda c: (
+                1 if effective_set and c.set_code == effective_set else 0,
+                _candidate_synergy_score(
+                    c,
+                    pokemon_pool=pokemon_pool,
+                    trainer_pool=trainer_pool,
+                    pk_vocab=pk_vocab,
+                    has_rare_candy=has_candy,
+                ),
+            ),
+            reverse=True,
+        )
+        for sup in support_pool:
+            sup_core = _build_evolution_core(sup, pokemon_pool)
+            if can_fit(sup_core, max_slots=10):
+                pokemon.extend(sup_core)
+                break
+
+    return pokemon
+
+
 def _build_single_archetype_deck(
     *,
     title: str,
@@ -658,7 +1070,7 @@ def _build_single_archetype_deck(
     min_set: tuple[str, int] | None = None,
     exclude_anchors: set[str] | None = None,
 ) -> BuiltDeck | None:
-    """Construye y valida una baraja de 20 cartas alrededor de un atacante principal."""
+    """Construye y valida una baraja de 20 cartas alrededor de sinergias reales."""
     excluded = exclude_anchors or set()
     candidates = [
         c
@@ -670,49 +1082,51 @@ def _build_single_archetype_deck(
         and (not require_mega or c.is_mega)
     ]
     effective_set = min_set[0] if min_set else prefer_set
+    pk_vocab = {c.name.lower() for c in pokemon_pool}
+    has_rare_candy = any(t.name == "Rare Candy" for t in trainer_pool)
+    only_type = prefer_subtype if prefer_subtype in constraints.required_types else None
 
     def _is_fast_attacker(card: CardRecord) -> bool:
         min_cost = min((len(cost) for cost, _ in card.attacks if cost), default=4)
         e_types = {ch for cost, _ in card.attacks for ch in cost if ch in ENERGY_CHAR_TO_ID}
-        return card.stage in {"Basic", "Stage 1"} and min_cost <= 3 and len(e_types) <= 1
+        return (
+            card.stage in {"Basic", "Stage 1"}
+            and min_cost <= 3
+            and len(e_types) <= 1
+            and card.energy_discard_severity() == 0
+        )
 
     candidates.sort(
         key=lambda c: (
             (1 if prefer_fast and _is_fast_attacker(c) else 0),
             (1 if min_set and effective_set and c.set_code == effective_set else 0),
-            c.score() + (12.0 if not min_set and effective_set and c.set_code == effective_set else 0.0),
+            _candidate_synergy_score(
+                c,
+                pokemon_pool=pokemon_pool,
+                trainer_pool=trainer_pool,
+                pk_vocab=pk_vocab,
+                has_rare_candy=has_rare_candy,
+            )
+            + (12.0 if not min_set and effective_set and c.set_code == effective_set else 0.0),
         ),
         reverse=True,
     )
 
-    for anchor in candidates[:12]:
+    for anchor in candidates[:15]:
         core = _build_evolution_core(anchor, pokemon_pool)
         if not core or len(core) > 10:
             continue
 
-        # Añade un segundo atacante Básico ágil (retreat <= 2) sin romper mono-energía
-        pokemon = list(core)
-        compatible_subtypes = (anchor.subtype, "Colorless") if anchor.subtype == "Dragon" else (anchor.subtype,)
-        max_energies = 2 if anchor.subtype == "Dragon" else 1
-        support_pool = [
-            c
-            for c in pokemon_pool
-            if c.stage == "Basic"
-            and c.name != anchor.name
-            and c.name not in {p.name for p in pokemon}
-            and c.subtype in compatible_subtypes
-            and c.retreat <= 2
-            and (not require_no_ex or (not c.is_ex and not c.is_mega))
-            and (not require_diamond or c.is_diamond_pokemon)
-        ]
-        support_pool.sort(
-            key=lambda c: (1 if effective_set and c.set_code == effective_set else 0, c.score()),
-            reverse=True,
+        pokemon = _assemble_synergy_pokemon(
+            anchor=anchor,
+            core=core,
+            pokemon_pool=pokemon_pool,
+            trainer_pool=trainer_pool,
+            require_no_ex=require_no_ex,
+            require_diamond=require_diamond,
+            only_type=only_type,
+            effective_set=effective_set,
         )
-        for sup in support_pool:
-            if len(pokemon) + 2 <= 10 and _distinct_energy_count(pokemon + [sup]) <= max_energies:
-                pokemon.extend([sup, sup])
-                break
 
         trainers = _fill_trainers(
             pokemon,
@@ -840,11 +1254,11 @@ def build_three_decks_for_event(
     used_types: set[str] = set()
     target_set = constraints.target_expansion or catalog.latest_set
 
-    # Baraja 1: cubre misión restrictiva (Sin ex / 1-3◊ / Tipo pedido) o mejor Aggro rápido
+    # Baraja 1: cubre misión restrictiva (Sin ex / 1-3◊ / Tipo pedido) o mejor arquetipo rápido
     pref_t1 = constraints.required_types[0] if constraints.required_types else None
     d1 = _build_single_archetype_deck(
-        title="Opción 1: Sin Pokémon ex / Rápida" if constraints.no_ex or constraints.diamond_only else "Opción 1: Meta Rápida",
-        mission_tag="Cumple: Sin ex / 1–3◊" if constraints.no_ex or constraints.diamond_only else "Alta velocidad y consistencia",
+        title="Opción 1: Sin Pokémon ex / Rápida" if constraints.no_ex or constraints.diamond_only else "Opción 1: Meta Sinergia",
+        mission_tag="Cumple: Sin ex / 1–3◊" if constraints.no_ex or constraints.diamond_only else "Sinergia rápida y consistente",
         pokemon_pool=pokemon_pool,
         trainer_pool=trainer_pool,
         constraints=constraints,
@@ -856,8 +1270,8 @@ def build_three_decks_for_event(
     )
     if not d1 and pref_t1:
         d1 = _build_single_archetype_deck(
-            title="Opción 1: Sin Pokémon ex / Rápida" if constraints.no_ex or constraints.diamond_only else "Opción 1: Meta Rápida",
-            mission_tag="Cumple: Sin ex / 1–3◊" if constraints.no_ex or constraints.diamond_only else "Alta velocidad y consistencia",
+            title="Opción 1: Sin Pokémon ex / Rápida" if constraints.no_ex or constraints.diamond_only else "Opción 1: Meta Sinergia",
+            mission_tag="Cumple: Sin ex / 1–3◊" if constraints.no_ex or constraints.diamond_only else "Sinergia rápida y consistente",
             pokemon_pool=pokemon_pool,
             trainer_pool=trainer_pool,
             constraints=constraints,
@@ -867,13 +1281,15 @@ def build_three_decks_for_event(
         )
     if d1:
         decks.append(d1)
-        first_pk = next(c for c in d1.cards if c.is_pokemon)
-        used_anchors.add(first_pk.name)
-        used_types.add(first_pk.subtype)
+        for pk in d1.cards:
+            if pk.is_pokemon:
+                used_anchors.add(pk.name)
+                if pk.subtype != "Colorless":
+                    used_types.add(pk.subtype)
 
     # Baraja 2: cubre Mega ex o segundo tipo elemental fuerte distinto
     alt_types = [
-        t for t in ("Water", "Lightning", "Fire", "Psychic", "Fighting", "Grass", "Darkness", "Metal")
+        t for t in ("Fighting", "Psychic", "Darkness", "Water", "Fire", "Grass", "Lightning", "Metal")
         if t not in used_types
     ]
     d2 = None
@@ -881,7 +1297,7 @@ def build_three_decks_for_event(
         for subtype in (list(constraints.required_types) + alt_types):
             d2 = _build_single_archetype_deck(
                 title="Opción 2: Poder Mega / Control" if req_mega_flag else f"Opción 2: Control {SUBTYPE_LABELS_ES.get(subtype, subtype)}",
-                mission_tag="Cumple: 1+ Mega ex" if req_mega_flag else "Control y aguante alto",
+                mission_tag="Cumple: 1+ Mega ex" if req_mega_flag else "Aceleración y control",
                 pokemon_pool=pokemon_pool,
                 trainer_pool=trainer_pool,
                 constraints=constraints,
@@ -896,11 +1312,13 @@ def build_three_decks_for_event(
             break
     if d2:
         decks.append(d2)
-        first_pk = next(c for c in d2.cards if c.is_pokemon)
-        used_anchors.add(first_pk.name)
-        used_types.add(first_pk.subtype)
+        for pk in d2.cards:
+            if pk.is_pokemon:
+                used_anchors.add(pk.name)
+                if pk.subtype != "Colorless":
+                    used_types.add(pk.subtype)
 
-    # Baraja 3: temática de la expansión del evento (>=12 cartas si aplica)
+    # Baraja 3: temática de la expansión del evento (>=12 cartas si aplica) o tercer arquetipo
     remaining_types = [t for t in alt_types if t not in used_types] + alt_types
     d3 = None
     min_set_req = constraints.min_set_cards
@@ -908,7 +1326,7 @@ def build_three_decks_for_event(
     tag_3 = (
         f"Temática {set_label} (≥{min_set_req[1]} cartas)"
         if min_set_req
-        else f"Sinergia expansión {target_set.upper()}"
+        else f"Alternativa estratégica {target_set.upper()}"
     )
     for en_min in ([min_set_req, None] if min_set_req else [None]):
         for subtype in remaining_types:
@@ -931,3 +1349,124 @@ def build_three_decks_for_event(
         decks.append(d3)
 
     return decks
+
+
+_CPU_DECK_HINTS = (
+    "drop event",
+    "promo-drop",
+    "(advanced)",
+    "(expert)",
+    "(beginner)",
+    "(intermediate)",
+    "cpu deck",
+    "solo battle opponent",
+)
+
+
+def _resolve_dotgg_card(card_code: str, catalog: CardCatalog) -> CardRecord | None:
+    """Mapea códigos DotGG (`C1-023`, `PROMO-005`, `PC-004`) al catálogo local."""
+    key = card_code.strip().lower()
+    if key in catalog.by_card_id:
+        return catalog.by_card_id[key]
+    if key.startswith("promo-c-"):
+        return catalog.by_card_id.get("pc-" + key.split("-")[-1].zfill(3))
+    if key.startswith("promo-b-"):
+        return catalog.by_card_id.get("pb-" + key.split("-")[-1].zfill(3))
+    if key.startswith("promo-"):
+        num = key.split("-")[-1].zfill(3)
+        return catalog.by_card_id.get(f"pa-{num}")
+    return None
+
+
+def extract_ptcgpocket_event_decks(
+    session: requests.Session,
+    *,
+    detail_html: str,
+    constraints: EventDeckConstraints,
+    catalog: CardCatalog,
+    limit: int = 3,
+) -> list[BuiltDeck]:
+    """Extrae mazos curados de eventos (`RootOfEmbeddedDeck` en PTCGPocket.gg) vía DotGG."""
+    if not detail_html:
+        return []
+    soup = BeautifulSoup(detail_html, "html.parser")
+    widgets = soup.select(".RootOfEmbeddedDeck[data-deck]")
+    if not widgets:
+        return []
+
+    found: list[BuiltDeck] = []
+    seen_slugs: set[str] = set()
+    for div in widgets:
+        slug = str(div.get("data-deck") or "").strip()
+        if not slug or slug in seen_slugs:
+            continue
+        seen_slugs.add(slug)
+
+        prev_h = div.find_previous(["h1", "h2", "h3", "h4"])
+        heading = prev_h.get_text(" ", strip=True) if prev_h else slug
+        low_meta = f"{heading} {slug}".lower()
+        if any(hint in low_meta for hint in _CPU_DECK_HINTS):
+            continue
+
+        try:
+            atts = json.loads(str(div.get("data-atts") or "{}"))
+            esig = str(atts.get("esig") or "").strip()
+            api_url = f"https://api.dotgg.gg/cgfw/getdeck?game=pokepocket&slug={urllib.parse.quote(slug)}"
+            if esig:
+                api_url += f"&esig={urllib.parse.quote(esig)}"
+            resp = session.get(api_url, timeout=REQUEST_TIMEOUT_SEC)
+            if not resp.ok or not resp.text.strip():
+                continue
+            payload_json = resp.json()
+        except Exception as exc:
+            LOGGER.debug("[DotGG] No se pudo leer mazo %s: %s", slug, exc)
+            continue
+
+        raw_deck = payload_json.get("deck") or {}
+        if not isinstance(raw_deck, dict) or not raw_deck:
+            continue
+
+        cards: list[CardRecord] = []
+        missing = False
+        for cid, qty_raw in raw_deck.items():
+            rec = _resolve_dotgg_card(str(cid), catalog)
+            if not rec:
+                missing = True
+                break
+            try:
+                qty = int(qty_raw)
+            except (TypeError, ValueError):
+                qty = 0
+            cards.extend([rec] * qty)
+        if missing or len(cards) != 20:
+            continue
+
+        pks = [c for c in cards if c.is_pokemon]
+        trs = [c for c in cards if not c.is_pokemon]
+        energies = infer_energy_types(pks)
+        ok, reason = validate_deck(
+            cards,
+            energies,
+            constraints,
+            require_no_ex=constraints.no_ex,
+            require_mega=constraints.require_mega_ex,
+            min_set=constraints.min_set_cards,
+        )
+        if not ok:
+            LOGGER.debug("[DotGG] Mazo %s descartado por restricción: %s", slug, reason)
+            continue
+
+        clean_name = re.sub(r"\s+Event\s+Deck$", "", heading, flags=re.I).strip() or slug
+        idx = len(found) + 1
+        found.append(
+            BuiltDeck(
+                title=f"Opción {idx}: {clean_name}",
+                mission_tag=f"Meta Evento ({(constraints.target_expansion or catalog.latest_set).upper()})",
+                cards=tuple(cards),
+                energy_types=tuple(energies),
+                qr_payload=encode_deck_payload([c.qr_id for c in trs], [c.qr_id for c in pks], energies),
+            )
+        )
+        if len(found) >= limit:
+            break
+    return found

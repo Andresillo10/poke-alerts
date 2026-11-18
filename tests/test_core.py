@@ -1213,6 +1213,95 @@ class CorePipelineTests(unittest.TestCase):
             self.assertIn("renderPogoDrawer", dash_html)
             self.assertIn("Diseñado y Desarrollado por Andres Camelo 3165364723 — Estado CK10", dash_html)
 
+    def test_v7_deck_synergy_no_energy_self_sabotage_and_dotgg_filter(self) -> None:
+        from unittest.mock import MagicMock
+        from src.deck_qr import extract_ptcgpocket_event_decks
+
+        exps = [{"id": "pa", "name": "Promo-A"}, {"id": "c1", "name": "Dual Fusion"}, {"id": "pc", "name": "Promo-C"}]
+        raw_cards = [
+            # Self-discarding Pikachu ex (sin ramp Eléctrico)
+            {"id": "c1-043", "name": "Pikachu ex", "set_code": "c1", "type": "Pokémon", "subtype": "Lightning", "stage": "Basic", "rarity": "◊◊◊◊", "ex": True, "mega": False, "health": 120, "retreat": 1, "attacks": {"1": {"cost": "LLC", "damage": "130", "effect": "Discard 2 [L] Energy from this Pokémon."}}, "deckBuilderNr": 2001},
+            # Raboot + Azumarill + Lopunny (Rabbit Jumping)
+            {"id": "c1-022", "name": "Scorbunny", "set_code": "c1", "type": "Pokémon", "subtype": "Fire", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 50, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Rabbit Jumping", "damage": "20", "effect": "Flip 2 coins."}}, "deckBuilderNr": 2002},
+            {"id": "c1-023", "name": "Raboot", "set_code": "c1", "type": "Pokémon", "subtype": "Fire", "stage": "Stage 1", "evolves_from": "Scorbunny", "rarity": "◊◊", "ex": False, "mega": False, "health": 70, "retreat": 1, "ability": {"exists": True, "name": "Jumping Coach", "effect": "As long as this Pokémon is in play, flip 3 more coins for the Rabbit Jumping attack used by your Pokémon."}, "attacks": {"1": {"cost": "C", "name": "Headbutt", "damage": "30"}}, "deckBuilderNr": 2003},
+            {"id": "c1-058", "name": "Marill", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "P", "name": "Rollout", "damage": "20"}}, "deckBuilderNr": 2004},
+            {"id": "c1-059", "name": "Azumarill", "set_code": "c1", "type": "Pokémon", "subtype": "Psychic", "stage": "Stage 1", "evolves_from": "Marill", "rarity": "◊◊", "ex": False, "mega": False, "health": 120, "retreat": 3, "attacks": {"1": {"cost": "PC", "name": "Rabbit Jumping", "damage": "60", "effect": "Flip 2 coins."}}, "deckBuilderNr": 2005},
+            {"id": "c1-115", "name": "Buneary", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 50, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Rabbit Jumping", "damage": "20"}}, "deckBuilderNr": 2006},
+            {"id": "c1-116", "name": "Lopunny", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Stage 1", "evolves_from": "Buneary", "rarity": "◊◊", "ex": False, "mega": False, "health": 100, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Rabbit Jumping", "damage": "40"}}, "deckBuilderNr": 2007},
+            # Paldean Clodsire + Whiscash + Rika
+            {"id": "c1-073", "name": "Paldean Wooper", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "F", "name": "Mud-Slap", "damage": "20"}}, "deckBuilderNr": 2008},
+            {"id": "c1-074", "name": "Paldean Clodsire", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Stage 1", "evolves_from": "Paldean Wooper", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 130, "retreat": 3, "attacks": {"1": {"cost": "FFF", "name": "Earthquake", "damage": "130"}}, "deckBuilderNr": 2009},
+            {"id": "c1-077", "name": "Barboach", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "F", "name": "Vibration", "damage": "20"}}, "deckBuilderNr": 2010},
+            {"id": "c1-078", "name": "Whiscash", "set_code": "c1", "type": "Pokémon", "subtype": "Fighting", "stage": "Stage 1", "evolves_from": "Barboach", "rarity": "◊◊", "ex": False, "mega": False, "health": 120, "retreat": 3, "attacks": {"1": {"cost": "F", "name": "Power Press", "damage": "40"}}, "deckBuilderNr": 2011},
+            # Umbreon + Pidgeot + Blue's Provocation
+            {"id": "c1-107", "name": "Eevee", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Find a Friend", "damage": "0"}}, "deckBuilderNr": 2012},
+            {"id": "c1-084", "name": "Umbreon", "set_code": "c1", "type": "Pokémon", "subtype": "Darkness", "stage": "Stage 1", "evolves_from": "Eevee", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 90, "retreat": 1, "attacks": {"1": {"cost": "D", "name": "Moonlit Raid", "damage": "30"}}, "deckBuilderNr": 2013},
+            {"id": "c1-102", "name": "Pidgey", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Basic", "rarity": "◊", "ex": False, "mega": False, "health": 60, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Gust", "damage": "20"}}, "deckBuilderNr": 2014},
+            {"id": "c1-103", "name": "Pidgeotto", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Stage 1", "evolves_from": "Pidgey", "rarity": "◊◊", "ex": False, "mega": False, "health": 80, "retreat": 1, "attacks": {"1": {"cost": "C", "name": "Gust", "damage": "30"}}, "deckBuilderNr": 2015},
+            {"id": "c1-104", "name": "Pidgeot", "set_code": "c1", "type": "Pokémon", "subtype": "Colorless", "stage": "Stage 2", "evolves_from": "Pidgeotto", "rarity": "◊◊◊", "ex": False, "mega": False, "health": 130, "retreat": 1, "attacks": {"1": {"cost": "CC", "name": "Wing Attack", "damage": "80"}}, "deckBuilderNr": 2016},
+            # Future unreleased Promo-C that must NOT leak into C1 Limited Battles
+            {"id": "pc-013", "name": "Mega Dragonite ex", "set_code": "pc", "type": "Pokémon", "subtype": "Dragon", "stage": "Stage 2", "rarity": "◊◊◊◊", "ex": True, "mega": True, "health": 240, "retreat": 4, "attacks": {"1": {"cost": "WLCCC", "damage": "250"}}, "deckBuilderNr": 2099},
+            # Trainers C1 & Promo-A
+            {"id": "pa-001", "name": "Potion", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "card_text": "Heal 20 damage.", "deckBuilderNr": 1_000_001},
+            {"id": "pa-002", "name": "X Speed", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "card_text": "Retreat cost is 1 less.", "deckBuilderNr": 1_000_002},
+            {"id": "pa-005", "name": "Poké Ball", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "card_text": "Put 1 random Basic Pokémon into your hand.", "deckBuilderNr": 1_000_003},
+            {"id": "pa-006", "name": "Red Card", "set_code": "pa", "type": "Trainer", "subtype": "Item", "rarity": "Promo", "card_text": "Opponent shuffles hand and draws 3.", "deckBuilderNr": 1_000_007},
+            {"id": "pa-007", "name": "Professor's Research", "set_code": "pa", "type": "Trainer", "subtype": "Supporter", "rarity": "Promo", "card_text": "Draw 2 cards.", "deckBuilderNr": 1_000_004},
+            {"id": "c1-120", "name": "Super Potion", "set_code": "c1", "type": "Trainer", "subtype": "Item", "rarity": "◊", "card_text": "Heal 40 damage from 1 of your Pokémon that has any Energy attached. If you healed any damage in this way, discard a random Energy from that Pokémon.", "deckBuilderNr": 1_000_167},
+            {"id": "c1-121", "name": "Max Repel", "set_code": "c1", "type": "Trainer", "subtype": "Item", "rarity": "◊", "card_text": "Switch out your opponent's Active Stage 2 Pokémon to the Bench.", "deckBuilderNr": 1_000_168},
+            {"id": "c1-123", "name": "Eviolite", "set_code": "c1", "type": "Trainer", "subtype": "Tool", "rarity": "◊◊", "card_text": "The Basic Pokémon this card is attached to takes -20 damage.", "deckBuilderNr": 1_000_170},
+            {"id": "c1-126", "name": "Blue's Provocation", "set_code": "c1", "type": "Trainer", "subtype": "Supporter", "rarity": "◊◊", "card_text": "You can use this card only if you have Venusaur, Charizard, Blastoise, or Pidgeot in play. Switch in 1 of your opponent's Benched Pokémon to the Active Spot.", "deckBuilderNr": 1_000_173},
+            {"id": "c1-127", "name": "Serena's Choice", "set_code": "c1", "type": "Trainer", "subtype": "Supporter", "rarity": "◊◊", "card_text": "Look at the top 3 cards of your deck and put 1 of them into your hand.", "deckBuilderNr": 1_000_174},
+            {"id": "c1-128", "name": "Rika", "set_code": "c1", "type": "Trainer", "subtype": "Supporter", "rarity": "◊◊", "card_text": "Produce 2 [F] Energy from your Energy Zone, and attach it to 1 of your Whiscash or Paldean Clodsire.", "deckBuilderNr": 1_000_175},
+            {"id": "c1-131", "name": "Abandoned Station", "set_code": "c1", "type": "Trainer", "subtype": "Stadium", "rarity": "◊◊", "card_text": "Flip a coin. If heads, draw a card.", "deckBuilderNr": 1_000_178},
+        ]
+        cat = CardCatalog(raw_cards, exps)
+        serebii_like_html = """
+        <main>
+          <p>Limited Battle: You can only use cards from Dual Fusion, and promo cards Promo-C Vol. 1 exceptions below</p>
+        </main>
+        """
+        c_lim = extract_event_constraints(title="Dual Fusion Limited Battles", detail_html=serebii_like_html, catalog=cat)
+        self.assertEqual(c_lim.allowed_sets, ("c1",))  # Nunca filtra Promo-C completo ni Mega Dragonite ex
+
+        decks = build_three_decks_for_event(
+            event_title="Fusión Dual Partidas limitadas",
+            event_summary="Evento C1",
+            constraints=c_lim,
+            catalog=cat,
+        )
+        self.assertGreaterEqual(len(decks), 2)
+        for d in decks:
+            tr_names = {c.name for c in d.cards if not c.is_pokemon}
+            pk_names = {c.name for c in d.cards if c.is_pokemon}
+            self.assertNotIn("Super Potion", tr_names)
+            if "Pikachu ex" not in pk_names:
+                self.assertNotIn("Eviolite", tr_names)
+            if "Paldean Clodsire" in pk_names:
+                self.assertIn("Rika", tr_names)
+                self.assertIn("Rika", describe_deck_strategy(d))
+
+        # DotGG Extractor: incluye evento player deck y descarta CPU Drop Event
+        ptcg_html = """
+        <h3>Umbreon Pidgeot</h3>
+        <div class="RootOfEmbeddedDeck" data-deck="umbreon-pidgeot-event-deck" data-atts='{"esig":"abc"}'></div>
+        <h3>Rayquaza ex Drop event (Advanced)</h3>
+        <div class="RootOfEmbeddedDeck" data-deck="rayquaza-promo-drop" data-atts='{"esig":"xyz"}'></div>
+        """
+        fake_sess = MagicMock()
+        fake_resp = MagicMock(ok=True, text="{}")
+        fake_resp.json.return_value = {
+            "deck": {
+                "C1-084": "2", "C1-102": "2", "C1-103": "2", "C1-104": "2", "C1-107": "2",
+                "C1-126": "2", "C1-127": "2", "PROMO-002": "2", "PROMO-005": "2", "PROMO-007": "2",
+            }
+        }
+        fake_sess.get.return_value = fake_resp
+        dotgg_decks = extract_ptcgpocket_event_decks(fake_sess, detail_html=ptcg_html, constraints=c_lim, catalog=cat)
+        self.assertEqual(len(dotgg_decks), 1)
+        self.assertEqual(fake_sess.get.call_count, 1)  # Saltó el mazo CPU sin llamar a la API
+        self.assertIn("junto a Umbreon", describe_deck_strategy(dotgg_decks[0]))
+
 
 if __name__ == "__main__":
     unittest.main()

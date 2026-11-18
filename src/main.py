@@ -38,6 +38,7 @@ from src.deck_qr import (
     build_three_decks_for_event,
     describe_deck_strategy,
     extract_event_constraints,
+    extract_ptcgpocket_event_decks,
     load_catalog,
 )
 from src.deck_sheet_renderer import render_single_deck_card
@@ -259,6 +260,26 @@ def _maybe_build_pogo_cards(
     return rendered
 
 
+def _build_urls_by_cid(collected: list[AlertItem]) -> dict[str, list[str]]:
+    """Agrupa todas las URLs recopiladas entre portales por ID canónico de evento."""
+    by_cid: dict[str, list[str]] = {}
+    for item in collected:
+        cid = _canon_event_id(item)
+        urls = by_cid.setdefault(cid, [])
+        if item.url and item.url not in urls:
+            urls.append(item.url)
+    return by_cid
+
+
+def _deck_badge_label(source_url: str | None) -> str:
+    """Devuelve la etiqueta honesta del origen real de la baraja."""
+    if source_url and "limitlesstcg.com" in source_url:
+        return "CAMPEÓN TORNEO + EVENTO"
+    if source_url and "ptcgpocket.gg" in source_url:
+        return "META EVENTO PTCGPOCKET"
+    return "EVENTO TCG POCKET"
+
+
 def _resolve_tcgp_decks(
     *,
     session,
@@ -266,8 +287,9 @@ def _resolve_tcgp_decks(
     localized_item: AlertItem,
     catalog_holder: list[CardCatalog],
     weekly_cache: list[WeeklyMetaReport | None],
+    extra_urls: tuple[str, ...] | list[str] = (),
 ) -> list[tuple[BuiltDeck, str | None]]:
-    """Calcula en memoria hasta 3 barajas válidas + campeón Limitless si es evento abierto."""
+    """Calcula en memoria hasta 3 barajas válidas (curadas PTCGPocket/Limitless + sinergia)."""
     if raw_item.game != "tcgp" or raw_item.kind != "event":
         return []
     try:
@@ -275,12 +297,19 @@ def _resolve_tcgp_decks(
             catalog_holder.append(load_catalog(session))
         catalog = catalog_holder[0]
 
-        detail_html = ""
-        try:
-            detail_html = fetch_text_safe(session, raw_item.url)
-        except Exception as exc:
-            LOGGER.warning("[DeckCards] Sin HTML detalle para %s (%s).", raw_item.url, exc)
+        candidate_urls: list[str] = []
+        for u in [raw_item.url, *extra_urls]:
+            if u and u not in candidate_urls:
+                candidate_urls.append(u)
 
+        html_by_url: dict[str, str] = {}
+        for u in candidate_urls:
+            try:
+                html_by_url[u] = fetch_text_safe(session, u)
+            except Exception as exc:
+                LOGGER.warning("[DeckCards] Sin HTML detalle para %s (%s).", u, exc)
+
+        detail_html = "\n".join(html_by_url.values())
         constraints = extract_event_constraints(
             title=raw_item.title,
             detail_html=detail_html,
@@ -290,18 +319,56 @@ def _resolve_tcgp_decks(
         if not constraints.is_combat_event:
             return []
 
-        decks = build_three_decks_for_event(
-            event_title=localized_item.title,
-            event_summary=raw_item.summary + " " + " ".join(raw_item.guide_bullets),
-            constraints=constraints,
-            catalog=catalog,
-        )
+        # Prioriza mazos curados reales publicados en guías de evento PTCGPocket.gg
+        curated: list[tuple[BuiltDeck, str | None]] = []
+        seen_signatures: set[tuple[str, ...]] = set()
+        for u, page_html in html_by_url.items():
+            if "ptcgpocket.gg" not in u.lower():
+                continue
+            for p_deck in extract_ptcgpocket_event_decks(
+                session,
+                detail_html=page_html,
+                constraints=constraints,
+                catalog=catalog,
+                limit=3,
+            ):
+                sig = tuple(sorted(c.name for c in p_deck.cards if c.is_pokemon))
+                if sig in seen_signatures:
+                    continue
+                seen_signatures.add(sig)
+                curated.append((p_deck, u))
+                if len(curated) >= 3:
+                    break
+            if len(curated) >= 3:
+                break
+
+        decks: list[BuiltDeck] = [d for d, _ in curated]
+        champ_urls: list[str | None] = [u for _, u in curated]
+
+        if len(decks) < 3:
+            algo_decks = build_three_decks_for_event(
+                event_title=localized_item.title,
+                event_summary=raw_item.summary + " " + " ".join(raw_item.guide_bullets),
+                constraints=constraints,
+                catalog=catalog,
+            )
+            for a_deck in algo_decks:
+                if len(decks) >= 3:
+                    break
+                sig = tuple(sorted(c.name for c in a_deck.cards if c.is_pokemon))
+                if sig in seen_signatures:
+                    continue
+                seen_signatures.add(sig)
+                idx = len(decks) + 1
+                suffix = a_deck.title.split(": ", 1)[-1]
+                decks.append(replace(a_deck, title=f"Opción {idx}: {suffix}"))
+                champ_urls.append(None)
+
         if not decks:
             return []
 
-        champ_urls: list[str | None] = [None] * len(decks)
-        # En eventos abiertos (sin set único), mejora las opciones libres con campeones reales
-        if constraints.allowed_sets is None:
+        # En eventos abiertos (sin set único), mejora opciones sin origen externo con campeones reales
+        if constraints.allowed_sets is None and any(u is None for u in champ_urls):
             if not weekly_cache:
                 try:
                     weekly_cache.append(build_weekly_ranked_report(session, catalog, max_tournaments=6, top_n=6))
@@ -309,14 +376,16 @@ def _resolve_tcgp_decks(
                     LOGGER.warning("[DeckCards] Sin datos Limitless para evento abierto: %s", exc)
                     weekly_cache.append(None)
             report = weekly_cache[0]
-            used_champs: set[str] = set()
+            used_champs: set[str] = {
+                d.title.split(": ", 1)[-1] for d, cu in zip(decks, champ_urls) if cu
+            }
             slot_rules = [
                 (0, "Opción 1", constraints.no_ex, False, None, not (constraints.no_ex or constraints.diamond_only or constraints.required_types)),
                 (1, "Opción 2", False, constraints.require_mega_ex, None, True),
                 (2, "Opción 3", False, False, constraints.min_set_cards, not constraints.min_set_cards),
             ]
             for idx_s, prefix, req_no_ex, req_mega, req_min_set, allow_champ in slot_rules:
-                if not allow_champ or idx_s >= len(decks):
+                if not allow_champ or idx_s >= len(decks) or champ_urls[idx_s] is not None:
                     continue
                 picked = pick_champion_deck_for_slot(
                     report,
@@ -357,9 +426,9 @@ def _serialize_tcgp_decks(
                 "cards": deck.summary_lines(),
                 "qr_payload": deck.qr_payload,
                 "qr_url": build_qr_download_url(deck.qr_payload),
-                "champion_url": c_url or "",
+                "champion_url": c_url if (c_url and "limitlesstcg.com" in c_url) else "",
                 "source_url": c_url or fallback_url,
-                "badge": "CAMPEÓN TORNEO + EVENTO" if c_url else "EVENTO TCG POCKET",
+                "badge": _deck_badge_label(c_url),
             }
         )
     return items
@@ -373,14 +442,16 @@ def _maybe_build_tcgp_decks(
     out_dir: Path,
     catalog_holder: list[CardCatalog],
     weekly_cache: list[WeeklyMetaReport | None],
+    extra_urls: tuple[str, ...] | list[str] = (),
 ) -> list[tuple[BuiltDeck, Path, str | None]]:
-    """Genera 3 tarjetas individuales (1 QR cada una), usando campeones reales si aplica."""
+    """Genera 3 tarjetas individuales (1 QR cada una), usando meta real o sinergia."""
     resolved = _resolve_tcgp_decks(
         session=session,
         raw_item=raw_item,
         localized_item=localized_item,
         catalog_holder=catalog_holder,
         weekly_cache=weekly_cache,
+        extra_urls=extra_urls,
     )
     if not resolved:
         return []
@@ -392,7 +463,7 @@ def _maybe_build_tcgp_decks(
             deck,
             card_path,
             context_label=f"Evento: {localized_item.title}",
-            badge_label="CAMPEÓN TORNEO + EVENTO" if c_url else "EVENTO TCG POCKET",
+            badge_label=_deck_badge_label(c_url),
         )
         built.append((deck, card_path, c_url))
     return built
@@ -579,6 +650,12 @@ def _sync_unified_catalog(
     _ensure_events_cache(session, events_cache)
     existing = load_events_history(EVENTS_HISTORY_FILE)
     existing_by_id = {str(e.get("id")): e for e in (existing.get("events") or []) if e.get("id")}
+    urls_by_cid = _build_urls_by_cid(collected)
+    for eid, prev_ev in existing_by_id.items():
+        merged = urls_by_cid.setdefault(eid, [])
+        for u in prev_ev.get("urls") or []:
+            if u and u not in merged:
+                merged.append(u)
 
     records_input: list[dict] = list(already_processed.values())
     processed_uids = {rec["raw"].uid for rec in records_input}
@@ -660,6 +737,7 @@ def _sync_unified_catalog(
                     localized_item=loc,
                     catalog_holder=catalog_holder,
                     weekly_cache=weekly_cache,
+                    extra_urls=urls_by_cid.get(cid, ()),
                 )
                 if resolved_decks:
                     rec_decks = _serialize_tcgp_decks(
@@ -773,6 +851,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
     pogo_catalog_holder: list[PogoCatalog] = []
     weekly_cache: list[WeeklyMetaReport | None] = []
     processed_records: dict[str, dict] = {}
+    urls_by_cid = _build_urls_by_cid(collected)
 
     for idx, item in enumerate(to_notify):
         enriched = enrich_alert_item(session, item, events_cache=events_cache)
@@ -787,6 +866,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
             out_dir=args.out_dir,
             catalog_holder=catalog_holder,
             weekly_cache=weekly_cache,
+            extra_urls=urls_by_cid.get(_canon_event_id(enriched), ()),
         )
         pogo_cards = _maybe_build_pogo_cards(
             session=session,
