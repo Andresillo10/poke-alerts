@@ -763,6 +763,30 @@ class CorePipelineTests(unittest.TestCase):
         c_ptcg = extract_event_constraints(title="Dual Fusion (C1) Limited Battles", detail_html=ptcg_only_html, catalog=catalog)
         self.assertEqual(c_ptcg.allowed_sets, ("c1",))
 
+        # Deduplicación sin importar orden de palabras ni sufijo "Missions" / inicio ya notificado
+        ev_m1 = AlertItem("m1", "tcgp", "event", "Second Anniversary Celebration Campaign Missions", "D", "https://m1", "Serebii")
+        ev_m2 = AlertItem("m2", "tcgp", "event", "Second Anniversary Celebration Campaign", "D", "https://m2", "PTCGPocket.gg")
+        self.assertEqual(build_topic_key(ev_m1), build_topic_key(ev_m2))
+
+        st_dup = default_state()
+        st_dup["initialized"] = True
+        st_dup["seen_topics"]["tcgp:dual-fusion-limited-battles"] = "2026-11-18T12:00:00Z"
+        st_dup["started_notified"]["tcgp:dual-fusion-limited-battles"] = "2026-11-18T12:00:00Z"
+        ev_reordered = AlertItem(
+            "p2",
+            "tcgp",
+            "event",
+            "Limited Battles: Dual Fusion",
+            "D",
+            "https://p2",
+            "PTCGPocket.gg",
+            starts_on="2026-11-18",
+        )
+        pending_dup, _ = select_pending_alerts(
+            st_dup, [ev_reordered], now_utc=datetime(2026, 11, 18, 16, 0, tzinfo=timezone.utc)
+        )
+        self.assertEqual(pending_dup, [])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -16,7 +16,7 @@ from src.config import (
     STATE_FILE,
     TOPIC_DEDUP_TTL_DAYS,
 )
-from src.models import AlertItem, build_topic_key
+from src.models import AlertItem, build_topic_key, canonical_topic_signature
 
 
 def default_state() -> dict[str, Any]:
@@ -87,14 +87,23 @@ def _is_seen(
     topic_key: str,
     now_utc: datetime,
 ) -> bool:
-    """Verifica si el UID ya se envió o si el mismo tema salió dentro de la ventana TTL."""
+    """Verifica si el UID o una variante equivalente del tema ya salió dentro del TTL."""
     if item.uid in state["seen_uids"]:
         return True
 
+    ttl = timedelta(days=TOPIC_DEDUP_TTL_DAYS)
     topic_ts = _parse_iso_dt(state["seen_topics"].get(topic_key))
-    if not topic_ts:
-        return False
-    return (now_utc - topic_ts) < timedelta(days=TOPIC_DEDUP_TTL_DAYS)
+    if topic_ts and (now_utc - topic_ts) < ttl:
+        return True
+
+    target_sig = canonical_topic_signature(topic_key)
+    for existing_key, raw_ts in state["seen_topics"].items():
+        if canonical_topic_signature(existing_key) != target_sig:
+            continue
+        existing_ts = _parse_iso_dt(raw_ts)
+        if existing_ts and (now_utc - existing_ts) < ttl:
+            return True
+    return False
 
 
 def _should_send_launch_reminder(
@@ -109,6 +118,9 @@ def _should_send_launch_reminder(
 
     started_map = state.get("started_notified", {})
     if item.uid in started_map or topic_key in started_map:
+        return False
+    target_sig = canonical_topic_signature(topic_key)
+    if any(canonical_topic_signature(k) == target_sig for k in started_map if ":" in k):
         return False
 
     start_dt = _parse_iso_date(item.starts_on)
@@ -156,12 +168,15 @@ def select_pending_alerts(
     unseen: list[tuple[AlertItem, str]] = []
     launch_reminders: list[tuple[AlertItem, str]] = []
     seen_batch_topics: set[str] = set()
+    seen_batch_sigs: set[str] = set()
 
     for item in items:
         topic_key = build_topic_key(item)
-        if topic_key in seen_batch_topics:
+        topic_sig = canonical_topic_signature(topic_key)
+        if topic_key in seen_batch_topics or topic_sig in seen_batch_sigs:
             continue
         seen_batch_topics.add(topic_key)
+        seen_batch_sigs.add(topic_sig)
 
         if not _is_seen(state, item, topic_key, ref_now):
             unseen.append((item, topic_key))

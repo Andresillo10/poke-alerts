@@ -11,9 +11,10 @@ GameType = Literal["pogo", "tcgp"]
 AlertKind = Literal["code", "event", "news"]
 
 _BOILERPLATE_RE = re.compile(
-    r"\b(ranking guide|all rewards|guide|event|events|evento|eventos|leek duck|ptcgpocket)\b"
+    r"\b(ranking guide|all rewards|guide|missions?|mision(?:es)?|event|events|evento|eventos|leek duck|ptcgpocket)\b"
 )
 _PAREN_SET_RE = re.compile(r"\([a-c]\d+[a-z]?\)")
+_SET_CODE_TOKEN_RE = re.compile(r"^[a-c]\d+[a-z]?$")
 _NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 
 
@@ -82,3 +83,17 @@ def build_topic_key(item: AlertItem) -> str:
     tokens = [tok for tok in clean.split() if len(tok) > 1 or tok.isdigit()]
     slug = "-".join(tokens[:8]) or item.uid
     return f"{item.game}:{slug}"
+
+
+def canonical_topic_signature(topic_key: str) -> str:
+    """Firma independiente del orden de palabras para cruzar temas entre portales."""
+    if ":" not in topic_key:
+        return topic_key
+    game, rest = topic_key.split(":", 1)
+    if rest.startswith("code:"):
+        return topic_key
+    ignore = {"mission", "missions", "mision", "misiones", "guide", "event", "events"}
+    base_tokens = [tok for tok in rest.split("-") if tok and tok not in ignore]
+    no_set = [tok for tok in base_tokens if not _SET_CODE_TOKEN_RE.match(tok)]
+    chosen = no_set if len(no_set) >= 3 else base_tokens
+    return f"{game}:{'-'.join(sorted(set(chosen)))}"
