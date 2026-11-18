@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-18T12:34:10Z",
-  "last_commit_heartbeat_utc": "2026-11-18T12:34:10Z",
+  "last_run_utc": "2026-11-18T13:25:02Z",
+  "last_commit_heartbeat_utc": "2026-11-18T13:25:02Z",
   "last_weekly_meta_week": null,
   "seen_uids": {
     "leekduck-promo:ADIDASxPOKEMON": "2026-11-17T18:05:14Z",
@@ -79,7 +79,11 @@
     "scrapedduck:february-communityday2027": "2026-11-18T12:34:10Z",
     "scrapedduck:pokemon-go-tour-alola-kaohsiung-2027": "2026-11-18T12:34:10Z",
     "scrapedduck:pokemon-go-tour-alola-los-angeles-2027": "2026-11-18T12:34:10Z",
-    "scrapedduck:pokemon-go-tour-alola-global-2027": "2026-11-18T12:34:10Z"
+    "scrapedduck:pokemon-go-tour-alola-global-2027": "2026-11-18T12:34:10Z",
+    "scrapedduck:minior-showers-eta-aquariids-2027": "2026-11-18T13:25:02Z",
+    "scrapedduck:minior-showers-southern-delta-aquariids-2027": "2026-11-18T13:25:02Z",
+    "scrapedduck:minior-showers-perseids-2027": "2026-11-18T13:25:02Z",
+    "ptcgpocket-gg:https://ptcgpocket.gg/c2/": "2026-11-18T13:25:02Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -157,7 +161,11 @@
     "pogo:february-community-day": "2026-11-18T12:34:10Z",
     "pogo:pokemon-go-tour-alola-kaohsiung-2027": "2026-11-18T12:34:10Z",
     "pogo:pokemon-go-tour-alola-los-angeles-2027": "2026-11-18T12:34:10Z",
-    "pogo:pokemon-go-tour-alola-global-2027": "2026-11-18T12:34:10Z"
+    "pogo:pokemon-go-tour-alola-global-2027": "2026-11-18T12:34:10Z",
+    "pogo:minior-showers-eta-aquariids-2027": "2026-11-18T13:25:02Z",
+    "pogo:minior-showers-southern-delta-aquariids-2027": "2026-11-18T13:25:02Z",
+    "pogo:minior-showers-perseids-2027": "2026-11-18T13:25:02Z",
+    "tcgp:c2-expansion-card-list-set-details": "2026-11-18T13:25:02Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
