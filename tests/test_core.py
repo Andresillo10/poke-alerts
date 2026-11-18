@@ -1113,10 +1113,35 @@ class CorePipelineTests(unittest.TestCase):
             )
             hist_path = tmp_dir / "data" / "events_history.json"
             js_path = tmp_dir / "docs" / "events_data.js"
+            sample_decks = [
+                {
+                    "title": "Opción 1: Primarina",
+                    "mission_tag": "Solo Agua",
+                    "energy_label": "Agua",
+                    "strategy": "Presión rápida con Primarina.",
+                    "cards": ["2× Popplio", "2× Primarina"],
+                    "qr_url": "https://api.qrserver.com/v1/create-qr-code/?data=abc",
+                    "champion_url": "",
+                }
+            ]
+            sample_pogo = [
+                {
+                    "title": "Darkrai",
+                    "subtitle": "Incursión 5★",
+                    "badge_label": "RAID 5★",
+                    "left_heading": "Top Counters",
+                    "left_rows": ["Lucario (Contraataque)"],
+                    "right_heading": "PC 100% IV",
+                    "right_rows": ["2136 normal · 2671 clima"],
+                    "explanation": "Débil a Lucha, Bicho y Hada.",
+                    "search_string": "fighting,bug,fairy",
+                    "info_url": "https://www.pokebattler.com/raids",
+                }
+            ]
             records = [
-                {"raw": AlertItem("leekduck-promo:ADIDASxPOKEMON", "pogo", "code", "Zapatos adidas", "Desc", "https://ld", "LeekDuck", promo_code="ADIDASxPOKEMON", rewards="Zapatos adidas", language="es"), "localized": AlertItem("leekduck-promo:ADIDASxPOKEMON", "pogo", "code", "Zapatos adidas", "Desc", "https://ld", "LeekDuck", promo_code="ADIDASxPOKEMON", rewards="Zapatos adidas", language="es"), "extra_ev": None, "events_cache": events_cache},
-                {"raw": serebii_ev, "localized": serebii_ev, "extra_ev": None, "events_cache": events_cache, "tactical_summary": "3 mazos QR"},
-                {"raw": ptcg_ev, "localized": ptcg_ev, "extra_ev": None, "events_cache": events_cache},
+                {"raw": AlertItem("leekduck-promo:ADIDASxPOKEMON", "pogo", "code", "Zapatos adidas", "Desc", "https://ld", "LeekDuck", promo_code="ADIDASxPOKEMON", rewards="Zapatos adidas", language="es"), "localized": AlertItem("leekduck-promo:ADIDASxPOKEMON", "pogo", "code", "Zapatos adidas", "Desc", "https://ld", "LeekDuck", promo_code="ADIDASxPOKEMON", rewards="Zapatos adidas", language="es"), "extra_ev": None, "events_cache": events_cache, "tactical_cards": sample_pogo},
+                {"raw": serebii_ev, "localized": serebii_ev, "extra_ev": None, "events_cache": events_cache, "tactical_summary": "3 mazos QR", "recommended_decks": sample_decks},
+                {"raw": ptcg_ev, "localized": ptcg_ev, "extra_ev": None, "events_cache": events_cache, "recommended_decks": []},
             ]
             doc1, ch1 = sync_events_catalog(history_path=hist_path, dashboard_js_path=js_path, records_input=records, now_utc=datetime(2026, 11, 18, 16, 0, tzinfo=timezone.utc))
             self.assertTrue(ch1)
@@ -1125,10 +1150,21 @@ class CorePipelineTests(unittest.TestCase):
             self.assertIn("window.POKE_ALERTS_DB", js_path.read_text(encoding="utf-8"))
             loaded = load_events_history(hist_path)
             self.assertEqual(loaded["stats"]["codes_active"], 1)
+            df_ev = next(e for e in loaded["events"] if e["game"] == "tcgp")
+            self.assertEqual(len(df_ev["recommended_decks"]), 1)  # ptcg_ev vacío no sobrescribió los mazos de serebii
+            go_ev = next(e for e in loaded["events"] if e["game"] == "pogo")
+            self.assertEqual(len(go_ev["tactical_cards"]), 1)
 
             # Segunda ejecución idéntica NO marca cambio falso (evita commits vacíos cada hora)
             _, ch2 = sync_events_catalog(history_path=hist_path, dashboard_js_path=js_path, records_input=records, now_utc=datetime(2026, 11, 18, 17, 0, tzinfo=timezone.utc))
             self.assertFalse(ch2)
+
+            # Verifica que el dashboard CK10 inicia en "all", es adaptable y renderiza mazos/counters
+            dash_html = Path(__file__).resolve().parents[1].joinpath("docs", "index.html").read_text(encoding="utf-8")
+            self.assertIn('let selectedGame = "all"', dash_html)
+            self.assertIn("renderDecksDrawer", dash_html)
+            self.assertIn("renderPogoDrawer", dash_html)
+            self.assertIn("Diseñado y Desarrollado por Andres Camelo 3165364723 — Estado CK10", dash_html)
 
 
 if __name__ == "__main__":

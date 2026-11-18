@@ -30,9 +30,12 @@ from src.config import (
     URLS,
 )
 from src.deck_qr import (
+    ENERGY_ID_LABELS_ES,
     BuiltDeck,
     CardCatalog,
+    build_qr_download_url,
     build_three_decks_for_event,
+    describe_deck_strategy,
     extract_event_constraints,
     load_catalog,
 )
@@ -172,6 +175,57 @@ def _select_preview_sample(items: list[AlertItem]) -> list[AlertItem]:
     return sample
 
 
+def _resolve_pogo_cards(
+    *,
+    session,
+    raw_item: AlertItem,
+    localized_item: AlertItem,
+    pogo_catalog_holder: list[PogoCatalog],
+    events_cache: dict[str, dict],
+) -> list[PogoTacticalCard]:
+    """Calcula en memoria hasta 3 tarjetas tácticas para eventos accionables de Pokémon GO."""
+    if raw_item.game != "pogo" or raw_item.kind == "code":
+        return []
+    try:
+        if not pogo_catalog_holder:
+            pogo_catalog_holder.append(load_pogo_catalog(session))
+        pogo_cat = pogo_catalog_holder[0]
+        ev_id = raw_item.uid.removeprefix("scrapedduck:")
+        extra_ev = events_cache.get(ev_id)
+        return build_pogo_event_cards(
+            raw_item,
+            extra_ev,
+            pogo_cat,
+            context_title=localized_item.title,
+        )
+    except Exception as exc:
+        LOGGER.warning("[PogoCards] Sin tarjetas tácticas para %s: %s", raw_item.uid, exc)
+        return []
+
+
+def _serialize_pogo_cards(cards: list[PogoTacticalCard]) -> list[dict]:
+    """Serializa tarjetas tácticas GO a JSON para renderizarlas directo en el dashboard."""
+    return [
+        {
+            "title": c.title,
+            "subtitle": c.subtitle,
+            "primary_type": c.primary_type,
+            "badge_label": c.badge_label,
+            "left_heading": c.left_heading,
+            "left_rows": list(c.left_rows),
+            "right_heading": c.right_heading,
+            "right_rows": list(c.right_rows),
+            "explanation": c.explanation,
+            "search_label": c.search_label,
+            "search_string": c.search_string,
+            "info_label": c.info_label,
+            "info_url": c.info_url,
+            "context_label": c.context_label,
+        }
+        for c in cards
+    ]
+
+
 def _maybe_build_pogo_cards(
     *,
     session,
@@ -182,45 +236,33 @@ def _maybe_build_pogo_cards(
     events_cache: dict[str, dict],
 ) -> list[tuple[PogoTacticalCard, Path]]:
     """Genera hasta 3 tarjetas tácticas PNG (1080×720) para eventos accionables de Pokémon GO."""
-    if raw_item.game != "pogo" or raw_item.kind == "code":
+    tactical_cards = _resolve_pogo_cards(
+        session=session,
+        raw_item=raw_item,
+        localized_item=localized_item,
+        pogo_catalog_holder=pogo_catalog_holder,
+        events_cache=events_cache,
+    )
+    if not tactical_cards:
         return []
-    try:
-        if not pogo_catalog_holder:
-            pogo_catalog_holder.append(load_pogo_catalog(session))
-        pogo_cat = pogo_catalog_holder[0]
-        ev_id = raw_item.uid.removeprefix("scrapedduck:")
-        extra_ev = events_cache.get(ev_id)
-        tactical_cards = build_pogo_event_cards(
-            raw_item,
-            extra_ev,
-            pogo_cat,
-            context_title=localized_item.title,
-        )
-        if not tactical_cards:
-            return []
-
-        base_name = _safe_filename(localized_item.uid).removesuffix(".png")
-        rendered: list[tuple[PogoTacticalCard, Path]] = []
-        for idx, card in enumerate(tactical_cards, 1):
-            card_path = out_dir / f"pogo_{base_name}_{idx}.png"
-            render_pogo_tactical_card(card, card_path)
-            rendered.append((card, card_path))
-        return rendered
-    except Exception as exc:
-        LOGGER.warning("[PogoCards] Sin tarjetas tácticas para %s: %s", raw_item.uid, exc)
-        return []
+    base_name = _safe_filename(localized_item.uid).removesuffix(".png")
+    rendered: list[tuple[PogoTacticalCard, Path]] = []
+    for idx, card in enumerate(tactical_cards, 1):
+        card_path = out_dir / f"pogo_{base_name}_{idx}.png"
+        render_pogo_tactical_card(card, card_path)
+        rendered.append((card, card_path))
+    return rendered
 
 
-def _maybe_build_tcgp_decks(
+def _resolve_tcgp_decks(
     *,
     session,
     raw_item: AlertItem,
     localized_item: AlertItem,
-    out_dir: Path,
     catalog_holder: list[CardCatalog],
     weekly_cache: list[WeeklyMetaReport | None],
-) -> list[tuple[BuiltDeck, Path, str | None]]:
-    """Genera 3 tarjetas individuales (1 QR cada una), usando campeones reales si aplica."""
+) -> list[tuple[BuiltDeck, str | None]]:
+    """Calcula en memoria hasta 3 barajas válidas + campeón Limitless si es evento abierto."""
     if raw_item.game != "tcgp" or raw_item.kind != "event":
         return []
     try:
@@ -286,21 +328,69 @@ def _maybe_build_tcgp_decks(
                     champ_urls[idx_s] = champ_url
                     used_champs.add(champ_deck.title.split(": ", 1)[-1])
 
-        base_name = _safe_filename(localized_item.uid).removesuffix(".png")
-        built: list[tuple[BuiltDeck, Path, str | None]] = []
-        for idx, (deck, c_url) in enumerate(zip(decks, champ_urls), 1):
-            card_path = out_dir / f"deck_{base_name}_{idx}.png"
-            render_single_deck_card(
-                deck,
-                card_path,
-                context_label=f"Evento: {localized_item.title}",
-                badge_label="CAMPEÓN TORNEO + EVENTO" if c_url else "EVENTO TCG POCKET",
-            )
-            built.append((deck, card_path, c_url))
-        return built
+        return list(zip(decks, champ_urls))
     except Exception as exc:
-        LOGGER.warning("[DeckCards] No se pudieron generar QR individuales para %s: %s", raw_item.uid, exc)
+        LOGGER.warning("[DeckCards] No se pudieron calcular barajas para %s: %s", raw_item.uid, exc)
         return []
+
+
+def _serialize_tcgp_decks(
+    resolved: list[tuple[BuiltDeck, str | None]],
+    *,
+    fallback_url: str,
+) -> list[dict]:
+    """Serializa las barajas TCG Pocket recomendadas con sus cartas y QR de descarga."""
+    items: list[dict] = []
+    for deck, c_url in resolved:
+        energy_label = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in deck.energy_types) or "Mixta"
+        items.append(
+            {
+                "title": deck.title,
+                "mission_tag": deck.mission_tag,
+                "energy_label": energy_label,
+                "strategy": describe_deck_strategy(deck),
+                "cards": deck.summary_lines(),
+                "qr_payload": deck.qr_payload,
+                "qr_url": build_qr_download_url(deck.qr_payload),
+                "champion_url": c_url or "",
+                "source_url": c_url or fallback_url,
+                "badge": "CAMPEÓN TORNEO + EVENTO" if c_url else "EVENTO TCG POCKET",
+            }
+        )
+    return items
+
+
+def _maybe_build_tcgp_decks(
+    *,
+    session,
+    raw_item: AlertItem,
+    localized_item: AlertItem,
+    out_dir: Path,
+    catalog_holder: list[CardCatalog],
+    weekly_cache: list[WeeklyMetaReport | None],
+) -> list[tuple[BuiltDeck, Path, str | None]]:
+    """Genera 3 tarjetas individuales (1 QR cada una), usando campeones reales si aplica."""
+    resolved = _resolve_tcgp_decks(
+        session=session,
+        raw_item=raw_item,
+        localized_item=localized_item,
+        catalog_holder=catalog_holder,
+        weekly_cache=weekly_cache,
+    )
+    if not resolved:
+        return []
+    base_name = _safe_filename(localized_item.uid).removesuffix(".png")
+    built: list[tuple[BuiltDeck, Path, str | None]] = []
+    for idx, (deck, c_url) in enumerate(resolved, 1):
+        card_path = out_dir / f"deck_{base_name}_{idx}.png"
+        render_single_deck_card(
+            deck,
+            card_path,
+            context_label=f"Evento: {localized_item.title}",
+            badge_label="CAMPEÓN TORNEO + EVENTO" if c_url else "EVENTO TCG POCKET",
+        )
+        built.append((deck, card_path, c_url))
+    return built
 
 
 def _maybe_run_weekly_meta(
@@ -476,6 +566,8 @@ def _sync_unified_catalog(
     already_processed: dict[str, dict],
     events_cache: dict[str, dict],
     pogo_catalog_holder: list[PogoCatalog],
+    catalog_holder: list[CardCatalog],
+    weekly_cache: list[WeeklyMetaReport | None],
     enable_remote: bool,
 ) -> bool:
     """Actualiza data/events_history.json y docs/events_data.js con todos los eventos."""
@@ -496,7 +588,15 @@ def _sync_unified_catalog(
 
         # Evita re-descargar HTML cada hora para portales ya guardados en el catálogo
         already_has_source = bool(prev) and item.source_name in (prev.get("sources") or [])
-        if prev and prev.get("title") and (already_has_source or (prev.get("rewards") and "Consultar detalle" not in prev["rewards"])):
+        has_basic_cache = bool(
+            prev
+            and prev.get("title")
+            and (already_has_source or (prev.get("rewards") and "Consultar detalle" not in prev["rewards"]))
+        )
+        needs_decks = item.game == "tcgp" and item.kind == "event" and (not prev or "recommended_decks" not in prev)
+        needs_pogo = item.game == "pogo" and item.kind == "event" and (not prev or "tactical_cards" not in prev)
+
+        if has_basic_cache and not needs_decks and not needs_pogo:
             loc = AlertItem(
                 uid=item.uid,
                 game=item.game,
@@ -517,25 +617,46 @@ def _sync_unified_catalog(
             enriched = item
             tactical_summary = str(prev.get("tactical_summary") or "")
             search_filter = str(prev.get("search_filter") or "")
+            rec_decks = list(prev.get("recommended_decks") or [])
+            tact_cards = list(prev.get("tactical_cards") or [])
         else:
             enriched = enrich_alert_item(session, item, events_cache=events_cache)
             loc = localize_alert_item(enriched, enable_remote=enable_remote)
-            tactical_summary = ""
-            search_filter = ""
-            if item.game == "pogo" and item.kind == "event":
-                try:
-                    if not pogo_catalog_holder:
-                        pogo_catalog_holder.append(load_pogo_catalog(session))
-                    from src.pogo_intel import build_pogo_event_cards
+            tactical_summary = str(prev.get("tactical_summary") or "") if prev else ""
+            search_filter = str(prev.get("search_filter") or "") if prev else ""
+            rec_decks = list(prev.get("recommended_decks") or []) if prev else []
+            tact_cards = list(prev.get("tactical_cards") or []) if prev else []
 
-                    pcards = build_pogo_event_cards(enriched, extra_ev, pogo_catalog_holder[0], context_title=loc.title)
-                    if pcards:
-                        tactical_summary = _format_pogo_tactical_summary(pcards)
-                        search_filter = pcards[0].search_string
-                except Exception:
-                    pass
-            elif item.game == "tcgp" and loc.deck_guide_title:
-                tactical_summary = f"Guía / Mazos: {loc.deck_guide_title}"
+            if item.game == "pogo" and item.kind == "event" and (not prev or needs_pogo or not tact_cards):
+                pcards = _resolve_pogo_cards(
+                    session=session,
+                    raw_item=enriched,
+                    localized_item=loc,
+                    pogo_catalog_holder=pogo_catalog_holder,
+                    events_cache=events_cache,
+                )
+                if pcards:
+                    tact_cards = _serialize_pogo_cards(pcards)
+                    tactical_summary = _format_pogo_tactical_summary(pcards)
+                    search_filter = pcards[0].search_string
+            elif item.game == "tcgp" and item.kind == "event" and (not prev or needs_decks or not rec_decks):
+                resolved_decks = _resolve_tcgp_decks(
+                    session=session,
+                    raw_item=enriched,
+                    localized_item=loc,
+                    catalog_holder=catalog_holder,
+                    weekly_cache=weekly_cache,
+                )
+                if resolved_decks:
+                    rec_decks = _serialize_tcgp_decks(
+                        resolved_decks,
+                        fallback_url=loc.deck_guide_url or loc.url,
+                    )
+                    tactical_summary = f"{len(rec_decks)} mazos QR: " + ", ".join(
+                        d["title"].split(": ", 1)[-1] for d in rec_decks
+                    )
+                elif loc.deck_guide_title and not tactical_summary:
+                    tactical_summary = f"Guía / Mazos: {loc.deck_guide_title}"
 
         records_input.append(
             {
@@ -545,6 +666,8 @@ def _sync_unified_catalog(
                 "events_cache": events_cache,
                 "tactical_summary": tactical_summary,
                 "search_filter": search_filter,
+                "recommended_decks": rec_decks,
+                "tactical_cards": tact_cards,
             }
         )
 
@@ -669,6 +792,10 @@ def run_pipeline(args: argparse.Namespace) -> int:
         elif pogo_cards:
             tact_sum = _format_pogo_tactical_summary([c for c, _ in pogo_cards])
             srch_flt = pogo_cards[0][0].search_string
+        default_label = "🃏 Guía de mazos" if localized.deck_guide_url else "🔎 Ver evento"
+        default_url = localized.deck_guide_url or localized.url
+        rec_decks = _serialize_tcgp_decks([(d, cu) for d, _, cu in deck_cards], fallback_url=default_url) if deck_cards else []
+        tact_cards = _serialize_pogo_cards([c for c, _ in pogo_cards]) if pogo_cards else []
         processed_records[item.uid] = {
             "raw": enriched,
             "localized": localized,
@@ -676,9 +803,9 @@ def run_pipeline(args: argparse.Namespace) -> int:
             "events_cache": events_cache,
             "tactical_summary": tact_sum,
             "search_filter": srch_flt,
+            "recommended_decks": rec_decks,
+            "tactical_cards": tact_cards,
         }
-        default_label = "🃏 Guía de mazos" if localized.deck_guide_url else "🔎 Ver evento"
-        default_url = localized.deck_guide_url or localized.url
 
         if args.dry_run:
             LOGGER.info("[DRY-RUN] PNG: %s", png_path)
@@ -789,6 +916,8 @@ def run_pipeline(args: argparse.Namespace) -> int:
             already_processed=processed_records,
             events_cache=events_cache,
             pogo_catalog_holder=pogo_catalog_holder,
+            catalog_holder=catalog_holder,
+            weekly_cache=weekly_cache,
             enable_remote=not args.no_translate,
         )
         return 0
@@ -803,6 +932,8 @@ def run_pipeline(args: argparse.Namespace) -> int:
         already_processed=processed_records,
         events_cache=events_cache,
         pogo_catalog_holder=pogo_catalog_holder,
+        catalog_holder=catalog_holder,
+        weekly_cache=weekly_cache,
         enable_remote=not args.no_translate,
     )
 

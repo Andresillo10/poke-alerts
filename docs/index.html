@@ -36,32 +36,47 @@
     }
 
     * { box-sizing: border-box; }
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
       background: var(--base);
       color: var(--text);
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
       min-height: 100vh;
     }
 
-    .wrap { max-width: 1320px; margin: 0 auto; padding: 20px 18px 42px; }
+    .wrap {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 18px 16px 40px;
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 12px 10px 30px; }
+    }
 
     /* 4.1 Tarjeta de Panel (Card CK10) */
     .ck-panel {
       background: var(--card);
       border: 2px solid var(--blue);
       border-radius: 12px;
-      padding: 15px 20px;
+      padding: 15px 18px;
+      min-width: 0;
+    }
+    @media (max-width: 600px) {
+      .ck-panel { padding: 12px 13px; }
     }
 
     header.ck-panel {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
-      gap: 14px; margin-bottom: 16px;
+      gap: 12px; margin-bottom: 14px;
     }
 
     .brand-title {
       margin: 0;
-      font-size: 28px;
+      font-size: clamp(20px, 3vw, 28px);
       font-weight: 700;
       color: var(--blue);
       line-height: 1.2;
@@ -71,13 +86,15 @@
       margin-top: 4px;
       font-size: 13px;
       color: var(--muted);
+      line-height: 1.4;
     }
 
     .sync-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
     .pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 9px; border-radius: 8px; font-size: 12px; font-weight: 600;
       background: var(--surface); border: 1px solid var(--selection); color: var(--muted);
+      max-width: 100%;
     }
     .pill.live   { color: var(--success); border-color: var(--success); background: var(--dark); }
     .pill.warn   { color: var(--warning); border-color: var(--warning); background: var(--dark); }
@@ -87,11 +104,12 @@
 
     /* Botones Oficiales CK10 */
     .btn {
-      cursor: pointer; border: none; border-radius: 8px; padding: 9px 14px;
+      cursor: pointer; border: none; border-radius: 8px; padding: 9px 13px;
       font-family: "Segoe UI", sans-serif; font-size: 13px; font-weight: 700;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-      transition: background 0.15s ease, transform 0.12s ease;
+      text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
       background: var(--selection); color: var(--text);
+      white-space: nowrap;
     }
     .btn:hover { background: var(--overlay); transform: translateY(-1px); }
     .btn-primary { background: var(--btn-ok); color: #ffffff; }
@@ -100,26 +118,28 @@
     .btn-secondary:hover { background: var(--btn-sec-hover); }
     .btn-danger { background: var(--btn-err); color: #ffffff; }
     .btn-danger:hover { background: var(--btn-err-hover); }
+    .btn-sm { padding: 6px 10px; font-size: 12px; }
 
     /* Selector Principal de Juego */
     .game-switcher {
       display: grid;
-      grid-template-columns: repeat(3, minmax(180px, 1fr));
-      gap: 12px;
-      margin-bottom: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
     }
-    @media (max-width: 720px) { .game-switcher { grid-template-columns: 1fr; } }
+    @media (max-width: 820px) { .game-switcher { grid-template-columns: 1fr; } }
 
     .game-btn {
       cursor: pointer;
       background: var(--surface);
       border: 2px solid var(--selection);
       border-radius: 12px;
-      padding: 14px 18px;
+      padding: 13px 16px;
       color: var(--text);
       text-align: left;
-      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
       transition: all 0.16s ease;
+      min-width: 0;
     }
     .game-btn:hover { border-color: var(--blue); background: var(--card); }
     .game-btn.active {
@@ -127,27 +147,35 @@
       border: 2px solid var(--blue);
       box-shadow: 0 0 0 1px rgba(137, 180, 250, 0.35);
     }
-    .game-btn .g-name { font-size: 18px; font-weight: 700; color: var(--text); display: block; }
+    .game-btn .g-name { font-size: clamp(15px, 2vw, 18px); font-weight: 700; color: var(--text); display: block; }
     .game-btn.active .g-name { color: var(--blue); }
-    .game-btn .g-desc { font-size: 12px; color: var(--muted); display: block; margin-top: 2px; }
+    .game-btn .g-desc { font-size: 12px; color: var(--muted); display: block; margin-top: 2px; line-height: 1.3; }
     .game-btn .g-count {
-      font-size: 20px; font-weight: 800; color: var(--blue);
+      font-size: 18px; font-weight: 800; color: var(--blue);
       background: var(--dark); border: 1px solid var(--blue); border-radius: 8px;
-      padding: 4px 12px; min-width: 52px; text-align: center;
+      padding: 4px 10px; min-width: 46px; text-align: center; flex-shrink: 0;
     }
 
     /* 4.2 Tarjetas de Estadística + 4.4 Barra de Progreso */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 155px), 1fr));
       gap: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .stat-card {
       background: var(--dark);
       border: 1px solid var(--blue);
       border-radius: 8px;
-      padding: 12px 14px;
+      padding: 11px 13px;
+      min-width: 0;
+      transition: transform 0.14s ease, box-shadow 0.14s ease;
+    }
+    .stat-card.clickable { cursor: pointer; }
+    .stat-card.clickable:hover { transform: translateY(-1px); background: var(--surface); }
+    .stat-card.active-stat {
+      box-shadow: 0 0 0 2px var(--blue);
+      background: var(--surface);
     }
     .stat-card.s-ok   { border-color: var(--success); }
     .stat-card.s-warn { border-color: var(--warning); }
@@ -174,50 +202,54 @@
     }
 
     /* Desglose por Categorías del Juego Activo */
-    .cat-panel { margin-bottom: 16px; }
+    .cat-panel { margin-bottom: 14px; }
     .sec-title {
       margin: 0 0 10px 0;
-      font-size: 18px;
+      font-size: clamp(15px, 2vw, 18px);
       font-weight: 700;
       color: var(--blue);
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
     }
-    .cat-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cat-pills { display: flex; flex-wrap: wrap; gap: 7px; }
     .cat-btn {
       cursor: pointer;
       background: var(--dark);
       border: 1px solid var(--selection);
       color: var(--text);
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 7px 11px;
       font-family: "Segoe UI", sans-serif;
       font-size: 13px;
       font-weight: 600;
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; align-items: center; gap: 7px;
       transition: all 0.14s ease;
+      max-width: 100%;
     }
     .cat-btn:hover { border-color: var(--blue); background: var(--surface); }
     .cat-btn.active { background: var(--btn-sec); border-color: var(--blue); color: #ffffff; }
     .cat-btn .cnt {
       background: var(--selection); color: var(--warning);
-      border-radius: 6px; padding: 1px 7px; font-size: 12px; font-weight: 700;
+      border-radius: 6px; padding: 1px 6px; font-size: 11px; font-weight: 700;
     }
     .cat-btn.active .cnt { background: rgba(17, 17, 27, 0.45); color: #ffffff; }
+    @media (max-width: 560px) {
+      .cat-btn { padding: 6px 9px; font-size: 12px; }
+    }
 
     /* 4.3 Inputs y Barra de Control */
     .controls-bar {
       background: var(--surface);
       border: 1px solid var(--selection);
       border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 14px;
+      padding: 12px;
+      margin-bottom: 12px;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr auto;
-      gap: 10px;
+      gap: 9px;
       align-items: center;
     }
-    @media (max-width: 900px) { .controls-bar { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 520px) { .controls-bar { grid-template-columns: 1fr; } }
+    @media (max-width: 920px) { .controls-bar { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .controls-bar { grid-template-columns: 1fr; } }
 
     input, select {
       width: 100%;
@@ -226,51 +258,93 @@
       color: var(--text);
       border: 1px solid var(--blue);
       border-radius: 8px;
-      padding: 0 12px;
+      padding: 0 11px;
       font-family: "Segoe UI", sans-serif;
       font-size: 13px;
       outline: none;
+    }
+    select.filter-active {
+      border-color: var(--success);
+      box-shadow: 0 0 0 1px rgba(166, 227, 161, 0.35);
+      font-weight: 700;
     }
     input::placeholder { color: var(--subtle); }
     input:focus, select:focus { box-shadow: 0 0 0 2px rgba(137, 180, 250, 0.25); }
 
     .toolbar {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
-      gap: 10px; margin-bottom: 14px;
+      gap: 9px; margin-bottom: 10px;
     }
+    .toolbar-group { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    /* Cajón plegable de herramientas técnicas (CSV / JSON / Respaldo) */
+    .tools-drawer {
+      background: var(--surface);
+      border: 1px solid var(--selection);
+      border-radius: 10px;
+      padding: 9px 13px;
+      margin-bottom: 14px;
+    }
+    .tools-drawer > summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      list-style: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .tools-drawer > summary::-webkit-details-marker { display: none; }
+    .tools-body {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--selection);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+      gap: 10px;
+    }
+    .tool-box {
+      background: var(--dark);
+      border: 1px solid var(--selection);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .tool-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
 
     /* Tarjetas de Eventos */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(385px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+      gap: 13px;
     }
-    @media (max-width: 480px) { .cards-grid { grid-template-columns: 1fr; } }
 
     .ev-card {
       background: var(--card);
       border: 2px solid var(--blue);
       border-radius: 12px;
-      padding: 15px 18px;
+      padding: 14px 16px;
       display: flex; flex-direction: column; gap: 10px;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
+    @media (max-width: 480px) { .ev-card { padding: 12px 13px; } }
     .ev-card.done { opacity: 0.72; border-color: var(--success); }
     .ev-card.starred { border-color: var(--warning); }
 
     .ev-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
-    .badges { display: flex; gap: 6px; flex-wrap: wrap; }
-    .marks { display: flex; gap: 6px; }
+    .badges { display: flex; gap: 6px; flex-wrap: wrap; min-width: 0; }
+    .marks { display: flex; gap: 6px; flex-shrink: 0; }
     .mark-btn {
       cursor: pointer; background: var(--dark); color: var(--muted);
-      border: 1px solid var(--selection); border-radius: 8px; padding: 5px 10px;
+      border: 1px solid var(--selection); border-radius: 8px; padding: 5px 9px;
       font-family: "Segoe UI", sans-serif; font-size: 12px; font-weight: 700;
     }
     .mark-btn:hover { border-color: var(--blue); }
     .mark-btn.on { background: var(--btn-ok); border-color: var(--btn-ok); color: #ffffff; }
     .mark-btn.star-on { background: var(--dark); border-color: var(--warning); color: var(--warning); }
 
-    .ev-title { margin: 0; font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; }
-    .ev-orig  { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .ev-title { margin: 0; font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; overflow-wrap: anywhere; }
+    .ev-orig  { font-size: 11px; color: var(--muted); margin-top: 2px; overflow-wrap: anywhere; }
     .ev-dates { font-size: 12px; font-weight: 700; color: var(--warning); }
 
     .inner-box {
@@ -281,8 +355,18 @@
       font-size: 13px;
       line-height: 1.45;
       color: var(--text);
+      overflow-wrap: anywhere;
     }
     .inner-box strong { color: var(--blue); }
+
+    .hl-list {
+      margin: 7px 0 0 0;
+      padding-left: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .hl-list li { margin-bottom: 2px; }
 
     .console-code {
       display: flex; align-items: center; justify-content: space-between; gap: 8px;
@@ -293,8 +377,70 @@
       font-family: Consolas, monospace;
       font-size: 12px;
       color: var(--pink);
+      min-width: 0;
     }
-    .console-code span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .console-code span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+
+    /* Paneles Tácticos Plegables dentro de cada evento (Mazos TCGP + QR / Counters GO) */
+    details.tactical-drawer {
+      background: var(--dark);
+      border: 1px solid var(--blue);
+      border-radius: 9px;
+      padding: 9px 11px;
+      min-width: 0;
+    }
+    details.tactical-drawer > summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--warning);
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      list-style: none;
+    }
+    details.tactical-drawer > summary::-webkit-details-marker { display: none; }
+    details.tactical-drawer[open] > summary { margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid var(--selection); }
+
+    .deck-stack { display: flex; flex-direction: column; gap: 9px; }
+    .deck-item {
+      background: var(--surface);
+      border: 1px solid var(--selection);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex; flex-direction: column; gap: 7px;
+      min-width: 0;
+    }
+    .deck-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; flex-wrap: wrap; }
+    .deck-name { font-size: 13px; font-weight: 700; color: var(--blue); }
+    .deck-strategy { font-size: 12px; color: var(--text); line-height: 1.4; }
+    .deck-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 135px), 1fr));
+      gap: 4px 8px;
+      background: var(--dark);
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .deck-cards span { overflow-wrap: anywhere; }
+    .deck-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .pogo-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .pogo-col {
+      background: var(--dark);
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 11px;
+      line-height: 1.45;
+      color: var(--text);
+    }
+    .pogo-col h4 { margin: 0 0 5px 0; font-size: 11px; text-transform: uppercase; color: var(--warning); }
+    .pogo-col ul { margin: 0; padding-left: 14px; color: var(--muted); }
 
     .ev-foot {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
@@ -302,14 +448,15 @@
     }
     .ev-sources { font-size: 11px; color: var(--muted); }
 
-    /* Tabla estilo CK10 (Sección 8/9: Selección #313244 / Azul #89B4FA / Fondo #181825) */
+    /* Tabla estilo CK10 */
     .table-wrap {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border: 2px solid var(--blue);
       border-radius: 12px;
       background: var(--surface);
     }
-    table { width: 100%; border-collapse: collapse; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
     th {
       background: var(--selection);
       color: var(--blue);
@@ -325,21 +472,22 @@
       font-size: 13px;
       vertical-align: top;
       color: var(--text);
+      overflow-wrap: anywhere;
     }
 
     .empty-state {
       background: var(--card);
       border: 2px solid var(--blue);
       border-radius: 12px;
-      padding: 36px 22px;
+      padding: 30px 18px;
       text-align: center;
     }
     .empty-state h3 { margin: 0 0 8px 0; color: var(--warning); font-size: 18px; }
-    .empty-state p { margin: 0 0 16px 0; color: var(--muted); font-size: 13px; }
+    .empty-state p { margin: 0 0 15px 0; color: var(--muted); font-size: 13px; }
 
     /* 4.5 Footer de Firma Oficial CK10 */
     footer.ck-footer {
-      margin-top: 28px;
+      margin-top: 26px;
       padding-top: 14px;
       border-top: 1px solid var(--selection);
       text-align: center;
@@ -361,13 +509,20 @@
       <div class="sync-row">
         <span id="syncStatus" class="pill live">🟢 Cargando...</span>
         <span id="updatedAt" class="pill">⏱️ —</span>
-        <button class="btn btn-secondary" id="btnRefresh">🔄 Actualizar</button>
+        <button class="btn btn-secondary btn-sm" id="btnRefresh">🔄 Actualizar</button>
       </div>
     </header>
 
-    <!-- Selector principal de Juego -->
+    <!-- Selector principal de Juego (Default: Vista Unificada = Todo) -->
     <section class="game-switcher" aria-label="Selector de juego">
-      <button class="game-btn active" id="gBtn-pogo" onclick="selectGame('pogo')">
+      <button class="game-btn active" id="gBtn-all" onclick="selectGame('all')">
+        <div>
+          <span class="g-name">🌐 Todos los Juegos</span>
+          <span class="g-desc">Vista unificada (GO + TCG Pocket)</span>
+        </div>
+        <span class="g-count" id="gCount-all">0</span>
+      </button>
+      <button class="game-btn" id="gBtn-pogo" onclick="selectGame('pogo')">
         <div>
           <span class="g-name">⚡ Pokémon GO</span>
           <span class="g-desc">Eventos, códigos regalo, raids, ligas y días</span>
@@ -377,41 +532,34 @@
       <button class="game-btn" id="gBtn-tcgp" onclick="selectGame('tcgp')">
         <div>
           <span class="g-name">🃏 Pokémon TCG Pocket</span>
-          <span class="g-desc">Combates, misiones, códigos regalo y guías QR</span>
+          <span class="g-desc">Combates, mazos con QR, misiones y códigos</span>
         </div>
         <span class="g-count" id="gCount-tcgp">0</span>
-      </button>
-      <button class="game-btn" id="gBtn-all" onclick="selectGame('all')">
-        <div>
-          <span class="g-name">🌐 Vista Unificada</span>
-          <span class="g-desc">Todos los registros de ambos juegos</span>
-        </div>
-        <span class="g-count" id="gCount-all">0</span>
       </button>
     </section>
 
     <!-- Stat Cards CK10 + Barra de Progreso -->
     <section class="stats-grid" id="statsGrid"></section>
 
-    <!-- Desglose de Categorías (Eventos, Códigos Regalo y Subcategorías del Juego) -->
+    <!-- Desglose de Categorías (Siempre funcionales y sincronizadas) -->
     <section class="ck-panel cat-panel">
       <h2 class="sec-title">
-        <span id="catPanelTitle">🔬 Categorías disponibles</span>
+        <span id="catPanelTitle">🔬 Desglose y categorías</span>
         <span class="pill blue" id="catSelectedHint">Mostrando todo</span>
       </h2>
       <div class="cat-pills" id="catPills"></div>
     </section>
 
-    <!-- Buscador y Filtros -->
+    <!-- Buscador y Filtros Sincronizados -->
     <section class="controls-bar">
-      <input id="q" type="search" placeholder="🔍 Buscar evento, premio, código, Pokémon o carta..." />
-      <select id="fStatus">
-        <option value="">Todos los estados</option>
+      <input id="q" type="search" placeholder="🔍 Buscar evento, premio, código, Pokémon, carta o mazo..." />
+      <select id="fStatus" aria-label="Filtrar por estado">
+        <option value="">📋 Todos los estados (Activos + Próximos)</option>
         <option value="activo">🟢 Activos ahora</option>
         <option value="proximo">⚠️ Próximos</option>
         <option value="finalizado">Finalizados</option>
       </select>
-      <select id="fCheck">
+      <select id="fCheck" aria-label="Filtrar por seguimiento">
         <option value="">Todo mi seguimiento</option>
         <option value="pending">Sin completar</option>
         <option value="done">✅ Completados</option>
@@ -420,24 +568,46 @@
       <button class="btn" id="btnClear">🧹 Limpiar</button>
     </section>
 
-    <!-- Barra de Vistas y Reportes -->
+    <!-- Barra Principal de Vistas -->
     <div class="toolbar">
-      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+      <div class="toolbar-group">
         <button class="btn btn-secondary" id="viewCards">🗂️ Tarjetas</button>
         <button class="btn" id="viewTable">📊 Tabla</button>
-        <button class="btn btn-primary" id="btnOnlyActive">✅ Solo activos</button>
+        <button class="btn" id="btnOnlyActive">🟢 Activos ahora</button>
         <span class="pill" id="countLabel">—</span>
       </div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button class="btn" id="btnCsv">📊 Exportar Excel (CSV)</button>
-        <button class="btn" id="btnJson">📄 Descargar JSON</button>
-        <button class="btn" id="btnExportMarks">💾 Respaldar marcas</button>
-        <label class="btn" style="margin:0;">
-          📂 Cargar marcas
-          <input type="file" id="importMarks" accept=".json" style="display:none;" />
-        </label>
+      <div class="toolbar-group">
+        <span class="pill info" id="statusFeedback" style="display:none;"></span>
       </div>
     </div>
+
+    <!-- Utilidades Plegadas con Explicación Clara -->
+    <details class="tools-drawer">
+      <summary>
+        <span>⚙️ Opciones de descarga y respaldo de tus marcas (Excel / JSON / Copia)</span>
+        <span class="pill">Toca para abrir ▾</span>
+      </summary>
+      <div class="tools-body">
+        <div class="tool-box">
+          <button class="btn btn-sm" id="btnCsv">📊 Exportar Excel (CSV)</button>
+          <div class="tool-desc">Descarga la lista visible actual en formato tabla para abrirla en Excel o Google Sheets.</div>
+        </div>
+        <div class="tool-box">
+          <button class="btn btn-sm" id="btnJson">📄 Descargar JSON</button>
+          <div class="tool-desc">Descarga el archivo completo de eventos (`events_history.json`) por si quieres analizarlo aparte.</div>
+        </div>
+        <div class="tool-box">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <button class="btn btn-sm" id="btnExportMarks">💾 Respaldar marcas</button>
+            <label class="btn btn-sm" style="margin:0;">
+              📂 Cargar marcas
+              <input type="file" id="importMarks" accept=".json" style="display:none;" />
+            </label>
+          </div>
+          <div class="tool-desc">Tus ✅ Completados y ★ Favoritos viven en este dispositivo; úsalos solo para pasar tus marcas del PC al celular.</div>
+        </div>
+      </div>
+    </details>
 
     <main id="content"></main>
 
@@ -457,7 +627,7 @@
 
     let db = window.POKE_ALERTS_DB || { generated_at: "", stats: {}, events: [] };
     let marks = loadMarks();
-    let selectedGame = "pogo"; // Inicia enfocado en un juego claro; cambia con 1 clic
+    let selectedGame = "all"; // Inicia mostrando todo (GO + TCG Pocket)
     let selectedSlice = "all"; // "all" | "kind:event" | "kind:code" | "kind:news" | "cat:<Nombre>"
     let viewMode = "cards";
 
@@ -499,8 +669,22 @@
       render();
     }
 
+    function toggleStatusFilter(targetStatus) {
+      const sel = document.getElementById("fStatus");
+      sel.value = sel.value === targetStatus ? "" : targetStatus;
+      render();
+    }
+
     function selectSlice(slice) {
       selectedSlice = slice;
+      const sel = document.getElementById("fStatus");
+      const all = getEventsWithStatus();
+      const gameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
+      const sliceItems = gameEvents.filter(e => applySlice(e, slice));
+      // Si el estado elegido (ej. "activo") deja 0 elementos en esta categoría que sí tiene próximos/otros, abre todos los estados automáticamente
+      if (sel.value && sliceItems.length > 0 && !sliceItems.some(e => e._status === sel.value)) {
+        sel.value = "";
+      }
       render();
     }
 
@@ -561,18 +745,43 @@
       return m[cat] || "🔹";
     }
 
+    function syncStatusControls() {
+      const sel = document.getElementById("fStatus");
+      const val = sel.value;
+      sel.classList.toggle("filter-active", Boolean(val));
+
+      const onlyBtn = document.getElementById("btnOnlyActive");
+      if (val === "activo") {
+        onlyBtn.className = "btn btn-primary";
+        onlyBtn.textContent = "🟢 Activos ahora (ON)";
+      } else {
+        onlyBtn.className = "btn";
+        onlyBtn.textContent = "🟢 Filtrar activos";
+      }
+
+      const fb = document.getElementById("statusFeedback");
+      const labels = { activo: "Filtro activo: Solo vigentes hoy", proximo: "Filtro activo: Solo próximos", finalizado: "Filtro activo: Finalizados" };
+      if (val && labels[val]) {
+        fb.style.display = "inline-flex";
+        fb.textContent = labels[val];
+      } else {
+        fb.style.display = "none";
+      }
+    }
+
     function renderGameHeader(all) {
       const pogoCnt = all.filter(e => e.game === "pogo").length;
       const tcgpCnt = all.filter(e => e.game === "tcgp").length;
       document.getElementById("gCount-pogo").textContent = pogoCnt;
       document.getElementById("gCount-tcgp").textContent = tcgpCnt;
       document.getElementById("gCount-all").textContent = all.length;
-      for (const g of ["pogo", "tcgp", "all"]) {
+      for (const g of ["all", "pogo", "tcgp"]) {
         document.getElementById(`gBtn-${g}`).classList.toggle("active", selectedGame === g);
       }
     }
 
     function renderStats(gameEvents) {
+      const fs = document.getElementById("fStatus").value;
       const active = gameEvents.filter(e => e._status === "activo").length;
       const codes = gameEvents.filter(e => e.kind === "code" && e._status === "activo").length;
       const upcoming = gameEvents.filter(e => e._status === "proximo").length;
@@ -582,22 +791,22 @@
 
       document.getElementById("updatedAt").textContent = `⏱️ ${db.generated_at || "Al día"}`;
       document.getElementById("statsGrid").innerHTML = `
-        <div class="stat-card s-ok">
+        <div class="stat-card s-ok clickable ${fs === "activo" ? "active-stat" : ""}" onclick="toggleStatusFilter('activo')">
           <div class="stat-val" style="color:var(--success)">${active}</div>
           <div class="stat-lbl">🟢 Activos hoy</div>
-          <div class="stat-hint">Disponibles ahora</div>
+          <div class="stat-hint">${fs === "activo" ? "Clic para mostrar todos" : "Clic para filtrar activos"}</div>
         </div>
-        <div class="stat-card s-warn" style="cursor:pointer" onclick="selectSlice('kind:code')">
+        <div class="stat-card s-warn clickable ${selectedSlice === "kind:code" ? "active-stat" : ""}" onclick="selectSlice(selectedSlice === 'kind:code' ? 'all' : 'kind:code')">
           <div class="stat-val" style="color:var(--warning)">${codes}</div>
           <div class="stat-lbl">🎁 Códigos regalo</div>
-          <div class="stat-hint">Clic para filtrar códigos</div>
+          <div class="stat-hint">Clic para ver códigos</div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card clickable ${fs === "proximo" ? "active-stat" : ""}" onclick="toggleStatusFilter('proximo')">
           <div class="stat-val" style="color:var(--blue)">${upcoming}</div>
           <div class="stat-lbl">🚀 Próximos</div>
-          <div class="stat-hint">En calendario próximo</div>
+          <div class="stat-hint">${fs === "proximo" ? "Clic para mostrar todos" : "Clic para filtrar próximos"}</div>
         </div>
-        <div class="stat-card s-info" style="cursor:pointer" onclick="selectSlice('kind:event')">
+        <div class="stat-card s-info clickable ${selectedSlice === "kind:event" ? "active-stat" : ""}" onclick="selectSlice(selectedSlice === 'kind:event' ? 'all' : 'kind:event')">
           <div class="stat-val" style="color:var(--info)">${eventsTotal}</div>
           <div class="stat-lbl">⚡ Eventos del juego</div>
           <div class="stat-hint">Clic para ver solo eventos</div>
@@ -614,33 +823,46 @@
       const gLabel = selectedGame === "pogo" ? "Pokémon GO" : (selectedGame === "tcgp" ? "Pokémon TCG Pocket" : "Ambos Juegos");
       document.getElementById("catPanelTitle").textContent = `🔬 Desglose y categorías — ${gLabel}`;
 
-      const eventsCount = gameEvents.filter(e => e.kind === "event").length;
-      const codesCount = gameEvents.filter(e => e.kind === "code").length;
-      const newsCount = gameEvents.filter(e => e.kind === "news").length;
+      const fs = document.getElementById("fStatus").value;
+      const basePool = fs ? gameEvents.filter(e => e._status === fs) : gameEvents;
+      const pillStats = (fn) => {
+        const sub = gameEvents.filter(fn);
+        if (!fs) return { n: sub.length, badge: String(sub.length), emptyInStatus: false };
+        const inStatus = sub.filter(e => e._status === fs).length;
+        return {
+          n: inStatus,
+          badge: inStatus > 0 ? String(inStatus) : (sub.length > 0 ? `0/${sub.length}` : "0"),
+          emptyInStatus: sub.length > 0 && inStatus === 0,
+        };
+      };
 
-      const catCounts = new Map();
+      const catSet = new Map();
       for (const ev of gameEvents) {
         if (ev.category && ev.category !== "Código Promo" && ev.category !== "Noticia Oficial") {
-          catCounts.set(ev.category, (catCounts.get(ev.category) || 0) + 1);
+          catSet.set(ev.category, (catSet.get(ev.category) || 0) + 1);
         }
       }
-      const sortedCats = [...catCounts.entries()].sort((a, b) => b[1] - a[1]);
+      const sortedCats = [...catSet.entries()].sort((a, b) => b[1] - a[1]);
 
       const pills = [
-        { id: "all", label: "📋 Todo", count: gameEvents.length },
-        { id: "kind:event", label: "🗓️ Todos los Eventos", count: eventsCount },
-        { id: "kind:code", label: "🎁 Códigos Regalo", count: codesCount },
-        ...sortedCats.map(([cat, cnt]) => ({ id: `cat:${cat}`, label: `${categoryIcon(cat)} ${cat}`, count: cnt })),
-        { id: "kind:news", label: "📢 Noticias Oficiales", count: newsCount },
+        { id: "all", label: "📋 Todo", n: basePool.length, badge: String(basePool.length), emptyInStatus: false },
+        { id: "kind:event", label: "🗓️ Eventos", ...pillStats(e => e.kind === "event") },
+        { id: "kind:code", label: "🎁 Códigos Regalo", ...pillStats(e => e.kind === "code") },
+        ...sortedCats.map(([cat]) => ({
+          id: `cat:${cat}`,
+          label: `${categoryIcon(cat)} ${cat}`,
+          ...pillStats(e => e.category === cat),
+        })),
+        { id: "kind:news", label: "📢 Noticias Oficiales", ...pillStats(e => e.kind === "news") },
       ];
 
       const activePill = pills.find(p => p.id === selectedSlice) || pills[0];
-      document.getElementById("catSelectedHint").textContent = `${activePill.label} (${activePill.count})`;
+      document.getElementById("catSelectedHint").textContent = `${activePill.label} (${activePill.badge})`;
 
       document.getElementById("catPills").innerHTML = pills.map(p => `
-        <button class="cat-btn ${selectedSlice === p.id ? "active" : ""}" onclick="selectSlice('${esc(p.id)}')">
+        <button class="cat-btn ${selectedSlice === p.id ? "active" : ""}" style="${p.emptyInStatus ? "opacity:0.78;" : ""}" onclick="selectSlice('${esc(p.id)}')">
           <span>${esc(p.label)}</span>
-          <span class="cnt">${p.count}</span>
+          <span class="cnt">${esc(p.badge)}</span>
         </button>
       `).join("");
     }
@@ -658,10 +880,12 @@
         if (fch === "done" && !mk.done) return false;
         if (fch === "star" && !mk.star) return false;
         if (q) {
+          const deckHay = (ev.recommended_decks || []).map(d => `${d.title} ${d.strategy} ${(d.cards || []).join(" ")}`).join(" ");
+          const pogoHay = (ev.tactical_cards || []).map(c => `${c.title} ${c.subtitle} ${c.explanation} ${(c.left_rows || []).join(" ")} ${(c.right_rows || []).join(" ")}`).join(" ");
           const hay = [
             ev.title, ev.title_original, ev.summary, ev.rewards, ev.category,
             ev.promo_code, ev.tactical_summary, ev.search_filter,
-            ...(ev.highlights || []), ...(ev.sources || [])
+            ...(ev.highlights || []), ...(ev.sources || []), deckHay, pogoHay
           ].join(" ").toLowerCase();
           if (!hay.includes(q)) return false;
         }
@@ -675,15 +899,119 @@
       return `<span class="pill">FINALIZADO</span>`;
     }
 
-    function copyTxt(btn, txt) {
-      navigator.clipboard?.writeText(txt).then(() => {
+    let copyRegistry = [];
+    function registerCopy(txt) {
+      const idx = copyRegistry.length;
+      copyRegistry.push(txt);
+      return idx;
+    }
+
+    function copyTxt(btn, txtOrIdx) {
+      const txt = typeof txtOrIdx === "number" ? (copyRegistry[txtOrIdx] || "") : String(txtOrIdx || "");
+      const okFeedback = () => {
         const old = btn.textContent;
         btn.textContent = "✅ Copiado";
         setTimeout(() => btn.textContent = old, 1200);
-      });
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(txt).then(okFeedback).catch(() => {});
+        return;
+      }
+      const ta = document.createElement("textarea");
+      ta.value = txt;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { if (document.execCommand("copy")) okFeedback(); } catch {}
+      document.body.removeChild(ta);
+    }
+
+    function renderDecksDrawer(ev) {
+      const decks = ev.recommended_decks || [];
+      if (!decks.length) return "";
+      return `
+        <details class="tactical-drawer">
+          <summary>
+            <span>🃏 Ver ${decks.length} mazos recomendados + QR</span>
+            <span class="pill blue">Abrir ▾</span>
+          </summary>
+          <div class="deck-stack">
+            ${decks.map(d => {
+              const copyIdx = registerCopy(`${d.title} (${d.energy_label || "Mixta"})\n` + (d.cards || []).join("\n"));
+              return `
+                <div class="deck-item">
+                  <div class="deck-head">
+                    <div class="deck-name">${esc(d.title)}</div>
+                    <div style="display:flex;gap:5px;flex-wrap:wrap;">
+                      <span class="pill warn">⚡ ${esc(d.energy_label || "Mixta")}</span>
+                      ${d.champion_url ? `<span class="pill live">🏆 Campeón</span>` : ""}
+                    </div>
+                  </div>
+                  ${d.mission_tag ? `<div class="ev-orig" style="color:var(--info);">🎯 ${esc(d.mission_tag)}</div>` : ""}
+                  <div class="deck-strategy">${esc(d.strategy)}</div>
+                  <div class="deck-cards">${(d.cards || []).map(c => `<span>• ${esc(c)}</span>`).join("")}</div>
+                  <div class="deck-actions">
+                    ${d.qr_url ? `<a class="btn btn-primary btn-sm" href="${esc(d.qr_url)}" target="_blank" rel="noopener">📥 Descargar QR</a>` : ""}
+                    <button class="btn btn-sm" onclick="copyTxt(this, ${copyIdx})">📋 Copiar 20 cartas</button>
+                    ${d.champion_url ? `<a class="btn btn-secondary btn-sm" href="${esc(d.champion_url)}" target="_blank" rel="noopener">🏆 Ver torneo</a>` : ""}
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </details>
+      `;
+    }
+
+    function renderPogoDrawer(ev) {
+      const cards = ev.tactical_cards || [];
+      if (!cards.length) return "";
+      const summaryNames = cards.map(c => c.title).slice(0, 2).join(" • ");
+      return `
+        <details class="tactical-drawer">
+          <summary>
+            <span>⚔️ Ver counters, IV 100% y estrategia (${esc(summaryNames)})</span>
+            <span class="pill blue">Abrir ▾</span>
+          </summary>
+          <div class="deck-stack">
+            ${cards.map(c => {
+              const filterIdx = c.search_string ? registerCopy(c.search_string) : -1;
+              return `
+                <div class="deck-item">
+                  <div class="deck-head">
+                    <div>
+                      <div class="deck-name">${esc(c.title)}</div>
+                      <div class="ev-orig">${esc(c.subtitle)}</div>
+                    </div>
+                    <span class="pill warn">${esc(c.badge_label || "GO")}</span>
+                  </div>
+                  <div class="pogo-cols">
+                    <div class="pogo-col">
+                      <h4>${esc(c.left_heading)}</h4>
+                      <ul>${(c.left_rows || []).map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+                    </div>
+                    <div class="pogo-col">
+                      <h4>${esc(c.right_heading)}</h4>
+                      <ul>${(c.right_rows || []).map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+                    </div>
+                  </div>
+                  ${c.explanation ? `<div class="deck-strategy">${esc(c.explanation)}</div>` : ""}
+                  <div class="deck-actions">
+                    ${filterIdx >= 0 ? `<button class="btn btn-sm" onclick="copyTxt(this, ${filterIdx})">📋 Copiar filtro: ${esc(c.search_string)}</button>` : ""}
+                    ${c.info_url ? `<a class="btn btn-secondary btn-sm" href="${esc(c.info_url)}" target="_blank" rel="noopener">${esc(c.info_label || "Ver detalles ↗")}</a>` : ""}
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </details>
+      `;
     }
 
     function render() {
+      copyRegistry = [];
+      syncStatusControls();
       const all = getEventsWithStatus();
       renderGameHeader(all);
       const gameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
@@ -704,9 +1032,9 @@
           </div>
         ` : `
           <div class="empty-state">
-            <h3>⚠️ Sin registros para este filtro</h3>
-            <p>Prueba limpiando la búsqueda o eligiendo otra categoría.</p>
-            <button class="btn btn-secondary" onclick="document.getElementById('btnClear').click()">🧹 Ver todo del juego</button>
+            <h3>⚠️ Sin registros para esta combinación de filtros</h3>
+            <p>Prueba limpiando el buscador o seleccionando otra categoría.</p>
+            <button class="btn btn-secondary" onclick="document.getElementById('btnClear').click()">🧹 Mostrar todo</button>
           </div>
         `;
         return;
@@ -749,7 +1077,7 @@
                         ${ev.tactical_summary ? `<div class="ev-orig" style="color:var(--blue);margin-top:4px;">⚡ ${esc(ev.tactical_summary)}</div>` : ""}
                       </td>
                       <td style="white-space:nowrap;">
-                        ${link ? `<a class="btn btn-secondary" href="${esc(link)}" target="_blank" rel="noopener">Abrir ↗</a>` : ""}
+                        ${link ? `<a class="btn btn-secondary btn-sm" href="${esc(link)}" target="_blank" rel="noopener">Abrir ↗</a>` : ""}
                       </td>
                     </tr>
                   `;
@@ -765,8 +1093,11 @@
         const mk = getMark(ev.id);
         const primaryUrl = ev.redeem_url || (ev.urls || [])[0] || "";
         const copyValue = ev.promo_code || ev.search_filter || "";
+        const copyValIdx = copyValue ? registerCopy(copyValue) : -1;
         const origHtml = (ev.title_original && ev.title_original.toLowerCase() !== (ev.title || "").toLowerCase())
           ? `<div class="ev-orig">Original: ${esc(ev.title_original)}</div>` : "";
+        const hlHtml = (ev.highlights && ev.highlights.length)
+          ? `<ul class="hl-list">${ev.highlights.slice(0, 4).map(h => `<li>${esc(h)}</li>`).join("")}</ul>` : "";
 
         return `
           <article class="ev-card ${mk.done ? "done" : ""} ${mk.star ? "starred" : ""}">
@@ -788,19 +1119,22 @@
             <div class="ev-dates">⏱️ ${esc(ev.date_range_label)}</div>
             <div class="inner-box">
               <strong>🎁 Premios / Detalles:</strong> ${esc(ev.rewards)}
-              ${ev.tactical_summary ? `<div style="margin-top:6px;color:var(--blue);">⚡ <b>Guía:</b> ${esc(ev.tactical_summary)}</div>` : ""}
+              ${hlHtml}
+              ${ev.tactical_summary ? `<div style="margin-top:6px;color:var(--blue);">⚡ <b>Resumen:</b> ${esc(ev.tactical_summary)}</div>` : ""}
             </div>
-            ${copyValue ? `
+            ${renderDecksDrawer(ev)}
+            ${renderPogoDrawer(ev)}
+            ${copyValIdx >= 0 ? `
               <div class="console-code">
                 <span>${ev.promo_code ? "🎁 Código:" : "🔍 Filtro GO:"} ${esc(copyValue)}</span>
-                <button class="mark-btn" onclick="copyTxt(this, '${esc(copyValue)}')">📋 Copiar</button>
+                <button class="mark-btn" onclick="copyTxt(this, ${copyValIdx})">📋 Copiar</button>
               </div>
             ` : ""}
             <div class="ev-foot">
               <span class="ev-sources">🌐 ${esc((ev.sources || []).join(" + "))}</span>
               <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                ${ev.redeem_url ? `<a class="btn btn-primary" href="${esc(ev.redeem_url)}" target="_blank" rel="noopener">🎁 Canjear</a>` : ""}
-                ${ev.guide_url && ev.guide_url !== ev.redeem_url ? `<a class="btn btn-secondary" href="${esc(ev.guide_url)}" target="_blank" rel="noopener">📘 Ver guía</a>` : (primaryUrl ? `<a class="btn btn-secondary" href="${esc(primaryUrl)}" target="_blank" rel="noopener">🔍 Ver más</a>` : "")}
+                ${ev.redeem_url ? `<a class="btn btn-primary btn-sm" href="${esc(ev.redeem_url)}" target="_blank" rel="noopener">🎁 Canjear</a>` : ""}
+                ${ev.guide_url && ev.guide_url !== ev.redeem_url ? `<a class="btn btn-secondary btn-sm" href="${esc(ev.guide_url)}" target="_blank" rel="noopener">📘 Ver guía</a>` : (primaryUrl ? `<a class="btn btn-secondary btn-sm" href="${esc(primaryUrl)}" target="_blank" rel="noopener">🔍 Ver más</a>` : "")}
               </div>
             </div>
           </article>
@@ -827,10 +1161,7 @@
       selectedSlice = "all";
       render();
     };
-    document.getElementById("btnOnlyActive").onclick = () => {
-      document.getElementById("fStatus").value = "activo";
-      render();
-    };
+    document.getElementById("btnOnlyActive").onclick = () => toggleStatusFilter("activo");
     document.getElementById("viewCards").onclick = () => {
       viewMode = "cards";
       document.getElementById("viewCards").className = "btn btn-secondary";

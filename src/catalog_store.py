@@ -189,6 +189,8 @@ def sync_events_catalog(
         events_cache: dict[str, dict[str, Any]] = rec.get("events_cache") or {}
         tactical_summary: str = rec.get("tactical_summary") or ""
         search_filter: str = rec.get("search_filter") or ""
+        raw_rec_decks = rec.get("recommended_decks")
+        raw_tactical_cards = rec.get("tactical_cards")
 
         cid = _canon_event_id(raw_item)
         start_iso, end_iso = _extract_dates_for_item(raw_item, extra_ev, events_cache)
@@ -230,9 +232,29 @@ def sync_events_catalog(
         final_orig = str(prev.get("title_original") or raw_item.title)
         final_summary = str(prev.get("summary") or loc_item.summary) if keep_prev_text else (loc_item.summary or str(prev.get("summary") or ""))
 
-        final_tactical = str(prev.get("tactical_summary") or tactical_summary)
+        prev_tactical = str(prev.get("tactical_summary") or "")
+        if tactical_summary and (
+            not prev_tactical
+            or (
+                "mazos QR:" in tactical_summary
+                and prev_tactical.startswith("Guía / Mazos:")
+            )
+        ):
+            final_tactical = tactical_summary
+        else:
+            final_tactical = prev_tactical or tactical_summary
         final_search = str(prev.get("search_filter") or search_filter or raw_item.promo_code or "")
         final_guide = str(prev.get("guide_url") or loc_item.deck_guide_url or raw_item.url)
+        final_rec_decks = (
+            list(raw_rec_decks)
+            if raw_rec_decks is not None and (len(raw_rec_decks) > 0 or not prev.get("recommended_decks"))
+            else list(prev.get("recommended_decks") or [])
+        )
+        final_tactical_cards = (
+            list(raw_tactical_cards)
+            if raw_tactical_cards is not None and (len(raw_tactical_cards) > 0 or not prev.get("tactical_cards"))
+            else list(prev.get("tactical_cards") or [])
+        )
 
         new_entry = {
             "id": cid,
@@ -255,6 +277,8 @@ def sync_events_catalog(
             "tactical_summary": final_tactical,
             "search_filter": final_search,
             "guide_url": final_guide,
+            "recommended_decks": final_rec_decks,
+            "tactical_cards": final_tactical_cards,
             "sources": merged_sources,
             "urls": merged_urls,
             "first_seen_at": first_seen,
