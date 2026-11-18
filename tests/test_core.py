@@ -38,14 +38,23 @@ from src.state import (
     default_state,
     mark_items_processed,
     select_pending_alerts,
+    should_send_weekly_meta,
     update_source_health_and_heartbeat,
 )
 from src.telegram_client import (
     build_deck_sheet_caption,
     build_inline_keyboard,
     build_telegram_caption,
+    build_weekly_meta_caption,
 )
 from src.translator import localize_alert_item, translate_en_to_es
+from src.weekly_meta import (
+    WeeklyArchetypeSummary,
+    WeeklyMetaReport,
+    parse_completed_tournaments_html,
+    parse_limitless_decklist_cards,
+    parse_tournament_standings_rows,
+)
 
 
 class CorePipelineTests(unittest.TestCase):
@@ -594,6 +603,106 @@ class CorePipelineTests(unittest.TestCase):
         self.assertLessEqual(len(caption), 1024)
         self.assertIn("Opción 1", caption)
         self.assertIn("QR", caption)
+
+    def test_weekly_meta_parsers_schedule_and_caption(self) -> None:
+        cutoff = datetime(2026, 11, 16, 0, 0, tzinfo=timezone.utc)
+        tourn_html = """
+        <table>
+          <tr data-date="2026-11-22T05:00:00.000Z" data-format="1" data-players="160" data-name="Pocket Clash">
+            <td><a href="/tournament/t1/standings">Pocket Clash</a></td>
+          </tr>
+          <tr data-date="2026-11-21T12:00:00.000Z" data-format="0" data-players="150" data-name="No-Ex Special">
+            <td><a href="/tournament/t2/standings">No-Ex Special</a></td>
+          </tr>
+          <tr data-date="2026-11-20T12:00:00.000Z" data-format="1" data-players="12" data-name="Mini Lobby">
+            <td><a href="/tournament/t3/standings">Mini Lobby</a></td>
+          </tr>
+          <tr data-date="2026-11-10T12:00:00.000Z" data-format="1" data-players="200" data-name="Old Tourney">
+            <td><a href="/tournament/t4/standings">Old Tourney</a></td>
+          </tr>
+        </table>
+        """
+        tourns, reached = parse_completed_tournaments_html(tourn_html, cutoff_utc=cutoff, min_players=24)
+        self.assertTrue(reached)
+        self.assertEqual([t.tournament_id for t in tourns], ["t1"])
+
+        standings_html = """
+        <table>
+          <tr data-placing="1">
+            <td>1</td><td>Campeon</td><td></td><td>30</td><td>10 - 1 - 0</td>
+            <td><a href="/tournament/t1/metagame/pikachu-ex"><span data-tooltip="Pikachu ex"></span></a></td>
+            <td><a href="/tournament/t1/player/campeon/decklist">List</a></td>
+          </tr>
+        </table>
+        """
+        rows = parse_tournament_standings_rows(standings_html)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual((rows[0]["placing"], rows[0]["wins"], rows[0]["name"]), (1, 10, "Pikachu ex"))
+
+        catalog = self._sample_catalog()
+        dual_dl_html = """
+        <div class="decklist">
+          <a href="https://pocket.limitlesstcg.com/cards/C1/40">2 Froakie</a>
+          <a href="https://pocket.limitlesstcg.com/cards/C1/41">2 Greninja</a>
+          <a href="https://pocket.limitlesstcg.com/cards/P-A/7">2 Professor's Research</a>
+          <a href="https://pocket.limitlesstcg.com/cards/P-A/5">2 Poké Ball</a>
+          <a href="https://pocket.limitlesstcg.com/cards/P-A/1">2 Potion</a>
+          <a href="https://pocket.limitlesstcg.com/cards/P-A/2">2 X Speed</a>
+          <a href="https://pocket.limitlesstcg.com/cards/B2/90">2 Cyrus</a>
+          <a href="https://pocket.limitlesstcg.com/cards/C1/90">2 Serena's Choice</a>
+          <a href="https://pocket.limitlesstcg.com/cards/C1/94">2 Sabrina</a>
+          <a href="https://pocket.limitlesstcg.com/cards/C1/93">2 Giant Cape</a>
+        </div>
+        <div class="decklist">
+          <a href="https://pocket.limitlesstcg.com/cards/C1/10">2 Pikachu</a>
+          <a href="https://pocket.limitlesstcg.com/cards/C1/11">2 Raichu</a>
+          <a href="https://pocket.limitlesstcg.com/cards/P-A/7">2 Professor's Research</a>
+          <a href="https://pocket.limitlesstcg.com/cards/P-A/5">2 Poké Ball</a>
+          <a href="https://pocket.limitlesstcg.com/cards/P-A/1">2 Potion</a>
+          <a href="https://pocket.limitlesstcg.com/cards/P-A/2">2 X Speed</a>
+          <a href="https://pocket.limitlesstcg.com/cards/B2/90">2 Cyrus</a>
+          <a href="https://pocket.limitlesstcg.com/cards/C1/90">2 Serena's Choice</a>
+          <a href="https://pocket.limitlesstcg.com/cards/C1/94">2 Sabrina</a>
+          <a href="https://pocket.limitlesstcg.com/cards/C1/93">2 Giant Cape</a>
+        </div>
+        """
+        picked_cards = parse_limitless_decklist_cards(
+            dual_dl_html,
+            target_archetype_name="Pikachu Raichu",
+            catalog=catalog,
+        )
+        self.assertEqual(len(picked_cards), 20)
+        self.assertTrue(any(c.name == "Pikachu" for c in picked_cards))
+
+        # Ventana de envío solo los lunes >=08:00 COT y máximo 1 vez por semana ISO
+        st = default_state()
+        wed_dt = datetime(2026, 11, 18, 13, 23, tzinfo=timezone.utc)
+        mon_early = datetime(2026, 11, 23, 12, 23, tzinfo=timezone.utc)  # 07:23 COT
+        mon_ok = datetime(2026, 11, 23, 13, 23, tzinfo=timezone.utc)     # 08:23 COT
+        self.assertFalse(should_send_weekly_meta(st, now_utc=wed_dt)[0])
+        self.assertFalse(should_send_weekly_meta(st, now_utc=mon_early)[0])
+        fire_mon, wkey = should_send_weekly_meta(st, now_utc=mon_ok)
+        self.assertTrue(fire_mon)
+        st["last_weekly_meta_week"] = wkey
+        self.assertFalse(should_send_weekly_meta(st, now_utc=mon_ok)[0])
+
+        decks = build_three_decks_for_event(
+            event_title="Ranked",
+            event_summary="Top 3",
+            constraints=EventDeckConstraints(is_combat_event=True),
+            catalog=catalog,
+        )
+        report = WeeklyMetaReport(
+            window_label="16/11 – 23/11/2026 (10 torneos Estándar)",
+            analyzed_tournaments=10,
+            analyzed_entries=420,
+            archetypes=(
+                WeeklyArchetypeSummary("pika", "Pikachu ex", 40, 120, 80, 60.0, "#1/160p en Clash", decks[0]),
+            ),
+        )
+        wcap = build_weekly_meta_caption(report)
+        self.assertIn("Top 3 Mazos Semanales", wcap)
+        self.assertLessEqual(len(wcap), 1024)
 
 
 if __name__ == "__main__":

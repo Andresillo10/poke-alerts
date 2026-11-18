@@ -26,15 +26,19 @@ from src.state import (
     mark_items_processed,
     save_state,
     select_pending_alerts,
+    should_send_weekly_meta,
     update_source_health_and_heartbeat,
 )
 from src.telegram_client import (
     build_deck_sheet_caption,
     build_telegram_caption,
+    build_weekly_meta_caption,
     send_telegram_deck_sheet,
     send_telegram_photo,
+    send_telegram_weekly_meta,
 )
 from src.translator import localize_alert_item
+from src.weekly_meta import build_weekly_ranked_report
 
 logging.basicConfig(
     level=logging.INFO,
@@ -83,6 +87,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=DEFAULT_OUTPUT_DIR,
         help="Carpeta donde se guardan las tarjetas PNG generadas.",
+    )
+    parser.add_argument(
+        "--weekly-meta",
+        action="store_true",
+        help="Fuerza la generación del Top 3 semanal de torneos Ranked para TCG Pocket.",
     )
     return parser.parse_args()
 
@@ -155,6 +164,52 @@ def _maybe_build_tcgp_deck_sheet(
         return None
 
 
+def _maybe_run_weekly_meta(
+    *,
+    args: argparse.Namespace,
+    session,
+    catalog_holder: list[CardCatalog],
+    week_key: str,
+    bot_token: str,
+    chat_id: str,
+) -> bool:
+    """Genera y envía la lámina QR semanal con los 3 mejores mazos de torneos."""
+    try:
+        if not catalog_holder:
+            catalog_holder.append(load_catalog(session))
+        report = build_weekly_ranked_report(session, catalog_holder[0])
+        if not report or not report.decks:
+            LOGGER.warning("[WeeklyMeta] Sin datos suficientes de torneos esta semana.")
+            return False
+
+        sheet_path = args.out_dir / f"weekly_meta_{week_key}.png"
+        render_deck_sheet(
+            report.window_label,
+            report.decks,
+            sheet_path,
+            header_text="TOP 3 MAZOS RANKED SEMANAL  •  ESCANEA EL QR EN TCG POCKET",
+            subtitle_prefix="Torneos",
+        )
+        if args.dry_run:
+            LOGGER.info("[DRY-RUN] WEEKLY META SHEET: %s", sheet_path)
+            print("--- CAPTION WEEKLY META ---")
+            print(build_weekly_meta_caption(report))
+            print("---------------------------")
+            return False
+
+        send_telegram_weekly_meta(
+            bot_token=bot_token,
+            chat_id=chat_id,
+            report=report,
+            sheet_path=sheet_path,
+        )
+        LOGGER.info("[WeeklyMeta] Enviado reporte semanal %s (%d torneos).", week_key, report.analyzed_tournaments)
+        return True
+    except Exception as exc:
+        LOGGER.warning("[WeeklyMeta] Fallo no bloqueante al generar reporte semanal: %s", exc)
+        return False
+
+
 def run_pipeline(args: argparse.Namespace) -> int:
     """Ejecuta el ciclo completo de detección, renderizado y notificación."""
     state = load_state(STATE_FILE)
@@ -193,9 +248,16 @@ def run_pipeline(args: argparse.Namespace) -> int:
             len(to_seed_only),
         )
 
+    need_weekly, week_key = should_send_weekly_meta(
+        state,
+        force=args.weekly_meta,
+    )
+    if args.preview_sample or args.bootstrap_silent:
+        need_weekly = args.weekly_meta
+
     bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
-    if not args.dry_run and to_notify and (not bot_token or not chat_id):
+    if not args.dry_run and (to_notify or need_weekly) and (not bot_token or not chat_id):
         raise SystemExit(
             "Faltan variables TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID. "
             "Usa --dry-run para probar localmente o configúralas en GitHub Secrets."
@@ -253,6 +315,19 @@ def run_pipeline(args: argparse.Namespace) -> int:
         if idx < len(to_notify) - 1:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
 
+    weekly_sent = False
+    if need_weekly:
+        if to_notify and not args.dry_run:
+            time.sleep(TELEGRAM_SEND_DELAY_SEC)
+        weekly_sent = _maybe_run_weekly_meta(
+            args=args,
+            session=session,
+            catalog_holder=catalog_holder,
+            week_key=week_key,
+            bot_token=bot_token,
+            chat_id=chat_id,
+        )
+
     if args.dry_run or args.preview_sample:
         LOGGER.info("Modo prueba completado sin modificar state.json.")
         return 0
@@ -260,11 +335,13 @@ def run_pipeline(args: argparse.Namespace) -> int:
     processed = sent_items + to_seed_only
     if processed:
         mark_items_processed(state, processed)
+    if weekly_sent:
+        state["last_weekly_meta_week"] = week_key
 
     changed = update_source_health_and_heartbeat(
         state,
         source_statuses,
-        had_state_change=bool(processed),
+        had_state_change=bool(processed or weekly_sent),
     )
     if changed or processed:
         save_state(state, STATE_FILE)

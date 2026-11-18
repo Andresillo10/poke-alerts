@@ -24,7 +24,14 @@ _ENERGY_COLORS = {
 }
 
 
-def render_deck_sheet(event_title: str, decks: list[BuiltDeck], output_path: Path) -> Path:
+def render_deck_sheet(
+    event_title: str,
+    decks: list[BuiltDeck],
+    output_path: Path,
+    *,
+    header_text: str = "3 MEJORES BARAJAS RECOMENDADAS  •  ESCANEA EL QR EN TCG POCKET",
+    subtitle_prefix: str = "Evento",
+) -> Path:
     """Dibuja una lámina PNG con hasta 3 barajas y sus QR escaneables lado a lado."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     img = Image.new("RGB", (SHEET_WIDTH, SHEET_HEIGHT), "#100B24")
@@ -38,13 +45,10 @@ def render_deck_sheet(event_title: str, decks: list[BuiltDeck], output_path: Pat
 
     # Cabecera
     draw.rounded_rectangle((20, 18, SHEET_WIDTH - 20, 102), radius=18, fill="#1E163F", outline="#8B5CF6", width=2)
-    draw.text(
-        (44, 28),
-        "3 MEJORES BARAJAS RECOMENDADAS  •  ESCANEA EL QR EN TCG POCKET",
-        font=title_font,
-        fill="#FACC15",
-    )
-    event_line = _wrap_text(draw, f"Evento: {event_title}", sub_font, SHEET_WIDTH - 88, 1)
+    title_lines = _wrap_text(draw, header_text, title_font, SHEET_WIDTH - 88, 1)
+    if title_lines:
+        draw.text((44, 28), title_lines[0], font=title_font, fill="#FACC15")
+    event_line = _wrap_text(draw, f"{subtitle_prefix}: {event_title}", sub_font, SHEET_WIDTH - 88, 1)
     if event_line:
         draw.text((44, 68), event_line[0], font=sub_font, fill="#E2E8F0")
 

@@ -252,6 +252,7 @@ class CardCatalog:
         self.cards: list[CardRecord] = []
         self.by_name: dict[str, list[CardRecord]] = {}
         self.by_set_name: dict[tuple[str, str], CardRecord] = {}
+        self.by_card_id: dict[str, CardRecord] = {}
         self._load(raw_cards)
 
     def _load(self, raw_cards: list[dict[str, Any]]) -> None:
@@ -304,6 +305,8 @@ class CardCatalog:
                 self.cards.append(rec)
                 self.by_name.setdefault(rec.name.lower(), []).append(rec)
             self.by_set_name.setdefault((rec.set_code, rec.name.lower()), rec)
+            if rec.card_id:
+                self.by_card_id.setdefault(rec.card_id.lower(), rec)
 
 
 def load_catalog(session: requests.Session) -> CardCatalog:

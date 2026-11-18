@@ -10,6 +10,11 @@ on:
         required: false
         type: boolean
         default: false
+      weekly_meta:
+        description: "Generar y enviar manualmente el Top 3 semanal de torneos Ranked"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -48,11 +53,14 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
+          EXTRA_ARGS=""
           if [ "${{ inputs.preview_mode }}" = "true" ]; then
-            python -m src.main --preview-sample
-          else
-            python -m src.main
+            EXTRA_ARGS="$EXTRA_ARGS --preview-sample"
           fi
+          if [ "${{ inputs.weekly_meta }}" = "true" ]; then
+            EXTRA_ARGS="$EXTRA_ARGS --weekly-meta"
+          fi
+          python -m src.main $EXTRA_ARGS
 
       - name: Commit updated state.json if changed
         run: |

@@ -7,6 +7,7 @@ import json
 import logging
 import time
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import requests
 
@@ -18,6 +19,9 @@ from src.config import (
 )
 from src.deck_qr import ENERGY_ID_LABELS_ES, BuiltDeck
 from src.models import AlertItem
+
+if TYPE_CHECKING:
+    from src.weekly_meta import WeeklyMetaReport
 
 LOGGER = logging.getLogger(__name__)
 
@@ -182,5 +186,40 @@ def send_telegram_deck_sheet(
         bot_token=bot_token,
         chat_id=chat_id,
         caption=build_deck_sheet_caption(item, decks),
+        image_path=sheet_path,
+    )
+
+
+def build_weekly_meta_caption(report: WeeklyMetaReport) -> str:
+    """Construye la descripción HTML del Top 3 semanal para rankear en TCG Pocket."""
+    lines = [
+        "🏆 <b>Top 3 Mazos Semanales para Rankear — TCG Pocket</b>",
+        f"📊 <i>{html.escape(report.window_label)} • {report.analyzed_entries} listas</i>",
+        "📲 <i>En TCG Pocket: Barajas → + Crear nueva → Leer código QR</i>",
+        "",
+    ]
+    for arch in report.archetypes:
+        energy = "/".join(ENERGY_ID_LABELS_ES.get(e, "?") for e in arch.deck.energy_types)
+        lines.append(
+            f"• <b>{html.escape(arch.deck.title)}</b> ({energy}) — "
+            f"{arch.win_rate:.1f}% WR ({arch.entries} jug.) | <i>{html.escape(arch.best_note)}</i>"
+        )
+    lines.append("")
+    lines.append("📡 <i>Fuente: Limitless TCG Pocket (Torneos Estándar últimos 7 días)</i>")
+    return "\n".join(lines)[:TELEGRAM_CAPTION_LIMIT]
+
+
+def send_telegram_weekly_meta(
+    *,
+    bot_token: str,
+    chat_id: str,
+    report: WeeklyMetaReport,
+    sheet_path: Path,
+) -> None:
+    """Envía la lámina PNG con los 3 mejores mazos semanales de torneos y sus QR."""
+    _post_photo_to_telegram(
+        bot_token=bot_token,
+        chat_id=chat_id,
+        caption=build_weekly_meta_caption(report),
         image_path=sheet_path,
     )

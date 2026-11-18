@@ -25,6 +25,7 @@ def default_state() -> dict[str, Any]:
         "initialized": False,
         "last_run_utc": None,
         "last_commit_heartbeat_utc": None,
+        "last_weekly_meta_week": None,
         "seen_uids": {},
         "seen_topics": {},
         "started_notified": {},
@@ -238,3 +239,21 @@ def update_source_health_and_heartbeat(
         state["last_commit_heartbeat_utc"] = now_iso
 
     return needs_heartbeat
+
+
+def should_send_weekly_meta(
+    state: dict[str, Any],
+    *,
+    now_utc: datetime | None = None,
+    force: bool = False,
+) -> tuple[bool, str]:
+    """Determina si corresponde enviar el Top 3 semanal de torneos (lunes >=08:00 COT)."""
+    ref = now_utc or datetime.now(timezone.utc)
+    col_dt = ref.astimezone(timezone(timedelta(hours=-5)))
+    iso_year, iso_week, _ = col_dt.isocalendar()
+    week_key = f"{iso_year}-W{iso_week:02d}"
+    if force:
+        return True, week_key
+    is_monday_morning = col_dt.weekday() == 0 and col_dt.hour >= 8
+    already_sent = state.get("last_weekly_meta_week") == week_key
+    return (is_monday_morning and not already_sent), week_key
