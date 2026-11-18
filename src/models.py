@@ -5,7 +5,74 @@ from __future__ import annotations
 import re
 import unicodedata
 from dataclasses import dataclass, replace
+from datetime import date
 from typing import Literal
+
+_MONTH_NUMS = {
+    "january": 1, "jan": 1, "enero": 1, "ene": 1,
+    "february": 2, "feb": 2, "febrero": 2,
+    "march": 3, "mar": 3, "marzo": 3,
+    "april": 4, "apr": 4, "abril": 4, "abr": 4,
+    "may": 5, "mayo": 5,
+    "june": 6, "jun": 6, "junio": 6,
+    "july": 7, "jul": 7, "julio": 7,
+    "august": 8, "aug": 8, "agosto": 8, "ago": 8,
+    "september": 9, "sep": 9, "septiembre": 9,
+    "october": 10, "oct": 10, "octubre": 10,
+    "november": 11, "nov": 11, "noviembre": 11,
+    "december": 12, "dec": 12, "diciembre": 12, "dic": 12,
+}
+_MONTH_ES_SHORT = {
+    1: "ene", 2: "feb", 3: "mar", 4: "abr", 5: "may", 6: "jun",
+    7: "jul", 8: "ago", 9: "sep", 10: "oct", 11: "nov", 12: "dic",
+}
+_ISO_DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
+_TEXT_DATE_RE = re.compile(r"\b([A-Za-záéíóúÁÉÍÓÚ]{3,10})\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b", re.I)
+
+
+def parse_date_flex(raw: str | None) -> date | None:
+    """Convierte fechas ISO o cadenas en inglés ('January 15, 2027') a date."""
+    if not raw:
+        return None
+    iso_m = _ISO_DATE_RE.search(raw)
+    if iso_m:
+        try:
+            return date.fromisoformat(iso_m.group(1))
+        except ValueError:
+            pass
+    txt_m = _TEXT_DATE_RE.search(raw)
+    if txt_m:
+        m_num = _MONTH_NUMS.get(txt_m.group(1).lower())
+        if m_num:
+            try:
+                return date(int(txt_m.group(3)), m_num, int(txt_m.group(2)))
+            except ValueError:
+                return None
+    return None
+
+
+def format_date_es(d: date | None) -> str:
+    """Formatea una fecha compacta legible en español ('15 ene 2027')."""
+    if not d:
+        return ""
+    return f"{d.day:02d} {_MONTH_ES_SHORT[d.month]} {d.year}"
+
+
+def format_item_dates_es(starts_on: str | None, expires_at: str | None) -> str:
+    """Formatea las fechas de una alerta a español legible sin rangos ISO duplicados."""
+    if not expires_at:
+        s_dt = parse_date_flex(starts_on)
+        return format_date_es(s_dt) if s_dt else ""
+    isos = _ISO_DATE_RE.findall(expires_at)
+    if len(isos) >= 2:
+        d1, d2 = parse_date_flex(isos[0]), parse_date_flex(isos[1])
+        if d1 and d2:
+            return format_date_es(d1) if d1 == d2 else f"Del {format_date_es(d1)} al {format_date_es(d2)}"
+    if len(isos) == 1 or re.search(r"\b(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|aug|sep|oct|nov|dec)\b", expires_at, re.I):
+        d = parse_date_flex(expires_at)
+        if d:
+            return format_date_es(d)
+    return expires_at
 
 GameType = Literal["pogo", "tcgp"]
 AlertKind = Literal["code", "event", "news"]

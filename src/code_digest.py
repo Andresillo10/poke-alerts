@@ -13,61 +13,13 @@ from PIL import Image, ImageDraw
 
 from src.card_renderer import _load_font, _wrap_text
 from src.config import TELEGRAM_CAPTION_LIMIT
-from src.models import AlertItem
+from src.models import AlertItem, format_date_es, parse_date_flex
 from src.translator import translate_en_to_es
 
 _COT_TZ = timezone(timedelta(hours=-5))
 _CARD_W = 1080
 _CARD_H = 720
-
-_MONTH_NUMS = {
-    "january": 1, "jan": 1,
-    "february": 2, "feb": 2,
-    "march": 3, "mar": 3,
-    "april": 4, "apr": 4,
-    "may": 5,
-    "june": 6, "jun": 6,
-    "july": 7, "jul": 7,
-    "august": 8, "aug": 8,
-    "september": 9, "sep": 9,
-    "october": 10, "oct": 10,
-    "november": 11, "nov": 11,
-    "december": 12, "dec": 12,
-}
-_MONTH_ES_SHORT = {
-    1: "ene", 2: "feb", 3: "mar", 4: "abr", 5: "may", 6: "jun",
-    7: "jul", 8: "ago", 9: "sep", 10: "oct", 11: "nov", 12: "dic",
-}
 _ISO_DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
-_TEXT_DATE_RE = re.compile(r"\b([A-Za-z]{3,9})\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b", re.I)
-
-
-def parse_date_flex(raw: str | None) -> date | None:
-    """Convierte fechas ISO o cadenas en inglés ('January 15, 2027') a date."""
-    if not raw:
-        return None
-    iso_m = _ISO_DATE_RE.search(raw)
-    if iso_m:
-        try:
-            return date.fromisoformat(iso_m.group(1))
-        except ValueError:
-            pass
-    txt_m = _TEXT_DATE_RE.search(raw)
-    if txt_m:
-        m_num = _MONTH_NUMS.get(txt_m.group(1).lower())
-        if m_num:
-            try:
-                return date(int(txt_m.group(3)), m_num, int(txt_m.group(2)))
-            except ValueError:
-                return None
-    return None
-
-
-def format_date_es(d: date | None) -> str:
-    """Formatea una fecha compacta legible en español ('15 ene 2027')."""
-    if not d:
-        return ""
-    return f"{d.day:02d} {_MONTH_ES_SHORT[d.month]} {d.year}"
 
 
 def format_validity_window(

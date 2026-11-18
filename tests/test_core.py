@@ -1207,6 +1207,9 @@ class CorePipelineTests(unittest.TestCase):
             cap_df = build_telegram_caption(serebii_ev)
             self.assertIn("Qué hacer:", cap_df)
             self.assertEqual(apply_post_translation_fixes("Win 9 battles & Open 2 booster packs"), "Gana 9 partida(s) & Abre 2 sobre(s)")
+            from src.models import format_item_dates_es
+            self.assertEqual(format_item_dates_es(None, "January 15, 2027 at 11:59 PM"), "15 ene 2027")
+            self.assertEqual(format_item_dates_es("2026-11-19", "2026-11-19 al 2026-11-19"), "19 nov 2026")
             self.assertIn("renderPogoDrawer", dash_html)
             self.assertIn("Diseñado y Desarrollado por Andres Camelo 3165364723 — Estado CK10", dash_html)
 

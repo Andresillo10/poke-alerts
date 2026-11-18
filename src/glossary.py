@@ -104,6 +104,9 @@ OFFICIAL_TERMS_ES: dict[str, str] = {
     "Razz Berry": "Baya Frambu",
     "Pinap Berry": "Baya Pinia",
     "Nanab Berry": "Baya Latano",
+    "Pokémon Pikachu Classic Clog": "Zueco clásico Pokémon Pikachu",
+    "Pokémon Gengar Classic Clog": "Zueco clásico Pokémon Gengar",
+    "Pokémon Jigglypuff Classic Platform Clog": "Zueco con plataforma clásico Pokémon Jigglypuff",
     "Classic Platform Clog Avatar Item": "Zueco con plataforma clásico (Artículo de avatar)",
     "Classic Clog Avatar Item": "Zueco clásico (Artículo de avatar)",
     "adidas Shoes Avatar Item": "Zapatos adidas (Artículo de avatar)",
@@ -188,6 +191,9 @@ _REGEX_ES_CLEANUPS: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"\bfor catching\b", re.I), "al capturar"),
     (re.compile(r"\bto conseguir hasta$", re.I), "para reclamar recompensas"),
     (re.compile(r"\bpara conseguir hasta$", re.I), "para reclamar recompensas"),
+    (re.compile(r"\b(\d+)\s+sobre de cartas\b", re.I), lambda m: m.group(0) if m.group(1) == "1" else f"{m.group(1)} sobres de cartas"),
+    (re.compile(r"\bPikachu de Pokémon Zueco clásico\b", re.I), "Zueco clásico Pokémon Pikachu"),
+    (re.compile(r"\bJigglypuff Pokémon Zueco con plataforma clásico\b", re.I), "Zueco con plataforma clásico Pokémon Jigglypuff"),
 )
 
 _SORTED_TERMS = sorted(OFFICIAL_TERMS_ES.keys(), key=len, reverse=True)

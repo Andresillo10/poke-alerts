@@ -28,7 +28,7 @@ from src.deck_qr import (
     describe_deck_strategy,
 )
 from src.event_guide import build_event_action_guide
-from src.models import AlertItem
+from src.models import AlertItem, format_item_dates_es
 from src.pogo_intel import PogoTacticalCard
 
 LOGGER = logging.getLogger(__name__)
@@ -68,9 +68,10 @@ def build_telegram_caption(item: AlertItem) -> str:
     ]
     if item.rewards:
         lines.append(f"🎁 <b>Recompensa:</b> {html.escape(item.rewards)}")
-    if item.expires_at:
+    pretty_dates = format_item_dates_es(item.starts_on, item.expires_at)
+    if pretty_dates:
         date_label = "Válido hasta" if item.kind == "code" else "Fechas"
-        lines.append(f"⏳ <b>{date_label}:</b> {html.escape(item.expires_at)}")
+        lines.append(f"⏳ <b>{date_label}:</b> {html.escape(pretty_dates)}")
 
     if item.promo_code:
         lines.append("")
@@ -263,35 +264,6 @@ def send_telegram_single_deck(
         image_path=card_path,
         keyboard_json=json.dumps(keyboard, ensure_ascii=False),
     )
-
-
-def send_telegram_weekly_codes(
-    *,
-    bot_token: str,
-    chat_id: str,
-    entries: list[ActiveCodeEntry],
-    card_path: Path,
-    week_label: str,
-) -> None:
-    """Envía la tarjeta consolidada de códigos semanales de los lunes a las 02:00 AM."""
-    caption = build_weekly_codes_caption(entries, week_label=week_label)
-    keyboard = build_weekly_codes_keyboard(entries)
-    _post_photo_to_telegram(
-        bot_token=bot_token,
-        chat_id=chat_id,
-        caption=caption,
-        image_path=card_path,
-        keyboard_json=json.dumps(keyboard, ensure_ascii=False) if keyboard.get("inline_keyboard") else None,
-    )
-    if len(entries) > 4:
-        extra_lines = [
-            "📋 <b>Listado completo de códigos activos esta semana:</b>",
-            *[
-                f"• <b>{html.escape(e.game_label)}</b>: <code>{html.escape(e.code)}</code> — {html.escape(e.rewards_es)} ({html.escape(e.window_label)})"
-                for e in entries[4:]
-            ],
-        ]
-        send_telegram_text(bot_token=bot_token, chat_id=chat_id, text="\n".join(extra_lines)[:4000])
 
 
 def build_pogo_tactical_caption(

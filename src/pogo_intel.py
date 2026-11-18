@@ -872,7 +872,7 @@ def _build_weekly_ultra_master_card(catalog: PogoCatalog) -> PogoTacticalCard | 
         right_rows=tuple(right_rows or ["Sin datos Master."]),
         explanation=(
             f"Panorama semanal de ligas altas en PvPoke: {format_species_es(top_u.species_name)} marca el ritmo en Ultra "
-            f"y {format_species_es(master[0].species_name) if master else 'los legendarios 100%'} dominan Master."
+            + (f"y {format_species_es(master[0].species_name)} domina Master." if master else "y los legendarios 100% dominan Master.")
         ),
         search_label="Filtro líderes Ultra/Master (toca para copiar):",
         search_string=",".join(tokens[:6]),

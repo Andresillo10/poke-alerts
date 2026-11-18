@@ -7,7 +7,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 from src.config import GAME_LABELS, KIND_LABELS
-from src.models import AlertItem
+from src.event_guide import build_event_action_guide
+from src.models import AlertItem, format_item_dates_es
 
 CARD_WIDTH = 1080
 CARD_HEIGHT = 600
@@ -314,17 +315,18 @@ def render_alert_card(item: AlertItem, output_path: Path) -> Path:
                         draw.text((PADDING + 24, inner_y), line, font=footer_font, fill=theme["muted"])
                         inner_y += 26
         else:
-            tip = (
-                "Consejo: toca 'Ver detalles' abajo para revisar misiones y horarios."
-                if item.game == "tcgp"
-                else "Consejo: toca 'Ver detalles' abajo para revisar Pokémon y bonus."
-            )
-            draw.text((PADDING + 24, box_bottom - 38), tip, font=footer_font, fill=theme["muted"])
+            raw_tip = build_event_action_guide(item, compact=True)
+            clean_tip = raw_tip.replace("📍 ", "").replace("🎯 ", "").replace("➔", "->")
+            for line in _wrap_text(draw, f"Qué hacer: {clean_tip}", footer_font, content_w - 48, max_lines=2):
+                if inner_y <= box_bottom - 22:
+                    draw.text((PADDING + 24, inner_y), line, font=footer_font, fill=theme["muted"])
+                    inner_y += 25
 
     # Pie informativo
     draw.line((PADDING, 512, CARD_WIDTH - PADDING, 512), fill="#334155", width=2)
     date_prefix = "Válido hasta:" if item.kind == "code" else "Fechas:"
-    left_footer = f"{date_prefix} {item.expires_at}" if item.expires_at else "Estado: Activo ahora"
+    pretty_dates = format_item_dates_es(item.starts_on, item.expires_at)
+    left_footer = f"{date_prefix} {pretty_dates}" if pretty_dates else "Estado: Activo ahora"
     right_footer = f"Fuente: {item.source_name}"
 
     if draw.textlength(left_footer, font=footer_font) > content_w - 260:
