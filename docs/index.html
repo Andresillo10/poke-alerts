@@ -251,6 +251,43 @@
     @media (max-width: 920px) { .controls-bar { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .controls-bar { grid-template-columns: 1fr; } }
 
+    .calendar-bar {
+      background: var(--surface);
+      border: 1px solid var(--selection);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cal-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+      min-width: 0;
+    }
+    .cal-select { width: auto; min-width: 122px; height: 36px; font-size: 12px; }
+    @media (max-width: 560px) { .cal-select { flex: 1 1 130px; min-width: 0; } }
+    .week-pills { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+    .week-btn {
+      cursor: pointer;
+      background: var(--dark);
+      color: var(--muted);
+      border: 1px solid var(--selection);
+      border-radius: 7px;
+      padding: 6px 10px;
+      font-family: "Segoe UI", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      transition: all 0.14s ease;
+    }
+    .week-btn:hover { border-color: var(--blue); color: var(--text); }
+    .week-btn.active { background: var(--btn-sec); border-color: var(--blue); color: #ffffff; }
+
     input, select {
       width: 100%;
       height: 40px;
@@ -644,6 +681,41 @@
       <button class="btn" id="btnClear">🧹 Limpiar</button>
     </section>
 
+    <!-- Barra de Historial por Año, Mes y Semana (S1..S4 / Esta semana) -->
+    <section class="calendar-bar" aria-label="Filtros por fecha">
+      <div class="cal-group">
+        <button class="btn btn-sm" id="btnThisWeek" onclick="toggleThisWeek()">📅 Esta semana</button>
+        <select class="cal-select" id="fYear" aria-label="Filtrar por año">
+          <option value="">Todos los años</option>
+        </select>
+        <select class="cal-select" id="fMonth" aria-label="Filtrar por mes">
+          <option value="">Todos los meses</option>
+          <option value="01">Enero</option>
+          <option value="02">Febrero</option>
+          <option value="03">Marzo</option>
+          <option value="04">Abril</option>
+          <option value="05">Mayo</option>
+          <option value="06">Junio</option>
+          <option value="07">Julio</option>
+          <option value="08">Agosto</option>
+          <option value="09">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+      </div>
+      <div class="cal-group">
+        <div class="week-pills" id="weekPills">
+          <button class="week-btn active" onclick="selectWeekBand('')">Todo el mes</button>
+          <button class="week-btn" onclick="selectWeekBand('1')">S1 (1–7)</button>
+          <button class="week-btn" onclick="selectWeekBand('2')">S2 (8–14)</button>
+          <button class="week-btn" onclick="selectWeekBand('3')">S3 (15–21)</button>
+          <button class="week-btn" onclick="selectWeekBand('4')">S4 (22–fin)</button>
+        </div>
+        <span class="pill blue" id="calHint" style="display:none;"></span>
+      </div>
+    </section>
+
     <!-- Barra Principal de Vistas -->
     <div class="toolbar">
       <div class="toolbar-group">
@@ -710,8 +782,136 @@
     let marks = loadMarks();
     let selectedGame = "all"; // Inicia mostrando todo (GO + TCG Pocket)
     let selectedSlice = "all"; // "all" | "kind:event" | "kind:code" | "kind:news" | "cat:<Nombre>"
+    let selectedWeekBand = ""; // "" | "1" | "2" | "3" | "4"
+    let onlyThisWeek = false;
     let viewMode = "cards";
     let activeModalId = null;
+
+    const MONTH_NAMES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const MONTH_SHORT = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+
+    function getTodayCol() {
+      return new Date(Date.now() - 5 * 3600 * 1000).toISOString().slice(0, 10);
+    }
+
+    function addDaysIso(iso, delta) {
+      const [y, m, d] = iso.split("-").map(Number);
+      const dt = new Date(Date.UTC(y, m - 1, d + delta));
+      return dt.toISOString().slice(0, 10);
+    }
+
+    function fmtShortIso(iso) {
+      const [y, m, d] = iso.split("-").map(Number);
+      return `${d} ${MONTH_SHORT[m - 1]}`;
+    }
+
+    function getThisWeekRange(todayCol) {
+      const [y, m, d] = todayCol.split("-").map(Number);
+      const dt = new Date(Date.UTC(y, m - 1, d));
+      const dow = (dt.getUTCDay() + 6) % 7; // Lunes = 0 .. Domingo = 6
+      const start = addDaysIso(todayCol, -dow);
+      const end = addDaysIso(start, 6);
+      return [start, end];
+    }
+
+    function getEventWindow(ev, todayCol) {
+      const effStart = ev.start_date || (ev.first_seen_at ? ev.first_seen_at.slice(0, 10) : todayCol);
+      const effEnd = ev.end_date || (ev._status === "activo" ? (effStart > todayCol ? effStart : todayCol) : effStart);
+      return effEnd < effStart ? [effStart, effStart] : [effStart, effEnd];
+    }
+
+    function getActiveCalendarWindow() {
+      const todayCol = getTodayCol();
+      if (onlyThisWeek) {
+        const [start, end] = getThisWeekRange(todayCol);
+        return { start, end, label: `Esta semana (${fmtShortIso(start)} – ${fmtShortIso(end)})` };
+      }
+      const fy = document.getElementById("fYear").value;
+      const fm = document.getElementById("fMonth").value;
+      if (!fy && !fm && !selectedWeekBand) return null;
+
+      if (fy && !fm && !selectedWeekBand) {
+        return { start: `${fy}-01-01`, end: `${fy}-12-31`, label: `Año ${fy}` };
+      }
+      if (!fy && fm && !selectedWeekBand) {
+        // Mes específico en cualquier año del catálogo -> evaluado por solapamiento mes a mes en filterCalendarEvent
+        return { start: "", end: "", monthOnly: fm, label: `Mes de ${MONTH_NAMES[Number(fm) - 1]} (todos los años)` };
+      }
+      const yNum = Number(fy || todayCol.slice(0, 4));
+      const mNum = Number(fm || todayCol.slice(5, 7));
+      const ym = `${yNum}-${String(mNum).padStart(2, "0")}`;
+      const lastDay = new Date(Date.UTC(yNum, mNum, 0)).getUTCDate();
+      const mName = `${MONTH_NAMES[mNum - 1]} ${yNum}`;
+      if (!selectedWeekBand) {
+        return { start: `${ym}-01`, end: `${ym}-${String(lastDay).padStart(2, "0")}`, label: mName };
+      }
+      const bands = {
+        "1": [1, 7],
+        "2": [8, 14],
+        "3": [15, 21],
+        "4": [22, lastDay],
+      };
+      const [d1, d2] = bands[selectedWeekBand] || [1, lastDay];
+      return {
+        start: `${ym}-${String(d1).padStart(2, "0")}`,
+        end: `${ym}-${String(d2).padStart(2, "0")}`,
+        label: `${mName} • Semana ${selectedWeekBand} (${d1}–${d2})`,
+      };
+    }
+
+    function matchesCalendarWindow(ev, calWin, todayCol) {
+      if (!calWin) return true;
+      const [evStart, evEnd] = getEventWindow(ev, todayCol);
+      if (calWin.monthOnly) {
+        const startY = Number(evStart.slice(0, 4));
+        const endY = Number(evEnd.slice(0, 4));
+        for (let y = startY; y <= endY; y++) {
+          const lastD = new Date(Date.UTC(y, Number(calWin.monthOnly), 0)).getUTCDate();
+          const mStart = `${y}-${calWin.monthOnly}-01`;
+          const mEnd = `${y}-${calWin.monthOnly}-${String(lastD).padStart(2, "0")}`;
+          if (evStart <= mEnd && evEnd >= mStart) return true;
+        }
+        return false;
+      }
+      return evStart <= calWin.end && evEnd >= calWin.start;
+    }
+
+    function autoRelaxStatusForCalendar(allEvents) {
+      const fStatus = document.getElementById("fStatus");
+      if (!fStatus.value) return;
+      const calWin = getActiveCalendarWindow();
+      if (!calWin) return;
+      const todayCol = getTodayCol();
+      const pool = allEvents.filter(ev => matchesCalendarWindow(ev, calWin, todayCol));
+      if (pool.length > 0 && !pool.some(ev => ev._status === fStatus.value)) {
+        fStatus.value = "";
+      }
+    }
+
+    function toggleThisWeek() {
+      onlyThisWeek = !onlyThisWeek;
+      if (onlyThisWeek) {
+        document.getElementById("fYear").value = "";
+        document.getElementById("fMonth").value = "";
+        selectedWeekBand = "";
+      }
+      autoRelaxStatusForCalendar(getEventsWithStatus());
+      render();
+    }
+
+    function selectWeekBand(band) {
+      onlyThisWeek = false;
+      selectedWeekBand = selectedWeekBand === band ? "" : band;
+      if (selectedWeekBand) {
+        const todayCol = getTodayCol();
+        const fy = document.getElementById("fYear");
+        const fm = document.getElementById("fMonth");
+        if (!fy.value) fy.value = todayCol.slice(0, 4);
+        if (!fm.value) fm.value = todayCol.slice(5, 7);
+      }
+      autoRelaxStatusForCalendar(getEventsWithStatus());
+      render();
+    }
 
     function loadMarks() {
       try {
@@ -850,6 +1050,52 @@
       } else {
         fb.style.display = "none";
       }
+
+      // Sincroniza controles de calendario (Año / Mes / Semana S1..S4 / Esta semana)
+      const todayCol = getTodayCol();
+      const [wStart, wEnd] = getThisWeekRange(todayCol);
+      const twBtn = document.getElementById("btnThisWeek");
+      twBtn.className = onlyThisWeek ? "btn btn-secondary btn-sm" : "btn btn-sm";
+      twBtn.textContent = `📅 Esta semana (${fmtShortIso(wStart)}–${fmtShortIso(wEnd)})`;
+
+      const fySel = document.getElementById("fYear");
+      const fmSel = document.getElementById("fMonth");
+      fySel.classList.toggle("filter-active", Boolean(fySel.value));
+      fmSel.classList.toggle("filter-active", Boolean(fmSel.value));
+
+      const weekBtns = document.querySelectorAll("#weekPills .week-btn");
+      const codes = ["", "1", "2", "3", "4"];
+      weekBtns.forEach((btn, idx) => {
+        btn.classList.toggle("active", !onlyThisWeek && selectedWeekBand === codes[idx]);
+      });
+
+      const calWin = getActiveCalendarWindow();
+      const calHint = document.getElementById("calHint");
+      if (calWin) {
+        calHint.style.display = "inline-flex";
+        calHint.textContent = `📆 ${calWin.label}`;
+      } else {
+        calHint.style.display = "none";
+      }
+    }
+
+    function renderYearOptions(all) {
+      const fySel = document.getElementById("fYear");
+      const curVal = fySel.value;
+      const todayCol = getTodayCol();
+      const years = new Set();
+      for (const ev of all) {
+        const [s, e] = getEventWindow(ev, todayCol);
+        const sy = Number(s.slice(0, 4));
+        const ey = Math.min(Number(e.slice(0, 4)), sy + 3);
+        for (let y = sy; y <= ey; y++) years.add(String(y));
+      }
+      const sortedYears = [...years].sort();
+      const desired = ['<option value="">Todos los años</option>', ...sortedYears.map(y => `<option value="${y}">${y}</option>`)].join("");
+      if (fySel.innerHTML !== desired) {
+        fySel.innerHTML = desired;
+        if (sortedYears.includes(curVal)) fySel.value = curVal;
+      }
     }
 
     function renderGameHeader(all) {
@@ -954,10 +1200,13 @@
       const q = document.getElementById("q").value.trim().toLowerCase();
       const fs = document.getElementById("fStatus").value;
       const fch = document.getElementById("fCheck").value;
+      const todayCol = getTodayCol();
+      const calWin = getActiveCalendarWindow();
 
       return gameEvents.filter(ev => {
         if (!applySlice(ev, selectedSlice)) return false;
         if (fs && ev._status !== fs) return false;
+        if (calWin && !matchesCalendarWindow(ev, calWin, todayCol)) return false;
         const mk = getMark(ev.id);
         if (fch === "pending" && mk.done) return false;
         if (fch === "done" && !mk.done) return false;
@@ -1198,15 +1447,21 @@
 
     function render() {
       copyRegistry = [];
-      syncStatusControls();
       const all = getEventsWithStatus();
+      renderYearOptions(all);
+      syncStatusControls();
       renderGameHeader(all);
+      const todayCol = getTodayCol();
+      const calWin = getActiveCalendarWindow();
       const gameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
+      const calEvents = calWin ? gameEvents.filter(e => matchesCalendarWindow(e, calWin, todayCol)) : gameEvents;
       renderStats(gameEvents);
-      renderCategories(gameEvents);
+      renderCategories(calEvents);
 
       const list = getFiltered(gameEvents);
-      document.getElementById("countLabel").textContent = `Mostrando ${list.length} de ${gameEvents.length}`;
+      document.getElementById("countLabel").textContent = calWin
+        ? `Mostrando ${list.length} de ${calEvents.length} en período (${gameEvents.length} total)`
+        : `Mostrando ${list.length} de ${gameEvents.length}`;
       const root = document.getElementById("content");
 
       if (!list.length) {
@@ -1347,10 +1602,21 @@
       document.getElementById(id).addEventListener("input", render);
       document.getElementById(id).addEventListener("change", render);
     }
+    for (const id of ["fYear", "fMonth"]) {
+      document.getElementById(id).addEventListener("change", () => {
+        onlyThisWeek = false;
+        autoRelaxStatusForCalendar(getEventsWithStatus());
+        render();
+      });
+    }
     document.getElementById("btnClear").onclick = () => {
       document.getElementById("q").value = "";
       document.getElementById("fStatus").value = "";
       document.getElementById("fCheck").value = "";
+      document.getElementById("fYear").value = "";
+      document.getElementById("fMonth").value = "";
+      selectedWeekBand = "";
+      onlyThisWeek = false;
       selectedSlice = "all";
       render();
     };
