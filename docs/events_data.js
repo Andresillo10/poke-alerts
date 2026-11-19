@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-18 14:57 COT",
+  "generated_at": "2026-11-18 20:23 COT",
   "stats": {
     "total": 70,
     "pogo": 57,
@@ -1205,7 +1205,9 @@ window.POKE_ALERTS_DB = {
       "highlights": [
         "Misiones: Inicia sesión | Abre sobres con energía: 1 sobre de cartas → Sobre Promo C Series Vol. 1 | Abre sobres con energía: 2 sobres de cartas",
         "Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo C Series Vol. 1, Deoxys, Inkay",
-        "Misiones: Gana 1 partida(s) → 1 | Gana 3 partida(s) → 1× Sobre Promo | Gana 5 partida(s) → 1 | Gana 9 partida(s) → 1"
+        "Misiones: Gana 1 partida(s) → 1 | Gana 3 partida(s) → 1× Sobre Promo | Gana 5 partida(s) → 1 | Gana 9 partida(s) → 1",
+        "Misiones: Inicia sesión | Abre sobres con energía: 1 sobre de cartas → Sobre Promo Serie C vol. 1 | Abre sobres con energía: 2 sobres de cartas",
+        "Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -1299,7 +1301,7 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/dual-fusion-c1-limited-battles/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T19:57:03Z"
+      "last_updated_at": "2026-11-19T01:23:52Z"
     },
     {
       "id": "tcgp:anniversary-campaign-celebration-second",
@@ -3638,7 +3640,7 @@ window.POKE_ALERTS_DB = {
           "search_string": "+Grookey&4*,3*",
           "info_label": "📊 Ver ranking en PvPoke",
           "info_url": "https://pvpoke.com/rankings/all/1500/overall/rillaboom/",
-          "context_label": "Evento GO: Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado"
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
         },
         {
           "title": "Scorbunny → Raboot → Cinderace",
@@ -3665,31 +3667,32 @@ window.POKE_ALERTS_DB = {
           "search_string": "+Scorbunny&4*,3*",
           "info_label": "📊 Ver ranking en PvPoke",
           "info_url": "https://pvpoke.com/rankings/all/1500/overall/cinderace/",
-          "context_label": "Evento GO: Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado"
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
         },
         {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "title": "Sobble → Drizzile → Inteleon",
+          "subtitle": "Tipos: Agua • Salvaje Hundo Nv.30/35: 940 / 1019",
           "primary_type": "water",
-          "badge_label": "GUÍA EVENTO GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
           "left_rows": [
-            "Bonuses: 2× Catch Candy",
-            "Featured Pokémon: Grookey, Scorbunny, Sobble",
-            "Shinies available: Grookey"
+            "Base: Sobble (PC 100%)",
+            "• Salvaje máx Nv.30: 940",
+            "• Clima máx Nv.35:  1019",
+            "• Misión / Huevo:   470 / 627",
+            "Final: Inteleon",
+            "• PC 100% Nv.40/50: 2964 / 3351"
           ],
-          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_heading": "VEREDICTO PvP Y RAIDS",
           "right_rows": [
-            "Revisa Investigaciones Temporales antes del cierre",
-            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
-            "Marca el evento en el panel al completar sus premios"
+            "PvE Raids (Agua): Water Gun + Hydro Cannon"
           ],
-          "explanation": "Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro de especies del evento en tu caja:",
-          "search_string": "Grookey,Scorbunny,Sobble&3*,4*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-19/",
-          "context_label": "Evento GO: Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado"
+          "explanation": "Familia Sobble → Drizzile → Inteleon: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Water Gun + Hydro Cannon.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Sobble&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/inteleon/",
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
         }
       ],
       "sources": [
@@ -3699,7 +3702,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/pokemonspotlighthour2026-11-19/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
+      "last_updated_at": "2026-11-19T01:23:52Z"
     },
     {
       "id": "pogo:eternamax-eternatus-returns",

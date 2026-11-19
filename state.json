@@ -1,19 +1,20 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-18T15:23:34Z",
-  "last_commit_heartbeat_utc": "2026-11-18T15:23:34Z",
+  "last_run_utc": "2026-11-19T01:23:52Z",
+  "last_commit_heartbeat_utc": "2026-11-19T01:23:52Z",
   "last_weekly_meta_week": null,
   "one_time_ping_sent": "2026-11-18-09",
+  "deck_update_sent": "2026-11-18-20",
   "seen_uids": {
     "leekduck-promo:ADIDASxPOKEMON": "2026-11-17T18:05:14Z",
     "leekduck-promo:POKEMONGOxCROCSxELECTRIFYING": "2026-11-17T18:05:14Z",
     "leekduck-promo:POKEMONGOxCROCSxENCHANTING": "2026-11-17T18:05:14Z",
     "leekduck-promo:POKEMONGOxCROCSxMELODY": "2026-11-17T18:05:14Z",
     "scrapedduck:go-wild-area-gigantamax-machamp-power-up-timed-research": "2026-11-17T18:05:14Z",
-    "serebii-tcgp:https://www.serebii.net/tcgpocket/events/dualfusionlimitedbattles.shtml": "2026-11-18T12:34:10Z",
+    "serebii-tcgp:https://www.serebii.net/tcgpocket/events/dualfusionlimitedbattles.shtml": "2026-11-19T01:23:52Z",
     "scrapedduck:gbl-twilight-trails_great-league_ultra-league-mega-edition_2026-go-laic-cup": "2026-11-17T18:05:14Z",
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
-    "scrapedduck:pokemonspotlighthour2026-11-19": "2026-11-17T18:05:14Z",
+    "scrapedduck:pokemonspotlighthour2026-11-19": "2026-11-19T01:23:52Z",
     "scrapedduck:minior-showers-leonids-2026": "2026-11-17T18:05:14Z",
     "scrapedduck:eternamax-eternatus-max-battles-2026": "2026-11-17T18:05:14Z",
     "scrapedduck:november-communityday2026": "2026-11-17T18:05:14Z",
@@ -93,10 +94,10 @@
     "pogo:code:POKEMONGOXCROCSXENCHANTING": "2026-11-17T18:05:14Z",
     "pogo:code:POKEMONGOXCROCSXMELODY": "2026-11-17T18:05:14Z",
     "pogo:go-wild-area-gigantamax-machamp-power-up-timed": "2026-11-17T18:05:14Z",
-    "tcgp:dual-fusion-limited-battles": "2026-11-18T12:34:10Z",
+    "tcgp:dual-fusion-limited-battles": "2026-11-19T01:23:52Z",
     "pogo:great-league-ultra-league-mega-edition-and-2026": "2026-11-17T18:05:14Z",
     "pogo:cresselia-and-darkrai-raid-hour": "2026-11-18T12:34:10Z",
-    "pogo:grookey-scorbunny-and-sobble-spotlight-hour": "2026-11-17T18:05:14Z",
+    "pogo:grookey-scorbunny-and-sobble-spotlight-hour": "2026-11-19T01:23:52Z",
     "pogo:minior-showers-leonids-2026": "2026-11-17T18:05:14Z",
     "pogo:eternamax-eternatus-returns": "2026-11-17T18:05:14Z",
     "pogo:pawniard-community-day": "2026-11-17T18:05:14Z",
@@ -175,8 +176,10 @@
     "pogo:cresselia-and-darkrai-raid-hour": "2026-11-18T12:34:10Z",
     "scrapedduck:gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup": "2026-11-18T12:34:10Z",
     "pogo:ultra-league-master-league-mega-edition-and-2026": "2026-11-18T12:34:10Z",
-    "serebii-tcgp:https://www.serebii.net/tcgpocket/events/dualfusionlimitedbattles.shtml": "2026-11-18T12:34:10Z",
-    "tcgp:dual-fusion-limited-battles": "2026-11-18T12:34:10Z"
+    "serebii-tcgp:https://www.serebii.net/tcgpocket/events/dualfusionlimitedbattles.shtml": "2026-11-19T01:23:52Z",
+    "tcgp:dual-fusion-limited-battles": "2026-11-19T01:23:52Z",
+    "scrapedduck:pokemonspotlighthour2026-11-19": "2026-11-19T01:23:52Z",
+    "pogo:grookey-scorbunny-and-sobble-spotlight-hour": "2026-11-19T01:23:52Z"
   },
   "source_failures": {
     "LeekDuck Promo": 0,
@@ -184,6 +187,7 @@
     "Pokémon GO Live (ES)": 0,
     "Serebii GO": 0,
     "Serebii TCGP": 0,
-    "PTCGPocket.gg": 0
+    "PTCGPocket.gg": 0,
+    "PTCGPocket Codes": 0
   }
 }
