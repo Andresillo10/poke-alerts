@@ -957,33 +957,44 @@ def run_pipeline(args: argparse.Namespace) -> int:
             sent_items.append(item)
             continue
 
-        send_telegram_photo(
-            bot_token=bot_token,
-            chat_id=chat_id,
-            item=localized,
-            image_path=png_path,
-        )
+        try:
+            send_telegram_photo(
+                bot_token=bot_token,
+                chat_id=chat_id,
+                item=localized,
+                image_path=png_path,
+            )
+        except Exception as exc:
+            LOGGER.error("Fallo enviando alerta principal %s a Telegram: %s", localized.uid, exc)
+            continue
+
         for deck, card_path, champ_url in deck_cards:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
-            send_telegram_single_deck(
-                bot_token=bot_token,
-                chat_id=chat_id,
-                deck=deck,
-                card_path=card_path,
-                context_title=localized.title,
-                header_tag="🃏 <b>Mazo recomendado</b>",
-                info_label="🏆 Ver lista campeón" if champ_url else default_label,
-                info_url=champ_url or default_url,
-            )
+            try:
+                send_telegram_single_deck(
+                    bot_token=bot_token,
+                    chat_id=chat_id,
+                    deck=deck,
+                    card_path=card_path,
+                    context_title=localized.title,
+                    header_tag="🃏 <b>Mazo recomendado</b>",
+                    info_label="🏆 Ver lista campeón" if champ_url else default_label,
+                    info_url=champ_url or default_url,
+                )
+            except Exception as exc:
+                LOGGER.warning("Fallo no bloqueante enviando mazo %s: %s", deck.title, exc)
         for p_card, p_path in pogo_cards:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
-            send_telegram_pogo_card(
-                bot_token=bot_token,
-                chat_id=chat_id,
-                card=p_card,
-                card_path=p_path,
-                fallback_url=localized.url,
-            )
+            try:
+                send_telegram_pogo_card(
+                    bot_token=bot_token,
+                    chat_id=chat_id,
+                    card=p_card,
+                    card_path=p_path,
+                    fallback_url=localized.url,
+                )
+            except Exception as exc:
+                LOGGER.warning("Fallo no bloqueante enviando tarjeta GO %s: %s", p_card.title, exc)
         sent_items.append(item)
         if idx < len(to_notify) - 1:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)

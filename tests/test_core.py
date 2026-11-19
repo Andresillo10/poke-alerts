@@ -1328,6 +1328,23 @@ class CorePipelineTests(unittest.TestCase):
         self.assertEqual(fake_sess.get.call_count, 1)  # Saltó el mazo CPU sin llamar a la API
         self.assertIn("junto a Umbreon", describe_deck_strategy(dotgg_decks[0]))
 
+    def test_v8_telegram_retry_on_network_and_5xx(self) -> None:
+        from unittest.mock import MagicMock, patch
+        import requests
+        from src.telegram_client import send_telegram_text
+
+        resp_502 = MagicMock(ok=False, status_code=502, text="Bad Gateway")
+        resp_ok = MagicMock(ok=True, status_code=200, text='{"ok":true}')
+        with (
+            patch("src.telegram_client.time.sleep", return_value=None),
+            patch(
+                "src.telegram_client.requests.post",
+                side_effect=[requests.ConnectionError("transient reset"), resp_502, resp_ok],
+            ) as mock_post,
+        ):
+            send_telegram_text(bot_token="tok", chat_id="123", text="Prueba")
+            self.assertEqual(mock_post.call_count, 3)
+
 
 if __name__ == "__main__":
     unittest.main()

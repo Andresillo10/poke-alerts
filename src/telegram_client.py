@@ -162,24 +162,55 @@ def _post_telegram_api(
     data: dict[str, str],
     image_path: Path | None = None,
 ) -> None:
-    """Ejecuta una llamada Telegram Bot API con reintento automático ante 429."""
+    """Ejecuta una llamada Telegram Bot API con reintentos ante red, 429 y 5xx."""
     api_url = f"https://api.telegram.org/bot{bot_token}/{method}"
-    for attempt in range(2):
-        if image_path is not None:
-            with image_path.open("rb") as photo_file:
-                resp = requests.post(
-                    api_url,
-                    data=data,
-                    files={"photo": (image_path.name, photo_file, "image/png")},
-                    timeout=REQUEST_TIMEOUT_SEC,
+    req_timeout = max(REQUEST_TIMEOUT_SEC, 25) if image_path is not None else REQUEST_TIMEOUT_SEC
+    max_attempts = 3
+    for attempt in range(max_attempts):
+        try:
+            if image_path is not None:
+                with image_path.open("rb") as photo_file:
+                    resp = requests.post(
+                        api_url,
+                        data=data,
+                        files={"photo": (image_path.name, photo_file, "image/png")},
+                        timeout=req_timeout,
+                    )
+            else:
+                resp = requests.post(api_url, data=data, timeout=req_timeout)
+        except requests.RequestException as exc:
+            if attempt < max_attempts - 1:
+                wait_s = 1.5 * (attempt + 1)
+                LOGGER.warning(
+                    "Error de red temporal en Telegram (%s, intento %d/%d); reintentando en %.1fs.",
+                    exc,
+                    attempt + 1,
+                    max_attempts,
+                    wait_s,
                 )
-        else:
-            resp = requests.post(api_url, data=data, timeout=REQUEST_TIMEOUT_SEC)
+                time.sleep(wait_s)
+                continue
+            raise RuntimeError(f"Telegram network error tras {max_attempts} intentos: {exc}") from exc
 
-        if resp.status_code == 429 and attempt == 0:
-            retry_after = int(resp.json().get("parameters", {}).get("retry_after", 3))
+        if resp.status_code == 429 and attempt < max_attempts - 1:
+            try:
+                retry_after = int(resp.json().get("parameters", {}).get("retry_after", 3))
+            except Exception:
+                retry_after = 3
             LOGGER.warning("Rate limit Telegram (429); esperando %ss.", retry_after)
             time.sleep(retry_after + 0.5)
+            continue
+
+        if resp.status_code >= 500 and attempt < max_attempts - 1:
+            wait_s = 1.5 * (attempt + 1)
+            LOGGER.warning(
+                "Telegram HTTP %d (intento %d/%d); reintentando en %.1fs.",
+                resp.status_code,
+                attempt + 1,
+                max_attempts,
+                wait_s,
+            )
+            time.sleep(wait_s)
             continue
 
         if not resp.ok:
