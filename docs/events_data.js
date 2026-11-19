@@ -1,15 +1,15 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-18 20:23 COT",
+  "generated_at": "2026-11-19 00:23 COT",
   "stats": {
     "total": 70,
     "pogo": 57,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 43,
-    "upcoming": 27,
-    "ended": 0
+    "active": 42,
+    "upcoming": 26,
+    "ended": 2
   },
   "events": [
     {
@@ -149,103 +149,122 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
-      "id": "pogo:and-cresselia-darkrai-hour-raid",
+      "id": "pogo:and-grookey-hour-scorbunny-sobble-spotlight",
       "game": "pogo",
       "game_label": "Pokémon GO",
       "kind": "event",
       "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Cresselia and Darkrai Hora de Incursiones",
-      "title_original": "Cresselia and Darkrai Raid Hour",
-      "summary": "La Hora de Incursiones con Cresselia y Darkrai está programada de 18:00 a 19:00, hora local. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
-      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
+      "category": "Hora Destacada",
+      "title": "Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado",
+      "title_original": "Grookey, Scorbunny, and Sobble Spotlight Hour",
+      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. hora local. November 19 : The Pokémon destacados are Grookey, Scorbunny, and Sobble and the special bonus is 2× Caramelos por captura .",
+      "action_guide": "📍 Cuándo jugar: únicamente de 6:00 p. m. a 7:00 p. m. hora local. 🎯 Cómo aprovecharlo: camina con Incienso (y Trozo Estrella o Huevo Suerte si el bonus es Polvo o PX); al terminar copia el filtro de caja de abajo para detectar rápido Pokémon 100% IV o buenos en PvP.",
+      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
+      "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Grookey, Scorbunny, Sobble | Variocolor disponibles: Grookey",
+      "highlights": [
+        "Bonificaciones: 2× Caramelos por captura",
+        "Pokémon destacados: Grookey, Scorbunny, Sobble",
+        "Variocolor disponibles: Grookey"
+      ],
       "promo_code": null,
       "redeem_url": null,
-      "start_date": "2026-11-18",
-      "end_date": "2026-11-18",
-      "date_range_label": "18 nov 2026 -> 18 nov 2026",
+      "start_date": "2026-11-19",
+      "end_date": "2026-11-19",
+      "date_range_label": "19 nov 2026 -> 19 nov 2026",
       "status": "activo",
-      "tactical_summary": "Cresselia • Raid Nivel 5: PC 100%: 1633 (Nv.20) • 2041 (Nv.25) • Variocolor disponible | Darkrai • Raid Nivel 5: PC 100%: 2136 (Nv.20) • 2671 (Nv.25) • Variocolor disponible",
-      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-      "guide_url": "https://leekduck.com/events/raidhour20261118/",
+      "tactical_summary": "Grookey → Thwackey → Rillaboom: Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008 | Scorbunny → Raboot → Cinderace: Tipos: Fuego • Salvaje Hundo Nv.30/35: 940 / 1019",
+      "search_filter": "+Grookey&4*,3*",
+      "guide_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-19/",
       "recommended_decks": [],
       "tactical_cards": [
         {
-          "title": "Cresselia • Raid Nivel 5",
-          "subtitle": "PC 100%: 1633 (Nv.20) • 2041 (Nv.25) • Variocolor disponible",
-          "primary_type": "psychic",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
+          "title": "Grookey → Thwackey → Rillaboom",
+          "subtitle": "Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008",
+          "primary_type": "grass",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
           "left_rows": [
-            "Tipos: Psíquico",
-            "PC 100% Nv.20: 1633",
-            "PC 100% Clima Nv.25: 2041",
-            "Clima: Viento",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Fantasma (×1.6)",
-            "• Siniestro (×1.6)"
+            "Base: Grookey (PC 100%)",
+            "• Salvaje máx Nv.30: 931",
+            "• Clima máx Nv.35:  1008",
+            "• Misión / Huevo:   465 / 620",
+            "Final: Rillaboom",
+            "• PC 100% Nv.40/50: 3324 / 3758"
           ],
-          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_heading": "VEREDICTO PvP Y RAIDS",
           "right_rows": [
-            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "3. Mega Heracross (Fury Cutter + Megahorn)",
-            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
-            "5. Darkrai Oscuro (Snarl + Foul Play)",
-            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+            "Rillaboom #24 Ultra 2500 (90.3) • IV 4/14/15",
+            "  -> Scratch / Drum Beating / Earth Power",
+            "PvE Raids (Planta): Razor Leaf + Frenzy Plant"
           ],
-          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1633 (normal) o 2041 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Cresselia and Darkrai Hora de Incursiones"
+          "explanation": "Familia Grookey → Thwackey → Rillaboom: revisa 931 (Nv.30) y 1008 (clima) para 100% IV; en competitivo Rillaboom rinde #24 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Grookey&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/rillaboom/",
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
         },
         {
-          "title": "Darkrai • Raid Nivel 5",
-          "subtitle": "PC 100%: 2136 (Nv.20) • 2671 (Nv.25) • Variocolor disponible",
-          "primary_type": "dark",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
+          "title": "Scorbunny → Raboot → Cinderace",
+          "subtitle": "Tipos: Fuego • Salvaje Hundo Nv.30/35: 940 / 1019",
+          "primary_type": "fire",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
           "left_rows": [
-            "Tipos: Siniestro",
-            "PC 100% Nv.20: 2136",
-            "PC 100% Clima Nv.25: 2671",
-            "Clima: Niebla",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Hada (×1.6)",
-            "• Lucha (×1.6)"
+            "Base: Scorbunny (PC 100%)",
+            "• Salvaje máx Nv.30: 940",
+            "• Clima máx Nv.35:  1019",
+            "• Misión / Huevo:   470 / 627",
+            "Final: Cinderace",
+            "• PC 100% Nv.40/50: 3018 / 3412"
           ],
-          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_heading": "VEREDICTO PvP Y RAIDS",
           "right_rows": [
-            "1. Mega Gallade (Low Kick + Sacred Sword)",
-            "2. Keldeo (Resolute) (Low Kick + Secret Sword)",
-            "3. Terrakion (Double Kick + Sacred Sword)",
-            "4. Kartana (Fury Cutter + Sacred Sword)",
-            "5. Blaziken Oscuro (Counter + Aura Sphere)",
-            "6. Latios Oscuro (Dragon Breath + Aura Sphere)"
+            "Cinderace #244 Master (54.6)",
+            "  -> Fire Spin / Blast Burn / Pyro Ball",
+            "PvE Raids (Fuego): Fire Spin + Blast Burn"
           ],
-          "explanation": "Vulnerable a Bicho, Hada, Lucha. Lidera tu equipo con Mega Gallade y verifica el 100% IV al capturar: 2136 (normal) o 2671 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Gallade,Keldeo,Terrakion,Kartana,Blaziken,Latios",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Cresselia and Darkrai Hora de Incursiones"
+          "explanation": "Familia Scorbunny → Raboot → Cinderace: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo Cinderace rinde #244 en Master.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Scorbunny&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/cinderace/",
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
+        },
+        {
+          "title": "Sobble → Drizzile → Inteleon",
+          "subtitle": "Tipos: Agua • Salvaje Hundo Nv.30/35: 940 / 1019",
+          "primary_type": "water",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Sobble (PC 100%)",
+            "• Salvaje máx Nv.30: 940",
+            "• Clima máx Nv.35:  1019",
+            "• Misión / Huevo:   470 / 627",
+            "Final: Inteleon",
+            "• PC 100% Nv.40/50: 2964 / 3351"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "PvE Raids (Agua): Water Gun + Hydro Cannon"
+          ],
+          "explanation": "Familia Sobble → Drizzile → Inteleon: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Water Gun + Hydro Cannon.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Sobble&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/inteleon/",
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
         }
       ],
       "sources": [
         "ScrapedDuck JSON"
       ],
       "urls": [
-        "https://leekduck.com/events/raidhour20261118/"
+        "https://leekduck.com/events/pokemonspotlighthour2026-11-19/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
+      "last_updated_at": "2026-11-19T01:23:52Z"
     },
     {
       "id": "pogo:leonids-minior-showers",
@@ -3032,71 +3051,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
-      "id": "pogo:2027-campeonato-celebremos-de-el-internacional-latinoamerica-pokemon",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "Celebremos el Campeonato Internacional Pokémon de Latinoamérica 2027!",
-      "title_original": "Celebremos el Campeonato Internacional Pokémon de Latinoamérica 2027!",
-      "summary": "¿Han oído hablar del Campeonato Internacional Pokémon de Latinoamérica (LAIC)? ¡Es la competencia internacional Pokémon más grande de Latinoamérica y reunirá a Entrenadores de toda Latinoamérica y de otros países alrededor del mundo en el Distrito Anhembi de São Paulo, para competir por un lugar en el Campeonato Mundial Pokémon 2027 en Singapur!",
-      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-04",
-      "end_date": null,
-      "date_range_label": "04 nov 2026 -> 04 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "4*,3*,shiny",
-      "guide_url": "https://pokemongolive.com/es_MX/news/pokemon-go-at-laic2027",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Liga Súper (1500 PC)",
-          "subtitle": "#1 Actual: Melmetal • Score 93.9 (PvPoke)",
-          "primary_type": "steel",
-          "badge_label": "META LIGA GBL",
-          "left_heading": "TOP 6 META Y IV IDEAL",
-          "left_rows": [
-            "#1 Melmetal (93.9) [4/10/14]",
-            "#2 Altaria (92.8) [4/12/13]",
-            "#3 Ninetales Oscuro (92.6) [4/15/14]",
-            "#4 Mimikyu (Busted) (92.0) [4/14/15]",
-            "#5 Cramorant (91.6) [5/15/13]",
-            "#6 Altaria Oscuro (91.5) [4/12/13]"
-          ],
-          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
-          "right_rows": [
-            "#1 Thunder Shock • Double Iron Bash • Dynamic Punch",
-            "#2 Dragon Breath • Moonblast • Flamethrower",
-            "#3 Ember • Weather Ball (Fire) • Energy Ball",
-            "#4 Shadow Claw • Shadow Sneak • Play Rough",
-            "#5 Peck • Surf • Fly",
-            "Frenos al #1: Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro"
-          ],
-          "explanation": "Liga Súper (1500 PC) liderada por Melmetal (Thunder Shock + Double Iron Bash + Dynamic Punch); vigila counters como Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro.",
-          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
-          "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant",
-          "info_label": "📊 Ver ranking PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/",
-          "context_label": "Evento GO: Celebremos el Campeonato Internacional Pokémon de Latinoamérica 2027!"
-        }
-      ],
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/pokemon-go-at-laic2027"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
       "id": "pogo:bonificacion-con-consigan-de-doble-el-pokemonedas",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -3585,124 +3539,6 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
-      "id": "pogo:and-grookey-hour-scorbunny-sobble-spotlight",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Hora Destacada",
-      "title": "Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado",
-      "title_original": "Grookey, Scorbunny, and Sobble Spotlight Hour",
-      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. hora local. November 19 : The Pokémon destacados are Grookey, Scorbunny, and Sobble and the special bonus is 2× Caramelos por captura .",
-      "action_guide": "📍 Cuándo jugar: únicamente de 6:00 p. m. a 7:00 p. m. hora local. 🎯 Cómo aprovecharlo: camina con Incienso (y Trozo Estrella o Huevo Suerte si el bonus es Polvo o PX); al terminar copia el filtro de caja de abajo para detectar rápido Pokémon 100% IV o buenos en PvP.",
-      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
-      "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Grookey, Scorbunny, Sobble | Variocolor disponibles: Grookey",
-      "highlights": [
-        "Bonificaciones: 2× Caramelos por captura",
-        "Pokémon destacados: Grookey, Scorbunny, Sobble",
-        "Variocolor disponibles: Grookey"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-19",
-      "end_date": "2026-11-19",
-      "date_range_label": "19 nov 2026 -> 19 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Grookey → Thwackey → Rillaboom: Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008 | Scorbunny → Raboot → Cinderace: Tipos: Fuego • Salvaje Hundo Nv.30/35: 940 / 1019",
-      "search_filter": "+Grookey&4*,3*",
-      "guide_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-19/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Grookey → Thwackey → Rillaboom",
-          "subtitle": "Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008",
-          "primary_type": "grass",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Grookey (PC 100%)",
-            "• Salvaje máx Nv.30: 931",
-            "• Clima máx Nv.35:  1008",
-            "• Misión / Huevo:   465 / 620",
-            "Final: Rillaboom",
-            "• PC 100% Nv.40/50: 3324 / 3758"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Rillaboom #24 Ultra 2500 (90.3) • IV 4/14/15",
-            "  -> Scratch / Drum Beating / Earth Power",
-            "PvE Raids (Planta): Razor Leaf + Frenzy Plant"
-          ],
-          "explanation": "Familia Grookey → Thwackey → Rillaboom: revisa 931 (Nv.30) y 1008 (clima) para 100% IV; en competitivo Rillaboom rinde #24 en Ultra 2500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Grookey&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/rillaboom/",
-          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
-        },
-        {
-          "title": "Scorbunny → Raboot → Cinderace",
-          "subtitle": "Tipos: Fuego • Salvaje Hundo Nv.30/35: 940 / 1019",
-          "primary_type": "fire",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Scorbunny (PC 100%)",
-            "• Salvaje máx Nv.30: 940",
-            "• Clima máx Nv.35:  1019",
-            "• Misión / Huevo:   470 / 627",
-            "Final: Cinderace",
-            "• PC 100% Nv.40/50: 3018 / 3412"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Cinderace #244 Master (54.6)",
-            "  -> Fire Spin / Blast Burn / Pyro Ball",
-            "PvE Raids (Fuego): Fire Spin + Blast Burn"
-          ],
-          "explanation": "Familia Scorbunny → Raboot → Cinderace: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo Cinderace rinde #244 en Master.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Scorbunny&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/cinderace/",
-          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
-        },
-        {
-          "title": "Sobble → Drizzile → Inteleon",
-          "subtitle": "Tipos: Agua • Salvaje Hundo Nv.30/35: 940 / 1019",
-          "primary_type": "water",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Sobble (PC 100%)",
-            "• Salvaje máx Nv.30: 940",
-            "• Clima máx Nv.35:  1019",
-            "• Misión / Huevo:   470 / 627",
-            "Final: Inteleon",
-            "• PC 100% Nv.40/50: 2964 / 3351"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "PvE Raids (Agua): Water Gun + Hydro Cannon"
-          ],
-          "explanation": "Familia Sobble → Drizzile → Inteleon: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Water Gun + Hydro Cannon.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Sobble&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/inteleon/",
-          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/pokemonspotlighthour2026-11-19/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-19T01:23:52Z"
     },
     {
       "id": "pogo:eternamax-eternatus-returns",
@@ -5719,6 +5555,170 @@ window.POKE_ALERTS_DB = {
       ],
       "urls": [
         "https://leekduck.com/events/minior-showers-perseids-2027/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:and-cresselia-darkrai-hour-raid",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Cresselia and Darkrai Hora de Incursiones",
+      "title_original": "Cresselia and Darkrai Raid Hour",
+      "summary": "La Hora de Incursiones con Cresselia y Darkrai está programada de 18:00 a 19:00, hora local. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-18",
+      "end_date": "2026-11-18",
+      "date_range_label": "18 nov 2026 -> 18 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Cresselia • Raid Nivel 5: PC 100%: 1633 (Nv.20) • 2041 (Nv.25) • Variocolor disponible | Darkrai • Raid Nivel 5: PC 100%: 2136 (Nv.20) • 2671 (Nv.25) • Variocolor disponible",
+      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+      "guide_url": "https://leekduck.com/events/raidhour20261118/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Cresselia • Raid Nivel 5",
+          "subtitle": "PC 100%: 1633 (Nv.20) • 2041 (Nv.25) • Variocolor disponible",
+          "primary_type": "psychic",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Psíquico",
+            "PC 100% Nv.20: 1633",
+            "PC 100% Clima Nv.25: 2041",
+            "Clima: Viento",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Siniestro (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "3. Mega Heracross (Fury Cutter + Megahorn)",
+            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
+            "5. Darkrai Oscuro (Snarl + Foul Play)",
+            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+          ],
+          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1633 (normal) o 2041 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Cresselia and Darkrai Hora de Incursiones"
+        },
+        {
+          "title": "Darkrai • Raid Nivel 5",
+          "subtitle": "PC 100%: 2136 (Nv.20) • 2671 (Nv.25) • Variocolor disponible",
+          "primary_type": "dark",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Siniestro",
+            "PC 100% Nv.20: 2136",
+            "PC 100% Clima Nv.25: 2671",
+            "Clima: Niebla",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Hada (×1.6)",
+            "• Lucha (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Mega Gallade (Low Kick + Sacred Sword)",
+            "2. Keldeo (Resolute) (Low Kick + Secret Sword)",
+            "3. Terrakion (Double Kick + Sacred Sword)",
+            "4. Kartana (Fury Cutter + Sacred Sword)",
+            "5. Blaziken Oscuro (Counter + Aura Sphere)",
+            "6. Latios Oscuro (Dragon Breath + Aura Sphere)"
+          ],
+          "explanation": "Vulnerable a Bicho, Hada, Lucha. Lidera tu equipo con Mega Gallade y verifica el 100% IV al capturar: 2136 (normal) o 2671 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Gallade,Keldeo,Terrakion,Kartana,Blaziken,Latios",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Cresselia and Darkrai Hora de Incursiones"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/raidhour20261118/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:2027-campeonato-celebremos-de-el-internacional-latinoamerica-pokemon",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "Celebremos el Campeonato Internacional Pokémon de Latinoamérica 2027!",
+      "title_original": "Celebremos el Campeonato Internacional Pokémon de Latinoamérica 2027!",
+      "summary": "¿Han oído hablar del Campeonato Internacional Pokémon de Latinoamérica (LAIC)? ¡Es la competencia internacional Pokémon más grande de Latinoamérica y reunirá a Entrenadores de toda Latinoamérica y de otros países alrededor del mundo en el Distrito Anhembi de São Paulo, para competir por un lugar en el Campeonato Mundial Pokémon 2027 en Singapur!",
+      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-04",
+      "end_date": null,
+      "date_range_label": "04 nov 2026 -> 04 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/pokemon-go-at-laic2027",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Liga Súper (1500 PC)",
+          "subtitle": "#1 Actual: Melmetal • Score 93.9 (PvPoke)",
+          "primary_type": "steel",
+          "badge_label": "META LIGA GBL",
+          "left_heading": "TOP 6 META Y IV IDEAL",
+          "left_rows": [
+            "#1 Melmetal (93.9) [4/10/14]",
+            "#2 Altaria (92.8) [4/12/13]",
+            "#3 Ninetales Oscuro (92.6) [4/15/14]",
+            "#4 Mimikyu (Busted) (92.0) [4/14/15]",
+            "#5 Cramorant (91.6) [5/15/13]",
+            "#6 Altaria Oscuro (91.5) [4/12/13]"
+          ],
+          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
+          "right_rows": [
+            "#1 Thunder Shock • Double Iron Bash • Dynamic Punch",
+            "#2 Dragon Breath • Moonblast • Flamethrower",
+            "#3 Ember • Weather Ball (Fire) • Energy Ball",
+            "#4 Shadow Claw • Shadow Sneak • Play Rough",
+            "#5 Peck • Surf • Fly",
+            "Frenos al #1: Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro"
+          ],
+          "explanation": "Liga Súper (1500 PC) liderada por Melmetal (Thunder Shock + Double Iron Bash + Dynamic Punch); vigila counters como Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro.",
+          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
+          "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant",
+          "info_label": "📊 Ver ranking PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/",
+          "context_label": "Evento GO: Celebremos el Campeonato Internacional Pokémon de Latinoamérica 2027!"
+        }
+      ],
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/pokemon-go-at-laic2027"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
