@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-19T01:23:52Z",
-  "last_commit_heartbeat_utc": "2026-11-19T01:23:52Z",
+  "last_run_utc": "2026-11-20T14:23:30Z",
+  "last_commit_heartbeat_utc": "2026-11-20T14:23:30Z",
   "last_weekly_meta_week": null,
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -86,7 +86,8 @@
     "scrapedduck:minior-showers-southern-delta-aquariids-2027": "2026-11-18T13:25:02Z",
     "scrapedduck:minior-showers-perseids-2027": "2026-11-18T13:25:02Z",
     "ptcgpocket-gg:https://ptcgpocket.gg/c2/": "2026-11-18T13:25:02Z",
-    "ptcgpocket-gg:https://ptcgpocket.gg/dual-fusion-c1-limited-battles/": "2026-11-18T15:23:34Z"
+    "ptcgpocket-gg:https://ptcgpocket.gg/dual-fusion-c1-limited-battles/": "2026-11-18T15:23:34Z",
+    "scrapedduck:pokemon-latin-america-international-championships-2027-timed-research-twitch-drops": "2026-11-20T14:23:30Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -169,7 +170,8 @@
     "pogo:minior-showers-southern-delta-aquariids-2027": "2026-11-18T13:25:02Z",
     "pogo:minior-showers-perseids-2027": "2026-11-18T13:25:02Z",
     "tcgp:c2-expansion-card-list-set-details": "2026-11-18T13:25:02Z",
-    "tcgp:dual-fusion-c1-limited-battles": "2026-11-18T15:23:34Z"
+    "tcgp:dual-fusion-c1-limited-battles": "2026-11-18T15:23:34Z",
+    "pogo:twitch-drops-for-2027-pokemon-latin-america-international": "2026-11-20T14:23:30Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
@@ -179,7 +181,9 @@
     "serebii-tcgp:https://www.serebii.net/tcgpocket/events/dualfusionlimitedbattles.shtml": "2026-11-19T01:23:52Z",
     "tcgp:dual-fusion-limited-battles": "2026-11-19T01:23:52Z",
     "scrapedduck:pokemonspotlighthour2026-11-19": "2026-11-19T01:23:52Z",
-    "pogo:grookey-scorbunny-and-sobble-spotlight-hour": "2026-11-19T01:23:52Z"
+    "pogo:grookey-scorbunny-and-sobble-spotlight-hour": "2026-11-19T01:23:52Z",
+    "scrapedduck:pokemon-latin-america-international-championships-2027-timed-research-twitch-drops": "2026-11-20T14:23:30Z",
+    "pogo:twitch-drops-for-2027-pokemon-latin-america-international": "2026-11-20T14:23:30Z"
   },
   "source_failures": {
     "LeekDuck Promo": 0,

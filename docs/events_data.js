@@ -1,13 +1,13 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-20 00:23 COT",
+  "generated_at": "2026-11-20 09:23 COT",
   "stats": {
-    "total": 70,
-    "pogo": 57,
+    "total": 71,
+    "pogo": 58,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 38,
+    "active": 39,
     "upcoming": 26,
     "ended": 6
   },
@@ -264,6 +264,66 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:2027-america-drops-for-international-latin-pokemon-twitch",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Twitch llega para el Campeonato Internacional Pokémon de América Latina 2027",
+      "title_original": "Twitch Drops for 2027 Pokémon Latin America International Championships",
+      "summary": "Obtén códigos para Investigación Temporal exclusivo y un paquete de batalla durante la transmisión de Twitch del Campeonato Internacional Pokémon de América Latina 2027. PsyRhino se llevó a casa el oro en el Campeonato Internacional de Norteamérica Pokémon GO 2026 con un poderoso Shadow Samurott en su equipo. Mire la transmisión de LAIC 2027 y podrá obtener un Samurott inspirado en el equipo ganador de NAIC de PsyRhino.",
+      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-20",
+      "end_date": "2026-11-22",
+      "date_range_label": "20 nov 2026 -> 22 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Samurott (Shadow) (Tipos: Agua • Salvaje Hundo Nv.30/35: 2422 / 2624)",
+      "search_filter": "+Samurott&4*,3*",
+      "guide_url": "https://leekduck.com/events/pokemon-latin-america-international-championships-2027-timed-research-twitch-drops/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Samurott (Shadow)",
+          "subtitle": "Tipos: Agua • Salvaje Hundo Nv.30/35: 2422 / 2624",
+          "primary_type": "water",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Samurott (Shadow) (PC 100%)",
+            "• Salvaje máx Nv.30: 2422",
+            "• Clima máx Nv.35:  2624",
+            "• Misión / Huevo:   1211 / 1614"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Samurott (Shadow) #117 Ultra 2500 (85.4) • IV 4/14/13",
+            "  -> Fury Cutter / Hydro Cannon / Megahorn",
+            "PvE Raids (Agua): Waterfall + Hydro Cannon"
+          ],
+          "explanation": "Familia Samurott (Shadow): revisa 2422 (Nv.30) y 2624 (clima) para 100% IV; en competitivo Samurott (Shadow) rinde #117 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Samurott&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/samurott_shadow/",
+          "context_label": "Evento GO: Twitch llega para el Campeonato Internacional Pokémon de América Latina 2027"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/pokemon-latin-america-international-championships-2027-timed-research-twitch-drops/"
+      ],
+      "first_seen_at": "2026-11-20T14:23:30Z",
+      "last_updated_at": "2026-11-20T14:23:30Z"
     },
     {
       "id": "pogo:dynamax-trails",
