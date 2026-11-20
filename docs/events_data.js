@@ -1,14 +1,14 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-20 13:23 COT",
+  "generated_at": "2026-11-20 17:23 COT",
   "stats": {
-    "total": 72,
-    "pogo": 59,
+    "total": 73,
+    "pogo": 60,
     "tcgp": 13,
     "codes_active": 4,
     "active": 40,
-    "upcoming": 26,
+    "upcoming": 27,
     "ended": 6
   },
   "events": [
@@ -4457,6 +4457,123 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:2026-community-day-december",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Día de la Comunidad",
+      "title": "December Día de la Comunidad 2026",
+      "title_original": "December Community Day 2026",
+      "summary": "¡Los Pokémon de los Días Comunitarios de 2026 vuelven para celebrar el fin de año! El año está a punto de terminar, lo que significa que es hora de reflexionar sobre toda la diversión que todos hemos tenido durante los Días Comunitarios de este año. Si te perdiste alguno, ¡ahora tienes la oportunidad de ponerte al día! El último Día de la Comunidad de 2026 se celebrará durante dos días: el sábado 12 de diciembre de 2026 y el domingo 13 de diciembre de 2026, de 14:00 a 17:00.",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
+      "rewards": "Bonificaciones: Mayor aparición salvaje; el doble de XP por capturar Pokémon; el doble de Polvo Estelar por capturar Pokémon | Pokémon destacados: Vulpix, Vulpix de Alola, Grookey, Scorbunny, Lechonk, Tinkatink | Variocolor disponibles: Vulpix, Ninetales, Vulpix de Alola, Ninetales de Alola",
+      "highlights": [
+        "Bonificaciones: Mayor aparición salvaje; el doble de XP por capturar Pokémon; el doble de Polvo Estelar por capturar Pokémon",
+        "Pokémon destacados: Vulpix, Vulpix de Alola, Grookey, Scorbunny, Lechonk, Tinkatink",
+        "Variocolor disponibles: Vulpix, Ninetales, Vulpix de Alola, Ninetales de Alola"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-12-12",
+      "end_date": "2026-12-13",
+      "date_range_label": "12 dic 2026 -> 13 dic 2026",
+      "status": "proximo",
+      "tactical_summary": "Vulpix → Ninetales (Tipos: Fuego • Salvaje Hundo Nv.30/35: 757 / 820) • Grookey → Thwackey → Rillaboom (Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008)",
+      "search_filter": "+Vulpix&4*,3*",
+      "guide_url": "https://leekduck.com/events/december-communityday2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Vulpix → Ninetales",
+          "subtitle": "Tipos: Fuego • Salvaje Hundo Nv.30/35: 757 / 820",
+          "primary_type": "fire",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Vulpix (PC 100%)",
+            "• Salvaje máx Nv.30: 757",
+            "• Clima máx Nv.35:  820",
+            "• Misión / Huevo:   378 / 504",
+            "Final: Ninetales",
+            "• PC 100% Nv.40/50: 2279 / 2577"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Ninetales #14 Súper 1500 (90.9) • IV 4/15/14",
+            "  -> Ember / Weather Ball (Fire) / Energy Ball",
+            "PvE Raids (Fuego): Fire Spin + Weather Ball (Fire)"
+          ],
+          "explanation": "Familia Vulpix → Ninetales: revisa 757 (Nv.30) y 820 (clima) para 100% IV; en competitivo Ninetales rinde #14 en Súper 1500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Vulpix&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/ninetales/",
+          "context_label": "Evento GO: December Día de la Comunidad 2026"
+        },
+        {
+          "title": "Grookey → Thwackey → Rillaboom",
+          "subtitle": "Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008",
+          "primary_type": "grass",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Grookey (PC 100%)",
+            "• Salvaje máx Nv.30: 931",
+            "• Clima máx Nv.35:  1008",
+            "• Misión / Huevo:   465 / 620",
+            "Final: Rillaboom",
+            "• PC 100% Nv.40/50: 3324 / 3758"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Rillaboom #26 Ultra 2500 (90.2) • IV 4/14/15",
+            "  -> Scratch / Drum Beating / Earth Power",
+            "PvE Raids (Planta): Razor Leaf + Frenzy Plant"
+          ],
+          "explanation": "Familia Grookey → Thwackey → Rillaboom: revisa 931 (Nv.30) y 1008 (clima) para 100% IV; en competitivo Rillaboom rinde #26 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Grookey&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/rillaboom/",
+          "context_label": "Evento GO: December Día de la Comunidad 2026"
+        },
+        {
+          "title": "Plan Día de la Comunidad",
+          "subtitle": "Ventana Legacy, Mega Caramelos XL y limpieza rápida",
+          "primary_type": "grass",
+          "badge_label": "PLAN CD GO",
+          "left_heading": "REGLAS CLAVE DEL EVENTO",
+          "left_rows": [
+            "Ventana principal de capturas (3 horas locales)",
+            "Evoluciona hasta 5 h después para Ataque Legacy",
+            "Mayor probabilidad de Shiny y Módulos Cebo extendidos"
+          ],
+          "right_heading": "CHECKLIST EN CAJA Y CAPTURA",
+          "right_rows": [
+            "Activa Mega Evolución Nv.3 del tipo del protagonista",
+            "Conserva 4* (Hundo) + IV bajos en ataque para PvP",
+            "Limpia caja al instante con el filtro inferior"
+          ],
+          "explanation": "Ten espacio libre en caja, Ultra Balls listas y una Mega Nv.3 activa durante todo el horario para multiplicar Caramelos XL y no perder el ataque exclusivo al evolucionar.",
+          "search_label": "Filtro de limpieza rápida (no shiny / no 100%):",
+          "search_string": "0*,1*,2*&!shiny&!4*",
+          "info_label": "📘 Ver calendario oficial",
+          "info_url": "https://leekduck.com/events/december-communityday2026/",
+          "context_label": "Evento GO: December Día de la Comunidad 2026"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/december-communityday2026/"
+      ],
+      "first_seen_at": "2026-11-20T22:23:21Z",
+      "last_updated_at": "2026-11-20T22:23:21Z"
     },
     {
       "id": "pogo:2026-geminids-minior-showers",
