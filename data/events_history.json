@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20 09:23 COT",
+  "generated_at": "2026-11-20 10:23 COT",
   "stats": {
     "total": 71,
     "pogo": 58,
@@ -1211,6 +1211,125 @@
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "tcgp:eevee-vee",
+      "game": "tcgp",
+      "game_label": "Pokémon TCG Pocket",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Misiones TCG Pocket",
+      "title": "Vee Vee! Eevee Misiones",
+      "title_original": "Vee Vee! Eevee Missions",
+      "summary": "Inicia sesión durante 7 días entre el 21 de noviembre y el 15 de diciembre para reclamar recompensas",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
+      "rewards": "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo",
+      "highlights": [
+        "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-05",
+      "end_date": "2026-12-15",
+      "date_range_label": "05 nov 2026 -> 15 dic 2026",
+      "status": "activo",
+      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Hoopa ex Mega Absol ex, Mega Altaria ex Espeon",
+      "search_filter": "",
+      "guide_url": "https://ptcgpocket.gg/best-decks-dual-fusion-c1-meta-tier-list-snapshot-week-1/",
+      "recommended_decks": [
+        {
+          "title": "Opción 1: Mega Charizard Y ex Entei ex",
+          "mission_tag": "Campeón torneo (53.8% WR • #3/247p (8-2))",
+          "energy_label": "Fuego",
+          "strategy": "Atacante clave Mega Charizard Y ex (220 HP, hasta 250 daño) en energía Fuego con apoyo de Entei ex (Legendary Pulse), Charizard (Flame Aura). Motor: robo/búsqueda, aceleración.",
+          "cards": [
+            "2× Charmander",
+            "2× Charmeleon",
+            "2× Entei ex",
+            "1× Charizard",
+            "1× Mega Charizard Y ex",
+            "2× Flame Patch",
+            "2× Poké Ball",
+            "2× Professor's Research",
+            "1× Blue's Provocation",
+            "1× May",
+            "1× Rainbow Cave",
+            "1× Repel",
+            "1× Serena's Choice",
+            "1× Wally"
+          ],
+          "qr_payload": "DJiWqJiWqJicopidTJidQpiaSpiWnpiWnpiaDpiaDpiY4pictggAPwIAPwIAPwwAPwwAM4YAVb4AJ+IAJ+IBAg==",
+          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=DJiWqJiWqJicopidTJidQpiaSpiWnpiWnpiaDpiaDpiY4pictggAPwIAPwIAPwwAPwwAM4YAVb4AJ%2BIAJ%2BIBAg%3D%3D",
+          "champion_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/akuma_nkz6/decklist",
+          "source_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/akuma_nkz6/decklist",
+          "badge": "CAMPEÓN TORNEO + EVENTO"
+        },
+        {
+          "title": "Opción 2: Hoopa ex Mega Absol ex",
+          "mission_tag": "Campeón torneo (62.9% WR • #1/179p (11-1))",
+          "energy_label": "Oscuridad",
+          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
+          "cards": [
+            "2× Hoopa ex",
+            "1× Darkrai ex",
+            "1× Mega Absol ex",
+            "2× Cyrus",
+            "2× Deceptive Needle",
+            "2× Lucky Ice Pop",
+            "2× Poké Ball",
+            "2× Professor's Research",
+            "1× Copycat",
+            "1× Field Blower",
+            "1× Mars",
+            "1× Pokémon Center Lady",
+            "1× Repel",
+            "1× X Speed"
+          ],
+          "qr_payload": "EJiWqJiWqJiXwJiXwJiaXpiX8piYLpiapJiapJiWnpiWnpibgJiY4piWlJiccJiccAQAUKAAUKAAMCoAD0YBBw==",
+          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJiaXpiX8piYLpiapJiapJiWnpiWnpibgJiY4piWlJiccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
+          "champion_url": "https://play.limitlesstcg.com/tournament/6af97dbaee43ef7891475378/player/h1kak1nsqie/decklist",
+          "source_url": "https://play.limitlesstcg.com/tournament/6af97dbaee43ef7891475378/player/h1kak1nsqie/decklist",
+          "badge": "CAMPEÓN TORNEO + EVENTO"
+        },
+        {
+          "title": "Opción 3: Mega Altaria ex Espeon",
+          "mission_tag": "Campeón torneo (58.9% WR • #1/247p (10-1))",
+          "energy_label": "Psíquico",
+          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Darkrai (Bad Dreams), Espeon. Motor: robo/búsqueda, presión al rival.",
+          "cards": [
+            "2× Darkrai",
+            "2× Eevee",
+            "2× Espeon",
+            "2× Swablu",
+            "1× Igglybuff",
+            "1× Mega Altaria ex",
+            "2× Copycat",
+            "2× Poké Ball",
+            "2× Professor's Research",
+            "1× Field Blower",
+            "1× Sabrina",
+            "1× Small Balloon",
+            "1× Training Area"
+          ],
+          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
+          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
+          "champion_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/klq_mm93/decklist",
+          "source_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/klq_mm93/decklist",
+          "badge": "CAMPEÓN TORNEO + EVENTO"
+        }
+      ],
+      "tactical_cards": [],
+      "sources": [
+        "PTCGPocket.gg",
+        "Serebii TCGP"
+      ],
+      "urls": [
+        "https://ptcgpocket.gg/vee-vee-eevee-missions/",
+        "https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-20T15:23:30Z"
     },
     {
       "id": "pogo:and-duolingo-go-pokemon-research-timed",
@@ -2494,123 +2613,6 @@
       ],
       "urls": [
         "https://ptcgpocket.gg/ranked-match-season-c1-ranking-guide-all-rewards/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
-      "id": "tcgp:eevee-vee",
-      "game": "tcgp",
-      "game_label": "Pokémon TCG Pocket",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Misiones TCG Pocket",
-      "title": "Vee Vee! Eevee Misiones",
-      "title_original": "Vee Vee! Eevee Missions",
-      "summary": "Inicia sesión durante 7 días entre el 21 de noviembre y el 15 de diciembre para reclamar recompensas",
-      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
-      "search_aliases": "",
-      "rewards": "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo",
-      "highlights": [
-        "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-05",
-      "end_date": null,
-      "date_range_label": "Desde 05 nov 2026 (sin fecha fin publicada)",
-      "status": "activo",
-      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Hoopa ex Mega Absol ex, Mega Altaria ex Espeon",
-      "search_filter": "",
-      "guide_url": "https://ptcgpocket.gg/best-decks-dual-fusion-c1-meta-tier-list-snapshot-week-1/",
-      "recommended_decks": [
-        {
-          "title": "Opción 1: Mega Charizard Y ex Entei ex",
-          "mission_tag": "Campeón torneo (53.8% WR • #3/247p (8-2))",
-          "energy_label": "Fuego",
-          "strategy": "Atacante clave Mega Charizard Y ex (220 HP, hasta 250 daño) en energía Fuego con apoyo de Entei ex (Legendary Pulse), Charizard (Flame Aura). Motor: robo/búsqueda, aceleración.",
-          "cards": [
-            "2× Charmander",
-            "2× Charmeleon",
-            "2× Entei ex",
-            "1× Charizard",
-            "1× Mega Charizard Y ex",
-            "2× Flame Patch",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Blue's Provocation",
-            "1× May",
-            "1× Rainbow Cave",
-            "1× Repel",
-            "1× Serena's Choice",
-            "1× Wally"
-          ],
-          "qr_payload": "DJiWqJiWqJicopidTJidQpiaSpiWnpiWnpiaDpiaDpiY4pictggAPwIAPwIAPwwAPwwAM4YAVb4AJ+IAJ+IBAg==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=DJiWqJiWqJicopidTJidQpiaSpiWnpiWnpiaDpiaDpiY4pictggAPwIAPwIAPwwAPwwAM4YAVb4AJ%2BIAJ%2BIBAg%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/akuma_nkz6/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/akuma_nkz6/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 2: Hoopa ex Mega Absol ex",
-          "mission_tag": "Campeón torneo (62.9% WR • #1/179p (11-1))",
-          "energy_label": "Oscuridad",
-          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Hoopa ex",
-            "1× Darkrai ex",
-            "1× Mega Absol ex",
-            "2× Cyrus",
-            "2× Deceptive Needle",
-            "2× Lucky Ice Pop",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Copycat",
-            "1× Field Blower",
-            "1× Mars",
-            "1× Pokémon Center Lady",
-            "1× Repel",
-            "1× X Speed"
-          ],
-          "qr_payload": "EJiWqJiWqJiXwJiXwJiaXpiX8piYLpiapJiapJiWnpiWnpibgJiY4piWlJiccJiccAQAUKAAUKAAMCoAD0YBBw==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJiaXpiX8piYLpiapJiapJiWnpiWnpibgJiY4piWlJiccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6af97dbaee43ef7891475378/player/h1kak1nsqie/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6af97dbaee43ef7891475378/player/h1kak1nsqie/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 3: Mega Altaria ex Espeon",
-          "mission_tag": "Campeón torneo (58.9% WR • #1/247p (10-1))",
-          "energy_label": "Psíquico",
-          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Darkrai (Bad Dreams), Espeon. Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Darkrai",
-            "2× Eevee",
-            "2× Espeon",
-            "2× Swablu",
-            "1× Igglybuff",
-            "1× Mega Altaria ex",
-            "2× Copycat",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Sabrina",
-            "1× Small Balloon",
-            "1× Training Area"
-          ],
-          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/klq_mm93/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/klq_mm93/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        }
-      ],
-      "tactical_cards": [],
-      "sources": [
-        "PTCGPocket.gg"
-      ],
-      "urls": [
-        "https://ptcgpocket.gg/vee-vee-eevee-missions/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
