@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-20T14:23:30Z",
-  "last_commit_heartbeat_utc": "2026-11-20T14:23:30Z",
+  "last_run_utc": "2026-11-20T18:23:29Z",
+  "last_commit_heartbeat_utc": "2026-11-20T18:23:29Z",
   "last_weekly_meta_week": null,
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -87,7 +87,8 @@
     "scrapedduck:minior-showers-perseids-2027": "2026-11-18T13:25:02Z",
     "ptcgpocket-gg:https://ptcgpocket.gg/c2/": "2026-11-18T13:25:02Z",
     "ptcgpocket-gg:https://ptcgpocket.gg/dual-fusion-c1-limited-battles/": "2026-11-18T15:23:34Z",
-    "scrapedduck:pokemon-latin-america-international-championships-2027-timed-research-twitch-drops": "2026-11-20T14:23:30Z"
+    "scrapedduck:pokemon-latin-america-international-championships-2027-timed-research-twitch-drops": "2026-11-20T14:23:30Z",
+    "pogolive:/es_MX/news/community-day-december-2026": "2026-11-20T18:23:29Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -171,7 +172,8 @@
     "pogo:minior-showers-perseids-2027": "2026-11-18T13:25:02Z",
     "tcgp:c2-expansion-card-list-set-details": "2026-11-18T13:25:02Z",
     "tcgp:dual-fusion-c1-limited-battles": "2026-11-18T15:23:34Z",
-    "pogo:twitch-drops-for-2027-pokemon-latin-america-international": "2026-11-20T14:23:30Z"
+    "pogo:twitch-drops-for-2027-pokemon-latin-america-international": "2026-11-20T14:23:30Z",
+    "pogo:celebren-el-ano-con-todos-los-pokemon-de": "2026-11-20T18:23:29Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",

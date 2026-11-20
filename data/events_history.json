@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20 10:23 COT",
+  "generated_at": "2026-11-20 13:23 COT",
   "stats": {
-    "total": 71,
-    "pogo": 58,
+    "total": 72,
+    "pogo": 59,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 39,
+    "active": 40,
     "upcoming": 26,
     "ended": 6
   },
@@ -3122,6 +3122,65 @@
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:ano-celebren-con-de-el-los-pokemon-todos",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Celebren el año con todos los Pokémon de los Días de la Comunidad 2026!",
+      "title_original": "¡Celebren el año con todos los Pokémon de los Días de la Comunidad 2026!",
+      "summary": "Sábado, 12 de diciembre y domingo, 13 de diciembre de 2026 de 2 p. m. a 5 p. m., hora local.",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-20",
+      "end_date": null,
+      "date_range_label": "20 nov 2026 -> 20 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Plan Día de la Comunidad (Ventana Legacy, Mega Caramelos XL y limpieza rápida)",
+      "search_filter": "0*,1*,2*&!shiny&!4*",
+      "guide_url": "https://pokemongolive.com/es_MX/news/community-day-december-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Plan Día de la Comunidad",
+          "subtitle": "Ventana Legacy, Mega Caramelos XL y limpieza rápida",
+          "primary_type": "grass",
+          "badge_label": "PLAN CD GO",
+          "left_heading": "REGLAS CLAVE DEL EVENTO",
+          "left_rows": [
+            "Ventana principal de capturas (3 horas locales)",
+            "Evoluciona hasta 5 h después para Ataque Legacy",
+            "Mayor probabilidad de Shiny y Módulos Cebo extendidos"
+          ],
+          "right_heading": "CHECKLIST EN CAJA Y CAPTURA",
+          "right_rows": [
+            "Activa Mega Evolución Nv.3 del tipo del protagonista",
+            "Conserva 4* (Hundo) + IV bajos en ataque para PvP",
+            "Limpia caja al instante con el filtro inferior"
+          ],
+          "explanation": "Ten espacio libre en caja, Ultra Balls listas y una Mega Nv.3 activa durante todo el horario para multiplicar Caramelos XL y no perder el ataque exclusivo al evolucionar.",
+          "search_label": "Filtro de limpieza rápida (no shiny / no 100%):",
+          "search_string": "0*,1*,2*&!shiny&!4*",
+          "info_label": "📘 Ver calendario oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/community-day-december-2026",
+          "context_label": "Evento GO: ¡Celebren el año con todos los Pokémon de los Días de la Comunidad 2026!"
+        }
+      ],
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/community-day-december-2026"
+      ],
+      "first_seen_at": "2026-11-20T18:23:29Z",
+      "last_updated_at": "2026-11-20T18:23:29Z"
     },
     {
       "id": "pogo:articulos-avatar-de-el-go-llegan-para-pokemon",
