@@ -1,15 +1,15 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-19 00:23 COT",
+  "generated_at": "2026-11-20 00:23 COT",
   "stats": {
     "total": 70,
     "pogo": 57,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 42,
+    "active": 38,
     "upcoming": 26,
-    "ended": 2
+    "ended": 6
   },
   "events": [
     {
@@ -144,292 +144,6 @@ window.POKE_ALERTS_DB = {
       ],
       "urls": [
         "https://leekduck.com/promo-codes/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
-      "id": "pogo:and-grookey-hour-scorbunny-sobble-spotlight",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Hora Destacada",
-      "title": "Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado",
-      "title_original": "Grookey, Scorbunny, and Sobble Spotlight Hour",
-      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. hora local. November 19 : The Pokémon destacados are Grookey, Scorbunny, and Sobble and the special bonus is 2× Caramelos por captura .",
-      "action_guide": "📍 Cuándo jugar: únicamente de 6:00 p. m. a 7:00 p. m. hora local. 🎯 Cómo aprovecharlo: camina con Incienso (y Trozo Estrella o Huevo Suerte si el bonus es Polvo o PX); al terminar copia el filtro de caja de abajo para detectar rápido Pokémon 100% IV o buenos en PvP.",
-      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
-      "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Grookey, Scorbunny, Sobble | Variocolor disponibles: Grookey",
-      "highlights": [
-        "Bonificaciones: 2× Caramelos por captura",
-        "Pokémon destacados: Grookey, Scorbunny, Sobble",
-        "Variocolor disponibles: Grookey"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-19",
-      "end_date": "2026-11-19",
-      "date_range_label": "19 nov 2026 -> 19 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Grookey → Thwackey → Rillaboom: Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008 | Scorbunny → Raboot → Cinderace: Tipos: Fuego • Salvaje Hundo Nv.30/35: 940 / 1019",
-      "search_filter": "+Grookey&4*,3*",
-      "guide_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-19/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Grookey → Thwackey → Rillaboom",
-          "subtitle": "Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008",
-          "primary_type": "grass",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Grookey (PC 100%)",
-            "• Salvaje máx Nv.30: 931",
-            "• Clima máx Nv.35:  1008",
-            "• Misión / Huevo:   465 / 620",
-            "Final: Rillaboom",
-            "• PC 100% Nv.40/50: 3324 / 3758"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Rillaboom #24 Ultra 2500 (90.3) • IV 4/14/15",
-            "  -> Scratch / Drum Beating / Earth Power",
-            "PvE Raids (Planta): Razor Leaf + Frenzy Plant"
-          ],
-          "explanation": "Familia Grookey → Thwackey → Rillaboom: revisa 931 (Nv.30) y 1008 (clima) para 100% IV; en competitivo Rillaboom rinde #24 en Ultra 2500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Grookey&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/rillaboom/",
-          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
-        },
-        {
-          "title": "Scorbunny → Raboot → Cinderace",
-          "subtitle": "Tipos: Fuego • Salvaje Hundo Nv.30/35: 940 / 1019",
-          "primary_type": "fire",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Scorbunny (PC 100%)",
-            "• Salvaje máx Nv.30: 940",
-            "• Clima máx Nv.35:  1019",
-            "• Misión / Huevo:   470 / 627",
-            "Final: Cinderace",
-            "• PC 100% Nv.40/50: 3018 / 3412"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Cinderace #244 Master (54.6)",
-            "  -> Fire Spin / Blast Burn / Pyro Ball",
-            "PvE Raids (Fuego): Fire Spin + Blast Burn"
-          ],
-          "explanation": "Familia Scorbunny → Raboot → Cinderace: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo Cinderace rinde #244 en Master.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Scorbunny&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/cinderace/",
-          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
-        },
-        {
-          "title": "Sobble → Drizzile → Inteleon",
-          "subtitle": "Tipos: Agua • Salvaje Hundo Nv.30/35: 940 / 1019",
-          "primary_type": "water",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Sobble (PC 100%)",
-            "• Salvaje máx Nv.30: 940",
-            "• Clima máx Nv.35:  1019",
-            "• Misión / Huevo:   470 / 627",
-            "Final: Inteleon",
-            "• PC 100% Nv.40/50: 2964 / 3351"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "PvE Raids (Agua): Water Gun + Hydro Cannon"
-          ],
-          "explanation": "Familia Sobble → Drizzile → Inteleon: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Water Gun + Hydro Cannon.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Sobble&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/inteleon/",
-          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/pokemonspotlighthour2026-11-19/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-19T01:23:52Z"
-    },
-    {
-      "id": "pogo:leonids-minior-showers",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Evento Pokémon GO",
-      "title": "Minior Showers - Leonids",
-      "title_original": "Minior Showers - Leonids",
-      "summary": "Este evento es el segundo de los 6 eventos relacionados con la lluvia de meteoritos que introducen a Minior en el juego. Se celebrará desde las 17:00, hora local, hasta las 23:59, hora local, con apariciones reforzadas de 17:00 a 21:00 cada día.",
-      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [
-        "Pokémon salvajes: Minior"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-14",
-      "end_date": "2026-11-19",
-      "date_range_label": "14 nov 2026 -> 19 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Minior (Core) (Tipos: Roca/Volador • Salvaje Hundo Nv.30/35: 1965 / 2128) • Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "+Minior&4*,3*",
-      "guide_url": "https://www.serebii.net/pokemongo/events/miniorshowers-leonids.shtml",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Minior (Core)",
-          "subtitle": "Tipos: Roca/Volador • Salvaje Hundo Nv.30/35: 1965 / 2128",
-          "primary_type": "rock",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Minior (Core) (PC 100%)",
-            "• Salvaje máx Nv.30: 1965",
-            "• Clima máx Nv.35:  2128",
-            "• Misión / Huevo:   982 / 1310"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Minior (Core) #133 Súper 1500 (84.9) • IV 5/14/15",
-            "  -> Rollout / Acrobatics / Power Gem",
-            "PvE Raids (Roca): Rollout + Acrobatics"
-          ],
-          "explanation": "Familia Minior (Core): revisa 1965 (Nv.30) y 2128 (clima) para 100% IV; en competitivo Minior (Core) rinde #133 en Súper 1500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Minior&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/minior_core/",
-          "context_label": "Evento GO: Minior Showers - Leonids"
-        },
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "water",
-          "badge_label": "GUÍA EVENTO GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "Wild spawns: Minior"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Revisa Investigaciones Temporales antes del cierre",
-            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
-            "Marca el evento en el panel al completar sus premios"
-          ],
-          "explanation": "Minior Showers - Leonids: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro de especies del evento en tu caja:",
-          "search_string": "Minior&3*,4*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://www.serebii.net/pokemongo/events/miniorshowers-leonids.shtml",
-          "context_label": "Evento GO: Minior Showers - Leonids"
-        }
-      ],
-      "sources": [
-        "Serebii GO"
-      ],
-      "urls": [
-        "https://www.serebii.net/pokemongo/events/miniorshowers-leonids.shtml"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
-      "id": "pogo:2026-leonids-minior-showers",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Evento Pokémon GO",
-      "title": "Minior Showers: Leonids 2026",
-      "title_original": "Minior Showers: Leonids 2026",
-      "summary": "¡Explora bajo la luz de las estrellas durante la lluvia de meteoros de las Leónidas para tener la oportunidad de encontrarte con Minior en Pokémon GO! Esta Lluvia de Minior se celebrará del 14 de noviembre de 2026 a las 17:00 al 19 de noviembre de 2026 a las 23:59, hora local.",
-      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
-      "search_aliases": "",
-      "rewards": "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día",
-      "highlights": [
-        "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-14",
-      "end_date": "2026-11-19",
-      "date_range_label": "14 nov 2026 -> 19 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Minior (Core) (Tipos: Roca/Volador • Salvaje Hundo Nv.30/35: 1965 / 2128) • Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "+Minior&4*,3*",
-      "guide_url": "https://leekduck.com/events/minior-showers-leonids-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Minior (Core)",
-          "subtitle": "Tipos: Roca/Volador • Salvaje Hundo Nv.30/35: 1965 / 2128",
-          "primary_type": "rock",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Minior (Core) (PC 100%)",
-            "• Salvaje máx Nv.30: 1965",
-            "• Clima máx Nv.35:  2128",
-            "• Misión / Huevo:   982 / 1310"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Minior (Core) #133 Súper 1500 (84.9) • IV 5/14/15",
-            "  -> Rollout / Acrobatics / Power Gem",
-            "PvE Raids (Roca): Rollout + Acrobatics"
-          ],
-          "explanation": "Familia Minior (Core): revisa 1965 (Nv.30) y 2128 (clima) para 100% IV; en competitivo Minior (Core) rinde #133 en Súper 1500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Minior&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/minior_core/",
-          "context_label": "Evento GO: Minior Showers: Leonids 2026"
-        },
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "water",
-          "badge_label": "GUÍA EVENTO GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "Bonuses: Increased Stardust for catching Minior; Increased",
-            "chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Trozo Estrella en sesiones de captura/recompensas",
-            "Combina Huevo Suerte al subir amistad o completar misiones"
-          ],
-          "explanation": "Minior Showers: Leonids 2026: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro de especies del evento en tu caja:",
-          "search_string": "Minior&3*,4*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://leekduck.com/events/minior-showers-leonids-2026/",
-          "context_label": "Evento GO: Minior Showers: Leonids 2026"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/minior-showers-leonids-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
@@ -3290,72 +3004,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
-      "id": "pogo:bailen-de-durante-el-la-luna-luz",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "¡Bailen a la luz de la Luna durante el Día de supermegaincursiones: Clefable!",
-      "title_original": "¡Bailen a la luz de la Luna durante el Día de supermegaincursiones: Clefable!",
-      "summary": "¡El Pokémon siguiente hará su debut en las supermegaincursiones de Pokémon GO!",
-      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-05",
-      "end_date": null,
-      "date_range_label": "05 nov 2026 -> 05 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Mega Clefable (PC 100%: 1392 (Nv.20) • 1741 (Nv.25))",
-      "search_filter": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
-      "guide_url": "https://pokemongolive.com/es_MX/news/clefable-super-mega-raid-day-2026",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Mega Clefable",
-          "subtitle": "PC 100%: 1392 (Nv.20) • 1741 (Nv.25)",
-          "primary_type": "fairy",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Hada",
-            "PC 100% Nv.20: 1392",
-            "PC 100% Clima Nv.25: 1741",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Acero (×1.6)",
-            "• Veneno (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
-            "2. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
-            "3. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
-            "4. Metagross Oscuro (Bullet Punch + Meteor Mash)",
-            "5. Mega Lucario (Bullet Punch + Meteor Mash)",
-            "6. Dialga Oscuro (Metal Claw + Iron Head)"
-          ],
-          "explanation": "Vulnerable a Acero, Veneno. Lidera tu equipo con Zamazenta (Crowned Shield) y verifica el 100% IV al capturar: 1392 (normal) o 1741 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: ¡Bailen a la luz de la Luna durante el Día de supermegaincursiones: Clefable!"
-        }
-      ],
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/clefable-super-mega-raid-day-2026"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
       "id": "pogo:capturen-con-duolingo-go-idioma-nuevo-pokemon-un",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -5659,6 +5307,292 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
+      "id": "pogo:and-grookey-hour-scorbunny-sobble-spotlight",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Hora Destacada",
+      "title": "Grookey, Scorbunny, and Sobble Hora del Pokémon Destacado",
+      "title_original": "Grookey, Scorbunny, and Sobble Spotlight Hour",
+      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. hora local. November 19 : The Pokémon destacados are Grookey, Scorbunny, and Sobble and the special bonus is 2× Caramelos por captura .",
+      "action_guide": "📍 Cuándo jugar: únicamente de 6:00 p. m. a 7:00 p. m. hora local. 🎯 Cómo aprovecharlo: camina con Incienso (y Trozo Estrella o Huevo Suerte si el bonus es Polvo o PX); al terminar copia el filtro de caja de abajo para detectar rápido Pokémon 100% IV o buenos en PvP.",
+      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
+      "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Grookey, Scorbunny, Sobble | Variocolor disponibles: Grookey",
+      "highlights": [
+        "Bonificaciones: 2× Caramelos por captura",
+        "Pokémon destacados: Grookey, Scorbunny, Sobble",
+        "Variocolor disponibles: Grookey"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-19",
+      "end_date": "2026-11-19",
+      "date_range_label": "19 nov 2026 -> 19 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Grookey → Thwackey → Rillaboom: Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008 | Scorbunny → Raboot → Cinderace: Tipos: Fuego • Salvaje Hundo Nv.30/35: 940 / 1019",
+      "search_filter": "+Grookey&4*,3*",
+      "guide_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-19/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Grookey → Thwackey → Rillaboom",
+          "subtitle": "Tipos: Planta • Salvaje Hundo Nv.30/35: 931 / 1008",
+          "primary_type": "grass",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Grookey (PC 100%)",
+            "• Salvaje máx Nv.30: 931",
+            "• Clima máx Nv.35:  1008",
+            "• Misión / Huevo:   465 / 620",
+            "Final: Rillaboom",
+            "• PC 100% Nv.40/50: 3324 / 3758"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Rillaboom #24 Ultra 2500 (90.3) • IV 4/14/15",
+            "  -> Scratch / Drum Beating / Earth Power",
+            "PvE Raids (Planta): Razor Leaf + Frenzy Plant"
+          ],
+          "explanation": "Familia Grookey → Thwackey → Rillaboom: revisa 931 (Nv.30) y 1008 (clima) para 100% IV; en competitivo Rillaboom rinde #24 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Grookey&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/rillaboom/",
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
+        },
+        {
+          "title": "Scorbunny → Raboot → Cinderace",
+          "subtitle": "Tipos: Fuego • Salvaje Hundo Nv.30/35: 940 / 1019",
+          "primary_type": "fire",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Scorbunny (PC 100%)",
+            "• Salvaje máx Nv.30: 940",
+            "• Clima máx Nv.35:  1019",
+            "• Misión / Huevo:   470 / 627",
+            "Final: Cinderace",
+            "• PC 100% Nv.40/50: 3018 / 3412"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Cinderace #244 Master (54.6)",
+            "  -> Fire Spin / Blast Burn / Pyro Ball",
+            "PvE Raids (Fuego): Fire Spin + Blast Burn"
+          ],
+          "explanation": "Familia Scorbunny → Raboot → Cinderace: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo Cinderace rinde #244 en Master.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Scorbunny&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/cinderace/",
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
+        },
+        {
+          "title": "Sobble → Drizzile → Inteleon",
+          "subtitle": "Tipos: Agua • Salvaje Hundo Nv.30/35: 940 / 1019",
+          "primary_type": "water",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Sobble (PC 100%)",
+            "• Salvaje máx Nv.30: 940",
+            "• Clima máx Nv.35:  1019",
+            "• Misión / Huevo:   470 / 627",
+            "Final: Inteleon",
+            "• PC 100% Nv.40/50: 2964 / 3351"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "PvE Raids (Agua): Water Gun + Hydro Cannon"
+          ],
+          "explanation": "Familia Sobble → Drizzile → Inteleon: revisa 940 (Nv.30) y 1019 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Water Gun + Hydro Cannon.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Sobble&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/inteleon/",
+          "context_label": "Evento GO: Grookey, Scorbunny y Sobble Hora del Pokémon Destacado"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/pokemonspotlighthour2026-11-19/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-19T01:23:52Z"
+    },
+    {
+      "id": "pogo:leonids-minior-showers",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Minior Showers - Leonids",
+      "title_original": "Minior Showers - Leonids",
+      "summary": "Este evento es el segundo de los 6 eventos relacionados con la lluvia de meteoritos que introducen a Minior en el juego. Se celebrará desde las 17:00, hora local, hasta las 23:59, hora local, con apariciones reforzadas de 17:00 a 21:00 cada día.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [
+        "Pokémon salvajes: Minior"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-14",
+      "end_date": "2026-11-19",
+      "date_range_label": "14 nov 2026 -> 19 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Minior (Core) (Tipos: Roca/Volador • Salvaje Hundo Nv.30/35: 1965 / 2128) • Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "+Minior&4*,3*",
+      "guide_url": "https://www.serebii.net/pokemongo/events/miniorshowers-leonids.shtml",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Minior (Core)",
+          "subtitle": "Tipos: Roca/Volador • Salvaje Hundo Nv.30/35: 1965 / 2128",
+          "primary_type": "rock",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Minior (Core) (PC 100%)",
+            "• Salvaje máx Nv.30: 1965",
+            "• Clima máx Nv.35:  2128",
+            "• Misión / Huevo:   982 / 1310"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Minior (Core) #133 Súper 1500 (84.9) • IV 5/14/15",
+            "  -> Rollout / Acrobatics / Power Gem",
+            "PvE Raids (Roca): Rollout + Acrobatics"
+          ],
+          "explanation": "Familia Minior (Core): revisa 1965 (Nv.30) y 2128 (clima) para 100% IV; en competitivo Minior (Core) rinde #133 en Súper 1500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Minior&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/minior_core/",
+          "context_label": "Evento GO: Minior Showers - Leonids"
+        },
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Wild spawns: Minior"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Revisa Investigaciones Temporales antes del cierre",
+            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
+            "Marca el evento en el panel al completar sus premios"
+          ],
+          "explanation": "Minior Showers - Leonids: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro de especies del evento en tu caja:",
+          "search_string": "Minior&3*,4*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://www.serebii.net/pokemongo/events/miniorshowers-leonids.shtml",
+          "context_label": "Evento GO: Minior Showers - Leonids"
+        }
+      ],
+      "sources": [
+        "Serebii GO"
+      ],
+      "urls": [
+        "https://www.serebii.net/pokemongo/events/miniorshowers-leonids.shtml"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:2026-leonids-minior-showers",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Minior Showers: Leonids 2026",
+      "title_original": "Minior Showers: Leonids 2026",
+      "summary": "¡Explora bajo la luz de las estrellas durante la lluvia de meteoros de las Leónidas para tener la oportunidad de encontrarte con Minior en Pokémon GO! Esta Lluvia de Minior se celebrará del 14 de noviembre de 2026 a las 17:00 al 19 de noviembre de 2026 a las 23:59, hora local.",
+      "action_guide": "📍 Cómo aprovecharlo: explora y captura en el mapa dentro del horario activo (revisando Poképaradas si aparece Kecleon), activa los bonus señalados abajo y pega el filtro rápido en tu bolsa Pokémon para valorar 100% IV y PvP.",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día",
+      "highlights": [
+        "Bonificaciones: Más Polvo Estelar al capturar Minior; Mayor probabilidad de encontrar Minior from 5:00 p.m. to 9:00 p.m. hora local cada día"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-14",
+      "end_date": "2026-11-19",
+      "date_range_label": "14 nov 2026 -> 19 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Minior (Core) (Tipos: Roca/Volador • Salvaje Hundo Nv.30/35: 1965 / 2128) • Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "+Minior&4*,3*",
+      "guide_url": "https://leekduck.com/events/minior-showers-leonids-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Minior (Core)",
+          "subtitle": "Tipos: Roca/Volador • Salvaje Hundo Nv.30/35: 1965 / 2128",
+          "primary_type": "rock",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Minior (Core) (PC 100%)",
+            "• Salvaje máx Nv.30: 1965",
+            "• Clima máx Nv.35:  2128",
+            "• Misión / Huevo:   982 / 1310"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Minior (Core) #133 Súper 1500 (84.9) • IV 5/14/15",
+            "  -> Rollout / Acrobatics / Power Gem",
+            "PvE Raids (Roca): Rollout + Acrobatics"
+          ],
+          "explanation": "Familia Minior (Core): revisa 1965 (Nv.30) y 2128 (clima) para 100% IV; en competitivo Minior (Core) rinde #133 en Súper 1500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Minior&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/minior_core/",
+          "context_label": "Evento GO: Minior Showers: Leonids 2026"
+        },
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Bonuses: Increased Stardust for catching Minior; Increased",
+            "chance to encounter Minior from 5:00 p.m. to 9:00 p.m. local"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Activa Trozo Estrella en sesiones de captura/recompensas",
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Minior Showers: Leonids 2026: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro de especies del evento en tu caja:",
+          "search_string": "Minior&3*,4*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://leekduck.com/events/minior-showers-leonids-2026/",
+          "context_label": "Evento GO: Minior Showers: Leonids 2026"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/minior-showers-leonids-2026/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
       "id": "pogo:2027-campeonato-celebremos-de-el-internacional-latinoamerica-pokemon",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -5719,6 +5653,72 @@ window.POKE_ALERTS_DB = {
       ],
       "urls": [
         "https://pokemongolive.com/es_MX/news/pokemon-go-at-laic2027"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:bailen-de-durante-el-la-luna-luz",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Bailen a la luz de la Luna durante el Día de supermegaincursiones: Clefable!",
+      "title_original": "¡Bailen a la luz de la Luna durante el Día de supermegaincursiones: Clefable!",
+      "summary": "¡El Pokémon siguiente hará su debut en las supermegaincursiones de Pokémon GO!",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-05",
+      "end_date": null,
+      "date_range_label": "05 nov 2026 -> 05 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Mega Clefable (PC 100%: 1392 (Nv.20) • 1741 (Nv.25))",
+      "search_filter": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
+      "guide_url": "https://pokemongolive.com/es_MX/news/clefable-super-mega-raid-day-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Mega Clefable",
+          "subtitle": "PC 100%: 1392 (Nv.20) • 1741 (Nv.25)",
+          "primary_type": "fairy",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Hada",
+            "PC 100% Nv.20: 1392",
+            "PC 100% Clima Nv.25: 1741",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Acero (×1.6)",
+            "• Veneno (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
+            "2. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
+            "3. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
+            "4. Metagross Oscuro (Bullet Punch + Meteor Mash)",
+            "5. Mega Lucario (Bullet Punch + Meteor Mash)",
+            "6. Dialga Oscuro (Metal Claw + Iron Head)"
+          ],
+          "explanation": "Vulnerable a Acero, Veneno. Lidera tu equipo con Zamazenta (Crowned Shield) y verifica el 100% IV al capturar: 1392 (normal) o 1741 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: ¡Bailen a la luz de la Luna durante el Día de supermegaincursiones: Clefable!"
+        }
+      ],
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/clefable-super-mega-raid-day-2026"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
