@@ -1,15 +1,15 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-20 19:23 COT",
+  "generated_at": "2026-11-21 00:23 COT",
   "stats": {
     "total": 73,
     "pogo": 60,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 40,
-    "upcoming": 27,
-    "ended": 6
+    "active": 39,
+    "upcoming": 25,
+    "ended": 9
   },
   "events": [
     {
@@ -149,6 +149,77 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
+      "id": "pogo:eternamax-eternatus-returns",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Combates Max",
+      "title": "Eternamax Eternatus Returns",
+      "title_original": "Eternamax Eternatus Returns",
+      "summary": "Eternamax Eternatus regresa durante las Pruebas Dynamax y se apodera de la mayoría de los Nodos Energéticos el 21 de noviembre de 2026, de 11:00 a 14:00, hora local.",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos",
+      "highlights": [
+        "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos",
+        "Bonificaciones: Nodos Energéticos se actualizará con más frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8 × Partículas Max de Nodos Energéticos"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-21",
+      "end_date": "2026-11-21",
+      "date_range_label": "21 nov 2026 -> 21 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Eternatus: PC 100%: 2530 (Nv.20) • 3163 (Nv.25)",
+      "search_filter": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
+      "guide_url": "https://leekduck.com/events/eternamax-eternatus-max-battles-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Eternatus",
+          "subtitle": "PC 100%: 2530 (Nv.20) • 3163 (Nv.25)",
+          "primary_type": "poison",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Veneno/Dragón",
+            "PC 100% Nv.20: 2530",
+            "PC 100% Clima Nv.25: 3163",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Dragón (×1.6)",
+            "• Hielo (×1.6)",
+            "• Psíquico (×1.6)",
+            "• Tierra (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Eternatus (Dragon Tail + Dynamax Cannon)",
+            "2. Kyurem (Black) (Dragon Tail + Freeze Shock)",
+            "3. Groudon Primigenio (Mud Shot + Precipice Blades)",
+            "4. Regigigas Oscuro (Zen Headbutt + Crush Grip)",
+            "5. Latios Oscuro (Dragon Breath + Luster Purge)",
+            "6. Dialga (Origin) (Dragon Breath + Roar of Time)"
+          ],
+          "explanation": "Vulnerable a Dragón, Hielo, Psíquico. Lidera tu equipo con Eternatus y verifica el 100% IV al capturar: 2530 (normal) o 3163 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: El regreso de Eternamax Eternatos"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/eternamax-eternatus-max-battles-2026/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-21T00:23:44Z"
+    },
+    {
       "id": "tcgp:2026-bonus-november-week",
       "game": "tcgp",
       "game_label": "Pokémon TCG Pocket",
@@ -264,6 +335,124 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:community-day-pawniard",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Día de la Comunidad",
+      "title": "Pawniard Día de la Comunidad",
+      "title_original": "Pawniard Community Day",
+      "summary": "¡Pawniard, el Pokémon Espada Afilada, será el protagonista del Día de la Comunidad de noviembre! El evento tendrá lugar el sábado 21 de noviembre de 2026, de 14:00 a 17:00, hora local.",
+      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
+      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
+      "rewards": "Bonificaciones: Mayor aparición salvaje; 1/4 distancia para eclosionar Huevos; Incienso de 3 horas | Pokémon destacados: Pawniard | Variocolor disponibles: Pawniard, Bisharp, Kingambit",
+      "highlights": [
+        "Bonificaciones: Mayor aparición salvaje; 1/4 distancia para eclosionar Huevos; Incienso de 3 horas",
+        "Pokémon destacados: Pawniard",
+        "Variocolor disponibles: Pawniard, Bisharp, Kingambit"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-21",
+      "end_date": "2026-11-21",
+      "date_range_label": "21 nov 2026 -> 21 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Pawniard → Bisharp → Kingambit: Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 1228 / 1331",
+      "search_filter": "+Pawniard&4*,3*",
+      "guide_url": "https://leekduck.com/events/november-communityday2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Pawniard → Bisharp → Kingambit",
+          "subtitle": "Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 1228 / 1331",
+          "primary_type": "dark",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Pawniard (PC 100%)",
+            "• Salvaje máx Nv.30: 1228",
+            "• Clima máx Nv.35:  1331",
+            "• Misión / Huevo:   614 / 819",
+            "Final: Kingambit",
+            "• PC 100% Nv.40/50: 3614 / 4086"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
+            "  -> Low Kick / Kowtow Cleave / Iron Head",
+            "PvE Raids (Siniestro): Snarl + Foul Play"
+          ],
+          "explanation": "Familia Pawniard → Bisharp → Kingambit: revisa 1228 (Nv.30) y 1331 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Pawniard&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/kingambit/",
+          "context_label": "Evento GO: Pawniard Día de la Comunidad"
+        },
+        {
+          "title": "Bisharp → Kingambit",
+          "subtitle": "Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 2438 / 2641",
+          "primary_type": "dark",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Bisharp (PC 100%)",
+            "• Salvaje máx Nv.30: 2438",
+            "• Clima máx Nv.35:  2641",
+            "• Misión / Huevo:   1219 / 1625",
+            "Final: Kingambit",
+            "• PC 100% Nv.40/50: 3614 / 4086"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
+            "  -> Low Kick / Kowtow Cleave / Iron Head",
+            "PvE Raids (Siniestro): Snarl + Foul Play"
+          ],
+          "explanation": "Familia Bisharp → Kingambit: revisa 2438 (Nv.30) y 2641 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Bisharp&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/kingambit/",
+          "context_label": "Evento GO: Pawniard Día de la Comunidad"
+        },
+        {
+          "title": "Kingambit",
+          "subtitle": "Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 3098 / 3356",
+          "primary_type": "dark",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Kingambit (PC 100%)",
+            "• Salvaje máx Nv.30: 3098",
+            "• Clima máx Nv.35:  3356",
+            "• Misión / Huevo:   1549 / 2065"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
+            "  -> Low Kick / Kowtow Cleave / Iron Head",
+            "PvE Raids (Siniestro): Snarl + Foul Play"
+          ],
+          "explanation": "Familia Kingambit: revisa 3098 (Nv.30) y 3356 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Kingambit&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/kingambit/",
+          "context_label": "Evento GO: Pawniard Día de la Comunidad"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/november-communityday2026/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-21T00:23:44Z"
     },
     {
       "id": "pogo:2027-america-drops-for-international-latin-pokemon-twitch",
@@ -2736,97 +2925,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
-      "id": "pogo:actividades-actualizacion-area-del-en-las-sobre-viernes",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México",
-      "title_original": "Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México",
-      "summary": "Como parte de nuestra colaboración con las autoridades locales y debido a la coincidencia con otros eventos en la zona, las experiencias del Área Silvestre de Pokémon GO programadas en el Monumento a la Revolución finalizarán antes de lo previsto el viernes 6 de noviembre de 2026. Estas experiencias estarán disponibles en el Monumento a la Revolución el sábado y el domingo, según lo planeado.",
-      "action_guide": "📍 Qué hacer: revisa las fechas y enlaces del anuncio oficial en Pokémon GO; si incluye recompensas por stream o investigaciones temporales, reclámalas en la pestaña Eventos/Hoy antes del cierre.",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-06",
-      "end_date": null,
-      "date_range_label": "06 nov 2026 -> 06 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "4*,3*,shiny",
-      "guide_url": "https://pokemongolive.com/es_MX/news/gowildarea-mexicocity-friday-update",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "electric",
-          "badge_label": "NOTICIA GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "Como parte de nuestra colaboración con las autoridades locales",
-            "y debido a la coincidencia con otros eventos en la zona, las",
-            "experiencias del Área Silvestre de Pokémon GO programadas en"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Combina Huevo Suerte al subir amistad o completar misiones"
-          ],
-          "explanation": "Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro general para valorar capturas del evento:",
-          "search_string": "4*,3*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://pokemongolive.com/es_MX/news/gowildarea-mexicocity-friday-update",
-          "context_label": "Noticia GO: Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México"
-        }
-      ],
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/gowildarea-mexicocity-friday-update"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
-      "id": "tcgp:card-details-expansion-list-set",
-      "game": "tcgp",
-      "game_label": "Pokémon TCG Pocket",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "C2 Expansion Card List & Set Details",
-      "title_original": "C2 Expansion Card List & Set Details",
-      "summary": "Official update in Pokémon TCG Pocket: C2 Expansion Lista de Cartas y Detalles del Set",
-      "action_guide": "📍 Qué implica: novedad o próxima actualización oficial de Pokémon TCG Pocket. Revisa las cartas y fechas clave para planificar tus Relojes de Arena de Sobres.",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-06",
-      "end_date": null,
-      "date_range_label": "Desde 06 nov 2026 (sin fecha fin publicada)",
-      "status": "activo",
-      "tactical_summary": "",
-      "search_filter": "",
-      "guide_url": "https://ptcgpocket.gg/best-decks-dual-fusion-c1-meta-tier-list-snapshot-week-1/",
-      "recommended_decks": [],
-      "tactical_cards": [],
-      "sources": [
-        "PTCGPocket.gg"
-      ],
-      "urls": [
-        "https://ptcgpocket.gg/c2/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
       "id": "pogo:bonificacion-con-consigan-de-doble-el-pokemonedas",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -3241,262 +3339,6 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
-      "id": "pogo:de-del-este-fin-inicien-semana-sesion-solo",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "¡Solo este fin de semana! Inicien sesión del 6 al 8 de noviembre para disfrutar de una Investigación Temporal gratuita que incluye a Machamp Gigamax.",
-      "title_original": "¡Solo este fin de semana! Inicien sesión del 6 al 8 de noviembre para disfrutar de una Investigación Temporal gratuita que incluye a Machamp Gigamax.",
-      "summary": "Desde el viernes 6 de noviembre, a las 10:00, hasta el domingo 8 de noviembre de 2026, a las 23:59 (hora local)",
-      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
-      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-06",
-      "end_date": null,
-      "date_range_label": "06 nov 2026 -> 06 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Machamp (PC 100%: 1746 (Nv.20) • 2183 (Nv.25))",
-      "search_filter": "Regigigas,Latios,Ho-Oh,Honchkrow,Staraptor,Mewtwo",
-      "guide_url": "https://pokemongolive.com/es_MX/news/gowildarea-2026-timed-research",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Machamp",
-          "subtitle": "PC 100%: 1746 (Nv.20) • 2183 (Nv.25)",
-          "primary_type": "fighting",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Lucha",
-            "PC 100% Nv.20: 1746",
-            "PC 100% Clima Nv.25: 2183",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Hada (×1.6)",
-            "• Psíquico (×1.6)",
-            "• Volador (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Regigigas Oscuro (Zen Headbutt + Crush Grip)",
-            "2. Mega Latios (Zen Headbutt + Luster Purge)",
-            "3. Ho-Oh Oscuro (Extrasensory + Brave Bird)",
-            "4. Honchkrow Oscuro (Peck + Brave Bird)",
-            "5. Staraptor Oscuro (Gust + Brave Bird)",
-            "6. Mewtwo Oscuro (Confusion + Psystrike)"
-          ],
-          "explanation": "Vulnerable a Hada, Psíquico, Volador. Lidera tu equipo con Regigigas Oscuro y verifica el 100% IV al capturar: 1746 (normal) o 2183 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Regigigas,Latios,Ho-Oh,Honchkrow,Staraptor,Mewtwo",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: ¡Solo este fin de semana! Inicien sesión del 6 al 8 de noviembre para disfrutar de una Investigación Temporal gratuita que incluye a Machamp Gigamax."
-        }
-      ],
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/gowildarea-2026-timed-research"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
-      "id": "pogo:eternamax-eternatus-returns",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Combates Max",
-      "title": "Eternamax Eternatus Returns",
-      "title_original": "Eternamax Eternatus Returns",
-      "summary": "Eternamax Eternatus regresa durante las Pruebas Dynamax y se apodera de la mayoría de los Nodos Energéticos el 21 de noviembre de 2026, de 11:00 a 14:00, hora local.",
-      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
-      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
-      "rewards": "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos",
-      "highlights": [
-        "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos",
-        "Bonificaciones: Nodos Energéticos se actualizará con más frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8 × Partículas Max de Nodos Energéticos"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-21",
-      "end_date": "2026-11-21",
-      "date_range_label": "21 nov 2026 -> 21 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Eternatus: PC 100%: 2530 (Nv.20) • 3163 (Nv.25)",
-      "search_filter": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
-      "guide_url": "https://leekduck.com/events/eternamax-eternatus-max-battles-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Eternatus",
-          "subtitle": "PC 100%: 2530 (Nv.20) • 3163 (Nv.25)",
-          "primary_type": "poison",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Veneno/Dragón",
-            "PC 100% Nv.20: 2530",
-            "PC 100% Clima Nv.25: 3163",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Dragón (×1.6)",
-            "• Hielo (×1.6)",
-            "• Psíquico (×1.6)",
-            "• Tierra (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Eternatus (Dragon Tail + Dynamax Cannon)",
-            "2. Kyurem (Black) (Dragon Tail + Freeze Shock)",
-            "3. Groudon Primigenio (Mud Shot + Precipice Blades)",
-            "4. Regigigas Oscuro (Zen Headbutt + Crush Grip)",
-            "5. Latios Oscuro (Dragon Breath + Luster Purge)",
-            "6. Dialga (Origin) (Dragon Breath + Roar of Time)"
-          ],
-          "explanation": "Vulnerable a Dragón, Hielo, Psíquico. Lidera tu equipo con Eternatus y verifica el 100% IV al capturar: 2530 (normal) o 3163 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: El regreso de Eternamax Eternatos"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/eternamax-eternatus-max-battles-2026/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-21T00:23:44Z"
-    },
-    {
-      "id": "pogo:community-day-pawniard",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Día de la Comunidad",
-      "title": "Pawniard Día de la Comunidad",
-      "title_original": "Pawniard Community Day",
-      "summary": "¡Pawniard, el Pokémon Espada Afilada, será el protagonista del Día de la Comunidad de noviembre! El evento tendrá lugar el sábado 21 de noviembre de 2026, de 14:00 a 17:00, hora local.",
-      "action_guide": "📍 Cómo completarlo: sal a capturar en la franja de 3 horas con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL. Recuerda evolucionar hasta 5 horas después del cierre para aprender el Ataque Exclusivo (Legacy).",
-      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
-      "rewards": "Bonificaciones: Mayor aparición salvaje; 1/4 distancia para eclosionar Huevos; Incienso de 3 horas | Pokémon destacados: Pawniard | Variocolor disponibles: Pawniard, Bisharp, Kingambit",
-      "highlights": [
-        "Bonificaciones: Mayor aparición salvaje; 1/4 distancia para eclosionar Huevos; Incienso de 3 horas",
-        "Pokémon destacados: Pawniard",
-        "Variocolor disponibles: Pawniard, Bisharp, Kingambit"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-21",
-      "end_date": "2026-11-21",
-      "date_range_label": "21 nov 2026 -> 21 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Pawniard → Bisharp → Kingambit: Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 1228 / 1331",
-      "search_filter": "+Pawniard&4*,3*",
-      "guide_url": "https://leekduck.com/events/november-communityday2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Pawniard → Bisharp → Kingambit",
-          "subtitle": "Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 1228 / 1331",
-          "primary_type": "dark",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Pawniard (PC 100%)",
-            "• Salvaje máx Nv.30: 1228",
-            "• Clima máx Nv.35:  1331",
-            "• Misión / Huevo:   614 / 819",
-            "Final: Kingambit",
-            "• PC 100% Nv.40/50: 3614 / 4086"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
-            "  -> Low Kick / Kowtow Cleave / Iron Head",
-            "PvE Raids (Siniestro): Snarl + Foul Play"
-          ],
-          "explanation": "Familia Pawniard → Bisharp → Kingambit: revisa 1228 (Nv.30) y 1331 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Pawniard&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/kingambit/",
-          "context_label": "Evento GO: Pawniard Día de la Comunidad"
-        },
-        {
-          "title": "Bisharp → Kingambit",
-          "subtitle": "Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 2438 / 2641",
-          "primary_type": "dark",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Bisharp (PC 100%)",
-            "• Salvaje máx Nv.30: 2438",
-            "• Clima máx Nv.35:  2641",
-            "• Misión / Huevo:   1219 / 1625",
-            "Final: Kingambit",
-            "• PC 100% Nv.40/50: 3614 / 4086"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
-            "  -> Low Kick / Kowtow Cleave / Iron Head",
-            "PvE Raids (Siniestro): Snarl + Foul Play"
-          ],
-          "explanation": "Familia Bisharp → Kingambit: revisa 2438 (Nv.30) y 2641 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Bisharp&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/kingambit/",
-          "context_label": "Evento GO: Pawniard Día de la Comunidad"
-        },
-        {
-          "title": "Kingambit",
-          "subtitle": "Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 3098 / 3356",
-          "primary_type": "dark",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Kingambit (PC 100%)",
-            "• Salvaje máx Nv.30: 3098",
-            "• Clima máx Nv.35:  3356",
-            "• Misión / Huevo:   1549 / 2065"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
-            "  -> Low Kick / Kowtow Cleave / Iron Head",
-            "PvE Raids (Siniestro): Snarl + Foul Play"
-          ],
-          "explanation": "Familia Kingambit: revisa 3098 (Nv.30) y 3356 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Kingambit&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/kingambit/",
-          "context_label": "Evento GO: Pawniard Día de la Comunidad"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/november-communityday2026/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-21T00:23:44Z"
     },
     {
       "id": "pogo:during-dynamax-espurr-max-monday",
@@ -5810,6 +5652,97 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
+      "id": "pogo:actividades-actualizacion-area-del-en-las-sobre-viernes",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México",
+      "title_original": "Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México",
+      "summary": "Como parte de nuestra colaboración con las autoridades locales y debido a la coincidencia con otros eventos en la zona, las experiencias del Área Silvestre de Pokémon GO programadas en el Monumento a la Revolución finalizarán antes de lo previsto el viernes 6 de noviembre de 2026. Estas experiencias estarán disponibles en el Monumento a la Revolución el sábado y el domingo, según lo planeado.",
+      "action_guide": "📍 Qué hacer: revisa las fechas y enlaces del anuncio oficial en Pokémon GO; si incluye recompensas por stream o investigaciones temporales, reclámalas en la pestaña Eventos/Hoy antes del cierre.",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-06",
+      "end_date": null,
+      "date_range_label": "06 nov 2026 -> 06 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/gowildarea-mexicocity-friday-update",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Como parte de nuestra colaboración con las autoridades locales",
+            "y debido a la coincidencia con otros eventos en la zona, las",
+            "experiencias del Área Silvestre de Pokémon GO programadas en"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/gowildarea-mexicocity-friday-update",
+          "context_label": "Noticia GO: Actualización sobre las actividades del viernes en Área Silvestre de Pokémon GO: Ciudad de México"
+        }
+      ],
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/gowildarea-mexicocity-friday-update"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "tcgp:card-details-expansion-list-set",
+      "game": "tcgp",
+      "game_label": "Pokémon TCG Pocket",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "C2 Expansion Card List & Set Details",
+      "title_original": "C2 Expansion Card List & Set Details",
+      "summary": "Official update in Pokémon TCG Pocket: C2 Expansion Lista de Cartas y Detalles del Set",
+      "action_guide": "📍 Qué implica: novedad o próxima actualización oficial de Pokémon TCG Pocket. Revisa las cartas y fechas clave para planificar tus Relojes de Arena de Sobres.",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-06",
+      "end_date": null,
+      "date_range_label": "Desde 06 nov 2026 (sin fecha fin publicada)",
+      "status": "finalizado",
+      "tactical_summary": "",
+      "search_filter": "",
+      "guide_url": "https://ptcgpocket.gg/best-decks-dual-fusion-c1-meta-tier-list-snapshot-week-1/",
+      "recommended_decks": [],
+      "tactical_cards": [],
+      "sources": [
+        "PTCGPocket.gg"
+      ],
+      "urls": [
+        "https://ptcgpocket.gg/c2/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
       "id": "pogo:2027-campeonato-celebremos-de-el-internacional-latinoamerica-pokemon",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -5936,6 +5869,73 @@ window.POKE_ALERTS_DB = {
       ],
       "urls": [
         "https://pokemongolive.com/es_MX/news/clefable-super-mega-raid-day-2026"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:de-del-este-fin-inicien-semana-sesion-solo",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Solo este fin de semana! Inicien sesión del 6 al 8 de noviembre para disfrutar de una Investigación Temporal gratuita que incluye a Machamp Gigamax.",
+      "title_original": "¡Solo este fin de semana! Inicien sesión del 6 al 8 de noviembre para disfrutar de una Investigación Temporal gratuita que incluye a Machamp Gigamax.",
+      "summary": "Desde el viernes 6 de noviembre, a las 10:00, hasta el domingo 8 de noviembre de 2026, a las 23:59 (hora local)",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-06",
+      "end_date": null,
+      "date_range_label": "06 nov 2026 -> 06 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Machamp (PC 100%: 1746 (Nv.20) • 2183 (Nv.25))",
+      "search_filter": "Regigigas,Latios,Ho-Oh,Honchkrow,Staraptor,Mewtwo",
+      "guide_url": "https://pokemongolive.com/es_MX/news/gowildarea-2026-timed-research",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Machamp",
+          "subtitle": "PC 100%: 1746 (Nv.20) • 2183 (Nv.25)",
+          "primary_type": "fighting",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Lucha",
+            "PC 100% Nv.20: 1746",
+            "PC 100% Clima Nv.25: 2183",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Hada (×1.6)",
+            "• Psíquico (×1.6)",
+            "• Volador (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Regigigas Oscuro (Zen Headbutt + Crush Grip)",
+            "2. Mega Latios (Zen Headbutt + Luster Purge)",
+            "3. Ho-Oh Oscuro (Extrasensory + Brave Bird)",
+            "4. Honchkrow Oscuro (Peck + Brave Bird)",
+            "5. Staraptor Oscuro (Gust + Brave Bird)",
+            "6. Mewtwo Oscuro (Confusion + Psystrike)"
+          ],
+          "explanation": "Vulnerable a Hada, Psíquico, Volador. Lidera tu equipo con Regigigas Oscuro y verifica el 100% IV al capturar: 1746 (normal) o 2183 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Regigigas,Latios,Ho-Oh,Honchkrow,Staraptor,Mewtwo",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: ¡Solo este fin de semana! Inicien sesión del 6 al 8 de noviembre para disfrutar de una Investigación Temporal gratuita que incluye a Machamp Gigamax."
+        }
+      ],
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/gowildarea-2026-timed-research"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
