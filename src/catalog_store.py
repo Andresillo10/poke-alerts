@@ -214,8 +214,9 @@ def sync_events_catalog(
             if not any(bad in h.lower() for bad in ("mission type → reward", "day → mission type", "wins → reward"))
         ][:6]
 
-        final_start = prev.get("start_date") or start_iso
-        final_end = prev.get("end_date") or end_iso
+        has_authoritative_dates = raw_item.source_name != "PTCGPocket.gg" and bool(raw_item.starts_on or extra_ev)
+        final_start = (start_iso or prev.get("start_date")) if has_authoritative_dates else (prev.get("start_date") or start_iso)
+        final_end = (end_iso or prev.get("end_date")) if has_authoritative_dates else (prev.get("end_date") or end_iso)
         raw_exp_for_lbl = None if (raw_item.source_name == "PTCGPocket.gg" or final_end) else raw_item.expires_at
         date_range_label = format_validity_window(
             final_start,

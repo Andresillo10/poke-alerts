@@ -135,6 +135,15 @@ def _should_send_launch_reminder(
     seen_dt = _parse_iso_dt(state["seen_uids"].get(item.uid)) or _parse_iso_dt(
         state["seen_topics"].get(topic_key)
     )
+    if not seen_dt:
+        matching_dts = [
+            dt
+            for existing_key, raw_ts in state["seen_topics"].items()
+            if canonical_topic_signature(existing_key) == target_sig
+            for dt in (_parse_iso_dt(raw_ts),)
+            if dt is not None
+        ]
+        seen_dt = min(matching_dts) if matching_dts else None
     return bool(seen_dt and seen_dt.date() < start_dt)
 
 
@@ -170,19 +179,30 @@ def select_pending_alerts(
     launch_reminders: list[tuple[AlertItem, str]] = []
     seen_batch_topics: set[str] = set()
     seen_batch_sigs: set[str] = set()
+    queued_sigs: set[str] = set()
 
     for item in items:
         topic_key = build_topic_key(item)
         topic_sig = canonical_topic_signature(topic_key)
         if topic_key in seen_batch_topics or topic_sig in seen_batch_sigs:
+            if (
+                not is_bootstrap
+                and item.starts_on
+                and topic_sig not in queued_sigs
+                and _should_send_launch_reminder(state, item, topic_key, ref_now)
+            ):
+                launch_reminders.append((replace(item, is_launch_reminder=True), topic_key))
+                queued_sigs.add(topic_sig)
             continue
         seen_batch_topics.add(topic_key)
         seen_batch_sigs.add(topic_sig)
 
         if not _is_seen(state, item, topic_key, ref_now):
             unseen.append((item, topic_key))
+            queued_sigs.add(topic_sig)
         elif not is_bootstrap and _should_send_launch_reminder(state, item, topic_key, ref_now):
             launch_reminders.append((replace(item, is_launch_reminder=True), topic_key))
+            queued_sigs.add(topic_sig)
 
     if not is_bootstrap:
         # Prioriza códigos + recordatorios de inicio hoy por encima de anuncios lejanos

@@ -1345,6 +1345,72 @@ class CorePipelineTests(unittest.TestCase):
             send_telegram_text(bot_token="tok", chat_id="123", text="Prueba")
             self.assertEqual(mock_post.call_count, 3)
 
+    def test_v9_cross_source_launch_reminder_and_authoritative_start_date(self) -> None:
+        # Regresión real: PTCGPocket.gg vio el preview el 17/11 bajo topic_key viejo con '-missions',
+        # y luego Serebii publica el evento activo con starts_on='2026-11-20' y topic_key sin '-missions'.
+        st = default_state()
+        st["initialized"] = True
+        st["seen_uids"]["ptcgpocket-gg:https://ptcgpocket.gg/vee-vee-eevee-missions/"] = "2026-11-17T18:05:14Z"
+        st["seen_topics"]["tcgp:vee-vee-eevee-missions"] = "2026-11-17T18:05:14Z"
+
+        ptcg_preview = AlertItem(
+            uid="ptcgpocket-gg:https://ptcgpocket.gg/vee-vee-eevee-missions/",
+            game="tcgp",
+            kind="event",
+            title="Vee Vee! Eevee Missions",
+            summary="Preview",
+            url="https://ptcgpocket.gg/vee-vee-eevee-missions/",
+            source_name="PTCGPocket.gg",
+            expires_at="2026-11-05",
+            starts_on=None,
+        )
+        serebii_live = AlertItem(
+            uid="serebii-tcgp:https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml",
+            game="tcgp",
+            kind="event",
+            title="Vee Vee Eevee Missions",
+            summary="Active event",
+            url="https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml",
+            source_name="Serebii TCGP",
+            expires_at="November 20th - December 15th 2026",
+            starts_on="2026-11-20",
+        )
+        # Incluso si el preview sin starts_on llega primero en la lista, el recordatorio de Serebii se dispara
+        pending, _ = select_pending_alerts(
+            st,
+            [ptcg_preview, serebii_live],
+            now_utc=datetime(2026, 11, 21, 11, 0, tzinfo=timezone.utc),
+        )
+        self.assertEqual(len(pending), 1)
+        self.assertEqual(pending[0].uid, serebii_live.uid)
+        self.assertTrue(pending[0].is_launch_reminder)
+
+        # En el catálogo, la fecha autoritativa de Serebii (2026-11-20) reemplaza la publicación previa (2026-11-05)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_dir = Path(tmpdir)
+            hist_path = tmp_dir / "data" / "events_history.json"
+            js_path = tmp_dir / "docs" / "events_data.js"
+            doc1, _ = sync_events_catalog(
+                history_path=hist_path,
+                dashboard_js_path=js_path,
+                records_input=[{"raw": ptcg_preview, "localized": ptcg_preview.with_spanish_copy(title="Vee Vee! Eevee Misiones", summary="Desc")}],
+                now_utc=datetime(2026, 11, 18, 16, 0, tzinfo=timezone.utc),
+            )
+            self.assertEqual(doc1["events"][0]["start_date"], "2026-11-05")
+            doc2, _ = sync_events_catalog(
+                history_path=hist_path,
+                dashboard_js_path=js_path,
+                records_input=[
+                    {"raw": ptcg_preview, "localized": ptcg_preview.with_spanish_copy(title="Vee Vee! Eevee Misiones", summary="Desc")},
+                    {"raw": serebii_live, "localized": serebii_live.with_spanish_copy(title="Misiones Eevee vii vii", summary="Evento activo")},
+                ],
+                now_utc=datetime(2026, 11, 21, 11, 0, tzinfo=timezone.utc),
+            )
+            ev = doc2["events"][0]
+            self.assertEqual(ev["start_date"], "2026-11-20")
+            self.assertEqual(ev["end_date"], "2026-12-15")
+            self.assertEqual(ev["title"], "Misiones Eevee vii vii")
+
 
 if __name__ == "__main__":
     unittest.main()
