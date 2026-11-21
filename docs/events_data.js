@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-21 00:23 COT",
+  "generated_at": "2026-11-21 08:06 COT",
   "stats": {
     "total": 73,
     "pogo": 60,
@@ -1286,6 +1286,127 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-19T01:23:52Z"
     },
     {
+      "id": "tcgp:eevee-vee",
+      "game": "tcgp",
+      "game_label": "Pokémon TCG Pocket",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Misiones TCG Pocket",
+      "title": "Misiones Eevee vii vii",
+      "title_original": "Vee Vee! Eevee Missions",
+      "summary": "Este evento es un evento especial basado en misiones en el que puedes ganar paquetes Arboleda de Eevee especiales. Además de esto, se entregará a todos los jugadores una promoción especial sobre de cartas que presenta solo cartas de Eeve durante el evento.",
+      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
+      "search_aliases": "",
+      "rewards": "Misiones: Inicia sesión 1 Día → Sobre Arboleda de Eevee | Inicia sesión 2 días → Sobre Arboleda de Eevee | Inicia sesión 3 días → Sobre Arboleda de Eevee | Cartas y sobres destacados: Sobre Eevee vii vii",
+      "highlights": [
+        "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo",
+        "Misiones: Inicia sesión 1 Día → Sobre Arboleda de Eevee | Inicia sesión 2 días → Sobre Arboleda de Eevee | Inicia sesión 3 días → Sobre Arboleda de Eevee",
+        "Cartas y sobres destacados: Sobre Eevee vii vii"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-20",
+      "end_date": "2026-12-15",
+      "date_range_label": "20 nov 2026 -> 15 dic 2026",
+      "status": "activo",
+      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Hoopa ex Mega Absol ex, Mega Altaria ex Espeon",
+      "search_filter": "",
+      "guide_url": "https://ptcgpocket.gg/best-decks-dual-fusion-c1-meta-tier-list-snapshot-week-1/",
+      "recommended_decks": [
+        {
+          "title": "Opción 1: Mega Charizard Y ex Entei ex",
+          "mission_tag": "Campeón torneo (53.8% WR • #3/247p (8-2))",
+          "energy_label": "Fuego",
+          "strategy": "Atacante clave Mega Charizard Y ex (220 HP, hasta 250 daño) en energía Fuego con apoyo de Entei ex (Legendary Pulse), Charizard (Flame Aura). Motor: robo/búsqueda, aceleración.",
+          "cards": [
+            "2× Charmander",
+            "2× Charmeleon",
+            "2× Entei ex",
+            "1× Charizard",
+            "1× Mega Charizard Y ex",
+            "2× Flame Patch",
+            "2× Poké Ball",
+            "2× Professor's Research",
+            "1× Blue's Provocation",
+            "1× May",
+            "1× Rainbow Cave",
+            "1× Repel",
+            "1× Serena's Choice",
+            "1× Wally"
+          ],
+          "qr_payload": "DJiWqJiWqJicopidTJidQpiaSpiWnpiWnpiaDpiaDpiY4pictggAPwIAPwIAPwwAPwwAM4YAVb4AJ+IAJ+IBAg==",
+          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=DJiWqJiWqJicopidTJidQpiaSpiWnpiWnpiaDpiaDpiY4pictggAPwIAPwIAPwwAPwwAM4YAVb4AJ%2BIAJ%2BIBAg%3D%3D",
+          "champion_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/akuma_nkz6/decklist",
+          "source_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/akuma_nkz6/decklist",
+          "badge": "CAMPEÓN TORNEO + EVENTO"
+        },
+        {
+          "title": "Opción 2: Hoopa ex Mega Absol ex",
+          "mission_tag": "Campeón torneo (62.9% WR • #1/179p (11-1))",
+          "energy_label": "Oscuridad",
+          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
+          "cards": [
+            "2× Hoopa ex",
+            "1× Darkrai ex",
+            "1× Mega Absol ex",
+            "2× Cyrus",
+            "2× Deceptive Needle",
+            "2× Lucky Ice Pop",
+            "2× Poké Ball",
+            "2× Professor's Research",
+            "1× Copycat",
+            "1× Field Blower",
+            "1× Mars",
+            "1× Pokémon Center Lady",
+            "1× Repel",
+            "1× X Speed"
+          ],
+          "qr_payload": "EJiWqJiWqJiXwJiXwJiaXpiX8piYLpiapJiapJiWnpiWnpibgJiY4piWlJiccJiccAQAUKAAUKAAMCoAD0YBBw==",
+          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJiaXpiX8piYLpiapJiapJiWnpiWnpibgJiY4piWlJiccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
+          "champion_url": "https://play.limitlesstcg.com/tournament/6af97dbaee43ef7891475378/player/h1kak1nsqie/decklist",
+          "source_url": "https://play.limitlesstcg.com/tournament/6af97dbaee43ef7891475378/player/h1kak1nsqie/decklist",
+          "badge": "CAMPEÓN TORNEO + EVENTO"
+        },
+        {
+          "title": "Opción 3: Mega Altaria ex Espeon",
+          "mission_tag": "Campeón torneo (58.9% WR • #1/247p (10-1))",
+          "energy_label": "Psíquico",
+          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Darkrai (Bad Dreams), Espeon. Motor: robo/búsqueda, presión al rival.",
+          "cards": [
+            "2× Darkrai",
+            "2× Eevee",
+            "2× Espeon",
+            "2× Swablu",
+            "1× Igglybuff",
+            "1× Mega Altaria ex",
+            "2× Copycat",
+            "2× Poké Ball",
+            "2× Professor's Research",
+            "1× Field Blower",
+            "1× Sabrina",
+            "1× Small Balloon",
+            "1× Training Area"
+          ],
+          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
+          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
+          "champion_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/klq_mm93/decklist",
+          "source_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/klq_mm93/decklist",
+          "badge": "CAMPEÓN TORNEO + EVENTO"
+        }
+      ],
+      "tactical_cards": [],
+      "sources": [
+        "PTCGPocket.gg",
+        "Serebii TCGP"
+      ],
+      "urls": [
+        "https://ptcgpocket.gg/vee-vee-eevee-missions/",
+        "https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-21T13:06:33Z"
+    },
+    {
       "id": "tcgp:anniversary-campaign-celebration-second",
       "game": "tcgp",
       "game_label": "Pokémon TCG Pocket",
@@ -1401,125 +1522,6 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
-      "id": "tcgp:eevee-vee",
-      "game": "tcgp",
-      "game_label": "Pokémon TCG Pocket",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Misiones TCG Pocket",
-      "title": "Vee Vee! Eevee Misiones",
-      "title_original": "Vee Vee! Eevee Missions",
-      "summary": "Inicia sesión durante 7 días entre el 21 de noviembre y el 15 de diciembre para reclamar recompensas",
-      "action_guide": "📍 Dónde entrar: pantalla de Inicio ➔ Misiones. 🎯 Cómo completarlo: entra diariamente para cobrar ingresos, abre sobres con tu energía gratuita o realiza los combates pedidos antes de que venza el evento.",
-      "search_aliases": "",
-      "rewards": "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo",
-      "highlights": [
-        "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-05",
-      "end_date": "2026-12-15",
-      "date_range_label": "05 nov 2026 -> 15 dic 2026",
-      "status": "activo",
-      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Hoopa ex Mega Absol ex, Mega Altaria ex Espeon",
-      "search_filter": "",
-      "guide_url": "https://ptcgpocket.gg/best-decks-dual-fusion-c1-meta-tier-list-snapshot-week-1/",
-      "recommended_decks": [
-        {
-          "title": "Opción 1: Mega Charizard Y ex Entei ex",
-          "mission_tag": "Campeón torneo (53.8% WR • #3/247p (8-2))",
-          "energy_label": "Fuego",
-          "strategy": "Atacante clave Mega Charizard Y ex (220 HP, hasta 250 daño) en energía Fuego con apoyo de Entei ex (Legendary Pulse), Charizard (Flame Aura). Motor: robo/búsqueda, aceleración.",
-          "cards": [
-            "2× Charmander",
-            "2× Charmeleon",
-            "2× Entei ex",
-            "1× Charizard",
-            "1× Mega Charizard Y ex",
-            "2× Flame Patch",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Blue's Provocation",
-            "1× May",
-            "1× Rainbow Cave",
-            "1× Repel",
-            "1× Serena's Choice",
-            "1× Wally"
-          ],
-          "qr_payload": "DJiWqJiWqJicopidTJidQpiaSpiWnpiWnpiaDpiaDpiY4pictggAPwIAPwIAPwwAPwwAM4YAVb4AJ+IAJ+IBAg==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=DJiWqJiWqJicopidTJidQpiaSpiWnpiWnpiaDpiaDpiY4pictggAPwIAPwIAPwwAPwwAM4YAVb4AJ%2BIAJ%2BIBAg%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/akuma_nkz6/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/akuma_nkz6/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 2: Hoopa ex Mega Absol ex",
-          "mission_tag": "Campeón torneo (62.9% WR • #1/179p (11-1))",
-          "energy_label": "Oscuridad",
-          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Hoopa ex",
-            "1× Darkrai ex",
-            "1× Mega Absol ex",
-            "2× Cyrus",
-            "2× Deceptive Needle",
-            "2× Lucky Ice Pop",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Copycat",
-            "1× Field Blower",
-            "1× Mars",
-            "1× Pokémon Center Lady",
-            "1× Repel",
-            "1× X Speed"
-          ],
-          "qr_payload": "EJiWqJiWqJiXwJiXwJiaXpiX8piYLpiapJiapJiWnpiWnpibgJiY4piWlJiccJiccAQAUKAAUKAAMCoAD0YBBw==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJiaXpiX8piYLpiapJiapJiWnpiWnpibgJiY4piWlJiccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6af97dbaee43ef7891475378/player/h1kak1nsqie/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6af97dbaee43ef7891475378/player/h1kak1nsqie/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 3: Mega Altaria ex Espeon",
-          "mission_tag": "Campeón torneo (58.9% WR • #1/247p (10-1))",
-          "energy_label": "Psíquico",
-          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Darkrai (Bad Dreams), Espeon. Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Darkrai",
-            "2× Eevee",
-            "2× Espeon",
-            "2× Swablu",
-            "1× Igglybuff",
-            "1× Mega Altaria ex",
-            "2× Copycat",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Sabrina",
-            "1× Small Balloon",
-            "1× Training Area"
-          ],
-          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/klq_mm93/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6ae60598ae67092a4073fd96/player/klq_mm93/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        }
-      ],
-      "tactical_cards": [],
-      "sources": [
-        "PTCGPocket.gg",
-        "Serebii TCGP"
-      ],
-      "urls": [
-        "https://ptcgpocket.gg/vee-vee-eevee-missions/",
-        "https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-20T15:23:30Z"
     },
     {
       "id": "pogo:and-duolingo-go-pokemon-research-timed",
@@ -4162,65 +4164,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:39:41Z"
     },
     {
-      "id": "pogo:battle-day-max",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Combates Max",
-      "title": "Día de Combates Max",
-      "title_original": "Max Battle Day",
-      "summary": "The Día de Combates Max event will take place on December 5, 2026 from 2 pm to 5 pm. Stay tuned for more details.",
-      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
-      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-12-05",
-      "end_date": "2026-12-05",
-      "date_range_label": "05 dic 2026 -> 05 dic 2026",
-      "status": "proximo",
-      "tactical_summary": "Estrategia Combates Max (Gestión de Partículas Max y Nodos Energéticos)",
-      "search_filter": "dinamax,gigamax",
-      "guide_url": "https://leekduck.com/events/max-battle-day-december-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Estrategia Combates Max",
-          "subtitle": "Gestión de Partículas Max y Nodos Energéticos",
-          "primary_type": "dragon",
-          "badge_label": "GUÍA MAX GO",
-          "left_heading": "BONUS Y OBJETIVOS DEL EVENTO",
-          "left_rows": [
-            "The Max Battle Day event will take place on January 23,",
-            "2027 from 2 pm to 5 pm. Stay tuned for more details."
-          ],
-          "right_heading": "RUTA ÓPTIMA EN NODOS",
-          "right_rows": [
-            "Recarga límite diario de Partículas Max en Nodos",
-            "Prioriza subir Ataque Max antes que Espíritu/Barrera",
-            "Usa equipo con ventaja directa frente al jefe del Nodo"
-          ],
-          "explanation": "Llega con reserva completa de Partículas Max, cobra las de Nodos Energéticos en cada fase y filtra tus Dinamax/Gigamax antes de entrar.",
-          "search_label": "Filtro Dinamax / Gigamax en caja:",
-          "search_string": "dinamax,gigamax",
-          "info_label": "📘 Ver detalle oficial",
-          "info_url": "https://leekduck.com/events/max-battle-day-january-2027/",
-          "context_label": "Evento GO: Día de Combates Max"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/max-battle-day-december-2026/",
-        "https://leekduck.com/events/max-battle-day-january-2027/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
       "id": "pogo:community-day-december",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -4481,67 +4424,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
-      "id": "pogo:day-raid",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Día de Incursiones",
-      "title_original": "Raid Day",
-      "summary": "The Día de Incursiones event will take place on December 19, 2026 from 2 pm to 5 pm. Stay tuned for more details.",
-      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-12-19",
-      "end_date": "2026-12-19",
-      "date_range_label": "19 dic 2026 -> 19 dic 2026",
-      "status": "proximo",
-      "tactical_summary": "Plan Táctico de Incursiones (Jefes actuales en rotación y checklist previo)",
-      "search_filter": "megaevolucion1-3,4*,3*",
-      "guide_url": "https://leekduck.com/events/raid-day-december-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Banette: PC 100% 1313 / 1642",
-            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "megaevolucion1-3,4*,3*",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/raid-day-february-2027/",
-          "context_label": "Evento GO: Día de Incursiones"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/raid-day-december-2026/",
-        "https://leekduck.com/events/raid-day-february-2027/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
       "id": "pogo:day-hatch",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -4659,67 +4541,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
-      "id": "pogo:day-mega-raid-super",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Super Mega Día de Incursiones",
-      "title_original": "Super Mega Raid Day",
-      "summary": "The Super Mega Día de Incursiones event will take place on January 9, 2027 from 2 pm to 5 pm. Stay tuned for more details.",
-      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2027-01-09",
-      "end_date": "2027-01-09",
-      "date_range_label": "09 ene 2027 -> 09 ene 2027",
-      "status": "proximo",
-      "tactical_summary": "Plan Táctico de Incursiones (Jefes actuales en rotación y checklist previo)",
-      "search_filter": "megaevolucion1-3,4*,3*",
-      "guide_url": "https://leekduck.com/events/super-mega-raid-day-january-2027/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Banette: PC 100% 1313 / 1642",
-            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "megaevolucion1-3,4*,3*",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/super-mega-raid-day-january-30-2027/",
-          "context_label": "Evento GO: Super Mega Día de Incursiones"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/super-mega-raid-day-january-2027/",
-        "https://leekduck.com/events/super-mega-raid-day-january-30-2027/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
-    },
-    {
       "id": "pogo:community-day-january",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -4779,6 +4600,126 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
+      "id": "pogo:battle-day-max",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Combates Max",
+      "title": "Día de Combates Max",
+      "title_original": "Max Battle Day",
+      "summary": "The Día de Combates Max event will take place on December 5, 2026 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2027-01-23",
+      "end_date": "2027-01-23",
+      "date_range_label": "23 ene 2027 -> 23 ene 2027",
+      "status": "proximo",
+      "tactical_summary": "Estrategia Combates Max (Gestión de Partículas Max y Nodos Energéticos)",
+      "search_filter": "dinamax,gigamax",
+      "guide_url": "https://leekduck.com/events/max-battle-day-december-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Estrategia Combates Max",
+          "subtitle": "Gestión de Partículas Max y Nodos Energéticos",
+          "primary_type": "dragon",
+          "badge_label": "GUÍA MAX GO",
+          "left_heading": "BONUS Y OBJETIVOS DEL EVENTO",
+          "left_rows": [
+            "The Max Battle Day event will take place on January 23,",
+            "2027 from 2 pm to 5 pm. Stay tuned for more details."
+          ],
+          "right_heading": "RUTA ÓPTIMA EN NODOS",
+          "right_rows": [
+            "Recarga límite diario de Partículas Max en Nodos",
+            "Prioriza subir Ataque Max antes que Espíritu/Barrera",
+            "Usa equipo con ventaja directa frente al jefe del Nodo"
+          ],
+          "explanation": "Llega con reserva completa de Partículas Max, cobra las de Nodos Energéticos en cada fase y filtra tus Dinamax/Gigamax antes de entrar.",
+          "search_label": "Filtro Dinamax / Gigamax en caja:",
+          "search_string": "dinamax,gigamax",
+          "info_label": "📘 Ver detalle oficial",
+          "info_url": "https://leekduck.com/events/max-battle-day-january-2027/",
+          "context_label": "Evento GO: Día de Combates Max"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/max-battle-day-december-2026/",
+        "https://leekduck.com/events/max-battle-day-january-2027/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-21T13:06:33Z"
+    },
+    {
+      "id": "pogo:day-mega-raid-super",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Super Mega Día de Incursiones",
+      "title_original": "Super Mega Raid Day",
+      "summary": "The Super Mega Día de Incursiones event will take place on January 9, 2027 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2027-01-30",
+      "end_date": "2027-01-30",
+      "date_range_label": "30 ene 2027 -> 30 ene 2027",
+      "status": "proximo",
+      "tactical_summary": "Plan Táctico de Incursiones (Jefes actuales en rotación y checklist previo)",
+      "search_filter": "megaevolucion1-3,4*,3*",
+      "guide_url": "https://leekduck.com/events/super-mega-raid-day-january-2027/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Plan Táctico de Incursiones",
+          "subtitle": "Jefes actuales en rotación y checklist previo",
+          "primary_type": "fire",
+          "badge_label": "GUÍA RAIDS GO",
+          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
+          "left_rows": [
+            "Cresselia: PC 100% 1633 / 2041",
+            "Darkrai: PC 100% 2136 / 2671",
+            "Mega Banette: PC 100% 1313 / 1642",
+            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
+          ],
+          "right_heading": "PREPARACIÓN RECOMENDADA",
+          "right_rows": [
+            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
+            "Arma equipo predefinido antes de entrar al lobby",
+            "Combina Huevo Suerte si encadenas varias incursiones"
+          ],
+          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
+          "search_label": "Filtro rápido de atacantes / megas:",
+          "search_string": "megaevolucion1-3,4*,3*",
+          "info_label": "🔎 Ver jefes en LeekDuck",
+          "info_url": "https://leekduck.com/events/super-mega-raid-day-january-30-2027/",
+          "context_label": "Evento GO: Super Mega Día de Incursiones"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/super-mega-raid-day-january-2027/",
+        "https://leekduck.com/events/super-mega-raid-day-january-30-2027/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-21T13:06:33Z"
+    },
+    {
       "id": "pogo:community-day-february",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -4836,6 +4777,67 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:day-raid",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Día de Incursiones",
+      "title_original": "Raid Day",
+      "summary": "The Día de Incursiones event will take place on December 19, 2026 from 2 pm to 5 pm. Stay tuned for more details.",
+      "action_guide": "📍 Dónde jugar: Gimnasios (o pases remotos). 🎯 Cómo completarlo: arma tu equipo con los Top Counters mostrados abajo, activa una Mega del mismo tipo del jefe para sumar Caramelos XL al capturar y verifica si salió 100% IV comparando con el PC normal o potenciado por clima.",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2027-02-13",
+      "end_date": "2027-02-13",
+      "date_range_label": "13 feb 2027 -> 13 feb 2027",
+      "status": "proximo",
+      "tactical_summary": "Plan Táctico de Incursiones (Jefes actuales en rotación y checklist previo)",
+      "search_filter": "megaevolucion1-3,4*,3*",
+      "guide_url": "https://leekduck.com/events/raid-day-december-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Plan Táctico de Incursiones",
+          "subtitle": "Jefes actuales en rotación y checklist previo",
+          "primary_type": "fire",
+          "badge_label": "GUÍA RAIDS GO",
+          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
+          "left_rows": [
+            "Cresselia: PC 100% 1633 / 2041",
+            "Darkrai: PC 100% 2136 / 2671",
+            "Mega Banette: PC 100% 1313 / 1642",
+            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
+          ],
+          "right_heading": "PREPARACIÓN RECOMENDADA",
+          "right_rows": [
+            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
+            "Arma equipo predefinido antes de entrar al lobby",
+            "Combina Huevo Suerte si encadenas varias incursiones"
+          ],
+          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
+          "search_label": "Filtro rápido de atacantes / megas:",
+          "search_string": "megaevolucion1-3,4*,3*",
+          "info_label": "🔎 Ver jefes en LeekDuck",
+          "info_url": "https://leekduck.com/events/raid-day-february-2027/",
+          "context_label": "Evento GO: Día de Incursiones"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/raid-day-december-2026/",
+        "https://leekduck.com/events/raid-day-february-2027/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-21T13:06:33Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
