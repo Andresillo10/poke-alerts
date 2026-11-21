@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20 17:23 COT",
+  "generated_at": "2026-11-20 19:23 COT",
   "stats": {
     "total": 73,
     "pogo": 60,
@@ -3322,7 +3322,8 @@
       "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
       "rewards": "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos",
       "highlights": [
-        "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos"
+        "Bonificaciones: Los nodos energéticos se actualizarán con mayor frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8× partículas máximas de los nodos energéticos",
+        "Bonificaciones: Nodos Energéticos se actualizará con más frecuencia; el límite máximo de recogida de partículas se ha aumentado a 2400; 8 × Partículas Max de Nodos Energéticos"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -3366,30 +3367,7 @@
           "search_string": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
-          "context_label": "Evento GO: Eternamax Eternatus Returns"
-        },
-        {
-          "title": "Estrategia Combates Max",
-          "subtitle": "Gestión de Partículas Max y Nodos Energéticos",
-          "primary_type": "dragon",
-          "badge_label": "GUÍA MAX GO",
-          "left_heading": "BONUS Y OBJETIVOS DEL EVENTO",
-          "left_rows": [
-            "Bonuses: Power Spots will refresh more frequently; Max",
-            "Particle collection limit increased to 2,400; 8× Max Particles"
-          ],
-          "right_heading": "RUTA ÓPTIMA EN NODOS",
-          "right_rows": [
-            "Recarga límite diario de Partículas Max en Nodos",
-            "Prioriza subir Ataque Max antes que Espíritu/Barrera",
-            "Usa equipo con ventaja directa frente al jefe del Nodo"
-          ],
-          "explanation": "Llega con reserva completa de Partículas Max, cobra las de Nodos Energéticos en cada fase y filtra tus Dinamax/Gigamax antes de entrar.",
-          "search_label": "Filtro Dinamax / Gigamax en caja:",
-          "search_string": "Eternatus&3*,4*",
-          "info_label": "📘 Ver detalle oficial",
-          "info_url": "https://leekduck.com/events/eternamax-eternatus-max-battles-2026/",
-          "context_label": "Evento GO: Eternamax Eternatus Returns"
+          "context_label": "Evento GO: El regreso de Eternamax Eternatos"
         }
       ],
       "sources": [
@@ -3399,7 +3377,7 @@
         "https://leekduck.com/events/eternamax-eternatus-max-battles-2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
+      "last_updated_at": "2026-11-21T00:23:44Z"
     },
     {
       "id": "pogo:community-day-pawniard",
@@ -3446,11 +3424,11 @@
           ],
           "right_heading": "VEREDICTO PvP Y RAIDS",
           "right_rows": [
-            "Kingambit #183 Ultra 2500 (82.5) • IV 7/15/15",
-            "  -> Low Kick / Foul Play / Iron Head",
+            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
+            "  -> Low Kick / Kowtow Cleave / Iron Head",
             "PvE Raids (Siniestro): Snarl + Foul Play"
           ],
-          "explanation": "Familia Pawniard → Bisharp → Kingambit: revisa 1228 (Nv.30) y 1331 (clima) para 100% IV; en competitivo Kingambit rinde #183 en Ultra 2500.",
+          "explanation": "Familia Pawniard → Bisharp → Kingambit: revisa 1228 (Nv.30) y 1331 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
           "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
           "search_string": "+Pawniard&4*,3*",
           "info_label": "📊 Ver ranking en PvPoke",
@@ -3473,11 +3451,11 @@
           ],
           "right_heading": "VEREDICTO PvP Y RAIDS",
           "right_rows": [
-            "Kingambit #183 Ultra 2500 (82.5) • IV 7/15/15",
-            "  -> Low Kick / Foul Play / Iron Head",
+            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
+            "  -> Low Kick / Kowtow Cleave / Iron Head",
             "PvE Raids (Siniestro): Snarl + Foul Play"
           ],
-          "explanation": "Familia Bisharp → Kingambit: revisa 2438 (Nv.30) y 2641 (clima) para 100% IV; en competitivo Kingambit rinde #183 en Ultra 2500.",
+          "explanation": "Familia Bisharp → Kingambit: revisa 2438 (Nv.30) y 2641 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
           "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
           "search_string": "+Bisharp&4*,3*",
           "info_label": "📊 Ver ranking en PvPoke",
@@ -3485,27 +3463,28 @@
           "context_label": "Evento GO: Pawniard Día de la Comunidad"
         },
         {
-          "title": "Plan Día de la Comunidad",
-          "subtitle": "Ventana Legacy, Mega Caramelos XL y limpieza rápida",
-          "primary_type": "grass",
-          "badge_label": "PLAN CD GO",
-          "left_heading": "REGLAS CLAVE DEL EVENTO",
+          "title": "Kingambit",
+          "subtitle": "Tipos: Siniestro/Acero • Salvaje Hundo Nv.30/35: 3098 / 3356",
+          "primary_type": "dark",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
           "left_rows": [
-            "Ventana principal de capturas (3 horas locales)",
-            "Evoluciona hasta 5 h después para Ataque Legacy",
-            "Mayor probabilidad de Shiny y Módulos Cebo extendidos"
+            "Base: Kingambit (PC 100%)",
+            "• Salvaje máx Nv.30: 3098",
+            "• Clima máx Nv.35:  3356",
+            "• Misión / Huevo:   1549 / 2065"
           ],
-          "right_heading": "CHECKLIST EN CAJA Y CAPTURA",
+          "right_heading": "VEREDICTO PvP Y RAIDS",
           "right_rows": [
-            "Activa Mega Evolución Nv.3 del tipo del protagonista",
-            "Conserva 4* (Hundo) + IV bajos en ataque para PvP",
-            "Limpia caja al instante con el filtro inferior"
+            "Kingambit #98 Ultra 2500 (85.8) • IV 7/15/15",
+            "  -> Low Kick / Kowtow Cleave / Iron Head",
+            "PvE Raids (Siniestro): Snarl + Foul Play"
           ],
-          "explanation": "Ten espacio libre en caja, Ultra Balls listas y una Mega Nv.3 activa durante todo el horario para multiplicar Caramelos XL y no perder el ataque exclusivo al evolucionar.",
-          "search_label": "Filtro de limpieza rápida (no shiny / no 100%):",
-          "search_string": "0*,1*,2*&!shiny&!4*",
-          "info_label": "📘 Ver calendario oficial",
-          "info_url": "https://leekduck.com/events/november-communityday2026/",
+          "explanation": "Familia Kingambit: revisa 3098 (Nv.30) y 3356 (clima) para 100% IV; en competitivo Kingambit rinde #98 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Kingambit&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/kingambit/",
           "context_label": "Evento GO: Pawniard Día de la Comunidad"
         }
       ],
@@ -3516,7 +3495,7 @@
         "https://leekduck.com/events/november-communityday2026/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:39:41Z"
+      "last_updated_at": "2026-11-21T00:23:44Z"
     },
     {
       "id": "pogo:during-dynamax-espurr-max-monday",
