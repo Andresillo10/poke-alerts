@@ -735,6 +735,7 @@ _TRAINER_TARGET_PATTERNS = (
 def _trainer_named_targets(
     trainer: CardRecord,
     pk_vocab: set[str],
+    vocab_sorted: list[str] | None = None,
 ) -> tuple[set[str], bool]:
     """Extrae nombres de Pokémon específicos exigidos o potenciados por un Entrenador."""
     txt = trainer.card_text
@@ -746,26 +747,153 @@ def _trainer_named_targets(
 
     matched: set[str] = set()
     strict_clause = False
-    vocab_sorted = sorted((n for n in pk_vocab if len(n) >= 3), key=len, reverse=True)
+    ordered_vocab = vocab_sorted if vocab_sorted is not None else sorted(
+        (n for n in pk_vocab if len(n) >= 3), key=len, reverse=True
+    )
     for pat in _TRAINER_TARGET_PATTERNS:
         m = pat.search(txt)
         if not m:
             continue
         seg = m.group(1).lower()
-        found_here = [n for n in vocab_sorted if re.search(rf"(?<![a-z0-9]){re.escape(n)}(?![a-z0-9])", seg)]
+        found_here = [
+            n
+            for n in ordered_vocab
+            if n in seg and re.search(rf"(?<![a-z0-9]){re.escape(n)}(?![a-z0-9])", seg)
+        ]
         if found_here:
             matched.update(found_here)
             strict_clause = True
     return matched, strict_clause
 
 
+@dataclass(frozen=True)
+class _SynergyIndex:
+    """Índice precalculado O(N) para puntuar 2,000+ cartas en milisegundos sin O(N^4)."""
+
+    pk_vocab: set[str]
+    has_rare_candy: bool
+    has_stadium: bool
+    ramp_types: set[str]
+    trainer_targets: dict[str, tuple[set[str], bool]]
+    trainers_for_pk: dict[str, list[CardRecord]]
+    tribal_partners: dict[str, list[CardRecord]]
+    tribal_ev_bonus: dict[str, float]
+
+
+def _build_synergy_index(
+    pokemon_pool: list[CardRecord],
+    trainer_pool: list[CardRecord],
+) -> _SynergyIndex:
+    """Precalcula entrenadores por Pokémon, tribus por ataque y tipos con aceleración."""
+    pk_vocab = {c.name.lower() for c in pokemon_pool}
+    vocab_sorted = sorted((n for n in pk_vocab if len(n) >= 3), key=len, reverse=True)
+    has_rare_candy = any(t.name == "Rare Candy" for t in trainer_pool)
+    has_stadium = any(t.subtype == "Stadium" for t in trainer_pool)
+    ramp_types = {
+        r
+        for c in pokemon_pool
+        if c.stage in {"Basic", "Stage 1"} or has_rare_candy
+        for r in [c.energy_ramp_subtype()]
+        if r
+    }
+
+    trainer_targets: dict[str, tuple[set[str], bool]] = {}
+    trainers_for_pk: dict[str, list[CardRecord]] = {}
+    for tr in trainer_pool:
+        tkey = tr.card_id or tr.name
+        targets, strict_flag = _trainer_named_targets(tr, pk_vocab, vocab_sorted=vocab_sorted)
+        trainer_targets[tkey] = (targets, strict_flag)
+        for pk_name in targets:
+            trainers_for_pk.setdefault(pk_name, []).append(tr)
+
+    # Precalcula tribus por ataque amplificado una sola vez (O(N))
+    all_attack_names = {
+        an.lower() for c in pokemon_pool for an in c.attack_names if len(an) >= 4
+    }
+    coached_attacks: dict[str, list[CardRecord]] = {}
+    for c in pokemon_pool:
+        ab_low = c.ability_text.lower()
+        if not ab_low:
+            continue
+        for atk_name in all_attack_names:
+            if atk_name in ab_low:
+                coached_attacks.setdefault(atk_name, []).append(c)
+
+    tribal_partners: dict[str, list[CardRecord]] = {}
+    tribal_ev_bonus: dict[str, float] = {}
+    if coached_attacks:
+        for atk_name in coached_attacks:
+            raw_members = [
+                c
+                for c in pokemon_pool
+                if atk_name in c.ability_text.lower()
+                or any(an.lower() == atk_name for an in c.attack_names)
+            ]
+            tribal_evolved_from = {c.evolves_from.lower() for c in raw_members if c.evolves_from}
+            terminals = [c for c in raw_members if c.name.lower() not in tribal_evolved_from]
+            coaches = [c for c in terminals if atk_name in c.ability_text.lower()]
+            strikers = sorted(
+                [c for c in terminals if atk_name not in c.ability_text.lower()],
+                key=lambda c: (c.subtype == "Colorless", c.score()),
+                reverse=True,
+            )
+            ordered_group = coaches + strikers
+
+            extra_coins = 0
+            for m in ordered_group:
+                mc = re.search(r"flip\s+(\d+)\s+more\s+coins", m.ability_text, re.I)
+                if mc:
+                    extra_coins = max(extra_coins, int(mc.group(1)))
+
+            if extra_coins <= 0:
+                group_ev = 45.0 if len(ordered_group) >= 2 else 0.0
+            else:
+                best_ev_eff = 0.0
+                striker_lines = 0
+                for m in ordered_group:
+                    for (cost, dmg), atk_txt in zip(m.attacks, m.attack_texts):
+                        m_flip = re.search(r"flip\s+(\d+)\s+coins?", atk_txt, re.I)
+                        if m_flip and dmg > 0:
+                            striker_lines += 1
+                            total_coins = int(m_flip.group(1)) + (1.5 * extra_coins)
+                            ev_eff = (total_coins * 0.5 * dmg) / max(len(cost), 1)
+                            best_ev_eff = max(best_ev_eff, ev_eff)
+                group_ev = min(145.0, (best_ev_eff * 0.78) + (striker_lines * 16.0))
+
+            for m in ordered_group:
+                m_low = m.name.lower()
+                mates = [o for o in ordered_group if o.name != m.name]
+                if mates:
+                    existing = tribal_partners.setdefault(m_low, [])
+                    seen_m = {x.name for x in existing}
+                    for o in mates:
+                        if o.name not in seen_m:
+                            existing.append(o)
+                            seen_m.add(o.name)
+                    tribal_ev_bonus[m_low] = max(tribal_ev_bonus.get(m_low, 0.0), group_ev)
+
+    return _SynergyIndex(
+        pk_vocab=pk_vocab,
+        has_rare_candy=has_rare_candy,
+        has_stadium=has_stadium,
+        ramp_types=ramp_types,
+        trainer_targets=trainer_targets,
+        trainers_for_pk=trainers_for_pk,
+        tribal_partners=tribal_partners,
+        tribal_ev_bonus=tribal_ev_bonus,
+    )
+
+
 def _find_synergy_trainers_for_pokemon(
     card: CardRecord,
     trainer_pool: list[CardRecord],
     pk_vocab: set[str],
+    synergy_index: _SynergyIndex | None = None,
 ) -> list[CardRecord]:
     """Devuelve Entrenadores con sinergia explícita directa hacia un Pokémon."""
     cname = card.name.lower()
+    if synergy_index is not None:
+        return synergy_index.trainers_for_pk.get(cname, [])
     hits: list[CardRecord] = []
     for tr in trainer_pool:
         targets, _ = _trainer_named_targets(tr, pk_vocab)
@@ -1025,6 +1153,7 @@ def _candidate_synergy_score(
     trainer_pool: list[CardRecord],
     pk_vocab: set[str],
     has_rare_candy: bool,
+    synergy_index: _SynergyIndex | None = None,
 ) -> float:
     """Evalúa valor competitivo real combinando EV, rampa de energía, tempo y entrenadores."""
     base = card.score()
@@ -1050,11 +1179,15 @@ def _candidate_synergy_score(
     if card.stage in {"Basic", "Stage 1"} and min_cost == 1 and best_eff_dmg >= 60:
         base += 26.0
 
-    ramp_types = {
-        r for c in pokemon_pool if c.stage in {"Basic", "Stage 1"} or has_rare_candy
-        for r in [c.energy_ramp_subtype()] if r
-    }
-    synergy_trs = _find_synergy_trainers_for_pokemon(card, trainer_pool, pk_vocab)
+    ramp_types = (
+        synergy_index.ramp_types
+        if synergy_index is not None
+        else {
+            r for c in pokemon_pool if c.stage in {"Basic", "Stage 1"} or has_rare_candy
+            for r in [c.energy_ramp_subtype()] if r
+        }
+    )
+    synergy_trs = _find_synergy_trainers_for_pokemon(card, trainer_pool, pk_vocab, synergy_index=synergy_index)
     trainer_ramps = False
     for tr in synergy_trs:
         tl = tr.card_text.lower()
@@ -1069,10 +1202,17 @@ def _candidate_synergy_score(
     if card.energy_discard_severity() > 0 and card.subtype not in ramp_types and not trainer_ramps:
         base -= 58.0
 
-    base += _tribal_combo_ev_bonus(card, pokemon_pool)
+    if synergy_index is not None:
+        base += synergy_index.tribal_ev_bonus.get(card.name.lower(), 0.0)
+    else:
+        base += _tribal_combo_ev_bonus(card, pokemon_pool)
 
-    all_txt = " ".join(card.attack_texts).lower()
-    if "stadium" in all_txt and any(t.subtype == "Stadium" for t in trainer_pool):
+    has_stadium = (
+        synergy_index.has_stadium
+        if synergy_index is not None
+        else any(t.subtype == "Stadium" for t in trainer_pool)
+    )
+    if has_stadium and any("stadium" in t.lower() for t in card.attack_texts):
         base += 26.0
     return base
 
@@ -1088,12 +1228,13 @@ def _assemble_synergy_pokemon(
     only_type: str | None,
     effective_set: str | None,
     exclude_names: set[str] | None = None,
+    synergy_index: _SynergyIndex | None = None,
 ) -> list[CardRecord]:
     """Acopla compañeros de sinergia (tribales, rampa o soporte ágil) preservando energía."""
     pokemon = list(core)
     excluded = exclude_names or set()
     max_energies = 2 if anchor.subtype == "Dragon" else 1
-    pk_vocab = {c.name.lower() for c in pokemon_pool}
+    pk_vocab = synergy_index.pk_vocab if synergy_index is not None else {c.name.lower() for c in pokemon_pool}
 
     def can_fit(addition: list[CardRecord], *, max_slots: int = 12) -> bool:
         if not addition or len(pokemon) + len(addition) > max_slots:
@@ -1111,7 +1252,11 @@ def _assemble_synergy_pokemon(
         return name.lower() in {p.name.lower() for p in pokemon}
 
     # 1. Sinergia tribal por nombre de ataque compartido (ej. Raboot + Azumarill + Lopunny)
-    tribals = _find_tribal_attack_partners(anchor, pokemon_pool)
+    tribals = (
+        synergy_index.tribal_partners.get(anchor.name.lower(), [])
+        if synergy_index is not None
+        else _find_tribal_attack_partners(anchor, pokemon_pool)
+    )
     for mate in tribals:
         if already_in(mate.name):
             continue
@@ -1120,9 +1265,13 @@ def _assemble_synergy_pokemon(
             pokemon.extend(mate_core)
 
     # 2. Compañeros mencionados por los mismos Entrenadores exclusivos (ej. Rika -> Whiscash)
-    anchor_trs = _find_synergy_trainers_for_pokemon(anchor, trainer_pool, pk_vocab)
+    anchor_trs = _find_synergy_trainers_for_pokemon(anchor, trainer_pool, pk_vocab, synergy_index=synergy_index)
     for tr in anchor_trs:
-        targets, _ = _trainer_named_targets(tr, pk_vocab)
+        targets, _ = (
+            synergy_index.trainer_targets.get(tr.card_id or tr.name, (set(), False))
+            if synergy_index is not None
+            else _trainer_named_targets(tr, pk_vocab)
+        )
         for tname in sorted(targets):
             if already_in(tname):
                 continue
@@ -1165,7 +1314,7 @@ def _assemble_synergy_pokemon(
                     c.stage == "Stage 2"
                     and c.subtype == "Colorless"
                     and len(pokemon) <= 4
-                    and bool(_find_synergy_trainers_for_pokemon(c, trainer_pool, pk_vocab))
+                    and bool(_find_synergy_trainers_for_pokemon(c, trainer_pool, pk_vocab, synergy_index=synergy_index))
                 )
             )
             and not already_in(c.name)
@@ -1177,7 +1326,7 @@ def _assemble_synergy_pokemon(
             and (not require_diamond or c.is_diamond_pokemon)
             and (not only_type or c.subtype == only_type)
         ]
-        has_candy = any(t.name == "Rare Candy" for t in trainer_pool)
+        has_candy = synergy_index.has_rare_candy if synergy_index is not None else any(t.name == "Rare Candy" for t in trainer_pool)
         support_pool.sort(
             key=lambda c: (
                 1 if effective_set and c.set_code == effective_set else 0,
@@ -1187,6 +1336,7 @@ def _assemble_synergy_pokemon(
                     trainer_pool=trainer_pool,
                     pk_vocab=pk_vocab,
                     has_rare_candy=has_candy,
+                    synergy_index=synergy_index,
                 ),
             ),
             reverse=True,
@@ -1215,9 +1365,11 @@ def _build_single_archetype_deck(
     require_mega: bool = False,
     min_set: tuple[str, int] | None = None,
     exclude_anchors: set[str] | None = None,
+    synergy_index: _SynergyIndex | None = None,
 ) -> BuiltDeck | None:
     """Construye y valida una baraja de 20 cartas alrededor de sinergias reales."""
     excluded = exclude_anchors or set()
+    idx_syn = synergy_index if synergy_index is not None else _build_synergy_index(pokemon_pool, trainer_pool)
     candidates = [
         c
         for c in pokemon_pool
@@ -1228,8 +1380,8 @@ def _build_single_archetype_deck(
         and (not require_mega or c.is_mega)
     ]
     effective_set = min_set[0] if min_set else prefer_set
-    pk_vocab = {c.name.lower() for c in pokemon_pool}
-    has_rare_candy = any(t.name == "Rare Candy" for t in trainer_pool)
+    pk_vocab = idx_syn.pk_vocab
+    has_rare_candy = idx_syn.has_rare_candy
     only_type = prefer_subtype if prefer_subtype in constraints.required_types else None
 
     def _is_fast_attacker(card: CardRecord) -> bool:
@@ -1252,6 +1404,7 @@ def _build_single_archetype_deck(
                 trainer_pool=trainer_pool,
                 pk_vocab=pk_vocab,
                 has_rare_candy=has_rare_candy,
+                synergy_index=idx_syn,
             )
             + (12.0 if not min_set and effective_set and c.set_code == effective_set else 0.0),
         ),
@@ -1273,6 +1426,7 @@ def _build_single_archetype_deck(
             only_type=only_type,
             effective_set=effective_set,
             exclude_names=excluded,
+            synergy_index=idx_syn,
         )
 
         trainers = _fill_trainers(
@@ -1400,6 +1554,7 @@ def build_three_decks_for_event(
     used_anchors: set[str] = set()
     used_types: set[str] = set()
     target_set = constraints.target_expansion or catalog.latest_set
+    synergy_index = _build_synergy_index(pokemon_pool, trainer_pool)
 
     # Baraja 1: cubre misión restrictiva (Sin ex / 1-3◊ / Tipo pedido) o mejor arquetipo rápido
     pref_t1 = constraints.required_types[0] if constraints.required_types else None
@@ -1414,6 +1569,7 @@ def build_three_decks_for_event(
         prefer_fast=not constraints.required_types,
         require_no_ex=constraints.no_ex,
         require_diamond=constraints.diamond_only,
+        synergy_index=synergy_index,
     )
     if not d1 and pref_t1:
         d1 = _build_single_archetype_deck(
@@ -1425,6 +1581,7 @@ def build_three_decks_for_event(
             prefer_set=target_set,
             require_no_ex=constraints.no_ex,
             require_diamond=constraints.diamond_only,
+            synergy_index=synergy_index,
         )
     if d1:
         decks.append(d1)
@@ -1452,6 +1609,7 @@ def build_three_decks_for_event(
                 prefer_set=target_set,
                 require_mega=req_mega_flag,
                 exclude_anchors=used_anchors,
+                synergy_index=synergy_index,
             )
             if d2:
                 break
@@ -1487,6 +1645,7 @@ def build_three_decks_for_event(
                 prefer_set=min_set_req[0] if min_set_req else target_set,
                 min_set=en_min,
                 exclude_anchors=used_anchors,
+                synergy_index=synergy_index,
             )
             if d3:
                 break
