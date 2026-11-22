@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-22 06:23 COT",
+  "generated_at": "2026-11-22 07:23 COT",
   "stats": {
     "total": 74,
     "pogo": 61,
@@ -4409,7 +4409,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/max-battle-day-january-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T11:23:15Z"
+      "last_updated_at": "2026-11-22T12:23:17Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4470,7 +4470,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/super-mega-raid-day-january-30-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T11:23:15Z"
+      "last_updated_at": "2026-11-22T12:23:17Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4590,7 +4590,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/raid-day-february-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T11:23:15Z"
+      "last_updated_at": "2026-11-22T12:23:17Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
