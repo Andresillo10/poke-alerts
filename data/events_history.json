@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-22 03:23 COT",
+  "generated_at": "2026-11-22 04:23 COT",
   "stats": {
-    "total": 73,
-    "pogo": 60,
+    "total": 74,
+    "pogo": 61,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 36,
+    "active": 37,
     "upcoming": 25,
     "ended": 12
   },
@@ -1215,6 +1215,65 @@
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:catch-duolingo-language-new-with",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Aprende un nuevo idioma con Duolingo",
+      "title_original": "Catch a New Language with Duolingo",
+      "summary": "Este evento es un evento especial cuyo tema gira en torno a la colaboración de Pokémon con Duolingo, que ofrece Pokémon con etiquetas de idioma.",
+      "action_guide": "📍 Cómo completarlo: abre la pestaña Eventos / Hoy dentro de Pokémon GO para ver el progreso de misiones o del Pase, aprovecha las bonificaciones activas (suerte, Polvo, regalos o capturas) y usa el filtro de caja abajo antes del fin del evento.",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-17",
+      "end_date": "2026-12-21",
+      "date_range_label": "17 nov 2026 -> 21 dic 2026",
+      "status": "activo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://www.serebii.net/pokemongo/events/catchanewlanguagewithduolingo.shtml",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "This event is a special event themed around the Pokémon",
+            "collaboration with Duolingo offering Pokémon with language",
+            "tags"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Revisa Investigaciones Temporales antes del cierre",
+            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
+            "Marca el evento en el panel al completar sus premios"
+          ],
+          "explanation": "Aprende un nuevo idioma con Duolingo: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://www.serebii.net/pokemongo/events/catchanewlanguagewithduolingo.shtml",
+          "context_label": "Evento GO: Aprende un nuevo idioma con Duolingo"
+        }
+      ],
+      "sources": [
+        "Serebii GO"
+      ],
+      "urls": [
+        "https://www.serebii.net/pokemongo/events/catchanewlanguagewithduolingo.shtml"
+      ],
+      "first_seen_at": "2026-11-22T09:23:39Z",
+      "last_updated_at": "2026-11-22T09:23:39Z"
     },
     {
       "id": "pogo:and-duolingo-go-pokemon-research-timed",
@@ -4349,7 +4408,7 @@
         "https://leekduck.com/events/max-battle-day-january-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T08:23:18Z"
+      "last_updated_at": "2026-11-22T09:23:39Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4410,7 +4469,7 @@
         "https://leekduck.com/events/super-mega-raid-day-january-30-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T08:23:18Z"
+      "last_updated_at": "2026-11-22T09:23:39Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4530,7 +4589,7 @@
         "https://leekduck.com/events/raid-day-february-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T08:23:18Z"
+      "last_updated_at": "2026-11-22T09:23:39Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",

@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-21T13:06:34Z",
-  "last_commit_heartbeat_utc": "2026-11-21T13:06:34Z",
+  "last_run_utc": "2026-11-22T09:23:39Z",
+  "last_commit_heartbeat_utc": "2026-11-22T09:23:39Z",
   "last_weekly_meta_week": null,
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -89,7 +89,8 @@
     "ptcgpocket-gg:https://ptcgpocket.gg/dual-fusion-c1-limited-battles/": "2026-11-18T15:23:34Z",
     "scrapedduck:pokemon-latin-america-international-championships-2027-timed-research-twitch-drops": "2026-11-20T14:23:30Z",
     "pogolive:/es_MX/news/community-day-december-2026": "2026-11-20T18:23:29Z",
-    "serebii-tcgp:https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml": "2026-11-21T13:06:34Z"
+    "serebii-tcgp:https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml": "2026-11-21T13:06:34Z",
+    "serebii-go:https://www.serebii.net/pokemongo/events/catchanewlanguagewithduolingo.shtml": "2026-11-22T09:23:39Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -175,7 +176,8 @@
     "tcgp:dual-fusion-c1-limited-battles": "2026-11-18T15:23:34Z",
     "pogo:twitch-drops-for-2027-pokemon-latin-america-international": "2026-11-20T14:23:30Z",
     "pogo:celebren-el-ano-con-todos-los-pokemon-de": "2026-11-20T18:23:29Z",
-    "tcgp:vee-vee-eevee": "2026-11-21T13:06:34Z"
+    "tcgp:vee-vee-eevee": "2026-11-21T13:06:34Z",
+    "pogo:catch-new-language-with-duolingo": "2026-11-22T09:23:39Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
@@ -193,7 +195,9 @@
     "scrapedduck:november-communityday2026": "2026-11-21T00:23:44Z",
     "pogo:pawniard-community-day": "2026-11-21T00:23:44Z",
     "serebii-tcgp:https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml": "2026-11-21T13:06:34Z",
-    "tcgp:vee-vee-eevee": "2026-11-21T13:06:34Z"
+    "tcgp:vee-vee-eevee": "2026-11-21T13:06:34Z",
+    "serebii-go:https://www.serebii.net/pokemongo/events/catchanewlanguagewithduolingo.shtml": "2026-11-22T09:23:39Z",
+    "pogo:catch-new-language-with-duolingo": "2026-11-22T09:23:39Z"
   },
   "source_failures": {
     "LeekDuck Promo": 0,
