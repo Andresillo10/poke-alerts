@@ -1,15 +1,15 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-22 23:23 COT",
+  "generated_at": "2026-11-23 00:23 COT",
   "stats": {
     "total": 74,
     "pogo": 61,
     "tcgp": 13,
     "codes_active": 4,
     "active": 37,
-    "upcoming": 25,
-    "ended": 12
+    "upcoming": 24,
+    "ended": 13
   },
   "events": [
     {
@@ -149,66 +149,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
-      "id": "pogo:2027-america-drops-for-international-latin-pokemon-twitch",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Evento Pokémon GO",
-      "title": "Twitch llega para el Campeonato Internacional Pokémon de América Latina 2027",
-      "title_original": "Twitch Drops for 2027 Pokémon Latin America International Championships",
-      "summary": "Obtén códigos para Investigación Temporal exclusivo y un paquete de batalla durante la transmisión de Twitch del Campeonato Internacional Pokémon de América Latina 2027. PsyRhino se llevó a casa el oro en el Campeonato Internacional de Norteamérica Pokémon GO 2026 con un poderoso Shadow Samurott en su equipo. Mire la transmisión de LAIC 2027 y podrá obtener un Samurott inspirado en el equipo ganador de NAIC de PsyRhino.",
-      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-20",
-      "end_date": "2026-11-22",
-      "date_range_label": "20 nov 2026 -> 22 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Samurott (Shadow) (Tipos: Agua • Salvaje Hundo Nv.30/35: 2422 / 2624)",
-      "search_filter": "+Samurott&4*,3*",
-      "guide_url": "https://leekduck.com/events/pokemon-latin-america-international-championships-2027-timed-research-twitch-drops/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Samurott (Shadow)",
-          "subtitle": "Tipos: Agua • Salvaje Hundo Nv.30/35: 2422 / 2624",
-          "primary_type": "water",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Samurott (Shadow) (PC 100%)",
-            "• Salvaje máx Nv.30: 2422",
-            "• Clima máx Nv.35:  2624",
-            "• Misión / Huevo:   1211 / 1614"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Samurott (Shadow) #117 Ultra 2500 (85.4) • IV 4/14/13",
-            "  -> Fury Cutter / Hydro Cannon / Megahorn",
-            "PvE Raids (Agua): Waterfall + Hydro Cannon"
-          ],
-          "explanation": "Familia Samurott (Shadow): revisa 2422 (Nv.30) y 2624 (clima) para 100% IV; en competitivo Samurott (Shadow) rinde #117 en Ultra 2500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Samurott&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/samurott_shadow/",
-          "context_label": "Evento GO: Twitch llega para el Campeonato Internacional Pokémon de América Latina 2027"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/pokemon-latin-america-international-championships-2027-timed-research-twitch-drops/"
-      ],
-      "first_seen_at": "2026-11-20T14:23:30Z",
-      "last_updated_at": "2026-11-20T14:23:30Z"
-    },
-    {
       "id": "pogo:dynamax-trails",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -306,6 +246,73 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-18T18:38:13Z"
+    },
+    {
+      "id": "pogo:during-dynamax-espurr-max-monday",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Combates Max",
+      "title": "Espurr Dynamax durante Lunes Max",
+      "title_original": "Dynamax Espurr during Max Monday",
+      "summary": "El Espurr Dynamax puede aparecer en los Combates Max desde el 23 de noviembre de 2026 hasta el 29 de noviembre de 2026. Estos Pokémon Dynamax pueden aparecer en los Combates Max durante toda esta temporada. Los Combates Max estarán disponibles de 6:00 a 21:00 hora local los lunes. Los Nodos Energéticos se actualizarán con más frecuencia. Los lunes habrá más Nodos Energéticos activos que el resto de la semana.",
+      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-23",
+      "end_date": "2026-11-23",
+      "date_range_label": "23 nov 2026 -> 23 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Espurr: PC 100%: 719 (Nv.20) • 899 (Nv.25)",
+      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+      "guide_url": "https://leekduck.com/events/max-mondays-2026-11-23/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Espurr",
+          "subtitle": "PC 100%: 719 (Nv.20) • 899 (Nv.25)",
+          "primary_type": "psychic",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Psíquico",
+            "PC 100% Nv.20: 719",
+            "PC 100% Clima Nv.25: 899",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Siniestro (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "3. Mega Heracross (Fury Cutter + Megahorn)",
+            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
+            "5. Darkrai Oscuro (Snarl + Foul Play)",
+            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+          ],
+          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 719 (normal) o 899 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Dynamax Espurr durante Lunes Max"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/max-mondays-2026-11-23/"
+      ],
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T00:23:23Z"
     },
     {
       "id": "pogo:5-and-battles-cresselia-darkrai-in-raid-star",
@@ -3096,73 +3103,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-18T18:38:13Z"
     },
     {
-      "id": "pogo:during-dynamax-espurr-max-monday",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Combates Max",
-      "title": "Espurr Dynamax durante Lunes Max",
-      "title_original": "Dynamax Espurr during Max Monday",
-      "summary": "El Espurr Dynamax puede aparecer en los Combates Max desde el 23 de noviembre de 2026 hasta el 29 de noviembre de 2026. Estos Pokémon Dynamax pueden aparecer en los Combates Max durante toda esta temporada. Los Combates Max estarán disponibles de 6:00 a 21:00 hora local los lunes. Los Nodos Energéticos se actualizarán con más frecuencia. Los lunes habrá más Nodos Energéticos activos que el resto de la semana.",
-      "action_guide": "📍 Dónde jugar: Nodos Energéticos en el mapa. 🎯 Cómo completarlo: recoge tu límite diario de Partículas Max en los nodos, combate en grupo usando Dinamax/Gigamax con ventaja de tipo (sube Ataque Max primero) y cobra las misiones temporales.",
-      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-23",
-      "end_date": "2026-11-23",
-      "date_range_label": "23 nov 2026 -> 23 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Espurr: PC 100%: 719 (Nv.20) • 899 (Nv.25)",
-      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-      "guide_url": "https://leekduck.com/events/max-mondays-2026-11-23/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Espurr",
-          "subtitle": "PC 100%: 719 (Nv.20) • 899 (Nv.25)",
-          "primary_type": "psychic",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Psíquico",
-            "PC 100% Nv.20: 719",
-            "PC 100% Clima Nv.25: 899",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Fantasma (×1.6)",
-            "• Siniestro (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "3. Mega Heracross (Fury Cutter + Megahorn)",
-            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
-            "5. Darkrai Oscuro (Snarl + Foul Play)",
-            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
-          ],
-          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 719 (normal) o 899 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Dynamax Espurr durante Lunes Max"
-        }
-      ],
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/max-mondays-2026-11-23/"
-      ],
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T00:23:23Z"
-    },
-    {
       "id": "pogo:and-attack-defense-deoxys-formes-normal-raid-speed",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -4409,7 +4349,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/max-battle-day-january-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T04:23:25Z"
+      "last_updated_at": "2026-11-23T05:23:15Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4470,7 +4410,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/super-mega-raid-day-january-30-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T04:23:25Z"
+      "last_updated_at": "2026-11-23T05:23:15Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4590,7 +4530,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/raid-day-february-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T04:23:25Z"
+      "last_updated_at": "2026-11-23T05:23:15Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
@@ -5711,6 +5651,66 @@ window.POKE_ALERTS_DB = {
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-21T00:23:44Z"
+    },
+    {
+      "id": "pogo:2027-america-drops-for-international-latin-pokemon-twitch",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Twitch llega para el Campeonato Internacional Pokémon de América Latina 2027",
+      "title_original": "Twitch Drops for 2027 Pokémon Latin America International Championships",
+      "summary": "Obtén códigos para Investigación Temporal exclusivo y un paquete de batalla durante la transmisión de Twitch del Campeonato Internacional Pokémon de América Latina 2027. PsyRhino se llevó a casa el oro en el Campeonato Internacional de Norteamérica Pokémon GO 2026 con un poderoso Shadow Samurott en su equipo. Mire la transmisión de LAIC 2027 y podrá obtener un Samurott inspirado en el equipo ganador de NAIC de PsyRhino.",
+      "action_guide": "📍 Dónde jugar: Menú principal ➔ Combates (Liga Combates GO). 🎯 Cómo completarlo: arma un equipo de 3 Pokémon dentro del límite de PC de la liga activa siguiendo el ranking Top 6 de PvPoke e IVs recomendados abajo.",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-20",
+      "end_date": "2026-11-22",
+      "date_range_label": "20 nov 2026 -> 22 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Samurott (Shadow) (Tipos: Agua • Salvaje Hundo Nv.30/35: 2422 / 2624)",
+      "search_filter": "+Samurott&4*,3*",
+      "guide_url": "https://leekduck.com/events/pokemon-latin-america-international-championships-2027-timed-research-twitch-drops/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Samurott (Shadow)",
+          "subtitle": "Tipos: Agua • Salvaje Hundo Nv.30/35: 2422 / 2624",
+          "primary_type": "water",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Samurott (Shadow) (PC 100%)",
+            "• Salvaje máx Nv.30: 2422",
+            "• Clima máx Nv.35:  2624",
+            "• Misión / Huevo:   1211 / 1614"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Samurott (Shadow) #117 Ultra 2500 (85.4) • IV 4/14/13",
+            "  -> Fury Cutter / Hydro Cannon / Megahorn",
+            "PvE Raids (Agua): Waterfall + Hydro Cannon"
+          ],
+          "explanation": "Familia Samurott (Shadow): revisa 2422 (Nv.30) y 2624 (clima) para 100% IV; en competitivo Samurott (Shadow) rinde #117 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Samurott&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/samurott_shadow/",
+          "context_label": "Evento GO: Twitch llega para el Campeonato Internacional Pokémon de América Latina 2027"
+        }
+      ],
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/pokemon-latin-america-international-championships-2027-timed-research-twitch-drops/"
+      ],
+      "first_seen_at": "2026-11-20T14:23:30Z",
+      "last_updated_at": "2026-11-20T14:23:30Z"
     },
     {
       "id": "pogo:actividades-actualizacion-area-del-en-las-sobre-viernes",
