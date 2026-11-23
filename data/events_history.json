@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-23 10:41 COT",
+  "generated_at": "2026-11-23 10:42 COT",
   "stats": {
     "total": 74,
     "pogo": 61,
@@ -524,7 +524,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:41:24Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "pogo:banette-in-mega-raids",
@@ -543,10 +543,9 @@
         "✨ Posible Shiny"
       ],
       "milestones": [
-        "🌿 Pokémon destacados: Mega Banette",
+        "🌿 Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette",
         "✨ Variocolor disponibles: Banette, Mega Banette",
-        "⚔️ Jefes: Mega Banette",
-        "🌿 Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette"
+        "⚔️ Jefes: Mega Banette"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
@@ -1055,24 +1054,23 @@
         "Inicia sesión → Cupón de evento",
         "Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1",
         "Abre 2 sobres con energía → Cupón de evento",
-        "Participa en 1 battle → 1× Sobre Promo Serie C vol. 1",
-        "Participa en 2 Partidas → Cupón de evento",
-        "Elección Mágica 1 time → 1× Sobre Promo Serie C vol. 1",
-        "Elección Mágica 2 times → Cupón de evento",
-        "Complete 2 Misiones → 2× Reloj de Arena Mágico",
-        "Complete 3 Misiones → 3× Reloj de Arena de Sobres",
-        "Complete 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
-        "🃏 Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay",
+        "Participa en 1 batalla → 1× Sobre Promo Serie C vol. 1",
+        "Participa en 2 batallas → Cupón de evento",
+        "Haz 1 Elección Mágica → 1× Sobre Promo Serie C vol. 1",
+        "Haz 2 Elecciones Mágicas → Cupón de evento",
+        "Completa 2 misiones → 2× Reloj de Arena Mágico",
+        "Completa 3 misiones → 3× Reloj de Arena de Sobres",
+        "Completa 4 misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
         "🃏 Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog"
       ],
       "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia respetando la regla limitada (solo Fusión Dual C1 / Promo-C) para cumplirlo (sigo revisando si aparece uno mejor).",
       "search_aliases": "Fusión Dual Dual Fusion C1 Partidas limitadas Partidas ilimitadas Combates limitados Versus Encuentro de evento",
-      "rewards": "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 battle → 1× Sobre Promo Serie C vol. 1 | Participa en 2 Partidas → Cupón de evento | Elección Mágica 1 time → 1× Sobre Promo Serie C vol. 1 | Elección Mágica 2 times → Cupón de evento | Complete 2 Misiones → 2× Reloj de Arena Mágico | Complete 3 Misiones → 3× Reloj de Arena de Sobres | Complete 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1) | Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog",
+      "rewards": "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 batalla → 1× Sobre Promo Serie C vol. 1 | Participa en 2 batallas → Cupón de evento | Haz 1 Elección Mágica → 1× Sobre Promo Serie C vol. 1 | Haz 2 Elecciones Mágicas → Cupón de evento | Completa 2 misiones → 2× Reloj de Arena Mágico | Completa 3 misiones → 3× Reloj de Arena de Sobres | Completa 4 misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1) | Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog",
       "highlights": [
         "Misiones: Inicia sesión | Abre 1 sobre con energía → Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía",
         "Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay",
         "Misiones: Gana 1 partida(s) → 1 | Gana 3 partida(s) → 1× Sobre Promo | Gana 5 partida(s) → 1 | Gana 9 partida(s) → 1",
-        "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 battle → 1× Sobre Promo Serie C vol. 1 | Participa en 2 Partidas → Cupón de evento | Elección Mágica 1 time → 1× Sobre Promo Serie C vol. 1 | Elección Mágica 2 times → Cupón de evento | Complete 2 Misiones → 2× Reloj de Arena Mágico | Complete 3 Misiones → 3× Reloj de Arena de Sobres | Complete 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
+        "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 batalla → 1× Sobre Promo Serie C vol. 1 | Participa en 2 batallas → Cupón de evento | Haz 1 Elección Mágica → 1× Sobre Promo Serie C vol. 1 | Haz 2 Elecciones Mágicas → Cupón de evento | Completa 2 misiones → 2× Reloj de Arena Mágico | Completa 3 misiones → 3× Reloj de Arena de Sobres | Completa 4 misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
         "Misiones: Gana 1 batalla → 1× Moneda del evento | Gana 3 batallas → 1× Sobre Promo | Gana 5 batallas → 1× Fundas del evento | Gana 9 batallas → 1× Tapete del evento"
       ],
       "promo_code": null,
@@ -1171,7 +1169,7 @@
       ],
       "published_at": "2026-11-19T01:23:52Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:41:24Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "tcgp:anniversary-campaign-celebration-second",
@@ -1255,30 +1253,23 @@
         "✅ Sin combates"
       ],
       "milestones": [
-        "Inicia sesión 1 día → Sobre Arboleda de Eevee",
-        "Inicia sesión 2 días → Sobre Arboleda de Eevee",
-        "Inicia sesión 3 días → Sobre Arboleda de Eevee",
-        "Día 4 → Inicia sesión 2× Sobre Promo",
-        "Inicia sesión 1 Day → 1× Sobre Arboleda de Eevee",
-        "Inicia sesión 2 Day → 1× Sobre Arboleda de Eevee",
-        "Inicia sesión 3 Day → 1× Sobre Arboleda de Eevee",
-        "Inicia sesión 4 Day → 1× Sobre Arboleda de Eevee",
-        "Inicia sesión 5 Day → 1× Sobre Arboleda de Eevee",
-        "Inicia sesión 6 Day → 1× Sobre Arboleda de Eevee",
-        "Inicia sesión 7 Day → 1× Sobre Arboleda de Eevee",
-        "Día 5 → Inicia sesión 1× Sobre Promo",
-        "Día 6 → Inicia sesión 2× Sobre Promo",
-        "Día 7 → Inicia sesión 2× Sobre Promo",
+        "Inicia sesión 1 día → 1× Sobre Arboleda de Eevee",
+        "Inicia sesión 2 días → 1× Sobre Arboleda de Eevee",
+        "Inicia sesión 3 días → 1× Sobre Arboleda de Eevee",
+        "Inicia sesión 4 días → 1× Sobre Arboleda de Eevee",
+        "Inicia sesión 5 días → 1× Sobre Arboleda de Eevee",
+        "Inicia sesión 6 días → 1× Sobre Arboleda de Eevee",
+        "Inicia sesión 7 días → 1× Sobre Arboleda de Eevee",
         "🃏 Cartas y sobres destacados: Sobre Eevee vii vii"
       ],
       "deck_intro": "",
       "search_aliases": "",
-      "rewards": "Misiones: Inicia sesión 1 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 2 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 3 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 4 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 5 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 6 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 7 Day → 1× Sobre Arboleda de Eevee | Cartas y sobres destacados: Sobre Eevee vii vii",
+      "rewards": "Misiones: Inicia sesión 1 día → 1× Sobre Arboleda de Eevee | Inicia sesión 2 días → 1× Sobre Arboleda de Eevee | Inicia sesión 3 días → 1× Sobre Arboleda de Eevee | Inicia sesión 4 días → 1× Sobre Arboleda de Eevee | Inicia sesión 5 días → 1× Sobre Arboleda de Eevee | Inicia sesión 6 días → 1× Sobre Arboleda de Eevee | Inicia sesión 7 días → 1× Sobre Arboleda de Eevee | Cartas y sobres destacados: Sobre Eevee vii vii",
       "highlights": [
         "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo",
         "Misiones: Inicia sesión 1 día → Sobre Arboleda de Eevee | Inicia sesión 2 días → Sobre Arboleda de Eevee | Inicia sesión 3 días → Sobre Arboleda de Eevee",
         "Cartas y sobres destacados: Sobre Eevee vii vii",
-        "Misiones: Inicia sesión 1 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 2 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 3 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 4 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 5 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 6 Day → 1× Sobre Arboleda de Eevee | Inicia sesión 7 Day → 1× Sobre Arboleda de Eevee",
+        "Misiones: Inicia sesión 1 día → 1× Sobre Arboleda de Eevee | Inicia sesión 2 días → 1× Sobre Arboleda de Eevee | Inicia sesión 3 días → 1× Sobre Arboleda de Eevee | Inicia sesión 4 días → 1× Sobre Arboleda de Eevee | Inicia sesión 5 días → 1× Sobre Arboleda de Eevee | Inicia sesión 6 días → 1× Sobre Arboleda de Eevee | Inicia sesión 7 días → 1× Sobre Arboleda de Eevee",
         "Misiones: Día 1 → Inicia sesión 1× Sobre Promo | Día 2 → Inicia sesión 1× Sobre Promo | Día 3 → Inicia sesión 1× Sobre Promo | Día 4 → Inicia sesión 2× Sobre Promo | Día 5 → Inicia sesión 1× Sobre Promo | Día 6 → Inicia sesión 2× Sobre Promo | Día 7 → Inicia sesión 2× Sobre Promo"
       ],
       "promo_code": null,
@@ -1305,7 +1296,7 @@
       ],
       "published_at": "2026-11-21T13:06:33Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "pogo:catch-duolingo-language-new-with",
@@ -2350,23 +2341,23 @@
         "Inicia sesión (Día 3) → 12× Relojes de Arena",
         "Collect 3 different Cartas Promo from this event → 12× Relojes de Arena",
         "Trade 1 time → 36",
-        "Elección Mágica 1 time → 1× Sobre Promo",
+        "Haz 1 Elección Mágica → 1× Sobre Promo",
         "Collect 25 cards → 1× Sobre Promo",
         "Collect 50 cards → 12× Relojes de Arena",
         "Week 2 Inicia sesión (Día 4) → 1× Sobre Promo",
         "Share 3 times → 36",
-        "Elección Mágica 3 times → 1× Sobre Promo",
-        "Elección Mágica 5 times → 12× Relojes de Arena",
+        "Haz 3 Elecciones Mágicas → 1× Sobre Promo",
+        "Haz 5 Elecciones Mágicas → 12× Relojes de Arena",
         "Collect 30 cards → 1× Sobre Promo",
         "Collect 60 cards → 12× Relojes de Arena",
         "Abre 2 sobres con energía → 1× Sobre Promo"
       ],
       "deck_intro": "",
       "search_aliases": "",
-      "rewards": "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Elección Mágica 1 time → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Elección Mágica 3 times → 1× Sobre Promo | Elección Mágica 5 times → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
+      "rewards": "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
       "highlights": [
         "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena",
-        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Elección Mágica 1 time → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Elección Mágica 3 times → 1× Sobre Promo | Elección Mágica 5 times → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo"
+        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -2390,7 +2381,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "pogo:bonificacion-con-consigan-de-doble-el-pokemonedas",
@@ -3402,10 +3393,9 @@
         "✨ Posible Shiny"
       ],
       "milestones": [
-        "🌿 Pokémon destacados: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
+        "🌿 Pokémon destacados: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
         "✨ Variocolor disponibles: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
-        "⚔️ Jefes: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
-        "🌿 Pokémon destacados: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)"
+        "⚔️ Jefes: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
@@ -3527,7 +3517,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:41:24Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "pogo:and-catch-cup-great-league-master-mega",
@@ -3651,10 +3641,9 @@
         "✨ Posible Shiny"
       ],
       "milestones": [
-        "🌿 Pokémon destacados: Mega Metagross",
+        "🌿 Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross",
         "✨ Variocolor disponibles: Metagross, Mega Metagross",
-        "⚔️ Jefes: Mega Metagross",
-        "🌿 Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross"
+        "⚔️ Jefes: Mega Metagross"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
@@ -4322,7 +4311,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:41:24Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4393,7 +4382,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:41:24Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4534,7 +4523,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:41:24Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
@@ -5873,14 +5862,14 @@
       ],
       "milestones": [
         "Participa en 1 batalla → 1 cupón de evento",
-        "Participa en 3 partidas",
-        "Participa en 5 partidas → 1 cupón de evento"
+        "Participa en 3 batallas",
+        "Participa en 5 batallas → 1 cupón de evento"
       ],
       "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia para farmear rápido en dificultad Experto para cumplirlo (sigo revisando si aparece uno mejor).",
       "search_aliases": "Evento de Botín Drop Event Combate Individual Sobres Promo",
-      "rewards": "Misiones: Participa en 1 batalla → 1 cupón de evento | Participa en 3 partidas | Participa en 5 partidas → 1 cupón de evento",
+      "rewards": "Misiones: Participa en 1 batalla → 1 cupón de evento | Participa en 3 batallas | Participa en 5 batallas → 1 cupón de evento",
       "highlights": [
-        "Misiones: Participa en 1 batalla → 1 cupón de evento | Participa en 3 partidas | Participa en 5 partidas → 1 cupón de evento"
+        "Misiones: Participa en 1 batalla → 1 cupón de evento | Participa en 3 batallas | Participa en 5 batallas → 1 cupón de evento"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -5985,7 +5974,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "tcgp:1-pack-promo-series-vol",
@@ -6009,13 +5998,13 @@
         "Inicia sesión",
         "Abre 1 sobre con energía → 1× Sobre Promo",
         "Abre 2 sobres con energía",
-        "Elección Mágica 1 time → 1× Sobre Promo"
+        "Haz 1 Elección Mágica → 1× Sobre Promo"
       ],
       "deck_intro": "",
       "search_aliases": "",
-      "rewards": "Misiones: Inicia sesión | Abre 1 sobre con energía → 1× Sobre Promo | Abre 2 sobres con energía | Elección Mágica 1 time → 1× Sobre Promo",
+      "rewards": "Misiones: Inicia sesión | Abre 1 sobre con energía → 1× Sobre Promo | Abre 2 sobres con energía | Haz 1 Elección Mágica → 1× Sobre Promo",
       "highlights": [
-        "Misiones: Inicia sesión | Abre 1 sobre con energía → 1× Sobre Promo | Abre 2 sobres con energía | Elección Mágica 1 time → 1× Sobre Promo"
+        "Misiones: Inicia sesión | Abre 1 sobre con energía → 1× Sobre Promo | Abre 2 sobres con energía | Haz 1 Elección Mágica → 1× Sobre Promo"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -6039,7 +6028,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:42:32Z"
     },
     {
       "id": "pogo:actividades-actualizacion-area-del-en-las-sobre-viernes",
