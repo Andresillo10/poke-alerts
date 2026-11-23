@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-23T06:23:36Z",
-  "last_commit_heartbeat_utc": "2026-11-23T06:23:36Z",
+  "last_run_utc": "2026-11-23T07:23:20Z",
+  "last_commit_heartbeat_utc": "2026-11-23T07:23:20Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -209,5 +209,6 @@
     "Serebii TCGP": 0,
     "PTCGPocket.gg": 0,
     "PTCGPocket Codes": 0
-  }
+  },
+  "last_weekly_codes_week": "2026-W48"
 }
