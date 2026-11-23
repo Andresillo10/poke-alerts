@@ -1,8 +1,8 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-23T00:23:23Z",
-  "last_commit_heartbeat_utc": "2026-11-23T00:23:23Z",
-  "last_weekly_meta_week": null,
+  "last_run_utc": "2026-11-23T06:23:36Z",
+  "last_commit_heartbeat_utc": "2026-11-23T06:23:36Z",
+  "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
   "seen_uids": {
