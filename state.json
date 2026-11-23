@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-22T09:23:39Z",
-  "last_commit_heartbeat_utc": "2026-11-22T09:23:39Z",
+  "last_run_utc": "2026-11-23T00:23:23Z",
+  "last_commit_heartbeat_utc": "2026-11-23T00:23:23Z",
   "last_weekly_meta_week": null,
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -19,7 +19,7 @@
     "scrapedduck:eternamax-eternatus-max-battles-2026": "2026-11-21T00:23:44Z",
     "scrapedduck:november-communityday2026": "2026-11-21T00:23:44Z",
     "scrapedduck:dynamax-trails-2026": "2026-11-17T18:05:14Z",
-    "scrapedduck:max-mondays-2026-11-23": "2026-11-17T18:05:14Z",
+    "scrapedduck:max-mondays-2026-11-23": "2026-11-23T00:23:23Z",
     "scrapedduck:cresselia-darkrai-in-5-star-raid-battles-november-2026": "2026-11-17T18:05:14Z",
     "scrapedduck:mega-banette-in-mega-raids-november-2026": "2026-11-17T18:05:14Z",
     "scrapedduck:gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup": "2026-11-18T12:34:10Z",
@@ -106,7 +106,7 @@
     "pogo:eternamax-eternatus-returns": "2026-11-21T00:23:44Z",
     "pogo:pawniard-community-day": "2026-11-21T00:23:44Z",
     "pogo:dynamax-trails": "2026-11-17T18:05:14Z",
-    "pogo:dynamax-espurr-during-max-monday": "2026-11-17T18:05:14Z",
+    "pogo:dynamax-espurr-during-max-monday": "2026-11-23T00:23:23Z",
     "pogo:cresselia-and-darkrai-in-5-star-raid-battles": "2026-11-17T18:05:14Z",
     "pogo:mega-banette-in-mega-raids": "2026-11-17T18:05:14Z",
     "pogo:ultra-league-master-league-mega-edition-and-2026": "2026-11-18T12:34:10Z",
@@ -197,7 +197,9 @@
     "serebii-tcgp:https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml": "2026-11-21T13:06:34Z",
     "tcgp:vee-vee-eevee": "2026-11-21T13:06:34Z",
     "serebii-go:https://www.serebii.net/pokemongo/events/catchanewlanguagewithduolingo.shtml": "2026-11-22T09:23:39Z",
-    "pogo:catch-new-language-with-duolingo": "2026-11-22T09:23:39Z"
+    "pogo:catch-new-language-with-duolingo": "2026-11-22T09:23:39Z",
+    "scrapedduck:max-mondays-2026-11-23": "2026-11-23T00:23:23Z",
+    "pogo:dynamax-espurr-during-max-monday": "2026-11-23T00:23:23Z"
   },
   "source_failures": {
     "LeekDuck Promo": 0,

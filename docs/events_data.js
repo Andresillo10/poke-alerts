@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-22 18:39 COT",
+  "generated_at": "2026-11-22 19:23 COT",
   "stats": {
     "total": 74,
     "pogo": 61,
@@ -3150,7 +3150,7 @@ window.POKE_ALERTS_DB = {
           "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
-          "context_label": "Evento GO: Dynamax Espurr during Lunes Max"
+          "context_label": "Evento GO: Dynamax Espurr durante Lunes Max"
         }
       ],
       "sources": [
@@ -3160,7 +3160,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/max-mondays-2026-11-23/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-18T18:38:13Z"
+      "last_updated_at": "2026-11-23T00:23:23Z"
     },
     {
       "id": "pogo:and-attack-defense-deoxys-formes-normal-raid-speed",
@@ -4409,7 +4409,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/max-battle-day-january-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T23:39:05Z"
+      "last_updated_at": "2026-11-23T00:23:23Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4470,7 +4470,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/super-mega-raid-day-january-30-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T23:39:05Z"
+      "last_updated_at": "2026-11-23T00:23:23Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4590,7 +4590,7 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/raid-day-february-2027/"
       ],
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-22T23:39:05Z"
+      "last_updated_at": "2026-11-23T00:23:23Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
