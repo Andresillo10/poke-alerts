@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-23 10:39 COT",
+  "generated_at": "2026-11-23 10:41 COT",
   "stats": {
     "total": 74,
     "pogo": 61,
@@ -524,7 +524,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:41:24Z"
     },
     {
       "id": "pogo:banette-in-mega-raids",
@@ -1052,13 +1052,13 @@
         "Gana 3 batallas → 1× Sobre Promo Serie C vol. 1",
         "Gana 5 batallas → 1× Mega Mewtwo X (Fundas)",
         "Gana 9 batallas → 1× Mega Mewtwo X (Tapete)",
-        "Inicia sesión → Cupón de evento de Evento",
+        "Inicia sesión → Cupón de evento",
         "Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1",
-        "Abre 2 sobres con energía → Cupón de evento de Evento",
+        "Abre 2 sobres con energía → Cupón de evento",
         "Participa en 1 battle → 1× Sobre Promo Serie C vol. 1",
-        "Participa en 2 Partidas → Cupón de evento de Evento",
+        "Participa en 2 Partidas → Cupón de evento",
         "Elección Mágica 1 time → 1× Sobre Promo Serie C vol. 1",
-        "Elección Mágica 2 times → Cupón de evento de Evento",
+        "Elección Mágica 2 times → Cupón de evento",
         "Complete 2 Misiones → 2× Reloj de Arena Mágico",
         "Complete 3 Misiones → 3× Reloj de Arena de Sobres",
         "Complete 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
@@ -1067,12 +1067,12 @@
       ],
       "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia respetando la regla limitada (solo Fusión Dual C1 / Promo-C) para cumplirlo (sigo revisando si aparece uno mejor).",
       "search_aliases": "Fusión Dual Dual Fusion C1 Partidas limitadas Partidas ilimitadas Combates limitados Versus Encuentro de evento",
-      "rewards": "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento de Evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento de Evento | Participa en 1 battle → 1× Sobre Promo Serie C vol. 1 | Participa en 2 Partidas → Cupón de evento de Evento | Elección Mágica 1 time → 1× Sobre Promo Serie C vol. 1 | Elección Mágica 2 times → Cupón de evento de Evento | Complete 2 Misiones → 2× Reloj de Arena Mágico | Complete 3 Misiones → 3× Reloj de Arena de Sobres | Complete 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1) | Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog",
+      "rewards": "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 battle → 1× Sobre Promo Serie C vol. 1 | Participa en 2 Partidas → Cupón de evento | Elección Mágica 1 time → 1× Sobre Promo Serie C vol. 1 | Elección Mágica 2 times → Cupón de evento | Complete 2 Misiones → 2× Reloj de Arena Mágico | Complete 3 Misiones → 3× Reloj de Arena de Sobres | Complete 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1) | Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog",
       "highlights": [
         "Misiones: Inicia sesión | Abre 1 sobre con energía → Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía",
         "Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay",
         "Misiones: Gana 1 partida(s) → 1 | Gana 3 partida(s) → 1× Sobre Promo | Gana 5 partida(s) → 1 | Gana 9 partida(s) → 1",
-        "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento de Evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento de Evento | Participa en 1 battle → 1× Sobre Promo Serie C vol. 1 | Participa en 2 Partidas → Cupón de evento de Evento | Elección Mágica 1 time → 1× Sobre Promo Serie C vol. 1 | Elección Mágica 2 times → Cupón de evento de Evento | Complete 2 Misiones → 2× Reloj de Arena Mágico | Complete 3 Misiones → 3× Reloj de Arena de Sobres | Complete 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
+        "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 battle → 1× Sobre Promo Serie C vol. 1 | Participa en 2 Partidas → Cupón de evento | Elección Mágica 1 time → 1× Sobre Promo Serie C vol. 1 | Elección Mágica 2 times → Cupón de evento | Complete 2 Misiones → 2× Reloj de Arena Mágico | Complete 3 Misiones → 3× Reloj de Arena de Sobres | Complete 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
         "Misiones: Gana 1 batalla → 1× Moneda del evento | Gana 3 batallas → 1× Sobre Promo | Gana 5 batallas → 1× Fundas del evento | Gana 9 batallas → 1× Tapete del evento"
       ],
       "promo_code": null,
@@ -1171,7 +1171,7 @@
       ],
       "published_at": "2026-11-19T01:23:52Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:41:24Z"
     },
     {
       "id": "tcgp:anniversary-campaign-celebration-second",
@@ -1255,13 +1255,10 @@
         "✅ Sin combates"
       ],
       "milestones": [
-        "Día 1 → Inicia sesión 1× Sobre Promo",
-        "Día 2 → Inicia sesión 1× Sobre Promo",
-        "Día 3 → Inicia sesión 1× Sobre Promo",
-        "Día 4 → Inicia sesión 2× Sobre Promo",
         "Inicia sesión 1 día → Sobre Arboleda de Eevee",
         "Inicia sesión 2 días → Sobre Arboleda de Eevee",
         "Inicia sesión 3 días → Sobre Arboleda de Eevee",
+        "Día 4 → Inicia sesión 2× Sobre Promo",
         "Inicia sesión 1 Day → 1× Sobre Arboleda de Eevee",
         "Inicia sesión 2 Day → 1× Sobre Arboleda de Eevee",
         "Inicia sesión 3 Day → 1× Sobre Arboleda de Eevee",
@@ -1270,7 +1267,9 @@
         "Inicia sesión 6 Day → 1× Sobre Arboleda de Eevee",
         "Inicia sesión 7 Day → 1× Sobre Arboleda de Eevee",
         "Día 5 → Inicia sesión 1× Sobre Promo",
-        "Día 6 → Inicia sesión 2× Sobre Promo"
+        "Día 6 → Inicia sesión 2× Sobre Promo",
+        "Día 7 → Inicia sesión 2× Sobre Promo",
+        "🃏 Cartas y sobres destacados: Sobre Eevee vii vii"
       ],
       "deck_intro": "",
       "search_aliases": "",
@@ -2215,7 +2214,7 @@
         "Ultra Ball Rank 4 → Ultra Ball Rank 2"
       ],
       "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia tomados del meta real de torneos para cumplirlo (sigo revisando si aparece uno mejor).",
-      "search_aliases": "Evento de Emblemas Emblem Event Versus",
+      "search_aliases": "",
       "rewards": "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0 | Master Ball → 10 -10 0 | Rank Season End → Rank New Season | Beginner Rank 1-4 → No change | Poke Ball Rank 1-4 → No change | Great Ball Rank 1 → No change | Great Ball Rank 2 → Great Ball Rank 1 | Great Ball Rank 3 → Great Ball Rank 2 | Great Ball Rank 4 → Great Ball Rank 2 | Ultra Ball Rank 1 → Great Ball Rank 3 | Ultra Ball Rank 2 → Great Ball Rank 4 | Ultra Ball Rank 3 → Ultra Ball Rank 1 | Ultra Ball Rank 4 → Ultra Ball Rank 2",
       "highlights": [
         "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0",
@@ -2324,7 +2323,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:41:24Z"
     },
     {
       "id": "tcgp:card-holidays-promo-themed-winter",
@@ -2339,6 +2338,7 @@
       "action_guide": "NO toca hacer combates. Entra al menú Elección Mágica varias veces al día: las elecciones extra gratuitas y especiales (Chansey Pick) rotan cada ~30 min a 1 hora para sacar las cartas destacadas y cupones de tienda.",
       "requires_battles": false,
       "activities": [
+        "📦 Abrir sobres",
         "✨ Elección Mágica",
         "📅 Iniciar sesión",
         "✅ Sin combates"
@@ -2353,13 +2353,13 @@
         "Elección Mágica 1 time → 1× Sobre Promo",
         "Collect 25 cards → 1× Sobre Promo",
         "Collect 50 cards → 12× Relojes de Arena",
-        "Week 2 Inicia sesión (Día 2) → 1× Sobre Promo",
         "Week 2 Inicia sesión (Día 4) → 1× Sobre Promo",
         "Share 3 times → 36",
         "Elección Mágica 3 times → 1× Sobre Promo",
         "Elección Mágica 5 times → 12× Relojes de Arena",
         "Collect 30 cards → 1× Sobre Promo",
-        "Collect 60 cards → 12× Relojes de Arena"
+        "Collect 60 cards → 12× Relojes de Arena",
+        "Abre 2 sobres con energía → 1× Sobre Promo"
       ],
       "deck_intro": "",
       "search_aliases": "",
@@ -3527,7 +3527,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:41:24Z"
     },
     {
       "id": "pogo:and-catch-cup-great-league-master-mega",
@@ -4322,7 +4322,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:41:24Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4393,7 +4393,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:41:24Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4534,7 +4534,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-23T15:41:24Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
