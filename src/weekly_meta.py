@@ -29,7 +29,7 @@ LOGGER = logging.getLogger(__name__)
 
 LIMITLESS_BASE_URL = "https://play.limitlesstcg.com"
 LIMITLESS_TOURNAMENTS_URL = f"{LIMITLESS_BASE_URL}/tournaments/completed"
-_SCORE_RE = re.compile(r"^(\d+)\s*-\s*(\d+)\s*-\s*(\d+)$")
+_SCORE_RE = re.compile(r"^(\d+)\s*-\s*(\d+)\s*-\s*(\d+)(?:\s+drop)?\b", re.IGNORECASE)
 _CARD_LINE_RE = re.compile(r"^(\d+)\s+(.+?)(?:\s+\([A-Z0-9-]+\))?$")
 
 
@@ -57,6 +57,8 @@ class WeeklyArchetypeSummary:
     best_note: str
     deck: BuiltDeck
     best_url: str = ""
+    ties: int = 0
+    share_pct: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -138,11 +140,13 @@ def parse_tournament_standings_rows(html: str) -> list[dict[str, Any]]:
         except ValueError:
             placing = 999
 
-        wins, losses = 0, 0
+        wins, losses, ties = 0, 0, 0
         for td in tr.select("td"):
             m_score = _SCORE_RE.match(td.get_text(" ", strip=True))
             if m_score:
-                wins, losses = int(m_score.group(1)), int(m_score.group(2))
+                wins = int(m_score.group(1))
+                losses = int(m_score.group(2))
+                ties = int(m_score.group(3))
                 break
 
         dl_a = next((a for a in tr.select("a") if "/decklist" in (a.get("href") or "")), None)
@@ -152,6 +156,8 @@ def parse_tournament_standings_rows(html: str) -> list[dict[str, Any]]:
 
         dl_href = str(dl_a.get("href") or "")
         decklist_url = dl_href if dl_href.startswith("http") else f"{LIMITLESS_BASE_URL}{dl_href}"
+        is_dual_deck = len(meta_links) > 1
+        weight = 1.0 / len(meta_links)
         for meta_a in meta_links:
             slug = str(meta_a.get("href") or "").split("/metagame/")[-1]
             tip = meta_a.select_one("[data-tooltip]")
@@ -161,6 +167,9 @@ def parse_tournament_standings_rows(html: str) -> list[dict[str, Any]]:
                     "placing": placing,
                     "wins": wins,
                     "losses": losses,
+                    "ties": ties,
+                    "is_dual_deck": is_dual_deck,
+                    "weight": weight,
                     "slug": slug,
                     "name": archetype_name.strip(),
                     "decklist_url": decklist_url,
@@ -277,9 +286,9 @@ def build_weekly_ranked_report(
         return None
 
     agg: dict[str, dict[str, Any]] = defaultdict(
-        lambda: {"name": "", "entries": 0, "wins": 0, "losses": 0, "score": 0.0, "candidates": []}
+        lambda: {"name": "", "entries": 0.0, "wins": 0.0, "losses": 0.0, "ties": 0.0, "score": 0.0, "candidates": []}
     )
-    total_entries = 0
+    total_entries = 0.0
 
     for tourn in selected:
         try:
@@ -291,24 +300,28 @@ def build_weekly_ranked_report(
             LOGGER.warning("[WeeklyMeta] Error leyendo %s: %s", tourn.standings_url, exc)
             continue
 
-        total_entries += len(rows)
         for row in rows:
             placing = row["placing"]
-            wins, losses = row["wins"], row["losses"]
+            wins, losses, ties = row["wins"], row["losses"], row.get("ties", 0)
+            weight = float(row.get("weight", 1.0))
+            is_dual_deck = bool(row.get("is_dual_deck", False))
             st = agg[row["slug"]]
             st["name"] = row["name"]
-            st["entries"] += 1
-            st["wins"] += wins
-            st["losses"] += losses
+            st["entries"] += weight
+            st["wins"] += wins * weight
+            st["losses"] += losses * weight
+            st["ties"] += ties * weight
+            total_entries += weight
             place_bonus = max(0.5, 4.0 - math.log2(max(placing, 1)))
-            st["score"] += math.sqrt(tourn.players) * (place_bonus + 0.15 * wins)
-            rank_key = (placing, -tourn.players, -(wins - losses))
+            st["score"] += math.sqrt(tourn.players) * (place_bonus + 0.15 * wins) * weight
+            # Dentro del Top 4 prioriza listas de torneos Estándar 1-mazo (formato Ranked real) sobre Dual-Deck
+            rank_key = (placing > 4, 1 if is_dual_deck else 0, placing, -tourn.players, -(wins - losses))
             note = f"#{placing}/{tourn.players}p ({wins}-{losses}) en {tourn.name[:32]}"
             st["candidates"].append((rank_key, row["decklist_url"], note))
 
     ranked_archs = sorted(agg.items(), key=lambda kv: kv[1]["score"], reverse=True)
-    # Filtra outliers con 1 sola aparición salvo que no haya suficientes arquetipos
-    primary_archs = [kv for kv in ranked_archs if kv[1]["entries"] >= 3]
+    # Filtra outliers con <3 apariciones ponderadas salvo que no haya suficientes arquetipos
+    primary_archs = [kv for kv in ranked_archs if kv[1]["entries"] >= 3.0]
     ordered_pool = primary_archs if len(primary_archs) >= 3 else ranked_archs
 
     top_items: list[WeeklyArchetypeSummary] = []
@@ -321,7 +334,10 @@ def build_weekly_ranked_report(
         chosen_deck: BuiltDeck | None = None
         chosen_note = ""
         chosen_url = ""
-        wr = st["wins"] / max(st["wins"] + st["losses"], 1) * 100.0
+        games_played = st["wins"] + st["losses"] + st["ties"]
+        wr = (st["wins"] / games_played * 100.0) if games_played > 0 else 0.0
+        share_pct = (st["entries"] / total_entries * 100.0) if total_entries > 0 else 0.0
+        entries_int = max(1, round(st["entries"]))
 
         for _, dl_url, note in candidates:
             try:
@@ -344,7 +360,7 @@ def build_weekly_ranked_report(
                     continue
                 chosen_deck = BuiltDeck(
                     title=f"#{len(top_items) + 1} {st['name']}",
-                    mission_tag=f"{wr:.1f}% WR • {st['entries']} apariciones • {note.split(' en ')[0]}",
+                    mission_tag=f"{wr:.1f}% WR • {share_pct:.1f}% uso • {note.split(' en ')[0]}",
                     cards=tuple(cards),
                     energy_types=tuple(energies),
                     qr_payload=encode_deck_payload(
@@ -364,10 +380,12 @@ def build_weekly_ranked_report(
                 WeeklyArchetypeSummary(
                     slug=slug,
                     name=st["name"],
-                    entries=st["entries"],
-                    wins=st["wins"],
-                    losses=st["losses"],
+                    entries=entries_int,
+                    wins=round(st["wins"]),
+                    losses=round(st["losses"]),
+                    ties=round(st["ties"]),
                     win_rate=wr,
+                    share_pct=share_pct,
                     best_note=chosen_note,
                     deck=chosen_deck,
                     best_url=chosen_url,
@@ -382,7 +400,7 @@ def build_weekly_ranked_report(
     return WeeklyMetaReport(
         window_label=f"{start_lbl} – {end_lbl} ({len(selected)} torneos Estándar)",
         analyzed_tournaments=len(selected),
-        analyzed_entries=total_entries,
+        analyzed_entries=round(total_entries),
         archetypes=tuple(top_items),
     )
 

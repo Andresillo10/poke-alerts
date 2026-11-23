@@ -1411,6 +1411,39 @@ class CorePipelineTests(unittest.TestCase):
             self.assertEqual(ev["end_date"], "2026-12-15")
             self.assertEqual(ev["title"], "Misiones Eevee vii vii")
 
+    def test_v10_weekly_meta_parses_drops_ties_and_dual_deck_weight(self) -> None:
+        html = """
+        <table>
+          <tr data-placing="1">
+            <td>1</td><td>Champ</td><td>8 - 1 - 1</td>
+            <td><a href="/tournament/t1/player/p1/decklist">list</a></td>
+            <td><a href="/tournament/t1/metagame/hoopa-absol"><span data-tooltip="Hoopa ex Mega Absol ex"></span></a></td>
+          </tr>
+          <tr data-placing="151">
+            <td>151</td><td>Dropped</td><td>1 - 3 - 0 drop</td>
+            <td><a href="/tournament/t1/player/p2/decklist">list</a></td>
+            <td><a href="/tournament/t1/metagame/hoopa-absol"><span data-tooltip="Hoopa ex Mega Absol ex"></span></a></td>
+          </tr>
+          <tr data-placing="2">
+            <td>2</td><td>DualPlayer</td><td>7 - 2 - 0</td>
+            <td><a href="/tournament/t1/player/p3/decklist">list</a></td>
+            <td>
+              <a href="/tournament/t1/metagame/hoopa-absol"><span data-tooltip="Hoopa ex Mega Absol ex"></span></a>
+              <a href="/tournament/t1/metagame/charizard-entei"><span data-tooltip="Mega Charizard Y ex Entei ex"></span></a>
+            </td>
+          </tr>
+        </table>
+        """
+        rows = parse_tournament_standings_rows(html)
+        self.assertEqual(len(rows), 4)
+        # Normal finish con empate
+        self.assertEqual((rows[0]["wins"], rows[0]["losses"], rows[0]["ties"], rows[0]["weight"], rows[0]["is_dual_deck"]), (8, 1, 1, 1.0, False))
+        # Jugador eliminado ("drop"): sus derrotas DEBEN contarse (sin sesgo de supervivencia)
+        self.assertEqual((rows[1]["wins"], rows[1]["losses"], rows[1]["ties"]), (1, 3, 0))
+        # Torneo Dual-Deck: cada mazo pesa 0.5 y queda marcado is_dual_deck=True
+        self.assertEqual((rows[2]["weight"], rows[2]["is_dual_deck"]), (0.5, True))
+        self.assertEqual((rows[3]["weight"], rows[3]["is_dual_deck"]), (0.5, True))
+
 
 if __name__ == "__main__":
     unittest.main()
