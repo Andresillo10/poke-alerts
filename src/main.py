@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import replace
+from datetime import datetime, timedelta, timezone
 import logging
 import os
 import re
@@ -636,6 +637,71 @@ def _format_pogo_tactical_summary(cards: list[PogoTacticalCard]) -> str:
     return out or (parts[0][:240].rsplit(" ", 1)[0] if parts else "")
 
 
+_WR_TAG_RE = re.compile(r"(\d+(?:\.\d+)?)%\s*WR", re.I)
+
+
+def _deck_set_signature(decks: list[dict]) -> str:
+    """Firma determinista basada en las 20 cartas de cada baraja para evitar ruido."""
+    parts = ["|".join(sorted(str(c) for c in (d.get("cards") or []))) for d in decks]
+    return " || ".join(parts)
+
+
+def _deck_set_quality(decks: list[dict]) -> tuple[int, float, int]:
+    """Puntúa objetivamente un set de barajas: origen (torneo/guía/motor), WR y cantidad."""
+    tier_sum = 0
+    wr_sum = 0.0
+    for d in decks:
+        champ = str(d.get("champion_url") or "").lower()
+        src = str(d.get("source_url") or "").lower()
+        if "limitlesstcg.com" in champ or "limitlesstcg.com" in src:
+            tier_sum += 3
+        elif "ptcgpocket.gg" in src and "/tier-list" not in src:
+            tier_sum += 2
+        else:
+            tier_sum += 1
+        m_wr = _WR_TAG_RE.search(str(d.get("mission_tag") or ""))
+        if m_wr:
+            wr_sum += float(m_wr.group(1))
+    return (tier_sum, round(wr_sum, 2), len(decks))
+
+
+def _is_strictly_better_deck_set(old_decks: list[dict], new_decks: list[dict]) -> bool:
+    """Determina si el nuevo set mejora objetivamente al propuesto previamente para un evento activo."""
+    if not new_decks:
+        return False
+    if not old_decks:
+        return True
+    if _deck_set_signature(old_decks) == _deck_set_signature(new_decks):
+        return False
+    old_q = _deck_set_quality(old_decks)
+    new_q = _deck_set_quality(new_decks)
+    if new_q > old_q:
+        return True
+    # Si el #1 cambió por un nuevo mazo del mismo tier con mayor WR o nueva guía dedicada
+    if new_q[0] == old_q[0] and new_decks[0].get("cards") != old_decks[0].get("cards"):
+        old_top_q = _deck_set_quality([old_decks[0]])
+        new_top_q = _deck_set_quality([new_decks[0]])
+        if new_top_q > old_top_q:
+            return True
+    return False
+
+
+def _should_recheck_active_decks(prev: dict | None, now_utc: datetime, interval_hours: int = 6) -> bool:
+    """Verifica si corresponde re-evaluar mazos de un evento TCGP activo."""
+    if not prev:
+        return True
+    raw_ts = str(prev.get("decks_checked_at") or "").strip()
+    if not raw_ts:
+        return True
+    try:
+        last_dt = datetime.fromisoformat(raw_ts.replace("Z", "+00:00"))
+        if last_dt.tzinfo is None:
+            last_dt = last_dt.replace(tzinfo=timezone.utc)
+        return (now_utc - last_dt) >= timedelta(hours=interval_hours)
+    except ValueError:
+        return True
+
+
 def _sync_unified_catalog(
     *,
     session,
@@ -646,9 +712,20 @@ def _sync_unified_catalog(
     catalog_holder: list[CardCatalog],
     weekly_cache: list[WeeklyMetaReport | None],
     enable_remote: bool,
-) -> bool:
-    """Actualiza data/events_history.json y docs/events_data.js con todos los eventos."""
+    state: dict | None = None,
+    bot_token: str = "",
+    chat_id: str = "",
+    out_dir: Path | None = None,
+    dry_run: bool = False,
+) -> tuple[bool, bool]:
+    """Actualiza data/events_history.json y docs/events_data.js y revisa mejores mazos en eventos activos."""
     _ensure_events_cache(session, events_cache)
+    now_utc = datetime.now(timezone.utc)
+    now_iso = now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+    now_cot = now_utc.astimezone(timezone(timedelta(hours=-5)))
+    months_es = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+    cot_label = f"{now_cot.day} {months_es[now_cot.month - 1]} · {now_cot.strftime('%H:%M')} COT"
+    upgrade_notified = False
     existing = load_events_history(EVENTS_HISTORY_FILE)
     existing_by_id = {str(e.get("id")): e for e in (existing.get("events") or []) if e.get("id")}
     urls_by_cid = _build_urls_by_cid(collected)
@@ -671,13 +748,35 @@ def _sync_unified_catalog(
 
         # Evita re-descargar HTML cada hora para portales ya guardados en el catálogo
         already_has_source = bool(prev) and item.source_name in (prev.get("sources") or [])
+        needs_milestones = bool(
+            item.game == "tcgp"
+            and item.kind == "event"
+            and prev
+            and prev.get("status") == "activo"
+            and "milestones" not in prev
+        )
         has_basic_cache = bool(
             prev
             and prev.get("title")
+            and not needs_milestones
             and (already_has_source or (prev.get("rewards") and "Consultar detalle" not in prev["rewards"]))
         )
-        needs_decks = item.game == "tcgp" and item.kind == "event" and (not prev or "recommended_decks" not in prev)
+        is_active_tcgp_event = bool(
+            item.game == "tcgp"
+            and item.kind == "event"
+            and (not prev or prev.get("status") == "activo")
+        )
+        needs_decks = is_active_tcgp_event and (
+            not prev
+            or "recommended_decks" not in prev
+            or _should_recheck_active_decks(prev, now_utc)
+        )
         needs_pogo = item.game == "pogo" and item.kind != "code" and (not prev or not prev.get("tactical_cards"))
+
+        force_replace_decks = False
+        decks_checked_at = str(prev.get("decks_checked_at") or "") if prev else ""
+        decks_updated_at = str(prev.get("decks_updated_at") or "") if prev else ""
+        decks_updated_label = str(prev.get("decks_updated_label") or "") if prev else ""
 
         if has_basic_cache and not needs_decks and not needs_pogo:
             loc = AlertItem(
@@ -731,7 +830,7 @@ def _sync_unified_catalog(
                     tact_cards = _serialize_pogo_cards(pcards)
                     tactical_summary = _format_pogo_tactical_summary(pcards)
                     search_filter = pcards[0].search_string
-            elif item.game == "tcgp" and item.kind == "event" and (not prev or needs_decks or not rec_decks):
+            elif item.game == "tcgp" and item.kind == "event" and needs_decks:
                 resolved_decks = _resolve_tcgp_decks(
                     session=session,
                     raw_item=enriched,
@@ -740,16 +839,78 @@ def _sync_unified_catalog(
                     weekly_cache=weekly_cache,
                     extra_urls=urls_by_cid.get(cid, ()),
                 )
-                if resolved_decks:
-                    rec_decks = _serialize_tcgp_decks(
+                decks_checked_at = now_iso
+                prev_decks = list(prev.get("recommended_decks") or []) if prev else []
+                if not resolved_decks:
+                    # El evento NO requiere combates: limpia cualquier baraja residual previa
+                    if prev_decks:
+                        force_replace_decks = True
+                        rec_decks = []
+                        tactical_summary = ""
+                else:
+                    candidate_decks = _serialize_tcgp_decks(
                         resolved_decks,
                         fallback_url=loc.deck_guide_url or loc.url,
                     )
-                    tactical_summary = f"{len(rec_decks)} mazos QR: " + ", ".join(
-                        d["title"].split(": ", 1)[-1] for d in rec_decks
-                    )
-                elif loc.deck_guide_title and not tactical_summary:
-                    tactical_summary = f"Guía / Mazos: {loc.deck_guide_title}"
+                    if not prev_decks or _is_strictly_better_deck_set(prev_decks, candidate_decks):
+                        had_prev = bool(prev_decks)
+                        force_replace_decks = True
+                        rec_decks = candidate_decks
+                        tactical_summary = f"{len(rec_decks)} mazos QR: " + ", ".join(
+                            d["title"].split(": ", 1)[-1] for d in rec_decks
+                        )
+                        if had_prev:
+                            decks_updated_at = now_iso
+                            decks_updated_label = cot_label
+                            LOGGER.info(
+                                "[DeckMonitor] Mejor mazo detectado para evento activo '%s': %s",
+                                loc.title,
+                                tactical_summary,
+                            )
+                            # Avisa 1 sola vez por Telegram (cooldown 24 h por evento) si hay mejora real
+                            if (
+                                state is not None
+                                and bot_token
+                                and chat_id
+                                and out_dir is not None
+                                and not dry_run
+                            ):
+                                upg_map = state.setdefault("deck_upgrade_notified", {})
+                                last_upg = upg_map.get(cid) or {}
+                                new_sig = _deck_set_signature(candidate_decks)
+                                can_ping = last_upg.get("sig") != new_sig
+                                if can_ping and last_upg.get("sent_at"):
+                                    try:
+                                        last_dt = datetime.fromisoformat(str(last_upg["sent_at"]).replace("Z", "+00:00"))
+                                        if (now_utc - last_dt) < timedelta(hours=24):
+                                            can_ping = False
+                                    except ValueError:
+                                        pass
+                                if can_ping:
+                                    top_deck, top_url = resolved_decks[0]
+                                    try:
+                                        card_path = out_dir / f"upgrade_{_safe_filename(cid)}"
+                                        render_single_deck_card(
+                                            top_deck,
+                                            card_path,
+                                            context_label=f"Mejor mazo encontrado • {loc.title}",
+                                            badge_label="MEJOR MAZO ACTIVO",
+                                        )
+                                        send_telegram_single_deck(
+                                            bot_token=bot_token,
+                                            chat_id=chat_id,
+                                            deck=top_deck,
+                                            card_path=card_path,
+                                            context_title=loc.title,
+                                            header_tag="🔄 <b>¡Mejor mazo encontrado para el evento!</b>",
+                                            info_label="🔎 Ver evento" if not top_url else "🏆 Ver fuente mazo",
+                                            info_url=top_url or loc.url,
+                                            extra_note=f"Evento activo: {loc.title} — actualizado en tu Dashboard",
+                                        )
+                                        upg_map[cid] = {"sig": new_sig, "sent_at": now_iso}
+                                        upgrade_notified = True
+                                    except Exception as exc:
+                                        LOGGER.warning("[DeckMonitor] Fallo no bloqueante al avisar mejora: %s", exc)
 
         records_input.append(
             {
@@ -761,6 +922,10 @@ def _sync_unified_catalog(
                 "search_filter": search_filter,
                 "recommended_decks": rec_decks,
                 "tactical_cards": tact_cards,
+                "force_replace_decks": force_replace_decks,
+                "decks_checked_at": decks_checked_at,
+                "decks_updated_at": decks_updated_at,
+                "decks_updated_label": decks_updated_label,
             }
         )
 
@@ -776,7 +941,7 @@ def _sync_unified_catalog(
         doc["stats"].get("active", 0),
         doc["stats"].get("codes_active", 0),
     )
-    return changed
+    return changed, upgrade_notified
 
 
 def run_pipeline(args: argparse.Namespace) -> int:
@@ -1064,7 +1229,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
         LOGGER.info("Modo prueba completado sin modificar state.json.")
         return 0
 
-    _sync_unified_catalog(
+    _, deck_upgrade_notified = _sync_unified_catalog(
         session=session,
         collected=collected,
         already_processed=processed_records,
@@ -1073,6 +1238,11 @@ def run_pipeline(args: argparse.Namespace) -> int:
         catalog_holder=catalog_holder,
         weekly_cache=weekly_cache,
         enable_remote=not args.no_translate,
+        state=state,
+        bot_token=bot_token,
+        chat_id=chat_id,
+        out_dir=args.out_dir,
+        dry_run=args.dry_run,
     )
 
     processed = sent_items + to_seed_only
@@ -1093,7 +1263,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
     changed = update_source_health_and_heartbeat(
         state,
         source_statuses,
-        had_state_change=bool(processed or weekly_sent or codes_sent or ping_sent or deck_update_done),
+        had_state_change=bool(processed or weekly_sent or codes_sent or ping_sent or deck_update_done or deck_upgrade_notified),
     )
     if changed or processed:
         save_state(state, STATE_FILE)

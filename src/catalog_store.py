@@ -9,7 +9,13 @@ from pathlib import Path
 from typing import Any
 
 from src.code_digest import format_validity_window, parse_date_flex
-from src.event_guide import build_event_action_guide, build_search_aliases
+from src.event_guide import (
+    build_deck_proposal_intro,
+    build_event_action_guide,
+    build_search_aliases,
+    classify_event_activities,
+    extract_event_milestones,
+)
 from src.glossary import apply_post_translation_fixes
 from src.models import AlertItem, build_topic_key, canonical_topic_signature
 from src.scrapers import parse_serebii_end_date, parse_serebii_start_date
@@ -165,7 +171,7 @@ def _extract_rewards_text(
     rewards_str = " | ".join(dict.fromkeys(p.strip() for p in reward_parts if p and p.strip()))
     if not rewards_str:
         rewards_str = "Consultar detalle oficial / misiones en juego"
-    return rewards_str[:380], list(dict.fromkeys(highlights))[:6]
+    return rewards_str[:900], list(dict.fromkeys(highlights))[:8]
 
 
 def load_events_history(path: Path) -> dict[str, Any]:
@@ -182,8 +188,13 @@ def load_events_history(path: Path) -> dict[str, Any]:
 
 
 def catalog_has_real_changes(old_doc: dict[str, Any], new_doc: dict[str, Any]) -> bool:
-    """Compara dos versiones del catálogo ignorando timestamps globales."""
-    return old_doc.get("events") != new_doc.get("events") or old_doc.get("stats") != new_doc.get("stats")
+    """Compara dos versiones del catálogo ignorando timestamps de chequeo rutinario."""
+    def _strip(ev: dict[str, Any]) -> dict[str, Any]:
+        return {k: v for k, v in ev.items() if k not in ("decks_checked_at",)}
+
+    old_evs = [_strip(e) for e in (old_doc.get("events") or []) if isinstance(e, dict)]
+    new_evs = [_strip(e) for e in (new_doc.get("events") or []) if isinstance(e, dict)]
+    return old_evs != new_evs or old_doc.get("stats") != new_doc.get("stats")
 
 
 def sync_events_catalog(
@@ -217,6 +228,49 @@ def sync_events_catalog(
                 first_seen_at=copied.get("first_seen_at"),
             )
             copied["published_at"] = _infer_published_at(copied, now_iso)
+            # Refresca campos pedagógicos estructurados en registros históricos existentes
+            pseudo = AlertItem(
+                uid=str(copied["id"]),
+                game=copied.get("game", "pogo"),
+                kind=copied.get("kind", "event"),
+                title=str(copied.get("title") or ""),
+                summary=str(copied.get("summary") or ""),
+                url=((copied.get("urls") or [""])[0]),
+                source_name=((copied.get("sources") or [""])[0]),
+                promo_code=copied.get("promo_code"),
+                redeem_url=copied.get("redeem_url"),
+                rewards=copied.get("rewards"),
+                guide_bullets=tuple(copied.get("highlights") or ()),
+                starts_on=copied.get("start_date"),
+            )
+            ms_old = extract_event_milestones(pseudo, highlights=list(copied.get("highlights") or []))
+            existing_decks = list(copied.get("recommended_decks") or [])
+            req_b, acts_old = classify_event_activities(
+                pseudo,
+                milestones=ms_old,
+                decks_count=0 if pseudo.game == "tcgp" else len(existing_decks),
+            )
+            if pseudo.game == "tcgp" and not req_b:
+                existing_decks = []
+                copied["recommended_decks"] = []
+                if str(copied.get("tactical_summary") or "").startswith(("3 mazos QR:", "2 mazos QR:", "1 mazos QR:")):
+                    copied["tactical_summary"] = ""
+            copied["milestones"] = ms_old
+            copied["requires_battles"] = req_b
+            copied["activities"] = acts_old
+            copied["action_guide"] = build_event_action_guide(
+                pseudo,
+                decks_count=len(existing_decks),
+                pogo_cards_count=len(copied.get("tactical_cards") or []),
+                milestones=ms_old,
+                requires_battles=req_b,
+                compact=False,
+            )
+            copied["deck_intro"] = build_deck_proposal_intro(
+                pseudo,
+                decks_count=len(existing_decks),
+                decks_updated_label=str(copied.get("decks_updated_label") or ""),
+            )
             by_id[str(copied["id"])] = copied
 
     for rec in records_input:
@@ -280,7 +334,10 @@ def sync_events_catalog(
         merged_highlights = [apply_post_translation_fixes(h) for h in merged_highlights]
 
         prev_tactical = str(prev.get("tactical_summary") or "")
-        if tactical_summary and (
+        force_replace_decks = bool(rec.get("force_replace_decks"))
+        if force_replace_decks:
+            final_tactical = tactical_summary
+        elif tactical_summary and (
             not prev_tactical
             or (
                 "mazos QR:" in tactical_summary
@@ -292,11 +349,14 @@ def sync_events_catalog(
             final_tactical = prev_tactical or tactical_summary
         final_search = str(prev.get("search_filter") or search_filter or raw_item.promo_code or "")
         final_guide = str(prev.get("guide_url") or loc_item.deck_guide_url or raw_item.url)
-        final_rec_decks = (
-            list(raw_rec_decks)
-            if raw_rec_decks is not None and (len(raw_rec_decks) > 0 or not prev.get("recommended_decks"))
-            else list(prev.get("recommended_decks") or [])
-        )
+        if force_replace_decks and raw_rec_decks is not None:
+            final_rec_decks = list(raw_rec_decks)
+        else:
+            final_rec_decks = (
+                list(raw_rec_decks)
+                if raw_rec_decks is not None and (len(raw_rec_decks) > 0 or not prev.get("recommended_decks"))
+                else list(prev.get("recommended_decks") or [])
+            )
         final_tactical_cards = (
             list(raw_tactical_cards)
             if raw_tactical_cards is not None and (len(raw_tactical_cards) > 0 or not prev.get("tactical_cards"))
@@ -308,12 +368,39 @@ def sync_events_catalog(
             rewards=final_rewards,
             guide_bullets=tuple(merged_highlights),
         )
+        milestones = extract_event_milestones(
+            enriched_loc,
+            extra_ev=extra_ev,
+            highlights=merged_highlights,
+        )
+        requires_battles, activities = classify_event_activities(
+            enriched_loc,
+            extra_ev=extra_ev,
+            milestones=milestones,
+            decks_count=0 if (raw_item.game == "tcgp" and not force_replace_decks) else len(final_rec_decks),
+        )
+        if raw_item.game == "tcgp" and not requires_battles:
+            final_rec_decks = []
+            if final_tactical.startswith(("3 mazos QR:", "2 mazos QR:", "1 mazos QR:")):
+                final_tactical = ""
+
+        decks_checked_at = str(rec.get("decks_checked_at") or prev.get("decks_checked_at") or "")
+        decks_updated_at = str(rec.get("decks_updated_at") or prev.get("decks_updated_at") or "")
+        decks_updated_label = str(rec.get("decks_updated_label") or prev.get("decks_updated_label") or "")
+
         action_guide = build_event_action_guide(
             enriched_loc,
             extra_ev=extra_ev,
             decks_count=len(final_rec_decks),
             pogo_cards_count=len(final_tactical_cards),
+            milestones=milestones,
+            requires_battles=requires_battles,
             compact=False,
+        )
+        deck_intro = build_deck_proposal_intro(
+            enriched_loc,
+            decks_count=len(final_rec_decks),
+            decks_updated_label=decks_updated_label,
         )
         search_aliases = build_search_aliases(raw_item, title_es=final_title)
 
@@ -328,6 +415,10 @@ def sync_events_catalog(
             "title_original": final_orig,
             "summary": final_summary,
             "action_guide": action_guide,
+            "requires_battles": requires_battles,
+            "activities": activities,
+            "milestones": milestones,
+            "deck_intro": deck_intro,
             "search_aliases": search_aliases,
             "rewards": final_rewards,
             "highlights": merged_highlights,
@@ -342,6 +433,9 @@ def sync_events_catalog(
             "guide_url": final_guide,
             "recommended_decks": final_rec_decks,
             "tactical_cards": final_tactical_cards,
+            "decks_checked_at": decks_checked_at,
+            "decks_updated_at": decks_updated_at,
+            "decks_updated_label": decks_updated_label,
             "sources": merged_sources,
             "urls": merged_urls,
             "published_at": published_at,
@@ -350,8 +444,8 @@ def sync_events_catalog(
         }
 
         # Solo refresca last_updated_at cuando hay cambio real en campos de contenido
-        comparable_prev = {k: v for k, v in prev.items() if k != "last_updated_at"}
-        comparable_new = {k: v for k, v in new_entry.items() if k != "last_updated_at"}
+        comparable_prev = {k: v for k, v in prev.items() if k not in ("last_updated_at", "decks_checked_at")}
+        comparable_new = {k: v for k, v in new_entry.items() if k not in ("last_updated_at", "decks_checked_at")}
         if comparable_prev != comparable_new:
             new_entry["last_updated_at"] = now_iso
         by_id[cid] = new_entry

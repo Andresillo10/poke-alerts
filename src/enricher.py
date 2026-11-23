@@ -70,6 +70,7 @@ def parse_serebii_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
     tasks: list[str] = []
     cards_or_packs: list[str] = []
 
+    has_event_shop = "event shop exchange ticket" in root.get_text(" ", strip=True).lower()
     for tbl in root.select("table.dextab, table.dextable"):
         trs = tbl.find_all("tr", recursive=False)
         if not trs:
@@ -95,12 +96,26 @@ def parse_serebii_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
                         spawns.append(name_txt)
 
         elif header and header[0] == "task":
+            rew_idx = header.index("reward") if "reward" in header else -1
+            qty_idx = header.index("quantity") if "quantity" in header else -1
             for tr in trs[1:]:
-                cols = [_unescape_clean(c.get_text(" ", strip=True)) for c in tr.find_all(["th", "td"], recursive=False)]
+                cells = tr.find_all(["th", "td"], recursive=False)
+                cols = [_unescape_clean(c.get_text(" ", strip=True)) for c in cells]
                 if not cols or not cols[0]:
                     continue
-                reward = next((c for c in cols[1:] if c and not c.isdigit()), "")
-                tasks.append(f"{cols[0]} → {reward}" if reward else cols[0])
+                reward = cols[rew_idx] if (0 <= rew_idx < len(cols) and cols[rew_idx]) else ""
+                qty = cols[qty_idx] if (0 <= qty_idx < len(cols) and cols[qty_idx]) else ""
+                if not reward:
+                    reward = next((c for c in cols[1:] if c and not c.isdigit()), "")
+                if not reward and has_event_shop:
+                    # Serebii deja vacío el icono de Cupón de Tienda de Evento (`items/.png`)
+                    if any("/items/.png" in str(img.get("src") or "").lower() for img in tr.find_all("img")):
+                        reward = "Cupón de Tienda de Evento"
+                if reward and qty and qty.isdigit():
+                    reward_full = f"{qty}× {reward}"
+                else:
+                    reward_full = reward
+                tasks.append(f"{cols[0]} → {reward_full}" if reward_full else cols[0])
 
         elif "card name" in header or "booster packs" in header:
             idx = header.index("card name") if "card name" in header else header.index("booster packs")
@@ -111,13 +126,18 @@ def parse_serebii_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
 
     bullets: list[str] = []
     if bonuses:
-        bullets.append("Bonuses: " + "; ".join(_dedupe_keep_order(bonuses, 3)))
+        bullets.append("Bonuses: " + "; ".join(_dedupe_keep_order(bonuses, 5)))
     if spawns:
-        bullets.append("Wild spawns: " + ", ".join(_dedupe_keep_order(spawns, 6)))
+        bullets.append("Wild spawns: " + ", ".join(_dedupe_keep_order(spawns, 8)))
     if tasks:
-        bullets.append("Missions: " + " | ".join(_dedupe_keep_order(tasks, 3)))
+        # Prioriza hitos de victoria/combate arriba junto con el resto de misiones completas (hasta 16)
+        dedup_tasks = _dedupe_keep_order(tasks, 16)
+        win_first = [t for t in dedup_tasks if re.match(r"^(?:win|gana)\s+\d+", t, re.I)]
+        other_tasks = [t for t in dedup_tasks if t not in win_first]
+        ordered_tasks = win_first + other_tasks
+        bullets.append("Missions: " + " | ".join(ordered_tasks))
     if cards_or_packs:
-        bullets.append("Featured cards/packs: " + ", ".join(_dedupe_keep_order(cards_or_packs, 4)))
+        bullets.append("Featured cards/packs: " + ", ".join(_dedupe_keep_order(cards_or_packs, 6)))
 
     return intro, bullets
 
@@ -131,7 +151,17 @@ def _infer_reward_from_cell(cell) -> str:
     if not img:
         return ""
     hint = f"{img.get('alt', '')} {img.get('src', '')}".lower()
-    if "shopticket" in hint:
+    if "battlecoin" in hint or "_coin_" in hint or "coin." in hint:
+        return "Moneda del evento"
+    if "deckshield" in hint or "sleeve" in hint:
+        return "Fundas del evento"
+    if "playmat" in hint:
+        return "Tapete del evento"
+    if "backdrop" in hint:
+        return "Fondo del evento"
+    if "emblem" in hint:
+        return "Emblema del evento"
+    if "shopticket" in hint or "ticket" in hint:
         return "Cupón de evento"
     if "hourglass" in hint:
         return "Relojes de Arena"
@@ -196,7 +226,7 @@ def parse_ptcgpocket_detail_html(detail_html: str) -> tuple[str | None, list[str
 
     bullets: list[str] = []
     if missions:
-        bullets.append("Missions: " + " | ".join(_dedupe_keep_order(missions, 4)))
+        bullets.append("Missions: " + " | ".join(_dedupe_keep_order(missions, 16)))
     return intro, bullets
 
 

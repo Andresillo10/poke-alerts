@@ -401,6 +401,52 @@
     .ev-dates { font-size: 12px; font-weight: 700; color: var(--warning); }
     .ev-pub   { font-size: 11px; font-weight: 600; color: var(--blue); margin-top: 2px; }
 
+    .activity-row { display: flex; flex-wrap: wrap; gap: 5px; }
+    .act-pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;
+      background: var(--dark); border: 1px solid var(--selection); color: var(--text);
+    }
+    .act-pill.combat   { border-color: var(--warning); color: var(--warning); }
+    .act-pill.nocombat { border-color: var(--success); color: var(--success); }
+
+    .guide-box {
+      background: var(--dark);
+      border: 1px solid var(--selection);
+      border-left: 3px solid var(--success);
+      border-radius: 8px;
+      padding: 9px 11px;
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--text);
+      overflow-wrap: anywhere;
+    }
+    .guide-box strong { color: var(--success); }
+
+    .ms-list {
+      margin: 6px 0 0 0;
+      padding-left: 16px;
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .ms-list li { margin-bottom: 3px; }
+    .ms-list .ms-task { font-weight: 700; color: var(--warning); }
+    .ms-more { font-size: 11px; color: var(--blue); margin-top: 5px; font-weight: 600; }
+
+    .deck-proposal-box {
+      background: var(--dark);
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      padding: 9px 11px;
+      font-size: 12px;
+      line-height: 1.42;
+      color: var(--text);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .deck-proposal-box .dp-head { font-weight: 700; color: var(--blue); }
+    .deck-proposal-box .dp-names { color: var(--warning); font-weight: 600; font-size: 12px; }
+
     .inner-box {
       background: var(--surface);
       border: 1px solid var(--selection);
@@ -1510,7 +1556,8 @@
       if (inlineOpen) {
         return `
           <section>
-            <h3 class="modal-sec-title">🃏 Estos son los ${decks.length} posibles mazos recomendados para este evento</h3>
+            <h3 class="modal-sec-title">🃏 Mazos propuestos por sinergia para este evento (${decks.length})</h3>
+            ${ev.deck_intro ? `<div class="guide-box" style="border-left-color:var(--blue);margin-bottom:10px;">${esc(ev.deck_intro)}</div>` : ""}
             ${inner}
           </section>
         `;
@@ -1587,6 +1634,25 @@
       renderModalContent(id);
     }
 
+    function renderActivityPills(ev) {
+      const acts = ev.activities || [];
+      if (!acts.length) return "";
+      return `<div class="activity-row">${acts.map(a => {
+        const cls = a.includes("Sin combates") ? "nocombat" : (a.includes("Combates") || a.includes("Incursiones") || a.includes("combates") ? "combat" : "");
+        return `<span class="act-pill ${cls}">${esc(a)}</span>`;
+      }).join("")}</div>`;
+    }
+
+    function renderMilestoneLi(rawLine) {
+      const idx = rawLine.indexOf("→");
+      if (idx > 0) {
+        const task = rawLine.slice(0, idx).trim();
+        const reward = rawLine.slice(idx + 1).trim();
+        return `<li><span class="ms-task">${esc(task)}</span> → ${esc(reward)}</li>`;
+      }
+      return `<li>${esc(rawLine)}</li>`;
+    }
+
     function renderModalContent(id) {
       const ev = getEventsWithStatus().find(x => x.id === id);
       if (!ev) return;
@@ -1598,11 +1664,16 @@
       const copyValIdx = copyValue ? registerCopy(copyValue) : -1;
       const origHtml = (ev.title_original && ev.title_original.toLowerCase() !== (ev.title || "").toLowerCase())
         ? `<div class="ev-orig">Original: ${esc(ev.title_original)}</div>` : "";
-      const hlHtml = (ev.highlights && ev.highlights.length)
-        ? `<ul class="hl-list">${ev.highlights.map(h => `<li>${esc(h)}</li>`).join("")}</ul>` : "";
+      const milestones = ev.milestones || [];
+      const msHtml = milestones.length
+        ? `<ul class="ms-list">${milestones.map(renderMilestoneLi).join("")}</ul>`
+        : ((ev.highlights && ev.highlights.length)
+            ? `<ul class="hl-list">${ev.highlights.map(h => `<li>${esc(h)}</li>`).join("")}</ul>`
+            : "");
+      const hasUsefulRewards = ev.rewards && !ev.rewards.includes("Consultar detalle");
       const explainText = ev.summary && ev.summary.toLowerCase() !== (ev.title || "").toLowerCase()
         ? ev.summary
-        : (ev.rewards || "Consulta el resumen y las fuentes oficiales del evento.");
+        : "";
 
       document.getElementById("evModalContent").innerHTML = `
         <div class="modal-head">
@@ -1616,6 +1687,7 @@
             ${origHtml}
             <div class="ev-dates" style="margin-top:6px;">⏱️ ${esc(ev.date_range_label)}</div>
             <div class="ev-pub">🕒 Publicado / Notificado: ${esc(formatPublishedCot(getPublishedIso(ev)))}</div>
+            <div style="margin-top:7px;">${renderActivityPills(ev)}</div>
           </div>
           <button class="btn btn-danger btn-sm" onclick="closeEventModal()" aria-label="Cerrar ventana">✕ Cerrar</button>
         </div>
@@ -1630,21 +1702,22 @@
 
           ${ev.action_guide ? `
             <section>
-              <h3 class="modal-sec-title" style="color:var(--success);">🧭 ¿Cómo jugar y completar este evento?</h3>
-              <div class="inner-box" style="border-color:var(--success);background:var(--dark);">
+              <h3 class="modal-sec-title" style="color:var(--success);">🧭 ¿De qué trata y qué tienes que hacer?</h3>
+              <div class="guide-box">
                 ${esc(ev.action_guide)}
               </div>
             </section>
           ` : ""}
 
-          <section>
-            <h3 class="modal-sec-title">📖 Detalles oficiales, premios y misiones</h3>
-            <div class="inner-box">
-              <div style="margin-bottom:8px;">${esc(explainText)}</div>
-              <div><strong>🎁 Premios / Recompensas:</strong> ${esc(ev.rewards)}</div>
-              ${hlHtml}
-            </div>
-          </section>
+          ${(msHtml || hasUsefulRewards || explainText) ? `
+            <section>
+              <h3 class="modal-sec-title">🎁 Premios paso a paso, misiones y detalles</h3>
+              <div class="inner-box">
+                ${explainText ? `<div style="margin-bottom:8px;color:var(--muted);">${esc(explainText)}</div>` : ""}
+                ${msHtml || (hasUsefulRewards ? `<div><strong>🎁 Recompensas:</strong> ${esc(ev.rewards)}</div>` : "")}
+              </div>
+            </section>
+          ` : ""}
 
           ${copyValIdx >= 0 ? `
             <div class="console-code">
@@ -1811,11 +1884,59 @@
         const origHtml = (ev.title_original && ev.title_original.toLowerCase() !== (ev.title || "").toLowerCase())
           ? `<div class="ev-orig">Original: ${esc(ev.title_original)}</div>` : "";
         const pubTxt = formatPublishedCot(getPublishedIso(ev));
-        const deckCnt = (ev.recommended_decks || []).length;
+        const decks = ev.recommended_decks || [];
+        const deckCnt = decks.length;
         const pogoCnt = (ev.tactical_cards || []).length;
-        const teaserTxt = deckCnt
-          ? `🃏 ${deckCnt} posibles mazos + QR listos`
-          : (pogoCnt ? `⚔️ ${pogoCnt} guía(s) GO, PC 100% y estrategia` : "📖 Ver explicación completa");
+        const milestones = ev.milestones || [];
+        const hasUsefulRewards = ev.rewards && !ev.rewards.includes("Consultar detalle");
+
+        let rewardsBlock = "";
+        if (milestones.length) {
+          const preview = milestones.slice(0, 5);
+          const extraCnt = milestones.length - preview.length;
+          const heading = ev.game === "tcgp" ? "🎁 Premios paso a paso:" : "🔥 Bonificaciones y objetivos:";
+          rewardsBlock = `
+            <div class="inner-box">
+              <strong>${heading}</strong>
+              <ul class="ms-list">${preview.map(renderMilestoneLi).join("")}</ul>
+              ${extraCnt > 0 ? `<div class="ms-more">+ ${extraCnt} hito(s) más al abrir «Ver detalle» ▸</div>` : ""}
+            </div>
+          `;
+        } else if (hasUsefulRewards) {
+          rewardsBlock = `
+            <div class="inner-box">
+              <strong>🎁 Recompensas / Detalles:</strong> ${esc(ev.rewards)}
+            </div>
+          `;
+        } else if (ev.tactical_summary && !ev.tactical_summary.startsWith("Guía y Bonificaciones")) {
+          rewardsBlock = `
+            <div class="inner-box">
+              <strong>🎯 Datos clave:</strong> ${esc(ev.tactical_summary)}
+            </div>
+          `;
+        }
+
+        let actionTeaser = "";
+        if (deckCnt > 0) {
+          const deckNames = decks.map(d => d.title.split(": ", 1).pop()).join(" • ");
+          actionTeaser = `
+            <div class="deck-proposal-box">
+              <div class="dp-head">⚔️ ${esc(ev.deck_intro || `Mira, te propongo estos ${deckCnt} mazos con sinergia para cumplir este evento:`)}</div>
+              <div class="dp-names">🃏 ${esc(deckNames)}</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;">
+                <span class="ev-orig">Toca para ver cartas, estrategia y descargar QR</span>
+                <span class="pill blue">Ver ${deckCnt} mazos + QR ▸</span>
+              </div>
+            </div>
+          `;
+        } else if (pogoCnt > 0) {
+          actionTeaser = `
+            <div class="ev-teaser">
+              <span>⚔️ ${pogoCnt} guía(s) GO: PC 100%, Counters y estrategia</span>
+              <span class="pill blue">Abrir ▸</span>
+            </div>
+          `;
+        }
 
         return `
           <article class="ev-card clickable-card ${mk.done ? "done" : ""} ${mk.star ? "starred" : ""}" onclick="openEventModal(decodeURIComponent('${safeEid}'), event)">
@@ -1838,14 +1959,14 @@
               <div class="ev-dates">⏱️ ${esc(ev.date_range_label)}</div>
               <div class="ev-pub">🕒 Publicado: ${esc(pubTxt)}</div>
             </div>
-            <div class="inner-box">
-              <strong>🎁 Premios / Detalles:</strong> ${esc(ev.rewards)}
-              ${ev.tactical_summary ? `<div style="margin-top:6px;color:var(--blue);">⚡ <b>Resumen:</b> ${esc(ev.tactical_summary)}</div>` : ""}
-            </div>
-            <div class="ev-teaser">
-              <span>${esc(teaserTxt)}</span>
-              <span class="pill blue">Clic para abrir ▸</span>
-            </div>
+            ${renderActivityPills(ev)}
+            ${ev.action_guide ? `
+              <div class="guide-box">
+                <strong>🧭 Qué tienes que hacer:</strong> ${esc(ev.action_guide)}
+              </div>
+            ` : ""}
+            ${rewardsBlock}
+            ${actionTeaser}
             ${copyValIdx >= 0 ? `
               <div class="console-code">
                 <span>${ev.promo_code ? "🎁 Código:" : "🔍 Filtro GO:"} ${esc(copyValue)}</span>

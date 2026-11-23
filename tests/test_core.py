@@ -1220,8 +1220,8 @@ class CorePipelineTests(unittest.TestCase):
             wp_ev = AlertItem("serebii-tcgp:wp", "tcgp", "event", "Wonder Pick Event", "Bonus picks", "https://sb", "Serebii", language="es")
             self.assertIn("30 min", build_event_action_guide(wp_ev))
             cap_df = build_telegram_caption(serebii_ev)
-            self.assertIn("Qué hacer:", cap_df)
-            self.assertEqual(apply_post_translation_fixes("Win 9 battles & Open 2 booster packs"), "Gana 9 partida(s) & Abre 2 sobre(s)")
+            self.assertIn("Qué tienes que hacer:", cap_df)
+            self.assertEqual(apply_post_translation_fixes("Win 9 battles & Open 2 booster packs"), "Gana 9 batallas & Abre 2 sobres")
             from src.models import format_item_dates_es
             self.assertEqual(format_item_dates_es(None, "January 15, 2027 at 11:59 PM"), "15 ene 2027")
             self.assertEqual(format_item_dates_es("2026-11-19", "2026-11-19 al 2026-11-19"), "19 nov 2026")
@@ -1499,6 +1499,83 @@ class CorePipelineTests(unittest.TestCase):
             )
             self.assertEqual(len(doc_3m["events"]), 2)
             self.assertTrue(all(e["status"] == "finalizado" for e in doc_3m["events"]))
+
+    def test_v12_full_milestones_non_combat_login_and_deck_upgrade_monitor(self) -> None:
+        from src.event_guide import (
+            build_event_action_guide,
+            classify_event_activities,
+            extract_event_milestones,
+        )
+        from src.main import _is_strictly_better_deck_set
+
+        # 1. Serebii con >10 misiones: NO se trunca a 3 filas y pone "Gana 1/3/5/9 batallas" primero
+        serebii_limited = """
+        <main>
+          <p>This event is a Limited Battle event. You can only use cards from Dual Fusion. Event Shop Exchange Ticket.</p>
+          <table class="dextable">
+            <tr><td>Task</td><td>Pic</td><td>Reward</td><td>Quantity</td></tr>
+            <tr><td>Log in</td><td><img src="/tcgpocket/items/.png"></td><td></td><td></td></tr>
+            <tr><td>Use pack stamina to open 1 booster pack</td><td></td><td>Promo Pack C Series Vol. 1</td><td>1</td></tr>
+            <tr><td>Participate in 1 battle</td><td></td><td>Promo Pack C Series Vol. 1</td><td>1</td></tr>
+            <tr><td>Win 1 battle</td><td></td><td>Mega Mewtwo X (Coin)</td><td>1</td></tr>
+            <tr><td>Win 3 battles</td><td></td><td>Promo Pack C Series Vol. 1</td><td>1</td></tr>
+            <tr><td>Win 5 battles</td><td></td><td>Mega Mewtwo X (Sleeves)</td><td>1</td></tr>
+            <tr><td>Win 9 battles</td><td></td><td>Mega Mewtwo X (Playmat)</td><td>1</td></tr>
+          </table>
+        </main>
+        """
+        _, bullets = parse_serebii_detail_html(serebii_limited)
+        ev_lim = AlertItem(
+            uid="serebii-tcgp:dual-fusion",
+            game="tcgp",
+            kind="event",
+            title="Fusión Dual Partidas limitadas",
+            summary="Limited Battle",
+            url="https://www.serebii.net/tcgpocket/events/dualfusionlimitedbattles.shtml",
+            source_name="Serebii TCGP",
+            guide_bullets=tuple(bullets),
+        )
+        ms = extract_event_milestones(ev_lim)
+        self.assertGreaterEqual(len(ms), 7)
+        self.assertTrue(ms[0].startswith("Gana 1 batalla → 1× Mega Mewtwo X (Moneda)"))
+        self.assertTrue(any("Gana 9 batallas → 1× Mega Mewtwo X (Tapete)" in m for m in ms))
+        req_b, acts = classify_event_activities(ev_lim, milestones=ms)
+        self.assertTrue(req_b)
+        self.assertTrue(any("Combates" in a for a in acts))
+        self.assertTrue(any("Abrir sobres" in a for a in acts))
+
+        # 2. Evento solo login (Vee Vee Eevee) con enlace "Ranked" en navbar NO debe marcarse combate
+        cat = CardCatalog([], [{"code": "C1", "name": "Dual Fusion"}])
+        eevee_html = """
+        <header><nav><a href="/ranked">Ranked Match</a><a href="/drop-event">Drop Event</a></nav></header>
+        <div class="entry-content">
+          <p>Log in daily to claim Eevee Grove packs.</p>
+          <table><tr><th>Task</th><th>Reward</th></tr><tr><td>Log in 1 Day</td><td>Eevee Grove Booster</td></tr></table>
+        </div>
+        """
+        c_eevee = extract_event_constraints(title="Misiones Eevee vii vii", detail_html=eevee_html, catalog=cat)
+        self.assertFalse(c_eevee.is_combat_event)
+        ev_eevee = AlertItem(
+            uid="serebii-tcgp:eevee",
+            game="tcgp",
+            kind="event",
+            title="Misiones Eevee vii vii",
+            summary="Inicia sesión cada día para sobres de Eevee.",
+            url="https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml",
+            source_name="Serebii TCGP",
+            guide_bullets=("Misiones: Inicia sesión 1 día → 1× Sobre Arboleda de Eevee",),
+        )
+        req_e, acts_e = classify_event_activities(ev_eevee, milestones=extract_event_milestones(ev_eevee))
+        self.assertFalse(req_e)
+        self.assertIn("✅ Sin combates", acts_e)
+        self.assertIn("NO toca", build_event_action_guide(ev_eevee, requires_battles=False))
+
+        # 3. Monitor de mejora de mazos detecta mejora real (motor -> guía/torneo) y rechaza idénticos
+        d_algo = [{"cards": ["2× Scorbunny", "2× Raboot"], "source_url": "https://serebii.net/x", "champion_url": "", "mission_tag": "Motor sinergia"}]
+        d_champ = [{"cards": ["2× Hoopa ex", "1× Mega Absol ex"], "source_url": "https://play.limitlesstcg.com/t/1", "champion_url": "https://play.limitlesstcg.com/t/1", "mission_tag": "53.2% WR"}]
+        self.assertTrue(_is_strictly_better_deck_set(d_algo, d_champ))
+        self.assertFalse(_is_strictly_better_deck_set(d_champ, d_champ))
+        self.assertFalse(_is_strictly_better_deck_set(d_champ, d_algo))
 
 
 if __name__ == "__main__":

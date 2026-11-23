@@ -101,8 +101,30 @@ SUBTYPE_LABELS_ES = {
     "Dragon": "Dragón",
     "Colorless": "Incoloro",
 }
-_COMBAT_KEYWORDS = ("limited battle", "drop event", "emblem event", "ranked", "solo battle")
-_NON_COMBAT_KEYWORDS = ("wonder pick", "mass outbreak")
+_COMBAT_KEYWORDS = (
+    "limited battle",
+    "partidas limitadas",
+    "combates limitados",
+    "drop event",
+    "evento de botín",
+    "emblem event",
+    "evento de emblemas",
+    "sp emblem",
+    "ranked match",
+    "ranked season",
+    "clasificatorio",
+    "solo battle",
+    "combate individual",
+    "versus battle",
+)
+_COMBAT_TASK_RE = re.compile(
+    r"\b(?:win\s+\d+\s+battles?|participate\s+in\s+\d+\s+battles?|complete\s+\d+\s+battles?"
+    r"|gana\s+\d+\s+(?:batallas?|partidas?)|participa\s+en\s+\d+\s+(?:batallas?|partidas?)"
+    r"|limited\s+battle\s+event|solo\s+battle\s+event|drop\s+event|emblem\s+event"
+    r"|versus\s+event\s+match|cpu\s+battle)\b",
+    re.I,
+)
+_NON_COMBAT_KEYWORDS = ("wonder pick", "elección mágica", "mass outbreak", "aparición masiva")
 
 
 def _norm_name(text: str) -> str:
@@ -530,11 +552,16 @@ def extract_event_constraints(
         return EventDeckConstraints(is_combat_event=False)
 
     soup = BeautifulSoup(detail_html, "html.parser")
-    main = soup.select_one("main") or soup
+    # Retira navegación, menús y barras laterales para no confundir enlaces a Ranked/Drop con el evento real
+    for junk in soup.select("nav, header, footer, aside, script, style, .sidebar, .related-posts, .widget, .menu"):
+        junk.decompose()
+    main = soup.select_one(".entry-content") or soup.select_one("main") or soup
     body_text = " ".join(main.get_text(" ", strip=True).split()) + " " + extra_text
     lower_body = body_text.lower()
 
-    is_combat = any(k in lower_title or k in lower_body for k in _COMBAT_KEYWORDS)
+    title_is_combat = any(k in lower_title for k in _COMBAT_KEYWORDS)
+    body_has_combat_task = bool(_COMBAT_TASK_RE.search(body_text))
+    is_combat = title_is_combat or body_has_combat_task
     if not is_combat:
         return EventDeckConstraints(is_combat_event=False)
 

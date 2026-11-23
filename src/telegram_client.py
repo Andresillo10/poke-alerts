@@ -27,7 +27,11 @@ from src.deck_qr import (
     build_qr_download_url,
     describe_deck_strategy,
 )
-from src.event_guide import build_event_action_guide
+from src.event_guide import (
+    build_event_action_guide,
+    classify_event_activities,
+    extract_event_milestones,
+)
 from src.models import AlertItem, format_item_dates_es
 from src.pogo_intel import PogoTacticalCard
 
@@ -51,7 +55,7 @@ def _format_bullet(bullet: str) -> str:
 
 
 def build_telegram_caption(item: AlertItem) -> str:
-    """Construye un mensaje HTML cálido con misiones/spawns/mazos dentro de 1024 chars."""
+    """Construye un mensaje HTML claro con qué hacer, premios paso a paso y mazos si aplica."""
     game_name = html.escape(TELEGRAM_GAME_NAMES[item.game])
     raw_header = (
         "🚀 ¡YA DISPONIBLE HOY!"
@@ -62,11 +66,17 @@ def build_telegram_caption(item: AlertItem) -> str:
     title = html.escape(item.title)
     summary = html.escape(item.summary)
 
+    milestones = extract_event_milestones(item)
+    requires_battles, activities = classify_event_activities(item, milestones=milestones)
+
     lines = [
         f"<b>{game_name}</b> • {kind_header}",
         f"✨ <b>{title}</b>",
     ]
-    if item.rewards:
+    if activities:
+        lines.append(" • ".join(html.escape(a) for a in activities[:3]))
+
+    if item.rewards and item.kind == "code":
         lines.append(f"🎁 <b>Recompensa:</b> {html.escape(item.rewards)}")
     pretty_dates = format_item_dates_es(item.starts_on, item.expires_at)
     if pretty_dates:
@@ -78,12 +88,25 @@ def build_telegram_caption(item: AlertItem) -> str:
         lines.append("📋 <b>Toca para copiar:</b>")
         lines.append(f"<code>{html.escape(item.promo_code)}</code>")
     else:
-        action_txt = build_event_action_guide(item, compact=True)
+        action_txt = build_event_action_guide(
+            item,
+            milestones=milestones,
+            requires_battles=requires_battles,
+            compact=True,
+        )
         if action_txt:
             lines.append("")
-            lines.append(f"🧭 <b>Qué hacer:</b> {html.escape(action_txt)}")
+            lines.append(f"🧭 <b>Qué tienes que hacer:</b> {html.escape(action_txt)}")
 
-    if item.guide_bullets:
+    if milestones and item.kind != "code":
+        lines.append("")
+        lines.append("🎁 <b>Premios / Detalles paso a paso:</b>")
+        for ms in milestones[:6]:
+            prefix = "" if ms[:1] in ("🔥", "✨", "🌿", "🃏", "⚔️") else "• "
+            lines.append(f"{prefix}{html.escape(ms)}")
+        if len(milestones) > 6:
+            lines.append(f"<i>…y {len(milestones) - 6} hitos más en el Dashboard.</i>")
+    elif item.guide_bullets:
         lines.append("")
         for bullet in item.guide_bullets[:4]:
             lines.append(_format_bullet(bullet))
@@ -93,7 +116,12 @@ def build_telegram_caption(item: AlertItem) -> str:
             lines.append("")
             lines.append(f"💬 {short_sum}")
 
-    if item.deck_guide_title:
+    if item.game == "tcgp" and requires_battles:
+        lines.append("")
+        lines.append("⚔️ <i>Abajo te propongo 3 mazos optimizados por sinergia para cumplir este evento (seguiré revisando si sale uno mejor).</i>")
+        if item.deck_guide_title:
+            lines.append(f"📘 <b>Guía / Mazos:</b> {html.escape(item.deck_guide_title)}")
+    elif item.deck_guide_title and item.game != "tcgp":
         lines.append(f"📘 <b>Guía / Mazos:</b> {html.escape(item.deck_guide_title)}")
 
     lines.append(f"📡 <i>{html.escape(item.source_name)}</i>")
