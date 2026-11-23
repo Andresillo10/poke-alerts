@@ -125,14 +125,16 @@ def extract_event_milestones(
     win_ms.sort(key=_win_sort_key)
     ordered_missions = win_ms + other_ms
 
-    # Deduplica extra_bullets manteniendo orden
-    seen_ex: set[str] = set()
+    # Deduplica extra_bullets manteniendo la versión más completa si repite el mismo prefijo
+    seen_ex: dict[str, int] = {}
     clean_extra: list[str] = []
     for eb in extra_bullets:
-        k = re.sub(r"[^a-z0-9]+", "", eb.lower())
-        if k and k not in seen_ex:
-            seen_ex.add(k)
+        prefix_key = eb.split(":", 1)[0].strip().lower() if ":" in eb else re.sub(r"[^a-z0-9]+", "", eb.lower())
+        if prefix_key not in seen_ex:
+            seen_ex[prefix_key] = len(clean_extra)
             clean_extra.append(eb)
+        elif len(eb) > len(clean_extra[seen_ex[prefix_key]]):
+            clean_extra[seen_ex[prefix_key]] = eb
 
     if ordered_missions:
         return (ordered_missions + clean_extra)[:16]
