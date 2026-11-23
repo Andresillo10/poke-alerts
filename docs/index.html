@@ -244,12 +244,28 @@
       padding: 12px;
       margin-bottom: 12px;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr auto;
+      grid-template-columns: minmax(210px, 1.7fr) 1fr 1fr 1fr auto;
       gap: 9px;
       align-items: center;
     }
-    @media (max-width: 920px) { .controls-bar { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 1080px) { .controls-bar { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .controls-bar { grid-template-columns: 1fr; } }
+
+    .archive-banner {
+      background: var(--surface);
+      border: 1px dashed var(--blue);
+      border-radius: 10px;
+      padding: 9px 13px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .archive-banner strong { color: var(--blue); }
 
     .calendar-bar {
       background: var(--surface);
@@ -383,6 +399,7 @@
     .ev-title { margin: 0; font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; overflow-wrap: anywhere; }
     .ev-orig  { font-size: 11px; color: var(--muted); margin-top: 2px; overflow-wrap: anywhere; }
     .ev-dates { font-size: 12px; font-weight: 700; color: var(--warning); }
+    .ev-pub   { font-size: 11px; font-weight: 600; color: var(--blue); margin-top: 2px; }
 
     .inner-box {
       background: var(--surface);
@@ -667,10 +684,16 @@
     <section class="controls-bar">
       <input id="q" type="search" placeholder="🔍 Buscar evento, premio, código, Pokémon, carta o mazo..." />
       <select id="fStatus" aria-label="Filtrar por estado">
-        <option value="">📋 Todos los estados (Activos + Próximos)</option>
+        <option value="">📋 Todos los estados</option>
         <option value="activo">🟢 Activos ahora</option>
         <option value="proximo">⚠️ Próximos</option>
         <option value="finalizado">Finalizados</option>
+      </select>
+      <select id="fSort" aria-label="Ordenar por fecha de publicación">
+        <option value="newest">🕒 Más reciente primero</option>
+        <option value="oldest">🕰️ Más antiguo primero</option>
+        <option value="priority">🎯 Prioridad (Activos → Próximos)</option>
+        <option value="ending">⏳ Próximo a vencer</option>
       </select>
       <select id="fCheck" aria-label="Filtrar por seguimiento">
         <option value="">Todo mi seguimiento</option>
@@ -719,15 +742,20 @@
     <!-- Barra Principal de Vistas -->
     <div class="toolbar">
       <div class="toolbar-group">
+        <button class="btn btn-primary" id="scopeCurrent" onclick="setScopeMode('current')">📌 Mes actual y activos</button>
+        <button class="btn" id="scopeAll" onclick="setScopeMode('all')">🗄️ Base histórica completa</button>
         <button class="btn btn-secondary" id="viewCards">🗂️ Tarjetas</button>
         <button class="btn" id="viewTable">📊 Tabla</button>
-        <button class="btn" id="btnOnlyActive">🟢 Activos ahora</button>
+        <button class="btn" id="btnOnlyActive">🟢 Filtrar activos</button>
         <span class="pill" id="countLabel">—</span>
       </div>
       <div class="toolbar-group">
         <span class="pill info" id="statusFeedback" style="display:none;"></span>
       </div>
     </div>
+
+    <!-- Aviso de Alcance Visual vs. Base Histórica Permanente -->
+    <div class="archive-banner" id="archiveBanner" style="display:none;"></div>
 
     <!-- Utilidades Plegadas con Explicación Clara -->
     <details class="tools-drawer">
@@ -784,6 +812,7 @@
     let selectedSlice = "all"; // "all" | "kind:event" | "kind:code" | "kind:news" | "cat:<Nombre>"
     let selectedWeekBand = ""; // "" | "1" | "2" | "3" | "4"
     let onlyThisWeek = false;
+    let scopeMode = "current"; // "current" = mes actual + activos hoy | "all" = base histórica completa
     let viewMode = "cards";
     let activeModalId = null;
 
@@ -792,6 +821,75 @@
 
     function getTodayCol() {
       return new Date(Date.now() - 5 * 3600 * 1000).toISOString().slice(0, 10);
+    }
+
+    function daysBetweenIso(isoA, isoB) {
+      if (!isoA || !isoB) return 0;
+      const a = Date.parse(`${isoA.slice(0, 10)}T00:00:00Z`);
+      const b = Date.parse(`${isoB.slice(0, 10)}T00:00:00Z`);
+      if (Number.isNaN(a) || Number.isNaN(b)) return 0;
+      return Math.floor((b - a) / 86400000);
+    }
+
+    function getPublishedIso(ev) {
+      if (ev.published_at) return ev.published_at;
+      const fs = ev.first_seen_at || "";
+      const lu = ev.last_updated_at || "";
+      if (fs && fs <= "2026-11-18T19:00:00Z" && lu && lu > "2026-11-18T20:00:00Z" && ev.start_date) {
+        if (Math.abs(daysBetweenIso(ev.start_date, lu.slice(0, 10))) <= 2) return lu;
+      }
+      if (fs) return fs;
+      return ev.start_date ? `${ev.start_date}T05:00:00Z` : "";
+    }
+
+    function getPublishedEpochMs(ev) {
+      const iso = getPublishedIso(ev);
+      if (!iso) return 0;
+      const ms = Date.parse(iso);
+      return Number.isNaN(ms) ? 0 : ms;
+    }
+
+    function getPublishedColIsoDate(ev) {
+      const ms = getPublishedEpochMs(ev);
+      if (!ms) return "";
+      return new Date(ms - 5 * 3600 * 1000).toISOString().slice(0, 10);
+    }
+
+    function formatPublishedCot(iso) {
+      if (!iso) return "Sin hora registrada";
+      const ms = Date.parse(iso);
+      if (Number.isNaN(ms)) return iso;
+      const dt = new Date(ms - 5 * 3600 * 1000);
+      const day = dt.getUTCDate();
+      const mon = MONTH_SHORT[dt.getUTCMonth()];
+      const year = dt.getUTCFullYear();
+      const h24 = dt.getUTCHours();
+      const min = String(dt.getUTCMinutes()).padStart(2, "0");
+      const ampm = h24 >= 12 ? "p. m." : "a. m.";
+      const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+      return `${day} ${mon} ${year} · ${h12}:${min} ${ampm} COT`;
+    }
+
+    function isInCurrentView(ev, todayCol) {
+      if (ev._status === "activo") return true;
+      const curYm = todayCol.slice(0, 7);
+      const yNum = Number(curYm.slice(0, 4));
+      const mNum = Number(curYm.slice(5, 7));
+      const lastDay = new Date(Date.UTC(yNum, mNum, 0)).getUTCDate();
+      const mStart = `${curYm}-01`;
+      const mEnd = `${curYm}-${String(lastDay).padStart(2, "0")}`;
+      const [evStart, evEnd] = getEventWindow(ev, todayCol);
+      if (evStart <= mEnd && evEnd >= mStart) return true;
+      if (ev.kind === "news") {
+        const pubDate = getPublishedColIsoDate(ev);
+        if (pubDate && pubDate.slice(0, 7) === curYm) return true;
+      }
+      return false;
+    }
+
+    function setScopeMode(mode) {
+      scopeMode = mode === "all" ? "all" : "current";
+      render();
     }
 
     function addDaysIso(iso, delta) {
@@ -939,10 +1037,14 @@
     }
 
     function computeDynamicStatus(ev) {
-      const now = new Date();
-      const todayCol = new Date(now.getTime() - 5 * 3600 * 1000).toISOString().slice(0, 10);
+      const todayCol = getTodayCol();
       if (ev.end_date && ev.end_date < todayCol) return "finalizado";
       if (ev.start_date && ev.start_date > todayCol) return "proximo";
+      const refIso = ev.start_date || (ev.first_seen_at ? ev.first_seen_at.slice(0, 10) : "");
+      if (ev.kind === "news" && refIso && daysBetweenIso(refIso, todayCol) > 14) return "finalizado";
+      if (ev.kind === "event" && !ev.end_date && refIso && daysBetweenIso(refIso, todayCol) > 21 && refIso.slice(0, 7) < todayCol.slice(0, 7)) {
+        return "finalizado";
+      }
       return ev.status || "activo";
     }
 
@@ -962,7 +1064,9 @@
       selectedSlice = slice;
       const sel = document.getElementById("fStatus");
       const all = getEventsWithStatus();
-      const gameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
+      const todayCol = getTodayCol();
+      const scoped = scopeMode === "current" ? all.filter(e => isInCurrentView(e, todayCol)) : all;
+      const gameEvents = selectedGame === "all" ? scoped : scoped.filter(e => e.game === selectedGame);
       const sliceItems = gameEvents.filter(e => applySlice(e, slice));
       // Si el estado elegido (ej. "activo") deja 0 elementos en esta categoría que sí tiene próximos/otros, abre todos los estados automáticamente
       if (sel.value && sliceItems.length > 0 && !sliceItems.some(e => e._status === sel.value)) {
@@ -1028,10 +1132,20 @@
       return m[cat] || "🔹";
     }
 
-    function syncStatusControls() {
+    function syncStatusControls(currentCount, totalCount) {
       const sel = document.getElementById("fStatus");
       const val = sel.value;
       sel.classList.toggle("filter-active", Boolean(val));
+
+      const sortSel = document.getElementById("fSort");
+      sortSel.classList.toggle("filter-active", sortSel.value !== "priority");
+
+      const scCur = document.getElementById("scopeCurrent");
+      const scAll = document.getElementById("scopeAll");
+      scCur.className = scopeMode === "current" ? "btn btn-primary" : "btn";
+      scAll.className = scopeMode === "all" ? "btn btn-secondary" : "btn";
+      scCur.textContent = `📌 Mes actual y activos (${currentCount})`;
+      scAll.textContent = `🗄️ Base histórica completa (${totalCount})`;
 
       const onlyBtn = document.getElementById("btnOnlyActive");
       if (val === "activo") {
@@ -1283,6 +1397,53 @@
       });
     }
 
+    function sortEvents(list) {
+      const mode = document.getElementById("fSort").value || "newest";
+      const statusRank = { activo: 0, proximo: 1, finalizado: 2 };
+      const kindRank = { code: 0, event: 1, news: 2 };
+      const copy = [...list];
+      if (mode === "oldest") {
+        copy.sort((a, b) => {
+          const diff = getPublishedEpochMs(a) - getPublishedEpochMs(b);
+          if (diff !== 0) return diff;
+          return (a.title || "").localeCompare(b.title || "", "es");
+        });
+        return copy;
+      }
+      if (mode === "priority") {
+        copy.sort((a, b) => {
+          const sr = (statusRank[a._status] ?? 9) - (statusRank[b._status] ?? 9);
+          if (sr !== 0) return sr;
+          const kr = (kindRank[a.kind] ?? 9) - (kindRank[b.kind] ?? 9);
+          if (kr !== 0) return kr;
+          const ed = (a.end_date || "9999-99-99").localeCompare(b.end_date || "9999-99-99");
+          if (ed !== 0) return ed;
+          return getPublishedEpochMs(b) - getPublishedEpochMs(a);
+        });
+        return copy;
+      }
+      if (mode === "ending") {
+        copy.sort((a, b) => {
+          const finA = a._status === "finalizado" ? 1 : 0;
+          const finB = b._status === "finalizado" ? 1 : 0;
+          if (finA !== finB) return finA - finB;
+          const ed = (a.end_date || "9999-99-99").localeCompare(b.end_date || "9999-99-99");
+          if (ed !== 0) return ed;
+          return getPublishedEpochMs(b) - getPublishedEpochMs(a);
+        });
+        return copy;
+      }
+      // Default: "newest" — más reciente a más antiguo por fecha y hora de publicación/notificación
+      copy.sort((a, b) => {
+        const diff = getPublishedEpochMs(b) - getPublishedEpochMs(a);
+        if (diff !== 0) return diff;
+        const sr = (statusRank[a._status] ?? 9) - (statusRank[b._status] ?? 9);
+        if (sr !== 0) return sr;
+        return (a.title || "").localeCompare(b.title || "", "es");
+      });
+      return copy;
+    }
+
     function statusPill(st) {
       if (st === "activo") return `<span class="pill live">🟢 ACTIVO</span>`;
       if (st === "proximo") return `<span class="pill warn">⚠️ PRÓXIMO</span>`;
@@ -1454,6 +1615,7 @@
             <h2 id="modalTitle" style="margin:0;font-size:clamp(17px,2.4vw,22px);color:var(--text);line-height:1.25;">${esc(ev.title)}</h2>
             ${origHtml}
             <div class="ev-dates" style="margin-top:6px;">⏱️ ${esc(ev.date_range_label)}</div>
+            <div class="ev-pub">🕒 Publicado / Notificado: ${esc(formatPublishedCot(getPublishedIso(ev)))}</div>
           </div>
           <button class="btn btn-danger btn-sm" onclick="closeEventModal()" aria-label="Cerrar ventana">✕ Cerrar</button>
         </div>
@@ -1515,19 +1677,51 @@
     function render() {
       copyRegistry = [];
       const all = getEventsWithStatus();
-      renderYearOptions(all);
-      syncStatusControls();
-      renderGameHeader(all);
       const todayCol = getTodayCol();
+      const currentPool = all.filter(ev => isInCurrentView(ev, todayCol));
+      const scopedAll = scopeMode === "current" ? currentPool : all;
+      const archivedCount = Math.max(0, all.length - currentPool.length);
+
+      renderYearOptions(all);
+      syncStatusControls(currentPool.length, all.length);
+      renderGameHeader(scopedAll);
       const calWin = getActiveCalendarWindow();
-      const gameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
+      const gameEvents = selectedGame === "all" ? scopedAll : scopedAll.filter(e => e.game === selectedGame);
       const calEvents = calWin ? gameEvents.filter(e => matchesCalendarWindow(e, calWin, todayCol)) : gameEvents;
       renderStats(gameEvents);
       renderCategories(calEvents);
 
-      const list = getFiltered(gameEvents);
+      const list = sortEvents(getFiltered(gameEvents));
+      const allGameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
+      const allFilteredCount = scopeMode === "current" ? getFiltered(allGameEvents).length : list.length;
+      const hiddenMatches = Math.max(0, allFilteredCount - list.length);
+
+      const curMonthName = MONTH_NAMES[Number(todayCol.slice(5, 7)) - 1] || "";
+      const curYearNum = todayCol.slice(0, 4);
+      const banner = document.getElementById("archiveBanner");
+      if (scopeMode === "current") {
+        banner.style.display = "flex";
+        if (hiddenMatches > 0) {
+          banner.innerHTML = `
+            <span>🔎 <strong>${hiddenMatches} coincidencia(s) adicional(es)</strong> encontradas en otros meses dentro de la base histórica (nada se borra).</span>
+            <button class="btn btn-secondary btn-sm" onclick="setScopeMode('all')">🗄️ Ver en base histórica completa</button>
+          `;
+        } else {
+          banner.innerHTML = `
+            <span>📌 Vista limpia: solo <strong>${curMonthName} ${curYearNum} y eventos activos hoy</strong> (${archivedCount} registros de otros meses guardados en la base histórica).</span>
+            <button class="btn btn-sm" onclick="setScopeMode('all')">🗄️ Consultar base completa (${all.length})</button>
+          `;
+        }
+      } else {
+        banner.style.display = "flex";
+        banner.innerHTML = `
+          <span>🗄️ <strong>Base histórica completa activa</strong> (${all.length} registros totales desde el inicio del monitor — incluye meses pasados y próximos).</span>
+          <button class="btn btn-primary btn-sm" onclick="setScopeMode('current')">📌 Volver a mes actual y activos</button>
+        `;
+      }
+
       document.getElementById("countLabel").textContent = calWin
-        ? `Mostrando ${list.length} de ${calEvents.length} en período (${gameEvents.length} total)`
+        ? `Mostrando ${list.length} de ${calEvents.length} en período (${gameEvents.length} en vista)`
         : `Mostrando ${list.length} de ${gameEvents.length}`;
       const root = document.getElementById("content");
 
@@ -1539,13 +1733,19 @@
             <p>Cuando PTCGPocket publique un código vigente aparecerá aquí y llegará en el consolidado de Telegram automáticamente.</p>
             <a class="btn btn-secondary" href="https://gift.pokemontcgpocket.com/" target="_blank" rel="noopener">🌐 Abrir portal de canje TCG Pocket</a>
           </div>
+        ` : (hiddenMatches > 0 ? `
+          <div class="empty-state">
+            <h3>🗄️ ${hiddenMatches} resultado(s) disponibles en la base histórica</h3>
+            <p>Tu búsqueda no tiene registros en ${curMonthName} ${curYearNum}, pero sí existe en el historial completo guardado.</p>
+            <button class="btn btn-secondary" onclick="setScopeMode('all')">🗄️ Abrir en base histórica completa</button>
+          </div>
         ` : `
           <div class="empty-state">
             <h3>⚠️ Sin registros para esta combinación de filtros</h3>
-            <p>Prueba limpiando el buscador o seleccionando otra categoría.</p>
+            <p>Prueba limpiando el buscador, seleccionando otra categoría o cambiando a la base histórica completa.</p>
             <button class="btn btn-secondary" onclick="document.getElementById('btnClear').click()">🧹 Mostrar todo</button>
           </div>
-        `;
+        `);
         return;
       }
 
@@ -1559,6 +1759,7 @@
                   ${selectedGame === "all" ? "<th>Juego</th>" : ""}
                   <th>Estado</th>
                   <th>Categoría y Evento</th>
+                  <th>Publicación (COT)</th>
                   <th>Vigencia</th>
                   <th>Premios y Táctica</th>
                   <th>Acción</th>
@@ -1569,6 +1770,7 @@
                   const mk = getMark(ev.id);
                   const link = ev.redeem_url || ev.guide_url || (ev.urls || [])[0] || "";
                   const safeEid = encodeURIComponent(ev.id);
+                  const pubTxt = formatPublishedCot(getPublishedIso(ev));
                   return `
                     <tr class="clickable-row" onclick="openEventModal(decodeURIComponent('${safeEid}'), event)">
                       <td style="white-space:nowrap;">
@@ -1581,6 +1783,7 @@
                         <div style="font-weight:700;color:var(--text)">${esc(ev.title)}</div>
                         <div class="ev-orig">${esc(categoryIcon(ev.category))} ${esc(ev.category)} • ${esc((ev.sources || []).join(", "))}</div>
                       </td>
+                      <td style="white-space:nowrap;color:var(--blue);font-size:12px;font-weight:600">${esc(pubTxt)}</td>
                       <td style="white-space:nowrap;color:var(--warning);font-weight:600">${esc(ev.date_range_label)}</td>
                       <td>
                         <div>${esc(ev.rewards)}</div>
@@ -1607,6 +1810,7 @@
         const copyValIdx = copyValue ? registerCopy(copyValue) : -1;
         const origHtml = (ev.title_original && ev.title_original.toLowerCase() !== (ev.title || "").toLowerCase())
           ? `<div class="ev-orig">Original: ${esc(ev.title_original)}</div>` : "";
+        const pubTxt = formatPublishedCot(getPublishedIso(ev));
         const deckCnt = (ev.recommended_decks || []).length;
         const pogoCnt = (ev.tactical_cards || []).length;
         const teaserTxt = deckCnt
@@ -1630,7 +1834,10 @@
               <h3 class="ev-title">${esc(ev.title)}</h3>
               ${origHtml}
             </div>
-            <div class="ev-dates">⏱️ ${esc(ev.date_range_label)}</div>
+            <div>
+              <div class="ev-dates">⏱️ ${esc(ev.date_range_label)}</div>
+              <div class="ev-pub">🕒 Publicado: ${esc(pubTxt)}</div>
+            </div>
             <div class="inner-box">
               <strong>🎁 Premios / Detalles:</strong> ${esc(ev.rewards)}
               ${ev.tactical_summary ? `<div style="margin-top:6px;color:var(--blue);">⚡ <b>Resumen:</b> ${esc(ev.tactical_summary)}</div>` : ""}
@@ -1665,13 +1872,19 @@
     }
 
     document.getElementById("btnRefresh").onclick = fetchLiveCatalog;
-    for (const id of ["q", "fStatus", "fCheck"]) {
+    for (const id of ["q", "fStatus", "fSort", "fCheck"]) {
       document.getElementById(id).addEventListener("input", render);
       document.getElementById(id).addEventListener("change", render);
     }
     for (const id of ["fYear", "fMonth"]) {
       document.getElementById(id).addEventListener("change", () => {
         onlyThisWeek = false;
+        const todayCol = getTodayCol();
+        const fy = document.getElementById("fYear").value;
+        const fm = document.getElementById("fMonth").value;
+        if ((fy && fy !== todayCol.slice(0, 4)) || (fm && fm !== todayCol.slice(5, 7))) {
+          scopeMode = "all";
+        }
         autoRelaxStatusForCalendar(getEventsWithStatus());
         render();
       });
@@ -1679,11 +1892,13 @@
     document.getElementById("btnClear").onclick = () => {
       document.getElementById("q").value = "";
       document.getElementById("fStatus").value = "";
+      document.getElementById("fSort").value = "newest";
       document.getElementById("fCheck").value = "";
       document.getElementById("fYear").value = "";
       document.getElementById("fMonth").value = "";
       selectedWeekBand = "";
       onlyThisWeek = false;
+      scopeMode = "current";
       selectedSlice = "all";
       render();
     };
@@ -1705,19 +1920,21 @@
     };
     document.getElementById("btnCsv").onclick = () => {
       const all = getEventsWithStatus();
-      const gameEvents = selectedGame === "all" ? all : all.filter(e => e.game === selectedGame);
-      const rows = getFiltered(gameEvents);
-      const cols = ["Juego", "Estado", "Categoría", "Título", "Desde", "Hasta", "Vigencia", "Premios", "Código", "Filtro GO", "Táctica", "Completado", "Favorito", "Fuentes"];
+      const todayCol = getTodayCol();
+      const scopedAll = scopeMode === "current" ? all.filter(ev => isInCurrentView(ev, todayCol)) : all;
+      const gameEvents = selectedGame === "all" ? scopedAll : scopedAll.filter(e => e.game === selectedGame);
+      const rows = sortEvents(getFiltered(gameEvents));
+      const cols = ["Juego", "Estado", "Categoría", "Título", "Publicación (COT)", "Desde", "Hasta", "Vigencia", "Premios", "Código", "Filtro GO", "Táctica", "Completado", "Favorito", "Fuentes"];
       const escCsv = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
       const body = rows.map(e => {
         const mk = getMark(e.id);
         return [
-          e.game_label, e._status, e.category, e.title, e.start_date || "", e.end_date || "",
+          e.game_label, e._status, e.category, e.title, formatPublishedCot(getPublishedIso(e)), e.start_date || "", e.end_date || "",
           e.date_range_label, e.rewards, e.promo_code || "", e.search_filter || "", e.tactical_summary || "",
           mk.done ? "SI" : "NO", mk.star ? "SI" : "NO", (e.sources || []).join("; ")
         ].map(escCsv).join(",");
       });
-      downloadBlob(`estado_ck10_${selectedGame}.csv`, "\uFEFF" + [cols.join(","), ...body].join("\r\n"), "text/csv;charset=utf-8");
+      downloadBlob(`estado_ck10_${selectedGame}_${scopeMode}.csv`, "\uFEFF" + [cols.join(","), ...body].join("\r\n"), "text/csv;charset=utf-8");
     };
     document.getElementById("btnExportMarks").onclick = () => {
       downloadBlob("estado_ck10_marcas.json", JSON.stringify(marks, null, 2), "application/json");

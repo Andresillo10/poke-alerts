@@ -996,6 +996,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
             except Exception as exc:
                 LOGGER.warning("Fallo no bloqueante enviando tarjeta GO %s: %s", p_card.title, exc)
         sent_items.append(item)
+        processed_records[item.uid]["was_notified"] = True
         if idx < len(to_notify) - 1:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
 

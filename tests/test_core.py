@@ -1444,6 +1444,62 @@ class CorePipelineTests(unittest.TestCase):
         self.assertEqual((rows[2]["weight"], rows[2]["is_dual_deck"]), (0.5, True))
         self.assertEqual((rows[3]["weight"], rows[3]["is_dual_deck"]), (0.5, True))
 
+    def test_v11_catalog_published_at_and_undated_old_event_expiry(self) -> None:
+        # Regresión: eventos sin fecha de fin de un mes anterior (>21 días) vencen a 'finalizado'
+        # sin borrarse nunca de la base, y `published_at` registra día y hora exacta de notificación.
+        old_undated = AlertItem(
+            uid="ptcgpocket-gg:https://ptcgpocket.gg/old-oct-event/",
+            game="tcgp",
+            kind="event",
+            title="October Undated Blog Event",
+            summary="Old",
+            url="https://ptcgpocket.gg/old-oct-event/",
+            source_name="PTCGPocket.gg",
+            expires_at="2026-10-30",
+        )
+        fresh_live = AlertItem(
+            uid="serebii-tcgp:https://www.serebii.net/tcgpocket/events/new-nov.shtml",
+            game="tcgp",
+            kind="event",
+            title="November Live Event",
+            summary="Active",
+            url="https://www.serebii.net/tcgpocket/events/new-nov.shtml",
+            source_name="Serebii TCGP",
+            expires_at="November 20th - December 15th 2026",
+            starts_on="2026-11-20",
+        )
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_dir = Path(tmpdir)
+            hist_path = tmp_dir / "data" / "events_history.json"
+            js_path = tmp_dir / "docs" / "events_data.js"
+            t1 = datetime(2026, 11, 23, 14, 23, 0, tzinfo=timezone.utc)
+            doc, _ = sync_events_catalog(
+                history_path=hist_path,
+                dashboard_js_path=js_path,
+                records_input=[
+                    {"raw": old_undated, "localized": old_undated.with_spanish_copy(title="Evento Octubre", summary="Viejo")},
+                    {"raw": fresh_live, "localized": fresh_live.with_spanish_copy(title="Evento Noviembre", summary="Activo"), "was_notified": True},
+                ],
+                now_utc=t1,
+            )
+            by_title = {e["title"]: e for e in doc["events"]}
+            # El evento de octubre sin end_date (>21 días, mes previo) queda 'finalizado' pero sigue en la base
+            self.assertEqual(by_title["Evento Octubre"]["status"], "finalizado")
+            # El evento notificado guarda published_at exacto
+            self.assertEqual(by_title["Evento Noviembre"]["status"], "activo")
+            self.assertEqual(by_title["Evento Noviembre"]["published_at"], "2026-11-23T14:23:00Z")
+
+            # 3 meses después (2027-02-23): ambos siguen en la base histórica (nada se borra) y ambos son 'finalizado'
+            t_3m = datetime(2027, 2, 23, 15, 0, 0, tzinfo=timezone.utc)
+            doc_3m, _ = sync_events_catalog(
+                history_path=hist_path,
+                dashboard_js_path=js_path,
+                records_input=[],
+                now_utc=t_3m,
+            )
+            self.assertEqual(len(doc_3m["events"]), 2)
+            self.assertTrue(all(e["status"] == "finalizado" for e in doc_3m["events"]))
+
 
 if __name__ == "__main__":
     unittest.main()

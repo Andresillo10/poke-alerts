@@ -58,17 +58,44 @@ def _compute_status(
     start_date: str | None,
     end_date: str | None,
     today_cot: date,
+    first_seen_at: str | None = None,
 ) -> str:
     """Determina estado actual ('activo', 'proximo' o 'finalizado') en hora Colombia."""
     s_dt = parse_date_flex(start_date)
     e_dt = parse_date_flex(end_date)
+    ref_dt = s_dt or parse_date_flex((first_seen_at or "")[:10])
     if e_dt and e_dt < today_cot:
         return "finalizado"
     if s_dt and s_dt > today_cot:
         return "proximo"
-    if kind == "news" and s_dt and (today_cot - s_dt).days > 14:
+    if kind == "news" and ref_dt and (today_cot - ref_dt).days > 14:
+        return "finalizado"
+    # Eventos sin fecha de fin (p. ej. posts WordPress antiguos) vencen al cambiar de mes (>21 días)
+    if (
+        kind == "event"
+        and not e_dt
+        and ref_dt
+        and (today_cot - ref_dt).days > 21
+        and (ref_dt.year, ref_dt.month) < (today_cot.year, today_cot.month)
+    ):
         return "finalizado"
     return "activo"
+
+
+def _infer_published_at(row: dict[str, Any], fallback_iso: str) -> str:
+    """Obtiene la fecha/hora exacta de publicación/notificación sin perder el histórico inicial."""
+    if row.get("published_at"):
+        return str(row["published_at"])
+    first_seen = str(row.get("first_seen_at") or fallback_iso)
+    last_upd = str(row.get("last_updated_at") or "")
+    start_iso = str(row.get("start_date") or "")
+    # Para eventos sembrados en el arranque inicial (18 nov) que luego dispararon alerta real de inicio
+    if first_seen <= "2026-11-18T19:00:00Z" and last_upd > "2026-11-18T20:00:00Z" and start_iso:
+        s_dt = parse_date_flex(start_iso)
+        u_dt = parse_date_flex(last_upd[:10])
+        if s_dt and u_dt and abs((u_dt - s_dt).days) <= 2:
+            return last_upd
+    return first_seen
 
 
 def _extract_dates_for_item(
@@ -187,7 +214,9 @@ def sync_events_catalog(
                 start_date=copied.get("start_date"),
                 end_date=copied.get("end_date"),
                 today_cot=today_cot,
+                first_seen_at=copied.get("first_seen_at"),
             )
+            copied["published_at"] = _infer_published_at(copied, now_iso)
             by_id[str(copied["id"])] = copied
 
     for rec in records_input:
@@ -232,7 +261,10 @@ def sync_events_catalog(
             start_date=final_start,
             end_date=final_end,
             today_cot=today_cot,
+            first_seen_at=first_seen,
         )
+        was_notified = bool(rec.get("was_notified"))
+        published_at = now_iso if was_notified else _infer_published_at(prev, first_seen)
 
         # Prioriza premios y textos más ricos al fusionar múltiples portales
         prev_rewards = str(prev.get("rewards") or "")
@@ -312,6 +344,7 @@ def sync_events_catalog(
             "tactical_cards": final_tactical_cards,
             "sources": merged_sources,
             "urls": merged_urls,
+            "published_at": published_at,
             "first_seen_at": first_seen,
             "last_updated_at": prev.get("last_updated_at") or now_iso,
         }
