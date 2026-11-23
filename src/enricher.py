@@ -110,7 +110,7 @@ def parse_serebii_detail_html(detail_html: str) -> tuple[str | None, list[str]]:
                 if not reward and has_event_shop:
                     # Serebii deja vacío el icono de Cupón de Tienda de Evento (`items/.png`)
                     if any("/items/.png" in str(img.get("src") or "").lower() for img in tr.find_all("img")):
-                        reward = "Cupón de Tienda de Evento"
+                        reward = "Cupón de evento"
                 if reward and qty and qty.isdigit():
                     reward_full = f"{qty}× {reward}"
                 else:

@@ -35,16 +35,25 @@ def _extract_goal_phrase(item: AlertItem, milestones: list[str] | None = None) -
 def _norm_milestone_task(line: str) -> str:
     """Normaliza la parte izquierda (tarea) de un hito para deduplicar entre Serebii y PTCGPocket.gg."""
     task = line.split("→", 1)[0].strip().lower()
+    m_day = re.search(r"(?:d[ií]a\s*(\d+)|inicia\s+sesi[oó]n\s+(\d+)\s*d[ií]as?)", task)
+    if m_day:
+        n = m_day.group(1) or m_day.group(2)
+        return f"login_day_{n}"
     task = re.sub(r"partida\(s\)|partidas|batallas|batalla", "batalla", task)
     task = re.sub(r"días|día", "dia", task)
     task = re.sub(r"\s+", " ", task)
     return task
 
 
-def _is_meaningful_reward(reward_part: str) -> bool:
-    """Detecta si el lado derecho del hito describe un premio real (no solo un número suelto '1')."""
+def _reward_richness(reward_part: str) -> tuple[int, int]:
+    """Puntúa calidad de una descripción de premio (prefiere nombres específicos sobre genéricos)."""
     clean = reward_part.strip()
-    return bool(clean) and not clean.isdigit()
+    if not clean or clean.isdigit():
+        return (0, 0)
+    low = clean.lower()
+    if low.startswith("inicia sesión") or "sobre promo" == low or low.endswith("× sobre promo"):
+        return (1, len(clean))
+    return (2, len(clean))
 
 
 def extract_event_milestones(
@@ -86,10 +95,8 @@ def extract_event_milestones(
                 else:
                     prev_val = mission_by_task[tkey]
                     prev_rew = prev_val.split("→", 1)[1].strip() if "→" in prev_val else ""
-                    # Conserva la versión con nombre de premio real (ej. '1× Mega Mewtwo X (Moneda)' vs '1')
-                    if (_is_meaningful_reward(rew_part) and not _is_meaningful_reward(prev_rew)) or (
-                        _is_meaningful_reward(rew_part) and len(rew_part) > len(prev_rew)
-                    ):
+                    # Conserva la versión con nombre de premio más específico (ej. 'Sobre Arboleda de Eevee' vs 'Sobre Promo')
+                    if _reward_richness(rew_part) > _reward_richness(prev_rew):
                         mission_by_task[tkey] = cleaned
         elif low.startswith(("bonificaciones:", "bonuses:")):
             body = txt.split(":", 1)[1].strip()
