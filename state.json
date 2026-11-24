@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-24T21:25:16Z",
-  "last_commit_heartbeat_utc": "2026-11-24T21:25:16Z",
+  "last_run_utc": "2026-11-24T22:24:13Z",
+  "last_commit_heartbeat_utc": "2026-11-24T22:24:13Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -102,7 +102,15 @@
     "scrapedduck:gbl-daydream-destinations_great-league-mega-edition_ultra-league-mega-edition_master-league-mega-edition-split-1": "2026-11-24T21:25:16Z",
     "scrapedduck:mega-slowbro-in-mega-raids-december-2026": "2026-11-24T21:25:16Z",
     "scrapedduck:regidrago-in-5-star-raid-battles-december-2026": "2026-11-24T21:25:16Z",
-    "scrapedduck:raidhour20261209": "2026-11-24T21:25:16Z"
+    "scrapedduck:raidhour20261209": "2026-11-24T21:25:16Z",
+    "scrapedduck:pokemonspotlighthour2026-12-10": "2026-11-24T22:24:13Z",
+    "scrapedduck:unannounced-event-december-2026": "2026-11-24T22:24:13Z",
+    "scrapedduck:max-mondays-2026-12-14": "2026-11-24T22:24:13Z",
+    "scrapedduck:gbl-daydream-destinations_great-league-mega-edition_mountain-cup-great-league-edition": "2026-11-24T22:24:13Z",
+    "scrapedduck:mega-gengar-in-mega-raids-december-2026": "2026-11-24T22:24:13Z",
+    "scrapedduck:unannounced-pokemon-in-5-star-raid-battles-december-2026": "2026-11-24T22:24:13Z",
+    "scrapedduck:raidhour20261216": "2026-11-24T22:24:13Z",
+    "scrapedduck:pokemonspotlighthour2026-12-17": "2026-11-24T22:24:13Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -200,7 +208,15 @@
     "pogo:great-league-mega-edition-ultra-league-mega-edition": "2026-11-24T21:25:16Z",
     "pogo:mega-slowbro-in-mega-raids": "2026-11-24T21:25:16Z",
     "pogo:regidrago-in-5-star-raid-battles": "2026-11-24T21:25:16Z",
-    "pogo:unannounced-raid-hour": "2026-11-24T21:25:16Z"
+    "pogo:unannounced-raid-hour": "2026-11-24T21:25:16Z",
+    "pogo:starly-spotlight-hour": "2026-11-24T22:24:13Z",
+    "pogo:unannounced": "2026-11-24T22:24:13Z",
+    "pogo:dynamax-eevee-during-max-monday": "2026-11-24T22:24:13Z",
+    "pogo:great-league-mega-edition-and-mountain-cup-great": "2026-11-24T22:24:13Z",
+    "pogo:mega-gengar-in-mega-raids": "2026-11-24T22:24:13Z",
+    "pogo:unannounced-pokemon-in-5-star-raid-battles": "2026-11-24T22:24:13Z",
+    "pogo:ho-oh-raid-hour": "2026-11-24T22:24:13Z",
+    "pogo:bergmite-spotlight-hour": "2026-11-24T22:24:13Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
