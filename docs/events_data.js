@@ -1,15 +1,15 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-23 23:50 COT",
+  "generated_at": "2026-11-24 00:23 COT",
   "stats": {
     "total": 75,
     "pogo": 62,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 34,
-    "upcoming": 25,
-    "ended": 16
+    "active": 33,
+    "upcoming": 22,
+    "ended": 20
   },
   "events": [
     {
@@ -193,202 +193,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
-      "id": "pogo:dynamax-trails",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Combates Max",
-      "title": "Dynamax Trails",
-      "title_original": "Dynamax Trails",
-      "summary": "¡Prepárate para una semana de Combates Max! Los Pokémon Dynamax vuelven, las Partículas Max están apareciendo en estado salvaje y Eternamax Eternatus regresa a los Nodos Energéticos durante las Rutas Dynamax. El evento Rutas Dynamax tendrá lugar del 16 de noviembre de 2026 a las 10:00 al 23 de noviembre de 2026 a las 20:00, hora local.",
-      "action_guide": "Qué tienes que hacer: camina hacia los Nodos Energéticos (torres moradas) en el mapa, recoge tu cupo diario de Partículas Max y vence al jefe en Combates Max usando Pokémon Dinamax/Gigamax con ventaja de tipo (prioriza subir el Ataque Max). Revisa abajo el PC 100% IV y counters.",
-      "requires_battles": true,
-      "activities": [
-        "🌀 Combates Max en Nodos"
-      ],
-      "milestones": [
-        "🔥 Probabilidad de recibir Partículas Max al capturar Pokémon del evento en estado salvaje o tras Combates Max",
-        "🔥 Habrá más Nodos Energéticos activos de lo habitual",
-        "🔥 2× Polvo Estelar por captura",
-        "🔥 1/2 del coste de Caramelos y Polvo Estelar para activar el Efecto de Aventura Cañón Dynamax.",
-        "🔥 Partículas Max from Event Pokémon (Small chance)",
-        "🔥 Catch Polvo Estelar (*2 (GO Pass Tier 1))",
-        "🔥 Dynamax Cannon costs (50% (GO Pass Tier 2))",
-        "🌿 Pokémon salvajes: Bulbasaur, Charmander, Squirtle, Caterpie, Pikachu, Growlithe"
-      ],
-      "deck_intro": "",
-      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
-      "rewards": "Bonificaciones: Probabilidad de recibir Partículas Max al capturar Pokémon del evento en estado salvaje o tras Combates Max; Habrá más Nodos Energéticos activos de lo habitual; 2× Polvo Estelar por captura; 1/2 del coste de Caramelos y Polvo Estelar para activar el Efecto de Aventura Cañón Dynamax.",
-      "highlights": [
-        "Bonificaciones: Probabilidad de recibir Partículas Max al capturar Pokémon del evento en estado salvaje o tras Combates Max; Habrá más Nodos Energéticos activos de lo habitual; 2× Polvo Estelar por captura; 1/2 del coste de Caramelos y Polvo Estelar para activar el Efecto de Aventura Cañón Dynamax.",
-        "Bonificaciones: Partículas Max from Event Pokémon (Small chance); Catch Polvo Estelar (*2 (GO Pass Tier 1)); Dynamax Cannon costs (50% (GO Pass Tier 2))",
-        "Pokémon salvajes: Bulbasaur, Charmander, Squirtle, Caterpie, Pikachu, Growlithe"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-16",
-      "end_date": "2026-11-23",
-      "date_range_label": "16 nov 2026 -> 23 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Eternatus (Eternamax) (PC 100%: 2530 (Nv.20) • 3163 (Nv.25))",
-      "search_filter": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
-      "guide_url": "https://leekduck.com/events/dynamax-trails-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Eternatus",
-          "subtitle": "PC 100%: 2530 (Nv.20) • 3163 (Nv.25)",
-          "primary_type": "poison",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Veneno/Dragón",
-            "PC 100% Nv.20: 2530",
-            "PC 100% Clima Nv.25: 3163",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Dragón (×1.6)",
-            "• Hielo (×1.6)",
-            "• Psíquico (×1.6)",
-            "• Tierra (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Eternatus (Dragon Tail + Dynamax Cannon)",
-            "2. Kyurem (Black) (Dragon Tail + Freeze Shock)",
-            "3. Groudon Primigenio (Mud Shot + Precipice Blades)",
-            "4. Regigigas Oscuro (Zen Headbutt + Crush Grip)",
-            "5. Latios Oscuro (Dragon Breath + Luster Purge)",
-            "6. Dialga (Origin) (Dragon Breath + Roar of Time)"
-          ],
-          "explanation": "Vulnerable a Dragón, Hielo, Psíquico. Lidera tu equipo con Eternatus y verifica el 100% IV al capturar: 2530 (normal) o 3163 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Dynamax Trails"
-        },
-        {
-          "title": "Estrategia Combates Max",
-          "subtitle": "Gestión de Partículas Max y Nodos Energéticos",
-          "primary_type": "dragon",
-          "badge_label": "GUÍA MAX GO",
-          "left_heading": "BONUS Y OBJETIVOS DEL EVENTO",
-          "left_rows": [
-            "Bonuses: Max Particles from Event Pokémon (Small chance);",
-            "Catch Stardust (*2 (GO Pass Tier 1)); Dynamax Cannon costs",
-            "Wild spawns: Bulbasaur, Charmander, Squirtle, Caterpie,",
-            "Pikachu, Growlithe"
-          ],
-          "right_heading": "RUTA ÓPTIMA EN NODOS",
-          "right_rows": [
-            "Recarga límite diario de Partículas Max en Nodos",
-            "Prioriza subir Ataque Max antes que Espíritu/Barrera",
-            "Usa equipo con ventaja directa frente al jefe del Nodo"
-          ],
-          "explanation": "Llega con reserva completa de Partículas Max, cobra las de Nodos Energéticos en cada fase y filtra tus Dinamax/Gigamax antes de entrar.",
-          "search_label": "Filtro Dinamax / Gigamax en caja:",
-          "search_string": "Bulbasaur,Charmander,Squirtle,Caterpie,Pikachu,Growlithe,Eternatus&3*,4*",
-          "info_label": "📘 Ver detalle oficial",
-          "info_url": "https://www.serebii.net/pokemongo/events/dynamaxtrails.shtml",
-          "context_label": "Evento GO: Dynamax Trails"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON",
-        "Serebii GO"
-      ],
-      "urls": [
-        "https://leekduck.com/events/dynamax-trails-2026/",
-        "https://www.serebii.net/pokemongo/events/dynamaxtrails.shtml"
-      ],
-      "published_at": "2026-11-18T16:29:39Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:during-dynamax-espurr-max-monday",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Combates Max",
-      "title": "Espurr Dynamax durante Lunes Max",
-      "title_original": "Dynamax Espurr during Max Monday",
-      "summary": "El Espurr Dynamax puede aparecer en los Combates Max desde el 23 de noviembre de 2026 hasta el 29 de noviembre de 2026. Estos Pokémon Dynamax pueden aparecer en los Combates Max durante toda esta temporada. Los Combates Max estarán disponibles de 6:00 a 21:00 hora local los lunes. Los Nodos Energéticos se actualizarán con más frecuencia. Los lunes habrá más Nodos Energéticos activos que el resto de la semana.",
-      "action_guide": "Qué tienes que hacer: camina hacia los Nodos Energéticos (torres moradas) en el mapa (con hora destacada el lunes de 6:00 a 7:00 p. m. hora local), recoge tu cupo diario de Partículas Max y vence al jefe en Combates Max usando Pokémon Dinamax/Gigamax con ventaja de tipo (prioriza subir el Ataque Max). Revisa abajo el PC 100% IV y counters.",
-      "requires_battles": true,
-      "activities": [
-        "🌀 Combates Max en Nodos",
-        "⏰ Lunes 6:00–7:00 p. m."
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-23",
-      "end_date": "2026-11-23",
-      "date_range_label": "23 nov 2026 -> 23 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Espurr: PC 100%: 719 (Nv.20) • 899 (Nv.25)",
-      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-      "guide_url": "https://leekduck.com/events/max-mondays-2026-11-23/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Espurr",
-          "subtitle": "PC 100%: 719 (Nv.20) • 899 (Nv.25)",
-          "primary_type": "psychic",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Psíquico",
-            "PC 100% Nv.20: 719",
-            "PC 100% Clima Nv.25: 899",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Fantasma (×1.6)",
-            "• Siniestro (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "3. Mega Heracross (Fury Cutter + Megahorn)",
-            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
-            "5. Darkrai Oscuro (Snarl + Foul Play)",
-            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
-          ],
-          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 719 (normal) o 899 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Dynamax Espurr durante Lunes Max"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/max-mondays-2026-11-23/"
-      ],
-      "published_at": "2026-11-23T00:23:23Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
       "id": "pogo:5-and-battles-cresselia-darkrai-in-raid-star",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -525,7 +329,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T04:50:35Z"
+      "last_updated_at": "2026-11-24T05:23:24Z"
     },
     {
       "id": "pogo:banette-in-mega-raids",
@@ -773,6 +577,147 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
+      "id": "pogo:twilight-wishes",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Deseos crepusculares",
+      "title_original": "Twilight Wishes",
+      "summary": "¡Celebra los Deseos del Crepúsculo con Espeon con un pañuelo para el sol, Umbreon con un pañuelo para la luna y Rockruff! Disfrute de mayores posibilidades de encontrar Staryu Variocolor y Elgyem Variocolor, incursiones con temas de eventos y Investigación de Campo, y recompensas y Bonificaciones del evento GO Pass. Twilight Wishes se extiende desde el martes 24 de noviembre a las 10:00 a. m. hasta el lunes 30 de noviembre de 2026 a las 8:00 p. m. hora local.",
+      "action_guide": "Qué tienes que hacer: captura los Pokémon destacados del evento y realiza intercambios diarios con tus amigos para aprovechar el aumento de probabilidad de Amistad con Suerte e Intercambios con Suerte.",
+      "requires_battles": false,
+      "activities": [
+        "🤝 Intercambios con Suerte",
+        "🌿 Capturas destacadas"
+      ],
+      "milestones": [
+        "🔥 Mayor probabilidad de encontrar Staryu Variocolor y Elgyem Variocolor",
+        "🔥 Mayor probabilidad de conseguir Pokémon con Suerte al intercambiar",
+        "🔥 Mayor probabilidad de lograr Amistad con Suerte",
+        "🔥 2× Polvo Estelar al capturar Pokémon",
+        "🔥 probabilidad de Intercambio con Suerte (aumentada)",
+        "🔥 probabilidad de Amistad con Suerte (aumentada)",
+        "🌿 Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon",
+        "🔥 Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor",
+        "🔥 Mayor probabilidad de obtener Pokémon con Suerte en intercambios",
+        "🔥 Mayor probabilidad de convertirse en Amistad con Suerte"
+      ],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de obtener Pokémon con Suerte en intercambios; Mayor probabilidad de convertirse en Amistad con Suerte; 2× Polvo Estelar para capturar Pokémon",
+      "highlights": [
+        "Bonificaciones: Mayor probabilidad de encontrar Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de conseguir Pokémon con Suerte al intercambiar; Mayor probabilidad de lograr Amistad con Suerte; 2× Polvo Estelar al capturar Pokémon",
+        "Bonificaciones: probabilidad de Intercambio con Suerte (aumentada); probabilidad de Amistad con Suerte (aumentada)",
+        "Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon",
+        "Bonificaciones: Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de obtener Pokémon con Suerte en intercambios; Mayor probabilidad de convertirse en Amistad con Suerte; 2× Polvo Estelar para capturar Pokémon"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-24",
+      "end_date": "2026-11-30",
+      "date_range_label": "24 nov 2026 -> 30 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "intercambiar&!favorito",
+      "guide_url": "https://leekduck.com/events/twilight-wishes-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Clefairy → Clefable",
+          "subtitle": "Tipos: Hada • Salvaje Hundo Nv.30/35: 990 / 1073",
+          "primary_type": "fairy",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Clefairy (PC 100%)",
+            "• Salvaje máx Nv.30: 990",
+            "• Clima máx Nv.35:  1073",
+            "• Misión / Huevo:   495 / 660",
+            "Final: Clefable",
+            "• PC 100% Nv.40/50: 2437 / 2755"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Clefable #36 Ultra 2500 (89.2) • IV 4/12/15",
+            "  -> Fairy Wind / Meteor Mash / Draining Kiss",
+            "PvE Raids (Hada): Charm + Meteor Mash"
+          ],
+          "explanation": "Familia Clefairy → Clefable: revisa 990 (Nv.30) y 1073 (clima) para 100% IV; en competitivo Clefable rinde #36 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Clefairy&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/clefable/",
+          "context_label": "Evento GO: Twilight Wishes"
+        },
+        {
+          "title": "Staryu → Starmie",
+          "subtitle": "Tipos: Agua/Psíquico • Salvaje Hundo Nv.30/35: 991 / 1074",
+          "primary_type": "water",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Staryu (PC 100%)",
+            "• Salvaje máx Nv.30: 991",
+            "• Clima máx Nv.35:  1074",
+            "• Misión / Huevo:   495 / 661",
+            "Final: Starmie",
+            "• PC 100% Nv.40/50: 2584 / 2922"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Starmie #231 Ultra 2500 (81.3) • IV 4/14/15",
+            "  -> Psywave / Aqua Jet / Power Gem",
+            "PvE Raids (Agua): Psywave + Surf"
+          ],
+          "explanation": "Familia Staryu → Starmie: revisa 991 (Nv.30) y 1074 (clima) para 100% IV; en competitivo Starmie rinde #231 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Staryu&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/starmie/",
+          "context_label": "Evento GO: Twilight Wishes"
+        },
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Bonuses: Lucky Trade chance (Increased); Lucky Friend chance",
+            "(Increased)",
+            "Wild spawns: Clefairy, Staryu, Elgyem, Rockruff, Pikachu,",
+            "Espeon"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Aprovecha probabilidad aumentada de Intercambio con Suerte"
+          ],
+          "explanation": "Twilight Wishes: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro de especies del evento en tu caja:",
+          "search_string": "Clefairy,Staryu,Elgyem,Rockruff,Pikachu,Espeon&3*,4*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://www.serebii.net/pokemongo/events/twilightwishes.shtml",
+          "context_label": "Evento GO: Twilight Wishes"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON",
+        "Serebii GO"
+      ],
+      "urls": [
+        "https://leekduck.com/events/twilight-wishes-2026/",
+        "https://www.serebii.net/pokemongo/events/twilightwishes.shtml"
+      ],
+      "published_at": "2026-11-24T00:23:32Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-24T00:23:32Z"
+    },
+    {
       "id": "pogo:go-november-pass",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -845,6 +790,111 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:and-catch-cup-great-league-master-mega",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Liga Combates GO",
+      "title": "Master League and Mega Catch Cup: Great League Edition | Twilight Trails",
+      "title_original": "Master League and Mega Catch Cup: Great League Edition | Twilight Trails",
+      "summary": "The Liga Master and Mega Copa Captura: Liga Súper Edition will run from November 24, 2026, at 1:00 p.m. to December 1, 2026, at 1:00 p.m. PT. Trainers will also receive 4× Polvo Estelar from win rewards (this does not include end-of-set rewards). Liga Master All Pokémon are eligible. Mega Copa Captura: Liga Súper Edition Pokémon must be at or below 1,500 CP to enter. Mega-Evolved Pokémon are allowed.",
+      "action_guide": "Qué tienes que hacer: entra a Menú ➔ Combates (Liga Combates GO) y compite contra otros entrenadores con un equipo de 3 Pokémon dentro del límite de PC de la liga activa. Revisa abajo el ranking Top PvPoke y sus ataques ideales.",
+      "requires_battles": true,
+      "activities": [
+        "🏆 Combates PvP (Liga GO)"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-24",
+      "end_date": "2026-12-01",
+      "date_range_label": "24 nov 2026 -> 01 dic 2026",
+      "status": "activo",
+      "tactical_summary": "Liga Súper (1500 PC): #1 Actual: Melmetal • Score 93.9 (PvPoke) | Liga Master (Sin límite): #1 Actual: Palkia (Origin) • Score 98.3 (PvPoke)",
+      "search_filter": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant",
+      "guide_url": "https://leekduck.com/events/gbl-twilight-trails_master-league_mega-catch-cup-great-league-edition/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Liga Súper (1500 PC)",
+          "subtitle": "#1 Actual: Melmetal • Score 93.9 (PvPoke)",
+          "primary_type": "steel",
+          "badge_label": "META LIGA GBL",
+          "left_heading": "TOP 6 META Y IV IDEAL",
+          "left_rows": [
+            "#1 Melmetal (93.9) [4/10/14]",
+            "#2 Altaria (92.8) [4/12/13]",
+            "#3 Ninetales Oscuro (92.6) [4/15/14]",
+            "#4 Mimikyu (Busted) (92.0) [4/14/15]",
+            "#5 Cramorant (91.6) [5/15/13]",
+            "#6 Tinkaton (91.6) [4/15/14]"
+          ],
+          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
+          "right_rows": [
+            "#1 Thunder Shock • Double Iron Bash • Dynamic Punch",
+            "#2 Dragon Breath • Moonblast • Flamethrower",
+            "#3 Ember • Weather Ball (Fire) • Energy Ball",
+            "#4 Shadow Claw • Shadow Sneak • Play Rough",
+            "#5 Peck • Surf • Fly",
+            "Frenos al #1: Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro"
+          ],
+          "explanation": "Liga Súper (1500 PC) liderada por Melmetal (Thunder Shock + Double Iron Bash + Dynamic Punch); vigila counters como Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro.",
+          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
+          "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant,Tinkaton",
+          "info_label": "📊 Ver ranking PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/",
+          "context_label": "Evento GO: Liga Master y Mega Copa Captura: Edición Liga Súper | Senderos Crepusculares"
+        },
+        {
+          "title": "Liga Master (Sin límite)",
+          "subtitle": "#1 Actual: Palkia (Origin) • Score 98.0 (PvPoke)",
+          "primary_type": "water",
+          "badge_label": "META LIGA GBL",
+          "left_heading": "TOP 6 META Y IV IDEAL",
+          "left_rows": [
+            "#1 Palkia (Origin) (98.0)",
+            "#2 Zacian (Crowned Sword) (97.2)",
+            "#3 Kyurem (White) (93.8)",
+            "#4 Metagross (93.8)",
+            "#5 Kyogre (93.7)",
+            "#6 Dialga (Origin) (93.2)"
+          ],
+          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
+          "right_rows": [
+            "#1 Dragon Breath • Aqua Tail • Spacial Rend",
+            "#2 Metal Claw • Close Combat • Behemoth Blade",
+            "#3 Dragon Breath • Fusion Flare • Ice Burn",
+            "#4 Shadow Claw • Meteor Mash • Earthquake",
+            "#5 Waterfall • Avalanche • Origin Pulse",
+            "Frenos al #1: Dialga (Origin), Xerneas, Lunala"
+          ],
+          "explanation": "Liga Master (Sin límite) liderada por Palkia (Origin) (Dragon Breath + Aqua Tail + Spacial Rend); vigila counters como Dialga (Origin), Xerneas, Lunala.",
+          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
+          "search_string": "Palkia,Zacian,Kyurem,Metagross,Kyogre,Dialga",
+          "info_label": "📊 Ver ranking PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/10000/overall/",
+          "context_label": "Evento GO: Liga Master y Mega Copa Captura: Edición Liga Súper | Senderos Crepusculares"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/gbl-twilight-trails_master-league_mega-catch-cup-great-league-edition/"
+      ],
+      "published_at": "2026-11-24T00:23:32Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
       "id": "pogo:forme-in-incarnate-raids-shadow-tornadus",
@@ -1183,11 +1233,11 @@ window.POKE_ALERTS_DB = {
       "title": "Campaña de Celebración 2.º Aniversario Misiones",
       "title_original": "Second Anniversary Celebration Campaign Missions",
       "summary": "This event is a special event that offers chances to get sobres de cartas for completing Misiones",
-      "action_guide": "Evento de misiones que SÍ incluye combates. Entra a Inicio ➔ Misiones para revisar cada objetivo y usa cualquiera de los 3 mazos propuestos abajo.",
-      "requires_battles": true,
+      "action_guide": "NO toca hacer combates (no necesitas armar mazo). Solo entra en Inicio ➔ Misiones y dedícate a iniciar sesión cada día para llevarte gratis todos los premios listados abajo antes del cierre.",
+      "requires_battles": false,
       "activities": [
-        "⚔️ Hacer combates",
-        "📅 Iniciar sesión"
+        "📅 Iniciar sesión",
+        "✅ Sin combates"
       ],
       "milestones": [
         "Inicia sesión (Día 1) → 1× Deluxe Pack Mega Booster",
@@ -1207,7 +1257,7 @@ window.POKE_ALERTS_DB = {
         "Collect 70 cards → 12× Reloj de Arena de Sobres",
         "Collect 80 cards → 1× Gengar (Moneda)"
       ],
-      "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia para cumplirlo (sigo revisando si aparece uno mejor).",
+      "deck_intro": "",
       "search_aliases": "",
       "rewards": "Misiones: Inicia sesión (Día 1) → 1× Deluxe Pack Mega Booster | Inicia sesión (Día 2) → 1× Deluxe Pack ex Booster | Inicia sesión (Día 3) → 1× Deluxe Pack Mega Booster | Inicia sesión (Día 4) → 1× Deluxe Pack ex Booster | Inicia sesión (Día 5) → 1× Polvo Iris | Inicia sesión (Día 6) → 1× Deluxe Pack Mega Booster | Inicia sesión (Día 7) → 1× Deluxe Pack ex Booster | Inicia sesión (Día 8) → 1× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 9) → 1× Deluxe Pack Mega Booster | Inicia sesión (Día 10) → 3500× Polvo Iris | Inicia sesión (Día 11) → 1× Deluxe Pack ex Booster | Inicia sesión (Día 12) → 3500× Polvo Iris | Inicia sesión (Día 13) → 1× Fusión Dual Pikachu Booster | Inicia sesión (Día 14) → 3500× Polvo Iris | Collect 70 cards → 12× Reloj de Arena de Sobres | Collect 80 cards → 1× Gengar (Moneda)",
       "highlights": [
@@ -1220,89 +1270,10 @@ window.POKE_ALERTS_DB = {
       "end_date": "2026-12-15",
       "date_range_label": "30 oct 2026 -> 15 dic 2026",
       "status": "activo",
-      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Hoopa ex Mega Absol ex, Mega Altaria ex Espeon",
+      "tactical_summary": "",
       "search_filter": "",
       "guide_url": "https://ptcgpocket.gg/tier-list/",
-      "recommended_decks": [
-        {
-          "title": "Opción 1: Mega Charizard Y ex Entei ex",
-          "mission_tag": "Campeón torneo (47.6% WR • #2/325p (10-3))",
-          "energy_label": "Fuego",
-          "strategy": "Control en energía Fuego: Charizard habilita Blue's Provocation para arrastrar amenazas de la banca rival junto a Mega Charizard Y ex.",
-          "cards": [
-            "2× Charizard",
-            "2× Charmander",
-            "2× Charmeleon",
-            "2× Entei ex",
-            "1× Mega Charizard Y ex",
-            "2× Blue's Provocation",
-            "2× Flame Patch",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Copycat",
-            "1× Eviolite",
-            "1× Serena's Choice"
-          ],
-          "qr_payload": "C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ+IAJ+IBAg==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ%2BIAJ%2BIBAg%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 2: Hoopa ex Mega Absol ex",
-          "mission_tag": "Campeón torneo (51.0% WR • #2/180p (9-2))",
-          "energy_label": "Oscuridad",
-          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Hoopa ex",
-            "1× Darkrai ex",
-            "1× Mega Absol ex",
-            "2× Cyrus",
-            "2× Deceptive Needle",
-            "2× Lucky Ice Pop",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Mars",
-            "1× Pokémon Center Lady",
-            "1× Repel",
-            "1× Serena's Choice",
-            "1× X Speed"
-          ],
-          "qr_payload": "EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 3: Mega Altaria ex Espeon",
-          "mission_tag": "Campeón torneo (52.8% WR • #1/162p (10-2))",
-          "energy_label": "Psíquico",
-          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Espeon, Darkrai (Bad Dreams). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Darkrai",
-            "2× Eevee",
-            "2× Espeon",
-            "2× Swablu",
-            "1× Igglybuff",
-            "1× Mega Altaria ex",
-            "2× Copycat",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Sabrina",
-            "1× Small Balloon",
-            "1× Training Area"
-          ],
-          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        }
-      ],
+      "recommended_decks": [],
       "tactical_cards": [],
       "decks_checked_at": "2026-11-24T04:50:22Z",
       "decks_updated_at": "",
@@ -1598,11 +1569,11 @@ window.POKE_ALERTS_DB = {
       "title": "Pika Pika Pikachu Misiones",
       "title_original": "Pika Pika Pikachu Missions",
       "summary": "This event is a special year long log-in event focused around Pikachu to celebrate the main Pokémon Trading Card Game's 30th anniversary. It adds numerous cosmetic items as well as two special sobres de cartas which contain only Pikachu cards",
-      "action_guide": "Evento de misiones que SÍ incluye combates. Entra a Inicio ➔ Misiones para revisar cada objetivo y usa cualquiera de los 3 mazos propuestos abajo.",
-      "requires_battles": true,
+      "action_guide": "NO toca hacer combates (no necesitas armar mazo). Solo entra en Inicio ➔ Misiones y dedícate a iniciar sesión cada día para llevarte gratis todos los premios listados abajo antes del cierre.",
+      "requires_battles": false,
       "activities": [
-        "⚔️ Hacer combates",
-        "📅 Iniciar sesión"
+        "📅 Iniciar sesión",
+        "✅ Sin combates"
       ],
       "milestones": [
         "Inicia sesión (Día 1) → 1× Pika Pika! Pikachu Pack",
@@ -1617,7 +1588,7 @@ window.POKE_ALERTS_DB = {
         "Inicia sesión (Día 10) → 1× Pikachu ex Carta Promo",
         "🃏 Cartas y sobres destacados: Pikachu ex, Pika Pika! Pikachu Pack, Pika Pika! Pikachu Pack ex"
       ],
-      "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia para cumplirlo (sigo revisando si aparece uno mejor).",
+      "deck_intro": "",
       "search_aliases": "",
       "rewards": "Misiones: Inicia sesión (Día 1) → 1× Pika Pika! Pikachu Pack | Inicia sesión (Día 2) → 1× Pika Pika! Pikachu Pack | Inicia sesión (Día 3) → 1× Pikachu Psyduck and Pichu (Tapete) | Inicia sesión (Día 4) → 1× Pika Pika! Pikachu Pack | Inicia sesión (Día 5) → 1× Pikachu and Pichu (Fundas) | Inicia sesión (Día 6) → 1× Pikachu ver. 3 (Moneda) | Inicia sesión (Día 7) → 1× Pika Pika! Pikachu Pack | Inicia sesión (Día 8) → 1× Pikachu ver. 12 (Icon) | Inicia sesión (Día 9) → 1× Pika Pika! Pikachu Pack ex | Inicia sesión (Día 10) → 1× Pikachu ex Carta Promo | Cartas y sobres destacados: Pikachu ex, Pika Pika! Pikachu Pack, Pika Pika! Pikachu Pack ex",
       "highlights": [
@@ -1631,89 +1602,10 @@ window.POKE_ALERTS_DB = {
       "end_date": "2027-10-20",
       "date_range_label": "20 oct 2026 -> 20 oct 2027",
       "status": "activo",
-      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Hoopa ex Mega Absol ex, Mega Altaria ex Espeon",
+      "tactical_summary": "",
       "search_filter": "",
       "guide_url": "https://ptcgpocket.gg/tier-list/",
-      "recommended_decks": [
-        {
-          "title": "Opción 1: Mega Charizard Y ex Entei ex",
-          "mission_tag": "Campeón torneo (47.6% WR • #2/325p (10-3))",
-          "energy_label": "Fuego",
-          "strategy": "Control en energía Fuego: Charizard habilita Blue's Provocation para arrastrar amenazas de la banca rival junto a Mega Charizard Y ex.",
-          "cards": [
-            "2× Charizard",
-            "2× Charmander",
-            "2× Charmeleon",
-            "2× Entei ex",
-            "1× Mega Charizard Y ex",
-            "2× Blue's Provocation",
-            "2× Flame Patch",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Copycat",
-            "1× Eviolite",
-            "1× Serena's Choice"
-          ],
-          "qr_payload": "C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ+IAJ+IBAg==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ%2BIAJ%2BIBAg%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 2: Hoopa ex Mega Absol ex",
-          "mission_tag": "Campeón torneo (51.0% WR • #2/180p (9-2))",
-          "energy_label": "Oscuridad",
-          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Hoopa ex",
-            "1× Darkrai ex",
-            "1× Mega Absol ex",
-            "2× Cyrus",
-            "2× Deceptive Needle",
-            "2× Lucky Ice Pop",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Mars",
-            "1× Pokémon Center Lady",
-            "1× Repel",
-            "1× Serena's Choice",
-            "1× X Speed"
-          ],
-          "qr_payload": "EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 3: Mega Altaria ex Espeon",
-          "mission_tag": "Campeón torneo (52.8% WR • #1/162p (10-2))",
-          "energy_label": "Psíquico",
-          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Espeon, Darkrai (Bad Dreams). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Darkrai",
-            "2× Eevee",
-            "2× Espeon",
-            "2× Swablu",
-            "1× Igglybuff",
-            "1× Mega Altaria ex",
-            "2× Copycat",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Sabrina",
-            "1× Small Balloon",
-            "1× Training Area"
-          ],
-          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        }
-      ],
+      "recommended_decks": [],
       "tactical_cards": [],
       "decks_checked_at": "2026-11-24T04:50:22Z",
       "decks_updated_at": "",
@@ -2365,7 +2257,7 @@ window.POKE_ALERTS_DB = {
         "Ultra Ball Rank 4 → Ultra Ball Rank 2"
       ],
       "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia tomados del meta real de torneos para cumplirlo (sigo revisando si aparece uno mejor).",
-      "search_aliases": "Evento de Emblemas Emblem Event Versus",
+      "search_aliases": "",
       "rewards": "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0 | Master Ball → 10 -10 0 | Rank Season End → Rank New Season | Beginner Rank 1-4 → No change | Poke Ball Rank 1-4 → No change | Great Ball Rank 1 → No change | Great Ball Rank 2 → Great Ball Rank 1 | Great Ball Rank 3 → Great Ball Rank 2 | Great Ball Rank 4 → Great Ball Rank 2 | Ultra Ball Rank 1 → Great Ball Rank 3 | Ultra Ball Rank 2 → Great Ball Rank 4 | Ultra Ball Rank 3 → Ultra Ball Rank 1 | Ultra Ball Rank 4 → Ultra Ball Rank 2",
       "highlights": [
         "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0",
@@ -2474,7 +2366,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T04:50:35Z"
+      "last_updated_at": "2026-11-24T05:23:24Z"
     },
     {
       "id": "tcgp:card-holidays-promo-themed-winter",
@@ -2487,12 +2379,12 @@ window.POKE_ALERTS_DB = {
       "title_original": "Winter Holidays Themed Promo Card Event",
       "summary": "Ring in the Winter Holidays 2026 with this set of special Misiones! Complete them to earn:",
       "action_guide": "NO toca hacer combates. Entra al menú Elección Mágica varias veces al día: las elecciones extra gratuitas y especiales (Chansey Pick) rotan cada ~30 min a 1 hora para sacar las cartas destacadas y cupones de tienda.",
-      "requires_battles": true,
+      "requires_battles": false,
       "activities": [
-        "⚔️ Hacer combates",
         "📦 Abrir sobres",
         "✨ Elección Mágica",
-        "📅 Iniciar sesión"
+        "📅 Iniciar sesión",
+        "✅ Sin combates"
       ],
       "milestones": [
         "Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena",
@@ -2512,7 +2404,7 @@ window.POKE_ALERTS_DB = {
         "Collect 60 cards → 12× Relojes de Arena",
         "Abre 2 sobres con energía → 1× Sobre Promo"
       ],
-      "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia para cumplirlo (sigo revisando si aparece uno mejor).",
+      "deck_intro": "",
       "search_aliases": "",
       "rewards": "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
       "highlights": [
@@ -2525,89 +2417,10 @@ window.POKE_ALERTS_DB = {
       "end_date": null,
       "date_range_label": "Desde 10 nov 2026 (sin fecha fin publicada)",
       "status": "activo",
-      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Hoopa ex Mega Absol ex, Mega Altaria ex Espeon",
+      "tactical_summary": "",
       "search_filter": "",
       "guide_url": "https://ptcgpocket.gg/tier-list/",
-      "recommended_decks": [
-        {
-          "title": "Opción 1: Mega Charizard Y ex Entei ex",
-          "mission_tag": "Campeón torneo (47.6% WR • #2/325p (10-3))",
-          "energy_label": "Fuego",
-          "strategy": "Control en energía Fuego: Charizard habilita Blue's Provocation para arrastrar amenazas de la banca rival junto a Mega Charizard Y ex.",
-          "cards": [
-            "2× Charizard",
-            "2× Charmander",
-            "2× Charmeleon",
-            "2× Entei ex",
-            "1× Mega Charizard Y ex",
-            "2× Blue's Provocation",
-            "2× Flame Patch",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Copycat",
-            "1× Eviolite",
-            "1× Serena's Choice"
-          ],
-          "qr_payload": "C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ+IAJ+IBAg==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ%2BIAJ%2BIBAg%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 2: Hoopa ex Mega Absol ex",
-          "mission_tag": "Campeón torneo (51.0% WR • #2/180p (9-2))",
-          "energy_label": "Oscuridad",
-          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Hoopa ex",
-            "1× Darkrai ex",
-            "1× Mega Absol ex",
-            "2× Cyrus",
-            "2× Deceptive Needle",
-            "2× Lucky Ice Pop",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Mars",
-            "1× Pokémon Center Lady",
-            "1× Repel",
-            "1× Serena's Choice",
-            "1× X Speed"
-          ],
-          "qr_payload": "EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 3: Mega Altaria ex Espeon",
-          "mission_tag": "Campeón torneo (52.8% WR • #1/162p (10-2))",
-          "energy_label": "Psíquico",
-          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Espeon, Darkrai (Bad Dreams). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Darkrai",
-            "2× Eevee",
-            "2× Espeon",
-            "2× Swablu",
-            "1× Igglybuff",
-            "1× Mega Altaria ex",
-            "2× Copycat",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Sabrina",
-            "1× Small Balloon",
-            "1× Training Area"
-          ],
-          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        }
-      ],
+      "recommended_decks": [],
       "tactical_cards": [],
       "decks_checked_at": "2026-11-24T04:50:22Z",
       "decks_updated_at": "",
@@ -2621,74 +2434,6 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-24T04:50:35Z"
-    },
-    {
-      "id": "pogo:bonificacion-con-consigan-de-doble-el-pokemonedas",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!",
-      "title_original": "Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!",
-      "summary": "¡Las ofertas de Black Friday llegan temprano a la Tienda en línea de Pokémon GO !",
-      "action_guide": "¡Las ofertas de Black Friday llegan temprano a la Tienda en línea de Pokémon GO !",
-      "requires_battles": false,
-      "activities": [
-        "📢 Anuncio oficial"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-09",
-      "end_date": null,
-      "date_range_label": "09 nov 2026 -> 09 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "4*,3*,shiny",
-      "guide_url": "https://pokemongolive.com/es_MX/news/black-friday-2026",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "electric",
-          "badge_label": "NOTICIA GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "¡Las ofertas de Black Friday llegan temprano a la Tienda en",
-            "línea de Pokémon GO !"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Revisa Investigaciones Temporales antes del cierre",
-            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
-            "Marca el evento en el panel al completar sus premios"
-          ],
-          "explanation": "Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro general para valorar capturas del evento:",
-          "search_string": "4*,3*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://pokemongolive.com/es_MX/news/black-friday-2026",
-          "context_label": "Noticia GO: Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/black-friday-2026"
-      ],
-      "published_at": "2026-11-18T16:29:39Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
       "id": "pogo:campeonato-consigue-de-del-internacional-pokemon-recompensas-siguelo",
@@ -2833,75 +2578,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
-      "id": "pogo:apunten-calendario-de-dias-el-en-la-los",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "¡Apunten en el calendario los Días de la Comunidad de la próxima temporada!",
-      "title_original": "¡Apunten en el calendario los Días de la Comunidad de la próxima temporada!",
-      "summary": "¡Nos complace compartir con ustedes las fechas de los Días de la Comunidad de la próxima temporada!",
-      "action_guide": "Qué tienes que hacer: sal a capturar en estado salvaje durante las 3 horas del evento con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL y buscar Shiny. Muy importante: evoluciona antes de 5 horas tras el cierre para obtener el Ataque Exclusivo (Legacy).",
-      "requires_battles": false,
-      "activities": [
-        "📢 Anuncio oficial"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-09",
-      "end_date": null,
-      "date_range_label": "09 nov 2026 -> 09 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "4*,3*,shiny",
-      "guide_url": "https://pokemongolive.com/es_MX/news/save-the-date-s25",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Plan Día de la Comunidad",
-          "subtitle": "Ventana Legacy, Mega Caramelos XL y limpieza rápida",
-          "primary_type": "grass",
-          "badge_label": "PLAN CD GO",
-          "left_heading": "REGLAS CLAVE DEL EVENTO",
-          "left_rows": [
-            "Ventana principal de capturas (3 horas locales)",
-            "Evoluciona hasta 5 h después para Ataque Legacy",
-            "Mayor probabilidad de Shiny y Módulos Cebo extendidos"
-          ],
-          "right_heading": "CHECKLIST EN CAJA Y CAPTURA",
-          "right_rows": [
-            "Activa Mega Evolución Nv.3 del tipo del protagonista",
-            "Conserva 4* (Hundo) + IV bajos en ataque para PvP",
-            "Limpia caja al instante con el filtro inferior"
-          ],
-          "explanation": "Ten espacio libre en caja, Ultra Balls listas y una Mega Nv.3 activa durante todo el horario para multiplicar Caramelos XL y no perder el ataque exclusivo al evolucionar.",
-          "search_label": "Filtro de limpieza rápida (no shiny / no 100%):",
-          "search_string": "0*,1*,2*&!shiny&!4*",
-          "info_label": "📘 Ver calendario oficial",
-          "info_url": "https://pokemongolive.com/es_MX/news/save-the-date-s25",
-          "context_label": "Evento GO: ¡Apunten en el calendario los Días de la Comunidad de la próxima temporada!"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/save-the-date-s25"
-      ],
-      "published_at": "2026-11-18T16:29:39Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
       "id": "pogo:capturen-con-duolingo-go-idioma-nuevo-pokemon-un",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -3038,6 +2714,73 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-20T18:23:29Z",
       "first_seen_at": "2026-11-20T18:23:29Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:alegria-compartan-con-de-la-los-pago-regalos",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!",
+      "title_original": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!",
+      "summary": "En ciertas regiones, tendrán más formas de alegrarle el día a otro Entrenador. Los Entrenadores de Pokémon GO en Australia, Alemania, Corea del Sur, México y Francia serán los primeros en tener acceso a una lista ampliada de objetos que se pueden enviar como regalos de pago a amigos, familiares y otros Entrenadores.",
+      "action_guide": "En ciertas regiones, tendrán más formas de alegrarle el día a otro Entrenador. Los Entrenadores de Pokémon GO en Australia, Alemania, Corea del Sur, México y Francia serán los primeros en tener acceso a una lista...",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-24",
+      "end_date": null,
+      "date_range_label": "24 nov 2026 -> 24 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/paid-gifts-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "En ciertas regiones, tendrán más formas de alegrarle el día a",
+            "otro Entrenador. Los Entrenadores de Pokémon GO en Australia,",
+            "Alemania, Corea del Sur, México y Francia serán los primeros"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Abre y envía regalos hasta el tope diario del Pase"
+          ],
+          "explanation": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/paid-gifts-2026",
+          "context_label": "Noticia GO: ¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/paid-gifts-2026"
+      ],
+      "published_at": "2026-11-24T01:23:19Z",
+      "first_seen_at": "2026-11-24T01:23:19Z",
+      "last_updated_at": "2026-11-24T01:23:19Z"
     },
     {
       "id": "pogo:articulos-avatar-de-el-go-llegan-para-pokemon",
@@ -3479,147 +3222,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
-      "id": "pogo:twilight-wishes",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Evento Pokémon GO",
-      "title": "Deseos crepusculares",
-      "title_original": "Twilight Wishes",
-      "summary": "¡Celebra los Deseos del Crepúsculo con Espeon con un pañuelo para el sol, Umbreon con un pañuelo para la luna y Rockruff! Disfrute de mayores posibilidades de encontrar Staryu Variocolor y Elgyem Variocolor, incursiones con temas de eventos y Investigación de Campo, y recompensas y Bonificaciones del evento GO Pass. Twilight Wishes se extiende desde el martes 24 de noviembre a las 10:00 a. m. hasta el lunes 30 de noviembre de 2026 a las 8:00 p. m. hora local.",
-      "action_guide": "Qué tienes que hacer: captura los Pokémon destacados del evento y realiza intercambios diarios con tus amigos para aprovechar el aumento de probabilidad de Amistad con Suerte e Intercambios con Suerte.",
-      "requires_battles": false,
-      "activities": [
-        "🤝 Intercambios con Suerte",
-        "🌿 Capturas destacadas"
-      ],
-      "milestones": [
-        "🔥 Mayor probabilidad de encontrar Staryu Variocolor y Elgyem Variocolor",
-        "🔥 Mayor probabilidad de conseguir Pokémon con Suerte al intercambiar",
-        "🔥 Mayor probabilidad de lograr Amistad con Suerte",
-        "🔥 2× Polvo Estelar al capturar Pokémon",
-        "🔥 probabilidad de Intercambio con Suerte (aumentada)",
-        "🔥 probabilidad de Amistad con Suerte (aumentada)",
-        "🌿 Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon",
-        "🔥 Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor",
-        "🔥 Mayor probabilidad de obtener Pokémon con Suerte en intercambios",
-        "🔥 Mayor probabilidad de convertirse en Amistad con Suerte"
-      ],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Bonificaciones: Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de obtener Pokémon con Suerte en intercambios; Mayor probabilidad de convertirse en Amistad con Suerte; 2× Polvo Estelar para capturar Pokémon",
-      "highlights": [
-        "Bonificaciones: Mayor probabilidad de encontrar Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de conseguir Pokémon con Suerte al intercambiar; Mayor probabilidad de lograr Amistad con Suerte; 2× Polvo Estelar al capturar Pokémon",
-        "Bonificaciones: probabilidad de Intercambio con Suerte (aumentada); probabilidad de Amistad con Suerte (aumentada)",
-        "Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon",
-        "Bonificaciones: Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de obtener Pokémon con Suerte en intercambios; Mayor probabilidad de convertirse en Amistad con Suerte; 2× Polvo Estelar para capturar Pokémon"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-24",
-      "end_date": "2026-11-30",
-      "date_range_label": "24 nov 2026 -> 30 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "intercambiar&!favorito",
-      "guide_url": "https://leekduck.com/events/twilight-wishes-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Clefairy → Clefable",
-          "subtitle": "Tipos: Hada • Salvaje Hundo Nv.30/35: 990 / 1073",
-          "primary_type": "fairy",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Clefairy (PC 100%)",
-            "• Salvaje máx Nv.30: 990",
-            "• Clima máx Nv.35:  1073",
-            "• Misión / Huevo:   495 / 660",
-            "Final: Clefable",
-            "• PC 100% Nv.40/50: 2437 / 2755"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Clefable #36 Ultra 2500 (89.2) • IV 4/12/15",
-            "  -> Fairy Wind / Meteor Mash / Draining Kiss",
-            "PvE Raids (Hada): Charm + Meteor Mash"
-          ],
-          "explanation": "Familia Clefairy → Clefable: revisa 990 (Nv.30) y 1073 (clima) para 100% IV; en competitivo Clefable rinde #36 en Ultra 2500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Clefairy&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/clefable/",
-          "context_label": "Evento GO: Twilight Wishes"
-        },
-        {
-          "title": "Staryu → Starmie",
-          "subtitle": "Tipos: Agua/Psíquico • Salvaje Hundo Nv.30/35: 991 / 1074",
-          "primary_type": "water",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Staryu (PC 100%)",
-            "• Salvaje máx Nv.30: 991",
-            "• Clima máx Nv.35:  1074",
-            "• Misión / Huevo:   495 / 661",
-            "Final: Starmie",
-            "• PC 100% Nv.40/50: 2584 / 2922"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "Starmie #231 Ultra 2500 (81.3) • IV 4/14/15",
-            "  -> Psywave / Aqua Jet / Power Gem",
-            "PvE Raids (Agua): Psywave + Surf"
-          ],
-          "explanation": "Familia Staryu → Starmie: revisa 991 (Nv.30) y 1074 (clima) para 100% IV; en competitivo Starmie rinde #231 en Ultra 2500.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Staryu&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/starmie/",
-          "context_label": "Evento GO: Twilight Wishes"
-        },
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "water",
-          "badge_label": "GUÍA EVENTO GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "Bonuses: Lucky Trade chance (Increased); Lucky Friend chance",
-            "(Increased)",
-            "Wild spawns: Clefairy, Staryu, Elgyem, Rockruff, Pikachu,",
-            "Espeon"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Aprovecha probabilidad aumentada de Intercambio con Suerte"
-          ],
-          "explanation": "Twilight Wishes: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro de especies del evento en tu caja:",
-          "search_string": "Clefairy,Staryu,Elgyem,Rockruff,Pikachu,Espeon&3*,4*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://www.serebii.net/pokemongo/events/twilightwishes.shtml",
-          "context_label": "Evento GO: Twilight Wishes"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON",
-        "Serebii GO"
-      ],
-      "urls": [
-        "https://leekduck.com/events/twilight-wishes-2026/",
-        "https://www.serebii.net/pokemongo/events/twilightwishes.shtml"
-      ],
-      "published_at": "2026-11-24T00:23:32Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T00:23:32Z"
-    },
-    {
       "id": "pogo:and-attack-defense-deoxys-formes-in-normal-speed",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -3760,112 +3362,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T04:50:35Z"
-    },
-    {
-      "id": "pogo:and-catch-cup-great-league-master-mega",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Liga Combates GO",
-      "title": "Master League and Mega Catch Cup: Great League Edition | Twilight Trails",
-      "title_original": "Master League and Mega Catch Cup: Great League Edition | Twilight Trails",
-      "summary": "The Liga Master and Mega Copa Captura: Liga Súper Edition will run from November 24, 2026, at 1:00 p.m. to December 1, 2026, at 1:00 p.m. PT. Trainers will also receive 4× Polvo Estelar from win rewards (this does not include end-of-set rewards). Liga Master All Pokémon are eligible. Mega Copa Captura: Liga Súper Edition Pokémon must be at or below 1,500 CP to enter. Mega-Evolved Pokémon are allowed.",
-      "action_guide": "Qué tienes que hacer: entra a Menú ➔ Combates (Liga Combates GO) y compite contra otros entrenadores con un equipo de 3 Pokémon dentro del límite de PC de la liga activa. Revisa abajo el ranking Top PvPoke y sus ataques ideales.",
-      "requires_battles": true,
-      "activities": [
-        "🏆 Combates PvP (Liga GO)"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-24",
-      "end_date": "2026-12-01",
-      "date_range_label": "24 nov 2026 -> 01 dic 2026",
-      "status": "proximo",
-      "tactical_summary": "Liga Súper (1500 PC): #1 Actual: Melmetal • Score 93.9 (PvPoke) | Liga Master (Sin límite): #1 Actual: Palkia (Origin) • Score 98.3 (PvPoke)",
-      "search_filter": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant",
-      "guide_url": "https://leekduck.com/events/gbl-twilight-trails_master-league_mega-catch-cup-great-league-edition/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Liga Súper (1500 PC)",
-          "subtitle": "#1 Actual: Melmetal • Score 93.9 (PvPoke)",
-          "primary_type": "steel",
-          "badge_label": "META LIGA GBL",
-          "left_heading": "TOP 6 META Y IV IDEAL",
-          "left_rows": [
-            "#1 Melmetal (93.9) [4/10/14]",
-            "#2 Altaria (92.8) [4/12/13]",
-            "#3 Ninetales Oscuro (92.6) [4/15/14]",
-            "#4 Mimikyu (Busted) (92.0) [4/14/15]",
-            "#5 Cramorant (91.6) [5/15/13]",
-            "#6 Tinkaton (91.6) [4/15/14]"
-          ],
-          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
-          "right_rows": [
-            "#1 Thunder Shock • Double Iron Bash • Dynamic Punch",
-            "#2 Dragon Breath • Moonblast • Flamethrower",
-            "#3 Ember • Weather Ball (Fire) • Energy Ball",
-            "#4 Shadow Claw • Shadow Sneak • Play Rough",
-            "#5 Peck • Surf • Fly",
-            "Frenos al #1: Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro"
-          ],
-          "explanation": "Liga Súper (1500 PC) liderada por Melmetal (Thunder Shock + Double Iron Bash + Dynamic Punch); vigila counters como Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro.",
-          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
-          "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant,Tinkaton",
-          "info_label": "📊 Ver ranking PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/",
-          "context_label": "Evento GO: Liga Master y Mega Copa Captura: Edición Liga Súper | Senderos Crepusculares"
-        },
-        {
-          "title": "Liga Master (Sin límite)",
-          "subtitle": "#1 Actual: Palkia (Origin) • Score 98.0 (PvPoke)",
-          "primary_type": "water",
-          "badge_label": "META LIGA GBL",
-          "left_heading": "TOP 6 META Y IV IDEAL",
-          "left_rows": [
-            "#1 Palkia (Origin) (98.0)",
-            "#2 Zacian (Crowned Sword) (97.2)",
-            "#3 Kyurem (White) (93.8)",
-            "#4 Metagross (93.8)",
-            "#5 Kyogre (93.7)",
-            "#6 Dialga (Origin) (93.2)"
-          ],
-          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
-          "right_rows": [
-            "#1 Dragon Breath • Aqua Tail • Spacial Rend",
-            "#2 Metal Claw • Close Combat • Behemoth Blade",
-            "#3 Dragon Breath • Fusion Flare • Ice Burn",
-            "#4 Shadow Claw • Meteor Mash • Earthquake",
-            "#5 Waterfall • Avalanche • Origin Pulse",
-            "Frenos al #1: Dialga (Origin), Xerneas, Lunala"
-          ],
-          "explanation": "Liga Master (Sin límite) liderada por Palkia (Origin) (Dragon Breath + Aqua Tail + Spacial Rend); vigila counters como Dialga (Origin), Xerneas, Lunala.",
-          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
-          "search_string": "Palkia,Zacian,Kyurem,Metagross,Kyogre,Dialga",
-          "info_label": "📊 Ver ranking PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/10000/overall/",
-          "context_label": "Evento GO: Liga Master y Mega Copa Captura: Edición Liga Súper | Senderos Crepusculares"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/gbl-twilight-trails_master-league_mega-catch-cup-great-league-edition/"
-      ],
-      "published_at": "2026-11-24T00:23:32Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T00:23:32Z"
+      "last_updated_at": "2026-11-24T05:23:24Z"
     },
     {
       "id": "pogo:in-mega-metagross-raids",
@@ -4554,7 +4051,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T04:50:35Z"
+      "last_updated_at": "2026-11-24T05:23:24Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4625,7 +4122,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T04:50:35Z"
+      "last_updated_at": "2026-11-24T05:23:24Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4766,7 +4263,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T04:50:35Z"
+      "last_updated_at": "2026-11-24T05:23:24Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
@@ -5271,73 +4768,6 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:alegria-compartan-con-de-la-los-pago-regalos",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!",
-      "title_original": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!",
-      "summary": "En ciertas regiones, tendrán más formas de alegrarle el día a otro Entrenador. Los Entrenadores de Pokémon GO en Australia, Alemania, Corea del Sur, México y Francia serán los primeros en tener acceso a una lista ampliada de objetos que se pueden enviar como regalos de pago a amigos, familiares y otros Entrenadores.",
-      "action_guide": "En ciertas regiones, tendrán más formas de alegrarle el día a otro Entrenador. Los Entrenadores de Pokémon GO en Australia, Alemania, Corea del Sur, México y Francia serán los primeros en tener acceso a una lista...",
-      "requires_battles": false,
-      "activities": [
-        "📢 Anuncio oficial"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-24",
-      "end_date": null,
-      "date_range_label": "24 nov 2026 -> 24 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "4*,3*,shiny",
-      "guide_url": "https://pokemongolive.com/es_MX/news/paid-gifts-2026",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "electric",
-          "badge_label": "NOTICIA GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "En ciertas regiones, tendrán más formas de alegrarle el día a",
-            "otro Entrenador. Los Entrenadores de Pokémon GO en Australia,",
-            "Alemania, Corea del Sur, México y Francia serán los primeros"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Abre y envía regalos hasta el tope diario del Pase"
-          ],
-          "explanation": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro general para valorar capturas del evento:",
-          "search_string": "4*,3*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://pokemongolive.com/es_MX/news/paid-gifts-2026",
-          "context_label": "Noticia GO: ¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/paid-gifts-2026"
-      ],
-      "published_at": "2026-11-24T01:23:19Z",
-      "first_seen_at": "2026-11-24T01:23:19Z",
-      "last_updated_at": "2026-11-24T01:23:19Z"
     },
     {
       "id": "pogo:and-cresselia-darkrai-hour-raid",
@@ -6104,6 +5534,202 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
+      "id": "pogo:dynamax-trails",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Combates Max",
+      "title": "Dynamax Trails",
+      "title_original": "Dynamax Trails",
+      "summary": "¡Prepárate para una semana de Combates Max! Los Pokémon Dynamax vuelven, las Partículas Max están apareciendo en estado salvaje y Eternamax Eternatus regresa a los Nodos Energéticos durante las Rutas Dynamax. El evento Rutas Dynamax tendrá lugar del 16 de noviembre de 2026 a las 10:00 al 23 de noviembre de 2026 a las 20:00, hora local.",
+      "action_guide": "Qué tienes que hacer: camina hacia los Nodos Energéticos (torres moradas) en el mapa, recoge tu cupo diario de Partículas Max y vence al jefe en Combates Max usando Pokémon Dinamax/Gigamax con ventaja de tipo (prioriza subir el Ataque Max). Revisa abajo el PC 100% IV y counters.",
+      "requires_battles": true,
+      "activities": [
+        "🌀 Combates Max en Nodos"
+      ],
+      "milestones": [
+        "🔥 Probabilidad de recibir Partículas Max al capturar Pokémon del evento en estado salvaje o tras Combates Max",
+        "🔥 Habrá más Nodos Energéticos activos de lo habitual",
+        "🔥 2× Polvo Estelar por captura",
+        "🔥 1/2 del coste de Caramelos y Polvo Estelar para activar el Efecto de Aventura Cañón Dynamax.",
+        "🔥 Partículas Max from Event Pokémon (Small chance)",
+        "🔥 Catch Polvo Estelar (*2 (GO Pass Tier 1))",
+        "🔥 Dynamax Cannon costs (50% (GO Pass Tier 2))",
+        "🌿 Pokémon salvajes: Bulbasaur, Charmander, Squirtle, Caterpie, Pikachu, Growlithe"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Bonificaciones: Probabilidad de recibir Partículas Max al capturar Pokémon del evento en estado salvaje o tras Combates Max; Habrá más Nodos Energéticos activos de lo habitual; 2× Polvo Estelar por captura; 1/2 del coste de Caramelos y Polvo Estelar para activar el Efecto de Aventura Cañón Dynamax.",
+      "highlights": [
+        "Bonificaciones: Probabilidad de recibir Partículas Max al capturar Pokémon del evento en estado salvaje o tras Combates Max; Habrá más Nodos Energéticos activos de lo habitual; 2× Polvo Estelar por captura; 1/2 del coste de Caramelos y Polvo Estelar para activar el Efecto de Aventura Cañón Dynamax.",
+        "Bonificaciones: Partículas Max from Event Pokémon (Small chance); Catch Polvo Estelar (*2 (GO Pass Tier 1)); Dynamax Cannon costs (50% (GO Pass Tier 2))",
+        "Pokémon salvajes: Bulbasaur, Charmander, Squirtle, Caterpie, Pikachu, Growlithe"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-16",
+      "end_date": "2026-11-23",
+      "date_range_label": "16 nov 2026 -> 23 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Eternatus (Eternamax) (PC 100%: 2530 (Nv.20) • 3163 (Nv.25))",
+      "search_filter": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
+      "guide_url": "https://leekduck.com/events/dynamax-trails-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Eternatus",
+          "subtitle": "PC 100%: 2530 (Nv.20) • 3163 (Nv.25)",
+          "primary_type": "poison",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Veneno/Dragón",
+            "PC 100% Nv.20: 2530",
+            "PC 100% Clima Nv.25: 3163",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Dragón (×1.6)",
+            "• Hielo (×1.6)",
+            "• Psíquico (×1.6)",
+            "• Tierra (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Eternatus (Dragon Tail + Dynamax Cannon)",
+            "2. Kyurem (Black) (Dragon Tail + Freeze Shock)",
+            "3. Groudon Primigenio (Mud Shot + Precipice Blades)",
+            "4. Regigigas Oscuro (Zen Headbutt + Crush Grip)",
+            "5. Latios Oscuro (Dragon Breath + Luster Purge)",
+            "6. Dialga (Origin) (Dragon Breath + Roar of Time)"
+          ],
+          "explanation": "Vulnerable a Dragón, Hielo, Psíquico. Lidera tu equipo con Eternatus y verifica el 100% IV al capturar: 2530 (normal) o 3163 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Eternatus,Kyurem,Groudon,Regigigas,Latios,Dialga",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Dynamax Trails"
+        },
+        {
+          "title": "Estrategia Combates Max",
+          "subtitle": "Gestión de Partículas Max y Nodos Energéticos",
+          "primary_type": "dragon",
+          "badge_label": "GUÍA MAX GO",
+          "left_heading": "BONUS Y OBJETIVOS DEL EVENTO",
+          "left_rows": [
+            "Bonuses: Max Particles from Event Pokémon (Small chance);",
+            "Catch Stardust (*2 (GO Pass Tier 1)); Dynamax Cannon costs",
+            "Wild spawns: Bulbasaur, Charmander, Squirtle, Caterpie,",
+            "Pikachu, Growlithe"
+          ],
+          "right_heading": "RUTA ÓPTIMA EN NODOS",
+          "right_rows": [
+            "Recarga límite diario de Partículas Max en Nodos",
+            "Prioriza subir Ataque Max antes que Espíritu/Barrera",
+            "Usa equipo con ventaja directa frente al jefe del Nodo"
+          ],
+          "explanation": "Llega con reserva completa de Partículas Max, cobra las de Nodos Energéticos en cada fase y filtra tus Dinamax/Gigamax antes de entrar.",
+          "search_label": "Filtro Dinamax / Gigamax en caja:",
+          "search_string": "Bulbasaur,Charmander,Squirtle,Caterpie,Pikachu,Growlithe,Eternatus&3*,4*",
+          "info_label": "📘 Ver detalle oficial",
+          "info_url": "https://www.serebii.net/pokemongo/events/dynamaxtrails.shtml",
+          "context_label": "Evento GO: Dynamax Trails"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON",
+        "Serebii GO"
+      ],
+      "urls": [
+        "https://leekduck.com/events/dynamax-trails-2026/",
+        "https://www.serebii.net/pokemongo/events/dynamaxtrails.shtml"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:during-dynamax-espurr-max-monday",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Combates Max",
+      "title": "Espurr Dynamax durante Lunes Max",
+      "title_original": "Dynamax Espurr during Max Monday",
+      "summary": "El Espurr Dynamax puede aparecer en los Combates Max desde el 23 de noviembre de 2026 hasta el 29 de noviembre de 2026. Estos Pokémon Dynamax pueden aparecer en los Combates Max durante toda esta temporada. Los Combates Max estarán disponibles de 6:00 a 21:00 hora local los lunes. Los Nodos Energéticos se actualizarán con más frecuencia. Los lunes habrá más Nodos Energéticos activos que el resto de la semana.",
+      "action_guide": "Qué tienes que hacer: camina hacia los Nodos Energéticos (torres moradas) en el mapa (con hora destacada el lunes de 6:00 a 7:00 p. m. hora local), recoge tu cupo diario de Partículas Max y vence al jefe en Combates Max usando Pokémon Dinamax/Gigamax con ventaja de tipo (prioriza subir el Ataque Max). Revisa abajo el PC 100% IV y counters.",
+      "requires_battles": true,
+      "activities": [
+        "🌀 Combates Max en Nodos",
+        "⏰ Lunes 6:00–7:00 p. m."
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-23",
+      "end_date": "2026-11-23",
+      "date_range_label": "23 nov 2026 -> 23 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Espurr: PC 100%: 719 (Nv.20) • 899 (Nv.25)",
+      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+      "guide_url": "https://leekduck.com/events/max-mondays-2026-11-23/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Espurr",
+          "subtitle": "PC 100%: 719 (Nv.20) • 899 (Nv.25)",
+          "primary_type": "psychic",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Psíquico",
+            "PC 100% Nv.20: 719",
+            "PC 100% Clima Nv.25: 899",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Siniestro (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "3. Mega Heracross (Fury Cutter + Megahorn)",
+            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
+            "5. Darkrai Oscuro (Snarl + Foul Play)",
+            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+          ],
+          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 719 (normal) o 899 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Dynamax Espurr durante Lunes Max"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/max-mondays-2026-11-23/"
+      ],
+      "published_at": "2026-11-23T00:23:23Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
       "id": "tcgp:4-card-collection-deck-elite-gift-handy",
       "game": "tcgp",
       "game_label": "Pokémon TCG Pocket",
@@ -6523,6 +6149,143 @@ window.POKE_ALERTS_DB = {
         "📢 Anuncio oficial"
       ],
       "deck_intro": ""
+    },
+    {
+      "id": "pogo:bonificacion-con-consigan-de-doble-el-pokemonedas",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!",
+      "title_original": "Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!",
+      "summary": "¡Las ofertas de Black Friday llegan temprano a la Tienda en línea de Pokémon GO !",
+      "action_guide": "¡Las ofertas de Black Friday llegan temprano a la Tienda en línea de Pokémon GO !",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-09",
+      "end_date": null,
+      "date_range_label": "09 nov 2026 -> 09 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/black-friday-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "¡Las ofertas de Black Friday llegan temprano a la Tienda en",
+            "línea de Pokémon GO !"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Revisa Investigaciones Temporales antes del cierre",
+            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
+            "Marca el evento en el panel al completar sus premios"
+          ],
+          "explanation": "Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/black-friday-2026",
+          "context_label": "Noticia GO: Consigan el doble de bonificación de Pokémonedas con nuestra oferta del Black Friday!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/black-friday-2026"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:apunten-calendario-de-dias-el-en-la-los",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Apunten en el calendario los Días de la Comunidad de la próxima temporada!",
+      "title_original": "¡Apunten en el calendario los Días de la Comunidad de la próxima temporada!",
+      "summary": "¡Nos complace compartir con ustedes las fechas de los Días de la Comunidad de la próxima temporada!",
+      "action_guide": "Qué tienes que hacer: sal a capturar en estado salvaje durante las 3 horas del evento con una Mega Evolución Nv.3 del mismo tipo activa para multiplicar Caramelos XL y buscar Shiny. Muy importante: evoluciona antes de 5 horas tras el cierre para obtener el Ataque Exclusivo (Legacy).",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-09",
+      "end_date": null,
+      "date_range_label": "09 nov 2026 -> 09 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/save-the-date-s25",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Plan Día de la Comunidad",
+          "subtitle": "Ventana Legacy, Mega Caramelos XL y limpieza rápida",
+          "primary_type": "grass",
+          "badge_label": "PLAN CD GO",
+          "left_heading": "REGLAS CLAVE DEL EVENTO",
+          "left_rows": [
+            "Ventana principal de capturas (3 horas locales)",
+            "Evoluciona hasta 5 h después para Ataque Legacy",
+            "Mayor probabilidad de Shiny y Módulos Cebo extendidos"
+          ],
+          "right_heading": "CHECKLIST EN CAJA Y CAPTURA",
+          "right_rows": [
+            "Activa Mega Evolución Nv.3 del tipo del protagonista",
+            "Conserva 4* (Hundo) + IV bajos en ataque para PvP",
+            "Limpia caja al instante con el filtro inferior"
+          ],
+          "explanation": "Ten espacio libre en caja, Ultra Balls listas y una Mega Nv.3 activa durante todo el horario para multiplicar Caramelos XL y no perder el ataque exclusivo al evolucionar.",
+          "search_label": "Filtro de limpieza rápida (no shiny / no 100%):",
+          "search_string": "0*,1*,2*&!shiny&!4*",
+          "info_label": "📘 Ver calendario oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/save-the-date-s25",
+          "context_label": "Evento GO: ¡Apunten en el calendario los Días de la Comunidad de la próxima temporada!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/save-the-date-s25"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
       "id": "pogo:bailen-de-durante-el-la-luna-luz",
