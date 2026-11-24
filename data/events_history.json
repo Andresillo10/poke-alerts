@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-24 11:23 COT",
+  "generated_at": "2026-11-24 12:23 COT",
   "stats": {
     "total": 76,
     "pogo": 63,
@@ -328,7 +328,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T16:23:34Z"
+      "last_updated_at": "2026-11-24T17:23:18Z"
     },
     {
       "id": "pogo:banette-in-mega-raids",
@@ -3429,7 +3429,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T16:23:34Z"
+      "last_updated_at": "2026-11-24T17:23:18Z"
     },
     {
       "id": "pogo:in-mega-metagross-raids",
@@ -4118,7 +4118,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T16:23:34Z"
+      "last_updated_at": "2026-11-24T17:23:18Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4189,7 +4189,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T16:23:34Z"
+      "last_updated_at": "2026-11-24T17:23:18Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4330,7 +4330,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T16:23:34Z"
+      "last_updated_at": "2026-11-24T17:23:18Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
