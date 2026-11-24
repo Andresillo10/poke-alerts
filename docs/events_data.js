@@ -1,13 +1,13 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-24 08:23 COT",
+  "generated_at": "2026-11-24 09:23 COT",
   "stats": {
-    "total": 75,
-    "pogo": 62,
+    "total": 76,
+    "pogo": 63,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 33,
+    "active": 34,
     "upcoming": 22,
     "ended": 20
   },
@@ -329,7 +329,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T13:23:18Z"
+      "last_updated_at": "2026-11-24T14:23:19Z"
     },
     {
       "id": "pogo:banette-in-mega-raids",
@@ -2436,6 +2436,74 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-24T11:23:32Z"
     },
     {
+      "id": "pogo:combates-de-destinos-go-liga-novedades-sobre",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "Liga de Combates GO: Novedades sobre Destinos de Ensueño",
+      "title_original": "Liga de Combates GO: Novedades sobre Destinos de Ensueño",
+      "summary": "La Liga de Combates GO: Destinos de Ensueño empezará el martes 1 de diciembre de 2026, a las 15:00 CST (13:00 PST, GMT −8).",
+      "action_guide": "La Liga de Combates GO: Destinos de Ensueño empezará el martes 1 de diciembre de 2026, a las 15:00 CST (13:00 PST, GMT −8).",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-24",
+      "end_date": null,
+      "date_range_label": "24 nov 2026 -> 24 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/go-battle-league-daydream-destinations",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "La Liga de Combates GO: Destinos de Ensueño empezará el martes",
+            "1 de diciembre de 2026, a las 15:00 CST (13:00 PST, GMT −8)."
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Revisa Investigaciones Temporales antes del cierre",
+            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
+            "Marca el evento en el panel al completar sus premios"
+          ],
+          "explanation": "Liga de Combates GO: Novedades sobre Destinos de Ensueño: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/go-battle-league-daydream-destinations",
+          "context_label": "Noticia GO: Liga de Combates GO: Novedades sobre Destinos de Ensueño"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/go-battle-league-daydream-destinations"
+      ],
+      "published_at": "2026-11-24T14:23:19Z",
+      "first_seen_at": "2026-11-24T14:23:19Z",
+      "last_updated_at": "2026-11-24T14:23:19Z"
+    },
+    {
       "id": "pogo:campeonato-consigue-de-del-internacional-pokemon-recompensas-siguelo",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -3362,7 +3430,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T13:23:18Z"
+      "last_updated_at": "2026-11-24T14:23:19Z"
     },
     {
       "id": "pogo:in-mega-metagross-raids",
@@ -4051,7 +4119,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T13:23:18Z"
+      "last_updated_at": "2026-11-24T14:23:19Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4122,7 +4190,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T13:23:18Z"
+      "last_updated_at": "2026-11-24T14:23:19Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4263,7 +4331,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T13:23:18Z"
+      "last_updated_at": "2026-11-24T14:23:19Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
