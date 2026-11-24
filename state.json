@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-24T00:23:32Z",
-  "last_commit_heartbeat_utc": "2026-11-24T00:23:32Z",
+  "last_run_utc": "2026-11-24T01:23:19Z",
+  "last_commit_heartbeat_utc": "2026-11-24T01:23:19Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -91,7 +91,8 @@
     "pogolive:/es_MX/news/community-day-december-2026": "2026-11-20T18:23:29Z",
     "serebii-tcgp:https://www.serebii.net/tcgpocket/events/veeveeeeveemissions.shtml": "2026-11-21T13:06:34Z",
     "serebii-go:https://www.serebii.net/pokemongo/events/catchanewlanguagewithduolingo.shtml": "2026-11-22T09:23:39Z",
-    "scrapedduck:twilight-wishes-2026": "2026-11-24T00:23:32Z"
+    "scrapedduck:twilight-wishes-2026": "2026-11-24T00:23:32Z",
+    "pogolive:/es_MX/news/paid-gifts-2026": "2026-11-24T01:23:19Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -178,7 +179,8 @@
     "pogo:twitch-drops-for-2027-pokemon-latin-america-international": "2026-11-20T14:23:30Z",
     "pogo:celebren-el-ano-con-todos-los-pokemon-de": "2026-11-20T18:23:29Z",
     "tcgp:vee-vee-eevee": "2026-11-21T13:06:34Z",
-    "pogo:catch-new-language-with-duolingo": "2026-11-22T09:23:39Z"
+    "pogo:catch-new-language-with-duolingo": "2026-11-22T09:23:39Z",
+    "pogo:compartan-la-alegria-con-los-regalos-de-pago": "2026-11-24T01:23:19Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",

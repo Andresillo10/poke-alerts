@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-23 19:23 COT",
+  "generated_at": "2026-11-23 20:23 COT",
   "stats": {
-    "total": 74,
-    "pogo": 61,
+    "total": 75,
+    "pogo": 62,
     "tcgp": 13,
     "codes_active": 4,
     "active": 34,
-    "upcoming": 24,
+    "upcoming": 25,
     "ended": 16
   },
   "events": [
@@ -524,7 +524,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T00:23:32Z"
+      "last_updated_at": "2026-11-24T01:23:19Z"
     },
     {
       "id": "pogo:banette-in-mega-raids",
@@ -3522,7 +3522,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T00:23:32Z"
+      "last_updated_at": "2026-11-24T01:23:19Z"
     },
     {
       "id": "pogo:and-catch-cup-great-league-master-mega",
@@ -4316,7 +4316,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T00:23:32Z"
+      "last_updated_at": "2026-11-24T01:23:19Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4387,7 +4387,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T00:23:32Z"
+      "last_updated_at": "2026-11-24T01:23:19Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4528,7 +4528,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T00:23:32Z"
+      "last_updated_at": "2026-11-24T01:23:19Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
@@ -5033,6 +5033,73 @@
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:alegria-compartan-con-de-la-los-pago-regalos",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!",
+      "title_original": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!",
+      "summary": "En ciertas regiones, tendrán más formas de alegrarle el día a otro Entrenador. Los Entrenadores de Pokémon GO en Australia, Alemania, Corea del Sur, México y Francia serán los primeros en tener acceso a una lista ampliada de objetos que se pueden enviar como regalos de pago a amigos, familiares y otros Entrenadores.",
+      "action_guide": "En ciertas regiones, tendrán más formas de alegrarle el día a otro Entrenador. Los Entrenadores de Pokémon GO en Australia, Alemania, Corea del Sur, México y Francia serán los primeros en tener acceso a una lista...",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-24",
+      "end_date": null,
+      "date_range_label": "24 nov 2026 -> 24 nov 2026",
+      "status": "proximo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/paid-gifts-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "En ciertas regiones, tendrán más formas de alegrarle el día a",
+            "otro Entrenador. Los Entrenadores de Pokémon GO en Australia,",
+            "Alemania, Corea del Sur, México y Francia serán los primeros"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Abre y envía regalos hasta el tope diario del Pase"
+          ],
+          "explanation": "¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/paid-gifts-2026",
+          "context_label": "Noticia GO: ¡Compartan la alegría con los regalos de pago que llegan a Pokémon GO!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/paid-gifts-2026"
+      ],
+      "published_at": "2026-11-24T01:23:19Z",
+      "first_seen_at": "2026-11-24T01:23:19Z",
+      "last_updated_at": "2026-11-24T01:23:19Z"
     },
     {
       "id": "pogo:and-cresselia-darkrai-hour-raid",
