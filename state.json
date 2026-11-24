@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-24T22:24:13Z",
-  "last_commit_heartbeat_utc": "2026-11-24T22:24:13Z",
+  "last_run_utc": "2026-11-24T23:24:35Z",
+  "last_commit_heartbeat_utc": "2026-11-24T23:24:35Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -110,7 +110,15 @@
     "scrapedduck:mega-gengar-in-mega-raids-december-2026": "2026-11-24T22:24:13Z",
     "scrapedduck:unannounced-pokemon-in-5-star-raid-battles-december-2026": "2026-11-24T22:24:13Z",
     "scrapedduck:raidhour20261216": "2026-11-24T22:24:13Z",
-    "scrapedduck:pokemonspotlighthour2026-12-17": "2026-11-24T22:24:13Z"
+    "scrapedduck:pokemonspotlighthour2026-12-17": "2026-11-24T22:24:13Z",
+    "scrapedduck:max-mondays-2026-12-21": "2026-11-24T23:24:35Z",
+    "scrapedduck:gbl-daydream-destinations_ultra-league-mega-edition_holiday-cup-great-league-edition": "2026-11-24T23:24:35Z",
+    "scrapedduck:ho-oh-in-5-star-raid-battles-december-2026": "2026-11-24T23:24:35Z",
+    "scrapedduck:mega-skarmory-in-mega-raids-december-2026": "2026-11-24T23:24:35Z",
+    "scrapedduck:raidhour20261223": "2026-11-24T23:24:35Z",
+    "scrapedduck:pokemonspotlighthour2026-12-24": "2026-11-24T23:24:35Z",
+    "scrapedduck:winter-holiday-2026": "2026-11-24T23:24:35Z",
+    "scrapedduck:max-mondays-2026-12-28": "2026-11-24T23:24:35Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -216,7 +224,15 @@
     "pogo:mega-gengar-in-mega-raids": "2026-11-24T22:24:13Z",
     "pogo:unannounced-pokemon-in-5-star-raid-battles": "2026-11-24T22:24:13Z",
     "pogo:ho-oh-raid-hour": "2026-11-24T22:24:13Z",
-    "pogo:bergmite-spotlight-hour": "2026-11-24T22:24:13Z"
+    "pogo:bergmite-spotlight-hour": "2026-11-24T22:24:13Z",
+    "pogo:dynamax-alolan-sandshrew-during-max-monday": "2026-11-24T23:24:35Z",
+    "pogo:ultra-league-mega-edition-and-holiday-cup-great": "2026-11-24T23:24:35Z",
+    "pogo:ho-oh-in-5-star-raid-battles": "2026-11-24T23:24:35Z",
+    "pogo:mega-skarmory-in-mega-raids": "2026-11-24T23:24:35Z",
+    "pogo:lugia-raid-hour": "2026-11-24T23:24:35Z",
+    "pogo:delibird-spotlight-hour": "2026-11-24T23:24:35Z",
+    "pogo:winter-holiday-2026": "2026-11-24T23:24:35Z",
+    "pogo:dynamax-magikarp-during-max-monday": "2026-11-24T23:24:35Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",

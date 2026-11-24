@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-24 17:24 COT",
+  "generated_at": "2026-11-24 18:24 COT",
   "stats": {
     "total": 119,
     "pogo": 106,
@@ -3568,7 +3568,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:in-mega-metagross-raids",
@@ -4754,14 +4754,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Mega Gengar | Variocolor disponibles: Gengar, Mega Gengar",
-        "✨ Variocolor disponibles: Gengar, Mega Gengar"
+        "✨ Variocolor disponibles: Gengar, Mega Gengar",
+        "⚔️ Jefes: Mega Gengar"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Gengar | Variocolor disponibles: Gengar, Mega Gengar",
       "highlights": [
         "Pokémon destacados: Mega Gengar",
-        "Variocolor disponibles: Gengar, Mega Gengar"
+        "Variocolor disponibles: Gengar, Mega Gengar",
+        "Jefes: Mega Gengar"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -4819,7 +4821,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-24T22:24:12Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:5-battles-in-pokemon-raid-star-unannounced",
@@ -5204,7 +5206,7 @@ window.POKE_ALERTS_DB = {
           "search_string": "Kyurem,Kyogre,Zamazenta,Kingler,Greninja,Samurott",
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
-          "context_label": "Evento GO: Dynamax Alolan Sandshrew durante Lunes Max"
+          "context_label": "Evento GO: Sandshrew de Alola Dynamax durante Lunes Max"
         }
       ],
       "decks_checked_at": "",
@@ -5216,9 +5218,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/max-mondays-2026-12-21/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-24T23:24:34Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:5-battles-ho-in-oh-raid-star",
@@ -5291,31 +5293,6 @@ window.POKE_ALERTS_DB = {
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
           "context_label": "Evento GO: Ho-Oh en Incursiones de 5 estrellas"
-        },
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Beedrill: PC 100% 1054 / 1318",
-            "Mega Houndoom: PC 100% 1505 / 1882"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "Ho-Oh",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/ho-oh-in-5-star-raid-battles-december-2026/",
-          "context_label": "Evento GO: Ho-Oh en Incursiones de 5 estrellas"
         }
       ],
       "decks_checked_at": "",
@@ -5327,9 +5304,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/ho-oh-in-5-star-raid-battles-december-2026/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-24T23:24:34Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -5390,7 +5367,7 @@ window.POKE_ALERTS_DB = {
           "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant,Tinkaton",
           "info_label": "📊 Ver ranking PvPoke",
           "info_url": "https://pvpoke.com/rankings/all/1500/overall/",
-          "context_label": "Evento GO: Liga Ultra: Edición Mega y Copa navideña: Edición Liga Súper | Destinos de ensueño"
+          "context_label": "Evento GO: Liga Ultra: Edición Mega y Copa Navideña: Edición Liga Súper | Destinos de ensueño"
         },
         {
           "title": "Liga Ultra: Mega Edition",
@@ -5420,7 +5397,7 @@ window.POKE_ALERTS_DB = {
           "search_string": "Tinkaton,Corviknight,Zygarde,Florges,Mimikyu",
           "info_label": "📊 Ver ranking PvPoke",
           "info_url": "https://pvpoke.com/rankings/mega/2500/overall/",
-          "context_label": "Evento GO: Liga Ultra: Edición Mega y Copa navideña: Edición Liga Súper | Destinos de ensueño"
+          "context_label": "Evento GO: Liga Ultra: Edición Mega y Copa Navideña: Edición Liga Súper | Destinos de ensueño"
         }
       ],
       "decks_checked_at": "",
@@ -5432,9 +5409,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/gbl-daydream-destinations_ultra-league-mega-edition_holiday-cup-great-league-edition/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-24T23:24:34Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:in-mega-raids-skarmory",
@@ -5463,7 +5440,8 @@ window.POKE_ALERTS_DB = {
       "highlights": [
         "Pokémon destacados: Mega Skarmory",
         "Variocolor disponibles: Skarmory, Mega Skarmory",
-        "Jefes: Mega Skarmory"
+        "Jefes: Mega Skarmory",
+        "Pokémon destacados: Mega-Skarmory"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -5506,31 +5484,6 @@ window.POKE_ALERTS_DB = {
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
           "context_label": "Evento GO: Mega Skarmory en Megaincursiones"
-        },
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Beedrill: PC 100% 1054 / 1318",
-            "Mega Houndoom: PC 100% 1505 / 1882"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "Skarmory",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/mega-skarmory-in-mega-raids-december-2026/",
-          "context_label": "Evento GO: Mega Skarmory en Megaincursiones"
         }
       ],
       "decks_checked_at": "",
@@ -5542,9 +5495,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/mega-skarmory-in-mega-raids-december-2026/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-24T23:24:34Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:hour-lugia-raid",
@@ -5621,9 +5574,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/raidhour20261223/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-24T23:24:34Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:delibird-hour-spotlight",
@@ -5688,28 +5641,6 @@ window.POKE_ALERTS_DB = {
           "info_label": "📊 Ver ranking en PvPoke",
           "info_url": "https://pvpoke.com/rankings/all/1500/overall/delibird/",
           "context_label": "Evento GO: Delibird Hora del Pokémon Destacado"
-        },
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "water",
-          "badge_label": "GUÍA EVENTO GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "Bonuses: 2× Catch XP",
-            "Featured Pokémon: Delibird",
-            "Shinies available: Delibird"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Combina Huevo Suerte al subir amistad o completar misiones"
-          ],
-          "explanation": "Delibird Hora del Pokémon Destacado: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro de especies del evento en tu caja:",
-          "search_string": "Delibird&3*,4*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://leekduck.com/events/pokemonspotlighthour2026-12-24/",
-          "context_label": "Evento GO: Delibird Hora del Pokémon Destacado"
         }
       ],
       "decks_checked_at": "",
@@ -5721,9 +5652,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/pokemonspotlighthour2026-12-24/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-24T23:24:34Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:day-hatch",
@@ -5854,7 +5785,7 @@ window.POKE_ALERTS_DB = {
           "search_string": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
-          "context_label": "Evento GO: Dynamax Magikarp durante Lunes Max"
+          "context_label": "Evento GO: Magikarp Dinamax durante Lunes Max"
         }
       ],
       "decks_checked_at": "",
@@ -5866,9 +5797,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/max-mondays-2026-12-28/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-24T23:24:34Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:2026-holiday-winter",
@@ -5918,12 +5849,12 @@ window.POKE_ALERTS_DB = {
             "Usa bayas Pinia / Frambu en los encuentros prioritarios",
             "Marca el evento en el panel al completar sus premios"
           ],
-          "explanation": "Vacaciones de invierno 2026: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "explanation": "Vacaciones de invierno: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
           "search_label": "Filtro general para valorar capturas del evento:",
           "search_string": "4*,3*,shiny",
           "info_label": "📘 Abrir fuente oficial",
           "info_url": "https://leekduck.com/events/winter-holiday-2026/",
-          "context_label": "Evento GO: Vacaciones de invierno 2026"
+          "context_label": "Evento GO: Vacaciones de invierno"
         }
       ],
       "decks_checked_at": "",
@@ -5935,9 +5866,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/winter-holiday-2026/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-24T23:24:34Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-master-mega",
@@ -7427,7 +7358,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -7573,7 +7504,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -7819,7 +7750,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -8453,7 +8384,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-24T21:25:16Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
