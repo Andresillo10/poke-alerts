@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-24T18:23:43Z",
-  "last_commit_heartbeat_utc": "2026-11-24T18:23:43Z",
+  "last_run_utc": "2026-11-24T21:25:16Z",
+  "last_commit_heartbeat_utc": "2026-11-24T21:25:16Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -94,7 +94,15 @@
     "scrapedduck:twilight-wishes-2026": "2026-11-24T00:23:32Z",
     "pogolive:/es_MX/news/paid-gifts-2026": "2026-11-24T01:23:19Z",
     "pogolive:/es_MX/news/go-battle-league-daydream-destinations": "2026-11-24T14:23:19Z",
-    "pogolive:/es_MX/news/monthly-content-update-dec2026": "2026-11-24T18:23:43Z"
+    "pogolive:/es_MX/news/monthly-content-update-dec2026": "2026-11-24T18:23:43Z",
+    "scrapedduck:raidhour20261202": "2026-11-24T21:25:16Z",
+    "scrapedduck:pokemonspotlighthour2026-12-03": "2026-11-24T21:25:16Z",
+    "scrapedduck:tropical-paradise-2026": "2026-11-24T21:25:16Z",
+    "scrapedduck:max-mondays-2026-12-07": "2026-11-24T21:25:16Z",
+    "scrapedduck:gbl-daydream-destinations_great-league-mega-edition_ultra-league-mega-edition_master-league-mega-edition-split-1": "2026-11-24T21:25:16Z",
+    "scrapedduck:mega-slowbro-in-mega-raids-december-2026": "2026-11-24T21:25:16Z",
+    "scrapedduck:regidrago-in-5-star-raid-battles-december-2026": "2026-11-24T21:25:16Z",
+    "scrapedduck:raidhour20261209": "2026-11-24T21:25:16Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -184,7 +192,15 @@
     "pogo:catch-new-language-with-duolingo": "2026-11-22T09:23:39Z",
     "pogo:compartan-la-alegria-con-los-regalos-de-pago": "2026-11-24T01:23:19Z",
     "pogo:liga-de-combates-go-novedades-sobre-destinos-de": "2026-11-24T14:23:19Z",
-    "pogo:actualizacion-de-contenido-de-diciembre-de-2026": "2026-11-24T18:23:43Z"
+    "pogo:actualizacion-de-contenido-de-diciembre-de-2026": "2026-11-24T18:23:43Z",
+    "pogo:regidrago-raid-hour": "2026-11-24T21:25:16Z",
+    "pogo:wimpod-spotlight-hour": "2026-11-24T21:25:16Z",
+    "pogo:tropical-paradise": "2026-11-24T21:25:16Z",
+    "pogo:dynamax-deino-during-max-monday": "2026-11-24T21:25:16Z",
+    "pogo:great-league-mega-edition-ultra-league-mega-edition": "2026-11-24T21:25:16Z",
+    "pogo:mega-slowbro-in-mega-raids": "2026-11-24T21:25:16Z",
+    "pogo:regidrago-in-5-star-raid-battles": "2026-11-24T21:25:16Z",
+    "pogo:unannounced-raid-hour": "2026-11-24T21:25:16Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
