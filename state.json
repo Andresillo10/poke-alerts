@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-24T14:23:19Z",
-  "last_commit_heartbeat_utc": "2026-11-24T14:23:19Z",
+  "last_run_utc": "2026-11-24T18:23:43Z",
+  "last_commit_heartbeat_utc": "2026-11-24T18:23:43Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -93,7 +93,8 @@
     "serebii-go:https://www.serebii.net/pokemongo/events/catchanewlanguagewithduolingo.shtml": "2026-11-22T09:23:39Z",
     "scrapedduck:twilight-wishes-2026": "2026-11-24T00:23:32Z",
     "pogolive:/es_MX/news/paid-gifts-2026": "2026-11-24T01:23:19Z",
-    "pogolive:/es_MX/news/go-battle-league-daydream-destinations": "2026-11-24T14:23:19Z"
+    "pogolive:/es_MX/news/go-battle-league-daydream-destinations": "2026-11-24T14:23:19Z",
+    "pogolive:/es_MX/news/monthly-content-update-dec2026": "2026-11-24T18:23:43Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -182,7 +183,8 @@
     "tcgp:vee-vee-eevee": "2026-11-21T13:06:34Z",
     "pogo:catch-new-language-with-duolingo": "2026-11-22T09:23:39Z",
     "pogo:compartan-la-alegria-con-los-regalos-de-pago": "2026-11-24T01:23:19Z",
-    "pogo:liga-de-combates-go-novedades-sobre-destinos-de": "2026-11-24T14:23:19Z"
+    "pogo:liga-de-combates-go-novedades-sobre-destinos-de": "2026-11-24T14:23:19Z",
+    "pogo:actualizacion-de-contenido-de-diciembre-de-2026": "2026-11-24T18:23:43Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
