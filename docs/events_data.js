@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-23 18:23 COT",
+  "generated_at": "2026-11-23 19:23 COT",
   "stats": {
     "total": 74,
     "pogo": 61,
@@ -525,7 +525,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T23:23:14Z"
+      "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
       "id": "pogo:banette-in-mega-raids",
@@ -3248,9 +3248,9 @@ window.POKE_ALERTS_DB = {
       "kind": "event",
       "kind_label": "Evento",
       "category": "Evento Pokémon GO",
-      "title": "Twilight Wishes",
+      "title": "Deseos crepusculares",
       "title_original": "Twilight Wishes",
-      "summary": "¡Celebra Deseos del Crepúsculo con Espeon llevando una bufanda del sol, Umbreon llevando una bufanda de la luna y Rockruff! Disfruta de mayores probabilidades de encontrarte con Staryu Variocolor y Elgyem Variocolor, incursiones e Investigación de Campo temáticas del evento, así como recompensas y Bonificaciones del Pase GO del evento. Deseos del Crepúsculo se celebrará desde el martes 24 de noviembre a las 10:00 hasta el lunes 30 de noviembre de 2026 a las 20:00, hora local.",
+      "summary": "¡Celebra los Deseos del Crepúsculo con Espeon con un pañuelo para el sol, Umbreon con un pañuelo para la luna y Rockruff! Disfrute de mayores posibilidades de encontrar Staryu Variocolor y Elgyem Variocolor, incursiones con temas de eventos y Investigación de Campo, y recompensas y Bonificaciones del evento GO Pass. Twilight Wishes se extiende desde el martes 24 de noviembre a las 10:00 a. m. hasta el lunes 30 de noviembre de 2026 a las 8:00 p. m. hora local.",
       "action_guide": "Qué tienes que hacer: captura los Pokémon destacados del evento y realiza intercambios diarios con tus amigos para aprovechar el aumento de probabilidad de Amistad con Suerte e Intercambios con Suerte.",
       "requires_battles": false,
       "activities": [
@@ -3264,15 +3264,19 @@ window.POKE_ALERTS_DB = {
         "🔥 2× Polvo Estelar al capturar Pokémon",
         "🔥 probabilidad de Intercambio con Suerte (aumentada)",
         "🔥 probabilidad de Amistad con Suerte (aumentada)",
-        "🌿 Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon"
+        "🌿 Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon",
+        "🔥 Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor",
+        "🔥 Mayor probabilidad de obtener Pokémon con Suerte en intercambios",
+        "🔥 Mayor probabilidad de convertirse en Amistad con Suerte"
       ],
       "deck_intro": "",
       "search_aliases": "",
-      "rewards": "Bonificaciones: Mayor probabilidad de encontrar Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de conseguir Pokémon con Suerte al intercambiar; Mayor probabilidad de lograr Amistad con Suerte; 2× Polvo Estelar al capturar Pokémon",
+      "rewards": "Bonificaciones: Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de obtener Pokémon con Suerte en intercambios; Mayor probabilidad de convertirse en Amistad con Suerte; 2× Polvo Estelar para capturar Pokémon",
       "highlights": [
         "Bonificaciones: Mayor probabilidad de encontrar Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de conseguir Pokémon con Suerte al intercambiar; Mayor probabilidad de lograr Amistad con Suerte; 2× Polvo Estelar al capturar Pokémon",
         "Bonificaciones: probabilidad de Intercambio con Suerte (aumentada); probabilidad de Amistad con Suerte (aumentada)",
-        "Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon"
+        "Pokémon salvajes: Clefairy, Staryu, Elgyem, Rockruff, Pikachu, Espeon",
+        "Bonificaciones: Mayor probabilidad de encontrar a Staryu Variocolor y Elgyem Variocolor; Mayor probabilidad de obtener Pokémon con Suerte en intercambios; Mayor probabilidad de convertirse en Amistad con Suerte; 2× Polvo Estelar para capturar Pokémon"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -3374,9 +3378,9 @@ window.POKE_ALERTS_DB = {
         "https://leekduck.com/events/twilight-wishes-2026/",
         "https://www.serebii.net/pokemongo/events/twilightwishes.shtml"
       ],
-      "published_at": "2026-11-18T16:29:39Z",
+      "published_at": "2026-11-24T00:23:32Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
       "id": "pogo:and-attack-defense-deoxys-formes-in-normal-speed",
@@ -3519,7 +3523,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T23:23:14Z"
+      "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
       "id": "pogo:and-catch-cup-great-league-master-mega",
@@ -3564,7 +3568,7 @@ window.POKE_ALERTS_DB = {
             "#3 Ninetales Oscuro (92.6) [4/15/14]",
             "#4 Mimikyu (Busted) (92.0) [4/14/15]",
             "#5 Cramorant (91.6) [5/15/13]",
-            "#6 Altaria Oscuro (91.5) [4/12/13]"
+            "#6 Tinkaton (91.6) [4/15/14]"
           ],
           "right_heading": "MOVESET ÓPTIMO Y FRENOS",
           "right_rows": [
@@ -3577,40 +3581,40 @@ window.POKE_ALERTS_DB = {
           ],
           "explanation": "Liga Súper (1500 PC) liderada por Melmetal (Thunder Shock + Double Iron Bash + Dynamic Punch); vigila counters como Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro.",
           "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
-          "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant",
+          "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant,Tinkaton",
           "info_label": "📊 Ver ranking PvPoke",
           "info_url": "https://pvpoke.com/rankings/all/1500/overall/",
-          "context_label": "Evento GO: Master League and Mega Catch Cup: Great League Edition | Twilight Trails"
+          "context_label": "Evento GO: Liga Master y Mega Copa Captura: Edición Liga Súper | Senderos Crepusculares"
         },
         {
           "title": "Liga Master (Sin límite)",
-          "subtitle": "#1 Actual: Palkia (Origin) • Score 98.3 (PvPoke)",
+          "subtitle": "#1 Actual: Palkia (Origin) • Score 98.0 (PvPoke)",
           "primary_type": "water",
           "badge_label": "META LIGA GBL",
           "left_heading": "TOP 6 META Y IV IDEAL",
           "left_rows": [
-            "#1 Palkia (Origin) (98.3)",
-            "#2 Zacian (Crowned Sword) (97.1)",
-            "#3 Kyogre (93.8)",
-            "#4 Kyurem (White) (93.8)",
-            "#5 Metagross (93.7)",
-            "#6 Zygarde (Complete Forme) (93.5)"
+            "#1 Palkia (Origin) (98.0)",
+            "#2 Zacian (Crowned Sword) (97.2)",
+            "#3 Kyurem (White) (93.8)",
+            "#4 Metagross (93.8)",
+            "#5 Kyogre (93.7)",
+            "#6 Dialga (Origin) (93.2)"
           ],
           "right_heading": "MOVESET ÓPTIMO Y FRENOS",
           "right_rows": [
             "#1 Dragon Breath • Aqua Tail • Spacial Rend",
             "#2 Metal Claw • Close Combat • Behemoth Blade",
-            "#3 Waterfall • Avalanche • Origin Pulse",
-            "#4 Dragon Breath • Fusion Flare • Ice Burn",
-            "#5 Shadow Claw • Meteor Mash • Earthquake",
+            "#3 Dragon Breath • Fusion Flare • Ice Burn",
+            "#4 Shadow Claw • Meteor Mash • Earthquake",
+            "#5 Waterfall • Avalanche • Origin Pulse",
             "Frenos al #1: Dialga (Origin), Xerneas, Lunala"
           ],
           "explanation": "Liga Master (Sin límite) liderada por Palkia (Origin) (Dragon Breath + Aqua Tail + Spacial Rend); vigila counters como Dialga (Origin), Xerneas, Lunala.",
           "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
-          "search_string": "Palkia,Zacian,Kyogre,Kyurem,Metagross,Zygarde",
+          "search_string": "Palkia,Zacian,Kyurem,Metagross,Kyogre,Dialga",
           "info_label": "📊 Ver ranking PvPoke",
           "info_url": "https://pvpoke.com/rankings/all/10000/overall/",
-          "context_label": "Evento GO: Master League and Mega Catch Cup: Great League Edition | Twilight Trails"
+          "context_label": "Evento GO: Liga Master y Mega Copa Captura: Edición Liga Súper | Senderos Crepusculares"
         }
       ],
       "decks_checked_at": "",
@@ -3622,9 +3626,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/gbl-twilight-trails_master-league_mega-catch-cup-great-league-edition/"
       ],
-      "published_at": "2026-11-18T16:29:39Z",
+      "published_at": "2026-11-24T00:23:32Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
       "id": "pogo:in-mega-metagross-raids",
@@ -4313,7 +4317,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T23:23:14Z"
+      "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -4384,7 +4388,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T23:23:14Z"
+      "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -4525,7 +4529,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T23:23:14Z"
+      "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
