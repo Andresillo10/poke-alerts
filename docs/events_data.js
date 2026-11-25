@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 06:23 COT",
+  "generated_at": "2026-11-25 07:23 COT",
   "stats": {
     "total": 124,
     "pogo": 111,
@@ -7145,7 +7145,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T11:23:19Z"
+      "last_updated_at": "2026-11-25T12:23:23Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -7291,7 +7291,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T11:23:19Z"
+      "last_updated_at": "2026-11-25T12:23:23Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -7605,7 +7605,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T11:23:19Z"
+      "last_updated_at": "2026-11-25T12:23:23Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -8307,7 +8307,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-24T21:25:16Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-25T11:23:19Z"
+      "last_updated_at": "2026-11-25T12:23:23Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
