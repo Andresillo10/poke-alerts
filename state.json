@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-25T01:24:00Z",
-  "last_commit_heartbeat_utc": "2026-11-25T01:24:00Z",
+  "last_run_utc": "2026-11-25T04:23:37Z",
+  "last_commit_heartbeat_utc": "2026-11-25T04:23:37Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -137,7 +137,11 @@
     "scrapedduck:gbl-daydream-destinations_master-league-mega-edition_mega-catch-cup-great-league-edition_2027-go-euic-cup": "2026-11-25T01:24:00Z",
     "scrapedduck:season-25-daydream-destinations": "2026-11-25T01:24:00Z",
     "pogolive:/es_MX/news/choose-your-path-daydream-destinations-2026": "2026-11-25T01:24:00Z",
-    "pogolive:/es_MX/news/go-pass-december-2026": "2026-11-25T01:24:00Z"
+    "pogolive:/es_MX/news/go-pass-december-2026": "2026-11-25T01:24:00Z",
+    "scrapedduck:choose-your-path-daydream-destinations-2026-12-15": "2026-11-25T04:23:37Z",
+    "scrapedduck:choose-your-path-daydream-destinations-2027-01-12": "2026-11-25T04:23:37Z",
+    "scrapedduck:choose-your-path-daydream-destinations-2027-01-26": "2026-11-25T04:23:37Z",
+    "scrapedduck:choose-your-path-daydream-destinations-2027-02-16": "2026-11-25T04:23:37Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -270,7 +274,11 @@
     "pogo:master-league-mega-edition-mega-catch-cup-great": "2026-11-25T01:24:00Z",
     "pogo:daydream-destinations": "2026-11-25T01:24:00Z",
     "pogo:exploren-libremente-con-la-investigacion-temporal-de-elige": "2026-11-25T01:24:00Z",
-    "pogo:el-pase-de-go-diciembre-los-espera-con": "2026-11-25T01:24:00Z"
+    "pogo:el-pase-de-go-diciembre-los-espera-con": "2026-11-25T01:24:00Z",
+    "pogo:choose-your-path-daydream-destinations-december-15-2026": "2026-11-25T04:23:37Z",
+    "pogo:choose-your-path-daydream-destinations-january-12-2027": "2026-11-25T04:23:37Z",
+    "pogo:choose-your-path-daydream-destinations-january-26-2027": "2026-11-25T04:23:37Z",
+    "pogo:choose-your-path-daydream-destinations-february-16-2027": "2026-11-25T04:23:37Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",

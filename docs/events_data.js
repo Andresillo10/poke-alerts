@@ -1,14 +1,14 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-24 22:23 COT",
+  "generated_at": "2026-11-24 23:23 COT",
   "stats": {
-    "total": 120,
-    "pogo": 107,
+    "total": 124,
+    "pogo": 111,
     "tcgp": 13,
     "codes_active": 4,
     "active": 36,
-    "upcoming": 64,
+    "upcoming": 68,
     "ended": 20
   },
   "events": [
@@ -5175,6 +5175,74 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-24T23:24:34Z"
     },
     {
+      "id": "pogo:15-2026-choose-daydream-december-destinations-path-your",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Elige tu camino: destinos de ensueño (15 de diciembre de 2026)",
+      "title_original": "Choose Your Path: Daydream Destinations (December 15, 2026)",
+      "summary": "Elige tu camino Investigación Temporal te da la libertad de explorar Pokémon GO a tu manera durante las semanas sin eventos. Durante una semana de Elige tu camino Investigación Temporal, podrás seleccionar uno de tres caminos: Explorar, Atrapar o Batalla. Su elección dará forma a las tareas Investigación Temporal y Bonificaciones a lo largo de la semana. Es posible que tengas oportunidades de investigación diferentes a las de otros formadores.",
+      "action_guide": "De qué trata: Elige tu camino Investigación Temporal te da la libertad de explorar Pokémon GO a tu manera durante las semanas sin eventos. Durante una semana de Elige tu camino Investigación Temporal, podrás seleccionar uno de tres caminos:... Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "requires_battles": false,
+      "activities": [
+        "🎯 Pestaña Hoy / Eventos",
+        "🌿 Capturas y bonus"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-12-15",
+      "end_date": "2026-12-21",
+      "date_range_label": "15 dic 2026 -> 21 dic 2026",
+      "status": "proximo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://leekduck.com/events/choose-your-path-daydream-destinations-2026-12-15/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Choose Your Path Timed Research gives you the freedom to",
+            "explore Pokémon GO your way during non-event weeks! During a",
+            "Choose Your Path Timed Research week, you’ll be able to select"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Elige tu camino: destinos de ensueño (15 de diciembre de 2026): prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://leekduck.com/events/choose-your-path-daydream-destinations-2026-12-15/",
+          "context_label": "Evento GO: Elige tu camino: destinos de ensueño (15 de diciembre de 2026)"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/choose-your-path-daydream-destinations-2026-12-15/"
+      ],
+      "published_at": "2026-11-25T04:23:37Z",
+      "first_seen_at": "2026-11-25T04:23:37Z",
+      "last_updated_at": "2026-11-25T04:23:37Z"
+    },
+    {
       "id": "pogo:5-battles-ho-in-oh-raid-star",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -7021,6 +7089,74 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
+      "id": "pogo:12-2027-choose-daydream-destinations-january-path-your",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Elige tu camino: destinos de ensueño (12 de enero de 2027)",
+      "title_original": "Choose Your Path: Daydream Destinations (January 12, 2027)",
+      "summary": "Elige tu camino Investigación Temporal te da la libertad de explorar Pokémon GO a tu manera durante las semanas sin eventos. Durante una semana de Elige tu camino Investigación Temporal, podrás seleccionar uno de tres caminos: Explorar, Atrapar o Batalla. Su elección dará forma a las tareas Investigación Temporal y Bonificaciones a lo largo de la semana. Es posible que tengas oportunidades de investigación diferentes a las de otros formadores.",
+      "action_guide": "De qué trata: Elige tu camino Investigación Temporal te da la libertad de explorar Pokémon GO a tu manera durante las semanas sin eventos. Durante una semana de Elige tu camino Investigación Temporal, podrás seleccionar uno de tres caminos:... Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "requires_battles": false,
+      "activities": [
+        "🎯 Pestaña Hoy / Eventos",
+        "🌿 Capturas y bonus"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2027-01-12",
+      "end_date": "2027-01-18",
+      "date_range_label": "12 ene 2027 -> 18 ene 2027",
+      "status": "proximo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-01-12/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Choose Your Path Timed Research gives you the freedom to",
+            "explore Pokémon GO your way during non-event weeks! During a",
+            "Choose Your Path Timed Research week, you’ll be able to select"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Elige tu camino: destinos de ensueño (12 de enero de 2027): prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-01-12/",
+          "context_label": "Evento GO: Elige tu camino: destinos de ensueño (12 de enero de 2027)"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-01-12/"
+      ],
+      "published_at": "2026-11-25T04:23:37Z",
+      "first_seen_at": "2026-11-25T04:23:37Z",
+      "last_updated_at": "2026-11-25T04:23:37Z"
+    },
+    {
       "id": "pogo:and-cup-edition-great-jungle-league-mega-ultra",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -7192,7 +7328,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T03:23:24Z"
+      "last_updated_at": "2026-11-25T04:23:37Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -7338,7 +7474,75 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T03:23:24Z"
+      "last_updated_at": "2026-11-25T04:23:37Z"
+    },
+    {
+      "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Elige tu camino: destinos de ensueño (26 de enero de 2027)",
+      "title_original": "Choose Your Path: Daydream Destinations (January 26, 2027)",
+      "summary": "Elige tu camino Investigación Temporal te da la libertad de explorar Pokémon GO a tu manera durante las semanas sin eventos. Durante una semana de Elige tu camino Investigación Temporal, podrás seleccionar uno de tres caminos: Explorar, Atrapar o Batalla. Su elección dará forma a las tareas Investigación Temporal y Bonificaciones a lo largo de la semana. Es posible que tengas oportunidades de investigación diferentes a las de otros formadores.",
+      "action_guide": "De qué trata: Elige tu camino Investigación Temporal te da la libertad de explorar Pokémon GO a tu manera durante las semanas sin eventos. Durante una semana de Elige tu camino Investigación Temporal, podrás seleccionar uno de tres caminos:... Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "requires_battles": false,
+      "activities": [
+        "🎯 Pestaña Hoy / Eventos",
+        "🌿 Capturas y bonus"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2027-01-26",
+      "end_date": "2027-02-01",
+      "date_range_label": "26 ene 2027 -> 01 feb 2027",
+      "status": "proximo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-01-26/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Choose Your Path Timed Research gives you the freedom to",
+            "explore Pokémon GO your way during non-event weeks! During a",
+            "Choose Your Path Timed Research week, you’ll be able to select"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Elige tu camino: destinos de ensueño (26 de enero de 2027): prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-01-26/",
+          "context_label": "Evento GO: Elige tu camino: destinos de ensueño (26 de enero de 2027)"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-01-26/"
+      ],
+      "published_at": "2026-11-25T04:23:37Z",
+      "first_seen_at": "2026-11-25T04:23:37Z",
+      "last_updated_at": "2026-11-25T04:23:37Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -7584,7 +7788,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T03:23:24Z"
+      "last_updated_at": "2026-11-25T04:23:37Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -7690,6 +7894,74 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-25T01:23:59Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
       "last_updated_at": "2026-11-25T01:23:59Z"
+    },
+    {
+      "id": "pogo:16-2027-choose-daydream-destinations-february-path-your",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Elige tu camino: destinos de ensueño (16 de febrero de 2027)",
+      "title_original": "Choose Your Path: Daydream Destinations (February 16, 2027)",
+      "summary": "Elige tu camino Investigación Temporal te da la libertad de explorar Pokémon GO a tu manera durante las semanas sin eventos. Durante una semana de Elige tu camino Investigación Temporal, podrás seleccionar uno de tres caminos: Explorar, Atrapar o Batalla. Su elección dará forma a las tareas Investigación Temporal y Bonificaciones a lo largo de la semana. Es posible que tengas oportunidades de investigación diferentes a las de otros formadores.",
+      "action_guide": "De qué trata: Elige tu camino Investigación Temporal te da la libertad de explorar Pokémon GO a tu manera durante las semanas sin eventos. Durante una semana de Elige tu camino Investigación Temporal, podrás seleccionar uno de tres caminos:... Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "requires_battles": false,
+      "activities": [
+        "🎯 Pestaña Hoy / Eventos",
+        "🌿 Capturas y bonus"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2027-02-16",
+      "end_date": "2027-02-21",
+      "date_range_label": "16 feb 2027 -> 21 feb 2027",
+      "status": "proximo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-02-16/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Choose Your Path Timed Research gives you the freedom to",
+            "explore Pokémon GO your way during non-event weeks! During a",
+            "Choose Your Path Timed Research week, you’ll be able to select"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Elige tu camino: destinos de ensueño (16 de febrero de 2027): prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-02-16/",
+          "context_label": "Evento GO: Elige tu camino: destinos de ensueño (16 de febrero de 2027)"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/choose-your-path-daydream-destinations-2027-02-16/"
+      ],
+      "published_at": "2026-11-25T04:23:37Z",
+      "first_seen_at": "2026-11-25T04:23:37Z",
+      "last_updated_at": "2026-11-25T04:23:37Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
@@ -8218,7 +8490,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-24T21:25:16Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-25T03:23:24Z"
+      "last_updated_at": "2026-11-25T04:23:37Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
