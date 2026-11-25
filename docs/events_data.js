@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-24 19:51 COT",
+  "generated_at": "2026-11-24 20:23 COT",
   "stats": {
     "total": 120,
     "pogo": 107,
@@ -2984,9 +2984,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://pokemongolive.com/es_MX/news/go-pass-december-2026"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T01:23:59Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:articulos-avatar-de-el-go-llegan-para-pokemon",
@@ -7192,7 +7192,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:51:28Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -7338,7 +7338,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:51:28Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -7511,9 +7511,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/gbl-daydream-destinations_great-league-mega-edition_master-league/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T01:23:59Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:day-raid",
@@ -7584,7 +7584,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:51:28Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -7687,9 +7687,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/gbl-daydream-destinations_ultra-league-mega-edition_love-cup-great-league-edition_2027-go-euic-cup/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T01:23:59Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:2027-alola-go-kaohsiung-pokemon-tour",
@@ -7932,9 +7932,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/gbl-daydream-destinations_master-league-mega-edition_mega-catch-cup-great-league-edition_2027-go-euic-cup/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T01:23:59Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:2027-alola-global-go-pokemon-tour",
@@ -8078,9 +8078,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/season-25-daydream-destinations/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T01:23:59Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:edition-great-league-mega-ultra",
@@ -8218,7 +8218,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-24T21:25:16Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-25T00:51:28Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
@@ -8576,9 +8576,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://pokemongolive.com/es_MX/news/choose-your-path-daydream-destinations-2026"
       ],
-      "published_at": "2026-11-25T00:24:58Z",
+      "published_at": "2026-11-25T01:23:59Z",
       "first_seen_at": "2026-11-25T00:24:58Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
+      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:and-cresselia-darkrai-hour-raid",

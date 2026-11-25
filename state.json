@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-25T00:51:28Z",
-  "last_commit_heartbeat_utc": "2026-11-25T00:51:28Z",
+  "last_run_utc": "2026-11-25T01:24:00Z",
+  "last_commit_heartbeat_utc": "2026-11-25T01:24:00Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -131,7 +131,13 @@
     "scrapedduck:tornadus-thundurus-landorus-therian-formes-in-5-star-raid-battles-december-2026": "2026-11-25T00:51:28Z",
     "scrapedduck:gbl-daydream-destinations_great-league-mega-edition_fighting-cup-great-league-edition": "2026-11-25T00:51:28Z",
     "scrapedduck:gbl-daydream-destinations_ultra-league-mega-edition_jungle-cup-great-league-edition": "2026-11-25T00:51:28Z",
-    "scrapedduck:gbl-daydream-destinations_master-league-mega-edition_master-league": "2026-11-25T00:51:28Z"
+    "scrapedduck:gbl-daydream-destinations_master-league-mega-edition_master-league": "2026-11-25T00:51:28Z",
+    "scrapedduck:gbl-daydream-destinations_great-league-mega-edition_master-league": "2026-11-25T01:24:00Z",
+    "scrapedduck:gbl-daydream-destinations_ultra-league-mega-edition_love-cup-great-league-edition_2027-go-euic-cup": "2026-11-25T01:24:00Z",
+    "scrapedduck:gbl-daydream-destinations_master-league-mega-edition_mega-catch-cup-great-league-edition_2027-go-euic-cup": "2026-11-25T01:24:00Z",
+    "scrapedduck:season-25-daydream-destinations": "2026-11-25T01:24:00Z",
+    "pogolive:/es_MX/news/choose-your-path-daydream-destinations-2026": "2026-11-25T01:24:00Z",
+    "pogolive:/es_MX/news/go-pass-december-2026": "2026-11-25T01:24:00Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -258,7 +264,13 @@
     "pogo:tornadus-thundurus-and-landorus-therian-formes-in-5": "2026-11-25T00:51:28Z",
     "pogo:great-league-mega-edition-and-fighting-cup-great": "2026-11-25T00:51:28Z",
     "pogo:ultra-league-mega-edition-and-jungle-cup-great": "2026-11-25T00:51:28Z",
-    "pogo:master-league-mega-edition-and-master-league-daydream": "2026-11-25T00:51:28Z"
+    "pogo:master-league-mega-edition-and-master-league-daydream": "2026-11-25T00:51:28Z",
+    "pogo:great-league-mega-edition-and-master-league-daydream": "2026-11-25T01:24:00Z",
+    "pogo:ultra-league-mega-edition-love-cup-great-league": "2026-11-25T01:24:00Z",
+    "pogo:master-league-mega-edition-mega-catch-cup-great": "2026-11-25T01:24:00Z",
+    "pogo:daydream-destinations": "2026-11-25T01:24:00Z",
+    "pogo:exploren-libremente-con-la-investigacion-temporal-de-elige": "2026-11-25T01:24:00Z",
+    "pogo:el-pase-de-go-diciembre-los-espera-con": "2026-11-25T01:24:00Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
