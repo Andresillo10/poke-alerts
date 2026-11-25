@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-24 23:23 COT",
+  "generated_at": "2026-11-25 00:23 COT",
   "stats": {
     "total": 124,
     "pogo": 111,
     "tcgp": 13,
     "codes_active": 4,
-    "active": 36,
-    "upcoming": 68,
-    "ended": 20
+    "active": 38,
+    "upcoming": 64,
+    "ended": 22
   },
   "events": [
     {
@@ -192,52 +192,48 @@
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
-      "id": "pogo:5-and-battles-cresselia-darkrai-in-raid-star",
+      "id": "pogo:and-attack-defense-deoxys-formes-normal-raid-speed",
       "game": "pogo",
       "game_label": "Pokémon GO",
       "kind": "event",
       "kind_label": "Evento",
       "category": "Incursiones GO",
-      "title": "Cresselia and Darkrai in 5-star Raid Partidas",
-      "title_original": "Cresselia and Darkrai in 5-star Raid Battles",
-      "summary": "Cresselia y Darkrai estarán en incursiones de cinco estrellas del 16 de noviembre de 2026 al 24 de noviembre de 2026. Los jefes de incursión cambian a las 6:00 h, hora local. Horas de incursiones También habrá una Hora de Incursiones con Cresselia y Darkrai de 18:00 a 19:00, hora local, el 18 de noviembre.",
-      "action_guide": "De qué trata: Cresselia y Darkrai estarán en incursiones de cinco estrellas del 16 de noviembre de 2026 al 24 de noviembre de 2026. Los jefes de incursión cambian a las 6:00 h, hora local. Horas de incursiones También habrá una Hora de... Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "title": "Deoxys (Normal, Defense, Attack, and Speed Formes) Hora de Incursiones",
+      "title_original": "Deoxys (Normal, Defense, Attack, and Speed Formes) Raid Hour",
+      "summary": "La Hora de Incursiones protagonizada por Deoxys (en sus formas Normal, Defensa, Ataque y Velocidad) está programada de 18:00 a 19:00, hora local. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto) (foco especial de 6:00 a 7:00 p. m. hora local), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
       "requires_battles": true,
       "activities": [
         "⚔️ Incursiones en Gimnasios",
-        "✨ Posible Shiny"
+        "⏰ 6:00–7:00 p. m."
       ],
-      "milestones": [
-        "✨ Variocolor disponibles: Cresselia, Darkrai"
-      ],
+      "milestones": [],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Variocolor disponibles: Cresselia, Darkrai",
-      "highlights": [
-        "Variocolor disponibles: Cresselia, Darkrai"
-      ],
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
       "promo_code": null,
       "redeem_url": null,
-      "start_date": "2026-11-16",
-      "end_date": "2026-11-24",
-      "date_range_label": "16 nov 2026 -> 24 nov 2026",
+      "start_date": "2026-11-25",
+      "end_date": "2026-11-25",
+      "date_range_label": "25 nov 2026 -> 25 nov 2026",
       "status": "activo",
-      "tactical_summary": "Cresselia • Raid Nivel 5: PC 100%: 1633 (Nv.20) • 2041 (Nv.25) • Variocolor disponible | Darkrai • Raid Nivel 5: PC 100%: 2136 (Nv.20) • 2671 (Nv.25) • Variocolor disponible",
+      "tactical_summary": "Deoxys: PC 100%: 1806 (Nv.20) • 2257 (Nv.25)",
       "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-      "guide_url": "https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/",
+      "guide_url": "https://leekduck.com/events/raidhour20261125/",
       "recommended_decks": [],
       "tactical_cards": [
         {
-          "title": "Cresselia • Raid Nivel 5",
-          "subtitle": "PC 100%: 1633 (Nv.20) • 2041 (Nv.25) • Variocolor disponible",
+          "title": "Deoxys",
+          "subtitle": "PC 100%: 1806 (Nv.20) • 2257 (Nv.25)",
           "primary_type": "psychic",
           "badge_label": "GUÍA RAID GO",
           "left_heading": "DATOS Y DEBILIDADES",
           "left_rows": [
             "Tipos: Psíquico",
-            "PC 100% Nv.20: 1633",
-            "PC 100% Clima Nv.25: 2041",
-            "Clima: Viento",
+            "PC 100% Nv.20: 1806",
+            "PC 100% Clima Nv.25: 2257",
+            "Clima: Según tipo",
             "— DEBILIDADES CLAVE —",
             "• Bicho (×1.6)",
             "• Fantasma (×1.6)",
@@ -252,69 +248,12 @@
             "5. Darkrai Oscuro (Snarl + Foul Play)",
             "6. Escavalier Oscuro (Bug Bite + Megahorn)"
           ],
-          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1633 (normal) o 2041 (potenciado).",
+          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1806 (normal) o 2257 (potenciado).",
           "search_label": "Filtro de búsqueda Counters (toca para copiar):",
           "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
-          "context_label": "Evento GO: Cresselia and Darkrai in 5-star Raid Battles"
-        },
-        {
-          "title": "Darkrai • Raid Nivel 5",
-          "subtitle": "PC 100%: 2136 (Nv.20) • 2671 (Nv.25) • Variocolor disponible",
-          "primary_type": "dark",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Siniestro",
-            "PC 100% Nv.20: 2136",
-            "PC 100% Clima Nv.25: 2671",
-            "Clima: Niebla",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Hada (×1.6)",
-            "• Lucha (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Mega Gallade (Low Kick + Sacred Sword)",
-            "2. Keldeo (Resolute) (Low Kick + Secret Sword)",
-            "3. Terrakion (Double Kick + Sacred Sword)",
-            "4. Kartana (Fury Cutter + Sacred Sword)",
-            "5. Blaziken Oscuro (Counter + Aura Sphere)",
-            "6. Latios Oscuro (Dragon Breath + Aura Sphere)"
-          ],
-          "explanation": "Vulnerable a Bicho, Hada, Lucha. Lidera tu equipo con Mega Gallade y verifica el 100% IV al capturar: 2136 (normal) o 2671 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Gallade,Keldeo,Terrakion,Kartana,Blaziken,Latios",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Cresselia and Darkrai in 5-star Raid Battles"
-        },
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Banette: PC 100% 1313 / 1642",
-            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "Cresselia,Darkrai",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/",
-          "context_label": "Evento GO: Cresselia and Darkrai in 5-star Raid Battles"
+          "context_label": "Evento GO: Deoxys (formas normal, de defensa, de ataque y de velocidad) Hora de Incursiones"
         }
       ],
       "decks_checked_at": "",
@@ -324,121 +263,11 @@
         "ScrapedDuck JSON"
       ],
       "urls": [
-        "https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/"
+        "https://leekduck.com/events/raidhour20261125/"
       ],
-      "published_at": "2026-11-18T16:29:39Z",
+      "published_at": "2026-11-25T00:24:58Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
-    },
-    {
-      "id": "pogo:banette-in-mega-raids",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Mega Banette in Mega Raids",
-      "title_original": "Mega Banette in Mega Raids",
-      "summary": "Mega Banette estará en Megaincursiones desde el 16 de noviembre de 2026 a las 6:00 hasta el 24 de noviembre de 2026 a las 22:00, hora local. Los jefes de incursión cambian a las 6:00 h, hora local.",
-      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
-      "requires_battles": true,
-      "activities": [
-        "⚔️ Incursiones en Gimnasios",
-        "✨ Posible Shiny"
-      ],
-      "milestones": [
-        "🌿 Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette",
-        "✨ Variocolor disponibles: Banette, Mega Banette",
-        "⚔️ Jefes: Mega Banette"
-      ],
-      "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette",
-      "highlights": [
-        "Pokémon destacados: Mega Banette",
-        "Variocolor disponibles: Banette, Mega Banette",
-        "Jefes: Mega Banette"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-16",
-      "end_date": "2026-11-24",
-      "date_range_label": "16 nov 2026 -> 24 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Mega Banette • Mega Raid: PC 100%: 1313 (Nv.20) • 1642 (Nv.25) • Variocolor disponible",
-      "search_filter": "Necrozma,Kyurem,Giratina,Darkrai,Absol,Hydreigon",
-      "guide_url": "https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Mega Banette • Mega Raid",
-          "subtitle": "PC 100%: 1313 (Nv.20) • 1642 (Nv.25) • Variocolor disponible",
-          "primary_type": "ghost",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Fantasma",
-            "PC 100% Nv.20: 1313",
-            "PC 100% Clima Nv.25: 1642",
-            "Clima: Niebla",
-            "— DEBILIDADES CLAVE —",
-            "• Fantasma (×1.6)",
-            "• Siniestro (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "3. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
-            "4. Darkrai Oscuro (Snarl + Foul Play)",
-            "5. Mega Absol (Snarl + Payback)",
-            "6. Hydreigon Oscuro (Bite + Brutal Swing)"
-          ],
-          "explanation": "Vulnerable a Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1313 (normal) o 1642 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Necrozma,Kyurem,Giratina,Darkrai,Absol,Hydreigon",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Mega Banette in Mega Raids"
-        },
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Banette: PC 100% 1313 / 1642",
-            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "Banette",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/",
-          "context_label": "Evento GO: Mega Banette in Mega Raids"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/"
-      ],
-      "published_at": "2026-11-18T16:29:39Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
+      "last_updated_at": "2026-11-25T00:24:58Z"
     },
     {
       "id": "pogo:2026-and-edition-league-master-mega-ultra",
@@ -717,6 +546,126 @@
       "last_updated_at": "2026-11-24T00:23:32Z"
     },
     {
+      "id": "pogo:and-attack-defense-deoxys-formes-in-normal-speed",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Deoxys (formas normal, de defensa, de ataque y de velocidad) en Incursiones de 5 estrellas",
+      "title_original": "Deoxys (Normal, Defense, Attack, and Speed Formes) in 5-star Raid Battles",
+      "summary": "Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque) y Deoxys (Velocidad) estarán en incursiones de cinco estrellas desde el 25 de noviembre de 2026 hasta el 1 de diciembre de 2026. Los jefes de incursión cambian a las 6:00 a. m. hora local. Horas de incursión También habrá un Hora de Incursiones con Deoxys (formas normal, de defensa, de ataque y de velocidad) de 6:00 p.m. a 7:00 p.m. hora local el 25 de noviembre.",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "✨ Posible Shiny"
+      ],
+      "milestones": [
+        "🌿 Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
+        "✨ Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
+        "⚔️ Jefes: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
+      "highlights": [
+        "Pokémon destacados: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
+        "Variocolor disponibles: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
+        "Jefes: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
+        "Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
+        "Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-25",
+      "end_date": "2026-12-01",
+      "date_range_label": "25 nov 2026 -> 01 dic 2026",
+      "status": "activo",
+      "tactical_summary": "Deoxys (Defense): PC 100%: 1299 (Nv.20) • 1624 (Nv.25) | Deoxys (Attack): PC 100%: 1474 (Nv.20) • 1842 (Nv.25)",
+      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+      "guide_url": "https://leekduck.com/events/deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Deoxys (Defense)",
+          "subtitle": "PC 100%: 1299 (Nv.20) • 1624 (Nv.25)",
+          "primary_type": "psychic",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Psíquico",
+            "PC 100% Nv.20: 1299",
+            "PC 100% Clima Nv.25: 1624",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Siniestro (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "3. Mega Heracross (Fury Cutter + Megahorn)",
+            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
+            "5. Darkrai Oscuro (Snarl + Foul Play)",
+            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+          ],
+          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1299 (normal) o 1624 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Deoxys (formas normal, de defensa, de ataque y de velocidad) en Incursiones de 5 estrellas"
+        },
+        {
+          "title": "Deoxys (Attack)",
+          "subtitle": "PC 100%: 1474 (Nv.20) • 1842 (Nv.25)",
+          "primary_type": "psychic",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Psíquico",
+            "PC 100% Nv.20: 1474",
+            "PC 100% Clima Nv.25: 1842",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Siniestro (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "3. Mega Heracross (Fury Cutter + Megahorn)",
+            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
+            "5. Darkrai Oscuro (Snarl + Foul Play)",
+            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+          ],
+          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1474 (normal) o 1842 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Deoxys (formas normal, de defensa, de ataque y de velocidad) en Incursiones de 5 estrellas"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026/"
+      ],
+      "published_at": "2026-11-25T00:24:58Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-25T00:24:58Z"
+    },
+    {
       "id": "pogo:go-november-pass",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -894,6 +843,93 @@
       "published_at": "2026-11-24T00:23:32Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-24T00:23:32Z"
+    },
+    {
+      "id": "pogo:in-mega-metagross-raids",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Mega Metagross in Mega Raids",
+      "title_original": "Mega Metagross in Mega Raids",
+      "summary": "MegaMetagross estará en Megaincursiones desde el 25 de noviembre de 2026 a las 6:00 hasta el 1 de diciembre de 2026 a las 22:00, hora local. Los jefes de incursión cambian a las 6:00 h, hora local.",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "✨ Posible Shiny"
+      ],
+      "milestones": [
+        "🌿 Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross",
+        "✨ Variocolor disponibles: Metagross, Mega Metagross",
+        "⚔️ Jefes: Mega Metagross"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross",
+      "highlights": [
+        "Pokémon destacados: Mega Metagross",
+        "Variocolor disponibles: Metagross, Mega Metagross",
+        "Jefes: Mega Metagross"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-25",
+      "end_date": "2026-12-01",
+      "date_range_label": "25 nov 2026 -> 01 dic 2026",
+      "status": "activo",
+      "tactical_summary": "Mega Metagross: PC 100%: 2166 (Nv.20) • 2708 (Nv.25)",
+      "search_filter": "Groudon,Reshiram,Necrozma,Mamoswine,Ursaluna,Ho-Oh",
+      "guide_url": "https://leekduck.com/events/mega-metagross-in-mega-raids-november-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Mega Metagross",
+          "subtitle": "PC 100%: 2166 (Nv.20) • 2708 (Nv.25)",
+          "primary_type": "steel",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Acero/Psíquico",
+            "PC 100% Nv.20: 2166",
+            "PC 100% Clima Nv.25: 2708",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Fantasma (×1.6)",
+            "• Fuego (×1.6)",
+            "• Siniestro (×1.6)",
+            "• Tierra (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Groudon Primigenio (Mud Shot + Precipice Blades)",
+            "2. Reshiram Oscuro (Fire Fang + Fusion Flare)",
+            "3. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "4. Mamoswine Oscuro (Mud Slap + High Horsepower)",
+            "5. Ursaluna Oscuro (Rock Smash + High Horsepower)",
+            "6. Ho-Oh Oscuro (Incinerate + Sacred Fire)"
+          ],
+          "explanation": "Vulnerable a Fantasma, Fuego, Siniestro. Lidera tu equipo con Groudon Primigenio y verifica el 100% IV al capturar: 2166 (normal) o 2708 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Groudon,Reshiram,Necrozma,Mamoswine,Ursaluna,Ho-Oh",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: MegaMetagross en Megaincursiones"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/mega-metagross-in-mega-raids-november-2026/"
+      ],
+      "published_at": "2026-11-25T00:24:58Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-25T00:24:58Z"
     },
     {
       "id": "pogo:forme-in-incarnate-raids-shadow-tornadus",
@@ -2988,6 +3024,72 @@
       "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
+      "id": "pogo:con-de-elige-exploren-investigacion-la-libremente-temporal",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Exploren libremente con la Investigación Temporal de Elige tu camino durante el evento Destinos de Ensueño!",
+      "title_original": "¡Exploren libremente con la Investigación Temporal de Elige tu camino durante el evento Destinos de Ensueño!",
+      "summary": "Del martes 15 de diciembre a las 10:00 al lunes 21 de diciembre a las 20:00 (hora local)",
+      "action_guide": "Del martes 15 de diciembre a las 10:00 al lunes 21 de diciembre a las 20:00 (hora local)",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-25",
+      "end_date": null,
+      "date_range_label": "25 nov 2026 -> 25 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/choose-your-path-daydream-destinations-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Del martes 15 de diciembre a las 10:00 al lunes 21 de",
+            "diciembre a las 20:00 (hora local)"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "¡Exploren libremente con la Investigación Temporal de Elige tu camino durante el evento Destinos de Ensueño!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/choose-your-path-daydream-destinations-2026",
+          "context_label": "Noticia GO: ¡Exploren libremente con la Investigación Temporal de Elige tu camino durante el evento Destinos de Ensueño!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/choose-your-path-daydream-destinations-2026"
+      ],
+      "published_at": "2026-11-25T01:23:59Z",
+      "first_seen_at": "2026-11-25T00:24:58Z",
+      "last_updated_at": "2026-11-25T01:23:59Z"
+    },
+    {
       "id": "pogo:articulos-avatar-de-el-go-llegan-para-pokemon",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -3055,84 +3157,6 @@
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:and-attack-defense-deoxys-formes-normal-raid-speed",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Deoxys (Normal, Defense, Attack, and Speed Formes) Hora de Incursiones",
-      "title_original": "Deoxys (Normal, Defense, Attack, and Speed Formes) Raid Hour",
-      "summary": "La Hora de Incursiones protagonizada por Deoxys (en sus formas Normal, Defensa, Ataque y Velocidad) está programada de 18:00 a 19:00, hora local. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
-      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto) (foco especial de 6:00 a 7:00 p. m. hora local), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
-      "requires_battles": true,
-      "activities": [
-        "⚔️ Incursiones en Gimnasios",
-        "⏰ 6:00–7:00 p. m."
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-25",
-      "end_date": "2026-11-25",
-      "date_range_label": "25 nov 2026 -> 25 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Deoxys: PC 100%: 1806 (Nv.20) • 2257 (Nv.25)",
-      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-      "guide_url": "https://leekduck.com/events/raidhour20261125/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Deoxys",
-          "subtitle": "PC 100%: 1806 (Nv.20) • 2257 (Nv.25)",
-          "primary_type": "psychic",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Psíquico",
-            "PC 100% Nv.20: 1806",
-            "PC 100% Clima Nv.25: 2257",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Fantasma (×1.6)",
-            "• Siniestro (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "3. Mega Heracross (Fury Cutter + Megahorn)",
-            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
-            "5. Darkrai Oscuro (Snarl + Foul Play)",
-            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
-          ],
-          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1806 (normal) o 2257 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Deoxys (formas normal, de defensa, de ataque y de velocidad) Hora de Incursiones"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/raidhour20261125/"
-      ],
-      "published_at": "2026-11-25T00:24:58Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
     },
     {
       "id": "pogo:hour-noibat-spotlight",
@@ -3425,213 +3449,6 @@
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:and-attack-defense-deoxys-formes-in-normal-speed",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Deoxys (formas normal, de defensa, de ataque y de velocidad) en Incursiones de 5 estrellas",
-      "title_original": "Deoxys (Normal, Defense, Attack, and Speed Formes) in 5-star Raid Battles",
-      "summary": "Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque) y Deoxys (Velocidad) estarán en incursiones de cinco estrellas desde el 25 de noviembre de 2026 hasta el 1 de diciembre de 2026. Los jefes de incursión cambian a las 6:00 a. m. hora local. Horas de incursión También habrá un Hora de Incursiones con Deoxys (formas normal, de defensa, de ataque y de velocidad) de 6:00 p.m. a 7:00 p.m. hora local el 25 de noviembre.",
-      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
-      "requires_battles": true,
-      "activities": [
-        "⚔️ Incursiones en Gimnasios",
-        "✨ Posible Shiny"
-      ],
-      "milestones": [
-        "🌿 Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
-        "✨ Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
-        "⚔️ Jefes: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)"
-      ],
-      "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
-      "highlights": [
-        "Pokémon destacados: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
-        "Variocolor disponibles: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
-        "Jefes: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)",
-        "Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
-        "Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-25",
-      "end_date": "2026-12-01",
-      "date_range_label": "25 nov 2026 -> 01 dic 2026",
-      "status": "proximo",
-      "tactical_summary": "Deoxys (Defense): PC 100%: 1299 (Nv.20) • 1624 (Nv.25) | Deoxys (Attack): PC 100%: 1474 (Nv.20) • 1842 (Nv.25)",
-      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-      "guide_url": "https://leekduck.com/events/deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Deoxys (Defense)",
-          "subtitle": "PC 100%: 1299 (Nv.20) • 1624 (Nv.25)",
-          "primary_type": "psychic",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Psíquico",
-            "PC 100% Nv.20: 1299",
-            "PC 100% Clima Nv.25: 1624",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Fantasma (×1.6)",
-            "• Siniestro (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "3. Mega Heracross (Fury Cutter + Megahorn)",
-            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
-            "5. Darkrai Oscuro (Snarl + Foul Play)",
-            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
-          ],
-          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1299 (normal) o 1624 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Deoxys (formas normal, de defensa, de ataque y de velocidad) en Incursiones de 5 estrellas"
-        },
-        {
-          "title": "Deoxys (Attack)",
-          "subtitle": "PC 100%: 1474 (Nv.20) • 1842 (Nv.25)",
-          "primary_type": "psychic",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Psíquico",
-            "PC 100% Nv.20: 1474",
-            "PC 100% Clima Nv.25: 1842",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Fantasma (×1.6)",
-            "• Siniestro (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "3. Mega Heracross (Fury Cutter + Megahorn)",
-            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
-            "5. Darkrai Oscuro (Snarl + Foul Play)",
-            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
-          ],
-          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1474 (normal) o 1842 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Deoxys (formas normal, de defensa, de ataque y de velocidad) en Incursiones de 5 estrellas"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026/"
-      ],
-      "published_at": "2026-11-25T00:24:58Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
-    },
-    {
-      "id": "pogo:in-mega-metagross-raids",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Mega Metagross in Mega Raids",
-      "title_original": "Mega Metagross in Mega Raids",
-      "summary": "MegaMetagross estará en Megaincursiones desde el 25 de noviembre de 2026 a las 6:00 hasta el 1 de diciembre de 2026 a las 22:00, hora local. Los jefes de incursión cambian a las 6:00 h, hora local.",
-      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
-      "requires_battles": true,
-      "activities": [
-        "⚔️ Incursiones en Gimnasios",
-        "✨ Posible Shiny"
-      ],
-      "milestones": [
-        "🌿 Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross",
-        "✨ Variocolor disponibles: Metagross, Mega Metagross",
-        "⚔️ Jefes: Mega Metagross"
-      ],
-      "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross",
-      "highlights": [
-        "Pokémon destacados: Mega Metagross",
-        "Variocolor disponibles: Metagross, Mega Metagross",
-        "Jefes: Mega Metagross"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-25",
-      "end_date": "2026-12-01",
-      "date_range_label": "25 nov 2026 -> 01 dic 2026",
-      "status": "proximo",
-      "tactical_summary": "Mega Metagross: PC 100%: 2166 (Nv.20) • 2708 (Nv.25)",
-      "search_filter": "Groudon,Reshiram,Necrozma,Mamoswine,Ursaluna,Ho-Oh",
-      "guide_url": "https://leekduck.com/events/mega-metagross-in-mega-raids-november-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Mega Metagross",
-          "subtitle": "PC 100%: 2166 (Nv.20) • 2708 (Nv.25)",
-          "primary_type": "steel",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Acero/Psíquico",
-            "PC 100% Nv.20: 2166",
-            "PC 100% Clima Nv.25: 2708",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Fantasma (×1.6)",
-            "• Fuego (×1.6)",
-            "• Siniestro (×1.6)",
-            "• Tierra (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Groudon Primigenio (Mud Shot + Precipice Blades)",
-            "2. Reshiram Oscuro (Fire Fang + Fusion Flare)",
-            "3. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "4. Mamoswine Oscuro (Mud Slap + High Horsepower)",
-            "5. Ursaluna Oscuro (Rock Smash + High Horsepower)",
-            "6. Ho-Oh Oscuro (Incinerate + Sacred Fire)"
-          ],
-          "explanation": "Vulnerable a Fantasma, Fuego, Siniestro. Lidera tu equipo con Groudon Primigenio y verifica el 100% IV al capturar: 2166 (normal) o 2708 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Groudon,Reshiram,Necrozma,Mamoswine,Ursaluna,Ho-Oh",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: MegaMetagross en Megaincursiones"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/mega-metagross-in-mega-raids-november-2026/"
-      ],
-      "published_at": "2026-11-25T00:24:58Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
     },
     {
       "id": "pogo:hour-raid-regidrago",
@@ -7327,7 +7144,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T04:23:37Z"
+      "last_updated_at": "2026-11-25T05:23:19Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -7473,7 +7290,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T04:23:37Z"
+      "last_updated_at": "2026-11-25T05:23:19Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -7787,7 +7604,7 @@
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T04:23:37Z"
+      "last_updated_at": "2026-11-25T05:23:19Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -8489,7 +8306,7 @@
       ],
       "published_at": "2026-11-24T21:25:16Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-25T04:23:37Z"
+      "last_updated_at": "2026-11-25T05:23:19Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
@@ -8784,72 +8601,6 @@
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:con-de-elige-exploren-investigacion-la-libremente-temporal",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "¡Exploren libremente con la Investigación Temporal de Elige tu camino durante el evento Destinos de Ensueño!",
-      "title_original": "¡Exploren libremente con la Investigación Temporal de Elige tu camino durante el evento Destinos de Ensueño!",
-      "summary": "Del martes 15 de diciembre a las 10:00 al lunes 21 de diciembre a las 20:00 (hora local)",
-      "action_guide": "Del martes 15 de diciembre a las 10:00 al lunes 21 de diciembre a las 20:00 (hora local)",
-      "requires_battles": false,
-      "activities": [
-        "📢 Anuncio oficial"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-25",
-      "end_date": null,
-      "date_range_label": "25 nov 2026 -> 25 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "4*,3*,shiny",
-      "guide_url": "https://pokemongolive.com/es_MX/news/choose-your-path-daydream-destinations-2026",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "electric",
-          "badge_label": "NOTICIA GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "Del martes 15 de diciembre a las 10:00 al lunes 21 de",
-            "diciembre a las 20:00 (hora local)"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Combina Huevo Suerte al subir amistad o completar misiones"
-          ],
-          "explanation": "¡Exploren libremente con la Investigación Temporal de Elige tu camino durante el evento Destinos de Ensueño!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro general para valorar capturas del evento:",
-          "search_string": "4*,3*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://pokemongolive.com/es_MX/news/choose-your-path-daydream-destinations-2026",
-          "context_label": "Noticia GO: ¡Exploren libremente con la Investigación Temporal de Elige tu camino durante el evento Destinos de Ensueño!"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/choose-your-path-daydream-destinations-2026"
-      ],
-      "published_at": "2026-11-25T01:23:59Z",
-      "first_seen_at": "2026-11-25T00:24:58Z",
-      "last_updated_at": "2026-11-25T01:23:59Z"
     },
     {
       "id": "pogo:and-cresselia-darkrai-hour-raid",
@@ -9808,6 +9559,255 @@
         "https://leekduck.com/events/max-mondays-2026-11-23/"
       ],
       "published_at": "2026-11-23T00:23:23Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:5-and-battles-cresselia-darkrai-in-raid-star",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Cresselia and Darkrai in 5-star Raid Partidas",
+      "title_original": "Cresselia and Darkrai in 5-star Raid Battles",
+      "summary": "Cresselia y Darkrai estarán en incursiones de cinco estrellas del 16 de noviembre de 2026 al 24 de noviembre de 2026. Los jefes de incursión cambian a las 6:00 h, hora local. Horas de incursiones También habrá una Hora de Incursiones con Cresselia y Darkrai de 18:00 a 19:00, hora local, el 18 de noviembre.",
+      "action_guide": "De qué trata: Cresselia y Darkrai estarán en incursiones de cinco estrellas del 16 de noviembre de 2026 al 24 de noviembre de 2026. Los jefes de incursión cambian a las 6:00 h, hora local. Horas de incursiones También habrá una Hora de... Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "✨ Posible Shiny"
+      ],
+      "milestones": [
+        "✨ Variocolor disponibles: Cresselia, Darkrai"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Variocolor disponibles: Cresselia, Darkrai",
+      "highlights": [
+        "Variocolor disponibles: Cresselia, Darkrai"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-16",
+      "end_date": "2026-11-24",
+      "date_range_label": "16 nov 2026 -> 24 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Cresselia • Raid Nivel 5: PC 100%: 1633 (Nv.20) • 2041 (Nv.25) • Variocolor disponible | Darkrai • Raid Nivel 5: PC 100%: 2136 (Nv.20) • 2671 (Nv.25) • Variocolor disponible",
+      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+      "guide_url": "https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Cresselia • Raid Nivel 5",
+          "subtitle": "PC 100%: 1633 (Nv.20) • 2041 (Nv.25) • Variocolor disponible",
+          "primary_type": "psychic",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Psíquico",
+            "PC 100% Nv.20: 1633",
+            "PC 100% Clima Nv.25: 2041",
+            "Clima: Viento",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Siniestro (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "3. Mega Heracross (Fury Cutter + Megahorn)",
+            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
+            "5. Darkrai Oscuro (Snarl + Foul Play)",
+            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+          ],
+          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1633 (normal) o 2041 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Cresselia and Darkrai in 5-star Raid Battles"
+        },
+        {
+          "title": "Darkrai • Raid Nivel 5",
+          "subtitle": "PC 100%: 2136 (Nv.20) • 2671 (Nv.25) • Variocolor disponible",
+          "primary_type": "dark",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Siniestro",
+            "PC 100% Nv.20: 2136",
+            "PC 100% Clima Nv.25: 2671",
+            "Clima: Niebla",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Hada (×1.6)",
+            "• Lucha (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Mega Gallade (Low Kick + Sacred Sword)",
+            "2. Keldeo (Resolute) (Low Kick + Secret Sword)",
+            "3. Terrakion (Double Kick + Sacred Sword)",
+            "4. Kartana (Fury Cutter + Sacred Sword)",
+            "5. Blaziken Oscuro (Counter + Aura Sphere)",
+            "6. Latios Oscuro (Dragon Breath + Aura Sphere)"
+          ],
+          "explanation": "Vulnerable a Bicho, Hada, Lucha. Lidera tu equipo con Mega Gallade y verifica el 100% IV al capturar: 2136 (normal) o 2671 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Gallade,Keldeo,Terrakion,Kartana,Blaziken,Latios",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Cresselia and Darkrai in 5-star Raid Battles"
+        },
+        {
+          "title": "Plan Táctico de Incursiones",
+          "subtitle": "Jefes actuales en rotación y checklist previo",
+          "primary_type": "fire",
+          "badge_label": "GUÍA RAIDS GO",
+          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
+          "left_rows": [
+            "Cresselia: PC 100% 1633 / 2041",
+            "Darkrai: PC 100% 2136 / 2671",
+            "Mega Banette: PC 100% 1313 / 1642",
+            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
+          ],
+          "right_heading": "PREPARACIÓN RECOMENDADA",
+          "right_rows": [
+            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
+            "Arma equipo predefinido antes de entrar al lobby",
+            "Combina Huevo Suerte si encadenas varias incursiones"
+          ],
+          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
+          "search_label": "Filtro rápido de atacantes / megas:",
+          "search_string": "Cresselia,Darkrai",
+          "info_label": "🔎 Ver jefes en LeekDuck",
+          "info_url": "https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/",
+          "context_label": "Evento GO: Cresselia and Darkrai in 5-star Raid Battles"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/cresselia-darkrai-in-5-star-raid-battles-november-2026/"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-24T21:25:16Z"
+    },
+    {
+      "id": "pogo:banette-in-mega-raids",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Mega Banette in Mega Raids",
+      "title_original": "Mega Banette in Mega Raids",
+      "summary": "Mega Banette estará en Megaincursiones desde el 16 de noviembre de 2026 a las 6:00 hasta el 24 de noviembre de 2026 a las 22:00, hora local. Los jefes de incursión cambian a las 6:00 h, hora local.",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "✨ Posible Shiny"
+      ],
+      "milestones": [
+        "🌿 Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette",
+        "✨ Variocolor disponibles: Banette, Mega Banette",
+        "⚔️ Jefes: Mega Banette"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette",
+      "highlights": [
+        "Pokémon destacados: Mega Banette",
+        "Variocolor disponibles: Banette, Mega Banette",
+        "Jefes: Mega Banette"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-16",
+      "end_date": "2026-11-24",
+      "date_range_label": "16 nov 2026 -> 24 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Mega Banette • Mega Raid: PC 100%: 1313 (Nv.20) • 1642 (Nv.25) • Variocolor disponible",
+      "search_filter": "Necrozma,Kyurem,Giratina,Darkrai,Absol,Hydreigon",
+      "guide_url": "https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Mega Banette • Mega Raid",
+          "subtitle": "PC 100%: 1313 (Nv.20) • 1642 (Nv.25) • Variocolor disponible",
+          "primary_type": "ghost",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Fantasma",
+            "PC 100% Nv.20: 1313",
+            "PC 100% Clima Nv.25: 1642",
+            "Clima: Niebla",
+            "— DEBILIDADES CLAVE —",
+            "• Fantasma (×1.6)",
+            "• Siniestro (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "3. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
+            "4. Darkrai Oscuro (Snarl + Foul Play)",
+            "5. Mega Absol (Snarl + Payback)",
+            "6. Hydreigon Oscuro (Bite + Brutal Swing)"
+          ],
+          "explanation": "Vulnerable a Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1313 (normal) o 1642 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Necrozma,Kyurem,Giratina,Darkrai,Absol,Hydreigon",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Mega Banette in Mega Raids"
+        },
+        {
+          "title": "Plan Táctico de Incursiones",
+          "subtitle": "Jefes actuales en rotación y checklist previo",
+          "primary_type": "fire",
+          "badge_label": "GUÍA RAIDS GO",
+          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
+          "left_rows": [
+            "Cresselia: PC 100% 1633 / 2041",
+            "Darkrai: PC 100% 2136 / 2671",
+            "Mega Banette: PC 100% 1313 / 1642",
+            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
+          ],
+          "right_heading": "PREPARACIÓN RECOMENDADA",
+          "right_rows": [
+            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
+            "Arma equipo predefinido antes de entrar al lobby",
+            "Combina Huevo Suerte si encadenas varias incursiones"
+          ],
+          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
+          "search_label": "Filtro rápido de atacantes / megas:",
+          "search_string": "Banette",
+          "info_label": "🔎 Ver jefes en LeekDuck",
+          "info_url": "https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/",
+          "context_label": "Evento GO: Mega Banette in Mega Raids"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
