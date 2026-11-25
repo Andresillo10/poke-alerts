@@ -1,14 +1,14 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 13:23 COT",
+  "generated_at": "2026-11-25 14:23 COT",
   "stats": {
     "total": 193,
     "pogo": 179,
     "tcgp": 14,
     "codes_active": 4,
-    "active": 59,
-    "upcoming": 112,
+    "active": 58,
+    "upcoming": 113,
     "ended": 22
   },
   "events": [
@@ -3497,73 +3497,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
-      "id": "tcgp:card-holidays-promo-themed-winter",
-      "game": "tcgp",
-      "game_label": "Pokémon TCG Pocket",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Evento TCG Pocket",
-      "title": "Temática Fiestas de Invierno Evento de Carta Promo",
-      "title_original": "Winter Holidays Themed Promo Card Event",
-      "summary": "Ring in the Winter Holidays 2026 with this set of special Misiones! Complete them to earn:",
-      "action_guide": "NO toca hacer combates. Entra al menú Elección Mágica varias veces al día: las elecciones extra gratuitas y especiales (Chansey Pick) rotan cada ~30 min a 1 hora para sacar las cartas destacadas y cupones de tienda.",
-      "requires_battles": false,
-      "activities": [
-        "📦 Abrir sobres",
-        "✨ Elección Mágica",
-        "📅 Iniciar sesión",
-        "✅ Sin combates"
-      ],
-      "milestones": [
-        "Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena",
-        "Inicia sesión (Día 1) → 1",
-        "Inicia sesión (Día 2) → 2 Sobres Promo",
-        "Inicia sesión (Día 3) → 12× Relojes de Arena",
-        "Collect 3 different Cartas Promo from this event → 12× Relojes de Arena",
-        "Trade 1 time → 36",
-        "Haz 1 Elección Mágica → 1× Sobre Promo",
-        "Collect 25 cards → 1× Sobre Promo",
-        "Collect 50 cards → 12× Relojes de Arena",
-        "Week 2 Inicia sesión (Día 4) → 1× Sobre Promo",
-        "Share 3 times → 36",
-        "Haz 3 Elecciones Mágicas → 1× Sobre Promo",
-        "Haz 5 Elecciones Mágicas → 12× Relojes de Arena",
-        "Collect 30 cards → 1× Sobre Promo",
-        "Collect 60 cards → 12× Relojes de Arena",
-        "Abre 2 sobres con energía → 1× Sobre Promo"
-      ],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
-      "highlights": [
-        "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena",
-        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-10",
-      "end_date": null,
-      "date_range_label": "Desde 10 nov 2026 (sin fecha fin publicada)",
-      "status": "activo",
-      "tactical_summary": "",
-      "search_filter": "",
-      "guide_url": "https://ptcgpocket.gg/tier-list/",
-      "recommended_decks": [],
-      "tactical_cards": [],
-      "decks_checked_at": "2026-11-25T13:23:23Z",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "PTCGPocket.gg"
-      ],
-      "urls": [
-        "https://ptcgpocket.gg/winter-holidays-themed-promo-card-event/"
-      ],
-      "published_at": "2026-11-18T16:29:39Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T13:23:31Z"
-    },
-    {
       "id": "pogo:2026-actualizacion-contenido-de-diciembre",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -6026,18 +5959,25 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Paraíso Tropical",
       "title_original": "Tropical Paradise",
-      "summary": "El evento Tropical Paradise se llevará a cabo del 1 al 7 de diciembre de 2026. Estén atentos para más detalles.",
-      "action_guide": "De qué trata: El evento Tropical Paradise se llevará a cabo del 1 al 7 de diciembre de 2026. Estén atentos para más detalles. Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "summary": "Este evento es el primer evento de la temporada de Daydream Destinations y presenta la incorporación de Pyukumuku al juego.",
+      "action_guide": "De qué trata: Este evento es el primer evento de la temporada de Daydream Destinations y presenta la incorporación de Pyukumuku al juego. Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
       "requires_battles": false,
       "activities": [
         "🎯 Pestaña Hoy / Eventos",
         "🌿 Capturas y bonus"
       ],
-      "milestones": [],
+      "milestones": [
+        "🔥 Experiencia de incursión (*2 (Pase GO))",
+        "🔥 Slowbro Megaenergía (*5 (Pase GO))",
+        "🌿 Pokémon salvajes: Slowpoke, Shellder, Snorlax, Wingull, Slakoth, Exeggutor, Hoppip, Lotad"
+      ],
       "deck_intro": "",
       "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
+      "rewards": "Bonificaciones: Experiencia de incursión (*2 (Pase GO)); Slowbro Megaenergía (*5 (Pase GO))",
+      "highlights": [
+        "Bonificaciones: Experiencia de incursión (*2 (Pase GO)); Slowbro Megaenergía (*5 (Pase GO))",
+        "Pokémon salvajes: Slowpoke, Shellder, Snorlax, Wingull, Slakoth, Exeggutor, Hoppip, Lotad"
+      ],
       "promo_code": null,
       "redeem_url": null,
       "start_date": "2026-12-01",
@@ -6077,14 +6017,16 @@ window.POKE_ALERTS_DB = {
       "decks_updated_at": "",
       "decks_updated_label": "",
       "sources": [
-        "ScrapedDuck JSON"
+        "ScrapedDuck JSON",
+        "Serebii GO"
       ],
       "urls": [
-        "https://leekduck.com/events/tropical-paradise-2026/"
+        "https://leekduck.com/events/tropical-paradise-2026/",
+        "https://www.serebii.net/pokemongo/events/tropicalparadise.shtml"
       ],
       "published_at": "2026-11-24T21:25:16Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:in-mega-raids-slowbro",
@@ -6481,7 +6423,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -7783,7 +7725,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:ho-hour-oh-raid",
@@ -8628,7 +8570,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -9430,6 +9372,75 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
+      "id": "tcgp:card-holidays-promo-themed-winter",
+      "game": "tcgp",
+      "game_label": "Pokémon TCG Pocket",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento TCG Pocket",
+      "title": "Temática Fiestas de Invierno Evento de Carta Promo",
+      "title_original": "Winter Holidays Themed Promo Card Event",
+      "summary": "Ring in the Winter Holidays 2026 with this set of special Misiones! Complete them to earn:",
+      "action_guide": "NO toca hacer combates. Entra al menú Elección Mágica varias veces al día: las elecciones extra gratuitas y especiales (Chansey Pick) rotan cada ~30 min a 1 hora para sacar las cartas destacadas y cupones de tienda.",
+      "requires_battles": false,
+      "activities": [
+        "📦 Abrir sobres",
+        "✨ Elección Mágica",
+        "📅 Iniciar sesión",
+        "✅ Sin combates"
+      ],
+      "milestones": [
+        "Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena",
+        "Inicia sesión (Día 1) → 1",
+        "Inicia sesión (Día 2) → 2 Sobres Promo",
+        "Inicia sesión (Día 3) → 12× Relojes de Arena",
+        "Collect 3 different Cartas Promo from this event → 12× Relojes de Arena",
+        "Trade 1 time → 36",
+        "Haz 1 Elección Mágica → 1× Sobre Promo",
+        "Collect 25 cards → 1× Sobre Promo",
+        "Collect 50 cards → 12× Relojes de Arena",
+        "Week 2 Inicia sesión (Día 4) → 1× Sobre Promo",
+        "Share 3 times → 36",
+        "Haz 3 Elecciones Mágicas → 1× Sobre Promo",
+        "Haz 5 Elecciones Mágicas → 12× Relojes de Arena",
+        "Collect 30 cards → 1× Sobre Promo",
+        "Collect 60 cards → 12× Relojes de Arena",
+        "Abre 2 sobres con energía → 1× Sobre Promo"
+      ],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
+      "highlights": [
+        "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena",
+        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-26",
+      "end_date": "2026-12-26",
+      "date_range_label": "26 nov 2026 -> 26 dic 2026",
+      "status": "proximo",
+      "tactical_summary": "",
+      "search_filter": "",
+      "guide_url": "https://ptcgpocket.gg/tier-list/",
+      "recommended_decks": [],
+      "tactical_cards": [],
+      "decks_checked_at": "2026-11-25T13:23:23Z",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "PTCGPocket.gg",
+        "Serebii TCGP"
+      ],
+      "urls": [
+        "https://ptcgpocket.gg/winter-holidays-themed-promo-card-event/",
+        "https://www.serebii.net/tcgpocket/events/winterholidaysthemedpromocardevent.shtml"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-25T19:23:18Z"
+    },
+    {
       "id": "pogo:during-dynamax-magikarp-max-monday",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -10060,7 +10071,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -11598,7 +11609,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12372,7 +12383,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -12664,7 +12675,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13292,7 +13303,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -14620,7 +14631,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T18:23:25Z"
+      "last_updated_at": "2026-11-25T19:23:18Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
