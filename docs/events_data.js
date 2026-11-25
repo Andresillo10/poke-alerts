@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 11:23 COT",
+  "generated_at": "2026-11-25 12:23 COT",
   "stats": {
     "total": 192,
     "pogo": 178,
@@ -808,7 +808,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:go-november-pass",
@@ -6413,7 +6413,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -7715,7 +7715,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:ho-hour-oh-raid",
@@ -8560,7 +8560,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -9992,7 +9992,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -11530,7 +11530,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12304,7 +12304,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -12596,7 +12596,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13224,7 +13224,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -14552,7 +14552,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T16:23:20Z"
+      "last_updated_at": "2026-11-25T17:23:21Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
