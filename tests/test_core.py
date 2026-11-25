@@ -1577,6 +1577,93 @@ class CorePipelineTests(unittest.TestCase):
         self.assertFalse(_is_strictly_better_deck_set(d_champ, d_champ))
         self.assertFalse(_is_strictly_better_deck_set(d_champ, d_algo))
 
+    def test_v13_anti_spam_future_seed_cross_lang_dedup_and_fingerprint(self) -> None:
+        # 1. Eventos futuros (>1 día) y placeholders 'Unannounced' van a to_seed_only (0 spam en Telegram)
+        #    y solo se notifican 1 sola vez el día que realmente inician.
+        st = default_state()
+        st["initialized"] = True
+        now_nov24 = datetime(2026, 11, 24, 21, 25, tzinfo=timezone.utc)
+        future_ev = AlertItem(
+            uid="scrapedduck:mega-slowbro-in-mega-raids-december-2026",
+            game="pogo",
+            kind="event",
+            title="Mega Slowbro in Mega Raids",
+            summary="Desc",
+            url="https://leekduck.com/events/mega-slowbro/",
+            source_name="ScrapedDuck JSON",
+            starts_on="2026-12-08",
+        )
+        placeholder_ev = AlertItem(
+            uid="scrapedduck:unannounced-event-december-2026",
+            game="pogo",
+            kind="event",
+            title="Unannounced Event",
+            summary="TBA",
+            url="https://leekduck.com/events/unannounced/",
+            source_name="ScrapedDuck JSON",
+            starts_on="2026-11-25",
+        )
+        today_deoxys_5 = AlertItem(
+            uid="scrapedduck:deoxys-5star",
+            game="pogo",
+            kind="event",
+            title="Deoxys (Normal, Defense, Attack, and Speed Formes) in 5-star Raid Battles",
+            summary="5-star",
+            url="https://leekduck.com/events/deoxys-5/",
+            source_name="ScrapedDuck JSON",
+            starts_on="2026-11-24",
+        )
+        today_deoxys_rh = AlertItem(
+            uid="scrapedduck:deoxys-rh",
+            game="pogo",
+            kind="event",
+            title="Deoxys (Normal, Defense, Attack, and Speed Formes) Raid Hour",
+            summary="Raid hour",
+            url="https://leekduck.com/events/deoxys-rh/",
+            source_name="ScrapedDuck JSON",
+            starts_on="2026-11-24",
+        )
+        to_notify, to_seed = select_pending_alerts(
+            st,
+            [future_ev, placeholder_ev, today_deoxys_5, today_deoxys_rh],
+            now_utc=now_nov24,
+        )
+        # Solo sale 1 alerta de Deoxys (dedup Raid Hour + 5-star); futuro y Unannounced van en silencio
+        self.assertEqual([x.uid for x in to_notify], ["scrapedduck:deoxys-5star"])
+        self.assertEqual([x.uid for x in to_seed], [future_ev.uid, placeholder_ev.uid])
+
+        mark_items_processed(
+            st,
+            to_notify + to_seed,
+            now_utc=now_nov24,
+            sent_uids={x.uid for x in to_notify},
+        )
+        # Re-ejecución inmediata: 0 duplicados (bloqueado por seen + sent_fingerprints)
+        again_notify, _ = select_pending_alerts(
+            st,
+            [future_ev, placeholder_ev, today_deoxys_5, today_deoxys_rh],
+            now_utc=datetime(2026, 11, 25, 1, 23, tzinfo=timezone.utc),
+        )
+        self.assertEqual(again_notify, [])
+
+        # El 8 de diciembre (día real de inicio de Mega Slowbro), dispara 1 solo aviso de inicio
+        on_launch, _ = select_pending_alerts(
+            st,
+            [future_ev],
+            now_utc=datetime(2026, 12, 8, 12, 23, tzinfo=timezone.utc),
+        )
+        self.assertEqual([x.uid for x in on_launch], [future_ev.uid])
+        self.assertTrue(on_launch[0].is_launch_reminder)
+
+        # 2. Deduplicación bilingüe EN <-> ES: 'GO Pass: December' y 'El Pase de GO Diciembre' son el mismo tema
+        st2 = default_state()
+        st2["initialized"] = True
+        pass_en = AlertItem("sd:go-pass-dec", "pogo", "event", "GO Pass: December", "EN", "https://ld/1", "ScrapedDuck JSON", starts_on="2026-11-25")
+        pass_es = AlertItem("pogo:pase-go-dic", "pogo", "news", "El Pase de GO de Diciembre", "ES", "https://pg/1", "Pokémon GO Live (ES)")
+        mark_items_processed(st2, [pass_en], now_utc=now_nov24, sent_uids={pass_en.uid})
+        dup_es, _ = select_pending_alerts(st2, [pass_es], now_utc=datetime(2026, 11, 24, 22, 23, tzinfo=timezone.utc))
+        self.assertEqual(dup_es, [])
+
 
 if __name__ == "__main__":
     unittest.main()

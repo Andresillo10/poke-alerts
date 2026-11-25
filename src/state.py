@@ -12,11 +12,12 @@ from src.config import (
     HEARTBEAT_INTERVAL_DAYS,
     MAX_ALERTS_PER_RUN,
     MAX_BOOTSTRAP_EVENTS_PER_GAME,
+    MAX_FUTURE_NOTIFY_LEAD_DAYS,
     MAX_SEEN_ITEMS,
     STATE_FILE,
     TOPIC_DEDUP_TTL_DAYS,
 )
-from src.models import AlertItem, build_topic_key, canonical_topic_signature
+from src.models import AlertItem, build_alert_fingerprint, build_topic_key, canonical_topic_signature
 
 
 def default_state() -> dict[str, Any]:
@@ -31,6 +32,7 @@ def default_state() -> dict[str, Any]:
         "seen_uids": {},
         "seen_topics": {},
         "started_notified": {},
+        "sent_fingerprints": {},
         "source_failures": {},
     }
 
@@ -50,6 +52,7 @@ def save_state(state: dict[str, Any], path: Path = STATE_FILE) -> None:
     state["seen_uids"] = _prune_dict(state.get("seen_uids", {}), MAX_SEEN_ITEMS)
     state["seen_topics"] = _prune_dict(state.get("seen_topics", {}), MAX_SEEN_ITEMS)
     state["started_notified"] = _prune_dict(state.get("started_notified", {}), MAX_SEEN_ITEMS)
+    state["sent_fingerprints"] = _prune_dict(state.get("sent_fingerprints", {}), MAX_SEEN_ITEMS)
     path.write_text(json.dumps(state, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
@@ -82,14 +85,45 @@ def _parse_iso_date(raw_date: str | None) -> date | None:
         return None
 
 
+def _is_placeholder_event(item: AlertItem) -> bool:
+    """Descarta espacios vacíos del calendario ('Unannounced Event', 'TBA')."""
+    low = item.title.lower()
+    return any(k in low for k in ("unannounced", "sin anunciar", "to be announced"))
+
+
+def _is_far_future_event(item: AlertItem, now_utc: datetime) -> bool:
+    """True si un evento inicia después de mañana (se guarda en Dashboard, sin spammear Telegram)."""
+    if item.kind != "event" or not item.starts_on:
+        return False
+    start_dt = _parse_iso_date(item.starts_on)
+    if not start_dt:
+        return False
+    return start_dt > (now_utc.date() + timedelta(days=MAX_FUTURE_NOTIFY_LEAD_DAYS))
+
+
+def _is_already_sent_fingerprint(state: dict[str, Any], item: AlertItem, now_utc: datetime) -> bool:
+    """Bloqueo duro anti-repetidos: si la misma huella ya se envió a Telegram dentro del TTL, no reenvía."""
+    fp = build_alert_fingerprint(item)
+    sent_map = state.get("sent_fingerprints", {})
+    raw_ts = sent_map.get(fp)
+    if not raw_ts:
+        return False
+    if item.kind == "code" or item.starts_on:
+        return True
+    dt = _parse_iso_dt(raw_ts)
+    return bool(dt and (now_utc - dt) < timedelta(days=TOPIC_DEDUP_TTL_DAYS))
+
+
 def _is_seen(
     state: dict[str, Any],
     item: AlertItem,
     topic_key: str,
     now_utc: datetime,
 ) -> bool:
-    """Verifica si el UID o una variante equivalente del tema ya salió dentro del TTL."""
+    """Verifica si el UID, la huella enviada o una variante equivalente del tema ya salió."""
     if item.uid in state["seen_uids"]:
+        return True
+    if _is_already_sent_fingerprint(state, item, now_utc):
         return True
 
     ttl = timedelta(days=TOPIC_DEDUP_TTL_DAYS)
@@ -114,7 +148,9 @@ def _should_send_launch_reminder(
     now_utc: datetime,
 ) -> bool:
     """Detecta si un evento anunciado previamente acaba de iniciar hoy."""
-    if item.kind != "event" or not item.starts_on:
+    if item.kind != "event" or not item.starts_on or _is_placeholder_event(item):
+        return False
+    if _is_already_sent_fingerprint(state, item, now_utc):
         return False
 
     started_map = state.get("started_notified", {})
@@ -147,13 +183,29 @@ def _should_send_launch_reminder(
     return bool(seen_dt and seen_dt.date() < start_dt)
 
 
-def _mark_seen(state: dict[str, Any], item: AlertItem, topic_key: str, timestamp: str) -> None:
-    """Registra UID, tema canónico y estado de arranque si ya inició."""
+def _mark_seen(
+    state: dict[str, Any],
+    item: AlertItem,
+    topic_key: str,
+    timestamp: str,
+    *,
+    was_sent: bool = True,
+) -> None:
+    """Registra UID, tema canónico, huella enviada y estado de arranque si ya inició."""
     state["seen_uids"][item.uid] = timestamp
     state["seen_topics"][topic_key] = timestamp
 
     now_dt = _parse_iso_dt(timestamp)
     start_dt = _parse_iso_date(item.starts_on)
+    is_live_or_non_future = (
+        item.kind != "event"
+        or item.is_launch_reminder
+        or not start_dt
+        or (now_dt is not None and now_dt.date() >= start_dt)
+    )
+    if was_sent and is_live_or_non_future:
+        state.setdefault("sent_fingerprints", {})[build_alert_fingerprint(item)] = timestamp
+
     if item.is_launch_reminder or (start_dt and now_dt and now_dt.date() >= start_dt):
         started_map = state.setdefault("started_notified", {})
         started_map[item.uid] = timestamp
@@ -168,7 +220,7 @@ def select_pending_alerts(
     max_alerts: int = MAX_ALERTS_PER_RUN,
     bootstrap_silent: bool = False,
 ) -> tuple[list[AlertItem], list[AlertItem]]:
-    """Separa alertas nuevas + recordatorios de inicio hoy del backlog histórico.
+    """Separa alertas accionables hoy/mañana del backlog futuro (evitando spam masivo).
 
     Devuelve `(to_notify, to_mark_seen_without_notify)`.
     """
@@ -176,6 +228,7 @@ def select_pending_alerts(
     is_bootstrap = not state.get("initialized", False)
 
     unseen: list[tuple[AlertItem, str]] = []
+    deferred_seed: list[AlertItem] = []
     launch_reminders: list[tuple[AlertItem, str]] = []
     seen_batch_topics: set[str] = set()
     seen_batch_sigs: set[str] = set()
@@ -198,6 +251,11 @@ def select_pending_alerts(
         seen_batch_sigs.add(topic_sig)
 
         if not _is_seen(state, item, topic_key, ref_now):
+            if not is_bootstrap and (_is_placeholder_event(item) or _is_far_future_event(item, ref_now)):
+                # Eventos futuros (>1 día) y placeholders 'Unannounced' se guardan en silencio
+                # para el Dashboard y se notifican en Telegram únicamente al iniciar.
+                deferred_seed.append(item)
+                continue
             unseen.append((item, topic_key))
             queued_sigs.add(topic_sig)
         elif not is_bootstrap and _should_send_launch_reminder(state, item, topic_key, ref_now):
@@ -205,13 +263,13 @@ def select_pending_alerts(
             queued_sigs.add(topic_sig)
 
     if not is_bootstrap:
-        # Prioriza códigos + recordatorios de inicio hoy por encima de anuncios lejanos
+        # Prioriza códigos + recordatorios de inicio hoy + eventos/noticias vigentes
         ordered = [
             *(pair[0] for pair in unseen if pair[0].kind == "code"),
             *(pair[0] for pair in launch_reminders),
             *(pair[0] for pair in unseen if pair[0].kind != "code"),
         ]
-        return ordered[:max_alerts], []
+        return ordered[:max_alerts], deferred_seed
 
     if bootstrap_silent:
         return [], [pair[0] for pair in unseen]
@@ -241,11 +299,13 @@ def mark_items_processed(
     items: list[AlertItem],
     *,
     now_utc: datetime | None = None,
+    sent_uids: set[str] | None = None,
 ) -> None:
-    """Marca una lista de alertas como vistas tras enviarse o sembrarse."""
+    """Marca alertas como vistas y graba huella anti-repetición para las enviadas a Telegram."""
     now_iso = (now_utc or datetime.now(timezone.utc)).strftime("%Y-%m-%dT%H:%M:%SZ")
     for item in items:
-        _mark_seen(state, item, build_topic_key(item), now_iso)
+        was_sent = True if sent_uids is None else (item.uid in sent_uids)
+        _mark_seen(state, item, build_topic_key(item), now_iso, was_sent=was_sent)
     state["initialized"] = True
 
 

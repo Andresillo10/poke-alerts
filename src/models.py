@@ -138,6 +138,51 @@ def _strip_accents(text: str) -> str:
     return "".join(ch for ch in normalized if not unicodedata.combining(ch))
 
 
+_FILLER_TOKENS = {
+    "el", "la", "los", "las", "de", "del", "con", "en", "para", "por", "tu", "su", "al",
+    "the", "and", "for", "with", "in", "of", "to", "your", "from", "on", "at",
+}
+_BILINGUAL_CANON_MAP = {
+    "pase": "pass",
+    "diciembre": "december",
+    "enero": "january",
+    "febrero": "february",
+    "marzo": "march",
+    "abril": "april",
+    "mayo": "may",
+    "junio": "june",
+    "julio": "july",
+    "agosto": "august",
+    "septiembre": "september",
+    "octubre": "october",
+    "noviembre": "november",
+    "elige": "choose",
+    "camino": "path",
+    "liga": "league",
+    "combates": "battle",
+    "combate": "battle",
+    "incursiones": "raid",
+    "incursion": "raid",
+    "raids": "raid",
+    "comunidad": "community",
+    "destacado": "spotlight",
+    "partidas": "battles",
+    "limitadas": "limited",
+    "limitado": "limited",
+    "regalo": "gift",
+    "temporada": "season",
+    "actualizacion": "update",
+    "mensual": "monthly",
+}
+_SIG_IGNORE_TOKENS = {
+    "mission", "missions", "mision", "misiones", "guide", "event", "events",
+    "evento", "eventos", "pokemon", "timed", "research", "investigacion", "temporal",
+    "hour", "hora", "day", "dia", "days", "dias", "star", "5", "forme", "formes",
+    "normal", "defense", "attack", "speed", "during", "durante", "returns",
+    "espera", "exploren", "libremente", "battles", "battle",
+}
+
+
 def build_topic_key(item: AlertItem) -> str:
     """Construye una clave canónica por tema para evitar duplicados entre portales."""
     if item.kind == "code" and item.promo_code:
@@ -147,20 +192,28 @@ def build_topic_key(item: AlertItem) -> str:
     clean = _PAREN_SET_RE.sub(" ", clean)
     clean = _BOILERPLATE_RE.sub(" ", clean)
     clean = _NON_ALNUM_RE.sub(" ", clean).strip()
-    tokens = [tok for tok in clean.split() if len(tok) > 1 or tok.isdigit()]
-    slug = "-".join(tokens[:8]) or item.uid
+    tokens = [tok for tok in clean.split() if (len(tok) > 1 or tok.isdigit()) and tok not in _FILLER_TOKENS]
+    slug = "-".join(tokens[:12]) or item.uid
     return f"{item.game}:{slug}"
 
 
 def canonical_topic_signature(topic_key: str) -> str:
-    """Firma independiente del orden de palabras para cruzar temas entre portales."""
+    """Firma bilingüe independiente del orden de palabras para cruzar temas entre portales."""
     if ":" not in topic_key:
         return topic_key
     game, rest = topic_key.split(":", 1)
     if rest.startswith("code:"):
         return topic_key
-    ignore = {"mission", "missions", "mision", "misiones", "guide", "event", "events"}
-    base_tokens = [tok for tok in rest.split("-") if tok and tok not in ignore]
+    mapped = [_BILINGUAL_CANON_MAP.get(tok, tok) for tok in rest.split("-") if tok]
+    base_tokens = [tok for tok in mapped if tok not in _SIG_IGNORE_TOKENS and tok not in _FILLER_TOKENS]
     no_set = [tok for tok in base_tokens if not _SET_CODE_TOKEN_RE.match(tok)]
-    chosen = no_set if len(no_set) >= 3 else base_tokens
+    chosen = no_set if len(no_set) >= 2 else (base_tokens or mapped)
     return f"{game}:{'-'.join(sorted(set(chosen)))}"
+
+
+def build_alert_fingerprint(item: AlertItem) -> str:
+    """Huella única por contenido/evento/fecha para impedir reenvíos duplicados a Telegram."""
+    if item.kind == "code" and item.promo_code:
+        return f"{item.game}:code:{item.promo_code.strip().upper()}"
+    sig = canonical_topic_signature(build_topic_key(item))
+    return f"{sig}:{item.starts_on or 'nodate'}"

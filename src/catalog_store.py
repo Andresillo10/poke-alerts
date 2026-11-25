@@ -377,7 +377,7 @@ def sync_events_catalog(
             enriched_loc,
             extra_ev=extra_ev,
             milestones=milestones,
-            decks_count=0 if (raw_item.game == "tcgp" and not force_replace_decks) else len(final_rec_decks),
+            decks_count=0 if raw_item.game == "tcgp" else len(final_rec_decks),
         )
         if raw_item.game == "tcgp" and not requires_battles:
             final_rec_decks = []

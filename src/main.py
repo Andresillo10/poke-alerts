@@ -27,6 +27,7 @@ from src.config import (
     DEFAULT_OUTPUT_DIR,
     EVENTS_HISTORY_FILE,
     MAX_ALERTS_PER_RUN,
+    MAX_POGO_CARDS_PER_EVENT_TELEGRAM,
     STATE_FILE,
     TELEGRAM_SEND_DELAY_SEC,
     URLS,
@@ -1148,7 +1149,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
                 )
             except Exception as exc:
                 LOGGER.warning("Fallo no bloqueante enviando mazo %s: %s", deck.title, exc)
-        for p_card, p_path in pogo_cards:
+        for p_card, p_path in pogo_cards[:MAX_POGO_CARDS_PER_EVENT_TELEGRAM]:
             time.sleep(TELEGRAM_SEND_DELAY_SEC)
             try:
                 send_telegram_pogo_card(
@@ -1247,7 +1248,7 @@ def run_pipeline(args: argparse.Namespace) -> int:
 
     processed = sent_items + to_seed_only
     if processed:
-        mark_items_processed(state, processed)
+        mark_items_processed(state, processed, sent_uids={it.uid for it in sent_items})
     if weekly_sent:
         state["last_weekly_meta_week"] = week_key
     if codes_sent:
