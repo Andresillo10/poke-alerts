@@ -1,14 +1,14 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 15:23 COT",
+  "generated_at": "2026-11-25 16:23 COT",
   "stats": {
-    "total": 193,
-    "pogo": 179,
+    "total": 195,
+    "pogo": 181,
     "tcgp": 14,
     "codes_active": 4,
-    "active": 58,
-    "upcoming": 113,
+    "active": 59,
+    "upcoming": 114,
     "ended": 22
   },
   "events": [
@@ -1656,15 +1656,17 @@ window.POKE_ALERTS_DB = {
         "Completa 2 Misiones → 2× Reloj de Arena Mágico",
         "Completa 3 Misiones → 3× Reloj de Arena de Sobres",
         "Completa 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
-        "🃏 Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog"
+        "Haz 1 Elección Mágica → 1× Sobre Promo Serie C vol. 1",
+        "Haz 2 Elecciones Mágicas → Cupón de evento"
       ],
       "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia respetando la regla limitada (solo Fusión Dual C1 / Promo-C) para cumplirlo (sigo revisando si aparece uno mejor).",
       "search_aliases": "Fusión Dual Dual Fusion C1 Partidas limitadas Partidas ilimitadas Combates limitados Versus Encuentro de evento",
-      "rewards": "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 batalla → 1× Sobre Promo Serie C vol. 1 | Participa en 2 batallas → Cupón de evento | Elección Mágica 1 vez → 1× Sobre Promo Serie C vol. 1 | Elección Mágica 2 veces → Cupón de evento | Completa 2 Misiones → 2× Reloj de Arena Mágico | Completa 3 Misiones → 3× Reloj de Arena de Sobres | Completa 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1) | Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog",
+      "rewards": "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 batalla → 1× Sobre Promo Serie C vol. 1 | Participa en 2 batallas → Cupón de evento | Haz 1 Elección Mágica → 1× Sobre Promo Serie C vol. 1 | Haz 2 Elecciones Mágicas → Cupón de evento | Completa 2 misiones → 2× Reloj de Arena Mágico | Completa 3 misiones → 3× Reloj de Arena de Sobres | Completa 4 misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1) | Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog",
       "highlights": [
         "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 batalla → 1× Sobre Promo Serie C vol. 1 | Participa en 2 batallas → Cupón de evento | Elección Mágica 1 vez → 1× Sobre Promo Serie C vol. 1 | Elección Mágica 2 veces → Cupón de evento | Completa 2 Misiones → 2× Reloj de Arena Mágico | Completa 3 Misiones → 3× Reloj de Arena de Sobres | Completa 4 Misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)",
         "Cartas y sobres destacados: Mega Mewtwo ex, Sobre Promo Serie C vol. 1, Deoxys, Inkay, Malamar, Cosmog",
-        "Misiones: Gana 1 batalla → 1× Moneda del evento | Gana 3 batallas → 1× Sobre Promo | Gana 5 batallas → 1× Fundas del evento | Gana 9 batallas → 1× Tapete del evento"
+        "Misiones: Gana 1 batalla → 1× Moneda del evento | Gana 3 batallas → 1× Sobre Promo | Gana 5 batallas → 1× Fundas del evento | Gana 9 batallas → 1× Tapete del evento",
+        "Misiones: Gana 1 batalla → 1× Mega Mewtwo X (Moneda) | Gana 3 batallas → 1× Sobre Promo Serie C vol. 1 | Gana 5 batallas → 1× Mega Mewtwo X (Fundas) | Gana 9 batallas → 1× Mega Mewtwo X (Tapete) | Inicia sesión → Cupón de evento | Abre 1 sobre con energía → 1× Sobre Promo Serie C vol. 1 | Abre 2 sobres con energía → Cupón de evento | Participa en 1 batalla → 1× Sobre Promo Serie C vol. 1 | Participa en 2 batallas → Cupón de evento | Haz 1 Elección Mágica → 1× Sobre Promo Serie C vol. 1 | Haz 2 Elecciones Mágicas → Cupón de evento | Completa 2 misiones → 2× Reloj de Arena Mágico | Completa 3 misiones → 3× Reloj de Arena de Sobres | Completa 4 misiones → Cupón de Canje de Carta Promo (Sobre Promo Serie C vol. 1)"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -1750,7 +1752,7 @@ window.POKE_ALERTS_DB = {
         }
       ],
       "tactical_cards": [],
-      "decks_checked_at": "2026-11-25T14:23:21Z",
+      "decks_checked_at": "2026-11-25T21:23:21Z",
       "decks_updated_at": "",
       "decks_updated_label": "",
       "sources": [
@@ -1763,7 +1765,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "tcgp:anniversary-campaign-celebration-second",
@@ -4873,6 +4875,74 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
+      "id": "pogo:celebracion-champions-preparense",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Prepárense para el Evento de Celebración de Pokémon Champions!",
+      "title_original": "¡Prepárense para el Evento de Celebración de Pokémon Champions!",
+      "summary": "Desde el martes 8 de diciembre a las 10:00 hasta el lunes 14 de diciembre de 2026 a las 20:00 (hora local)",
+      "action_guide": "Desde el martes 8 de diciembre a las 10:00 hasta el lunes 14 de diciembre de 2026 a las 20:00 (hora local)",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-25",
+      "end_date": null,
+      "date_range_label": "25 nov 2026 -> 25 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/pokemon-champions-celebration-event-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Desde el martes 8 de diciembre a las 10:00 hasta el lunes 14",
+            "de diciembre de 2026 a las 20:00 (hora local)"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Revisa Investigaciones Temporales antes del cierre",
+            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
+            "Marca el evento en el panel al completar sus premios"
+          ],
+          "explanation": "¡Prepárense para el Evento de Celebración de Pokémon Champions!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/pokemon-champions-celebration-event-2026",
+          "context_label": "Noticia GO: ¡Prepárense para el Evento de Celebración de Pokémon Champions!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/pokemon-champions-celebration-event-2026"
+      ],
+      "published_at": "2026-11-25T21:23:27Z",
+      "first_seen_at": "2026-11-25T21:23:27Z",
+      "last_updated_at": "2026-11-25T21:23:27Z"
+    },
+    {
       "id": "pogo:go-paraiso-sumerjanse-tropical",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -6423,7 +6493,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -7168,6 +7238,134 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
+      "id": "pogo:celebration-champions",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Evento de celebración de campeones Pokémon",
+      "title_original": "Pokemon Champions Celebration Event",
+      "summary": "Este evento es un evento especial que conmemora a los Campeones Pokémon y presenta apariciones de Pokémon en el juego.",
+      "action_guide": "De qué trata: Este evento es un evento especial que conmemora a los Campeones Pokémon y presenta apariciones de Pokémon en el juego. Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "requires_battles": false,
+      "activities": [
+        "🎯 Pestaña Hoy / Eventos",
+        "🌿 Capturas y bonus"
+      ],
+      "milestones": [
+        "🔥 Velocidad de reposición de energía del GO Transporter (*7 (GO Pass))",
+        "🔥 Caramelos por captura (*2 (Pase GO))",
+        "🔥 Experiencia de incursión (+3000 (Pase GO))",
+        "🔥 Pases de incursión en gimnasios (*2 (GO Pass Deluxe))",
+        "🌿 Pokémon salvajes: Charmander, Absol, Starly, Gible, Grookey, Kecleon, Bagon, Litten"
+      ],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Bonificaciones: Velocidad de reposición de energía del GO Transporter (*7 (GO Pass)); Caramelos por captura (*2 (Pase GO)); Experiencia de incursión (+3000 (Pase GO)); Pases de incursión en gimnasios (*2 (GO Pass Deluxe))",
+      "highlights": [
+        "Bonificaciones: Velocidad de reposición de energía del GO Transporter (*7 (GO Pass)); Caramelos por captura (*2 (Pase GO)); Experiencia de incursión (+3000 (Pase GO)); Pases de incursión en gimnasios (*2 (GO Pass Deluxe))",
+        "Pokémon salvajes: Charmander, Absol, Starly, Gible, Grookey, Kecleon, Bagon, Litten"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-12-08",
+      "end_date": "2026-12-14",
+      "date_range_label": "08 dic 2026 -> 14 dic 2026",
+      "status": "proximo",
+      "tactical_summary": "Charmander → Charmeleon → Charizard (Tipos: Fuego/Volador • Salvaje Hundo Nv.30/35: 840 / 910) • Absol (Tipos: Siniestro • Salvaje Hundo Nv.30/35: 2166 / 2346)",
+      "search_filter": "+Charmander&4*,3*",
+      "guide_url": "https://www.serebii.net/pokemongo/events/pokemonchampionscelebrationevent.shtml",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Charmander → Charmeleon → Charizard",
+          "subtitle": "Tipos: Fuego/Volador • Salvaje Hundo Nv.30/35: 840 / 910",
+          "primary_type": "fire",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Charmander (PC 100%)",
+            "• Salvaje máx Nv.30: 840",
+            "• Clima máx Nv.35:  910",
+            "• Misión / Huevo:   420 / 560",
+            "Final: Charizard",
+            "• PC 100% Nv.40/50: 2889 / 3266"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "Charizard #96 Ultra 2500 (85.8) • IV 4/13/14",
+            "  -> Dragon Breath / Blast Burn / Air Cutter",
+            "PvE Raids (Fuego): Fire Spin + Blast Burn"
+          ],
+          "explanation": "Familia Charmander → Charmeleon → Charizard: revisa 840 (Nv.30) y 910 (clima) para 100% IV; en competitivo Charizard rinde #96 en Ultra 2500.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Charmander&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/charizard/",
+          "context_label": "Evento GO: Evento de celebración de campeones Pokémon"
+        },
+        {
+          "title": "Absol",
+          "subtitle": "Tipos: Siniestro • Salvaje Hundo Nv.30/35: 2166 / 2346",
+          "primary_type": "dark",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Absol (PC 100%)",
+            "• Salvaje máx Nv.30: 2166",
+            "• Clima máx Nv.35:  2346",
+            "• Misión / Huevo:   1083 / 1443"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "PvE Raids (Siniestro): Snarl + Payback"
+          ],
+          "explanation": "Familia Absol: revisa 2166 (Nv.30) y 2346 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Snarl + Payback.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Absol&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/absol/",
+          "context_label": "Evento GO: Evento de celebración de campeones Pokémon"
+        },
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Bonuses: GO Transporter Energy Replenish Speed (*7 (GO Pass));",
+            "Catch Candy (*2 (GO Pass)); Raid Experience (+3000 (GO Pass));",
+            "Wild spawns: Charmander, Absol, Starly, Gible, Grookey,",
+            "Kecleon, Bagon, Litten"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Evento de celebración de campeones Pokémon: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro de especies del evento en tu caja:",
+          "search_string": "Charmander,Absol,Starly,Gible,Grookey,Kecleon,Bagon,Litten&3*,4*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://www.serebii.net/pokemongo/events/pokemonchampionscelebrationevent.shtml",
+          "context_label": "Evento GO: Evento de celebración de campeones Pokémon"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Serebii GO"
+      ],
+      "urls": [
+        "https://www.serebii.net/pokemongo/events/pokemonchampionscelebrationevent.shtml"
+      ],
+      "published_at": "2026-11-25T21:23:27Z",
+      "first_seen_at": "2026-11-25T21:23:27Z",
+      "last_updated_at": "2026-11-25T21:23:27Z"
+    },
+    {
       "id": "pogo:unannounced",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -7725,7 +7923,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:ho-hour-oh-raid",
@@ -8570,7 +8768,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -10071,7 +10269,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -11609,7 +11807,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12383,7 +12581,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -12675,7 +12873,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13303,7 +13501,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -14631,7 +14829,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T20:23:19Z"
+      "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",

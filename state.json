@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-25T18:23:25Z",
-  "last_commit_heartbeat_utc": "2026-11-25T18:23:25Z",
+  "last_run_utc": "2026-11-25T21:23:27Z",
+  "last_commit_heartbeat_utc": "2026-11-25T21:23:27Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -142,7 +142,9 @@
     "scrapedduck:choose-your-path-daydream-destinations-2027-01-12": "2026-11-25T04:23:37Z",
     "scrapedduck:choose-your-path-daydream-destinations-2027-01-26": "2026-11-25T04:23:37Z",
     "scrapedduck:choose-your-path-daydream-destinations-2027-02-16": "2026-11-25T04:23:37Z",
-    "pogolive:/es_MX/news/tropical-paradise-2026": "2026-11-25T18:23:25Z"
+    "pogolive:/es_MX/news/tropical-paradise-2026": "2026-11-25T18:23:25Z",
+    "pogolive:/es_MX/news/pokemon-champions-celebration-event-2026": "2026-11-25T21:23:27Z",
+    "serebii-go:https://www.serebii.net/pokemongo/events/pokemonchampionscelebrationevent.shtml": "2026-11-25T21:23:27Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -280,7 +282,9 @@
     "pogo:choose-your-path-daydream-destinations-january-12-2027": "2026-11-25T04:23:37Z",
     "pogo:choose-your-path-daydream-destinations-january-26-2027": "2026-11-25T04:23:37Z",
     "pogo:choose-your-path-daydream-destinations-february-16-2027": "2026-11-25T04:23:37Z",
-    "pogo:sumerjanse-paraiso-tropical-pokemon-go": "2026-11-25T18:23:25Z"
+    "pogo:sumerjanse-paraiso-tropical-pokemon-go": "2026-11-25T18:23:25Z",
+    "pogo:preparense-celebracion-pokemon-champions": "2026-11-25T21:23:27Z",
+    "pogo:pokemon-champions-celebration": "2026-11-25T21:23:27Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
@@ -315,7 +319,8 @@
     "pogo:mega-metagross-in-mega-raids": "2026-11-25T00:24:58Z"
   },
   "sent_fingerprints": {
-    "pogo:go-paraiso-sumerjanse-tropical:nodate": "2026-11-25T18:23:25Z"
+    "pogo:go-paraiso-sumerjanse-tropical:nodate": "2026-11-25T18:23:25Z",
+    "pogo:celebracion-champions-preparense:nodate": "2026-11-25T21:23:27Z"
   },
   "source_failures": {
     "LeekDuck Promo": 0,
