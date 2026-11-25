@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 09:26 COT",
+  "generated_at": "2026-11-25 10:23 COT",
   "stats": {
     "total": 192,
     "pogo": 178,
@@ -684,14 +684,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
-        "✨ Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)"
+        "✨ Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
+        "⚔️ Jefes: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad) | Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
       "highlights": [
         "Pokémon destacados: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
-        "Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)"
+        "Variocolor disponibles: Deoxys (Normal), Deoxys (Defensa), Deoxys (Ataque), Deoxys (Velocidad)",
+        "Jefes: Deoxys (Normal), Deoxys (Defense), Deoxys (Attack), Deoxys (Speed)"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -806,7 +808,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:go-november-pass",
@@ -1092,14 +1094,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross",
-        "✨ Variocolor disponibles: Metagross, Mega Metagross"
+        "✨ Variocolor disponibles: Metagross, Mega Metagross",
+        "⚔️ Jefes: Mega Metagross"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Metagross | Variocolor disponibles: Metagross, Mega Metagross",
       "highlights": [
         "Pokémon destacados: Mega Metagross",
-        "Variocolor disponibles: Metagross, Mega Metagross"
+        "Variocolor disponibles: Metagross, Mega Metagross",
+        "Jefes: Mega Metagross"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -1182,7 +1186,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:forme-in-incarnate-raids-shadow-tornadus",
@@ -3190,14 +3194,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette",
-        "✨ Variocolor disponibles: Banette, Mega Banette"
+        "✨ Variocolor disponibles: Banette, Mega Banette",
+        "⚔️ Jefes: Mega Banette"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Banette | Variocolor disponibles: Banette, Mega Banette",
       "highlights": [
         "Pokémon destacados: Mega Banette",
-        "Variocolor disponibles: Banette, Mega Banette"
+        "Variocolor disponibles: Banette, Mega Banette",
+        "Jefes: Mega Banette"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -3278,7 +3284,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "tcgp:community-week",
@@ -3643,7 +3649,7 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [],
       "deck_intro": "",
-      "search_aliases": "Día de la Comunidad Community Day Legacy Caramelos XL",
+      "search_aliases": "",
       "rewards": "Consultar detalle oficial / misiones en juego",
       "highlights": [],
       "promo_code": null,
@@ -3693,7 +3699,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:combates-de-destinos-go-liga-novedades-sobre",
@@ -6117,14 +6123,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Mega lento hermano | Variocolor disponibles: Slowbro, Mega Slowbro",
-        "✨ Variocolor disponibles: Slowbro, Mega Slowbro"
+        "✨ Variocolor disponibles: Slowbro, Mega Slowbro",
+        "⚔️ Jefes: Mega Slowbro"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega lento hermano | Variocolor disponibles: Slowbro, Mega Slowbro",
       "highlights": [
         "Pokémon destacados: Mega lento hermano",
-        "Variocolor disponibles: Slowbro, Mega Slowbro"
+        "Variocolor disponibles: Slowbro, Mega Slowbro",
+        "Jefes: Mega Slowbro"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -6207,7 +6215,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:5-battles-in-raid-regidrago-star",
@@ -6313,14 +6321,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Regidrago | Variocolor disponibles: Regidrago",
-        "✨ Variocolor disponibles: Regidrago"
+        "✨ Variocolor disponibles: Regidrago",
+        "⚔️ Jefes: Regidrago"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Regidrago | Variocolor disponibles: Regidrago",
       "highlights": [
         "Pokémon destacados: Regidrago",
-        "Variocolor disponibles: Regidrago"
+        "Variocolor disponibles: Regidrago",
+        "Jefes: Regidrago"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -6403,7 +6413,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -7471,14 +7481,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Mega Gengar | Variocolor disponibles: Gengar, Mega Gengar",
-        "✨ Variocolor disponibles: Gengar, Mega Gengar"
+        "✨ Variocolor disponibles: Gengar, Mega Gengar",
+        "⚔️ Jefes: Mega Gengar"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Gengar | Variocolor disponibles: Gengar, Mega Gengar",
       "highlights": [
         "Pokémon destacados: Mega Gengar",
-        "Variocolor disponibles: Gengar, Mega Gengar"
+        "Variocolor disponibles: Gengar, Mega Gengar",
+        "Jefes: Mega Gengar"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -7561,7 +7573,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:5-battles-in-pokemon-raid-star-unannounced",
@@ -7703,7 +7715,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:ho-hour-oh-raid",
@@ -8456,14 +8468,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Ho-Oh | Variocolor disponibles: Ho-Oh",
-        "✨ Variocolor disponibles: Ho-Oh"
+        "✨ Variocolor disponibles: Ho-Oh",
+        "⚔️ Jefes: Ho-Oh"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Ho-Oh | Variocolor disponibles: Ho-Oh",
       "highlights": [
         "Pokémon destacados: Ho-Oh",
-        "Variocolor disponibles: Ho-Oh"
+        "Variocolor disponibles: Ho-Oh",
+        "Jefes: Ho-Oh"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -8546,7 +8560,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -8862,14 +8876,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Mega Skarmory | Variocolor disponibles: Skarmory, Mega Skarmory",
-        "✨ Variocolor disponibles: Skarmory, Mega Skarmory"
+        "✨ Variocolor disponibles: Skarmory, Mega Skarmory",
+        "⚔️ Jefes: Mega Skarmory"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Skarmory | Variocolor disponibles: Skarmory, Mega Skarmory",
       "highlights": [
         "Pokémon destacados: Mega Skarmory",
-        "Variocolor disponibles: Skarmory, Mega Skarmory"
+        "Variocolor disponibles: Skarmory, Mega Skarmory",
+        "Jefes: Mega Skarmory"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -8950,7 +8966,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:hour-lugia-raid",
@@ -9883,14 +9899,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Lugia | Variocolor disponibles: Lugia",
-        "✨ Variocolor disponibles: Lugia"
+        "✨ Variocolor disponibles: Lugia",
+        "⚔️ Jefes: Lugia"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Lugia | Variocolor disponibles: Lugia",
       "highlights": [
         "Pokémon destacados: Lugia",
-        "Variocolor disponibles: Lugia"
+        "Variocolor disponibles: Lugia",
+        "Jefes: Lugia"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -9974,7 +9992,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -10081,14 +10099,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Mega Glalia | Variocolor disponibles: Glalie, Mega Glalie",
-        "✨ Variocolor disponibles: Glalie, Mega Glalie"
+        "✨ Variocolor disponibles: Glalie, Mega Glalie",
+        "⚔️ Jefes: Mega Glalie"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Glalia | Variocolor disponibles: Glalie, Mega Glalie",
       "highlights": [
         "Pokémon destacados: Mega Glalia",
-        "Variocolor disponibles: Glalie, Mega Glalie"
+        "Variocolor disponibles: Glalie, Mega Glalie",
+        "Jefes: Mega Glalie"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -10171,7 +10191,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:and-forme-landorus-therian-thundurus-tornadus",
@@ -10852,14 +10872,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Mega Falinks | Variocolor disponibles: Falinks, Mega Falinks",
-        "✨ Variocolor disponibles: Falinks, Mega Falinks"
+        "✨ Variocolor disponibles: Falinks, Mega Falinks",
+        "⚔️ Jefes: Mega Falinks"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Mega Falinks | Variocolor disponibles: Falinks, Mega Falinks",
       "highlights": [
         "Pokémon destacados: Mega Falinks",
-        "Variocolor disponibles: Falinks, Mega Falinks"
+        "Variocolor disponibles: Falinks, Mega Falinks",
+        "Jefes: Mega Falinks"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -10941,7 +10963,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:december-go-pass",
@@ -11121,14 +11143,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Dialga | Variocolor disponibles: Dialga",
-        "✨ Variocolor disponibles: Dialga"
+        "✨ Variocolor disponibles: Dialga",
+        "⚔️ Jefes: Dialga"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Dialga | Variocolor disponibles: Dialga",
       "highlights": [
         "Pokémon destacados: Dialga",
-        "Variocolor disponibles: Dialga"
+        "Variocolor disponibles: Dialga",
+        "Jefes: Dialga"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -11209,7 +11233,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:5-and-formes-in-landorus-therian-thundurus-tornadus",
@@ -11377,14 +11401,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Tornadus (Therian), Thundurus (Therian), Landorus (Therian) | Variocolor disponibles: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)",
-        "✨ Variocolor disponibles: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)"
+        "✨ Variocolor disponibles: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)",
+        "⚔️ Jefes: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Tornadus (Therian), Thundurus (Therian), Landorus (Therian) | Variocolor disponibles: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)",
       "highlights": [
         "Pokémon destacados: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)",
-        "Variocolor disponibles: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)"
+        "Variocolor disponibles: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)",
+        "Jefes: Tornadus (Therian), Thundurus (Therian), Landorus (Therian)"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -11504,7 +11530,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12278,7 +12304,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -12570,7 +12596,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13198,7 +13224,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -14526,7 +14552,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
