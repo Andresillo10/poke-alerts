@@ -1,14 +1,14 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 17:23 COT",
+  "generated_at": "2026-11-25 18:23 COT",
   "stats": {
-    "total": 195,
-    "pogo": 181,
+    "total": 197,
+    "pogo": 183,
     "tcgp": 14,
     "codes_active": 4,
     "active": 59,
-    "upcoming": 114,
+    "upcoming": 116,
     "ended": 22
   },
   "events": [
@@ -6493,7 +6493,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -6565,6 +6565,78 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-24T21:25:16Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
       "last_updated_at": "2026-11-24T21:25:16Z"
+    },
+    {
+      "id": "pogo:raid-unannounced",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Unannounced Hora de Incursiones",
+      "title_original": "Unannounced Raid Hour",
+      "summary": "Un Hora de Incursiones está programado a partir de las 6:00 p.m. a 7:00 p. m. hora local. El jefe de incursión destacado aún no ha sido anunciado. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto) (foco especial de 6:00 a 7:00 p. m. hora local), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "⏰ 6:00–7:00 p. m."
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-12-09",
+      "end_date": "2026-12-09",
+      "date_range_label": "09 dic 2026 -> 09 dic 2026",
+      "status": "proximo",
+      "tactical_summary": "Plan Táctico de Incursiones (Jefes actuales en rotación y checklist previo)",
+      "search_filter": "megaevolucion1-3,4*,3*",
+      "guide_url": "https://leekduck.com/events/raidhour20261209/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Plan Táctico de Incursiones",
+          "subtitle": "Jefes actuales en rotación y checklist previo",
+          "primary_type": "fire",
+          "badge_label": "GUÍA RAIDS GO",
+          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
+          "left_rows": [
+            "Cresselia: PC 100% 1633 / 2041",
+            "Darkrai: PC 100% 2136 / 2671",
+            "Mega Beedrill: PC 100% 1054 / 1318",
+            "Mega Houndoom: PC 100% 1505 / 1882"
+          ],
+          "right_heading": "PREPARACIÓN RECOMENDADA",
+          "right_rows": [
+            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
+            "Arma equipo predefinido antes de entrar al lobby",
+            "Combina Huevo Suerte si encadenas varias incursiones"
+          ],
+          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
+          "search_label": "Filtro rápido de atacantes / megas:",
+          "search_string": "megaevolucion1-3,4*,3*",
+          "info_label": "🔎 Ver jefes en LeekDuck",
+          "info_url": "https://leekduck.com/events/unannounced-pokemon-in-5-star-raid-battles-december-2026/",
+          "context_label": "Evento GO: Pokémon en Incursiones de 5 estrellas no anunciado"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/raidhour20261209/",
+        "https://leekduck.com/events/unannounced-pokemon-in-5-star-raid-battles-december-2026/"
+      ],
+      "published_at": "2026-11-25T14:26:18Z",
+      "first_seen_at": "2026-11-25T14:26:18Z",
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:hour-spotlight-starly",
@@ -7366,6 +7438,81 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T21:23:27Z"
     },
     {
+      "id": "pogo:2026-celebration-champions",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento Pokémon GO",
+      "title": "Evento de celebración de los Campeones Pokémon 2026",
+      "title_original": "Pokémon Champions Celebration Event 2026",
+      "summary": "¡Celebra a los Campeones Pokémon en Pokémon GO con el Evento de Celebración de los Campeones Pokémon! Busca encuentros salvajes temáticos del evento, incursiones con Pokémon con un fondo especial, un Pase GO del evento y regalos por enviar Pokémon desde Pokémon HOME para visitar a los Campeones Pokémon.",
+      "action_guide": "De qué trata: ¡Celebra a los Campeones Pokémon en Pokémon GO con el Evento de Celebración de los Campeones Pokémon! Busca encuentros salvajes temáticos del evento, incursiones con Pokémon con un fondo especial, un Pase GO del evento y... Revisa la pestaña Hoy/Eventos del juego para reclamar tareas y bonificaciones.",
+      "requires_battles": false,
+      "activities": [
+        "🎯 Pestaña Hoy / Eventos",
+        "🌿 Capturas y bonus"
+      ],
+      "milestones": [
+        "🔥 Mayor probabilidad de encontrarse con Kecleon en las Poképaradas",
+        "🔥 7 veces más de Energía del Transportador GO obtenida por hora para enviar un Pokémon de Pokémon GO a Pokémon HOME",
+        "🔥 el doble de Caramelos por capturar Pokémon*",
+        "🔥 3000 PX adicionales por completar Incursiones."
+      ],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Bonificaciones: Mayor probabilidad de encontrarse con Kecleon en las Poképaradas; 7 veces más de Energía del Transportador GO obtenida por hora para enviar un Pokémon de Pokémon GO a Pokémon HOME; el doble de Caramelos por capturar Pokémon*; 3000 PX adicionales por completar Incursiones.",
+      "highlights": [
+        "Bonificaciones: Mayor probabilidad de encontrarse con Kecleon en las Poképaradas; 7 veces más de Energía del Transportador GO obtenida por hora para enviar un Pokémon de Pokémon GO a Pokémon HOME; el doble de Caramelos por capturar Pokémon*; 3000 PX adicionales por completar Incursiones."
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-12-08",
+      "end_date": "2026-12-14",
+      "date_range_label": "08 dic 2026 -> 14 dic 2026",
+      "status": "proximo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://leekduck.com/events/pokemon-champions-celebration-event-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "water",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Bonuses: Increased chance to encounter Kecleon at PokéStops;",
+            "7× GO Transporter Energy gained per hour to send a Pokémon"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones",
+            "Abre y envía regalos hasta el tope diario del Pase"
+          ],
+          "explanation": "Evento de celebración de los Campeones Pokémon 2026: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://leekduck.com/events/pokemon-champions-celebration-event-2026/",
+          "context_label": "Evento GO: Evento de celebración de los Campeones Pokémon 2026"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/pokemon-champions-celebration-event-2026/"
+      ],
+      "published_at": "2026-11-25T23:23:33Z",
+      "first_seen_at": "2026-11-25T23:23:33Z",
+      "last_updated_at": "2026-11-25T23:23:33Z"
+    },
+    {
       "id": "pogo:unannounced",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -7433,6 +7580,156 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-24T22:24:12Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
       "last_updated_at": "2026-11-24T22:24:12Z"
+    },
+    {
+      "id": "pogo:celebration-champions-raid",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Celebración de los Campeones Pokémon Incursiones de 5 estrellas",
+      "title_original": "Pokémon Champions Celebration 5-star Raid Battles",
+      "summary": "Como parte del Evento de Celebración de los Campeones Pokémon, Latias, Latios, Heatran, Cobalion, Terrakion, Virizion, Regieleki y Regidrago tendrán apariciones programadas en incursiones de cinco estrellas del 9 de diciembre de 2026 al 15 de diciembre de 2026. Forman parte de la rotación estacional; el programa diario aún no se ha anunciado.",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "✨ Posible Shiny"
+      ],
+      "milestones": [
+        "🌿 Pokémon destacados: Latias, Latios, Heatran, Cobalion, Terrakion, Virizion | Variocolor disponibles: Latias, Latios, Heatran, Cobalion",
+        "✨ Variocolor disponibles: Latias, Latios, Heatran, Cobalion"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Pokémon destacados: Latias, Latios, Heatran, Cobalion, Terrakion, Virizion | Variocolor disponibles: Latias, Latios, Heatran, Cobalion",
+      "highlights": [
+        "Pokémon destacados: Latias, Latios, Heatran, Cobalion, Terrakion, Virizion",
+        "Variocolor disponibles: Latias, Latios, Heatran, Cobalion"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-12-09",
+      "end_date": "2026-12-15",
+      "date_range_label": "09 dic 2026 -> 15 dic 2026",
+      "status": "proximo",
+      "tactical_summary": "Latias (PC 100%: 2006 (Nv.20) • 2507 (Nv.25)) • Latios (PC 100%: 2178 (Nv.20) • 2723 (Nv.25))",
+      "search_filter": "Eternatus,Kyurem,Rayquaza,Dialga,Necrozma,Haxorus",
+      "guide_url": "https://leekduck.com/events/pokemon-champions-celebration-5-star-raid-battles-december-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Latias",
+          "subtitle": "PC 100%: 2006 (Nv.20) • 2507 (Nv.25)",
+          "primary_type": "dragon",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Dragón/Psíquico",
+            "PC 100% Nv.20: 2006",
+            "PC 100% Clima Nv.25: 2507",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Dragón (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Hada (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Eternatus (Dragon Tail + Dynamax Cannon)",
+            "2. Kyurem (Black) (Dragon Tail + Freeze Shock)",
+            "3. Mega Rayquaza (Dragon Tail + Breaking Swipe)",
+            "4. Dialga (Origin) (Dragon Breath + Roar of Time)",
+            "5. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "6. Haxorus Oscuro (Dragon Tail + Breaking Swipe)"
+          ],
+          "explanation": "Vulnerable a Bicho, Dragón, Fantasma. Lidera tu equipo con Eternatus y verifica el 100% IV al capturar: 2006 (normal) o 2507 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Eternatus,Kyurem,Rayquaza,Dialga,Necrozma,Haxorus",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Celebración de los Campeones Pokémon Incursiones de 5 estrellas"
+        },
+        {
+          "title": "Latios",
+          "subtitle": "PC 100%: 2178 (Nv.20) • 2723 (Nv.25)",
+          "primary_type": "dragon",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Dragón/Psíquico",
+            "PC 100% Nv.20: 2178",
+            "PC 100% Clima Nv.25: 2723",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Dragón (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Hada (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Eternatus (Dragon Tail + Dynamax Cannon)",
+            "2. Kyurem (Black) (Dragon Tail + Freeze Shock)",
+            "3. Mega Rayquaza (Dragon Tail + Breaking Swipe)",
+            "4. Dialga (Origin) (Dragon Breath + Roar of Time)",
+            "5. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "6. Haxorus Oscuro (Dragon Tail + Breaking Swipe)"
+          ],
+          "explanation": "Vulnerable a Bicho, Dragón, Fantasma. Lidera tu equipo con Eternatus y verifica el 100% IV al capturar: 2178 (normal) o 2723 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Eternatus,Kyurem,Rayquaza,Dialga,Necrozma,Haxorus",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Celebración de los Campeones Pokémon Incursiones de 5 estrellas"
+        },
+        {
+          "title": "Heatran",
+          "subtitle": "PC 100%: 2145 (Nv.20) • 2681 (Nv.25)",
+          "primary_type": "fire",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Fuego/Acero",
+            "PC 100% Nv.20: 2145",
+            "PC 100% Clima Nv.25: 2681",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Tierra (×2.6)",
+            "• Agua (×1.6)",
+            "• Lucha (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Groudon Primigenio (Mud Shot + Precipice Blades)",
+            "2. Mamoswine Oscuro (Mud Slap + High Horsepower)",
+            "3. Ursaluna Oscuro (Rock Smash + High Horsepower)",
+            "4. Landorus (Therian) (Mud Shot + Sandsear Storm)",
+            "5. Kyogre Oscuro (Waterfall + Origin Pulse)",
+            "6. Garchomp Oscuro (Mud Shot + Earthquake)"
+          ],
+          "explanation": "Vulnerable a Tierra, Agua, Lucha. Lidera tu equipo con Groudon Primigenio y verifica el 100% IV al capturar: 2145 (normal) o 2681 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Groudon,Mamoswine,Ursaluna,Landorus,Kyogre,Garchomp",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Celebración de los Campeones Pokémon Incursiones de 5 estrellas"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/pokemon-champions-celebration-5-star-raid-battles-december-2026/"
+      ],
+      "published_at": "2026-11-25T23:23:33Z",
+      "first_seen_at": "2026-11-25T23:23:33Z",
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:and-cup-edition-great-league-mega-mountain",
@@ -7852,78 +8149,6 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-24T22:24:12Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
       "last_updated_at": "2026-11-24T22:24:12Z"
-    },
-    {
-      "id": "pogo:raid-unannounced",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Unannounced Hora de Incursiones",
-      "title_original": "Unannounced Raid Hour",
-      "summary": "Un Hora de Incursiones está programado a partir de las 6:00 p.m. a 7:00 p. m. hora local. El jefe de incursión destacado aún no ha sido anunciado. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
-      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto) (foco especial de 6:00 a 7:00 p. m. hora local), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
-      "requires_battles": true,
-      "activities": [
-        "⚔️ Incursiones en Gimnasios",
-        "⏰ 6:00–7:00 p. m."
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-12-09",
-      "end_date": "2026-12-15",
-      "date_range_label": "09 dic 2026 -> 15 dic 2026",
-      "status": "proximo",
-      "tactical_summary": "Plan Táctico de Incursiones (Jefes actuales en rotación y checklist previo)",
-      "search_filter": "megaevolucion1-3,4*,3*",
-      "guide_url": "https://leekduck.com/events/raidhour20261209/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Beedrill: PC 100% 1054 / 1318",
-            "Mega Houndoom: PC 100% 1505 / 1882"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "megaevolucion1-3,4*,3*",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/unannounced-pokemon-in-5-star-raid-battles-december-2026/",
-          "context_label": "Evento GO: Pokémon en Incursiones de 5 estrellas no anunciado"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/raidhour20261209/",
-        "https://leekduck.com/events/unannounced-pokemon-in-5-star-raid-battles-december-2026/"
-      ],
-      "published_at": "2026-11-25T14:26:18Z",
-      "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
     },
     {
       "id": "pogo:ho-hour-oh-raid",
@@ -8768,7 +8993,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -10269,7 +10494,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -11807,7 +12032,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12581,7 +12806,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -12873,7 +13098,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13501,7 +13726,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -14829,7 +15054,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T22:23:21Z"
+      "last_updated_at": "2026-11-25T23:23:33Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
