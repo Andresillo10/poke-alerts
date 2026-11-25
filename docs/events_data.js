@@ -1,13 +1,13 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 12:23 COT",
+  "generated_at": "2026-11-25 13:23 COT",
   "stats": {
-    "total": 192,
-    "pogo": 178,
+    "total": 193,
+    "pogo": 179,
     "tcgp": 14,
     "codes_active": 4,
-    "active": 58,
+    "active": 59,
     "upcoming": 112,
     "ended": 22
   },
@@ -808,7 +808,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:go-november-pass",
@@ -4940,6 +4940,74 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
+      "id": "pogo:go-paraiso-sumerjanse-tropical",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "¡Sumérjanse en el evento Paraíso tropical de Pokémon GO!",
+      "title_original": "¡Sumérjanse en el evento Paraíso tropical de Pokémon GO!",
+      "summary": "Desde el martes 1 de diciembre a las 10:00 hasta el lunes 7 de diciembre de 2026 a las 20:00 (hora local)",
+      "action_guide": "Desde el martes 1 de diciembre a las 10:00 hasta el lunes 7 de diciembre de 2026 a las 20:00 (hora local)",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-25",
+      "end_date": null,
+      "date_range_label": "25 nov 2026 -> 25 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/tropical-paradise-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "Desde el martes 1 de diciembre a las 10:00 hasta el lunes 7 de",
+            "diciembre de 2026 a las 20:00 (hora local)"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Revisa Investigaciones Temporales antes del cierre",
+            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
+            "Marca el evento en el panel al completar sus premios"
+          ],
+          "explanation": "¡Sumérjanse en el evento Paraíso tropical de Pokémon GO!: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/tropical-paradise-2026",
+          "context_label": "Noticia GO: ¡Sumérjanse en el evento Paraíso tropical de Pokémon GO!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/tropical-paradise-2026"
+      ],
+      "published_at": "2026-11-25T18:23:25Z",
+      "first_seen_at": "2026-11-25T18:23:25Z",
+      "last_updated_at": "2026-11-25T18:23:25Z"
+    },
+    {
       "id": "pogo:hour-noibat-spotlight",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -6413,7 +6481,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -7715,7 +7783,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:ho-hour-oh-raid",
@@ -8560,7 +8628,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -9992,7 +10060,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -11530,7 +11598,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12304,7 +12372,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -12596,7 +12664,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13224,7 +13292,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -14552,7 +14620,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T17:23:21Z"
+      "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
