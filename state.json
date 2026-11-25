@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-25T00:24:58Z",
-  "last_commit_heartbeat_utc": "2026-11-25T00:24:58Z",
+  "last_run_utc": "2026-11-25T00:51:28Z",
+  "last_commit_heartbeat_utc": "2026-11-25T00:51:28Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -123,7 +123,15 @@
     "scrapedduck:lugia-in-5-star-raid-battles-december-2026": "2026-11-25T00:24:58Z",
     "scrapedduck:mega-glalie-in-mega-raids-december-2026": "2026-11-25T00:24:58Z",
     "scrapedduck:raidhour20261230": "2026-11-25T00:24:58Z",
-    "scrapedduck:pokemonspotlighthour2026-12-31": "2026-11-25T00:24:58Z"
+    "scrapedduck:pokemonspotlighthour2026-12-31": "2026-11-25T00:24:58Z",
+    "scrapedduck:new-years-2027": "2026-11-25T00:51:28Z",
+    "scrapedduck:go-pass-december-2026": "2026-11-25T00:51:28Z",
+    "scrapedduck:shadow-dialga-in-shadow-raids-december-2026": "2026-11-25T00:51:28Z",
+    "scrapedduck:mega-falinks-in-mega-raids-december-2026": "2026-11-25T00:51:28Z",
+    "scrapedduck:tornadus-thundurus-landorus-therian-formes-in-5-star-raid-battles-december-2026": "2026-11-25T00:51:28Z",
+    "scrapedduck:gbl-daydream-destinations_great-league-mega-edition_fighting-cup-great-league-edition": "2026-11-25T00:51:28Z",
+    "scrapedduck:gbl-daydream-destinations_ultra-league-mega-edition_jungle-cup-great-league-edition": "2026-11-25T00:51:28Z",
+    "scrapedduck:gbl-daydream-destinations_master-league-mega-edition_master-league": "2026-11-25T00:51:28Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -242,7 +250,15 @@
     "pogo:lugia-in-5-star-raid-battles": "2026-11-25T00:24:58Z",
     "pogo:mega-glalie-in-mega-raids": "2026-11-25T00:24:58Z",
     "pogo:tornadus-therian-forme-thundurus-therian-forme-and-landorus": "2026-11-25T00:24:58Z",
-    "pogo:plusle-and-minun-spotlight-hour": "2026-11-25T00:24:58Z"
+    "pogo:plusle-and-minun-spotlight-hour": "2026-11-25T00:24:58Z",
+    "pogo:new-year-2027": "2026-11-25T00:51:28Z",
+    "pogo:go-pass-december": "2026-11-25T00:51:28Z",
+    "pogo:shadow-dialga-in-shadow-raids": "2026-11-25T00:51:28Z",
+    "pogo:mega-falinks-in-mega-raids": "2026-11-25T00:51:28Z",
+    "pogo:tornadus-thundurus-and-landorus-therian-formes-in-5": "2026-11-25T00:51:28Z",
+    "pogo:great-league-mega-edition-and-fighting-cup-great": "2026-11-25T00:51:28Z",
+    "pogo:ultra-league-mega-edition-and-jungle-cup-great": "2026-11-25T00:51:28Z",
+    "pogo:master-league-mega-edition-and-master-league-daydream": "2026-11-25T00:51:28Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",

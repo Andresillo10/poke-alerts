@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-24 19:24 COT",
+  "generated_at": "2026-11-24 19:51 COT",
   "stats": {
     "total": 120,
     "pogo": 107,
@@ -1233,11 +1233,11 @@ window.POKE_ALERTS_DB = {
       "title": "Campaña de Celebración 2.º Aniversario Misiones",
       "title_original": "Second Anniversary Celebration Campaign Missions",
       "summary": "This event is a special event that offers chances to get sobres de cartas for completing Misiones",
-      "action_guide": "Evento de misiones que SÍ incluye combates. Entra a Inicio ➔ Misiones para revisar cada objetivo y usa cualquiera de los 3 mazos propuestos abajo.",
-      "requires_battles": true,
+      "action_guide": "NO toca hacer combates (no necesitas armar mazo). Solo entra en Inicio ➔ Misiones y dedícate a iniciar sesión cada día para llevarte gratis todos los premios listados abajo antes del cierre.",
+      "requires_battles": false,
       "activities": [
-        "⚔️ Hacer combates",
-        "📅 Iniciar sesión"
+        "📅 Iniciar sesión",
+        "✅ Sin combates"
       ],
       "milestones": [
         "Inicia sesión (Día 1) → 1× Deluxe Pack Mega Booster",
@@ -1257,7 +1257,7 @@ window.POKE_ALERTS_DB = {
         "Collect 70 cards → 12× Reloj de Arena de Sobres",
         "Collect 80 cards → 1× Gengar (Moneda)"
       ],
-      "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia para cumplirlo (sigo revisando si aparece uno mejor).",
+      "deck_intro": "",
       "search_aliases": "",
       "rewards": "Misiones: Inicia sesión (Día 1) → 1× Deluxe Pack Mega Booster | Inicia sesión (Día 2) → 1× Deluxe Pack ex Booster | Inicia sesión (Día 3) → 1× Deluxe Pack Mega Booster | Inicia sesión (Día 4) → 1× Deluxe Pack ex Booster | Inicia sesión (Día 5) → 1× Polvo Iris | Inicia sesión (Día 6) → 1× Deluxe Pack Mega Booster | Inicia sesión (Día 7) → 1× Deluxe Pack ex Booster | Inicia sesión (Día 8) → 1× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 9) → 1× Deluxe Pack Mega Booster | Inicia sesión (Día 10) → 3500× Polvo Iris | Inicia sesión (Día 11) → 1× Deluxe Pack ex Booster | Inicia sesión (Día 12) → 3500× Polvo Iris | Inicia sesión (Día 13) → 1× Fusión Dual Pikachu Booster | Inicia sesión (Día 14) → 3500× Polvo Iris | Collect 70 cards → 12× Reloj de Arena de Sobres | Collect 80 cards → 1× Gengar (Moneda)",
       "highlights": [
@@ -1270,89 +1270,10 @@ window.POKE_ALERTS_DB = {
       "end_date": "2026-12-15",
       "date_range_label": "30 oct 2026 -> 15 dic 2026",
       "status": "activo",
-      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Mega Altaria ex Espeon, Hoopa ex Mega Absol ex",
+      "tactical_summary": "",
       "search_filter": "",
       "guide_url": "https://ptcgpocket.gg/tier-list/",
-      "recommended_decks": [
-        {
-          "title": "Opción 1: Mega Charizard Y ex Entei ex",
-          "mission_tag": "Campeón torneo (47.3% WR • #2/325p (10-3))",
-          "energy_label": "Fuego",
-          "strategy": "Control en energía Fuego: Charizard habilita Blue's Provocation para arrastrar amenazas de la banca rival junto a Mega Charizard Y ex.",
-          "cards": [
-            "2× Charizard",
-            "2× Charmander",
-            "2× Charmeleon",
-            "2× Entei ex",
-            "1× Mega Charizard Y ex",
-            "2× Blue's Provocation",
-            "2× Flame Patch",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Copycat",
-            "1× Eviolite",
-            "1× Serena's Choice"
-          ],
-          "qr_payload": "C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ+IAJ+IBAg==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ%2BIAJ%2BIBAg%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 2: Mega Altaria ex Espeon",
-          "mission_tag": "Campeón torneo (53.8% WR • #1/162p (10-2))",
-          "energy_label": "Psíquico",
-          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Espeon, Darkrai (Bad Dreams). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Darkrai",
-            "2× Eevee",
-            "2× Espeon",
-            "2× Swablu",
-            "1× Igglybuff",
-            "1× Mega Altaria ex",
-            "2× Copycat",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Sabrina",
-            "1× Small Balloon",
-            "1× Training Area"
-          ],
-          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 3: Hoopa ex Mega Absol ex",
-          "mission_tag": "Campeón torneo (51.0% WR • #2/180p (9-2))",
-          "energy_label": "Oscuridad",
-          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Hoopa ex",
-            "1× Darkrai ex",
-            "1× Mega Absol ex",
-            "2× Cyrus",
-            "2× Deceptive Needle",
-            "2× Lucky Ice Pop",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Mars",
-            "1× Pokémon Center Lady",
-            "1× Repel",
-            "1× Serena's Choice",
-            "1× X Speed"
-          ],
-          "qr_payload": "EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        }
-      ],
+      "recommended_decks": [],
       "tactical_cards": [],
       "decks_checked_at": "2026-11-25T00:24:43Z",
       "decks_updated_at": "",
@@ -1648,11 +1569,11 @@ window.POKE_ALERTS_DB = {
       "title": "Pika Pika Pikachu Misiones",
       "title_original": "Pika Pika Pikachu Missions",
       "summary": "This event is a special year long log-in event focused around Pikachu to celebrate the main Pokémon Trading Card Game's 30th anniversary. It adds numerous cosmetic items as well as two special sobres de cartas which contain only Pikachu cards",
-      "action_guide": "Evento de misiones que SÍ incluye combates. Entra a Inicio ➔ Misiones para revisar cada objetivo y usa cualquiera de los 3 mazos propuestos abajo.",
-      "requires_battles": true,
+      "action_guide": "NO toca hacer combates (no necesitas armar mazo). Solo entra en Inicio ➔ Misiones y dedícate a iniciar sesión cada día para llevarte gratis todos los premios listados abajo antes del cierre.",
+      "requires_battles": false,
       "activities": [
-        "⚔️ Hacer combates",
-        "📅 Iniciar sesión"
+        "📅 Iniciar sesión",
+        "✅ Sin combates"
       ],
       "milestones": [
         "Inicia sesión (Día 1) → 1× Pika Pika! Pikachu Pack",
@@ -1667,7 +1588,7 @@ window.POKE_ALERTS_DB = {
         "Inicia sesión (Día 10) → 1× Pikachu ex Carta Promo",
         "🃏 Cartas y sobres destacados: Pikachu ex, Pika Pika! Pikachu Pack, Pika Pika! Pikachu Pack ex"
       ],
-      "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia para cumplirlo (sigo revisando si aparece uno mejor).",
+      "deck_intro": "",
       "search_aliases": "",
       "rewards": "Misiones: Inicia sesión (Día 1) → 1× Pika Pika! Pikachu Pack | Inicia sesión (Día 2) → 1× Pika Pika! Pikachu Pack | Inicia sesión (Día 3) → 1× Pikachu Psyduck and Pichu (Tapete) | Inicia sesión (Día 4) → 1× Pika Pika! Pikachu Pack | Inicia sesión (Día 5) → 1× Pikachu and Pichu (Fundas) | Inicia sesión (Día 6) → 1× Pikachu ver. 3 (Moneda) | Inicia sesión (Día 7) → 1× Pika Pika! Pikachu Pack | Inicia sesión (Día 8) → 1× Pikachu ver. 12 (Icon) | Inicia sesión (Día 9) → 1× Pika Pika! Pikachu Pack ex | Inicia sesión (Día 10) → 1× Pikachu ex Carta Promo | Cartas y sobres destacados: Pikachu ex, Pika Pika! Pikachu Pack, Pika Pika! Pikachu Pack ex",
       "highlights": [
@@ -1681,89 +1602,10 @@ window.POKE_ALERTS_DB = {
       "end_date": "2027-10-20",
       "date_range_label": "20 oct 2026 -> 20 oct 2027",
       "status": "activo",
-      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Mega Altaria ex Espeon, Hoopa ex Mega Absol ex",
+      "tactical_summary": "",
       "search_filter": "",
       "guide_url": "https://ptcgpocket.gg/tier-list/",
-      "recommended_decks": [
-        {
-          "title": "Opción 1: Mega Charizard Y ex Entei ex",
-          "mission_tag": "Campeón torneo (47.3% WR • #2/325p (10-3))",
-          "energy_label": "Fuego",
-          "strategy": "Control en energía Fuego: Charizard habilita Blue's Provocation para arrastrar amenazas de la banca rival junto a Mega Charizard Y ex.",
-          "cards": [
-            "2× Charizard",
-            "2× Charmander",
-            "2× Charmeleon",
-            "2× Entei ex",
-            "1× Mega Charizard Y ex",
-            "2× Blue's Provocation",
-            "2× Flame Patch",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Copycat",
-            "1× Eviolite",
-            "1× Serena's Choice"
-          ],
-          "qr_payload": "C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ+IAJ+IBAg==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ%2BIAJ%2BIBAg%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 2: Mega Altaria ex Espeon",
-          "mission_tag": "Campeón torneo (53.8% WR • #1/162p (10-2))",
-          "energy_label": "Psíquico",
-          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Espeon, Darkrai (Bad Dreams). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Darkrai",
-            "2× Eevee",
-            "2× Espeon",
-            "2× Swablu",
-            "1× Igglybuff",
-            "1× Mega Altaria ex",
-            "2× Copycat",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Sabrina",
-            "1× Small Balloon",
-            "1× Training Area"
-          ],
-          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 3: Hoopa ex Mega Absol ex",
-          "mission_tag": "Campeón torneo (51.0% WR • #2/180p (9-2))",
-          "energy_label": "Oscuridad",
-          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Hoopa ex",
-            "1× Darkrai ex",
-            "1× Mega Absol ex",
-            "2× Cyrus",
-            "2× Deceptive Needle",
-            "2× Lucky Ice Pop",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Mars",
-            "1× Pokémon Center Lady",
-            "1× Repel",
-            "1× Serena's Choice",
-            "1× X Speed"
-          ],
-          "qr_payload": "EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        }
-      ],
+      "recommended_decks": [],
       "tactical_cards": [],
       "decks_checked_at": "2026-11-25T00:24:43Z",
       "decks_updated_at": "",
@@ -2415,7 +2257,7 @@ window.POKE_ALERTS_DB = {
         "Ultra Ball Rank 4 → Ultra Ball Rank 2"
       ],
       "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia tomados del meta real de torneos para cumplirlo (sigo revisando si aparece uno mejor).",
-      "search_aliases": "Evento de Emblemas Emblem Event Versus",
+      "search_aliases": "",
       "rewards": "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0 | Master Ball → 10 -10 0 | Rank Season End → Rank New Season | Beginner Rank 1-4 → No change | Poke Ball Rank 1-4 → No change | Great Ball Rank 1 → No change | Great Ball Rank 2 → Great Ball Rank 1 | Great Ball Rank 3 → Great Ball Rank 2 | Great Ball Rank 4 → Great Ball Rank 2 | Ultra Ball Rank 1 → Great Ball Rank 3 | Ultra Ball Rank 2 → Great Ball Rank 4 | Ultra Ball Rank 3 → Ultra Ball Rank 1 | Ultra Ball Rank 4 → Ultra Ball Rank 2",
       "highlights": [
         "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0",
@@ -2524,7 +2366,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "tcgp:card-holidays-promo-themed-winter",
@@ -2537,12 +2379,12 @@ window.POKE_ALERTS_DB = {
       "title_original": "Winter Holidays Themed Promo Card Event",
       "summary": "Ring in the Winter Holidays 2026 with this set of special Misiones! Complete them to earn:",
       "action_guide": "NO toca hacer combates. Entra al menú Elección Mágica varias veces al día: las elecciones extra gratuitas y especiales (Chansey Pick) rotan cada ~30 min a 1 hora para sacar las cartas destacadas y cupones de tienda.",
-      "requires_battles": true,
+      "requires_battles": false,
       "activities": [
-        "⚔️ Hacer combates",
         "📦 Abrir sobres",
         "✨ Elección Mágica",
-        "📅 Iniciar sesión"
+        "📅 Iniciar sesión",
+        "✅ Sin combates"
       ],
       "milestones": [
         "Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena",
@@ -2562,7 +2404,7 @@ window.POKE_ALERTS_DB = {
         "Collect 60 cards → 12× Relojes de Arena",
         "Abre 2 sobres con energía → 1× Sobre Promo"
       ],
-      "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia para cumplirlo (sigo revisando si aparece uno mejor).",
+      "deck_intro": "",
       "search_aliases": "",
       "rewards": "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
       "highlights": [
@@ -2575,89 +2417,10 @@ window.POKE_ALERTS_DB = {
       "end_date": null,
       "date_range_label": "Desde 10 nov 2026 (sin fecha fin publicada)",
       "status": "activo",
-      "tactical_summary": "3 mazos QR: Mega Charizard Y ex Entei ex, Mega Altaria ex Espeon, Hoopa ex Mega Absol ex",
+      "tactical_summary": "",
       "search_filter": "",
       "guide_url": "https://ptcgpocket.gg/tier-list/",
-      "recommended_decks": [
-        {
-          "title": "Opción 1: Mega Charizard Y ex Entei ex",
-          "mission_tag": "Campeón torneo (47.3% WR • #2/325p (10-3))",
-          "energy_label": "Fuego",
-          "strategy": "Control en energía Fuego: Charizard habilita Blue's Provocation para arrastrar amenazas de la banca rival junto a Mega Charizard Y ex.",
-          "cards": [
-            "2× Charizard",
-            "2× Charmander",
-            "2× Charmeleon",
-            "2× Entei ex",
-            "1× Mega Charizard Y ex",
-            "2× Blue's Provocation",
-            "2× Flame Patch",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Copycat",
-            "1× Eviolite",
-            "1× Serena's Choice"
-          ],
-          "qr_payload": "C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ+IAJ+IBAg==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=C5idQpidQpiWqJiWqJiaXpidTJiaDpiaDpiWnpiWnpidJAkAPwIAPwIAPwwAPwwAVb4AVb4AM4YAJ%2BIAJ%2BIBAg%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/pmpt52/player/specter7/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 2: Mega Altaria ex Espeon",
-          "mission_tag": "Campeón torneo (53.8% WR • #1/162p (10-2))",
-          "energy_label": "Psíquico",
-          "strategy": "Atacante clave Mega Altaria ex (190 HP, hasta 40 daño) en energía Psíquico con apoyo de Espeon, Darkrai (Bad Dreams). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Darkrai",
-            "2× Eevee",
-            "2× Espeon",
-            "2× Swablu",
-            "1× Igglybuff",
-            "1× Mega Altaria ex",
-            "2× Copycat",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Sabrina",
-            "1× Small Balloon",
-            "1× Training Area"
-          ],
-          "qr_payload": "CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=CpiWqJiWqJiaXpiaXpiXKpiWnpiWnpibgJicFpia9AoAMewAMewALkAAMXQAMXQAR64AR64AQDgAQDgAKfQBBQ%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6afbbb7bee43ef7891476e4f/player/iplaypokemans/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        },
-        {
-          "title": "Opción 3: Hoopa ex Mega Absol ex",
-          "mission_tag": "Campeón torneo (51.0% WR • #2/180p (9-2))",
-          "energy_label": "Oscuridad",
-          "strategy": "Atacante clave Mega Absol ex (170 HP, hasta 80 daño) en energía Oscuridad con apoyo de Hoopa ex, Darkrai ex (Nightmare Aura). Motor: robo/búsqueda, presión al rival.",
-          "cards": [
-            "2× Hoopa ex",
-            "1× Darkrai ex",
-            "1× Mega Absol ex",
-            "2× Cyrus",
-            "2× Deceptive Needle",
-            "2× Lucky Ice Pop",
-            "2× Poké Ball",
-            "2× Professor's Research",
-            "1× Field Blower",
-            "1× Mars",
-            "1× Pokémon Center Lady",
-            "1× Repel",
-            "1× Serena's Choice",
-            "1× X Speed"
-          ],
-          "qr_payload": "EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw==",
-          "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=24&format=png&download=1&data=EJiWqJiWqJiXwJiXwJidTJiYLpiX8piapJiapJiWnpiWnpibgJiWlJiY4piccJiccAQAUKAAUKAAMCoAD0YBBw%3D%3D",
-          "champion_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "source_url": "https://play.limitlesstcg.com/tournament/6af8e641ee43ef7891474d68/player/drakloak2451/decklist",
-          "badge": "CAMPEÓN TORNEO + EVENTO"
-        }
-      ],
+      "recommended_decks": [],
       "tactical_cards": [],
       "decks_checked_at": "2026-11-25T00:24:43Z",
       "decks_updated_at": "",
@@ -6714,9 +6477,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/new-years-2027/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T00:51:28Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:falinks-in-mega-raids",
@@ -6789,31 +6552,6 @@ window.POKE_ALERTS_DB = {
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
           "context_label": "Evento GO: Mega Falinks en Megaincursiones"
-        },
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Beedrill: PC 100% 1054 / 1318",
-            "Mega Houndoom: PC 100% 1505 / 1882"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "Falinks",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/mega-falinks-in-mega-raids-december-2026/",
-          "context_label": "Evento GO: Mega Falinks en Megaincursiones"
         }
       ],
       "decks_checked_at": "",
@@ -6825,9 +6563,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/mega-falinks-in-mega-raids-december-2026/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T00:51:28Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:december-go-pass",
@@ -6838,18 +6576,25 @@ window.POKE_ALERTS_DB = {
       "category": "Evento Pokémon GO",
       "title": "Pase GO: diciembre",
       "title_original": "GO Pass: December",
-      "summary": "El GO Pass de diciembre estará disponible a través de la tienda web Pokémon GO o la tienda del juego. Estén atentos para más detalles.",
+      "summary": "¡Encuentra a Kyurem y eclosiona huevos con la incubadora cronometrada en GO Pass: diciembre! El GO Pass y GO Pass Deluxe para diciembre estarán disponibles desde el 1 de diciembre de 2026 a las 10:00 a. m. hasta el 5 de enero de 2027 a las 10:00 a. m. hora local.",
       "action_guide": "Qué tienes que hacer: abre la pestaña Eventos ➔ GO Pass dentro de Pokémon GO y cumple los objetivos diarios (capturar, girar paradas, incursiones) para subir de rango y desbloquear las recompensas antes de fin de mes.",
       "requires_battles": false,
       "activities": [
         "🎟️ Subir niveles del Pase",
         "🎯 Tareas diarias"
       ],
-      "milestones": [],
+      "milestones": [
+        "🔥 XP aumentado al subir un nivel de amistad",
+        "🔥 2× daño adicional de amistad en incursiones",
+        "🔥 Abre hasta 40 regalos por día",
+        "🔥 Reciba hasta 125 obsequios por día al girar Poképaradas y discos fotográficos de gimnasio."
+      ],
       "deck_intro": "",
       "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
+      "rewards": "Bonificaciones: XP aumentado al subir un nivel de amistad; 2× daño adicional de amistad en incursiones; Abre hasta 40 regalos por día; Reciba hasta 125 obsequios por día al girar Poképaradas y discos fotográficos de gimnasio.",
+      "highlights": [
+        "Bonificaciones: XP aumentado al subir un nivel de amistad; 2× daño adicional de amistad en incursiones; Abre hasta 40 regalos por día; Reciba hasta 125 obsequios por día al girar Poképaradas y discos fotográficos de gimnasio."
+      ],
       "promo_code": null,
       "redeem_url": null,
       "start_date": "2026-12-01",
@@ -6868,14 +6613,13 @@ window.POKE_ALERTS_DB = {
           "badge_label": "GUÍA EVENTO GO",
           "left_heading": "CLAVES Y RECOMPENSAS",
           "left_rows": [
-            "December’s GO Pass will be available through the Pokémon GO",
-            "Web Store or the in-game shop. Stay tuned for more details."
+            "Bonuses: Increased XP from going up a Friendship level; 2×",
+            "Friendship bonus damage in raids; Open up to 40 Gifts per day;"
           ],
           "right_heading": "ACCIÓN RECOMENDADA",
           "right_rows": [
-            "Revisa Investigaciones Temporales antes del cierre",
-            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
-            "Marca el evento en el panel al completar sus premios"
+            "Combina Huevo Suerte al subir amistad o completar misiones",
+            "Abre y envía regalos hasta el tope diario del Pase"
           ],
           "explanation": "Pase GO: diciembre: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
           "search_label": "Filtro general para valorar capturas del evento:",
@@ -6894,9 +6638,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/go-pass-december-2026/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T00:51:28Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:dialga-in-raids-shadow",
@@ -6968,31 +6712,6 @@ window.POKE_ALERTS_DB = {
           "info_label": "🔎 Ver detalle del evento",
           "info_url": "",
           "context_label": "Evento GO: Sombra Dialga en Incursiones Oscuras"
-        },
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Beedrill: PC 100% 1054 / 1318",
-            "Mega Houndoom: PC 100% 1505 / 1882"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "Dialga",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/shadow-dialga-in-shadow-raids-december-2026/",
-          "context_label": "Evento GO: Sombra Dialga en Incursiones Oscuras"
         }
       ],
       "decks_checked_at": "",
@@ -7004,9 +6723,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/shadow-dialga-in-shadow-raids-december-2026/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T00:51:28Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:5-and-formes-in-landorus-therian-thundurus-tornadus",
@@ -7152,9 +6871,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/tornadus-thundurus-landorus-therian-formes-in-5-star-raid-battles-december-2026/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T00:51:28Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T22:24:12Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -7227,9 +6946,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/gbl-daydream-destinations_great-league-mega-edition_fighting-cup-great-league-edition/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T00:51:28Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:community-day-january",
@@ -7402,9 +7121,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/gbl-daydream-destinations_ultra-league-mega-edition_jungle-cup-great-league-edition/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T00:51:28Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:battle-day-max",
@@ -7473,7 +7192,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -7546,9 +7265,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/gbl-daydream-destinations_master-league-mega-edition_master-league/"
       ],
-      "published_at": "2026-11-24T21:25:16Z",
+      "published_at": "2026-11-25T00:51:28Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-24T21:25:16Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:day-mega-raid-super",
@@ -7619,7 +7338,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:community-day-february",
@@ -7865,7 +7584,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -8499,7 +8218,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-24T21:25:16Z",
       "first_seen_at": "2026-11-24T21:25:16Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
+      "last_updated_at": "2026-11-25T00:51:28Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
