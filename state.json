@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-24T23:24:35Z",
-  "last_commit_heartbeat_utc": "2026-11-24T23:24:35Z",
+  "last_run_utc": "2026-11-25T00:24:58Z",
+  "last_commit_heartbeat_utc": "2026-11-25T00:24:58Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -23,7 +23,7 @@
     "scrapedduck:cresselia-darkrai-in-5-star-raid-battles-november-2026": "2026-11-17T18:05:14Z",
     "scrapedduck:mega-banette-in-mega-raids-november-2026": "2026-11-17T18:05:14Z",
     "scrapedduck:gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup": "2026-11-18T12:34:10Z",
-    "scrapedduck:raidhour20261125": "2026-11-17T18:05:14Z",
+    "scrapedduck:raidhour20261125": "2026-11-25T00:24:58Z",
     "scrapedduck:pokemonspotlighthour2026-11-26": "2026-11-17T18:05:14Z",
     "scrapedduck:clefable-super-mega-raid-day-2026": "2026-11-17T18:05:14Z",
     "serebii-go:https://www.serebii.net/pokemongo/events/twilightwishes.shtml": "2026-11-17T18:05:14Z",
@@ -66,8 +66,8 @@
     "scrapedduck:go-pass-november-2026": "2026-11-18T01:32:59Z",
     "scrapedduck:gbl-twilight-trails_master-league_mega-catch-cup-great-league-edition": "2026-11-24T00:23:32Z",
     "scrapedduck:shadow-tornadus-incarnate-forme-in-shadow-raids-november-16-2026": "2026-11-18T01:32:59Z",
-    "scrapedduck:deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026": "2026-11-18T01:32:59Z",
-    "scrapedduck:mega-metagross-in-mega-raids-november-2026": "2026-11-18T01:32:59Z",
+    "scrapedduck:deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026": "2026-11-25T00:24:58Z",
+    "scrapedduck:mega-metagross-in-mega-raids-november-2026": "2026-11-25T00:24:58Z",
     "scrapedduck:max-battle-day-december-2026": "2026-11-18T01:32:59Z",
     "scrapedduck:december-communityday2026": "2026-11-18T09:54:04Z",
     "scrapedduck:minior-showers-geminids-2026": "2026-11-18T09:54:04Z",
@@ -118,7 +118,12 @@
     "scrapedduck:raidhour20261223": "2026-11-24T23:24:35Z",
     "scrapedduck:pokemonspotlighthour2026-12-24": "2026-11-24T23:24:35Z",
     "scrapedduck:winter-holiday-2026": "2026-11-24T23:24:35Z",
-    "scrapedduck:max-mondays-2026-12-28": "2026-11-24T23:24:35Z"
+    "scrapedduck:max-mondays-2026-12-28": "2026-11-24T23:24:35Z",
+    "scrapedduck:gbl-daydream-destinations_master-league-mega-edition_holiday-cup-great-league-edition": "2026-11-25T00:24:58Z",
+    "scrapedduck:lugia-in-5-star-raid-battles-december-2026": "2026-11-25T00:24:58Z",
+    "scrapedduck:mega-glalie-in-mega-raids-december-2026": "2026-11-25T00:24:58Z",
+    "scrapedduck:raidhour20261230": "2026-11-25T00:24:58Z",
+    "scrapedduck:pokemonspotlighthour2026-12-31": "2026-11-25T00:24:58Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -138,7 +143,7 @@
     "pogo:cresselia-and-darkrai-in-5-star-raid-battles": "2026-11-17T18:05:14Z",
     "pogo:mega-banette-in-mega-raids": "2026-11-17T18:05:14Z",
     "pogo:ultra-league-master-league-mega-edition-and-2026": "2026-11-18T12:34:10Z",
-    "pogo:deoxys-normal-defense-attack-and-speed-formes-raid": "2026-11-17T18:05:14Z",
+    "pogo:deoxys-normal-defense-attack-and-speed-formes-raid": "2026-11-25T00:24:58Z",
     "pogo:noibat-spotlight-hour": "2026-11-17T18:05:14Z",
     "pogo:clefable-super-mega-raid-day": "2026-11-17T18:05:14Z",
     "pogo:twilight-wishes": "2026-11-24T00:23:32Z",
@@ -181,8 +186,8 @@
     "pogo:go-pass-november": "2026-11-18T01:32:59Z",
     "pogo:master-league-and-mega-catch-cup-great-league": "2026-11-24T00:23:32Z",
     "pogo:shadow-tornadus-incarnate-forme-in-shadow-raids": "2026-11-18T01:32:59Z",
-    "pogo:deoxys-normal-defense-attack-and-speed-formes-in": "2026-11-18T01:32:59Z",
-    "pogo:mega-metagross-in-mega-raids": "2026-11-18T01:32:59Z",
+    "pogo:deoxys-normal-defense-attack-and-speed-formes-in": "2026-11-25T00:24:58Z",
+    "pogo:mega-metagross-in-mega-raids": "2026-11-25T00:24:58Z",
     "pogo:max-battle-day": "2026-11-18T01:32:59Z",
     "pogo:december-community-day": "2026-11-18T09:54:04Z",
     "pogo:minior-showers-geminids-2026": "2026-11-18T09:54:04Z",
@@ -232,7 +237,12 @@
     "pogo:lugia-raid-hour": "2026-11-24T23:24:35Z",
     "pogo:delibird-spotlight-hour": "2026-11-24T23:24:35Z",
     "pogo:winter-holiday-2026": "2026-11-24T23:24:35Z",
-    "pogo:dynamax-magikarp-during-max-monday": "2026-11-24T23:24:35Z"
+    "pogo:dynamax-magikarp-during-max-monday": "2026-11-24T23:24:35Z",
+    "pogo:master-league-mega-edition-and-holiday-cup-great": "2026-11-25T00:24:58Z",
+    "pogo:lugia-in-5-star-raid-battles": "2026-11-25T00:24:58Z",
+    "pogo:mega-glalie-in-mega-raids": "2026-11-25T00:24:58Z",
+    "pogo:tornadus-therian-forme-thundurus-therian-forme-and-landorus": "2026-11-25T00:24:58Z",
+    "pogo:plusle-and-minun-spotlight-hour": "2026-11-25T00:24:58Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
@@ -258,7 +268,13 @@
     "scrapedduck:twilight-wishes-2026": "2026-11-24T00:23:32Z",
     "pogo:twilight-wishes": "2026-11-24T00:23:32Z",
     "scrapedduck:gbl-twilight-trails_master-league_mega-catch-cup-great-league-edition": "2026-11-24T00:23:32Z",
-    "pogo:master-league-and-mega-catch-cup-great-league": "2026-11-24T00:23:32Z"
+    "pogo:master-league-and-mega-catch-cup-great-league": "2026-11-24T00:23:32Z",
+    "scrapedduck:raidhour20261125": "2026-11-25T00:24:58Z",
+    "pogo:deoxys-normal-defense-attack-and-speed-formes-raid": "2026-11-25T00:24:58Z",
+    "scrapedduck:deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026": "2026-11-25T00:24:58Z",
+    "pogo:deoxys-normal-defense-attack-and-speed-formes-in": "2026-11-25T00:24:58Z",
+    "scrapedduck:mega-metagross-in-mega-raids-november-2026": "2026-11-25T00:24:58Z",
+    "pogo:mega-metagross-in-mega-raids": "2026-11-25T00:24:58Z"
   },
   "source_failures": {
     "LeekDuck Promo": 0,
