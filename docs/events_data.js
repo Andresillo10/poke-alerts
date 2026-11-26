@@ -1,14 +1,14 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 18:23 COT",
+  "generated_at": "2026-11-25 19:23 COT",
   "stats": {
-    "total": 197,
-    "pogo": 183,
+    "total": 198,
+    "pogo": 184,
     "tcgp": 14,
     "codes_active": 4,
     "active": 59,
-    "upcoming": 116,
+    "upcoming": 117,
     "ended": 22
   },
   "events": [
@@ -5179,30 +5179,6 @@ window.POKE_ALERTS_DB = {
           "info_label": "📊 Ver ranking en PvPoke",
           "info_url": "https://pvpoke.com/rankings/all/1500/overall/noivern/",
           "context_label": "Evento GO: Noibat Hora del Pokémon Destacado"
-        },
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "water",
-          "badge_label": "GUÍA EVENTO GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "Bonuses: 2× Catch Candy",
-            "Featured Pokémon: Noibat",
-            "Shinies available: Noibat"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Revisa Investigaciones Temporales antes del cierre",
-            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
-            "Marca el evento en el panel al completar sus premios"
-          ],
-          "explanation": "Noibat Hora del Pokémon Destacado: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro de especies del evento en tu caja:",
-          "search_string": "Noibat&3*,4*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-26/",
-          "context_label": "Evento GO: Noibat Hora del Pokémon Destacado"
         }
       ],
       "decks_checked_at": "",
@@ -5214,9 +5190,9 @@ window.POKE_ALERTS_DB = {
       "urls": [
         "https://leekduck.com/events/pokemonspotlighthour2026-11-26/"
       ],
-      "published_at": "2026-11-25T14:26:18Z",
+      "published_at": "2026-11-26T00:23:52Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:clefable-day-mega-raid-super",
@@ -6493,7 +6469,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -7460,7 +7436,7 @@ window.POKE_ALERTS_DB = {
         "🔥 3000 PX adicionales por completar Incursiones."
       ],
       "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "search_aliases": "",
       "rewards": "Bonificaciones: Mayor probabilidad de encontrarse con Kecleon en las Poképaradas; 7 veces más de Energía del Transportador GO obtenida por hora para enviar un Pokémon de Pokémon GO a Pokémon HOME; el doble de Caramelos por capturar Pokémon*; 3000 PX adicionales por completar Incursiones.",
       "highlights": [
         "Bonificaciones: Mayor probabilidad de encontrarse con Kecleon en las Poképaradas; 7 veces más de Energía del Transportador GO obtenida por hora para enviar un Pokémon de Pokémon GO a Pokémon HOME; el doble de Caramelos por capturar Pokémon*; 3000 PX adicionales por completar Incursiones."
@@ -7510,7 +7486,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T23:23:33Z",
       "first_seen_at": "2026-11-25T23:23:33Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:unannounced",
@@ -7599,14 +7575,16 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "🌿 Pokémon destacados: Latias, Latios, Heatran, Cobalion, Terrakion, Virizion | Variocolor disponibles: Latias, Latios, Heatran, Cobalion",
-        "✨ Variocolor disponibles: Latias, Latios, Heatran, Cobalion"
+        "✨ Variocolor disponibles: Latias, Latios, Heatran, Cobalion",
+        "⚔️ Jefes: Latias, Latios, Heatran, Cobalion"
       ],
       "deck_intro": "",
       "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
       "rewards": "Pokémon destacados: Latias, Latios, Heatran, Cobalion, Terrakion, Virizion | Variocolor disponibles: Latias, Latios, Heatran, Cobalion",
       "highlights": [
         "Pokémon destacados: Latias, Latios, Heatran, Cobalion, Terrakion, Virizion",
-        "Variocolor disponibles: Latias, Latios, Heatran, Cobalion"
+        "Variocolor disponibles: Latias, Latios, Heatran, Cobalion",
+        "Jefes: Latias, Latios, Heatran, Cobalion"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -7729,7 +7707,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T23:23:33Z",
       "first_seen_at": "2026-11-25T23:23:33Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:and-cup-edition-great-league-mega-mountain",
@@ -8993,7 +8971,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -9803,7 +9781,7 @@ window.POKE_ALERTS_DB = {
       "category": "Evento TCG Pocket",
       "title": "Temática Fiestas de Invierno Evento de Carta Promo",
       "title_original": "Winter Holidays Themed Promo Card Event",
-      "summary": "Ring in the Winter Holidays 2026 with this set of special Misiones! Complete them to earn:",
+      "summary": "Este evento es un evento especial basado en misiones en el que debes completar Misiones para obtener una variedad de Misiones y ganar algunas tarjetas con temas navideños.",
       "action_guide": "NO toca hacer combates. Entra al menú Elección Mágica varias veces al día: las elecciones extra gratuitas y especiales (Chansey Pick) rotan cada ~30 min a 1 hora para sacar las cartas destacadas y cupones de tienda.",
       "requires_battles": false,
       "activities": [
@@ -9814,15 +9792,15 @@ window.POKE_ALERTS_DB = {
       ],
       "milestones": [
         "Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena",
-        "Inicia sesión (Día 1) → 1",
-        "Inicia sesión (Día 2) → 2 Sobres Promo",
-        "Inicia sesión (Día 3) → 12× Relojes de Arena",
+        "Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato)",
+        "Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster",
+        "Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres",
         "Collect 3 different Cartas Promo from this event → 12× Relojes de Arena",
         "Trade 1 time → 36",
         "Haz 1 Elección Mágica → 1× Sobre Promo",
         "Collect 25 cards → 1× Sobre Promo",
         "Collect 50 cards → 12× Relojes de Arena",
-        "Week 2 Inicia sesión (Día 4) → 1× Sobre Promo",
+        "Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster",
         "Share 3 times → 36",
         "Haz 3 Elecciones Mágicas → 1× Sobre Promo",
         "Haz 5 Elecciones Mágicas → 12× Relojes de Arena",
@@ -9832,10 +9810,12 @@ window.POKE_ALERTS_DB = {
       ],
       "deck_intro": "",
       "search_aliases": "",
-      "rewards": "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
+      "rewards": "Misiones: Completa 5 Misiones → 1× Stantler Carta Promo | Completa 10 Misiones → 1× Alcremie Carta Promo | Completa 15 Misiones → 1× Delibird Carta Promo | Semana 1 - A partir del 26 de noviembre | Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato) | Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres | Opere 1 vez → 36× Reloj de Arena Mágico | Elección Mágica 1 vez → 1× Fusión Dual Pikachu Booster | Recoge 25 cartas → 1 × Fusión Dual Pikachu Booster | Recoge 50 cartas → 12× Reloj de Arena de Sobres | Semana 2 - A partir del 3 de diciembre | Semana 2 Inicia sesión (Día 2) → 1× Fusión Dual Pikachu Booster | Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster | Compartir 3 veces → 36× Reloj de Arena Mágico | Elección Mágica 3 veces → 1× Fusión Dual Pikach",
       "highlights": [
         "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena",
-        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo"
+        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
+        "Misiones: Completa 5 Misiones → 1× Stantler Carta Promo | Completa 10 Misiones → 1× Alcremie Carta Promo | Completa 15 Misiones → 1× Delibird Carta Promo | Semana 1 - A partir del 26 de noviembre | Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato) | Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres | Opere 1 vez → 36× Reloj de Arena Mágico | Elección Mágica 1 vez → 1× Fusión Dual Pikachu Booster | Recoge 25 cartas → 1 × Fusión Dual Pikachu Booster | Recoge 50 cartas → 12× Reloj de Arena de Sobres | Semana 2 - A partir del 3 de diciembre | Semana 2 Inicia sesión (Día 2) → 1× Fusión Dual Pikachu Booster | Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster | Compartir 3 veces → 36× Reloj de Arena Mágico | Elección Mágica 3 veces → 1× Fusión Dual Pikachu Booster",
+        "Cartas y sobres destacados: Stantler"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -9859,9 +9839,9 @@ window.POKE_ALERTS_DB = {
         "https://ptcgpocket.gg/winter-holidays-themed-promo-card-event/",
         "https://www.serebii.net/tcgpocket/events/winterholidaysthemedpromocardevent.shtml"
       ],
-      "published_at": "2026-11-18T16:29:39Z",
+      "published_at": "2026-11-26T00:23:52Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T19:23:18Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:during-dynamax-magikarp-max-monday",
@@ -10494,7 +10474,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -12032,7 +12012,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12806,7 +12786,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -13098,7 +13078,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13726,7 +13706,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -15054,7 +15034,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T23:23:33Z"
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
@@ -15349,6 +15329,113 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:accion-agente-entrar-gran-inteleon-max-preparense-tiene-una",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!",
+      "title_original": "El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!",
+      "summary": "¡Los siguientes Pokémon aparecerán en los Combates Max de seis estrellas!",
+      "action_guide": "Qué tienes que hacer: camina hacia los Nodos Energéticos (torres moradas) en el mapa, recoge tu cupo diario de Partículas Max y vence al jefe en Combates Max usando Pokémon Dinamax/Gigamax con ventaja de tipo (prioriza subir el Ataque Max). Revisa abajo el PC 100% IV y counters.",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-26",
+      "end_date": null,
+      "date_range_label": "26 nov 2026 -> 26 nov 2026",
+      "status": "proximo",
+      "tactical_summary": "Inteleon (PC 100%: 1693 (Nv.20) • 2117 (Nv.25)) • Granbull (PC 100%: 1458 (Nv.20) • 1823 (Nv.25))",
+      "search_filter": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
+      "guide_url": "https://pokemongolive.com/es_MX/news/gigantamax-inteleon-max-battle-day-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Inteleon",
+          "subtitle": "PC 100%: 1693 (Nv.20) • 2117 (Nv.25)",
+          "primary_type": "water",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Agua",
+            "PC 100% Nv.20: 1693",
+            "PC 100% Clima Nv.25: 2117",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Eléctrico (×1.6)",
+            "• Planta (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Zekrom Oscuro (Charge Beam + Fusion Bolt)",
+            "2. Kyurem (Black) (Dragon Tail + Fusion Bolt)",
+            "3. Regieleki (Volt Switch + Thunder Cage)",
+            "4. Mega Sceptile (Bullet Seed + Frenzy Plant)",
+            "5. Xurkitree (Thunder Shock + Thunder)",
+            "6. Thundurus (Incarnate) Oscuro (Thunder Shock + Thunder)"
+          ],
+          "explanation": "Vulnerable a Eléctrico, Planta. Lidera tu equipo con Zekrom Oscuro y verifica el 100% IV al capturar: 1693 (normal) o 2117 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!"
+        },
+        {
+          "title": "Granbull",
+          "subtitle": "PC 100%: 1458 (Nv.20) • 1823 (Nv.25)",
+          "primary_type": "fairy",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Hada",
+            "PC 100% Nv.20: 1458",
+            "PC 100% Clima Nv.25: 1823",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Acero (×1.6)",
+            "• Veneno (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
+            "2. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
+            "3. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
+            "4. Metagross Oscuro (Bullet Punch + Meteor Mash)",
+            "5. Mega Lucario (Bullet Punch + Meteor Mash)",
+            "6. Dialga Oscuro (Metal Claw + Iron Head)"
+          ],
+          "explanation": "Vulnerable a Acero, Veneno. Lidera tu equipo con Zamazenta (Crowned Shield) y verifica el 100% IV al capturar: 1458 (normal) o 1823 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/gigantamax-inteleon-max-battle-day-2026"
+      ],
+      "published_at": "2026-11-26T00:23:52Z",
+      "first_seen_at": "2026-11-26T00:23:52Z",
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:and-cresselia-darkrai-hour-raid",

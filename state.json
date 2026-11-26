@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-25T23:23:33Z",
-  "last_commit_heartbeat_utc": "2026-11-25T23:23:33Z",
+  "last_run_utc": "2026-11-26T00:23:53Z",
+  "last_commit_heartbeat_utc": "2026-11-26T00:23:53Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -24,7 +24,7 @@
     "scrapedduck:mega-banette-in-mega-raids-november-2026": "2026-11-17T18:05:14Z",
     "scrapedduck:gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup": "2026-11-18T12:34:10Z",
     "scrapedduck:raidhour20261125": "2026-11-25T00:24:58Z",
-    "scrapedduck:pokemonspotlighthour2026-11-26": "2026-11-17T18:05:14Z",
+    "scrapedduck:pokemonspotlighthour2026-11-26": "2026-11-26T00:23:53Z",
     "scrapedduck:clefable-super-mega-raid-day-2026": "2026-11-17T18:05:14Z",
     "serebii-go:https://www.serebii.net/pokemongo/events/twilightwishes.shtml": "2026-11-17T18:05:14Z",
     "serebii-go:https://www.serebii.net/pokemongo/events/miniorshowers-leonids.shtml": "2026-11-17T18:05:14Z",
@@ -146,7 +146,9 @@
     "pogolive:/es_MX/news/pokemon-champions-celebration-event-2026": "2026-11-25T21:23:27Z",
     "serebii-go:https://www.serebii.net/pokemongo/events/pokemonchampionscelebrationevent.shtml": "2026-11-25T21:23:27Z",
     "scrapedduck:pokemon-champions-celebration-event-2026": "2026-11-25T23:23:33Z",
-    "scrapedduck:pokemon-champions-celebration-5-star-raid-battles-december-2026": "2026-11-25T23:23:33Z"
+    "scrapedduck:pokemon-champions-celebration-5-star-raid-battles-december-2026": "2026-11-25T23:23:33Z",
+    "serebii-tcgp:https://www.serebii.net/tcgpocket/events/winterholidaysthemedpromocardevent.shtml": "2026-11-26T00:23:53Z",
+    "pogolive:/es_MX/news/gigantamax-inteleon-max-battle-day-2026": "2026-11-26T00:23:53Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -167,7 +169,7 @@
     "pogo:mega-banette-in-mega-raids": "2026-11-17T18:05:14Z",
     "pogo:ultra-league-master-league-mega-edition-and-2026": "2026-11-18T12:34:10Z",
     "pogo:deoxys-normal-defense-attack-and-speed-formes-raid": "2026-11-25T00:24:58Z",
-    "pogo:noibat-spotlight-hour": "2026-11-17T18:05:14Z",
+    "pogo:noibat-spotlight-hour": "2026-11-26T00:23:53Z",
     "pogo:clefable-super-mega-raid-day": "2026-11-17T18:05:14Z",
     "pogo:twilight-wishes": "2026-11-24T00:23:32Z",
     "pogo:minior-showers-leonids": "2026-11-17T18:05:14Z",
@@ -186,7 +188,7 @@
     "tcgp:paldean-wonders-emblem": "2026-11-17T18:05:14Z",
     "tcgp:ranked-match-season-c1": "2026-11-17T18:05:14Z",
     "tcgp:community-week-missions": "2026-11-17T18:05:14Z",
-    "tcgp:winter-holidays-themed-promo-card": "2026-11-17T18:05:14Z",
+    "tcgp:winter-holidays-themed-promo-card": "2026-11-26T00:23:53Z",
     "tcgp:dual-fusion-emblem": "2026-11-17T18:05:14Z",
     "tcgp:vee-vee-eevee-missions": "2026-11-17T18:05:14Z",
     "tcgp:promo-reissue-drop-2026": "2026-11-17T18:05:14Z",
@@ -288,7 +290,8 @@
     "pogo:preparense-celebracion-pokemon-champions": "2026-11-25T21:23:27Z",
     "pogo:pokemon-champions-celebration": "2026-11-25T21:23:27Z",
     "pogo:pokemon-champions-celebration-2026": "2026-11-25T23:23:33Z",
-    "pogo:pokemon-champions-celebration-5-star-raid-battles": "2026-11-25T23:23:33Z"
+    "pogo:pokemon-champions-celebration-5-star-raid-battles": "2026-11-25T23:23:33Z",
+    "pogo:pokemon-agente-tiene-una-gran-preparense-entrar-accion-dia-combates-max-inteleon": "2026-11-26T00:23:53Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
@@ -320,11 +323,18 @@
     "scrapedduck:deoxys-normal-defense-attack-speed-formes-in-5-star-raid-battles-november-2026": "2026-11-25T00:24:58Z",
     "pogo:deoxys-normal-defense-attack-and-speed-formes-in": "2026-11-25T00:24:58Z",
     "scrapedduck:mega-metagross-in-mega-raids-november-2026": "2026-11-25T00:24:58Z",
-    "pogo:mega-metagross-in-mega-raids": "2026-11-25T00:24:58Z"
+    "pogo:mega-metagross-in-mega-raids": "2026-11-25T00:24:58Z",
+    "scrapedduck:pokemonspotlighthour2026-11-26": "2026-11-26T00:23:53Z",
+    "pogo:noibat-spotlight-hour": "2026-11-26T00:23:53Z",
+    "serebii-tcgp:https://www.serebii.net/tcgpocket/events/winterholidaysthemedpromocardevent.shtml": "2026-11-26T00:23:53Z",
+    "tcgp:winter-holidays-themed-promo-card": "2026-11-26T00:23:53Z"
   },
   "sent_fingerprints": {
     "pogo:go-paraiso-sumerjanse-tropical:nodate": "2026-11-25T18:23:25Z",
-    "pogo:celebracion-champions-preparense:nodate": "2026-11-25T21:23:27Z"
+    "pogo:celebracion-champions-preparense:nodate": "2026-11-25T21:23:27Z",
+    "pogo:noibat-spotlight:2026-11-26": "2026-11-26T00:23:53Z",
+    "tcgp:card-holidays-promo-themed-winter:2026-11-26": "2026-11-26T00:23:53Z",
+    "pogo:accion-agente-entrar-gran-inteleon-max-preparense-tiene-una:nodate": "2026-11-26T00:23:53Z"
   },
   "source_failures": {
     "LeekDuck Promo": 0,
