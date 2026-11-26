@@ -1,15 +1,15 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 23:23 COT",
+  "generated_at": "2026-11-26 00:23 COT",
   "stats": {
-    "total": 198,
-    "pogo": 184,
+    "total": 199,
+    "pogo": 185,
     "tcgp": 14,
     "codes_active": 4,
-    "active": 59,
-    "upcoming": 117,
-    "ended": 22
+    "active": 61,
+    "upcoming": 114,
+    "ended": 24
   },
   "events": [
     {
@@ -193,203 +193,94 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-23T15:39:49Z"
     },
     {
-      "id": "pogo:and-attack-defense-deoxys-formes-normal-raid-speed",
+      "id": "pogo:hour-noibat-spotlight",
       "game": "pogo",
       "game_label": "Pokémon GO",
       "kind": "event",
       "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Deoxys (Normal, Defense, Attack, and Speed Formes) Hora de Incursiones",
-      "title_original": "Deoxys (Normal, Defense, Attack, and Speed Formes) Raid Hour",
-      "summary": "La Hora de Incursiones protagonizada por Deoxys (en sus formas Normal, Defensa, Ataque y Velocidad) está programada de 18:00 a 19:00, hora local. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
-      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto) (foco especial de 6:00 a 7:00 p. m. hora local), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
-      "requires_battles": true,
+      "category": "Hora Destacada",
+      "title": "Noibat Hora del Pokémon Destacado",
+      "title_original": "Noibat Spotlight Hour",
+      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. hora local. November 26 : The Pokémon destacados is Noibat and the special bonus is 2× Caramelos por captura .",
+      "action_guide": "Qué tienes que hacer: este evento dura únicamente 1 hora (6:00 p. m. a 7:00 p. m. hora local). Sal a capturar al Pokémon destacado con Incienso (y Trozo Estrella o Huevo Suerte según el bonus) y luego pega el filtro de caja de abajo para detectar rápido los 100% IV o PvP.",
+      "requires_battles": false,
       "activities": [
-        "⚔️ Incursiones en Gimnasios",
-        "⏰ 6:00–7:00 p. m."
+        "🔦 Capturar 6:00–7:00 p. m.",
+        "✨ Bonus activo 1 hora"
       ],
-      "milestones": [],
+      "milestones": [
+        "🔥 2× Caramelos por captura",
+        "🌿 Pokémon destacados: Noibat",
+        "✨ Variocolor disponibles: Noibat",
+        "🔥 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat"
+      ],
       "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
+      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
+      "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat",
+      "highlights": [
+        "Bonificaciones: 2× Caramelos por captura",
+        "Pokémon destacados: Noibat",
+        "Variocolor disponibles: Noibat"
+      ],
       "promo_code": null,
       "redeem_url": null,
-      "start_date": "2026-11-25",
-      "end_date": "2026-11-25",
-      "date_range_label": "25 nov 2026 -> 25 nov 2026",
+      "start_date": "2026-11-26",
+      "end_date": "2026-11-26",
+      "date_range_label": "26 nov 2026 -> 26 nov 2026",
       "status": "activo",
-      "tactical_summary": "Deoxys: PC 100%: 1806 (Nv.20) • 2257 (Nv.25)",
-      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-      "guide_url": "https://leekduck.com/events/raidhour20261125/",
+      "tactical_summary": "Noibat → Noivern: Tipos: Volador/Dragón • Salvaje Hundo Nv.30/35: 571 / 619",
+      "search_filter": "+Noibat&4*,3*",
+      "guide_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-26/",
       "recommended_decks": [],
       "tactical_cards": [
         {
-          "title": "Deoxys",
-          "subtitle": "PC 100%: 1806 (Nv.20) • 2257 (Nv.25)",
-          "primary_type": "psychic",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
+          "title": "Noibat → Noivern",
+          "subtitle": "Tipos: Volador/Dragón • Salvaje Hundo Nv.30/35: 571 / 619",
+          "primary_type": "flying",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
           "left_rows": [
-            "Tipos: Psíquico",
-            "PC 100% Nv.20: 1806",
-            "PC 100% Clima Nv.25: 2257",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Bicho (×1.6)",
-            "• Fantasma (×1.6)",
-            "• Siniestro (×1.6)"
+            "Base: Noibat (PC 100%)",
+            "• Salvaje máx Nv.30: 571",
+            "• Clima máx Nv.35:  619",
+            "• Misión / Huevo:   285 / 381",
+            "Final: Noivern",
+            "• PC 100% Nv.40/50: 2764 / 3125"
           ],
-          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_heading": "VEREDICTO PvP Y RAIDS",
           "right_rows": [
-            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
-            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "3. Mega Heracross (Fury Cutter + Megahorn)",
-            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
-            "5. Darkrai Oscuro (Snarl + Foul Play)",
-            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+            "PvE Raids (Volador): Air Slash + Boomburst"
           ],
-          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1806 (normal) o 2257 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Deoxys (formas normal, de defensa, de ataque y de velocidad) Hora de Incursiones"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/raidhour20261125/"
-      ],
-      "published_at": "2026-11-25T00:24:58Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-25T00:24:58Z"
-    },
-    {
-      "id": "pogo:2026-and-edition-league-master-mega-ultra",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Liga Combates GO",
-      "title": "Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails",
-      "title_original": "Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails",
-      "summary": "The Liga Ultra, Liga Master: Edición Mega, and 2026 GO LAIC Cup will run from November 18, 2026, at 1:00 p.m. to November 25, 2026, at 1:00 p.m. PT. Trainers will also receive 4× Polvo Estelar from win rewards (this does not include end-of-set rewards). Liga Ultra Pokémon must be at or below 2,500 CP to enter. Liga Master: Edición Mega No CP limit. Mega-Evolved Pokémon are allowed.",
-      "action_guide": "Qué tienes que hacer: entra a Menú ➔ Combates (Liga Combates GO) y compite contra otros entrenadores con un equipo de 3 Pokémon dentro del límite de PC de la liga activa. Revisa abajo el ranking Top PvPoke y sus ataques ideales.",
-      "requires_battles": true,
-      "activities": [
-        "🏆 Combates PvP (Liga GO)"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-18",
-      "end_date": "2026-11-25",
-      "date_range_label": "18 nov 2026 -> 25 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Liga Ultra: Mega Edition: #1 Actual: Tinkaton • Score 95.3 (PvPoke) | Liga Master (Sin límite): #1 Actual: Palkia (Origin) • Score 98.3 (PvPoke)",
-      "search_filter": "Tinkaton,Corviknight,Zygarde,Florges,Mimikyu",
-      "guide_url": "https://leekduck.com/events/gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Liga Súper (1500 PC)",
-          "subtitle": "#1 Actual: Melmetal • Score 93.9 (PvPoke)",
-          "primary_type": "steel",
-          "badge_label": "META LIGA GBL",
-          "left_heading": "TOP 6 META Y IV IDEAL",
-          "left_rows": [
-            "#1 Melmetal (93.9) [4/10/14]",
-            "#2 Altaria (92.8) [4/12/13]",
-            "#3 Ninetales Oscuro (92.6) [4/15/14]",
-            "#4 Mimikyu (Busted) (92.0) [4/14/15]",
-            "#5 Cramorant (91.6) [5/15/13]",
-            "#6 Altaria Oscuro (91.5) [4/12/13]"
-          ],
-          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
-          "right_rows": [
-            "#1 Thunder Shock • Double Iron Bash • Dynamic Punch",
-            "#2 Dragon Breath • Moonblast • Flamethrower",
-            "#3 Ember • Weather Ball (Fire) • Energy Ball",
-            "#4 Shadow Claw • Shadow Sneak • Play Rough",
-            "#5 Peck • Surf • Fly",
-            "Frenos al #1: Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro"
-          ],
-          "explanation": "Liga Súper (1500 PC) liderada por Melmetal (Thunder Shock + Double Iron Bash + Dynamic Punch); vigila counters como Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro.",
-          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
-          "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant",
-          "info_label": "📊 Ver ranking PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/",
-          "context_label": "Evento GO: Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails"
+          "explanation": "Familia Noibat → Noivern: revisa 571 (Nv.30) y 619 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Air Slash + Boomburst.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Noibat&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/noivern/",
+          "context_label": "Evento GO: Noibat Hora del Pokémon Destacado"
         },
         {
-          "title": "Liga Ultra: Mega Edition",
-          "subtitle": "#1 Actual: Tinkaton • Score 95.3 (PvPoke)",
-          "primary_type": "fairy",
-          "badge_label": "META LIGA GBL",
-          "left_heading": "TOP 6 META Y IV IDEAL",
-          "left_rows": [
-            "#1 Tinkaton (95.3) [12/15/15]",
-            "#2 Corviknight (93.8) [4/14/13]",
-            "#3 Corviknight Oscuro (93.2) [4/14/13]",
-            "#4 Zygarde (Complete Forme) (92.9) [13/10/15]",
-            "#5 Florges (92.3) [4/13/15]",
-            "#6 Mimikyu (Busted) (92.2) [13/15/15]"
-          ],
-          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
-          "right_rows": [
-            "#1 Fairy Wind • Gigaton Hammer • Bulldoze",
-            "#2 Sand Attack • Air Cutter • Iron Head",
-            "#3 Sand Attack • Air Cutter • Payback",
-            "#4 Dragon Tail • Crunch • Bulldoze",
-            "#5 Fairy Wind • Chilling Water • Disarming Voice",
-            "Frenos al #1: Corviknight, Feraligatr, Zygarde (Complete Forme)"
-          ],
-          "explanation": "Liga Ultra: Mega Edition liderada por Tinkaton (Fairy Wind + Gigaton Hammer + Bulldoze); vigila counters como Corviknight, Feraligatr, Zygarde (Complete Forme).",
-          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
-          "search_string": "Tinkaton,Corviknight,Zygarde,Florges,Mimikyu",
-          "info_label": "📊 Ver ranking PvPoke",
-          "info_url": "https://pvpoke.com/rankings/mega/2500/overall/",
-          "context_label": "Evento GO: Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails"
-        },
-        {
-          "title": "Liga Master (Sin límite)",
-          "subtitle": "#1 Actual: Palkia (Origin) • Score 98.3 (PvPoke)",
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
           "primary_type": "water",
-          "badge_label": "META LIGA GBL",
-          "left_heading": "TOP 6 META Y IV IDEAL",
+          "badge_label": "GUÍA EVENTO GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
           "left_rows": [
-            "#1 Palkia (Origin) (98.3)",
-            "#2 Zacian (Crowned Sword) (97.1)",
-            "#3 Kyogre (93.8)",
-            "#4 Kyurem (White) (93.8)",
-            "#5 Metagross (93.7)",
-            "#6 Zygarde (Complete Forme) (93.5)"
+            "Bonuses: 2× Catch Candy",
+            "Featured Pokémon: Noibat",
+            "Shinies available: Noibat"
           ],
-          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
+          "right_heading": "ACCIÓN RECOMENDADA",
           "right_rows": [
-            "#1 Dragon Breath • Aqua Tail • Spacial Rend",
-            "#2 Metal Claw • Close Combat • Behemoth Blade",
-            "#3 Waterfall • Avalanche • Origin Pulse",
-            "#4 Dragon Breath • Fusion Flare • Ice Burn",
-            "#5 Shadow Claw • Meteor Mash • Earthquake",
-            "Frenos al #1: Dialga (Origin), Xerneas, Lunala"
+            "Revisa Investigaciones Temporales antes del cierre",
+            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
+            "Marca el evento en el panel al completar sus premios"
           ],
-          "explanation": "Liga Master (Sin límite) liderada por Palkia (Origin) (Dragon Breath + Aqua Tail + Spacial Rend); vigila counters como Dialga (Origin), Xerneas, Lunala.",
-          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
-          "search_string": "Palkia,Zacian,Kyogre,Kyurem,Metagross,Zygarde",
-          "info_label": "📊 Ver ranking PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/10000/overall/",
-          "context_label": "Evento GO: Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails"
+          "explanation": "Noibat Hora del Pokémon Destacado: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro de especies del evento en tu caja:",
+          "search_string": "Noibat&3*,4*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-26/",
+          "context_label": "Evento GO: Noibat Hora del Pokémon Destacado"
         }
       ],
       "decks_checked_at": "",
@@ -399,11 +290,91 @@ window.POKE_ALERTS_DB = {
         "ScrapedDuck JSON"
       ],
       "urls": [
-        "https://leekduck.com/events/gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup/"
+        "https://leekduck.com/events/pokemonspotlighthour2026-11-26/"
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:noibat-spotlight",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Hora Destacada",
+      "title": "Noibat Hora del Pokémon Destacado",
+      "title_original": "Noibat Spotlight Hour",
+      "summary": "Pokémon Hora del Pokémon Destacado contará con un Pokémon diferente y un bono especial durante una hora a las 6:00 p. m. hora local. 26 de noviembre: El Pokémon destacados es Noibat y el bono especial es 2× Caramelos por captura.",
+      "action_guide": "Qué tienes que hacer: este evento dura únicamente 1 hora (6:00 p. m. a 7:00 p. m. hora local). Sal a capturar al Pokémon destacado con Incienso (y Trozo Estrella o Huevo Suerte según el bonus) y luego pega el filtro de caja de abajo para detectar rápido los 100% IV o PvP.",
+      "requires_battles": false,
+      "activities": [
+        "🔦 Capturar 6:00–7:00 p. m.",
+        "✨ Bonus activo 1 hora"
+      ],
+      "milestones": [
+        "🔥 2× Caramelos por captura",
+        "🌿 Pokémon destacados: Noibat",
+        "✨ Variocolor disponibles: Noibat",
+        "🔥 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
+      "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat",
+      "highlights": [
+        "Bonificaciones: 2× Caramelos por captura",
+        "Pokémon destacados: Noibat",
+        "Variocolor disponibles: Noibat"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-26",
+      "end_date": "2026-11-26",
+      "date_range_label": "26 nov 2026 -> 26 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Noibat → Noivern (Tipos: Volador/Dragón • Salvaje Hundo Nv.30/35: 571 / 619) • Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "+Noibat&4*,3*",
+      "guide_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-26/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Noibat → Noivern",
+          "subtitle": "Tipos: Volador/Dragón • Salvaje Hundo Nv.30/35: 571 / 619",
+          "primary_type": "flying",
+          "badge_label": "HUNDO & PvP GO",
+          "left_heading": "TABLA PC 100% (HUNDO)",
+          "left_rows": [
+            "Base: Noibat (PC 100%)",
+            "• Salvaje máx Nv.30: 571",
+            "• Clima máx Nv.35:  619",
+            "• Misión / Huevo:   285 / 381",
+            "Final: Noivern",
+            "• PC 100% Nv.40/50: 2764 / 3125"
+          ],
+          "right_heading": "VEREDICTO PvP Y RAIDS",
+          "right_rows": [
+            "PvE Raids (Volador): Air Slash + Boomburst"
+          ],
+          "explanation": "Familia Noibat → Noivern: revisa 571 (Nv.30) y 619 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Air Slash + Boomburst.",
+          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
+          "search_string": "+Noibat&4*,3*",
+          "info_label": "📊 Ver ranking en PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/noivern/",
+          "context_label": "Evento GO: Noibat Hora del Pokémon Destacado"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/pokemonspotlighthour2026-11-26/"
+      ],
+      "published_at": "2026-11-26T00:23:52Z",
+      "first_seen_at": "2026-11-25T14:26:18Z",
+      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:twilight-wishes",
@@ -2035,6 +2006,77 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
+      "id": "tcgp:card-holidays-promo-themed-winter",
+      "game": "tcgp",
+      "game_label": "Pokémon TCG Pocket",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Evento TCG Pocket",
+      "title": "Temática Fiestas de Invierno Evento de Carta Promo",
+      "title_original": "Winter Holidays Themed Promo Card Event",
+      "summary": "Este evento es un evento especial basado en misiones en el que debes completar Misiones para obtener una variedad de Misiones y ganar algunas tarjetas con temas navideños.",
+      "action_guide": "NO toca hacer combates. Entra al menú Elección Mágica varias veces al día: las elecciones extra gratuitas y especiales (Chansey Pick) rotan cada ~30 min a 1 hora para sacar las cartas destacadas y cupones de tienda.",
+      "requires_battles": false,
+      "activities": [
+        "📦 Abrir sobres",
+        "✨ Elección Mágica",
+        "📅 Iniciar sesión",
+        "✅ Sin combates"
+      ],
+      "milestones": [
+        "Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena",
+        "Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato)",
+        "Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster",
+        "Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres",
+        "Collect 3 different Cartas Promo from this event → 12× Relojes de Arena",
+        "Trade 1 time → 36",
+        "Haz 1 Elección Mágica → 1× Sobre Promo",
+        "Collect 25 cards → 1× Sobre Promo",
+        "Collect 50 cards → 12× Relojes de Arena",
+        "Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster",
+        "Share 3 times → 36",
+        "Haz 3 Elecciones Mágicas → 1× Sobre Promo",
+        "Haz 5 Elecciones Mágicas → 12× Relojes de Arena",
+        "Collect 30 cards → 1× Sobre Promo",
+        "Collect 60 cards → 12× Relojes de Arena",
+        "Abre 2 sobres con energía → 1× Sobre Promo"
+      ],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Misiones: Completa 5 Misiones → 1× Stantler Carta Promo | Completa 10 Misiones → 1× Alcremie Carta Promo | Completa 15 Misiones → 1× Delibird Carta Promo | Semana 1 - A partir del 26 de noviembre | Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato) | Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres | Opere 1 vez → 36× Reloj de Arena Mágico | Elección Mágica 1 vez → 1× Fusión Dual Pikachu Booster | Recoge 25 cartas → 1 × Fusión Dual Pikachu Booster | Recoge 50 cartas → 12× Reloj de Arena de Sobres | Semana 2 - A partir del 3 de diciembre | Semana 2 Inicia sesión (Día 2) → 1× Fusión Dual Pikachu Booster | Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster | Compartir 3 veces → 36× Reloj de Arena Mágico | Elección Mágica 3 veces → 1× Fusión Dual Pikach",
+      "highlights": [
+        "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena",
+        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
+        "Misiones: Completa 5 Misiones → 1× Stantler Carta Promo | Completa 10 Misiones → 1× Alcremie Carta Promo | Completa 15 Misiones → 1× Delibird Carta Promo | Semana 1 - A partir del 26 de noviembre | Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato) | Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres | Opere 1 vez → 36× Reloj de Arena Mágico | Elección Mágica 1 vez → 1× Fusión Dual Pikachu Booster | Recoge 25 cartas → 1 × Fusión Dual Pikachu Booster | Recoge 50 cartas → 12× Reloj de Arena de Sobres | Semana 2 - A partir del 3 de diciembre | Semana 2 Inicia sesión (Día 2) → 1× Fusión Dual Pikachu Booster | Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster | Compartir 3 veces → 36× Reloj de Arena Mágico | Elección Mágica 3 veces → 1× Fusión Dual Pikachu Booster",
+        "Cartas y sobres destacados: Stantler"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-26",
+      "end_date": "2026-12-26",
+      "date_range_label": "26 nov 2026 -> 26 dic 2026",
+      "status": "activo",
+      "tactical_summary": "",
+      "search_filter": "",
+      "guide_url": "https://ptcgpocket.gg/tier-list/",
+      "recommended_decks": [],
+      "tactical_cards": [],
+      "decks_checked_at": "2026-11-25T13:23:23Z",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "PTCGPocket.gg",
+        "Serebii TCGP"
+      ],
+      "urls": [
+        "https://ptcgpocket.gg/winter-holidays-themed-promo-card-event/",
+        "https://www.serebii.net/tcgpocket/events/winterholidaysthemedpromocardevent.shtml"
+      ],
+      "published_at": "2026-11-26T00:23:52Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-26T00:23:52Z"
+    },
+    {
       "id": "pogo:and-duolingo-go-pokemon-research-timed",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -3637,6 +3679,113 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T15:23:15Z"
     },
     {
+      "id": "pogo:accion-agente-entrar-gran-inteleon-max-preparense-tiene-una",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!",
+      "title_original": "El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!",
+      "summary": "¡Los siguientes Pokémon aparecerán en los Combates Max de seis estrellas!",
+      "action_guide": "Qué tienes que hacer: camina hacia los Nodos Energéticos (torres moradas) en el mapa, recoge tu cupo diario de Partículas Max y vence al jefe en Combates Max usando Pokémon Dinamax/Gigamax con ventaja de tipo (prioriza subir el Ataque Max). Revisa abajo el PC 100% IV y counters.",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-26",
+      "end_date": null,
+      "date_range_label": "26 nov 2026 -> 26 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Inteleon (PC 100%: 1693 (Nv.20) • 2117 (Nv.25)) • Granbull (PC 100%: 1458 (Nv.20) • 1823 (Nv.25))",
+      "search_filter": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
+      "guide_url": "https://pokemongolive.com/es_MX/news/gigantamax-inteleon-max-battle-day-2026",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Inteleon",
+          "subtitle": "PC 100%: 1693 (Nv.20) • 2117 (Nv.25)",
+          "primary_type": "water",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Agua",
+            "PC 100% Nv.20: 1693",
+            "PC 100% Clima Nv.25: 2117",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Eléctrico (×1.6)",
+            "• Planta (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Zekrom Oscuro (Charge Beam + Fusion Bolt)",
+            "2. Kyurem (Black) (Dragon Tail + Fusion Bolt)",
+            "3. Regieleki (Volt Switch + Thunder Cage)",
+            "4. Mega Sceptile (Bullet Seed + Frenzy Plant)",
+            "5. Xurkitree (Thunder Shock + Thunder)",
+            "6. Thundurus (Incarnate) Oscuro (Thunder Shock + Thunder)"
+          ],
+          "explanation": "Vulnerable a Eléctrico, Planta. Lidera tu equipo con Zekrom Oscuro y verifica el 100% IV al capturar: 1693 (normal) o 2117 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!"
+        },
+        {
+          "title": "Granbull",
+          "subtitle": "PC 100%: 1458 (Nv.20) • 1823 (Nv.25)",
+          "primary_type": "fairy",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Hada",
+            "PC 100% Nv.20: 1458",
+            "PC 100% Clima Nv.25: 1823",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Acero (×1.6)",
+            "• Veneno (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
+            "2. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
+            "3. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
+            "4. Metagross Oscuro (Bullet Punch + Meteor Mash)",
+            "5. Mega Lucario (Bullet Punch + Meteor Mash)",
+            "6. Dialga Oscuro (Metal Claw + Iron Head)"
+          ],
+          "explanation": "Vulnerable a Acero, Veneno. Lidera tu equipo con Zamazenta (Crowned Shield) y verifica el 100% IV al capturar: 1458 (normal) o 1823 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/gigantamax-inteleon-max-battle-day-2026"
+      ],
+      "published_at": "2026-11-26T00:23:52Z",
+      "first_seen_at": "2026-11-26T00:23:52Z",
+      "last_updated_at": "2026-11-26T00:23:52Z"
+    },
+    {
       "id": "pogo:combates-de-destinos-go-liga-novedades-sobre",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -5011,190 +5160,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T18:23:25Z"
     },
     {
-      "id": "pogo:hour-noibat-spotlight",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Hora Destacada",
-      "title": "Noibat Hora del Pokémon Destacado",
-      "title_original": "Noibat Spotlight Hour",
-      "summary": "Pokémon Hora del Pokémon Destacado will feature a different Pokémon and special bonus for one hour at 6:00 p.m. hora local. November 26 : The Pokémon destacados is Noibat and the special bonus is 2× Caramelos por captura .",
-      "action_guide": "Qué tienes que hacer: este evento dura únicamente 1 hora (6:00 p. m. a 7:00 p. m. hora local). Sal a capturar al Pokémon destacado con Incienso (y Trozo Estrella o Huevo Suerte según el bonus) y luego pega el filtro de caja de abajo para detectar rápido los 100% IV o PvP.",
-      "requires_battles": false,
-      "activities": [
-        "🔦 Capturar 6:00–7:00 p. m.",
-        "✨ Bonus activo 1 hora"
-      ],
-      "milestones": [
-        "🔥 2× Caramelos por captura",
-        "🌿 Pokémon destacados: Noibat",
-        "✨ Variocolor disponibles: Noibat",
-        "🔥 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat"
-      ],
-      "deck_intro": "",
-      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
-      "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat",
-      "highlights": [
-        "Bonificaciones: 2× Caramelos por captura",
-        "Pokémon destacados: Noibat",
-        "Variocolor disponibles: Noibat"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-26",
-      "end_date": "2026-11-26",
-      "date_range_label": "26 nov 2026 -> 26 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Noibat → Noivern: Tipos: Volador/Dragón • Salvaje Hundo Nv.30/35: 571 / 619",
-      "search_filter": "+Noibat&4*,3*",
-      "guide_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-26/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Noibat → Noivern",
-          "subtitle": "Tipos: Volador/Dragón • Salvaje Hundo Nv.30/35: 571 / 619",
-          "primary_type": "flying",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Noibat (PC 100%)",
-            "• Salvaje máx Nv.30: 571",
-            "• Clima máx Nv.35:  619",
-            "• Misión / Huevo:   285 / 381",
-            "Final: Noivern",
-            "• PC 100% Nv.40/50: 2764 / 3125"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "PvE Raids (Volador): Air Slash + Boomburst"
-          ],
-          "explanation": "Familia Noibat → Noivern: revisa 571 (Nv.30) y 619 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Air Slash + Boomburst.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Noibat&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/noivern/",
-          "context_label": "Evento GO: Noibat Hora del Pokémon Destacado"
-        },
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "water",
-          "badge_label": "GUÍA EVENTO GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "Bonuses: 2× Catch Candy",
-            "Featured Pokémon: Noibat",
-            "Shinies available: Noibat"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Revisa Investigaciones Temporales antes del cierre",
-            "Usa bayas Pinia / Frambu en los encuentros prioritarios",
-            "Marca el evento en el panel al completar sus premios"
-          ],
-          "explanation": "Noibat Hora del Pokémon Destacado: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro de especies del evento en tu caja:",
-          "search_string": "Noibat&3*,4*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-26/",
-          "context_label": "Evento GO: Noibat Hora del Pokémon Destacado"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/pokemonspotlighthour2026-11-26/"
-      ],
-      "published_at": "2026-11-18T16:29:39Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:noibat-spotlight",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Hora Destacada",
-      "title": "Noibat Hora del Pokémon Destacado",
-      "title_original": "Noibat Spotlight Hour",
-      "summary": "Pokémon Hora del Pokémon Destacado contará con un Pokémon diferente y un bono especial durante una hora a las 6:00 p. m. hora local. 26 de noviembre: El Pokémon destacados es Noibat y el bono especial es 2× Caramelos por captura.",
-      "action_guide": "Qué tienes que hacer: este evento dura únicamente 1 hora (6:00 p. m. a 7:00 p. m. hora local). Sal a capturar al Pokémon destacado con Incienso (y Trozo Estrella o Huevo Suerte según el bonus) y luego pega el filtro de caja de abajo para detectar rápido los 100% IV o PvP.",
-      "requires_battles": false,
-      "activities": [
-        "🔦 Capturar 6:00–7:00 p. m.",
-        "✨ Bonus activo 1 hora"
-      ],
-      "milestones": [
-        "🔥 2× Caramelos por captura",
-        "🌿 Pokémon destacados: Noibat",
-        "✨ Variocolor disponibles: Noibat",
-        "🔥 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat"
-      ],
-      "deck_intro": "",
-      "search_aliases": "Hora Destacada Spotlight Hour 6pm",
-      "rewards": "Bonificaciones: 2× Caramelos por captura | Pokémon destacados: Noibat | Variocolor disponibles: Noibat",
-      "highlights": [
-        "Bonificaciones: 2× Caramelos por captura",
-        "Pokémon destacados: Noibat",
-        "Variocolor disponibles: Noibat"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-26",
-      "end_date": "2026-11-26",
-      "date_range_label": "26 nov 2026 -> 26 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Noibat → Noivern (Tipos: Volador/Dragón • Salvaje Hundo Nv.30/35: 571 / 619) • Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "+Noibat&4*,3*",
-      "guide_url": "https://leekduck.com/events/pokemonspotlighthour2026-11-26/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Noibat → Noivern",
-          "subtitle": "Tipos: Volador/Dragón • Salvaje Hundo Nv.30/35: 571 / 619",
-          "primary_type": "flying",
-          "badge_label": "HUNDO & PvP GO",
-          "left_heading": "TABLA PC 100% (HUNDO)",
-          "left_rows": [
-            "Base: Noibat (PC 100%)",
-            "• Salvaje máx Nv.30: 571",
-            "• Clima máx Nv.35:  619",
-            "• Misión / Huevo:   285 / 381",
-            "Final: Noivern",
-            "• PC 100% Nv.40/50: 2764 / 3125"
-          ],
-          "right_heading": "VEREDICTO PvP Y RAIDS",
-          "right_rows": [
-            "PvE Raids (Volador): Air Slash + Boomburst"
-          ],
-          "explanation": "Familia Noibat → Noivern: revisa 571 (Nv.30) y 619 (clima) para 100% IV; en competitivo enfocado en caramelos y para incursiones con Air Slash + Boomburst.",
-          "search_label": "Filtro de caja (familia + 3★/4★, toca para copiar):",
-          "search_string": "+Noibat&4*,3*",
-          "info_label": "📊 Ver ranking en PvPoke",
-          "info_url": "https://pvpoke.com/rankings/all/1500/overall/noivern/",
-          "context_label": "Evento GO: Noibat Hora del Pokémon Destacado"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/pokemonspotlighthour2026-11-26/"
-      ],
-      "published_at": "2026-11-26T00:23:52Z",
-      "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T00:23:52Z"
-    },
-    {
       "id": "pogo:clefable-day-mega-raid-super",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -5839,6 +5804,112 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
+      "id": "pogo:gigantamax-inteleon-max",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Combates Max",
+      "title": "Inteleon Gigamax Día de Combates Max",
+      "title_original": "Gigantamax Inteleon Max Battle Day",
+      "summary": "El evento Inteleon Gigantamax Día de Combates Max tendrá lugar el 5 de diciembre de 2026, de 14:00 a 17:00, hora local.",
+      "action_guide": "Qué tienes que hacer: camina hacia los Nodos Energéticos (torres moradas) en el mapa, recoge tu cupo diario de Partículas Max y vence al jefe en Combates Max usando Pokémon Dinamax/Gigamax con ventaja de tipo (prioriza subir el Ataque Max). Revisa abajo el PC 100% IV y counters.",
+      "requires_battles": true,
+      "activities": [
+        "🌀 Combates Max en Nodos"
+      ],
+      "milestones": [
+        "🔥 El límite máximo de recogida de Partículas se ha aumentado a 1600",
+        "🔥 Todos los Nodos Energéticos albergarán Batallas Gigamax",
+        "🔥 Nodos Energéticos se actualizará con más frecuencia",
+        "🔥 Habrá Nodos Energéticos adicionales activos"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
+      "rewards": "Bonificaciones: El límite máximo de recogida de Partículas se ha aumentado a 1600; Todos los Nodos Energéticos albergarán Batallas Gigamax; Nodos Energéticos se actualizará con más frecuencia; Habrá Nodos Energéticos adicionales activos",
+      "highlights": [
+        "Bonificaciones: El límite máximo de recogida de Partículas se ha aumentado a 1600; Todos los Nodos Energéticos albergarán Batallas Gigamax; Nodos Energéticos se actualizará con más frecuencia; Habrá Nodos Energéticos adicionales activos"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-12-05",
+      "end_date": "2026-12-05",
+      "date_range_label": "05 dic 2026 -> 05 dic 2026",
+      "status": "proximo",
+      "tactical_summary": "Inteleon (PC 100%: 1693 (Nv.20) • 2117 (Nv.25)) • Estrategia Combates Max (Gestión de Partículas Max y Nodos Energéticos)",
+      "search_filter": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
+      "guide_url": "https://leekduck.com/events/gigantamax-inteleon-max-battle-day-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Inteleon",
+          "subtitle": "PC 100%: 1693 (Nv.20) • 2117 (Nv.25)",
+          "primary_type": "water",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Agua",
+            "PC 100% Nv.20: 1693",
+            "PC 100% Clima Nv.25: 2117",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Eléctrico (×1.6)",
+            "• Planta (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Zekrom Oscuro (Charge Beam + Fusion Bolt)",
+            "2. Kyurem (Black) (Dragon Tail + Fusion Bolt)",
+            "3. Regieleki (Volt Switch + Thunder Cage)",
+            "4. Mega Sceptile (Bullet Seed + Frenzy Plant)",
+            "5. Xurkitree (Thunder Shock + Thunder)",
+            "6. Thundurus (Incarnate) Oscuro (Thunder Shock + Thunder)"
+          ],
+          "explanation": "Vulnerable a Eléctrico, Planta. Lidera tu equipo con Zekrom Oscuro y verifica el 100% IV al capturar: 1693 (normal) o 2117 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Inteleon Gigamax Día de Combates Max"
+        },
+        {
+          "title": "Estrategia Combates Max",
+          "subtitle": "Gestión de Partículas Max y Nodos Energéticos",
+          "primary_type": "dragon",
+          "badge_label": "GUÍA MAX GO",
+          "left_heading": "BONUS Y OBJETIVOS DEL EVENTO",
+          "left_rows": [
+            "Bonuses: Max Particle collection limit increased to 1,600; All",
+            "Power Spots will host Gigantamax Battles; Power Spots will"
+          ],
+          "right_heading": "RUTA ÓPTIMA EN NODOS",
+          "right_rows": [
+            "Recarga límite diario de Partículas Max en Nodos",
+            "Prioriza subir Ataque Max antes que Espíritu/Barrera",
+            "Usa equipo con ventaja directa frente al jefe del Nodo"
+          ],
+          "explanation": "Llega con reserva completa de Partículas Max, cobra las de Nodos Energéticos en cada fase y filtra tus Dinamax/Gigamax antes de entrar.",
+          "search_label": "Filtro Dinamax / Gigamax en caja:",
+          "search_string": "Inteleon&3*,4*",
+          "info_label": "📘 Ver detalle oficial",
+          "info_url": "https://leekduck.com/events/gigantamax-inteleon-max-battle-day-2026/",
+          "context_label": "Evento GO: Inteleon Gigamax Día de Combates Max"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/gigantamax-inteleon-max-battle-day-2026/"
+      ],
+      "published_at": "2026-11-26T05:23:25Z",
+      "first_seen_at": "2026-11-26T05:23:25Z",
+      "last_updated_at": "2026-11-26T05:23:25Z"
+    },
+    {
       "id": "pogo:deino-during-dynamax-max-monday",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -6469,7 +6540,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T04:23:21Z"
+      "last_updated_at": "2026-11-26T05:23:25Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -8971,7 +9042,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T04:23:21Z"
+      "last_updated_at": "2026-11-26T05:23:25Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -9773,77 +9844,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
-      "id": "tcgp:card-holidays-promo-themed-winter",
-      "game": "tcgp",
-      "game_label": "Pokémon TCG Pocket",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Evento TCG Pocket",
-      "title": "Temática Fiestas de Invierno Evento de Carta Promo",
-      "title_original": "Winter Holidays Themed Promo Card Event",
-      "summary": "Este evento es un evento especial basado en misiones en el que debes completar Misiones para obtener una variedad de Misiones y ganar algunas tarjetas con temas navideños.",
-      "action_guide": "NO toca hacer combates. Entra al menú Elección Mágica varias veces al día: las elecciones extra gratuitas y especiales (Chansey Pick) rotan cada ~30 min a 1 hora para sacar las cartas destacadas y cupones de tienda.",
-      "requires_battles": false,
-      "activities": [
-        "📦 Abrir sobres",
-        "✨ Elección Mágica",
-        "📅 Iniciar sesión",
-        "✅ Sin combates"
-      ],
-      "milestones": [
-        "Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena",
-        "Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato)",
-        "Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster",
-        "Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres",
-        "Collect 3 different Cartas Promo from this event → 12× Relojes de Arena",
-        "Trade 1 time → 36",
-        "Haz 1 Elección Mágica → 1× Sobre Promo",
-        "Collect 25 cards → 1× Sobre Promo",
-        "Collect 50 cards → 12× Relojes de Arena",
-        "Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster",
-        "Share 3 times → 36",
-        "Haz 3 Elecciones Mágicas → 1× Sobre Promo",
-        "Haz 5 Elecciones Mágicas → 12× Relojes de Arena",
-        "Collect 30 cards → 1× Sobre Promo",
-        "Collect 60 cards → 12× Relojes de Arena",
-        "Abre 2 sobres con energía → 1× Sobre Promo"
-      ],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Misiones: Completa 5 Misiones → 1× Stantler Carta Promo | Completa 10 Misiones → 1× Alcremie Carta Promo | Completa 15 Misiones → 1× Delibird Carta Promo | Semana 1 - A partir del 26 de noviembre | Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato) | Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres | Opere 1 vez → 36× Reloj de Arena Mágico | Elección Mágica 1 vez → 1× Fusión Dual Pikachu Booster | Recoge 25 cartas → 1 × Fusión Dual Pikachu Booster | Recoge 50 cartas → 12× Reloj de Arena de Sobres | Semana 2 - A partir del 3 de diciembre | Semana 2 Inicia sesión (Día 2) → 1× Fusión Dual Pikachu Booster | Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster | Compartir 3 veces → 36× Reloj de Arena Mágico | Elección Mágica 3 veces → 1× Fusión Dual Pikach",
-      "highlights": [
-        "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena",
-        "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
-        "Misiones: Completa 5 Misiones → 1× Stantler Carta Promo | Completa 10 Misiones → 1× Alcremie Carta Promo | Completa 15 Misiones → 1× Delibird Carta Promo | Semana 1 - A partir del 26 de noviembre | Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato) | Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres | Opere 1 vez → 36× Reloj de Arena Mágico | Elección Mágica 1 vez → 1× Fusión Dual Pikachu Booster | Recoge 25 cartas → 1 × Fusión Dual Pikachu Booster | Recoge 50 cartas → 12× Reloj de Arena de Sobres | Semana 2 - A partir del 3 de diciembre | Semana 2 Inicia sesión (Día 2) → 1× Fusión Dual Pikachu Booster | Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster | Compartir 3 veces → 36× Reloj de Arena Mágico | Elección Mágica 3 veces → 1× Fusión Dual Pikachu Booster",
-        "Cartas y sobres destacados: Stantler"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-26",
-      "end_date": "2026-12-26",
-      "date_range_label": "26 nov 2026 -> 26 dic 2026",
-      "status": "proximo",
-      "tactical_summary": "",
-      "search_filter": "",
-      "guide_url": "https://ptcgpocket.gg/tier-list/",
-      "recommended_decks": [],
-      "tactical_cards": [],
-      "decks_checked_at": "2026-11-25T13:23:23Z",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "PTCGPocket.gg",
-        "Serebii TCGP"
-      ],
-      "urls": [
-        "https://ptcgpocket.gg/winter-holidays-themed-promo-card-event/",
-        "https://www.serebii.net/tcgpocket/events/winterholidaysthemedpromocardevent.shtml"
-      ],
-      "published_at": "2026-11-26T00:23:52Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-26T00:23:52Z"
-    },
-    {
       "id": "pogo:during-dynamax-magikarp-max-monday",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -10474,7 +10474,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T04:23:21Z"
+      "last_updated_at": "2026-11-26T05:23:25Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -12012,7 +12012,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T04:23:21Z"
+      "last_updated_at": "2026-11-26T05:23:25Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -13078,7 +13078,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T04:23:21Z"
+      "last_updated_at": "2026-11-26T05:23:25Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13706,7 +13706,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T04:23:21Z"
+      "last_updated_at": "2026-11-26T05:23:25Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -15034,7 +15034,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T04:23:21Z"
+      "last_updated_at": "2026-11-26T05:23:25Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
@@ -15329,113 +15329,6 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:accion-agente-entrar-gran-inteleon-max-preparense-tiene-una",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!",
-      "title_original": "El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!",
-      "summary": "¡Los siguientes Pokémon aparecerán en los Combates Max de seis estrellas!",
-      "action_guide": "Qué tienes que hacer: camina hacia los Nodos Energéticos (torres moradas) en el mapa, recoge tu cupo diario de Partículas Max y vence al jefe en Combates Max usando Pokémon Dinamax/Gigamax con ventaja de tipo (prioriza subir el Ataque Max). Revisa abajo el PC 100% IV y counters.",
-      "requires_battles": false,
-      "activities": [
-        "📢 Anuncio oficial"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "Combates Max Dinamax Gigamax Partículas Max Nodos",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-26",
-      "end_date": null,
-      "date_range_label": "26 nov 2026 -> 26 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Inteleon (PC 100%: 1693 (Nv.20) • 2117 (Nv.25)) • Granbull (PC 100%: 1458 (Nv.20) • 1823 (Nv.25))",
-      "search_filter": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
-      "guide_url": "https://pokemongolive.com/es_MX/news/gigantamax-inteleon-max-battle-day-2026",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Inteleon",
-          "subtitle": "PC 100%: 1693 (Nv.20) • 2117 (Nv.25)",
-          "primary_type": "water",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Agua",
-            "PC 100% Nv.20: 1693",
-            "PC 100% Clima Nv.25: 2117",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Eléctrico (×1.6)",
-            "• Planta (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Zekrom Oscuro (Charge Beam + Fusion Bolt)",
-            "2. Kyurem (Black) (Dragon Tail + Fusion Bolt)",
-            "3. Regieleki (Volt Switch + Thunder Cage)",
-            "4. Mega Sceptile (Bullet Seed + Frenzy Plant)",
-            "5. Xurkitree (Thunder Shock + Thunder)",
-            "6. Thundurus (Incarnate) Oscuro (Thunder Shock + Thunder)"
-          ],
-          "explanation": "Vulnerable a Eléctrico, Planta. Lidera tu equipo con Zekrom Oscuro y verifica el 100% IV al capturar: 1693 (normal) o 2117 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Zekrom,Kyurem,Regieleki,Sceptile,Xurkitree,Thundurus",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!"
-        },
-        {
-          "title": "Granbull",
-          "subtitle": "PC 100%: 1458 (Nv.20) • 1823 (Nv.25)",
-          "primary_type": "fairy",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Hada",
-            "PC 100% Nv.20: 1458",
-            "PC 100% Clima Nv.25: 1823",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Acero (×1.6)",
-            "• Veneno (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
-            "2. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
-            "3. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
-            "4. Metagross Oscuro (Bullet Punch + Meteor Mash)",
-            "5. Mega Lucario (Bullet Punch + Meteor Mash)",
-            "6. Dialga Oscuro (Metal Claw + Iron Head)"
-          ],
-          "explanation": "Vulnerable a Acero, Veneno. Lidera tu equipo con Zamazenta (Crowned Shield) y verifica el 100% IV al capturar: 1458 (normal) o 1823 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: El Pokémon Agente tiene una gran misión. ¡Prepárense para entrar en acción en el Día de Combates Max de Inteleon Gigamax!"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/gigantamax-inteleon-max-battle-day-2026"
-      ],
-      "published_at": "2026-11-26T00:23:52Z",
-      "first_seen_at": "2026-11-26T00:23:52Z",
-      "last_updated_at": "2026-11-26T00:23:52Z"
     },
     {
       "id": "pogo:and-cresselia-darkrai-hour-raid",
@@ -16641,6 +16534,219 @@ window.POKE_ALERTS_DB = {
       ],
       "urls": [
         "https://leekduck.com/events/mega-banette-in-mega-raids-november-2026/"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:and-attack-defense-deoxys-formes-normal-raid-speed",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Deoxys (Normal, Defense, Attack, and Speed Formes) Hora de Incursiones",
+      "title_original": "Deoxys (Normal, Defense, Attack, and Speed Formes) Raid Hour",
+      "summary": "La Hora de Incursiones protagonizada por Deoxys (en sus formas Normal, Defensa, Ataque y Velocidad) está programada de 18:00 a 19:00, hora local. Durante esta hora habrá un mayor número de incursiones de cinco estrellas.",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto) (foco especial de 6:00 a 7:00 p. m. hora local), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "⏰ 6:00–7:00 p. m."
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-25",
+      "end_date": "2026-11-25",
+      "date_range_label": "25 nov 2026 -> 25 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Deoxys: PC 100%: 1806 (Nv.20) • 2257 (Nv.25)",
+      "search_filter": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+      "guide_url": "https://leekduck.com/events/raidhour20261125/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Deoxys",
+          "subtitle": "PC 100%: 1806 (Nv.20) • 2257 (Nv.25)",
+          "primary_type": "psychic",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Psíquico",
+            "PC 100% Nv.20: 1806",
+            "PC 100% Clima Nv.25: 2257",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Bicho (×1.6)",
+            "• Fantasma (×1.6)",
+            "• Siniestro (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Necrozma Alas del Alba (Shadow Claw + Moongeist Beam)",
+            "2. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "3. Mega Heracross (Fury Cutter + Megahorn)",
+            "4. Giratina (Altered) Oscuro (Shadow Claw + Shadow Force)",
+            "5. Darkrai Oscuro (Snarl + Foul Play)",
+            "6. Escavalier Oscuro (Bug Bite + Megahorn)"
+          ],
+          "explanation": "Vulnerable a Bicho, Fantasma, Siniestro. Lidera tu equipo con Necrozma Alas del Alba y verifica el 100% IV al capturar: 1806 (normal) o 2257 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Necrozma,Kyurem,Heracross,Giratina,Darkrai,Escavalier",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Deoxys (formas normal, de defensa, de ataque y de velocidad) Hora de Incursiones"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/raidhour20261125/"
+      ],
+      "published_at": "2026-11-25T00:24:58Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-25T00:24:58Z"
+    },
+    {
+      "id": "pogo:2026-and-edition-league-master-mega-ultra",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Liga Combates GO",
+      "title": "Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails",
+      "title_original": "Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails",
+      "summary": "The Liga Ultra, Liga Master: Edición Mega, and 2026 GO LAIC Cup will run from November 18, 2026, at 1:00 p.m. to November 25, 2026, at 1:00 p.m. PT. Trainers will also receive 4× Polvo Estelar from win rewards (this does not include end-of-set rewards). Liga Ultra Pokémon must be at or below 2,500 CP to enter. Liga Master: Edición Mega No CP limit. Mega-Evolved Pokémon are allowed.",
+      "action_guide": "Qué tienes que hacer: entra a Menú ➔ Combates (Liga Combates GO) y compite contra otros entrenadores con un equipo de 3 Pokémon dentro del límite de PC de la liga activa. Revisa abajo el ranking Top PvPoke y sus ataques ideales.",
+      "requires_battles": true,
+      "activities": [
+        "🏆 Combates PvP (Liga GO)"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-18",
+      "end_date": "2026-11-25",
+      "date_range_label": "18 nov 2026 -> 25 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Liga Ultra: Mega Edition: #1 Actual: Tinkaton • Score 95.3 (PvPoke) | Liga Master (Sin límite): #1 Actual: Palkia (Origin) • Score 98.3 (PvPoke)",
+      "search_filter": "Tinkaton,Corviknight,Zygarde,Florges,Mimikyu",
+      "guide_url": "https://leekduck.com/events/gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Liga Súper (1500 PC)",
+          "subtitle": "#1 Actual: Melmetal • Score 93.9 (PvPoke)",
+          "primary_type": "steel",
+          "badge_label": "META LIGA GBL",
+          "left_heading": "TOP 6 META Y IV IDEAL",
+          "left_rows": [
+            "#1 Melmetal (93.9) [4/10/14]",
+            "#2 Altaria (92.8) [4/12/13]",
+            "#3 Ninetales Oscuro (92.6) [4/15/14]",
+            "#4 Mimikyu (Busted) (92.0) [4/14/15]",
+            "#5 Cramorant (91.6) [5/15/13]",
+            "#6 Altaria Oscuro (91.5) [4/12/13]"
+          ],
+          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
+          "right_rows": [
+            "#1 Thunder Shock • Double Iron Bash • Dynamic Punch",
+            "#2 Dragon Breath • Moonblast • Flamethrower",
+            "#3 Ember • Weather Ball (Fire) • Energy Ball",
+            "#4 Shadow Claw • Shadow Sneak • Play Rough",
+            "#5 Peck • Surf • Fly",
+            "Frenos al #1: Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro"
+          ],
+          "explanation": "Liga Súper (1500 PC) liderada por Melmetal (Thunder Shock + Double Iron Bash + Dynamic Punch); vigila counters como Ninetales Oscuro, Quagsire Oscuro, Sableye Oscuro.",
+          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
+          "search_string": "Melmetal,Altaria,Ninetales,Mimikyu,Cramorant",
+          "info_label": "📊 Ver ranking PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/1500/overall/",
+          "context_label": "Evento GO: Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails"
+        },
+        {
+          "title": "Liga Ultra: Mega Edition",
+          "subtitle": "#1 Actual: Tinkaton • Score 95.3 (PvPoke)",
+          "primary_type": "fairy",
+          "badge_label": "META LIGA GBL",
+          "left_heading": "TOP 6 META Y IV IDEAL",
+          "left_rows": [
+            "#1 Tinkaton (95.3) [12/15/15]",
+            "#2 Corviknight (93.8) [4/14/13]",
+            "#3 Corviknight Oscuro (93.2) [4/14/13]",
+            "#4 Zygarde (Complete Forme) (92.9) [13/10/15]",
+            "#5 Florges (92.3) [4/13/15]",
+            "#6 Mimikyu (Busted) (92.2) [13/15/15]"
+          ],
+          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
+          "right_rows": [
+            "#1 Fairy Wind • Gigaton Hammer • Bulldoze",
+            "#2 Sand Attack • Air Cutter • Iron Head",
+            "#3 Sand Attack • Air Cutter • Payback",
+            "#4 Dragon Tail • Crunch • Bulldoze",
+            "#5 Fairy Wind • Chilling Water • Disarming Voice",
+            "Frenos al #1: Corviknight, Feraligatr, Zygarde (Complete Forme)"
+          ],
+          "explanation": "Liga Ultra: Mega Edition liderada por Tinkaton (Fairy Wind + Gigaton Hammer + Bulldoze); vigila counters como Corviknight, Feraligatr, Zygarde (Complete Forme).",
+          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
+          "search_string": "Tinkaton,Corviknight,Zygarde,Florges,Mimikyu",
+          "info_label": "📊 Ver ranking PvPoke",
+          "info_url": "https://pvpoke.com/rankings/mega/2500/overall/",
+          "context_label": "Evento GO: Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails"
+        },
+        {
+          "title": "Liga Master (Sin límite)",
+          "subtitle": "#1 Actual: Palkia (Origin) • Score 98.3 (PvPoke)",
+          "primary_type": "water",
+          "badge_label": "META LIGA GBL",
+          "left_heading": "TOP 6 META Y IV IDEAL",
+          "left_rows": [
+            "#1 Palkia (Origin) (98.3)",
+            "#2 Zacian (Crowned Sword) (97.1)",
+            "#3 Kyogre (93.8)",
+            "#4 Kyurem (White) (93.8)",
+            "#5 Metagross (93.7)",
+            "#6 Zygarde (Complete Forme) (93.5)"
+          ],
+          "right_heading": "MOVESET ÓPTIMO Y FRENOS",
+          "right_rows": [
+            "#1 Dragon Breath • Aqua Tail • Spacial Rend",
+            "#2 Metal Claw • Close Combat • Behemoth Blade",
+            "#3 Waterfall • Avalanche • Origin Pulse",
+            "#4 Dragon Breath • Fusion Flare • Ice Burn",
+            "#5 Shadow Claw • Meteor Mash • Earthquake",
+            "Frenos al #1: Dialga (Origin), Xerneas, Lunala"
+          ],
+          "explanation": "Liga Master (Sin límite) liderada por Palkia (Origin) (Dragon Breath + Aqua Tail + Spacial Rend); vigila counters como Dialga (Origin), Xerneas, Lunala.",
+          "search_label": "Filtro caja Top Meta GBL (toca para copiar):",
+          "search_string": "Palkia,Zacian,Kyogre,Kyurem,Metagross,Zygarde",
+          "info_label": "📊 Ver ranking PvPoke",
+          "info_url": "https://pvpoke.com/rankings/all/10000/overall/",
+          "context_label": "Evento GO: Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup/"
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",

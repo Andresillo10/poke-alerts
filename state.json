@@ -1,7 +1,7 @@
 {
   "initialized": true,
-  "last_run_utc": "2026-11-26T00:23:53Z",
-  "last_commit_heartbeat_utc": "2026-11-26T00:23:53Z",
+  "last_run_utc": "2026-11-26T05:23:25Z",
+  "last_commit_heartbeat_utc": "2026-11-26T05:23:25Z",
   "last_weekly_meta_week": "2026-W48",
   "one_time_ping_sent": "2026-11-18-09",
   "deck_update_sent": "2026-11-18-20",
@@ -148,7 +148,8 @@
     "scrapedduck:pokemon-champions-celebration-event-2026": "2026-11-25T23:23:33Z",
     "scrapedduck:pokemon-champions-celebration-5-star-raid-battles-december-2026": "2026-11-25T23:23:33Z",
     "serebii-tcgp:https://www.serebii.net/tcgpocket/events/winterholidaysthemedpromocardevent.shtml": "2026-11-26T00:23:53Z",
-    "pogolive:/es_MX/news/gigantamax-inteleon-max-battle-day-2026": "2026-11-26T00:23:53Z"
+    "pogolive:/es_MX/news/gigantamax-inteleon-max-battle-day-2026": "2026-11-26T00:23:53Z",
+    "scrapedduck:gigantamax-inteleon-max-battle-day-2026": "2026-11-26T05:23:25Z"
   },
   "seen_topics": {
     "pogo:code:ADIDASXPOKEMON": "2026-11-17T18:05:14Z",
@@ -291,7 +292,8 @@
     "pogo:pokemon-champions-celebration": "2026-11-25T21:23:27Z",
     "pogo:pokemon-champions-celebration-2026": "2026-11-25T23:23:33Z",
     "pogo:pokemon-champions-celebration-5-star-raid-battles": "2026-11-25T23:23:33Z",
-    "pogo:pokemon-agente-tiene-una-gran-preparense-entrar-accion-dia-combates-max-inteleon": "2026-11-26T00:23:53Z"
+    "pogo:pokemon-agente-tiene-una-gran-preparense-entrar-accion-dia-combates-max-inteleon": "2026-11-26T00:23:53Z",
+    "pogo:gigantamax-inteleon-max-battle-day": "2026-11-26T05:23:25Z"
   },
   "started_notified": {
     "scrapedduck:raidhour20261118": "2026-11-18T12:34:10Z",
