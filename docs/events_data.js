@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-25 21:23 COT",
+  "generated_at": "2026-11-25 21:53 COT",
   "stats": {
     "total": 198,
     "pogo": 184,
@@ -3387,7 +3387,7 @@ window.POKE_ALERTS_DB = {
         "Ultra Ball Rank 4 → Ultra Ball Rank 2"
       ],
       "deck_intro": "Mira, como este evento requiere combates, te propongo estos 3 mazos optimizados por sinergia tomados del meta real de torneos para cumplirlo (sigo revisando si aparece uno mejor).",
-      "search_aliases": "Evento de Emblemas Emblem Event Versus",
+      "search_aliases": "",
       "rewards": "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0 | Master Ball → 10 -10 0 | Rank Season End → Rank New Season | Beginner Rank 1-4 → No change | Poke Ball Rank 1-4 → No change | Great Ball Rank 1 → No change | Great Ball Rank 2 → Great Ball Rank 1 | Great Ball Rank 3 → Great Ball Rank 2 | Great Ball Rank 4 → Great Ball Rank 2 | Ultra Ball Rank 1 → Great Ball Rank 3 | Ultra Ball Rank 2 → Great Ball Rank 4 | Ultra Ball Rank 3 → Ultra Ball Rank 1 | Ultra Ball Rank 4 → Ultra Ball Rank 2",
       "highlights": [
         "Misiones: Beginner → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Poké Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Great Ball → 10 0 2 Wins: 3 Points 3 Wins: 6 Points 4 Wins: 9 Points 5 Wins: 12 Points | Ultra Ball → 10 0 0",
@@ -3496,7 +3496,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:2026-actualizacion-contenido-de-diciembre",
@@ -6469,7 +6469,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -8971,7 +8971,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -10474,7 +10474,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -12012,7 +12012,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12786,7 +12786,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:and-daydream-edition-league-master-mega",
@@ -13078,7 +13078,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13706,7 +13706,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -15034,7 +15034,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T02:23:26Z"
+      "last_updated_at": "2026-11-26T02:53:23Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
