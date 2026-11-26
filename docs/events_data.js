@@ -1,7 +1,7 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-26 00:23 COT",
+  "generated_at": "2026-11-26 01:23 COT",
   "stats": {
     "total": 199,
     "pogo": 185,
@@ -2029,13 +2029,13 @@ window.POKE_ALERTS_DB = {
         "Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster",
         "Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres",
         "Collect 3 different Cartas Promo from this event → 12× Relojes de Arena",
-        "Trade 1 time → 36",
-        "Haz 1 Elección Mágica → 1× Sobre Promo",
-        "Collect 25 cards → 1× Sobre Promo",
-        "Collect 50 cards → 12× Relojes de Arena",
+        "Trade 1 time → 36× Reloj de Arena Mágico",
+        "Haz 1 Elección Mágica → 1× Fusión Dual Pikachu Booster",
+        "Collect 25 cards → 1× Fusión Dual Pikachu Booster",
+        "Collect 50 cards → 12× Reloj de Arena de Sobres",
         "Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster",
-        "Share 3 times → 36",
-        "Haz 3 Elecciones Mágicas → 1× Sobre Promo",
+        "Share 3 times → 36× Reloj de Arena Mágico",
+        "Haz 3 Elecciones Mágicas → 1× Fusión Dual Pikachu Booster",
         "Haz 5 Elecciones Mágicas → 12× Relojes de Arena",
         "Collect 30 cards → 1× Sobre Promo",
         "Collect 60 cards → 12× Relojes de Arena",
@@ -2048,7 +2048,8 @@ window.POKE_ALERTS_DB = {
         "Misiones: Consigue 3 Cartas Promo diferentes de este evento → 12 Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2 Sobres Promo | Inicia sesión (Día 3) → 12 Relojes de Arena",
         "Misiones: Collect 3 different Cartas Promo from this event → 12× Relojes de Arena | Inicia sesión (Día 1) → 1 | Inicia sesión (Día 2) → 2× Sobre Promo | Inicia sesión (Día 3) → 12× Relojes de Arena | Trade 1 time → 36 | Haz 1 Elección Mágica → 1× Sobre Promo | Collect 25 cards → 1× Sobre Promo | Collect 50 cards → 12× Relojes de Arena | Week 2 Inicia sesión (Día 2) → 1× Sobre Promo | Week 2 Inicia sesión (Día 4) → 1× Sobre Promo | Share 3 times → 36 | Haz 3 Elecciones Mágicas → 1× Sobre Promo | Haz 5 Elecciones Mágicas → 12× Relojes de Arena | Collect 30 cards → 1× Sobre Promo | Collect 60 cards → 12× Relojes de Arena | Abre 2 sobres con energía → 1× Sobre Promo",
         "Misiones: Completa 5 Misiones → 1× Stantler Carta Promo | Completa 10 Misiones → 1× Alcremie Carta Promo | Completa 15 Misiones → 1× Delibird Carta Promo | Semana 1 - A partir del 26 de noviembre | Inicia sesión (Día 1) → 1× Fondo de juego de tres cartas (C1) - Vacaciones de invierno (fondo de retrato) | Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres | Opere 1 vez → 36× Reloj de Arena Mágico | Elección Mágica 1 vez → 1× Fusión Dual Pikachu Booster | Recoge 25 cartas → 1 × Fusión Dual Pikachu Booster | Recoge 50 cartas → 12× Reloj de Arena de Sobres | Semana 2 - A partir del 3 de diciembre | Semana 2 Inicia sesión (Día 2) → 1× Fusión Dual Pikachu Booster | Semana 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster | Compartir 3 veces → 36× Reloj de Arena Mágico | Elección Mágica 3 veces → 1× Fusión Dual Pikachu Booster",
-        "Cartas y sobres destacados: Stantler"
+        "Cartas y sobres destacados: Stantler",
+        "Misiones: Completa 5 misiones → 1× Stantler Carta Promo | Completa 10 misiones → 1× Alcremie Carta Promo | Completa 15 misiones → 1× Delibird Carta Promo | Week 1 - From November 26th | Inicia sesión (Día 1) → 1× Three-Card-Set Backdrop (C1) - Winter Holidays (portrait backdrop) | Inicia sesión (Día 2) → 2× Fusión Dual Mega Mewtwo X Booster | Inicia sesión (Día 3) → 12× Reloj de Arena de Sobres | Trade 1 time → 36× Reloj de Arena Mágico | Haz 1 Elección Mágica → 1× Fusión Dual Pikachu Booster | Collect 25 cards → 1× Fusión Dual Pikachu Booster | Collect 50 cards → 12× Reloj de Arena de Sobres | Week 2 - From December 3rd | Week 2 Inicia sesión (Día 2) → 1× Fusión Dual Pikachu Booster | Week 2 Inicia sesión (Día 4) → 1× Fusión Dual Mega Mewtwo X Booster | Share 3 times → 36× Reloj de Arena Mágico | Haz 3 Elecciones Mágicas → 1× Fusión Dual Pikachu Booster"
       ],
       "promo_code": null,
       "redeem_url": null,
@@ -2061,7 +2062,7 @@ window.POKE_ALERTS_DB = {
       "guide_url": "https://ptcgpocket.gg/tier-list/",
       "recommended_decks": [],
       "tactical_cards": [],
-      "decks_checked_at": "2026-11-25T13:23:23Z",
+      "decks_checked_at": "2026-11-26T06:23:29Z",
       "decks_updated_at": "",
       "decks_updated_label": "",
       "sources": [
@@ -2074,7 +2075,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-26T00:23:52Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-26T00:23:52Z"
+      "last_updated_at": "2026-11-26T06:23:35Z"
     },
     {
       "id": "pogo:and-duolingo-go-pokemon-research-timed",
@@ -6540,7 +6541,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T05:23:25Z"
+      "last_updated_at": "2026-11-26T06:23:35Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -9042,7 +9043,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T05:23:25Z"
+      "last_updated_at": "2026-11-26T06:23:35Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -10474,7 +10475,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T05:23:25Z"
+      "last_updated_at": "2026-11-26T06:23:35Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -12012,7 +12013,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T05:23:25Z"
+      "last_updated_at": "2026-11-26T06:23:35Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -13078,7 +13079,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T05:23:25Z"
+      "last_updated_at": "2026-11-26T06:23:35Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13706,7 +13707,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T05:23:25Z"
+      "last_updated_at": "2026-11-26T06:23:35Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -15034,7 +15035,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-26T05:23:25Z"
+      "last_updated_at": "2026-11-26T06:23:35Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
