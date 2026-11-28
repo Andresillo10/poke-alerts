@@ -1,15 +1,15 @@
 // Generado automáticamente por poke-alerts; no editar manualmente.
 window.POKE_ALERTS_DB = {
   "schema_version": 1,
-  "generated_at": "2026-11-27 23:23 COT",
+  "generated_at": "2026-11-28 00:23 COT",
   "stats": {
     "total": 199,
     "pogo": 185,
     "tcgp": 14,
     "codes_active": 4,
     "active": 59,
-    "upcoming": 114,
-    "ended": 26
+    "upcoming": 112,
+    "ended": 28
   },
   "events": [
     {
@@ -191,6 +191,201 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:clefable-day-mega-raid-super",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Clefable Super Mega Día de Incursiones",
+      "title_original": "Clefable Super Mega Raid Day",
+      "summary": "¡Mega Clefable hace su debut en Pokémon GO durante el Super Mega Día de Incursiones de Clefable el sábado 28 de noviembre de 2026, de 14:00 a 17:00, hora local!",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "✨ Posible Shiny"
+      ],
+      "milestones": [
+        "🔥 El límite de incursiones remotas se amplía a 20 desde el viernes 27 de noviembre a las 17:00 hasta el sábado 28 de noviembre de 2026 a las 20:00 PST",
+        "🔥 se pueden conseguir hasta seis pases de incursión gratis al girar los fotodiscos de los gimnasios",
+        "🔥 los Clefables capturados en las Supermegaincursiones tendrán desbloqueado el nivel de megaevolución 1",
+        "🔥 aumenta la probabilidad de encontrarse con un Clefable variocolor en las Supermegaincursiones."
+      ],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Bonificaciones: El límite de incursiones remotas se amplía a 20 desde el viernes 27 de noviembre a las 17:00 hasta el sábado 28 de noviembre de 2026 a las 20:00 PST; se pueden conseguir hasta seis pases de incursión gratis al girar los fotodiscos de los gimnasios; los Clefables capturados en las Supermegaincursiones tendrán desbloqueado el nivel de megaevolución 1; aumenta la probabilidad de encontrarse con un Clefable variocolor en las Supermegaincursiones.",
+      "highlights": [
+        "Bonificaciones: El límite de incursiones remotas se amplía a 20 desde el viernes 27 de noviembre a las 17:00 hasta el sábado 28 de noviembre de 2026 a las 20:00 PST; se pueden conseguir hasta seis pases de incursión gratis al girar los fotodiscos de los gimnasios; los Clefables capturados en las Supermegaincursiones tendrán desbloqueado el nivel de megaevolución 1; aumenta la probabilidad de encontrarse con un Clefable variocolor en las Supermegaincursiones."
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-28",
+      "end_date": "2026-11-28",
+      "date_range_label": "28 nov 2026 -> 28 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Mega Clefable: PC 100%: 1392 (Nv.20) • 1741 (Nv.25)",
+      "search_filter": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
+      "guide_url": "https://leekduck.com/events/clefable-super-mega-raid-day-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Mega Clefable",
+          "subtitle": "PC 100%: 1392 (Nv.20) • 1741 (Nv.25)",
+          "primary_type": "fairy",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Hada",
+            "PC 100% Nv.20: 1392",
+            "PC 100% Clima Nv.25: 1741",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Acero (×1.6)",
+            "• Veneno (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
+            "2. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
+            "3. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
+            "4. Metagross Oscuro (Bullet Punch + Meteor Mash)",
+            "5. Mega Lucario (Bullet Punch + Meteor Mash)",
+            "6. Dialga Oscuro (Metal Claw + Iron Head)"
+          ],
+          "explanation": "Vulnerable a Acero, Veneno. Lidera tu equipo con Zamazenta (Crowned Shield) y verifica el 100% IV al capturar: 1392 (normal) o 1741 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Clefable Super Mega Día de Incursiones"
+        },
+        {
+          "title": "Plan Táctico de Incursiones",
+          "subtitle": "Jefes actuales en rotación y checklist previo",
+          "primary_type": "fire",
+          "badge_label": "GUÍA RAIDS GO",
+          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
+          "left_rows": [
+            "Cresselia: PC 100% 1633 / 2041",
+            "Darkrai: PC 100% 2136 / 2671",
+            "Mega Banette: PC 100% 1313 / 1642",
+            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
+          ],
+          "right_heading": "PREPARACIÓN RECOMENDADA",
+          "right_rows": [
+            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
+            "Arma equipo predefinido antes de entrar al lobby",
+            "Combina Huevo Suerte si encadenas varias incursiones"
+          ],
+          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
+          "search_label": "Filtro rápido de atacantes / megas:",
+          "search_string": "Clefable",
+          "info_label": "🔎 Ver jefes en LeekDuck",
+          "info_url": "https://leekduck.com/events/clefable-super-mega-raid-day-2026/",
+          "context_label": "Evento GO: Clefable Super Mega Día de Incursiones"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/clefable-super-mega-raid-day-2026/"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:clefable-mega-raid-super",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "event",
+      "kind_label": "Evento",
+      "category": "Incursiones GO",
+      "title": "Clefable Súper Mega Día de Incursiones",
+      "title_original": "Clefable Super Mega Raid Day",
+      "summary": "Mega Clefable hace su debut en Pokémon GO durante Clefable Super Mega Día de Incursiones el sábado 28 de noviembre de 2026, de 2:00 p.m. a 5:00 p. m. ¡hora local!",
+      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
+      "requires_battles": true,
+      "activities": [
+        "⚔️ Incursiones en Gimnasios",
+        "✨ Posible Shiny"
+      ],
+      "milestones": [
+        "🔥 El límite de incursiones remotas aumentó a 20 desde el viernes 27 de noviembre a las 5:00 p. m. al sábado 28 de noviembre de 2026, a las 20:00 horas. hora del Pacífico",
+        "🔥 Reciba hasta seis pases de incursión gratuitos al girar Gym Photo Discs",
+        "🔥 Clefable capturado de Super Megaincursiones tendrá Mega Nivel 1 desbloqueado",
+        "🔥 Mayor probabilidad de encontrar Clefable Variocolor de Super Megaincursiones"
+      ],
+      "deck_intro": "",
+      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
+      "rewards": "Bonificaciones: El límite de incursiones remotas aumentó a 20 desde el viernes 27 de noviembre a las 5:00 p. m. al sábado 28 de noviembre de 2026, a las 20:00 horas. hora del Pacífico; Reciba hasta seis pases de incursión gratuitos al girar Gym Photo Discs; Clefable capturado de Super Megaincursiones tendrá Mega Nivel 1 desbloqueado; Mayor probabilidad de encontrar Clefable Variocolor de Super Megaincursiones",
+      "highlights": [
+        "Bonificaciones: El límite de incursiones remotas aumentó a 20 desde el viernes 27 de noviembre a las 5:00 p. m. al sábado 28 de noviembre de 2026, a las 20:00 horas. hora del Pacífico; Reciba hasta seis pases de incursión gratuitos al girar Gym Photo Discs; Clefable capturado de Super Megaincursiones tendrá Mega Nivel 1 desbloqueado; Mayor probabilidad de encontrar Clefable Variocolor de Super Megaincursiones"
+      ],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-28",
+      "end_date": "2026-11-28",
+      "date_range_label": "28 nov 2026 -> 28 nov 2026",
+      "status": "activo",
+      "tactical_summary": "Mega Clefable (PC 100%: 1392 (Nv.20) • 1741 (Nv.25)) • Plan Táctico de Incursiones (Jefes actuales en rotación y checklist previo)",
+      "search_filter": "Kyurem,Zamazenta,Zekrom,Necrozma,Zacian,Tyrantrum",
+      "guide_url": "https://leekduck.com/events/clefable-super-mega-raid-day-2026/",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Mega Clefable",
+          "subtitle": "PC 100%: 1392 (Nv.20) • 1741 (Nv.25)",
+          "primary_type": "fairy",
+          "badge_label": "GUÍA RAID GO",
+          "left_heading": "DATOS Y DEBILIDADES",
+          "left_rows": [
+            "Tipos: Hada/Volador",
+            "PC 100% Nv.20: 1392",
+            "PC 100% Clima Nv.25: 1741",
+            "Clima: Según tipo",
+            "— DEBILIDADES CLAVE —",
+            "• Acero (×1.6)",
+            "• Eléctrico (×1.6)",
+            "• Hielo (×1.6)",
+            "• Roca (×1.6)"
+          ],
+          "right_heading": "TOP 6 COUNTERS RAID",
+          "right_rows": [
+            "1. Kyurem (Black) (Shadow Claw + Freeze Shock)",
+            "2. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
+            "3. Zekrom Oscuro (Charge Beam + Fusion Bolt)",
+            "4. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
+            "5. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
+            "6. Tyrantrum Oscuro (Rock Throw + Meteor Beam)"
+          ],
+          "explanation": "Vulnerable a Acero, Eléctrico, Hielo. Lidera tu equipo con Kyurem (Black) y verifica el 100% IV al capturar: 1392 (normal) o 1741 (potenciado).",
+          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
+          "search_string": "Kyurem,Zamazenta,Zekrom,Necrozma,Zacian,Tyrantrum",
+          "info_label": "🔎 Ver detalle del evento",
+          "info_url": "",
+          "context_label": "Evento GO: Clefable Súper Mega Día de Incursiones"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "ScrapedDuck JSON"
+      ],
+      "urls": [
+        "https://leekduck.com/events/clefable-super-mega-raid-day-2026/"
+      ],
+      "published_at": "2026-11-28T00:23:43Z",
+      "first_seen_at": "2026-11-25T14:26:18Z",
+      "last_updated_at": "2026-11-28T00:23:43Z"
     },
     {
       "id": "pogo:twilight-wishes",
@@ -3889,140 +4084,6 @@ window.POKE_ALERTS_DB = {
       "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
-      "id": "pogo:area-durante-experiencia-go-inmersiva-pokemon-una-vive",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
-      "title_original": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
-      "summary": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12 p.m. a 8 p.m. La entrada es gratuita, pero se dará prioridad a quienes se hayan registrado. Más información a continuación:",
-      "action_guide": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12...",
-      "requires_battles": false,
-      "activities": [
-        "📢 Anuncio oficial"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-13",
-      "end_date": null,
-      "date_range_label": "13 nov 2026 -> 13 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "4*,3*,shiny",
-      "guide_url": "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "electric",
-          "badge_label": "NOTICIA GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "¿Listos para vivir la aventura? Descubran una experiencia",
-            "inmersiva para celebrar el 10º aniversario de Pokémon GO en el",
-            "Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México,"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Combina Huevo Suerte al subir amistad o completar misiones"
-          ],
-          "explanation": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro general para valorar capturas del evento:",
-          "search_string": "4*,3*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp",
-          "context_label": "Noticia GO: Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp"
-      ],
-      "published_at": "2026-11-18T16:29:39Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:area-aztlan-experiencia-global-go-inmersiva-parque-silvestre-una-vive",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "news",
-      "kind_label": "Noticia",
-      "category": "Noticia Oficial",
-      "title": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
-      "title_original": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
-      "summary": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12 p.m. a 8 p.m. La entrada es gratuita, pero se dará prioridad a quienes se hayan registrado. Más información a continuación:",
-      "action_guide": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12...",
-      "requires_battles": false,
-      "activities": [
-        "📢 Anuncio oficial"
-      ],
-      "milestones": [],
-      "deck_intro": "",
-      "search_aliases": "",
-      "rewards": "Consultar detalle oficial / misiones en juego",
-      "highlights": [],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-13",
-      "end_date": null,
-      "date_range_label": "13 nov 2026 -> 13 nov 2026",
-      "status": "activo",
-      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
-      "search_filter": "4*,3*,shiny",
-      "guide_url": "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Guía y Bonificaciones del Evento",
-          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
-          "primary_type": "electric",
-          "badge_label": "NOTICIA GO",
-          "left_heading": "CLAVES Y RECOMPENSAS",
-          "left_rows": [
-            "¿Listos para vivir la aventura? Descubran una experiencia",
-            "inmersiva para celebrar el 10º aniversario de Pokémon GO en el",
-            "Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México,"
-          ],
-          "right_heading": "ACCIÓN RECOMENDADA",
-          "right_rows": [
-            "Combina Huevo Suerte al subir amistad o completar misiones"
-          ],
-          "explanation": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
-          "search_label": "Filtro general para valorar capturas del evento:",
-          "search_string": "4*,3*,shiny",
-          "info_label": "📘 Abrir fuente oficial",
-          "info_url": "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp",
-          "context_label": "Noticia GO: Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "Pokémon GO Live (ES)"
-      ],
-      "urls": [
-        "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp"
-      ],
-      "published_at": "2026-11-25T14:26:18Z",
-      "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-25T14:26:18Z"
-    },
-    {
       "id": "pogo:capturen-con-duolingo-go-idioma-nuevo-pokemon-un",
       "game": "pogo",
       "game_label": "Pokémon GO",
@@ -4975,201 +5036,6 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-25T18:23:25Z",
       "first_seen_at": "2026-11-25T18:23:25Z",
       "last_updated_at": "2026-11-25T18:23:25Z"
-    },
-    {
-      "id": "pogo:clefable-day-mega-raid-super",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Clefable Super Mega Día de Incursiones",
-      "title_original": "Clefable Super Mega Raid Day",
-      "summary": "¡Mega Clefable hace su debut en Pokémon GO durante el Super Mega Día de Incursiones de Clefable el sábado 28 de noviembre de 2026, de 14:00 a 17:00, hora local!",
-      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
-      "requires_battles": true,
-      "activities": [
-        "⚔️ Incursiones en Gimnasios",
-        "✨ Posible Shiny"
-      ],
-      "milestones": [
-        "🔥 El límite de incursiones remotas se amplía a 20 desde el viernes 27 de noviembre a las 17:00 hasta el sábado 28 de noviembre de 2026 a las 20:00 PST",
-        "🔥 se pueden conseguir hasta seis pases de incursión gratis al girar los fotodiscos de los gimnasios",
-        "🔥 los Clefables capturados en las Supermegaincursiones tendrán desbloqueado el nivel de megaevolución 1",
-        "🔥 aumenta la probabilidad de encontrarse con un Clefable variocolor en las Supermegaincursiones."
-      ],
-      "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Bonificaciones: El límite de incursiones remotas se amplía a 20 desde el viernes 27 de noviembre a las 17:00 hasta el sábado 28 de noviembre de 2026 a las 20:00 PST; se pueden conseguir hasta seis pases de incursión gratis al girar los fotodiscos de los gimnasios; los Clefables capturados en las Supermegaincursiones tendrán desbloqueado el nivel de megaevolución 1; aumenta la probabilidad de encontrarse con un Clefable variocolor en las Supermegaincursiones.",
-      "highlights": [
-        "Bonificaciones: El límite de incursiones remotas se amplía a 20 desde el viernes 27 de noviembre a las 17:00 hasta el sábado 28 de noviembre de 2026 a las 20:00 PST; se pueden conseguir hasta seis pases de incursión gratis al girar los fotodiscos de los gimnasios; los Clefables capturados en las Supermegaincursiones tendrán desbloqueado el nivel de megaevolución 1; aumenta la probabilidad de encontrarse con un Clefable variocolor en las Supermegaincursiones."
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-28",
-      "end_date": "2026-11-28",
-      "date_range_label": "28 nov 2026 -> 28 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Mega Clefable: PC 100%: 1392 (Nv.20) • 1741 (Nv.25)",
-      "search_filter": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
-      "guide_url": "https://leekduck.com/events/clefable-super-mega-raid-day-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Mega Clefable",
-          "subtitle": "PC 100%: 1392 (Nv.20) • 1741 (Nv.25)",
-          "primary_type": "fairy",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Hada",
-            "PC 100% Nv.20: 1392",
-            "PC 100% Clima Nv.25: 1741",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Acero (×1.6)",
-            "• Veneno (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
-            "2. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
-            "3. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
-            "4. Metagross Oscuro (Bullet Punch + Meteor Mash)",
-            "5. Mega Lucario (Bullet Punch + Meteor Mash)",
-            "6. Dialga Oscuro (Metal Claw + Iron Head)"
-          ],
-          "explanation": "Vulnerable a Acero, Veneno. Lidera tu equipo con Zamazenta (Crowned Shield) y verifica el 100% IV al capturar: 1392 (normal) o 1741 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Zamazenta,Necrozma,Zacian,Metagross,Lucario,Dialga",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Clefable Super Mega Día de Incursiones"
-        },
-        {
-          "title": "Plan Táctico de Incursiones",
-          "subtitle": "Jefes actuales en rotación y checklist previo",
-          "primary_type": "fire",
-          "badge_label": "GUÍA RAIDS GO",
-          "left_heading": "ROTACIÓN ACTUAL Y OBJETIVOS",
-          "left_rows": [
-            "Cresselia: PC 100% 1633 / 2041",
-            "Darkrai: PC 100% 2136 / 2671",
-            "Mega Banette: PC 100% 1313 / 1642",
-            "Shadow Tornadus (Incarnate): PC 100% 1911 / 2389"
-          ],
-          "right_heading": "PREPARACIÓN RECOMENDADA",
-          "right_rows": [
-            "Activa Mega Nv.3 del mismo tipo (+Caramelos XL)",
-            "Arma equipo predefinido antes de entrar al lobby",
-            "Combina Huevo Suerte si encadenas varias incursiones"
-          ],
-          "explanation": "Prepara equipo con ventaja elemental y activa una Mega Evolución del tipo del jefe para maximizar Caramelos XL tras cada captura.",
-          "search_label": "Filtro rápido de atacantes / megas:",
-          "search_string": "Clefable",
-          "info_label": "🔎 Ver jefes en LeekDuck",
-          "info_url": "https://leekduck.com/events/clefable-super-mega-raid-day-2026/",
-          "context_label": "Evento GO: Clefable Super Mega Día de Incursiones"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/clefable-super-mega-raid-day-2026/"
-      ],
-      "published_at": "2026-11-18T16:29:39Z",
-      "first_seen_at": "2026-11-18T16:29:39Z",
-      "last_updated_at": "2026-11-23T15:39:49Z"
-    },
-    {
-      "id": "pogo:clefable-mega-raid-super",
-      "game": "pogo",
-      "game_label": "Pokémon GO",
-      "kind": "event",
-      "kind_label": "Evento",
-      "category": "Incursiones GO",
-      "title": "Clefable Súper Mega Día de Incursiones",
-      "title_original": "Clefable Super Mega Raid Day",
-      "summary": "Mega Clefable hace su debut en Pokémon GO durante Clefable Super Mega Día de Incursiones el sábado 28 de noviembre de 2026, de 2:00 p.m. a 5:00 p. m. ¡hora local!",
-      "action_guide": "Qué tienes que hacer: busca este jefe en Gimnasios cercanos (o entra con pase remoto), derrótalo usando los Top Counters listados abajo y activa una Mega del mismo tipo del jefe para ganar Caramelos XL extra al atraparlo. Compara el PC de captura para saber si es 100% IV.",
-      "requires_battles": true,
-      "activities": [
-        "⚔️ Incursiones en Gimnasios",
-        "✨ Posible Shiny"
-      ],
-      "milestones": [
-        "🔥 El límite de incursiones remotas aumentó a 20 desde el viernes 27 de noviembre a las 5:00 p. m. al sábado 28 de noviembre de 2026, a las 20:00 horas. hora del Pacífico",
-        "🔥 Reciba hasta seis pases de incursión gratuitos al girar Gym Photo Discs",
-        "🔥 Clefable capturado de Super Megaincursiones tendrá Mega Nivel 1 desbloqueado",
-        "🔥 Mayor probabilidad de encontrar Clefable Variocolor de Super Megaincursiones"
-      ],
-      "deck_intro": "",
-      "search_aliases": "Incursiones Raids Hora Legendaria Gimnasios Counters Hundo",
-      "rewards": "Bonificaciones: El límite de incursiones remotas aumentó a 20 desde el viernes 27 de noviembre a las 5:00 p. m. al sábado 28 de noviembre de 2026, a las 20:00 horas. hora del Pacífico; Reciba hasta seis pases de incursión gratuitos al girar Gym Photo Discs; Clefable capturado de Super Megaincursiones tendrá Mega Nivel 1 desbloqueado; Mayor probabilidad de encontrar Clefable Variocolor de Super Megaincursiones",
-      "highlights": [
-        "Bonificaciones: El límite de incursiones remotas aumentó a 20 desde el viernes 27 de noviembre a las 5:00 p. m. al sábado 28 de noviembre de 2026, a las 20:00 horas. hora del Pacífico; Reciba hasta seis pases de incursión gratuitos al girar Gym Photo Discs; Clefable capturado de Super Megaincursiones tendrá Mega Nivel 1 desbloqueado; Mayor probabilidad de encontrar Clefable Variocolor de Super Megaincursiones"
-      ],
-      "promo_code": null,
-      "redeem_url": null,
-      "start_date": "2026-11-28",
-      "end_date": "2026-11-28",
-      "date_range_label": "28 nov 2026 -> 28 nov 2026",
-      "status": "proximo",
-      "tactical_summary": "Mega Clefable (PC 100%: 1392 (Nv.20) • 1741 (Nv.25)) • Plan Táctico de Incursiones (Jefes actuales en rotación y checklist previo)",
-      "search_filter": "Kyurem,Zamazenta,Zekrom,Necrozma,Zacian,Tyrantrum",
-      "guide_url": "https://leekduck.com/events/clefable-super-mega-raid-day-2026/",
-      "recommended_decks": [],
-      "tactical_cards": [
-        {
-          "title": "Mega Clefable",
-          "subtitle": "PC 100%: 1392 (Nv.20) • 1741 (Nv.25)",
-          "primary_type": "fairy",
-          "badge_label": "GUÍA RAID GO",
-          "left_heading": "DATOS Y DEBILIDADES",
-          "left_rows": [
-            "Tipos: Hada/Volador",
-            "PC 100% Nv.20: 1392",
-            "PC 100% Clima Nv.25: 1741",
-            "Clima: Según tipo",
-            "— DEBILIDADES CLAVE —",
-            "• Acero (×1.6)",
-            "• Eléctrico (×1.6)",
-            "• Hielo (×1.6)",
-            "• Roca (×1.6)"
-          ],
-          "right_heading": "TOP 6 COUNTERS RAID",
-          "right_rows": [
-            "1. Kyurem (Black) (Shadow Claw + Freeze Shock)",
-            "2. Zamazenta (Crowned Shield) (Metal Claw + Behemoth Bash)",
-            "3. Zekrom Oscuro (Charge Beam + Fusion Bolt)",
-            "4. Necrozma Melena Crepuscular (Metal Claw + Sunsteel Strike)",
-            "5. Zacian (Crowned Sword) (Metal Claw + Behemoth Blade)",
-            "6. Tyrantrum Oscuro (Rock Throw + Meteor Beam)"
-          ],
-          "explanation": "Vulnerable a Acero, Eléctrico, Hielo. Lidera tu equipo con Kyurem (Black) y verifica el 100% IV al capturar: 1392 (normal) o 1741 (potenciado).",
-          "search_label": "Filtro de búsqueda Counters (toca para copiar):",
-          "search_string": "Kyurem,Zamazenta,Zekrom,Necrozma,Zacian,Tyrantrum",
-          "info_label": "🔎 Ver detalle del evento",
-          "info_url": "",
-          "context_label": "Evento GO: Clefable Súper Mega Día de Incursiones"
-        }
-      ],
-      "decks_checked_at": "",
-      "decks_updated_at": "",
-      "decks_updated_label": "",
-      "sources": [
-        "ScrapedDuck JSON"
-      ],
-      "urls": [
-        "https://leekduck.com/events/clefable-super-mega-raid-day-2026/"
-      ],
-      "published_at": "2026-11-28T00:23:43Z",
-      "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T00:23:43Z"
     },
     {
       "id": "pogo:cryogonal-during-dynamax-max-monday",
@@ -6332,7 +6198,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T04:23:26Z"
+      "last_updated_at": "2026-11-28T05:23:17Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -8834,7 +8700,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T04:23:26Z"
+      "last_updated_at": "2026-11-28T05:23:17Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -10266,7 +10132,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T04:23:26Z"
+      "last_updated_at": "2026-11-28T05:23:17Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -11804,7 +11670,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T04:23:26Z"
+      "last_updated_at": "2026-11-28T05:23:17Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12870,7 +12736,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T04:23:26Z"
+      "last_updated_at": "2026-11-28T05:23:17Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13498,7 +13364,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T04:23:26Z"
+      "last_updated_at": "2026-11-28T05:23:17Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -14826,7 +14692,7 @@ window.POKE_ALERTS_DB = {
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T04:23:26Z"
+      "last_updated_at": "2026-11-28T05:23:17Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
@@ -17216,6 +17082,140 @@ window.POKE_ALERTS_DB = {
       "published_at": "2026-11-18T16:29:39Z",
       "first_seen_at": "2026-11-18T16:29:39Z",
       "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:area-durante-experiencia-go-inmersiva-pokemon-una-vive",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
+      "title_original": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
+      "summary": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12 p.m. a 8 p.m. La entrada es gratuita, pero se dará prioridad a quienes se hayan registrado. Más información a continuación:",
+      "action_guide": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12...",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-13",
+      "end_date": null,
+      "date_range_label": "13 nov 2026 -> 13 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "¿Listos para vivir la aventura? Descubran una experiencia",
+            "inmersiva para celebrar el 10º aniversario de Pokémon GO en el",
+            "Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México,"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp",
+          "context_label": "Noticia GO: Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp"
+      ],
+      "published_at": "2026-11-18T16:29:39Z",
+      "first_seen_at": "2026-11-18T16:29:39Z",
+      "last_updated_at": "2026-11-23T15:39:49Z"
+    },
+    {
+      "id": "pogo:area-aztlan-experiencia-global-go-inmersiva-parque-silvestre-una-vive",
+      "game": "pogo",
+      "game_label": "Pokémon GO",
+      "kind": "news",
+      "kind_label": "Noticia",
+      "category": "Noticia Oficial",
+      "title": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
+      "title_original": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
+      "summary": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12 p.m. a 8 p.m. La entrada es gratuita, pero se dará prioridad a quienes se hayan registrado. Más información a continuación:",
+      "action_guide": "¿Listos para vivir la aventura? Descubran una experiencia inmersiva para celebrar el 10º aniversario de Pokémon GO en el Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México, este 14 y 15 de noviembre, de 12...",
+      "requires_battles": false,
+      "activities": [
+        "📢 Anuncio oficial"
+      ],
+      "milestones": [],
+      "deck_intro": "",
+      "search_aliases": "",
+      "rewards": "Consultar detalle oficial / misiones en juego",
+      "highlights": [],
+      "promo_code": null,
+      "redeem_url": null,
+      "start_date": "2026-11-13",
+      "end_date": null,
+      "date_range_label": "13 nov 2026 -> 13 nov 2026",
+      "status": "finalizado",
+      "tactical_summary": "Guía y Bonificaciones del Evento (Resumen accionable, prioridades y filtro rápido de caja)",
+      "search_filter": "4*,3*,shiny",
+      "guide_url": "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp",
+      "recommended_decks": [],
+      "tactical_cards": [
+        {
+          "title": "Guía y Bonificaciones del Evento",
+          "subtitle": "Resumen accionable, prioridades y filtro rápido de caja",
+          "primary_type": "electric",
+          "badge_label": "NOTICIA GO",
+          "left_heading": "CLAVES Y RECOMPENSAS",
+          "left_rows": [
+            "¿Listos para vivir la aventura? Descubran una experiencia",
+            "inmersiva para celebrar el 10º aniversario de Pokémon GO en el",
+            "Pabellón Inmersivo del Parque Aztlán, en la Ciudad de México,"
+          ],
+          "right_heading": "ACCIÓN RECOMENDADA",
+          "right_rows": [
+            "Combina Huevo Suerte al subir amistad o completar misiones"
+          ],
+          "explanation": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán: prioriza las bonificaciones activas y filtra tus capturas al instante con el buscador.",
+          "search_label": "Filtro general para valorar capturas del evento:",
+          "search_string": "4*,3*,shiny",
+          "info_label": "📘 Abrir fuente oficial",
+          "info_url": "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp",
+          "context_label": "Noticia GO: Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán"
+        }
+      ],
+      "decks_checked_at": "",
+      "decks_updated_at": "",
+      "decks_updated_label": "",
+      "sources": [
+        "Pokémon GO Live (ES)"
+      ],
+      "urls": [
+        "https://pokemongolive.com/es_MX/news/gowa-global-immersive-exp"
+      ],
+      "published_at": "2026-11-25T14:26:18Z",
+      "first_seen_at": "2026-11-25T14:26:18Z",
+      "last_updated_at": "2026-11-25T14:26:18Z"
     },
     {
       "id": "pogo:apunten-calendario-de-dias-el-en-la-los",
