@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27 21:23 COT",
+  "generated_at": "2026-11-27 22:23 COT",
   "stats": {
     "total": 199,
     "pogo": 185,
@@ -1877,7 +1877,7 @@
       "guide_url": "https://ptcgpocket.gg/tier-list/",
       "recommended_decks": [],
       "tactical_cards": [],
-      "decks_checked_at": "2026-11-27T21:23:20Z",
+      "decks_checked_at": "2026-11-28T03:23:25Z",
       "decks_updated_at": "",
       "decks_updated_label": "",
       "sources": [
@@ -6331,7 +6331,7 @@
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T02:23:15Z"
+      "last_updated_at": "2026-11-28T03:23:33Z"
     },
     {
       "id": "pogo:hour-raid-unannounced",
@@ -8833,7 +8833,7 @@
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T02:23:15Z"
+      "last_updated_at": "2026-11-28T03:23:33Z"
     },
     {
       "id": "pogo:and-cup-edition-great-holiday-league-mega-ultra",
@@ -10265,7 +10265,7 @@
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T02:23:15Z"
+      "last_updated_at": "2026-11-28T03:23:33Z"
     },
     {
       "id": "pogo:glalie-in-mega-raids",
@@ -11803,7 +11803,7 @@
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T02:23:15Z"
+      "last_updated_at": "2026-11-28T03:23:33Z"
     },
     {
       "id": "pogo:and-cup-edition-fighting-great-league-mega",
@@ -12869,7 +12869,7 @@
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T02:23:15Z"
+      "last_updated_at": "2026-11-28T03:23:33Z"
     },
     {
       "id": "pogo:2027-26-choose-daydream-destinations-january-path-your",
@@ -13497,7 +13497,7 @@
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T02:23:15Z"
+      "last_updated_at": "2026-11-28T03:23:33Z"
     },
     {
       "id": "pogo:cup-edition-great-league-love-mega-ultra",
@@ -14825,7 +14825,7 @@
       ],
       "published_at": "2026-11-25T14:26:18Z",
       "first_seen_at": "2026-11-25T14:26:18Z",
-      "last_updated_at": "2026-11-28T02:23:15Z"
+      "last_updated_at": "2026-11-28T03:23:33Z"
     },
     {
       "id": "pogo:2027-aquariids-eta-minior-showers",
